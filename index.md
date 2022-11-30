@@ -24,6 +24,10 @@ Tijdens de gehele keten van ontwikkeling, opwerking en productie van voedingsing
 2.	De student visualiseert verschillende typen data in Excel met behulp van diverse plot typen;
 3.	De student analyseert en visualiseert (korte kennismaking) data in RStudio met de programmeertaal R en Jupyter Notebooks met de programmeertaal Python.
 
+## Link naar github:
+
+Een voorbeeld opdracht met uitwerkingen is [hier](https://github.com/jurrehageman/master_food_data_analysis) te vinden.
+
 
 ## Under construction
 
