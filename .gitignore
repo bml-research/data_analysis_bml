@@ -1,5 +1,5 @@
 # ignore ALL of the following files
-*.Zone.Identifier
+*.Identifier
 
 # ignore ALL files in ANY directory named temp
 temp/
