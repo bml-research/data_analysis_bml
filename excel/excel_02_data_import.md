@@ -111,14 +111,6 @@ Than, remove the unwanted top rows and format as table.
 ---
 
 
-## Topics:
-
-
-- [Data Import](link here)
-- [Data Cleaning](link here)
-- [Data Analysis](link here)
-- [Data Visualization](link here)
-
 >This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
 >Creative Commons License: CC BY-SA 4.0.
 
