@@ -104,7 +104,7 @@ You need to spicify the file type (UTF-8). But even then it will not load well:
 However, using the "Text to columns" feature, you can easily seperate the columns.
 Than, remove the unwanted top rows and format as table.
 
-|![Data loaded](./pics_02_data_import/07.png)
+|![Data loaded](./pics_02_data_import/08.png)
 *<sub>Figure 8: a difficult file loaded in Excel</sub>*
 
 
