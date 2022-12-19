@@ -1,9 +1,12 @@
 {% include head.html %}
 ![Hanze](../hanze/hanze.png)
 
+[Go back to the main page](../index.md)
+
+
 # Master Gezonde en Duurzame Voeding
 
-## Introduction Excel
+## Excel
 
 ---
 
