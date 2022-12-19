@@ -29,9 +29,14 @@ Tijdens de gehele keten van ontwikkeling, opwerking en productie van voedingsing
 Een voorbeeld opdracht met uitwerkingen is [hier](https://github.com/jurrehageman/master_food_data_analysis) te vinden.
 
 
-## Under construction
+## Inhoudsopgave
 
-This website is under construction.
+- Data analyse met Excel
+- Data analyse met R
+- Data analyse met Python
+
+
+## Under construction
 
 ![Under construction](./pics/Under_construction.png)
 
