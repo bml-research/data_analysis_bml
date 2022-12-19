@@ -31,14 +31,14 @@ Een voorbeeld opdracht met uitwerkingen is [hier](https://github.com/jurrehagema
 
 ## Inhoudsopgave
 
-- Data analyse met Excel
+- [Data analyse met Excel](./excel/excel_01_intro.md) 
 - Data analyse met R
 - Data analyse met Python
 
 
 ## Links naar data sets
 
-- [data sets]
+- [data sets](./data_sets/data_sets.md)
 
 ## Under construction
 
