@@ -36,7 +36,7 @@ Een voorbeeld opdracht met uitwerkingen is [hier](https://github.com/jurrehagema
 - Data analyse met Python
 
 
-## Links naar data sets
+## Links naar data set webpagina
 
 - [Data sets](./data_sets/data_sets.md)
 
