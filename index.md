@@ -36,6 +36,10 @@ Een voorbeeld opdracht met uitwerkingen is [hier](https://github.com/jurrehagema
 - Data analyse met Python
 
 
+## Links naar data sets
+
+- [data sets]
+
 ## Under construction
 
 ![Under construction](./pics/Under_construction.png)
