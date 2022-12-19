@@ -38,7 +38,7 @@ Een voorbeeld opdracht met uitwerkingen is [hier](https://github.com/jurrehagema
 
 ## Links naar data sets
 
-- [data sets](./data_sets/data_sets.md)
+- [Data sets](./data_sets/data_sets.md)
 
 ## Under construction
 
