@@ -55,16 +55,27 @@ It is important to note that ratio data allows for meaningful statement about th
 *<sub>Figure 2. Scales of measurement in statistics. Source: own work</sub>*
 
 
+### Visualization methods
+
+As explained above, you can not perform ratio comparisons on interval data. In addition, not all visualizations types are appropriote for all data types.
+
+So what can you do with the different data types?
+
+- Nominal data: Calculate frequencies. Calculate a proportion (or percentage) by dividing the frequency by the total number of events (and multiply by 100 for the percentage). Proper visualisations of nominal data are Pie Charts and Bar Charts.  
+- Ordinal data: you can do the same as for nominal data but after you have calculated frequencies and proportions you can also calculate percentiles (including the median), mode and interquartile ranges (IQR).  
+- Continuous data: Same as for the previous data types but you can also summarize your data by calculating the mean, standard deviation and range. For visualizations you can use boxplots and histograms.  
+
+As boxplots are used when you have a categorical grouping variable and a continuous outcome variable, it becomes clear that boxplots can not be used for nominal data.
+
 ---
 
 
 ## Topics:
 
 
-- [Data Types](./data_02_data_types.md)
-- [Data 1](link here)
-- [Data 2](link here)
-- [Data 3](link here)
+- [Ecercises](./data_02_data_excersizes.md)
+- [Solutions](./data_02_data_solutions.md)
+
 
 >This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
 >Creative Commons License: CC BY-SA 4.0.
