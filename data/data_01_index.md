@@ -114,11 +114,24 @@ Scientist often organise data in a table such as:
 |F003190           |14727            |Borrowed     |Coriander seed, dried, ground |
 
 
-The text "Public Food Key", "Food Profile ID", "Derivation" and "Food Name" are all found on the first line of the table. This is the table header. All of the remaining lines are rows. `Rows` are also called `records` or `observations` which represents a collection of items. Since the table above is about food products, each row represents a different food product. 
+The text "Public Food Key", "Food Profile ID", "Derivation" and "Food Name" are all found on the first line of the table. This is the table header. All of the remaining lines are rows. `Rows` are also called `records`, `observations` or trials which corresponds to the statistical unit of the dataset. Since the table above is about food products, each row represents a different food product. 
 
 Columns:
 
 `Columns` are also called `variables` or `features`. For example, this first column contains the public food key, a unique identifyer for each food item. The third column represents information about the type of food but also contains information about the processing. You could argue that this column should be be separated in two columns (food name and processing).
+
+>Do not put records in columns and variables in rows like this:
+
+|Variable             |Item 1       |Item 2       |Item 3      |Item 4        |
+|:--------------------|:------------|:------------|:-----------|:-------------|
+|Public Food Key      |F002258      |F002963      |F002970     |F003190       |
+|Food Profile ID      |14723        |14718        |14725       |14727         |
+|Derivation           |Borrowed     |Borrowed     |Borrowed    |Borrowed      |
+|Food Name            |Cardamom seed dried, ground|Cinnamon, dried, ground|Cloves, dried, ground|Coriander seed, dried, ground|
+
+>When you encounter this, the data need to be transposed. Data analysis software contains functions to assist with this.
+
+
 
 Untidy data versus tidy data:
 
