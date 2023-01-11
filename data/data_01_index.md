@@ -109,7 +109,7 @@ Even continuous data has some types of visualization that is not suitable or rec
 ## Topics:
 
 
-- [Ecercises](./data_02_data_excersizes.md)
+- [Exercises](./data_02_data_excersizes.md)
 - [Solutions](./data_02_data_solutions.md)
 
 
