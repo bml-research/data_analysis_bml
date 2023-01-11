@@ -15,13 +15,20 @@
 Download the [this dataset](https://www.kaggle.com/datasets/vinitshah0110/food-composition).
 Open it with a text editor (or Excel).
 
-Decribe for the following columns what kind of data it holds.
+Decribe for the following columns what kind of data it holds. Also describe the scale.
 
-Food Name: nominal
-Fat factor: continuous
+|Column           |Data type       |Scale            |
+|:----------------|:---------------|:----------------|
+|Food Name        |                |                 |
+|Fat factor       |                |                 |
+|Analysed Portion |                |                 |
+
+Food Name: nominal data, nominal scale
+Fat factor: continuous, ratio scale
+Analysed Portion: continuous, ratio scale
 
 
-
+### Exercise 2
 
 
 
