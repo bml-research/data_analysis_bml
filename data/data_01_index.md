@@ -102,11 +102,31 @@ Even continuous data has some types of visualization that is not suitable or rec
 
 >So to summarize: Always make sure that the visualization type is appropriate for your data type.
 
+### Data tables
+
+Scientist often organise data in a table such as:
+
+|Public Food Key   |Food Profile ID  |Derivation   |Food Name                     |
+|:-----------------|:----------------|:------------|:-----------------------------|
+|F002258           |14723            |Borrowed     |Cardamom seed, dried, ground  |
+|F002963           |14718            |Borrowed     |Cinnamon, dried, ground       |
+|F002970           |14725            |Borrowed     |Cloves, dried, ground         |
+|F003190           |14727            |Borrowed     |Coriander seed, dried, ground |
+
+
+The text "Public Food Key", "Food Profile ID", "Derivation" and "Food Name" are all found on the first line of the table. This is the table header. All of the remaining lines are rows. Each item in a data table is represented as a row in a data table, which represents a collection of items. For instance, since the table above is about food products, each row represents a different food product. 
+
+Columns:
+
+
+
+
+
 
 ---
 
 
-## Topics:
+### Exersises and Solutions:
 
 
 - [Exercises](./data_02_exersises.md)
