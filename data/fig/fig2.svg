@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="150mm"
+   viewBox="0 0 210 150"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   sodipodi:docname="fig2.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.73139029"
+     inkscape:cx="319.93862"
+     inkscape:cy="343.18202"
+     inkscape:window-width="1920"
+     inkscape:window-height="986"
+     inkscape:window-x="-11"
+     inkscape:window-y="1609"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g558"
+       transform="translate(11.641668,-29.633345)">
+      <g
+         id="g552"
+         transform="translate(40.154689,-69.095006)">
+        <rect
+           style="fill:#ff6600;stroke-width:0.325813"
+           id="rect61"
+           width="66.924484"
+           height="13.384896"
+           x="20.98173"
+           y="216.32886" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+           x="32.919613"
+           y="226.81973"
+           id="text117"><tspan
+             sodipodi:role="line"
+             id="tspan115"
+             x="32.919613"
+             y="226.81973"
+             style="stroke-width:0.264583">Nominal</tspan></text>
+      </g>
+    </g>
+    <g
+       id="g547"
+       transform="translate(5.310976,-105.7223)">
+      <rect
+         style="fill:#ff6600;stroke-width:0.325813"
+         id="rect61-8"
+         width="66.924484"
+         height="13.384896"
+         x="67.46711"
+         y="188.29294" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="79.404999"
+         y="198.78381"
+         id="text117-4"><tspan
+           sodipodi:role="line"
+           id="tspan115-1"
+           x="79.404999"
+           y="198.78381"
+           style="stroke-width:0.264583">Ordinal</tspan></text>
+    </g>
+    <g
+       id="g542"
+       transform="translate(-33.758446,-113.62064)">
+      <g
+         id="g536">
+        <rect
+           style="fill:#ff6600;stroke-width:0.325813"
+           id="rect61-8-4"
+           width="66.924484"
+           height="13.384896"
+           x="106.53654"
+           y="161.16139" />
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="118.47443"
+         y="171.65227"
+         id="text117-4-2"><tspan
+           sodipodi:role="line"
+           id="tspan115-1-1"
+           x="118.47443"
+           y="171.65227"
+           style="stroke-width:0.264583">Interval</tspan></text>
+    </g>
+    <g
+       id="g563"
+       transform="translate(10.737284,-29.633345)">
+      <rect
+         style="fill:#ff6600;stroke-width:0.325813"
+         id="rect61-8-4-0"
+         width="66.924484"
+         height="13.384896"
+         x="62.040802"
+         y="42.144325" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="80.857758"
+         y="52.635201"
+         id="text117-4-2-8"><tspan
+           sodipodi:role="line"
+           id="tspan115-1-1-8"
+           x="80.857758"
+           y="52.635201"
+           style="stroke-width:0.264583">Ratio</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="85.852669"
+       y="138.5826"
+       id="text452"><tspan
+         sodipodi:role="line"
+         id="tspan450"
+         x="85.852669"
+         y="138.5826"
+         style="font-size:5.64444px;stroke-width:0.264583">named variables</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="71.281555"
+       y="102.54166"
+       id="text452-8"><tspan
+         sodipodi:role="line"
+         id="tspan450-9"
+         x="71.281555"
+         y="102.54166"
+         style="font-size:5.64444px;stroke-width:0.264583">named variables with order</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="53.87693"
+       y="67.035721"
+       id="text452-8-3"><tspan
+         sodipodi:role="line"
+         id="tspan450-9-0"
+         x="53.87693"
+         y="67.035721"
+         style="font-size:5.64444px;stroke-width:0.264583">named variables with proportional order</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="29.52681"
+       y="32.300957"
+       id="text452-8-3-3"><tspan
+         sodipodi:role="line"
+         id="tspan450-9-0-6"
+         x="29.52681"
+         y="32.300957"
+         style="font-size:5.64444px;stroke-width:0.264583">named variables with proportional order and absolute zero</tspan></text>
+  </g>
+</svg>
