@@ -110,7 +110,7 @@ Even continuous data has some types of visualization that is not suitable or rec
 
 
 - [Exercises](./data_02_data_excersises.md)
-- [Solutions](./data_02_data_solutions.md)
+- [Solutions](./data_03_data_solutions.md)
 
 
 >This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
