@@ -47,8 +47,8 @@ Een voorbeeld opdracht met uitwerkingen is [hier](https://github.com/jurrehagema
 
 ---
 
->Some text on this web page is copied, adapted and modified from Wikipedia.org 
->For some textual parts, AI (GPT) was used to . The output was verified in all cases and modified where needed. 
->This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
+>Some text on this web page is copied, adapted and modified from Wikipedia.org  
+>For some textual parts, AI (GPT) was used to . The output was verified in all cases and modified where needed.  
+>This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.  
 >Creative Commons License: CC BY-SA 4.0.
 
