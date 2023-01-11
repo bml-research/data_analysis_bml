@@ -114,11 +114,13 @@ Scientist often organise data in a table such as:
 |F003190           |14727            |Borrowed     |Coriander seed, dried, ground |
 
 
-The text "Public Food Key", "Food Profile ID", "Derivation" and "Food Name" are all found on the first line of the table. This is the table header. All of the remaining lines are rows. Each item in a data table is represented as a row in a data table, which represents a collection of items. For instance, since the table above is about food products, each row represents a different food product. 
+The text "Public Food Key", "Food Profile ID", "Derivation" and "Food Name" are all found on the first line of the table. This is the table header. All of the remaining lines are rows. `Rows` are also called `records` or `observations` which represents a collection of items. Since the table above is about food products, each row represents a different food product. 
 
 Columns:
 
+`Columns` are also called `variables` or `features`. For example, this first column contains the public food key, a unique identifyer for each food item. The third column represents information about the type of food but also contains information about the processing. You could argue that this column should be be separated in two columns (food name and processing).
 
+Untidy data versus tidy data:
 
 
 
