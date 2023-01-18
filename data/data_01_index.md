@@ -163,6 +163,7 @@ Let's first have a look at untidy data.
 |F002970           |14725            |
 |F003190           |14727            |
 
+<\b>
 
 |Public Food Key   |Derivation   |Food Name                     |
 |:-----------------|:------------|:-----------------------------|
