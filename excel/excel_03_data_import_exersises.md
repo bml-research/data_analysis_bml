@@ -12,8 +12,7 @@
 
 ### Exercise 1
 
-Load the following datasets in Excel using the csv import functionality. First have a look at them in your browser or a text editor.  
-Save the file (rigth click and save as).  
+Load the following datasets in Excel using the csv import functionality. First have a look at them in your text editor.  
 Then load in Excel.  
 
 - [file 1](./exercises_files/Food_composition_1.csv)  
