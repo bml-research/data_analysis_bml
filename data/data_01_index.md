@@ -120,6 +120,9 @@ Columns:
 
 `Columns` are also called `variables` or `features`. For example, this first column contains the public food key, a unique identifyer for each food item. The third column represents information about the type of food but also contains information about the processing. You could argue that this column should be be separated in two columns (food name and processing).
 
+`Values` are found on the cross-section of columns and rows in csv files or other tabulated text file formats. In Excell, each cell contains a value. Values may represent tekst strings, whole numbers (integers), decimal values (floats) or booleans (true, false). Other values do excist as well but are beyond the scope of this course.
+
+
 >Do not put records in columns and variables in rows like this:
 
 |Variable             |Item 1       |Item 2       |Item 3      |Item 4        |
@@ -132,10 +135,67 @@ Columns:
 >When you encounter this, the data need to be transposed. Data analysis software contains functions to assist with this.
 
 
+![Pic](./fig/fig3.svg)
+*<sub>Figure 3. Variables, Observations and Values. Source: own work</sub>*
+
 
 ### Untidy data versus tidy data:
 
+In data science, a lot of time is spent on data cleaning and data organisation.
+A more standardized way to structure data is the [tidy data format](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html).
 
+
+So what is tidy data?
+Tidying data is a common method of relating a dataset's meaning to its structure. Depending on how rows, columns, and tables are matched with observations, variables, and types, a dataset might be unorganized or well-organized. 
+
+Rules for tidy data:
+- Each dataset should have a single column  
+- Each feature/variable should have its own column  
+- Each observation must have its own row  
+- Each value must be in its own cell  
+
+Let's first have a look at untidy data.
+
+|Public Food Key   |Food Profile ID  |
+|:-----------------|:----------------|
+|F002258           |14723            |
+|F002963           |14718            |
+|F002970           |14725            |
+|F003190           |14727            |
+
+
+|Public Food Key   |Derivation   |Food Name                     |
+|:-----------------|:------------|:-----------------------------|
+|F002258           |Borrowed     |Cardamom seed, dried, ground  |
+|F002963           |Borrowed     |Cinnamon, dried, ground       |
+|F002970           |Borrowed     |Cloves, dried, ground         |
+|F003190           |Borrowed     |Coriander seed, dried, ground |
+
+
+As you can see, there are two tables and the `Public Food Key` column is repeated.
+
+Another example of untidy data:
+
+|Public Food Key   |Food Profile ID  |Type          |Data                          |
+|:-----------------|:----------------|:-------------|:-----------------------------|
+|F002258           |14723            |Derivation    |Borrowed                      |
+|F002258           |14723            |Food Name     |Cardamom seed, dried, ground  |
+|F002963           |14718            |Derivation    |Borrowed                      |
+|F002963           |14718            |Food Name     |Cinnamon, dried, ground       |
+
+As you can see in this example, not each variable has its own column and as a result, not each observation has its own row.
+
+But even organization of the data from Kaggle can be improved.
+The column food name can arguable be better splitted in a column `Food name` and a column `Processing`:
+
+|Public Food Key   |Food Profile ID  |Derivation   |Food Name     |Processing     |
+|:-----------------|:----------------|:------------|:-------------|:--------------|
+|F002258           |14723            |Borrowed     |Cardamom seed |dried, ground |
+|F002963           |14718            |Borrowed     |Cinnamon      |dried, ground  |
+|F002970           |14725            |Borrowed     |Cloves        |dried, ground  |
+|F003190           |14727            |Borrowed     |Coriander seed|dried, ground |
+
+>In summary: always make sure that your data are well organized. This will consume time and effort but it will be worth the time and effort as the data analysis later on will be much more straightforward.
 
 
 ---
