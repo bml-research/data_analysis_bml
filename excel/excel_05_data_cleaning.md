@@ -62,6 +62,16 @@ And the result is 1 duplicate row removed.
 ![duplicates](./pics_05_data_cleaning/fig8.png)
 *<sub>Figure 7: 1 duplicate row removed.</sub>*
 
+## Trimming text
+
+
+## Find and replace
+
+## Dealing with missing data
+
+https://real-statistics.com/descriptive-statistics/missing-data/
+
+
 ### Exersises and Solutions:
 
 
