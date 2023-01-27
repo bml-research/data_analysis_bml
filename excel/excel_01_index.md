@@ -46,7 +46,7 @@ Ultimately, the choice between Excel, Python, and R will depend on your specific
 
 
 - [Data Import](./excel_02_data_import.md)
-- [Data Cleaning](link here)
+- [Data Cleaning](./excel_05_data_cleaning.md)
 - [Data Analysis](link here)
 - [Data Visualization](link here)
 
