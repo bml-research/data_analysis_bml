@@ -60,10 +60,21 @@ Excel reports the removal of 1 duplicate row.
 And the result is 1 duplicate row removed.
 
 ![duplicates](./pics_05_data_cleaning/fig8.png)
-*<sub>Figure 7: 1 duplicate row removed.</sub>*
+*<sub>Figure 8: 1 duplicate row removed.</sub>*
 
 ## Trimming text
 
+Often, data will contain extra whitespace such as spaces. Extra spaces are notoriously difficult to spot, especially those at the end. Those extra spaces may interfere with later analysis. 
+
+![extra spaces](./pics_05_data_cleaning/fig9.png)
+*<sub>Figure 9: Only 1 Milk counted as one cell contains Milk with a tailing space.</sub>*
+
+The `TRIM` function will remove trailing whitespace:
+
+![extra spaces](./pics_05_data_cleaning/fig10.png)
+*<sub>Figure 10: The TRIM function in action.</sub>*
+
+As a result, the tailing whitespace is now removed and the `COUNTIF` function returns the expected result.
 
 ## Find and replace
 
