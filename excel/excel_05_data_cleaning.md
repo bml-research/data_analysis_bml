@@ -106,6 +106,23 @@ There are some other handy functions that work on strings that can help you:
 | LEN          | LEN returns the number of characters in a text string.                                                                                                                                                                         |
 | MID          | MID returns a specific number of characters from a text string, starting at the position you specify, based on the number of characters you specify.                                                                           |
 
+## Splitting and concatenating strings
+
+Sometimes tou want to split data on a certain character:
+
+![split](./pics_05_data_cleaning/fig14.png)
+*<sub>Figure 14: Split on a character.</sub>*
+
+The TEXTSPLIT function can handle this:
+
+![split](./pics_05_data_cleaning/fig15.png)
+*<sub>Figure 15: Split on a character.</sub>*
+
+The reciprocal function is CONCAT.
+Here you can see it in action:
+
+![split](./pics_05_data_cleaning/fig16.png)
+*<sub>Figure 16: Concatenate text strings.</sub>*
 
 ## Dealing with missing data
 
