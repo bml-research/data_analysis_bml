@@ -121,7 +121,7 @@ The TEXTSPLIT function can handle this:
 The reciprocal function is CONCAT.
 Here you can see it in action:
 
-![split](./pics_05_data_cleaning/fig16.png)
+![concat](./pics_05_data_cleaning/fig16.png)
 *<sub>Figure 16: Concatenate text strings.</sub>*
 
 ## Dealing with missing data
