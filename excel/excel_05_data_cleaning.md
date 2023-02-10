@@ -78,6 +78,35 @@ As a result, the tailing whitespace is now removed and the `COUNTIF` function re
 
 ## Find and replace
 
+Find and replace is usefull to clean data. This example shows some HTML tags in cells:
+
+![find replace](./pics_05_data_cleaning/fig11.png)
+*<sub>Figure 11: HTML tags in cells.</sub>*
+
+Removing them is easy using find and replace:
+
+![find replace](./pics_05_data_cleaning/fig12.png)
+*<sub>Figure 12: Remove HTML tags in cells.</sub>*
+
+The `*` is a wildcard that represents any text. Note that you do not need to exlicitely specify an empty string in the `replace with` field. Excel will take care of this.
+
+![find replace](./pics_05_data_cleaning/fig13.png)
+*<sub>Figure 13: HTML tags removed.</sub>*
+
+There are some other handy functions that work on strings that can help you:
+
+| **Function** | **Explanation**                                                                                                                                                                                                                |
+|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| FIND         | FIND and FINDB locate one text string within a second text string, and return the number of the starting position of the first text string from the first character of the second text string.                                 |
+| SEARCH       | The SEARCH and SEARCHB functions locate one text string within a second text string, and return the number of the starting position of the first text string from the first character of the second text string.               |
+| REPLACE      | REPLACE replaces part of a text string, based on the number of characters you specify, with a different text string.                                                                                                           |
+| SUBSTITUTE   | Substitutes new_text for old_text in a text string. Use SUBSTITUTE when you want to replace specific text in a text string; use REPLACE when you want to replace any text that occurs in a specific location in a text string. |
+| LEFT         | LEFT returns the first character or characters in a text string, based on the number of characters you specify.                                                                                                                |
+| RIGHT        | RIGHT returns the last character or characters in a text string, based on the number of characters you specify.                                                                                                                |
+| LEN          | LEN returns the number of characters in a text string.                                                                                                                                                                         |
+| MID          | MID returns a specific number of characters from a text string, starting at the position you specify, based on the number of characters you specify.                                                                           |
+
+
 ## Dealing with missing data
 
 https://real-statistics.com/descriptive-statistics/missing-data/
