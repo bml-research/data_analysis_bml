@@ -199,6 +199,39 @@ The column food name can arguable be better splitted in a column `Food name` and
 >In summary: always make sure that your data are well organized. This will consume time and effort but it will be worth the time and effort as the data analysis later on will be much more straightforward.
 
 
+### Data types
+
+In data science, several data types can be distinguished.
+
+
+#### Microsoft Excel
+
+You can find four data types in Microsoft Excel.
+
+- Number data. Numbers like whole numbers, decimal numbers, dates, percentages and times.
+- Text data. Characters such as alphabetic, numeric, and special symbols are included in this type of data. The main distinction between text and number data is that while text cannot be calculated on, numerical data can.
+- Logical data. These are just the booleans TRUE and FALSE.
+- Error data. Excel uses several error data types such as #NAME?, #DIV/0, #REF!, #NUM!, #N/A, #VALUE!. For example, #DIV/0 will arise if you try dividing a number by zero. #N/A represents an empty value if data is missing during a data import action.
+
+#### R
+
+In R, there are 6 basic data types. Some of them explained below (rest is beyond the scope of this course.)
+- logical. The Boolean values True and False.
+- numeric. All numbers, whole and decimal. 
+- character. Text strings like "a" and "hello".
+
+#### Python
+
+In Python, there are also several data types. Some of them explained below. Some of them are explained in the Python section.
+- Numeric data types: int (whole numbers), float (decimal numbers)
+- String data types: str (text).
+- Sequence types: list, tuple, range. These are containers for data.
+- Mapping data type: dict. For efficient lookup of data. 
+- Boolean type: bool. True and False
+- Set data types: set. Container for unique elements.
+
+The Excel, R and Python section contain more about the particular data types. 
+
 ---
 
 
