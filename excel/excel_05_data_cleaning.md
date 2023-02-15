@@ -126,7 +126,32 @@ Here you can see it in action:
 
 ## Dealing with missing data
 
-https://real-statistics.com/descriptive-statistics/missing-data/
+Often, data analysts are dealing with missing data in datasets. Data fields may be simply empty, contain a dash (-) or may contain an `#N/A` error. There are various approaches one can take when dealing with missing data. For example, you can throw out all the data for any sample missing one or more data elements. However, be aware that missing data might not be randomly distribured. 
+
+The approaches that can be taken are:
+- Delete the samples (rows) with one or more missing data elements;
+- Input values for missing data elements;
+- Remove a complete variable (column) that has a lot of missing values.
+
+Plain Excel does not have a lot of support to drop rows or columns with missing values. A simple approach would be to create a table, filter the data and then manually delete rows that contain empty values. 
+
+You can find empty cells using the `COUNTBLANK` function:
+
+![countblank](./pics_05_data_cleaning/fig17.png)
+*<sub>Figure 17: Counting blank cells.</sub>*
+
+Likewise, it is also possible to count the `#N/A` values:
+
+![count na](./pics_05_data_cleaning/fig18.png)
+*<sub>Figure 18: Counting #N/A cells.</sub>*
+
+Or check if they are equal to #N/A:
+
+![count na](./pics_05_data_cleaning/fig19.png)
+*<sub>Figure 19: Validate if cell equals #N/A.</sub>*
+
+
+This is, cumbersome and error prone. You can work with third party add-ons, use VBA script or just use R or Python instead. Both are and Python do have powerfull functions to deal with missing data.
 
 
 ### Exersises and Solutions:
