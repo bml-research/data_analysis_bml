@@ -153,6 +153,7 @@ Or check if they are equal to #N/A:
 
 This is, cumbersome and error prone. You can work with third party add-ons, use VBA script or just use R or Python instead. Both are and Python do have powerfull functions to deal with missing data.
 
+---
 
 ### Exersises and Solutions:
 
