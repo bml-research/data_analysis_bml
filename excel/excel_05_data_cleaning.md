@@ -145,7 +145,7 @@ Likewise, it is also possible to count the `#N/A` values:
 ![count na](./pics_05_data_cleaning/fig18.png)
 *<sub>Figure 18: Counting #N/A cells.</sub>*
 
-Or check if they are equal to #N/A:
+Or check if they are equal to #N/A using the `ISNA` function:
 
 ![count na](./pics_05_data_cleaning/fig19.png)
 *<sub>Figure 19: Validate if cell equals #N/A.</sub>*
