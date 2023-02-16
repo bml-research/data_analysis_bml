@@ -182,8 +182,8 @@ In the above example, `<>` is a shorthand for the `NOT` operator. So the formula
 ### Exersises and Solutions:
 
 
-- [Exercises]()
-- [Solutions]()
+- [Exercises](./excel_06_data_cleaning_exersises.md)
+- [Solutions](./excel_07_data_cleaning_solutions.md)
 
 ---
 
