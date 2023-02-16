@@ -153,6 +153,30 @@ Or check if they are equal to #N/A using the `ISNA` function:
 
 This is, cumbersome and error prone. You can work with third party add-ons, use VBA script or just use R or Python instead. Both are and Python do have powerfull functions to deal with missing data.
 
+In any case, it is best to convert cells with "empty" values (whether it is truly blank, contains a dash or any other character to mark empty) to #N/A. #N/A is the error value of Excel that means "no value is available." To avoid accidentally including empty cells in your calculations, enter #N/A in the cells where you are missing information. (A formula that references a cell that contains #N/A will return the #N/A error value.)
+
+Use simply find and replace to insert #N/A in "empty" cells.
+
+
+![dealing with na](./pics_05_data_cleaning/fig20.png)
+*<sub>Figure 20: The `SUM` function still works, ignoring missing data.</sub>*
+
+As you can see, the `SUM` function still works. This might look appealing at first sight, but it also can cause a lot of troubles when you deal with larger datasets. It masks missing data!
+
+So convert to #N/A:
+
+![dealing with na](./pics_05_data_cleaning/fig21.png)
+*<sub>Figure 21: The `SUM` function does not work when #N/A is included.</sub>*
+
+As a result, the `SUM` function does not work. It does notify you that there are missing data. Now you can deal with the #N/A using the `SUMIF` function:
+
+![dealing with na](./pics_05_data_cleaning/fig22.png)
+*<sub>Figure 22: The `SUMIF` function does not work when #N/A is included.</sub>*
+
+In the above example, `<>` is a shorthand for the `NOT` operator. So the formula reads as: Only sum cells that are not equal to #N/A and ignore the #N/A's. This is a strategy that is very similar to what is used in R and Python. Your are dealing with missing data in an explicit way instead of implicit.
+
+>Like many things in real life, datasets are often imperfect. Very often, datapoints will be missing. This is just reality and there is not much that you can do about the fact that you will encounter missing data. What is important though, is how you deal with missing data. Make it explicit that data is missing in your analysis and deal with it in a transparant way.
+
 ---
 
 ### Exersises and Solutions:
