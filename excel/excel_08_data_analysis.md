@@ -38,6 +38,16 @@ And then we can type the appropriate formula:
 ![impression](./pics_08_data_analysis/fig4.png)
 *<sub>Figure 4: Adding the formula</sub>*
 
+However, it is better to get the output of calculations on whole columns on another sheet.
+First of all, there might be new furure data records and you can perform calculations on whole columns (not restricted to a block of rows).
+In addition, all the values from the column-based analysis can be linked to a variable.
+
+Let's take the `AVERAGE` with `STDEV` and `MEDIAN` with `IQR` as an example:
+
+![impression](./pics_08_data_analysis/fig5.png)
+*<sub>Figure 5: Data analysis on a seperate tab.</sub>*
+
+
 ---
 
 ### Exersises and Solutions:
