@@ -56,6 +56,17 @@ The `TRANSPOSE` function is an array formula wich means that it can perform mult
 ![impression](./pics_08_data_analysis/fig6.png)
 *<sub>Figure 6: Result of the transposition of rows and columns.</sub>*
 
+## The anatomy of a function
+
+Excel has a lot of functions ready to use like the `SUM` function, the `AVERAGE` function and the `COUNTIF` function. You can even [create your own function in Excel](https://support.microsoft.com/en-us/office/create-custom-functions-in-excel-2f06c10b-3622-40d6-a1b2-b6748ae8231f) (which is beyond the scope of this course). If you frequently need to create your own function, you are probably better of with R or Python. But what is an function?
+
+>In Microsoft Excel, a function is a built-in formula that is designed to perform a specific calculation. Functions can help you perform a wide range of calculations, from simple arithmetic operations such as addition, subtraction, and multiplication to more complex calculations such as statistical analysis and data manipulation. 
+
+Excel functions are identified by their names, which typically begin with the equal sign (=) followed by the function name and any required arguments. For example, the SUM function adds up a range of numbers and is written as =SUM(A1:A10), where A1:A10 is the range of cells to be added.
+
+Other functions require multiple arguments. For example, the COUNTIF function requires 2 arguments. An example notation for the COUNTIF function is written as =COUNTIF(A1:A10;">10"), where A1:A10 (the first argument) is the range of cells to be evaluated and ">10" (the secons argument) is the condition to be evaluated.
+
+ 
 
 
 ---
