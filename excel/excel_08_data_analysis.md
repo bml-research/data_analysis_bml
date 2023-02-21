@@ -47,6 +47,16 @@ Let's take the `AVERAGE` with `STDEV` and `MEDIAN` with `IQR` as an example:
 ![impression](./pics_08_data_analysis/fig5.png)
 *<sub>Figure 5: Data analysis on a seperate tab.</sub>*
 
+Probably, you have noticed a problem with the organisation of this spreadsheet: Records should be in rows and variables in columns.
+This is swabbed in the sheet above. So we should transpose the data. 
+
+We can use the `TRANSPOSE` function to accomplish this.
+The `TRANSPOSE` function is an array formula wich means that it can perform multiple calculations on one or more items in an array. The result is shown below:
+
+![impression](./pics_08_data_analysis/fig6.png)
+*<sub>Figure 6: Result of the transposition of row and columns.</sub>*
+
+
 
 ---
 
