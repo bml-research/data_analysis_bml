@@ -54,7 +54,7 @@ We can use the `TRANSPOSE` function to accomplish this.
 The `TRANSPOSE` function is an array formula wich means that it can perform multiple calculations on one or more items in an array. The result is shown below:
 
 ![impression](./pics_08_data_analysis/fig6.png)
-*<sub>Figure 6: Result of the transposition of row and columns.</sub>*
+*<sub>Figure 6: Result of the transposition of rows and columns.</sub>*
 
 
 
