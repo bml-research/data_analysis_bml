@@ -107,12 +107,11 @@ So to summerize:
 
 This is the standard behaviour of Excel but some functions in Excel are array functions. And they behave a bit different.
 
-## Array functions
+## Array formulas
 
 Excel now has the capability of array formulas. A single array formula can perform multiple calculations at once.
+
 Let's have a look at an example:
-
-
 
 ![array](./pics_08_data_analysis/fig9.png)
 *<sub>Figure 9: Small dataset to perform a calculation.</sub>*
@@ -133,7 +132,7 @@ There is just one detail left out. Although the formula works, it is adviced to 
 ![array](./pics_08_data_analysis/fig11.png)
 *<sub>Figure 11: Curly braces are a visual indication for an array formula.</sub>*
 
-Array functions can return the result in a single cell (as the example above) or in multiple cells.
+>Thus: An array formula is a formula that gets applied to more than one cell. But although an array formula always gets applied to more than one cell, array functions can return the result in a single cell (as the example above) or in multiple cells (see below).
 
 ```
 =ROW(1:10)
