@@ -101,6 +101,19 @@ The arguments are filled in and the function returns the result in cell A12:
 ![countifs](./pics_08_data_analysis/fig8.png)
 *<sub>Figure 8: The result of the function is returned and shown in cell A12.</sub>*
 
+So to summerize:
+
+>In Microsoft Excel, a function is a built-in formula that is designed to perform a specific calculation. Arguments go in the function. This can be the value of one cell or a range of cells. Excel performs the calculation and the result will be returned in the cell where the formula was typed.
+
+This is the standard behaviour of Excel but some functions in Excel are array functions. And they behave a bit different.
+
+## Array functions
+
+
+
+
+
+
 ---
 
 ### Exersises and Solutions:
