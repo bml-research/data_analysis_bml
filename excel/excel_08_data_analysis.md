@@ -133,9 +133,23 @@ There is just one detail left out. Although the formula works, it is adviced to 
 ![array](./pics_08_data_analysis/fig11.png)
 *<sub>Figure 11: Curly braces are a visual indication for an array formula.</sub>*
 
+Array functions can return the result in a single cell (as the example above) or in multiple cells.
 
+```
+=ROW(1:10)
+```
 
+![array](./pics_08_data_analysis/fig12.png)
+*<sub>Figure 12: Array function with a multiple cell output.</sub>*
 
+Or the example that we have seen before:
+
+```
+=TRANSPOSE(A1:A10)
+```
+
+![array](./pics_08_data_analysis/fig13.png)
+*<sub>Figure 13: Another array function with a multiple cell output.</sub>*
 
 ---
 
