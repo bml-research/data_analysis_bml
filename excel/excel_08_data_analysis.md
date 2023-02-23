@@ -186,6 +186,13 @@ The XLOOKUP function searches a range or an array, and then returns the item cor
 
 So the XLOOKUP function checks the position of a lookup key and returns the corresponding value.
 
+These are just some examples. Use the online resources or the recommended Excel book to find more useful functions.
+
+## Statistics
+
+
+
+
 ---
 
 ### Exersises and Solutions:
