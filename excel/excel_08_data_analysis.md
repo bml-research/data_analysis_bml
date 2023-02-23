@@ -194,6 +194,8 @@ These are just some examples. Use the online resources or the recommended Excel 
 ## Sorting of data
 
 
+## Conditional formatting
+
 
 
 ---
