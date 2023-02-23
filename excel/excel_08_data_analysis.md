@@ -210,6 +210,21 @@ These are just some examples. Use the online resources or the recommended Excel 
 
 ## Statistics
 
+Excel has many functions for statistics like `STDEV.P`, `T.TEST`, `F.TEST` and `CHISQ.DIST.RT`. 
+A comprehensive list can be found [here](https://support.microsoft.com/en-us/office/statistical-functions-reference-624dac86-a375-4435-bc25-76d659719ffd)
+
+In addition, Excel has a [statistics analysis pack] available as plugin (https://support.microsoft.com/en-us/office/statistical-functions-reference-624dac86-a375-4435-bc25-76d659719ffd).
+
+
+Here is an example of a diet intervention. Because the same subjects are measured twice, a paired T-test was used. The is a one-tailed test as we are looking for a weight reduction (alpha = 0.05)
+
+![xlookup](./pics_08_data_analysis/fig19.png)
+*<sub>Figure 19: A paired T-test in Excel.</sub>*
+
+The result is significant so H1 is true. The diet resulted in a significant weigth reduction (alpha = 0.05)
+Note that the result is static. If we change the values, we need do redo the test.
+
+Statics in Excel is limited. For example, non-parametric tests like the Mann–Whitney U test are not included in Excel. If you need to do more complex statistics, use R or Python instead.
 
 ## Sorting of data
 
