@@ -265,6 +265,16 @@ Note that the first datarow shown is row number 86.
 
 ## Conditional formatting
 
+Conditional formatting makes it easy to highlight certain values.
+Here is an example for Calories from fat for more than 300.
+
+![conditional formatting](./pics_08_data_analysis/fig25.png)
+*<sub>Figure 25: Conditional formatting.</sub>*
+
+And the result:
+
+![conditional formatting](./pics_08_data_analysis/fig26.png)
+*<sub>Figure 26: Conditional formatting applied.</sub>*
 
 
 ## Pivot tables
