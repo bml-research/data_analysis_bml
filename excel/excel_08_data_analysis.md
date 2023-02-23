@@ -279,7 +279,20 @@ And the result:
 
 ## Pivot tables
 
+Pivot tables come in handy to analyze data quickly and in an organized manner.
+Let's pretend that we are mainly interested in comparing the average fat percentages (both total and saturated) of each catagory from the earlier used dataset [Nutrition facts data](https://www.kaggle.com/datasets/mcdonalds/nutrition-facts).
 
+We can select the table. Than choose insert > Pivot table:
+
+![pivot table](./pics_08_data_analysis/fig27.png)
+*<sub>Figure 27: Pivot table.</sub>*
+
+And than select the categories as well as the columns related to the fat percentages. We also change `SUM` in `AVERAGE`.
+
+![pivot table](./pics_08_data_analysis/fig28.png)
+*<sub>Figure 28: Pivot table about the differences in fat-percentage between different food catagories.</sub>*
+
+As you can see, Beef & Pork contain the highest average fat percentage. Both for total as well as for saturated fat percentages.
 
 ---
 
