@@ -109,6 +109,29 @@ This is the standard behaviour of Excel but some functions in Excel are array fu
 
 ## Array functions
 
+Excel now has the capability of array formulas. A single array formula can perform multiple calculations at once.
+Let's have a look at an example:
+
+
+
+![array](./pics_08_data_analysis/fig9.png)
+*<sub>Figure 9: Small dataset to perform a calculation.</sub>*
+
+What we would like to calculate is the total calories from all the beverages of a day. We can of course first calculate the total calories per drink and calculate the sum but using array formulas we can do it all at once:
+
+```
+=sum(B2:B5*C2:C5)
+```
+
+![array](./pics_08_data_analysis/fig10.png)
+*<sub>Figure 10: The result of the array formula.</sub>*
+
+As you can see, the answer is directly calculated. If you are not interested in the total calories of the individual beverages but just the total calories of all the beverages this will save you adding an extra column. You can put the calculation directly on an analysis tab.
+
+There is just one detail left out. Although the formula works, it is adviced to press the keyboard shortcut CTRL + SHIFT + ENTER to complete the array formula. As a result, Microsoft Excel surrounds the formula with curly braces, which is an indication of an array formula so that people know that we are dealing with an array formula.
+
+![array](./pics_08_data_analysis/fig11.png)
+*<sub>Figure 11: Curly braces are a visual indication for an array formula.</sub>*
 
 
 
