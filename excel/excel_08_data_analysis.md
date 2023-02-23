@@ -191,6 +191,9 @@ These are just some examples. Use the online resources or the recommended Excel 
 ## Statistics
 
 
+## Sorting of data
+
+
 
 
 ---
