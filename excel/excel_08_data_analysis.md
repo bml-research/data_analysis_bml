@@ -226,7 +226,10 @@ Note that the result is static. If we change the values, we need do redo the tes
 
 Statics in Excel is limited. For example, non-parametric tests like the Mann–Whitney U test are not included in Excel. If you need to do more complex statistics, use R or Python instead.
 
+The actual content of statistics is beyond the scope of this course. Attend a statistics course of you need more background on this subject.
+
 ## Sorting of data
+
 
 
 ## Conditional formatting
