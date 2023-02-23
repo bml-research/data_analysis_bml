@@ -150,6 +150,42 @@ Or the example that we have seen before:
 ![array](./pics_08_data_analysis/fig13.png)
 *<sub>Figure 13: Another array function with a multiple cell output.</sub>*
 
+
+## Examples of useful functions
+
+There are more than 300 functions in Excel. Fortunately, there are online recources that you can use to select functions.
+For example [this one from Microsoft](https://support.microsoft.com/en-us/office/excel-functions-alphabetical-b3944572-255d-4efb-bb96-c6d90033e188).
+
+Excel functions can get complicated easily if you need to nest them.
+Fortunately, also an AI-driven [Excel Formulator](https://excelformulator.com/) that creates a formula syntax from a description exists.
+
+Here is a small selection of some useful functions:
+
+### IF
+
+The IF function is one of the most popular functions in Excel, and it allows you to make logical comparisons between a value and what you expect.
+
+![if](./pics_08_data_analysis/fig14.png)
+*<sub>Figure 14: The IF function.</sub>*
+
+### COUNTIF
+
+COUNTIF can be used to count the number of cells that meet a criterion; for example, to count the number of times a high caloric beverage appears in a list.
+
+![countif](./pics_08_data_analysis/fig15.png)
+*<sub>Figure 15: The COUNTIF function.</sub>*
+
+There is also a COUNTIFS function for multiple arrays and conditions.
+
+### XLOOKUP
+
+The XLOOKUP function searches a range or an array, and then returns the item corresponding to the first match it finds. 
+
+![xlookup](./pics_08_data_analysis/fig16.png)
+*<sub>Figure 16: The XLOOKUP function.</sub>*
+
+So the XLOOKUP function checks the position of a lookup key and returns the corresponding value.
+
 ---
 
 ### Exersises and Solutions:
