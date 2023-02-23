@@ -66,7 +66,7 @@ Excel functions are identified by their names, which typically begin with the eq
 
 ```
 =SUM(A1:A10) 
-````
+```
 
 where A1:A10 is the range of cells to be added.
 
