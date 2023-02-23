@@ -218,7 +218,7 @@ In addition, Excel has a [statistics analysis pack] available as plugin (https:/
 
 Here is an example of a diet intervention. Because the same subjects are measured twice, a paired T-test was used. The is a one-tailed test as we are looking for a weight reduction (alpha = 0.05)
 
-![xlookup](./pics_08_data_analysis/fig19.png)
+![t-test](./pics_08_data_analysis/fig19.png)
 *<sub>Figure 19: A paired T-test in Excel.</sub>*
 
 The result is significant so H1 is true. The diet resulted in a significant weigth reduction (alpha = 0.05)
@@ -228,8 +228,39 @@ Statics in Excel is limited. For example, non-parametric tests like the Mann–W
 
 The actual content of statistics is beyond the scope of this course. Attend a statistics course of you need more background on this subject.
 
-## Sorting of data
+## Sorting of data and filtering of data
 
+Excel has multi-level sorting capabilities.
+
+Have a look at the earlier used [Nutrition facts data](https://www.kaggle.com/datasets/mcdonalds/nutrition-facts) dataset.
+
+![sort](./pics_08_data_analysis/fig20.png)
+*<sub>Figure 20: Data to be sorted.</sub>*
+
+Imagine that we would like to know which Item from the Category "Chicken and Fish" contains the highest fat percentage.
+We can do a multiu-level sort to accomplish this.
+- First level: Category
+- Second level: Calories from fat sorted descending.
+
+![sort](./pics_08_data_analysis/fig21.png)
+*<sub>Figure 21: Sorting data.</sub>*
+
+Here is the result:
+
+![sort](./pics_08_data_analysis/fig22.png)
+*<sub>Figure 22: Sorting data.</sub>*
+
+We can accomplish the same using the filters:
+
+![sort](./pics_08_data_analysis/fig23.png)
+*<sub>Figure 23: Filtering data.</sub>*
+
+The result:
+
+![sort](./pics_08_data_analysis/fig24.png)
+*<sub>Figure 24: Filtering data.</sub>*
+
+Note that the first datarow shown is row number 86.
 
 
 ## Conditional formatting
