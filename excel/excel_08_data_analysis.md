@@ -151,6 +151,25 @@ Or the example that we have seen before:
 *<sub>Figure 13: Another array function with a multiple cell output.</sub>*
 
 
+## Nesting functions
+
+It is possible to nest functions. Although this is ligit in some cases, be aware that this becomes very complex easily.
+
+Example:
+
+```
+=IF(AVERAGE(A1:A3)>5.5;SUM(B1:B3);"Insufficient")
+```
+
+![array](./pics_08_data_analysis/fig14.png)
+*<sub>Figure 14: Nesting functions.</sub>*
+
+![array](./pics_08_data_analysis/fig15.png)
+*<sub>Figure 15: Nesting functions.</sub>*
+
+>Nested functions are hard to read. It is often better to split up nested functions in different cells.
+
+
 ## Examples of useful functions
 
 There are more than 300 functions in Excel. Fortunately, there are online recources that you can use to select functions.
@@ -165,15 +184,15 @@ Here is a small selection of some useful functions:
 
 The IF function is one of the most popular functions in Excel, and it allows you to make logical comparisons between a value and what you expect.
 
-![if](./pics_08_data_analysis/fig14.png)
-*<sub>Figure 14: The IF function.</sub>*
+![if](./pics_08_data_analysis/fig16.png)
+*<sub>Figure 16: The IF function.</sub>*
 
 ### COUNTIF
 
 COUNTIF can be used to count the number of cells that meet a criterion; for example, to count the number of times a high caloric beverage appears in a list.
 
-![countif](./pics_08_data_analysis/fig15.png)
-*<sub>Figure 15: The COUNTIF function.</sub>*
+![countif](./pics_08_data_analysis/fig17.png)
+*<sub>Figure 17: The COUNTIF function.</sub>*
 
 There is also a COUNTIFS function for multiple arrays and conditions.
 
@@ -181,12 +200,13 @@ There is also a COUNTIFS function for multiple arrays and conditions.
 
 The XLOOKUP function searches a range or an array, and then returns the item corresponding to the first match it finds. 
 
-![xlookup](./pics_08_data_analysis/fig16.png)
-*<sub>Figure 16: The XLOOKUP function.</sub>*
+![xlookup](./pics_08_data_analysis/fig18.png)
+*<sub>Figure 18: The XLOOKUP function.</sub>*
 
 So the XLOOKUP function checks the position of a lookup key and returns the corresponding value.
 
 These are just some examples. Use the online resources or the recommended Excel book to find more useful functions.
+
 
 ## Statistics
 
