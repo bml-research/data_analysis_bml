@@ -7,8 +7,8 @@
 # Excel: Data Analysis
 
 
-![impression](./pics_08_data_analysis/fig1.jpg)
-*<sub>Figure 1: Data analysis of the flu pandemic around 1918. Source: New York Times</sub>*
+![impression](./pics_08_data_analysis/fig1.png)
+*<sub>Figure 1: Data loaded and ready to be analyzed. Source: https://www.kaggle.com/datasets/mcdonalds/nutrition-facts</sub>*
 
 
 ## Introduction
