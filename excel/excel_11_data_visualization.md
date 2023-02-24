@@ -95,6 +95,23 @@ We could calculate this but Excel provides a plot type that takes this work out 
 ![Relative Stacked column chart](./pics_11_data_visualization/fig6.png)
 *<sub>Figure 6: Relative stacked column chart representing the relative average amount of calories from fat per serving related to the total amount of calories for different food categories in a fast food restaurant.</sub>*
 
+Like the relative stacked column chart, the pie chart is another chart type that is suitable for such a representation.
+
+## Pie Chart
+
+Pie charts are suitable for displaying data that can be broken down into categories or parts that add up to a whole. They are often used to show proportions or percentages of a whole.
+
+Pie charts are effective for conveying information quickly and intuitively, as the size of each slice corresponds to its percentage of the whole. They are also useful for highlighting the relative sizes of each category or part, making it easy to compare them at a glance.
+
+However, pie charts may not be the best choice for all types of data. For example, they can become difficult to read when there are too many categories or when the differences between the sizes of the slices are small. In these cases, a bar chart or other visualization may be more appropriate.
+
+We take our previous example as an example to create a pie chart:
+
+![Pie chart](./pics_11_data_visualization/fig7.png)
+*<sub>Figure 7: Pie chart representing the relative average amount of calories from fat per serving related to the total amount of calories for different food categories in a fast food restaurant.</sub>*
+
+
+
 
 ## Pivot charts
 
