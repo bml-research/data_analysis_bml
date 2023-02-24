@@ -43,7 +43,10 @@ A good chart is one that effectively communicates your data in a clear and conci
 
 By focusing on these key characteristics, you can create charts that effectively communicate your data and insights, and help you to make better-informed decisions based on your data.
 
+## Some chart examples
 
+
+## Pivot charts
 
 
 ---
