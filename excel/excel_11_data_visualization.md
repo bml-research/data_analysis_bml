@@ -45,17 +45,19 @@ By focusing on these key characteristics, you can create charts that effectively
 
 ## Some chart examples
 
-### Bar charts
+### Column charts
 
-Bar charts are suitable for comparing values across different categories or for showing changes in data over time. They are a popular and effective way to visually represent categorical data, and are often used to display data in the form of vertical or horizontal bars.
+Column charts are suitable for comparing values across different categories or for showing changes in data over time. They are a popular and effective way to visually represent categorical data, and are often used to display data in the form of vertical bars.
 
-Bar charts are particularly useful for:
-- Comparing data: Bar charts make it easy to compare data across different categories or groups, and to identify trends or patterns in the data.
-- Showing changes over time: Bar charts can be used to show changes in data over time, such as changes in sales or revenue from one year to the next.
-- Highlighting differences: Bar charts can be used to highlight differences between groups or categories, making it easy to see which values are larger or smaller than others.
-- Displaying large amounts of data: Bar charts can be used to display large amounts of data in a clear and concise manner, making it easy to interpret and analyze the data.
+>In Excel, charts with vertical bars are called column charts and bars with horizontal bars are called bar charts.
 
-Overall, bar charts are a versatile and effective way to visualize categorical data and to communicate important insights and trends to others.
+Column charts are particularly useful for:
+- Comparing data: Column charts make it easy to compare data across different categories or groups, and to identify trends or patterns in the data.
+- Showing changes over time: Column charts can be used to show changes in data over time, such as changes in sales or revenue from one year to the next.
+- Highlighting differences: Column charts can be used to highlight differences between groups or categories, making it easy to see which values are larger or smaller than others.
+- Displaying large amounts of data: Column charts can be used to display large amounts of data in a clear and concise manner, making it easy to interpret and analyze the data.
+
+Overall, Column charts are a versatile and effective way to visualize categorical data and to communicate important insights and trends to others.
 
 So let's take the pivot table from the fast food restaurant menu data as an example.
 We have the average amount of total calories as well as the calories from fat of the different food categories.
@@ -65,8 +67,33 @@ We have the average amount of total calories as well as the calories from fat of
 
 What the data tell you is that meet and fish are high in fat and beverages are low (they are high in sugar). Not very surprising, but useful as an example. 
 
-Let's first start with a bar chart for the average amount of calories for the different food categories:
+Let's first start with a Column chart for the average amount of calories from fat for the different food categories:
 
+If you need more help (each individual step explained) hve a look [here](https://support.microsoft.com/en-us/office/present-your-data-in-a-column-chart-d89050ba-e6b6-47de-b090-e9ab353c4c00).
+
+![Column chart](./pics_11_data_visualization/fig3.png)
+*<sub>Figure 3: Column chart representing the average amount of calories from fat per serving for different food categories in a fast food restaurant.</sub>*
+
+>Note that providing different colors for each different bar does not provide extra information. It will confuse the reader.
+
+Now if you would like to compare this to the total amount of calories, you could create a clustered column chart for this:
+
+![Column chart](./pics_11_data_visualization/fig4.png)
+*<sub>Figure 4: Clustered column chart representing the average amount of calories from fat per serving related to the total amount of calories for different food categories in a fast food restaurant.</sub>*
+
+>Note that providing different colors for each different set does provide extra information. Thus, it is highly recommended in this case.
+
+But these data are difficult to compare. You could use a stacked column chart to have it all in one overview:
+
+![Stacked column chart](./pics_11_data_visualization/fig5.png)
+*<sub>Figure 5: Stacked column chart representing the average amount of calories from fat per serving related to the total amount of calories for different food categories in a fast food restaurant.</sub>*
+
+
+But how do these calories from fat relate relatively to the total calories?
+We could calculate this but Excel provides a plot type that takes this work out of your hands:
+
+![Relative Stacked column chart](./pics_11_data_visualization/fig6.png)
+*<sub>Figure 6: Relative stacked column chart representing the relative average amount of calories from fat per serving related to the total amount of calories for different food categories in a fast food restaurant.</sub>*
 
 
 ## Pivot charts
