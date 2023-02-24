@@ -111,7 +111,15 @@ We take our previous example as an example to create a pie chart:
 *<sub>Figure 7: Pie chart representing the relative average amount of calories from fat per serving related to the total amount of calories for different food categories in a fast food restaurant.</sub>*
 
 
+## Pie of Pie
 
+## Radar charts
+
+## Box plots
+
+## Line and XY-scatter plots
+
+## Bubble plot
 
 ## Pivot charts
 
