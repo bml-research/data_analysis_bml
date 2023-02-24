@@ -63,7 +63,7 @@ So let's take the pivot table from the fast food restaurant menu data as an exam
 We have the average amount of total calories as well as the calories from fat of the different food categories.
 
 ![pivot](./pics_11_data_visualization/fig2.png)
-*<sub>Figure 2: average amount of total calories as well as the calories from fat of the different food categories.</sub>*
+*<sub>Figure 2: Pivot table showing the average amount of total calories as well as the calories from fat of the different food categories.</sub>*
 
 What the data tell you is that meet and fish are high in fat and beverages are low (they are high in sugar). Not very surprising, but useful as an example. 
 
