@@ -45,6 +45,18 @@ By focusing on these key characteristics, you can create charts that effectively
 
 ## Some chart examples
 
+### Bar charts
+
+Bar charts are suitable for comparing values across different categories or for showing changes in data over time. They are a popular and effective way to visually represent categorical data, and are often used to display data in the form of vertical or horizontal bars.
+
+Bar charts are particularly useful for:
+- Comparing data: Bar charts make it easy to compare data across different categories or groups, and to identify trends or patterns in the data.
+- Showing changes over time: Bar charts can be used to show changes in data over time, such as changes in sales or revenue from one year to the next.
+- Highlighting differences: Bar charts can be used to highlight differences between groups or categories, making it easy to see which values are larger or smaller than others.
+- Displaying large amounts of data: Bar charts can be used to display large amounts of data in a clear and concise manner, making it easy to interpret and analyze the data.
+
+Overall, bar charts are a versatile and effective way to visualize categorical data and to communicate important insights and trends to others.
+
 
 ## Pivot charts
 
