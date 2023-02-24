@@ -57,6 +57,17 @@ Bar charts are particularly useful for:
 
 Overall, bar charts are a versatile and effective way to visualize categorical data and to communicate important insights and trends to others.
 
+So let's take the pivot table from the fast food restaurant menu data as an example.
+We have the different food categories and the Average Total Fat of the different items as a percentage of daily value.
+
+![pivot](./pics_11_data_visualization/fig2.png)
+*<sub>Figure 2: Average of Total Fat as % Daily Value.</sub>*
+
+These data represent the average of total fat (thus both saturated and unsaturated) as a % of daily value if you would consume a single serving from the fast food restaurant. What the data tell you is that meet and fish are high in fat and beverages are low (they are high in sugar). Not very surprising, but useful as an example. (note that they do not add up to 100% as these are averages from fifferent items per category)
+
+The corresponding Bar Chart can be easily be created in Excel:
+
+
 
 ## Pivot charts
 
