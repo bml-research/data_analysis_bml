@@ -26,7 +26,7 @@ Lets first discuss how to organize a worksheet.
 *<sub>Figure 2: Nutrition facts fastfood menu. Source: https://www.kaggle.com/datasets/mcdonalds/nutrition-facts</sub>*
 
 
-Imagine that you would like to calculate the total percentage. Obviously, the easiest way to do this is to add a column to the table and calculate the sum of percentages using the `SUM` formula:
+Imagine that you would like to calculate the percentage of calories from fat as compared to total calories. Obviously, the easiest way to do this is to add a column to the table and calculate the % calories from fat (as related to the total amount of calories):  
 
 We first resize the table to the appropriate dimension:
 
@@ -38,8 +38,16 @@ And then we can type the appropriate formula:
 ![formula](./pics_08_data_analysis/fig4.png)
 *<sub>Figure 4: Adding the formula</sub>*
 
+Note that the IF function was used to prevent a division by zero error.
+
+```
+=IF([@Calories]=0;0;[@[Calories from Fat]]/[@Calories]*100)
+```
+
+If the denominator is zero, the result will be 0. In this way, a division by zero error will be prevented.
+
 However, it is better to get the output of calculations on whole columns on another sheet.
-First of all, there might be new furure data records and you can perform calculations on whole columns (not restricted to a block of rows).
+First of all, there might be new future data records and you can perform calculations on whole columns (not restricted to a block of rows).
 In addition, all the values from the column-based analysis can be linked to a variable.
 
 Let's take the `AVERAGE` with `STDEV` and `MEDIAN` with `IQR` as an example:
@@ -237,7 +245,7 @@ Have a look at the earlier used [Nutrition facts data](https://www.kaggle.com/da
 ![sort](./pics_08_data_analysis/fig20.png)
 *<sub>Figure 20: Data to be sorted.</sub>*
 
-Imagine that we would like to know which Item from the Category "Chicken and Fish" contains the highest fat percentage.
+Imagine that we would like to know which Item from the Category "Chicken and Fish" contains the highest amount of calories from fat.
 We can do a multiu-level sort to accomplish this.
 - First level: Category
 - Second level: Calories from fat sorted descending.
@@ -280,19 +288,19 @@ And the result:
 ## Pivot tables
 
 Pivot tables come in handy to analyze data quickly and in an organized manner.
-Let's pretend that we are mainly interested in comparing the average fat percentages (both total and saturated) of each catagory from the earlier used dataset [Nutrition facts data](https://www.kaggle.com/datasets/mcdonalds/nutrition-facts).
+Let's pretend that we are mainly interested in comparing the average amount of calories from fat (both total and saturated) of each food category from the earlier used dataset [Nutrition facts data](https://www.kaggle.com/datasets/mcdonalds/nutrition-facts).
 
 We can select the table. Than choose insert > Pivot table:
 
 ![pivot table](./pics_08_data_analysis/fig27.png)
 *<sub>Figure 27: Pivot table.</sub>*
 
-And than select the categories as well as the columns related to the fat percentages. We also change `SUM` in `AVERAGE`.
+And than select the categories as well as the columns total calories and calories from fat. We also change `SUM` in `AVERAGE`.
 
 ![pivot table](./pics_08_data_analysis/fig28.png)
-*<sub>Figure 28: Pivot table about the differences in fat-percentage between different food catagories.</sub>*
+*<sub>Figure 28: Pivot table about the calories from fat compared to total calories.</sub>*
 
-As you can see, Beef & Pork contain the highest average fat percentage. Both for total as well as for saturated fat percentages.
+As you can see, food items in the category chicken and fish contain the highest average amount of calories from fat. 
 
 ---
 
