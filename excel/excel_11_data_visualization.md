@@ -66,7 +66,7 @@ Overall, bar charts are a versatile and effective way to visualize categorical d
 ### Exersises and Solutions:
 
 
-- [Exercises](./excel_12_data_visualization_exersises.md)
+- [Exercises](./excel_12_data_visualization_exercises.md)
 - [Solutions](./excel_13_data_visualization_solutions.md)
 
 ---
