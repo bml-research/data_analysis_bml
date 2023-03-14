@@ -69,7 +69,7 @@ What the data tell you is that meet and fish are high in fat and beverages are l
 
 Let's first start with a Column chart for the average amount of calories from fat for the different food categories:
 
-If you need more help (each individual step explained) hve a look [here](https://support.microsoft.com/en-us/office/present-your-data-in-a-column-chart-d89050ba-e6b6-47de-b090-e9ab353c4c00).
+If you need more help (each individual step explained), have a look [here](https://support.microsoft.com/en-us/office/present-your-data-in-a-column-chart-d89050ba-e6b6-47de-b090-e9ab353c4c00).
 
 ![Column chart](./pics_11_data_visualization/fig3.png)
 *<sub>Figure 3: Column chart representing the average amount of calories from fat per serving for different food categories in a fast food restaurant.</sub>*
@@ -110,8 +110,17 @@ We take our previous example as an example to create a pie chart:
 ![Pie chart](./pics_11_data_visualization/fig7.png)
 *<sub>Figure 7: Pie chart representing the relative average amount of calories from fat per serving related to the total amount of calories for different food categories in a fast food restaurant.</sub>*
 
+Or with the datalabels and percentages shown connected to the pie slices (choose: chart design > chart elements > Data labels > Outside End):
+
+
+![Pie chart](./pics_11_data_visualization/fig8.png)
+*<sub>Figure 8: Pie chart representing the relative average amount of calories from fat per serving related to the total amount of calories for different food categories in a fast food restaurant. Data labels and percentages are connected to the pie slices.</sub>*
+
+
 
 ## Pie of Pie
+
+
 
 ## Radar charts
 
