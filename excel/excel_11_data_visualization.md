@@ -103,7 +103,7 @@ Pie charts are suitable for displaying data that can be broken down into categor
 
 Pie charts are effective for conveying information quickly and intuitively, as the size of each slice corresponds to its percentage of the whole. They are also useful for highlighting the relative sizes of each category or part, making it easy to compare them at a glance.
 
-However, pie charts may not be the best choice for all types of data. For example, they can become difficult to read when there are too many categories or when the differences between the sizes of the slices are small. In these cases, a bar chart or other visualization may be more appropriate.
+However, pie charts may not be the best choice for all types of data. For example, they can become difficult to read when there are too many categories or when the differences between the sizes of the slices are small. In these cases, a bar chart or other visualization (Pie of Pie) may be more appropriate.
 
 We take our previous example as an example to create a pie chart:
 
@@ -120,9 +120,20 @@ Or with the datalabels and percentages shown connected to the pie slices (choose
 
 ## Pie of Pie
 
+Pie of Pie charts can become handy if the individual slices become small and the Pie chart becomes cluttered. 
 
+Here is an example of a Pie of Pie chart:
+
+![Pie of Pie chart](./pics_11_data_visualization/fig9.png)
+*<sub>Figure 9: Pie of Pie chart representing the relative average amount of calories from fat per serving related to the total amount of calories for different food categories in a fast food restaurant. Data labels and percentages are connected to the pie slices.</sub>*
+
+As you can see, the second Pie is created from the smallest Pie slices from the first Pie chart. This creates less clutter when the individual slices become to small. Although in this case, the original Pie chart would do well.
+
+You can format the secondary Pie by right-clicking it > Format Data Series and then use the drop down to select the appropriate Split Series (percentage value was used here).
 
 ## Radar charts
+
+
 
 ## Box plots
 
