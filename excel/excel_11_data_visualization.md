@@ -137,20 +137,39 @@ A radar chart, also known as a spider chart or a star chart, is a graphical repr
 
 Radar charts are often used to compare multiple variables or data sets, particularly when the values have different units or scales. 
 
-Let's view some (imaginary) data from three fast food restaurants. These data show the average of calories of fat per serving from different catagories (like the previous data). But compared to the previous data, we now have these numbers from three different vendors.
+Let's view some (imaginary) data from three fast food restaurants. These data show the average of calories of fat per serving from different Categories (like the previous data). But compared to the previous data, we now have these numbers from three different vendors.
 
 ![Data for a radar chart](./pics_11_data_visualization/fig10.png)
-*<sub>Figure 10: Data suitable for a radar chart. Calories from fat for different food catagories purchased from different vendors.</sub>*
+*<sub>Figure 10: Data suitable for a radar chart. Calories from fat for different food Categories purchased from different vendors.</sub>*
 
 The resulting radar chart is shown below:
 
 ![Radar chart](./pics_11_data_visualization/fig11.png)
-*<sub>Figure 11: Radar chart created from the previous data set. Calories from fat for different food catagories purchased from different vendors.</sub>*
+*<sub>Figure 11: Radar chart created from the previous data set. Calories from fat for different food Categories purchased from different vendors.</sub>*
 
 
 Note that it becomes clear that restaurant B sells desserts with a lot of calories from fat. So either the fat percentage of fat is high or the portions are very large. 
 
 ## Box plots
+
+A box plot, also known as a box and whisker plot, is a graphical representation of a dataset that shows the distribution of the data through its quartiles, outliers and extremes. It is called a box plot because it uses a box to represent the second and third quartiles (the interquartile range or IQR), and lines to represent the first and fourth quartiles (the lowest and highest data points within the IQR), as well as the outliers, if any.
+
+Box plots are useful for visualizing the distribution and spread of data, as well as for identifying potential outliers. They can also be used to compare the distribution of data between different groups or datasets. Box plots are particularly useful when the data is non-parametric (not normally distributed) or when the distribution is skewed or multi-modal.
+
+Overall, box plots are a useful tool for summarizing and visualizing complex data sets, and for providing insights into the distribution of data and potential outliers.
+
+Let's have a look at the following dataset:
+
+![Box plot data](./pics_11_data_visualization/fig12.png)
+*<sub>Figure 12: Data about calories from fat for different food Categories.</sub>*
+
+The questions that can be asked are:
+- What is the median value per category? 
+- What are the minimum and maximum values per category?
+- What are the 25% and 75% percentile values per category?
+- Are there any outliers?
+
+A box plot will answer all these questions at once.
 
 
 
