@@ -133,9 +133,26 @@ You can format the secondary Pie by right-clicking it > Format Data Series and t
 
 ## Radar charts
 
+A radar chart, also known as a spider chart or a star chart, is a graphical representation of data in which values are plotted along a set of axes that radiate from a central point. Each axis represents a different variable, and the data points are connected to form a polygon shape, which can be filled in with color to represent the area covered by the data.
 
+Radar charts are often used to compare multiple variables or data sets, particularly when the values have different units or scales. 
+
+Let's view some (imaginary) data from three fast food restaurants. These data show the average of calories of fat per serving from different catagories (like the previous data). But compared to the previous data, we now have these numbers from three different vendors.
+
+![Data for a radar chart](./pics_11_data_visualization/fig10.png)
+*<sub>Figure 10: Data suitable for a radar chart. Calories from fat for different food catagories purchased from different vendors.</sub>*
+
+The resulting radar chart is shown below:
+
+![Radar chart](./pics_11_data_visualization/fig11.png)
+*<sub>Figure 11: Radar chart created from the previous data set. Calories from fat for different food catagories purchased from different vendors.</sub>*
+
+
+Note that it becomes clear that restaurant B sells desserts with a lot of calories from fat. So either the fat percentage of fat is high or the portions are very large. 
 
 ## Box plots
+
+
 
 ## Line and XY-scatter plots
 
