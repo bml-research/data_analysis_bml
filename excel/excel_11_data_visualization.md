@@ -163,14 +163,19 @@ Let's have a look at the following dataset:
 ![Box plot data](./pics_11_data_visualization/fig12.png)
 *<sub>Figure 12: Data about calories from fat for different food Categories.</sub>*
 
+And compare the different categories for calories from fat and total calories.
+
 The questions that can be asked are:
 - What is the median value per category? 
 - What are the minimum and maximum values per category?
 - What are the 25% and 75% percentile values per category?
 - Are there any outliers?
 
-A box plot will answer all these questions at once.
+A box plot will answer all these questions at once:
 
+
+![Box plot](./pics_11_data_visualization/fig13.png)
+*<sub>Figure 13: Box plot about calories from fat for different food Categories.</sub>*
 
 
 ## Line and XY-scatter plots
