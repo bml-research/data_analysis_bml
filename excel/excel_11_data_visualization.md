@@ -161,7 +161,7 @@ Overall, box plots are a useful tool for summarizing and visualizing complex dat
 Let's have a look at the following dataset:
 
 ![Box plot data](./pics_11_data_visualization/fig12.png)
-*<sub>Figure 12: Data about calories from fat for different food Categories.</sub>*
+*<sub>Figure 12: Data about calories from fat for different food categories.</sub>*
 
 And compare the different categories for calories from fat and total calories.
 
@@ -173,12 +173,21 @@ The questions that can be asked are:
 
 A box plot will answer all these questions at once:
 
+We choose the columns `Calories from fat` and `Calories` for the series. The food categories are selected as labels. See the result below.
 
 ![Box plot](./pics_11_data_visualization/fig13.png)
 *<sub>Figure 13: Box plot about calories from fat for different food Categories.</sub>*
 
+The above picture is the standard layout of the boxplot in Excel. However, you could argue that it would be better to tweak some things in the plot. First of all, the mean is shown as a cross. Boxplots are often used in combination with nonparametric statistics and quantile (including median) values are much more appropriate to use. In addition, inner points are visible and we can not discriminate them from outliers. Finally, we should look if our number of values (N) are odd or even. The median is included in the calculation if N is odd. The median is excluded from the calculation if N is odd. Since this varies per food category, we will choose the excluded method. We can tweak each series (select the series and choose: `Format Data Series`) accordingly. See the result below:
+
+![Box plot](./pics_11_data_visualization/fig14.png)
+*<sub>Figure 14: Tweaked box plot about calories from fat for different food categories.</sub>*
+
 
 ## Line and XY-scatter plots
+
+
+
 
 ## Bubble plot
 
