@@ -186,12 +186,14 @@ The above picture is the standard layout of the boxplot in Excel. However, you c
 
 ## Line and XY-scatter plots
 
-https://www.kaggle.com/datasets/chrisbow/2018-calorie-exercise-and-weight-changes
+
 Line charts are useful when you want to visualize trends or changes in data over time or another continuous variable. They are particularly good for showing how a particular variable changes over time or in response to another variable. For example, a line chart can be used to show how a persons weight has changed over time. 
 
 On the other hand, XY scatter plots are useful when you want to visualize the relationship between two variables. They are particularly useful for showing the degree of correlation between two variables or identifying outliers in the data. For example, a scatter plot can be used to show the relationship between a person's height and weight. 
 
 In summary, line charts are best used when you want to show trends or changes over time, while XY scatter plots are best used when you want to visualize the relationship between two variables.
+
+
 
 
 
