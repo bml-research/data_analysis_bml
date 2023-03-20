@@ -194,8 +194,21 @@ On the other hand, XY scatter plots are useful when you want to visualize the re
 In summary, line charts are best used when you want to show trends or changes over time, while XY scatter plots are best used when you want to visualize the relationship between two variables.
 
 
+As an example, we take some fictive data about a weight loss program for 3 individuals (taking 3 different diets).
 
+The data is as follows:
 
+![Box plot](./pics_11_data_visualization/fig15.png)
+*<sub>Figure 15: Fictive data for a weight loss program for three different diets over the course of 1 year.</sub>*
+
+The corresponding line plot looks as follows:
+
+![Box plot](./pics_11_data_visualization/fig16.png)
+*<sub>Figure 16: Line plot of fictive data for a weight loss program for three different diets over the course of 1 year.</sub>*
+
+As you can see, diet 2 is relatively ineffective. Not much weight loss. Diet 1 could be considered a crash diet with a sharp initial decline that halts later in the year. Diet 3 shows a very linear weight loss for a much larger period of time and could be considered the dietary intervention of choice.
+
+Of course, one should take into account that only three persons are included in this dietary intervention.
 
 ## Bubble plot
 
