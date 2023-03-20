@@ -198,17 +198,39 @@ As an example, we take some fictive data about a weight loss program for 3 indiv
 
 The data is as follows:
 
-![Box plot](./pics_11_data_visualization/fig15.png)
+![data](./pics_11_data_visualization/fig15.png)
 *<sub>Figure 15: Fictive data for a weight loss program for three different diets over the course of 1 year.</sub>*
 
 The corresponding line plot looks as follows:
 
-![Box plot](./pics_11_data_visualization/fig16.png)
+![line plot](./pics_11_data_visualization/fig16.png)
 *<sub>Figure 16: Line plot of fictive data for a weight loss program for three different diets over the course of 1 year.</sub>*
 
 As you can see, diet 2 is relatively ineffective. Not much weight loss. Diet 1 could be considered a crash diet with a sharp initial decline that halts later in the year. Diet 3 shows a very linear weight loss for a much larger period of time and could be considered the dietary intervention of choice.
 
 Of course, one should take into account that only three persons are included in this dietary intervention.
+
+Realise that a line chart is only plotted well if the data points are intgerspaced evenly.
+
+Consider the following mini dataset:
+
+![small data set](./pics_11_data_visualization/fig17.png)
+*<sub>Figure 17: Dietary intervention for 365 days.</sub>*
+
+As you can see, the datapoints for x are not evenly distributed.
+Plotting this with a line plot will go wrong:
+
+![line plot](./pics_11_data_visualization/fig18.png)
+*<sub>Figure 18: Line plot for dietary intervention for 365 days.</sub>*
+
+As you can see, the data points on the x-axis are just labels and do not correspond to their actual value. Thats why we need an XY-scatter plot for this purpose:
+
+![line plot](./pics_11_data_visualization/fig19.png)
+*<sub>Figure 19: XY-scatter plot for dietary intervention for 365 days.</sub>*
+
+As you can see from the above chart, the data on the x-axis are now seperated according to their value.
+
+
 
 ## Bubble plot
 
