@@ -235,10 +235,12 @@ To show the use of an XY-scatter plot to visualize a correlation, the [ChickWeig
 ![Chicken Weight](./pics_11_data_visualization/fig20.png)
 *<sub>Figure 20: Chicken weight data set. Dataset was filtered for Diet 1</sub>*
 
-The data plotted as XY-scatter:
+The data of all chickens from diet 1 plotted as XY-scatter:
+A linear regression model was added as trendline and the equation is shown on the chart (together with the r^2 value).
 
 ![Chicken Weight](./pics_11_data_visualization/fig21.png)
 *<sub>Figure 21: Chicken weight data set plotted as XY-scatter. Dataset was filtered for Diet 1</sub>*
+
 
 
 ## Bubble plot
