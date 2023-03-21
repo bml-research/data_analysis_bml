@@ -277,6 +277,45 @@ An extra dimension could be included by using colors. For example you could add 
 
 ## Pivot charts
 
+In the [data analysis](./excel_08_data_analysis.md) section, we have seen the use of pivot tables. Pivot tables come in handy to analyze data quickly and in an organized manner. We can use pivot charts to directly visualize the data from pivot tables.
+
+We will use the example from the data analysis section to create a pivot chart.
+
+Let’s pretend that we are mainly interested in comparing the average amount of calories from fat (both total and saturated) of each food category from the earlier used dataset [Nutrition facts](https://www.kaggle.com/datasets/mcdonalds/nutrition-facts) data.
+
+![Nutritional food data](./pics_11_data_visualization/fig24.png)
+*<sub>Figure 24: Nutritional facts data about different food categories of a fast food restaurant</sub>*
+
+The corresponding pivot table was as follows:
+
+![Nutritional food data pivot table](./pics_11_data_visualization/fig25.png)
+*<sub>Figure 25: Pivot table of average calories and average calories from fat from nutritional facts data.</sub>*
+
+So first we choose pivot chart from the ribbon and select the data source as well as the sheet for the output data:
+
+![Pivot chart](./pics_11_data_visualization/fig26.png)
+*<sub>Figure 26: Data source and the output sheet selected.</sub>*
+
+Next, we select the correct fields and the calculations on the data (we use average for this example).
+
+![Pivot chart](./pics_11_data_visualization/fig27.png)
+*<sub>Figure 27: Select the correct fields and calculation types.</sub>*
+
+This results in the following chart. 
+
+![Pivot chart](./pics_11_data_visualization/fig28.png)
+*<sub>Figure 28: Pivot chart. Average calories and average calories from fat from different food categories.</sub>*
+
+Note that you can dynamically select or unselect specific categories. We can for example deselect the drinks:
+
+![Pivot chart](./pics_11_data_visualization/fig29.png)
+*<sub>Figure 29: Pivot chart. Average calories and average calories from fat from different food categories. Drinks deselected. </sub>*
+
+
+The result of the pivot chart (drinks deselected):
+
+![Pivot chart](./pics_11_data_visualization/fig30.png)
+*<sub>Figure 30: Pivot chart. Average calories and average calories from fat from different food categories. Drinks deselected. </sub>*
 
 ---
 
