@@ -243,7 +243,37 @@ A linear regression model was added as trendline and the equation is shown on th
 
 
 
-## Bubble plot
+## Bubble chart
+
+If you have data that is most suitable to present in a XY-grid but you have an extra dimension, bubble charts might be a good chart type.
+
+Bubble charts are a great way to display data that includes three variables. In the context of food science, here is an example of a dataset that could be presented in a bubble chart:
+
+Suppose you have collected data on the nutritional content of different types of fruits. Specifically, you have measured the sugar content (in grams per serving) and the vitamin C content (in milligrams per serving) of six different types of fruit: apples, bananas, oranges, strawberries, blueberries, and grapes. In addition, you have collected the number of servings per year for a particular person.
+
+To display this data in a bubble chart, you could use the following format:
+
+X-axis: Sugar content (grams per serving)
+Y-axis: Vitamin C content (milligrams per serving)
+Bubble size: Represents the number of servings per year of each fruit that were tested.
+By using a bubble chart to display this data, you can quickly see patterns and trends among the different types of fruits based on their sugar and vitamin C content, as well as their number of servings per years.
+
+![Fruit data](./pics_11_data_visualization/fig22.png)
+*<sub>Figure 22: data set suitable to display in a bubble chart. Note that these are fictive data.</sub>*
+
+Below is a bubble chart of this dataset:
+
+![Fruit data](./pics_11_data_visualization/fig23.png)
+*<sub>Figure 23: Bubble chart of fruit data. Note that the bubble size (and the numbers in the labels) represents the number of servings per year.</sub>*
+
+The Chart includes the following:
+
+X-axis: Sugar content (grams per serving)
+Y-axis: Vitamin C content (milligrams per serving)
+Bubble size: Represents the number of servings per year of each fruit that were tested.
+
+An extra dimension could be included by using colors. For example you could add categorial data (ordinal data in this case) such as high vitamin B9 (folate) data points in green color, intermediate vitamin B9 content as orange dots and low vitamin B9 content in red.
+
 
 ## Pivot charts
 
