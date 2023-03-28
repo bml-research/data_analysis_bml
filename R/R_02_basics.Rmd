@@ -3,6 +3,9 @@
 
 [Go back to the main page](../index.md)
 
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
 
 # R
 
@@ -10,12 +13,118 @@
 
 Before we start with importing data, some basics of R will be explained. Remember that we will try to avoid basic programming and focus on the use of the functions and tools provided by the Tidyverse library.
 
+
+## RStudio
+
+Before you can start doing data analysis, you need to install both R and RStudio.
+Have a look at [this website](https://rstudio-education.github.io/hopr/starting.html) how to do that.
+
+
+We will work mostly with R-Markdown document.
+This webpage that you are reading is currently in HTML but was written in RMarkdown in RStudio.
+
+Have a look at the screenshot below:
+
+![RStudio](./pics_01_basics/fig01.png)
+
+The RStudio user interface has 4 primary panes:
+From top left to bottum left in clockwise direction these are: 
+- Source pane.
+- Console pane.
+- Environment pane, containing the Environment, History, Connections, Build, VCS , and Tutorial tabs.
+- Output pane, containing the Files, Plots, Packages, Help, Viewer, and Presentation tabs.
+
+RMarkdown is very convenient because you can mix the markdown markup language with R code.
+
+There is very comprehensive documentation about R Markdown. See [this webpage](https://rmarkdown.rstudio.com/).
+
+
+### Some very basics of R
+
+Although we will try to avoid base R as much as possible, you will need a bit of basics.
+
+We can assign a variable in R as follows:
+
 ```{r}
 
-test <- c(1, 2, 3, 4)
-print(test)
+x <- 42
+print(x)
 ```
 
+The very basic data structure of R is the vector.
+
+It may contain whole numbers:
+
+```{r}
+
+my_nums <- c(1, 2, 3, 4)
+print(my_nums)
+```
+
+Or decimals:
+
+```{r}
+
+my_dec <- c(0.1, 0.2, 0.3, 0.4)
+print(my_dec)
+```
+
+Or text:
+
+```{r}
+
+my_txt <- c("Hello", "World")
+print(my_txt)
+```
+
+Or Booleans:
+
+```{r}
+
+my_bools <- c("Hello", "World")
+print(my_bools)
+```
+
+But what we will use is the dataframe. See it as a bunch of colums stitched together:
+
+```{r}
+
+my_df <- data.frame(my_nums, my_dec)
+print(my_df)
+```
+
+Both the `c` and `data.frame` are functions in R.
+You can call them using `function.name()` and pass data to it as arguments.
+
+So in the above code the vectors assigned to the variable names my_nums and my_dec are tranferred as arguments in the data.frame function. This function returns a dataframe object that is assigned to the my_df variable name.
+
+
+## Installing libraries
+
+You can install the tidyverse library using:
+
+```
+install.packages("tidyverse")
+```
+
+## Loading packages:
+
+You can load a package as follows:
+
+```{r}
+library(tidyverse)
+```
+
+
+## Make a tibble
+
+Now we can make a fancy type of dataframe from the tidyverse library:
+
+
+```{r}
+my_tibble <- tibble(my_df)
+my_tibble
+```
 
 >This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
 >Creative Commons License: CC BY-SA 4.0.

@@ -64,7 +64,7 @@ Overall, the tidyverse packages provide a more user-friendly, consistent, and ef
 
 ## Topics:
 
-- [Basics](./R_02_basics.Rmd)
+- [Basics](./R_02_basics.html)
 - [Data Import]()
 - [Data Cleaning]()
 - [Data Analysis]()
