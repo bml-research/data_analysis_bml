@@ -33,7 +33,7 @@ Een voorbeeld opdracht met uitwerkingen is [hier](https://github.com/jurrehagema
 
 - [Introductie data](./data/data_01_index.md)
 - [Data analyse met Excel](./excel/excel_01_index.md) 
-- Data analyse met R
+- [Data analyse met R](./R/R_01_index.md)
 - Data analyse met Python
 
 
