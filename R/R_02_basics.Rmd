@@ -1,0 +1,22 @@
+{% include head.html %}
+![Hanze](../hanze/hanze.png)
+
+[Go back to the main page](../index.md)
+
+
+# R
+
+## Basics of R
+
+Before we start with importing data, some basics of R will be explained. Remember that we will try to avoid basic programming and focus on the use of the functions and tools provided by the Tidyverse library.
+
+```R
+
+test <- c(1, 2, 3, 4)
+print(test)
+```
+
+
+>This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
+>Creative Commons License: CC BY-SA 4.0.
+
