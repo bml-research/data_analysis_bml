@@ -64,11 +64,11 @@ Overall, the tidyverse packages provide a more user-friendly, consistent, and ef
 
 ## Topics:
 
-
-- [Data Import](./R_02_data_import.md)
-- [Data Cleaning](./R_05_data_cleaning.md)
-- [Data Analysis](./R_08_data_analysis.md)
-- [Data Visualization](./R_11_data_visualization.md)
+- [Basics](./R_02_basics.Rmd)
+- [Data Import]()
+- [Data Cleaning]()
+- [Data Analysis]()
+- [Data Visualization]()
 
 >This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
 >Creative Commons License: CC BY-SA 4.0.
