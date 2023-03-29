@@ -28,10 +28,10 @@ Have a look at the screenshot below:
 
 The RStudio user interface has 4 primary panes:
 From top left to bottum left in clockwise direction these are: 
-- Source pane.
-- Console pane.
-- Environment pane, containing the Environment, History, Connections, Build, VCS , and Tutorial tabs.
-- Output pane, containing the Files, Plots, Packages, Help, Viewer, and Presentation tabs.
+- Source pane.  
+- Console pane.  
+- Environment pane, containing the Environment, History, Connections, Build, VCS , and Tutorial tabs.  
+- Output pane, containing the Files, Plots, Packages, Help, Viewer, and Presentation tabs.  
 
 RMarkdown is very convenient because you can mix the markdown markup language with R code.
 
@@ -124,6 +124,9 @@ Now we can make a fancy type of dataframe from the tidyverse library:
 my_tibble <- tibble(my_df)
 my_tibble
 ```
+
+---
+
 
 >This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
 >Creative Commons License: CC BY-SA 4.0.

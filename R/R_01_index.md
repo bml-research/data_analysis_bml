@@ -65,10 +65,10 @@ Overall, the tidyverse packages provide a more user-friendly, consistent, and ef
 ## Topics:
 
 - [Basics](./R_02_basics.html)
-- [Data Import]()
-- [Data Cleaning]()
-- [Data Analysis]()
-- [Data Visualization]()
+- Data Import
+- Data Cleaning
+- Data Analysis
+- Data Visualization
 
 >This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
 >Creative Commons License: CC BY-SA 4.0.
