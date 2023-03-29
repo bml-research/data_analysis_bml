@@ -1,0 +1,86 @@
+![Hanze](../hanze/hanze.png)
+
+[Go back to the main page](../index.html)
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+# R
+
+## Data Import
+
+We have dealt with data import in Excel before.
+Remember that in data science, data is often stored as csv (comma-separated values) files.
+Other formats are tsv (tab-separated values) files.
+Data may also come from an SQL or NoSQL database (beyond the scope of this course).
+R has powerful functions to deal with plain-text rectangular files such as csv and tsv files.
+In addition, R can also import and export Excel files.
+
+Let's start with loading the tidyverse library:
+
+```{r}
+library(tidyverse)
+```
+
+As shown before, you can create your own data frame in R. 
+In R, a tibble is a modern data frame that is optimized for data analysis and provides some additional features beyond the traditional data frame. 
+Tibbles are the core data structure of the tidyverse and are used to facilitate the display and analysis of information in a tidy format.
+
+You can use the as_tibble() function in R to convert a data frame, matrix, or list into a tibble
+Here we use the tibble function to create a tiblle directly from 3 vectors:
+
+
+```{r}
+category <- c("fruit", "vegetable", "vegetable", "fruit")
+type <- c("apple", "brocolli", "cauliflower", "banana")
+calories <- c(52, 34, 25, 89)
+
+my_tibble <- tibble(category, type, calories)
+my_tibble
+```
+
+As you can see, this resembles a bit an Excel worksheet.
+Later, you will learn what you can do with a tibble.
+
+Fortunately, you do not need to type data in R.
+You can load it using the readr function.
+
+In R, readr is a package that provides a fast and friendly way to read rectangular data (like csv or fixed-width format) into R. It provides a set of functions to simplify reading data from files. The main functions should read most common R datafile types without needing any parameters except the filename. Other functions provide simple ways of handling file paths and extensions, and automatically detecting file format and structure.
+
+Let's try it out:
+
+We can try to load the same datafile as we did for Excel.
+Here you can see the [Food Composition](https://www.kaggle.com/datasets/vinitshah0110/food-composition?resource=download&select=Food+Composition.csv) file.'
+
+So we have downloaded the csv file (it came as zip so we needed to extract the zip).
+
+It can be found [here](./files_03_data_import/file01_food_composition.csv)
+
+So we can load it as follows:
+
+
+
+```{r}
+file_path <- "./files_03_data_import/file01_food_composition.csv"
+my_df <- read_csv(file_path)
+head(my_df)
+```
+
+The `read_csv()` function reads comma-delimited files. The `read_csv2()` function reads semi-colon seperated files (used in countries where , is the decimal separator like Holland). The `read_tsv()` function reads tab-delimited files. The `read_delim()` function reads files with any delimiter.  
+You may have noticed that the data frame returned is actually a tibble.  
+The `head()` function shows only the first 6 rows (by default) in order not to overwhelm the user with data.
+
+
+But why take all the hassle by downloading the csv file first if we can directly load it from the web?
+
+
+
+
+
+---
+
+
+>This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
+>Creative Commons License: CC BY-SA 4.0.
+

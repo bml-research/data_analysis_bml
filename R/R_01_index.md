@@ -65,7 +65,7 @@ Overall, the tidyverse packages provide a more user-friendly, consistent, and ef
 ## Topics:
 
 - [Basics](./R_02_basics.html)
-- Data Import
+- [Data Import](./R_03_data_import.html)
 - Data Cleaning
 - Data Analysis
 - Data Visualization
