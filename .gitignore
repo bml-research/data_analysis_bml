@@ -1,5 +1,9 @@
 # ignore ALL of the following files
 *.Identifier
+*.RData
+*.Rhistory
 
 # ignore ALL files in ANY directory named temp
 temp/
+
+

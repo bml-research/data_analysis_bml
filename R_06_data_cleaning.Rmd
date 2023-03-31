@@ -1,0 +1,38 @@
+![](../hanze/hanze.png)
+
+[Go back to the main page](../index.html)
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+# R
+
+## Data Cleaning
+
+
+
+Let's start with loading the tidyverse library:
+
+```{r}
+library(tidyverse)
+```
+
+
+```{r}
+category <- c("fruit", "vegetable", "vegetable", "fruit")
+type <- c("apple", "brocolli", "cauliflower", "banana")
+calories <- c(52.5, 34.2, 25.7, 89.4)
+
+my_tibble <- tibble(category, type, calories)
+my_tibble
+```
+
+
+
+---
+
+
+>This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
+>Creative Commons License: CC BY-SA 4.0.
+
