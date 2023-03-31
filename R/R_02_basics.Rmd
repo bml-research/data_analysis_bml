@@ -6,7 +6,7 @@
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
 ```
 
-# R
+# R: Basics of R
 
 ## Basics of R
 
@@ -27,7 +27,7 @@ Have a look at the screenshot below:
 ![](./pics_02_basics/fig01.png)
 
 The RStudio user interface has 4 primary panes:
-From top left to bottum left in clockwise direction these are: 
+From top left to bottom left in clockwise direction these are: 
 - Source pane.  
 - Console pane.  
 - Environment pane, containing the Environment, History, Connections, Build, VCS , and Tutorial tabs.  
@@ -45,7 +45,6 @@ Although we will try to avoid base R as much as possible, you will need a bit of
 We can assign a variable in R as follows:
 
 ```{r}
-
 x <- 42
 print(x)
 ```
@@ -55,7 +54,6 @@ The very basic data structure of R is the vector.
 It may contain whole numbers:
 
 ```{r}
-
 my_nums <- c(1, 2, 3, 4)
 print(my_nums)
 ```
@@ -63,7 +61,6 @@ print(my_nums)
 Or decimals:
 
 ```{r}
-
 my_dec <- c(0.1, 0.2, 0.3, 0.4)
 print(my_dec)
 ```
@@ -71,7 +68,6 @@ print(my_dec)
 Or text:
 
 ```{r}
-
 my_txt <- c("Hello", "World")
 print(my_txt)
 ```
@@ -79,15 +75,20 @@ print(my_txt)
 Or Booleans:
 
 ```{r}
-
-my_bools <- c("Hello", "World")
+my_bools <- c(TRUE, FALSE)
 print(my_bools)
 ```
 
-But what we will use is the dataframe. See it as a bunch of colums stitched together:
+With a shorthand:
 
 ```{r}
+my_bools <- c(T, F)
+print(my_bools)
+```
 
+But what we will use is the data frame. See it as a bunch of column stitched together:
+
+```{r}
 my_df <- data.frame(my_nums, my_dec)
 print(my_df)
 ```
@@ -95,7 +96,7 @@ print(my_df)
 Both the `c` and `data.frame` are functions in R.
 You can call them using `function.name()` and pass data to it as arguments.
 
-So in the above code the vectors assigned to the variable names my_nums and my_dec are tranferred as arguments in the data.frame function. This function returns a dataframe object that is assigned to the my_df variable name.
+So in the above code the vectors assigned to the variable names my_nums and my_dec are transferred as arguments in the data.frame function. This function returns a data frame object that is assigned to the my_df variable name.
 
 
 ## Installing libraries
@@ -123,13 +124,19 @@ library(tidyverse)
 
 ## Make a tibble
 
-Now we can make a fancy type of dataframe from the tidyverse library:
+Now we can make a fancy type of data frame from the tidyverse library:
 
 
 ```{r}
 my_tibble <- tibble(my_df)
 my_tibble
 ```
+
+Tibbles do have some advantageous over base R data frames such as:
+- Tibbles only print the first 10 rows and all the columns that fit on a screen.
+- Each column displays its data type.
+
+>As we are using the tidyverse library during this course, we will use the tidyverse main data type: The Tibble.
 
 ---
 

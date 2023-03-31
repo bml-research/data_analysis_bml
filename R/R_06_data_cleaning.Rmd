@@ -6,11 +6,9 @@
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
 ```
 
-# R
+# R: Data Cleaning
 
-## Data Cleaning
-
-
+## Data cleaning methods
 
 Let's start with loading the tidyverse library:
 

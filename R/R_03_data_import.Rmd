@@ -6,9 +6,9 @@
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
 ```
 
-# R
+# R: Data Import
 
-## Data Import
+## Introduction
 
 We have dealt with data import in Excel before.
 Remember that in data science, data is often stored as csv (comma-separated values) files.
@@ -43,8 +43,11 @@ my_tibble
 As you can see, this resembles a bit an Excel worksheet.
 Later, you will learn what you can do with a tibble.
 
+## The readr package
+
+
 Fortunately, you do not need to type data in R.
-You can load it using the readr function.
+You can load it using the readr package.
 
 In R, readr is a package that provides a fast and friendly way to read rectangular data (like csv or fixed-width format) into R. It provides a set of functions to simplify reading data from files. The main functions should read most common R datafile types without needing any parameters except the filename. Other functions provide simple ways of handling file paths and extensions, and automatically detecting file format and structure.
 
@@ -232,7 +235,93 @@ head(my_df)
 calories are doubles as you can see while the other columns are of the character type.
 
 
-In the next section, you will see how you can clean data.
+## Writing csv files
+
+Like reading csv file, you can also write them.
+Here is an example:
+
+```{r}
+category <- c("fruit", "vegetable", "vegetable", "fruit")
+type <- c("apple", "brocolli", "cauliflower", "banana")
+calories <- c(52.5, 34.2, 25.7, 89.4)
+
+my_tibble <- tibble(category, type, calories)
+write_csv(my_tibble, "./files_03_data_import/file07_tibble.csv")
+```
+
+To show that the data was written to file:
+
+```{r}
+my_path <- "./files_03_data_import/file07_tibble.csv"
+my_df <- read_csv(my_path)
+my_df
+```
+
+
+## Reading Excel files
+
+Although csv files and tsv files are often used in data science, Microsoft Excel is arguably the most used software package to analyze data.  
+But also a lot of data is directly stored as Excel file. Think about data downloaded from the web.  
+Very often, data can be downloaded as Excel file instead of csv or tsv file.  
+Instead of converting data from Excel to csv or tsv file, R can handle Excel files directly.
+
+It also gives you the opportunity to firs do some analysis in Excel and continue in R, for example if the dataset appears to be to big to be handled by Excel.
+
+The `readxl` package is the most used package for reading and writing Excel files.
+It comes with tidyverse so there is no need to install it.
+If somehow you do not have it, you can install it with the following command:
+
+```
+install.packages("readxl")
+```
+
+And load it as follows:
+
+```{r}
+library(readxl)
+```
+
+[Here](./files_03_data_import/file07_food_composition.xlsx) you can find an example of an Excel file.
+
+And here is how you can load in to a tibble:
+
+```{r}
+file_path <- "./files_03_data_import/file08_food_composition.xlsx"
+my_df <- read_excel(file_path) 
+head(my_df)
+```
+
+## Write to Excel
+
+Like reading Excel, you can also write it.
+But you will need to install another package:
+
+```
+install.packages("openxlsx")
+```
+
+And load it:
+
+```{r}
+library(openxlsx)
+```
+
+In the following code you will see an example how to do that.
+
+```{r}
+category <- c("fruit", "vegetable", "vegetable", "fruit")
+type <- c("apple", "brocolli", "cauliflower", "banana")
+calories <- c(52.5, 34.2, 25.7, 89.4)
+
+my_tibble <- tibble(category, type, calories)
+write.xlsx(my_tibble, './files_03_data_import/file09_tibble.xlsx', colNames = TRUE)
+```
+
+
+And a screenshot of the file loaded in a spreadsheet (Libre Office was used instead of Excel as I created this on a Linux machine):
+
+![](./pics_03_data_import/fig07.png)
+
 
 ---
 
