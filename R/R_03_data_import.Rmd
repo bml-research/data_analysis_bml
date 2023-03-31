@@ -34,7 +34,7 @@ Here we use the tibble function to create a tiblle directly from 3 vectors:
 ```{r}
 category <- c("fruit", "vegetable", "vegetable", "fruit")
 type <- c("apple", "brocolli", "cauliflower", "banana")
-calories <- c(52, 34, 25, 89)
+calories <- c(52.5, 34.2, 25.7, 89.4)
 
 my_tibble <- tibble(category, type, calories)
 my_tibble
@@ -113,7 +113,7 @@ Exploring it using a text editor:
 This shows us that:
 - the file contains a header
 - the deliminator is a semicolon.
-- the decimal seperator is a . instead of a ,
+- the decimal separator is a `.`
 Thus, the `read_csv2()` function should be used to open this file.
 
 ```{r}
@@ -122,7 +122,7 @@ my_df <- read_csv2(file_path)
 head(my_df)
 ```
 
-So what would happen if we accidentaly used the wrong function?
+So what would happen if we accidentally used the wrong function?
 
 ```{r}
 file_path <- "./files_03_data_import/file02_fruits.csv"
@@ -133,6 +133,7 @@ head(my_df)
 As you can see, the data was not read in different columns. So always check the file using a text editor.
 
 Now imagine a file without a header.
+It can be found [here](./files_03_data_import/file03_fruits.csv)
 
 ![](./pics_03_data_import/fig03.png)
 
@@ -170,6 +171,68 @@ my_col_names <- c("category", "type", "calories")
 names(my_df) <- my_col_names
 my_df
 ```
+
+What if a comma is used as a decimal separator? This is often the case when a text file is used using a semi-colon as separator.
+
+
+![](./pics_03_data_import/fig04.png)
+
+
+An example of this file can be found [here](./files_03_data_import/file04_fruits.csv)
+
+
+
+```{r}
+file_path <- "./files_03_data_import/file04_fruits.csv"
+my_df <- read_csv2(file_path) 
+head(my_df)
+```
+
+As you can see, the `read_csv2()` function can take care of this.
+
+Often TSV are used. They can be imported using `read_tsv()`:
+
+An example of this file can be found [here](./files_03_data_import/file05_fruits.csv)
+
+
+![](./pics_03_data_import/fig05.png)
+
+```{r}
+file_path <- "./files_03_data_import/file05_fruits.csv"
+my_df <- read_tsv(file_path) 
+head(my_df)
+```
+
+
+When things get really ugly, such as this file, we need some more tweaking...
+
+An example of this file can be found [here](./files_03_data_import/file06_fruits.csv)
+
+
+![](./pics_03_data_import/fig06.png)
+
+
+```{r}
+file_path <- "./files_03_data_import/file06_fruits.csv"
+my_df <- read_csv2(file_path) 
+head(my_df)
+```
+
+The data is obviously not correctly loaded.
+The delimiter is an asterisk. So we could use the `read_delim()` function here:
+
+```{r}
+file_path <- "./files_03_data_import/file06_fruits.csv"
+my_df <- read_delim(file_path, delim = "*", comment = "@", locale=locale(decimal_mark = ",")) 
+head(my_df)
+```
+
+
+>Also, always check that the column in your tibble is of the correct data type.
+calories are doubles as you can see while the other columns are of the character type.
+
+
+In the next section, you will see how you can clean data.
 
 ---
 
