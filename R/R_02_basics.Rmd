@@ -1,4 +1,4 @@
-![Hanze](../hanze/hanze.png)
+![](../hanze/hanze.png)
 
 [Go back to the main page](../index.html)
 
@@ -24,7 +24,7 @@ This webpage that you are reading is currently in HTML but was written in RMarkd
 
 Have a look at the screenshot below:
 
-![RStudio](./pics_02_basics/fig01.png)
+![](./pics_02_basics/fig01.png)
 
 The RStudio user interface has 4 primary panes:
 From top left to bottum left in clockwise direction these are: 

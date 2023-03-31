@@ -1,4 +1,4 @@
-![Hanze](../hanze/hanze.png)
+![](../hanze/hanze.png)
 
 [Go back to the main page](../index.html)
 
@@ -61,7 +61,7 @@ It can be found [here](./files_03_data_import/file01_food_composition.csv)
 RStudio is capable of opening text files.
 The screenshot below shows you the text file in RStudio:
 
-![Text file in RStudio](./pics03_data_import/fig01.png)
+![](./pics_03_data_import/fig01.png)
 
 As you can see, the column separator is a comma. The csv file contains headers.
 The function to open the file is the `read_csv()` function.
@@ -91,10 +91,15 @@ The `head()` function shows only the first 6 rows (by default) in order not to o
 Likewise, we can also directly load data from the web. Since the file above is stored on e webserver, we can also load it using the URL:
 
 ```{r}
-URL <- "https://bml-research.github.io/data_analysis/excel/files/file01.txt"
+URL <- "https://github.com/bml-research/data_analysis/raw/main/R/files_03_data_import/file01_food_composition.csv"
 my_df <- read_csv(URL)
 head(my_df)
 ```
+
+So in principle, you could also directly load data from Kaggle.
+However, since authentication is needed for this, it is slightly more complicated.
+You need to connect using the API and unzip the zip file.
+Of course, you are welcome to do this but it is beyond the scope of this course.
 
 
 
