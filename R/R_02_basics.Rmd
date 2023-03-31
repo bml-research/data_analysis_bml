@@ -24,7 +24,7 @@ This webpage that you are reading is currently in HTML but was written in RMarkd
 
 Have a look at the screenshot below:
 
-![RStudio](./pics_01_basics/fig01.png)
+![RStudio](./pics_02_basics/fig01.png)
 
 The RStudio user interface has 4 primary panes:
 From top left to bottum left in clockwise direction these are: 
@@ -104,6 +104,12 @@ You can install the tidyverse library using:
 
 ```
 install.packages("tidyverse")
+```
+
+If you encounter problems with dependencies try:
+
+```
+install.packages("tidyverse", dependencies = TRUE)
 ```
 
 ## Loading packages:

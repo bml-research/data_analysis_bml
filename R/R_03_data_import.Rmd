@@ -57,6 +57,14 @@ So we have downloaded the csv file (it came as zip so we needed to extract the z
 
 It can be found [here](./files_03_data_import/file01_food_composition.csv)
 
+>Like explained under data import in Excel, the first thing you should do is to check your csv file in a text editor.
+RStudio is capable of opening text files.
+The screenshot below shows you the text file in RStudio:
+
+![Text file in RStudio](./pics03_data_import/fig01.png)
+
+As you can see, the column separator is a comma. The csv file contains headers.
+The function to open the file is the `read_csv()` function.
 So we can load it as follows:
 
 
@@ -67,12 +75,28 @@ my_df <- read_csv(file_path)
 head(my_df)
 ```
 
+
+>Important note for MS Windows users:
+R is not able to understand normal windows paths correctly because the "\" has a special meaning as escape character.
+Just replace the "\" with "/" for file paths.
+This is the common way for Unix systems but also works for R code on Windows systems.
+
+
+
 The `read_csv()` function reads comma-delimited files. The `read_csv2()` function reads semi-colon seperated files (used in countries where , is the decimal separator like Holland). The `read_tsv()` function reads tab-delimited files. The `read_delim()` function reads files with any delimiter.  
 You may have noticed that the data frame returned is actually a tibble.  
 The `head()` function shows only the first 6 rows (by default) in order not to overwhelm the user with data.
 
 
-But why take all the hassle by downloading the csv file first if we can directly load it from the web?
+Likewise, we can also directly load data from the web. Since the file above is stored on e webserver, we can also load it using the URL:
+
+```{r}
+URL <- "https://bml-research.github.io/data_analysis/excel/files/file01.txt"
+my_df <- read_csv(URL)
+head(my_df)
+```
+
+
 
 
 
