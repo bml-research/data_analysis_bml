@@ -17,16 +17,143 @@ library(tidyverse)
 ```
 
 
+Whether you use Excel, R or Python, data cleaning will often be required for the data.
+So here are some examples of data cleaning:
+
+## Remove rows with missing values
+
+Let's start with creating a tibble with missing data:
+
 ```{r}
 category <- c("fruit", "vegetable", "vegetable", "fruit")
-type <- c("apple", "brocolli", "cauliflower", "banana")
-calories <- c(52.5, 34.2, 25.7, 89.4)
+type <- c("apple", "broccoli", "cauliflower", "banana")
+calories <- c(52.5, NA, NA, 89.4)
 
 my_tibble <- tibble(category, type, calories)
 my_tibble
 ```
 
+As you can see, there are two rows with missing values (NA values).
+Here is how to drop them:
 
+```{r}
+my_tibble_cleaned <- drop_na(my_tibble)
+my_tibble_cleaned
+```
+
+Later on we will perform multiple manipulations on data frames.
+To prevent overwriting the same variable each time, we will use a different synthax.
+Tidyverse came up with a shorthand to prevent overwriting the same variable each time (called forward chaining):
+
+
+```{r}
+my_tibble_cleaned <- my_tibble %>% drop_na()
+my_tibble_cleaned
+```
+
+The reason to do this will become clear later on.
+
+## Renaming columns
+
+```{r}
+category <- c("fruit", "vegetable", "vegetable", "fruit")
+x <- c("apple", "broccoli", "cauliflower", "banana")
+calories <- c(52.5, 32.2, 25.7, 89.4)
+
+my_tibble <- tibble(category, x, calories)
+my_tibble
+```
+
+As you can see, the column x is a poor column name.
+Here is how to rename column x to type:
+
+```{r}
+my_tibble_clean <- my_tibble %>% rename(type = x)
+my_tibble_clean
+```
+
+## Reordering columns
+
+```{r}
+category <- c("fruit", "vegetable", "vegetable", "fruit")
+type <- c("apple", "broccoli", "cauliflower", "banana")
+calories <- c(52.5, 32.2, 25.7, 89.4)
+
+my_tibble <- tibble(category, calories, type)
+my_tibble
+```
+
+As you can see, calories becomes before type.
+You might want to reorder columns. This is how to do that:
+
+```{r}
+my_tibble_clean <- my_tibble %>% select(category, type, calories)
+my_tibble_clean
+```
+
+## Changing a columns data type
+
+Be aware the R uses coersion when data types in a vector is not consistent:
+
+```{r}
+category <- c("fruit", "vegetable", "vegetable", "fruit")
+x <- c("apple", "broccoli", "cauliflower", "banana")
+calories <- c(52.5, 32.2, "25.7", 89.4) # Note that this vector contains a string.
+
+my_tibble <- tibble(category, type, calories)
+my_tibble
+```
+
+As a result of a single string value the whole column calories is coerced to characters instead of doubles.
+You can change that using the `mutate()` function:
+
+```{r}
+my_tibble_clean <- my_tibble %>% mutate(calories = as.numeric(calories))
+my_tibble_clean
+```
+
+## Deal with missing data from csv files
+
+How to deal with missing data from csv files?
+Obviously, you can not make up data.
+The best thing to do is to "mark"  them with `NA`. 
+
+```{r}
+my_path = './files_06_data_cleaning/file01_fruits.csv'
+my_df <- read_csv2(my_path)
+my_df
+```
+
+As you can see, the calorie data for broccoli is missing. Instead a forward slash is included indicating that the data is missing.
+Note that the column is coerced to character.
+Let's correct that:
+
+```{r}
+my_path = './files_06_data_cleaning/file01_fruits.csv'
+my_df <- read_csv2(my_path, na = "/")
+my_df
+```
+
+If multiple type of "empty" data are present in your dataset:
+
+```{r}
+my_path = './files_06_data_cleaning/file02_fruits.csv'
+my_df <- read_csv2(my_path)
+my_df
+```
+
+You can use a vector in the `NA =` parameter:
+
+```{r}
+my_path = './files_06_data_cleaning/file02_fruits.csv'
+my_df <- read_csv2(my_path, na = c("/", "-"))
+my_df
+```
+
+## Deal with missing data from Excel files
+
+
+## Replace data
 
 ---
 
