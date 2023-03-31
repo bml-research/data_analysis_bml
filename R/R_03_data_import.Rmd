@@ -102,10 +102,74 @@ You need to connect using the API and unzip the zip file.
 Of course, you are welcome to do this but it is beyond the scope of this course.
 
 
+Now let's explore the other `read_csv` variants.
+We have another text file.
+It can be found [here](./files_03_data_import/file02_fruits.csv)
+
+Exploring it using a text editor:
+
+![](./pics_03_data_import/fig02.png)
+
+This shows us that:
+- the file contains a header
+- the deliminator is a semicolon.
+- the decimal seperator is a . instead of a ,
+Thus, the `read_csv2()` function should be used to open this file.
+
+```{r}
+file_path <- "./files_03_data_import/file02_fruits.csv"
+my_df <- read_csv2(file_path)
+head(my_df)
+```
+
+So what would happen if we accidentaly used the wrong function?
+
+```{r}
+file_path <- "./files_03_data_import/file02_fruits.csv"
+my_df <- read_csv(file_path) #note that read_csv was used instead of read_csv2
+head(my_df)
+```
+
+As you can see, the data was not read in different columns. So always check the file using a text editor.
+
+Now imagine a file without a header.
+
+![](./pics_03_data_import/fig03.png)
 
 
+Loading it causes trouble:
+
+```{r}
+file_path <- "./files_03_data_import/file03_fruits.csv"
+my_df <- read_csv2(file_path) 
+head(my_df)
+```
 
 
+As you can see, the first row is read as header.
+We can find more information about the read_csv2 function using the following code:
+
+```{r}
+?read_csv2
+```
+
+The information will be found within the help pane.
+This learns us that we can set the col_names parameter to FALSE:
+
+```{r}
+file_path <- "./files_03_data_import/file03_fruits.csv"
+my_df <- read_csv2(file_path, col_names = FALSE) 
+head(my_df)
+```
+
+Now we have al the rows correctly loaded but we still miss column names.
+We can add them as follows:
+
+```{r}
+my_col_names <- c("category", "type", "calories")
+names(my_df) <- my_col_names
+my_df
+```
 
 ---
 
