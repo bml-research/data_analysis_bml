@@ -33,7 +33,7 @@ Here we use the tibble function to create a tiblle directly from 3 vectors:
 
 ```{r}
 category <- c("fruit", "vegetable", "vegetable", "fruit")
-type <- c("apple", "brocolli", "cauliflower", "banana")
+type <- c("apple", "broccoli", "cauliflower", "banana")
 calories <- c(52.5, 34.2, 25.7, 89.4)
 
 my_tibble <- tibble(category, type, calories)
@@ -242,7 +242,7 @@ Here is an example:
 
 ```{r}
 category <- c("fruit", "vegetable", "vegetable", "fruit")
-type <- c("apple", "brocolli", "cauliflower", "banana")
+type <- c("apple", "broccoli", "cauliflower", "banana")
 calories <- c(52.5, 34.2, 25.7, 89.4)
 
 my_tibble <- tibble(category, type, calories)
@@ -310,7 +310,7 @@ In the following code you will see an example how to do that.
 
 ```{r}
 category <- c("fruit", "vegetable", "vegetable", "fruit")
-type <- c("apple", "brocolli", "cauliflower", "banana")
+type <- c("apple", "broccoli", "cauliflower", "banana")
 calories <- c(52.5, 34.2, 25.7, 89.4)
 
 my_tibble <- tibble(category, type, calories)
