@@ -20,9 +20,9 @@ Tijdens de gehele keten van ontwikkeling, opwerking en productie van voedingsing
 
 ## Leeruitkomsten
 
-1.	De student analyseert verschillende typen data in Excel met behulp van diverse functies;
-2.	De student visualiseert verschillende typen data in Excel met behulp van diverse plot typen;
-3.	De student analyseert en visualiseert (korte kennismaking) data in RStudio met de programmeertaal R en Jupyter Notebooks met de programmeertaal Python.
+1.	De student analyseert verschillende typen data in Excel, R of Python met behulp van diverse functies;
+2.	De student visualiseert verschillende typen data in Excel, R of Python met behulp van diverse plot typen;
+3.	De student verbindt de juiste conclusies uit de analyses en visualisaties.
 
 ## Link naar github:
 
