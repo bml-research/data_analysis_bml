@@ -152,8 +152,69 @@ my_df
 
 ## Deal with missing data from Excel files
 
+Like csv files, Excel files can have missing data too:
+
+![fig1](./pics_06_data_cleaning/fig1.png)
+Now if we load the data the following will happen:
+
+```{r}
+library(readxl)
+my_path = './files_06_data_cleaning/file03_fruits.xlsx'
+my_df <- read_excel(my_path)
+my_df
+```
+
+Like for csv files, we can specify the missing values:
+
+```{r}
+my_path = './files_06_data_cleaning/file03_fruits.xlsx'
+my_df <- read_excel(my_path, na=  c("/", "-"))
+my_df
+```
+
+What if cells are left blank?
+
+![fig1](./pics_06_data_cleaning/fig2.png)
+If we load the data:
+
+```{r}
+my_path = './files_06_data_cleaning/file04_fruits.xlsx'
+my_df <- read_excel(my_path)
+my_df
+```
+
+As you can see, the read_excel function deals with them automatically.
+
 
 ## Replace data
+
+Imagine we have a clear erroneous data item:
+
+
+```{r}
+category <- c("fruit", "vegetable", "vegetable", "fruit")
+type <- c("apple", "broccoli", "cauliflower", "banana")
+calories <- c(52.5, 999,25.7, 89.4)
+my_tibble <- tibble(category, type, calories)
+my_tibble
+```
+
+The 999 calories for broccoli should be replaced with 34.2.
+
+Replacing this specific data point can be done as follows: 
+
+```{r}
+my_tibble[2,3] <- 34.2
+my_tibble
+```
+
+Replacing data in whole row:
+
+
+Replacing data in whole column:
+
+
+Replacing data in entire data frame:
 
 ---
 
