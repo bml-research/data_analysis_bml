@@ -605,9 +605,35 @@ my_tibble</code></pre>
 ## 2 vegetable broccoli        34.2
 ## 3 vegetable cauliflower     25.7
 ## 4 fruit     banana          89.4</code></pre>
-<p>Replacing data in whole row:</p>
-<p>Replacing data in whole column:</p>
-<p>Replacing data in entire data frame:</p>
+<div id="adding-a-row-in-a-tibble" class="section level3">
+<h3>Adding a row in a tibble</h3>
+<p>You can insert an entire row like below:</p>
+<pre class="r"><code>my_tibble %&gt;% add_row(category = &quot;fruit&quot;, type = &quot;mango&quot;, calories = 104)</code></pre>
+<pre><code>## # A tibble: 5 × 3
+##   category  type        calories
+##   &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;
+## 1 fruit     apple           52.5
+## 2 vegetable broccoli        34.2
+## 3 vegetable cauliflower     25.7
+## 4 fruit     banana          89.4
+## 5 fruit     mango          104</code></pre>
+<pre class="r"><code>my_tibble</code></pre>
+<pre><code>## # A tibble: 4 × 3
+##   category  type        calories
+##   &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;
+## 1 fruit     apple           52.5
+## 2 vegetable broccoli        34.2
+## 3 vegetable cauliflower     25.7
+## 4 fruit     banana          89.4</code></pre>
+</div>
+<div id="replacing-data-in-whole-row" class="section level3">
+<h3>Replacing data in whole row:</h3>
+</div>
+<div id="replacing-data-in-whole-column" class="section level3">
+<h3>Replacing data in whole column:</h3>
+</div>
+<div id="replacing-data-in-entire-data-frame" class="section level3">
+<h3>Replacing data in entire data frame:</h3>
 <hr />
 <blockquote>
 <p>This web page is distributed under the terms of the Creative Commons
@@ -615,6 +641,7 @@ Attribution License which permits unrestricted use, distribution, and
 reproduction in any medium, provided the original author and source are
 credited. Creative Commons License: CC BY-SA 4.0.</p>
 </blockquote>
+</div>
 </div>
 </div>
 

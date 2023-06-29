@@ -208,13 +208,28 @@ my_tibble[2,3] <- 34.2
 my_tibble
 ```
 
-Replacing data in whole row:
+### Adding a row in a tibble
+
+You can insert an entire row like below:
+
+```{r}
+my_tibble %>% add_row(category = "fruit", type = "mango", calories = 104)
+my_tibble
+```
 
 
-Replacing data in whole column:
+
+### Replacing data in whole row:
 
 
-Replacing data in entire data frame:
+
+
+
+
+### Replacing data in whole column:
+
+
+### Replacing data in entire data frame:
 
 ---
 
