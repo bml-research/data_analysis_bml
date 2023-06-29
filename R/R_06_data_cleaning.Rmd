@@ -213,8 +213,8 @@ my_tibble
 You can insert an entire row like below:
 
 ```{r}
-my_tibble %>% add_row(category = "fruit", type = "mango", calories = 104)
-my_tibble
+my_tibble_ext <- my_tibble %>% add_row(category = "fruit", type = "mango", calories = 104)
+my_tibble_ext
 ```
 
 
