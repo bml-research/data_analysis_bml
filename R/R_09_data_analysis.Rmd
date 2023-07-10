@@ -1,0 +1,36 @@
+![](../hanze/hanze.png)
+
+[Go back to the main page](../index.html)
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+# R: Data Analysis
+
+## Data analysis methods
+
+Let's start with loading the tidyverse library:
+
+```{r}
+library(tidyverse)
+```
+
+
+Here we will focus on data transformation and analysis.
+We will filter rows with filter(), arrange rows with arrange() and select columns with select().
+In addition, we will make grouped summaries using summarize().
+At last, we will do some basic calculations. Note that plotting data will be the subject of the next section.
+
+## Loading a dataset
+
+
+
+
+
+---
+
+
+>This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
+>Creative Commons License: CC BY-SA 4.0.
+
