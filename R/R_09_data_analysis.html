@@ -800,7 +800,226 @@ that you are interested in (for example calories):</p>
 <pre class="r"><code>summary(df$Calories)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##     0.0   210.0   340.0   368.3   500.0  1880.0</code></pre>
-<p>But the Tidyverse library contains a more sophisticated function:</p>
+<p>But the Tidyverse library also contains a summarize() function:</p>
+<pre class="r"><code>summarize(df, Calories = mean(Calories))</code></pre>
+<pre><code>## # A tibble: 1 × 1
+##   Calories
+##      &lt;dbl&gt;
+## 1     368.</code></pre>
+<p>You can combine this with the group_by() function for powerful
+analysis:</p>
+<pre class="r"><code>by_category &lt;- group_by(df, Category)
+summarize(by_category, Average_calories = mean(Calories))</code></pre>
+<pre><code>## # A tibble: 9 × 2
+##   Category           Average_calories
+##   &lt;chr&gt;                         &lt;dbl&gt;
+## 1 Beef &amp; Pork                    494 
+## 2 Beverages                      114.
+## 3 Breakfast                      527.
+## 4 Chicken &amp; Fish                 553.
+## 5 Coffee &amp; Tea                   284.
+## 6 Desserts                       222.
+## 7 Salads                         270 
+## 8 Smoothies &amp; Shakes             531.
+## 9 Snacks &amp; Sides                 246.</code></pre>
+<p>Recall that this looks very much like the pivot table function in
+Excel (see figure 28 at <a href="https://bml-research.github.io/data_analysis/excel/excel_08_data_analysis.html">data
+analysis Excel</a>).</p>
+<p>To create a similar output as the pivot tables in Excel:</p>
+<pre class="r"><code>by_category &lt;- group_by(df, Category)
+summarize(by_category, average_calories = mean(Calories), average_calories_fat = mean(`Calories from Fat`))</code></pre>
+<pre><code>## # A tibble: 9 × 3
+##   Category           average_calories average_calories_fat
+##   &lt;chr&gt;                         &lt;dbl&gt;                &lt;dbl&gt;
+## 1 Beef &amp; Pork                    494               225.   
+## 2 Beverages                      114.                0.741
+## 3 Breakfast                      527.              249.   
+## 4 Chicken &amp; Fish                 553.              242.   
+## 5 Coffee &amp; Tea                   284.               71.1  
+## 6 Desserts                       222.               64.3  
+## 7 Salads                         270               108.   
+## 8 Smoothies &amp; Shakes             531.              128.   
+## 9 Snacks &amp; Sides                 246.               94.6</code></pre>
+<blockquote>
+<p>Note that backticks were used to call the column name
+<code>Calories from Fat</code>. You can also deal with that by renaming
+column names and replacing spaces with underscores.</p>
+</blockquote>
+<p>Now compare this output with figure 28 at <a href="https://bml-research.github.io/data_analysis/excel/excel_08_data_analysis.html">data
+analysis Excel</a>.</p>
+<p>Likewise, you can extend this by providing the standard
+deviation:</p>
+<pre class="r"><code>by_category &lt;- group_by(df, Category)
+summarize(by_category, average_calories = mean(Calories), sd_calories = sd(Calories), average_calories_fat = mean(`Calories from Fat`), sd_calories_from_fat = sd(`Calories from Fat`))</code></pre>
+<pre><code>## # A tibble: 9 × 5
+##   Category           average_calories sd_calories average_calories_fat
+##   &lt;chr&gt;                         &lt;dbl&gt;       &lt;dbl&gt;                &lt;dbl&gt;
+## 1 Beef &amp; Pork                    494        141.               225.   
+## 2 Beverages                      114.        99.2                0.741
+## 3 Breakfast                      527.       222.               249.   
+## 4 Chicken &amp; Fish                 553.       307.               242.   
+## 5 Coffee &amp; Tea                   284.       158.                71.1  
+## 6 Desserts                       222.       108.                64.3  
+## 7 Salads                         270        127.               108.   
+## 8 Smoothies &amp; Shakes             531.       231.               128.   
+## 9 Snacks &amp; Sides                 246.       142.                94.6  
+## # ℹ 1 more variable: sd_calories_from_fat &lt;dbl&gt;</code></pre>
+</div>
+<div id="round-values" class="section level2">
+<h2>Round values</h2>
+<p>In R you can round functions using the round() function:</p>
+<pre class="r"><code>round(2.40, digits = 1)</code></pre>
+<pre><code>## [1] 2.4</code></pre>
+<pre class="r"><code>round(2.45, digits = 1)</code></pre>
+<pre><code>## [1] 2.5</code></pre>
+<pre class="r"><code>round(2.45) #defaults to 0 digits</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre class="r"><code>round(2.5) #defaults to 0 digits</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre class="r"><code>?round</code></pre>
+<blockquote>
+<p>Note that for rounding off a 5, the IEC 60559 standard (see also
+‘IEEE 754’) is expected to be used, ‘go to the even digit’. Therefore
+round(0.5) is 0 and round(-1.5) is -2.</p>
+</blockquote>
+<p>So if you like your values to be rounded in the example above, just
+wrap it in the round function:</p>
+<pre class="r"><code>by_category &lt;- group_by(df, Category)
+summarize(by_category, average_calories = round(mean(Calories)), sd_calories = round(sd(Calories)), average_calories_fat = round(mean(`Calories from Fat`)), sd_calories_from_fat = round(sd(`Calories from Fat`)))</code></pre>
+<pre><code>## # A tibble: 9 × 5
+##   Category           average_calories sd_calories average_calories_fat
+##   &lt;chr&gt;                         &lt;dbl&gt;       &lt;dbl&gt;                &lt;dbl&gt;
+## 1 Beef &amp; Pork                     494         141                  225
+## 2 Beverages                       114          99                    1
+## 3 Breakfast                       527         222                  249
+## 4 Chicken &amp; Fish                  553         307                  242
+## 5 Coffee &amp; Tea                    284         158                   71
+## 6 Desserts                        222         108                   64
+## 7 Salads                          270         127                  108
+## 8 Smoothies &amp; Shakes              531         231                  128
+## 9 Snacks &amp; Sides                  246         142                   95
+## # ℹ 1 more variable: sd_calories_from_fat &lt;dbl&gt;</code></pre>
+</div>
+<div id="statistics" class="section level2">
+<h2>Statistics</h2>
+<p>R is build for statistics so you can do all kind of sophisticated
+statistics in R. As this is not a statistics course, the use of
+statistics is beyond the scope of this course.</p>
+<p>Some very basic functions that might be useful (all applied on the
+Calories column):</p>
+<pre class="r"><code>print(&quot;mean&quot;)</code></pre>
+<pre><code>## [1] &quot;mean&quot;</code></pre>
+<pre class="r"><code>mean(df$Calories)</code></pre>
+<pre><code>## [1] 368.2692</code></pre>
+<pre class="r"><code>print(&quot;min&quot;)</code></pre>
+<pre><code>## [1] &quot;min&quot;</code></pre>
+<pre class="r"><code>min(df$Calories)</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre class="r"><code>print(&quot;max&quot;)</code></pre>
+<pre><code>## [1] &quot;max&quot;</code></pre>
+<pre class="r"><code>max(df$Calories)</code></pre>
+<pre><code>## [1] 1880</code></pre>
+<pre class="r"><code>print(&quot;median&quot;) </code></pre>
+<pre><code>## [1] &quot;median&quot;</code></pre>
+<pre class="r"><code>median(df$Calories)</code></pre>
+<pre><code>## [1] 340</code></pre>
+<pre class="r"><code>print(&quot;percentile&quot;)</code></pre>
+<pre><code>## [1] &quot;percentile&quot;</code></pre>
+<pre class="r"><code>quantile(df$Calories, c(0.25, 0.5, 0.75))</code></pre>
+<pre><code>## 25% 50% 75% 
+## 210 340 500</code></pre>
+<pre class="r"><code>print(&quot;standard deviation&quot;)</code></pre>
+<pre><code>## [1] &quot;standard deviation&quot;</code></pre>
+<pre class="r"><code>sd(df$Calories)</code></pre>
+<pre><code>## [1] 240.2699</code></pre>
+<pre class="r"><code>print(&quot;standard error of the mean&quot;)</code></pre>
+<pre><code>## [1] &quot;standard error of the mean&quot;</code></pre>
+<pre class="r"><code>sd(df$Calories)/sqrt(length(df$Calories)) #can also be calculated using the plotrix package</code></pre>
+<pre><code>## [1] 14.90091</code></pre>
+</div>
+<div id="summarize-each" class="section level2">
+<h2>Summarize each</h2>
+<p>Using Tidyverse, you can also apply some of the above statistics more
+conveniently using the summarize_each function:</p>
+<pre class="r"><code>by_category &lt;- group_by(df, Category)
+summarize_each(by_category, funs(mean, sd, se=sd(.)/sqrt(n())))</code></pre>
+<pre><code>## # A tibble: 9 × 70
+##   Category    Item_mean `Serving Size_mean` Calories_mean Calories from Fat_me…¹
+##   &lt;chr&gt;           &lt;dbl&gt;               &lt;dbl&gt;         &lt;dbl&gt;                  &lt;dbl&gt;
+## 1 Beef &amp; Pork        NA                  NA          494                 225.   
+## 2 Beverages          NA                  NA          114.                  0.741
+## 3 Breakfast          NA                  NA          527.                249.   
+## 4 Chicken &amp; …        NA                  NA          553.                242.   
+## 5 Coffee &amp; T…        NA                  NA          284.                 71.1  
+## 6 Desserts           NA                  NA          222.                 64.3  
+## 7 Salads             NA                  NA          270                 108.   
+## 8 Smoothies …        NA                  NA          531.                128.   
+## 9 Snacks &amp; S…        NA                  NA          246.                 94.6  
+## # ℹ abbreviated name: ¹​`Calories from Fat_mean`
+## # ℹ 65 more variables: `Total Fat_mean` &lt;dbl&gt;,
+## #   `Total Fat (% Daily Value)_mean` &lt;dbl&gt;, `Saturated Fat_mean` &lt;dbl&gt;,
+## #   `Saturated Fat (% Daily Value)_mean` &lt;dbl&gt;, `Trans Fat_mean` &lt;dbl&gt;,
+## #   Cholesterol_mean &lt;dbl&gt;, `Cholesterol (% Daily Value)_mean` &lt;dbl&gt;,
+## #   Sodium_mean &lt;dbl&gt;, `Sodium (% Daily Value)_mean` &lt;dbl&gt;,
+## #   Carbohydrates_mean &lt;dbl&gt;, `Carbohydrates (% Daily Value)_mean` &lt;dbl&gt;, …</code></pre>
+<p>Note that the <code>se=sd(.)/sqrt(n())</code> code is a custom made
+function to calculate the standard error of the mean.</p>
+<p>As you can see, Item_mean and Serving Size_mean are not informative.
+These were of the character type. So it is best to omit them:</p>
+<pre class="r"><code>by_category &lt;- group_by(df, Category)
+summarize_each(by_category, funs(mean, sd, se=sd(.)/sqrt(n()))) %&gt;%
+  select(-Item_mean, -`Serving Size_mean`)</code></pre>
+<pre><code>## # A tibble: 9 × 68
+##   Category           Calories_mean `Calories from Fat_mean` `Total Fat_mean`
+##   &lt;chr&gt;                      &lt;dbl&gt;                    &lt;dbl&gt;            &lt;dbl&gt;
+## 1 Beef &amp; Pork                 494                   225.             24.9   
+## 2 Beverages                   114.                    0.741           0.0926
+## 3 Breakfast                   527.                  249.             27.7   
+## 4 Chicken &amp; Fish              553.                  242.             27.0   
+## 5 Coffee &amp; Tea                284.                   71.1             8.02  
+## 6 Desserts                    222.                   64.3             7.36  
+## 7 Salads                      270                   108.             11.8   
+## 8 Smoothies &amp; Shakes          531.                  128.             14.1   
+## 9 Snacks &amp; Sides              246.                   94.6            10.5   
+## # ℹ 64 more variables: `Total Fat (% Daily Value)_mean` &lt;dbl&gt;,
+## #   `Saturated Fat_mean` &lt;dbl&gt;, `Saturated Fat (% Daily Value)_mean` &lt;dbl&gt;,
+## #   `Trans Fat_mean` &lt;dbl&gt;, Cholesterol_mean &lt;dbl&gt;,
+## #   `Cholesterol (% Daily Value)_mean` &lt;dbl&gt;, Sodium_mean &lt;dbl&gt;,
+## #   `Sodium (% Daily Value)_mean` &lt;dbl&gt;, Carbohydrates_mean &lt;dbl&gt;,
+## #   `Carbohydrates (% Daily Value)_mean` &lt;dbl&gt;, `Dietary Fiber_mean` &lt;dbl&gt;,
+## #   `Dietary Fiber (% Daily Value)_mean` &lt;dbl&gt;, Sugars_mean &lt;dbl&gt;, …</code></pre>
+<p>We could simplify this expression by using pipes.You can use %&gt;%
+to emphasise a sequence of actions.</p>
+<pre class="r"><code>df %&gt;%
+  group_by(Category) %&gt;%
+  summarize_each(funs(mean, sd, se=sd(.)/sqrt(n()))) %&gt;%
+  select(-Item_mean, -`Serving Size_mean`)</code></pre>
+<pre><code>## # A tibble: 9 × 68
+##   Category           Calories_mean `Calories from Fat_mean` `Total Fat_mean`
+##   &lt;chr&gt;                      &lt;dbl&gt;                    &lt;dbl&gt;            &lt;dbl&gt;
+## 1 Beef &amp; Pork                 494                   225.             24.9   
+## 2 Beverages                   114.                    0.741           0.0926
+## 3 Breakfast                   527.                  249.             27.7   
+## 4 Chicken &amp; Fish              553.                  242.             27.0   
+## 5 Coffee &amp; Tea                284.                   71.1             8.02  
+## 6 Desserts                    222.                   64.3             7.36  
+## 7 Salads                      270                   108.             11.8   
+## 8 Smoothies &amp; Shakes          531.                  128.             14.1   
+## 9 Snacks &amp; Sides              246.                   94.6            10.5   
+## # ℹ 64 more variables: `Total Fat (% Daily Value)_mean` &lt;dbl&gt;,
+## #   `Saturated Fat_mean` &lt;dbl&gt;, `Saturated Fat (% Daily Value)_mean` &lt;dbl&gt;,
+## #   `Trans Fat_mean` &lt;dbl&gt;, Cholesterol_mean &lt;dbl&gt;,
+## #   `Cholesterol (% Daily Value)_mean` &lt;dbl&gt;, Sodium_mean &lt;dbl&gt;,
+## #   `Sodium (% Daily Value)_mean` &lt;dbl&gt;, Carbohydrates_mean &lt;dbl&gt;,
+## #   `Carbohydrates (% Daily Value)_mean` &lt;dbl&gt;, `Dietary Fiber_mean` &lt;dbl&gt;,
+## #   `Dietary Fiber (% Daily Value)_mean` &lt;dbl&gt;, Sugars_mean &lt;dbl&gt;, …</code></pre>
+<p>Piping greatly reduces the complexity of your actions and prevents
+the creation of temporary variables. You can read it as: First take the
+data frame <code>df</code> then, group the data frame by the items in
+the column <code>Category</code> and then, summarize each
+<code>category</code> item for <code>mean</code>, <code>sd</code> and
+<code>se</code> and then, select all columns except
+<code>Item_mean</code> and <code>Serving Size_mean</code>.</p>
 <hr />
 <blockquote>
 <p>This web page is distributed under the terms of the Creative Commons

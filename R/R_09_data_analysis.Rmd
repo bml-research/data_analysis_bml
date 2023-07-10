@@ -197,8 +197,124 @@ As this output can be quit overwhelming you may select for the data that you are
 summary(df$Calories)
 ```
 
-But the Tidyverse library contains a more sophisticated function:
+But the Tidyverse library also contains a summarize() function:
 
+```{r}
+summarize(df, Calories = mean(Calories))
+```
+
+You can combine this with the group_by() function for powerful analysis:
+
+```{r}
+by_category <- group_by(df, Category)
+summarize(by_category, Average_calories = mean(Calories))
+```
+
+Recall that this looks very much like the pivot table function in Excel (see figure 28 at [data analysis Excel](https://bml-research.github.io/data_analysis/excel/excel_08_data_analysis.html)).
+
+To create a similar output as the pivot tables in Excel:
+
+```{r}
+by_category <- group_by(df, Category)
+summarize(by_category, average_calories = mean(Calories), average_calories_fat = mean(`Calories from Fat`))
+```
+
+>Note that backticks were used to call the column name `Calories from Fat`.
+>You can also deal with that by renaming column names and replacing spaces with underscores.
+
+
+Now compare this output with figure 28 at [data analysis Excel](https://bml-research.github.io/data_analysis/excel/excel_08_data_analysis.html).
+
+Likewise, you can extend this by providing the standard deviation:
+
+```{r}
+by_category <- group_by(df, Category)
+summarize(by_category, average_calories = mean(Calories), sd_calories = sd(Calories), average_calories_fat = mean(`Calories from Fat`), sd_calories_from_fat = sd(`Calories from Fat`))
+
+```
+
+## Round values
+
+In R you can round functions using the round() function:
+
+```{r}
+round(2.40, digits = 1)
+round(2.45, digits = 1)
+round(2.45) #defaults to 0 digits
+round(2.5) #defaults to 0 digits
+?round
+```
+
+>Note that for rounding off a 5, the IEC 60559 standard (see also ‘IEEE 754’) is expected to be used, ‘go to the even digit’. Therefore round(0.5) is 0 and round(-1.5) is -2.
+
+So if you like your values to be rounded in the example above, just wrap it in the round function:
+
+
+```{r}
+by_category <- group_by(df, Category)
+summarize(by_category, average_calories = round(mean(Calories)), sd_calories = round(sd(Calories)), average_calories_fat = round(mean(`Calories from Fat`)), sd_calories_from_fat = round(sd(`Calories from Fat`)))
+
+```
+
+## Statistics
+
+R is build for statistics so you can do all kind of sophisticated statistics in R.
+As this is not a statistics course, the use of statistics is beyond the scope of this course.
+
+Some very basic functions that might be useful (all applied on the Calories column):
+
+```{r}
+print("mean")
+mean(df$Calories)
+print("min")
+min(df$Calories)
+print("max")
+max(df$Calories)
+print("median") 
+median(df$Calories)
+print("percentile")
+quantile(df$Calories, c(0.25, 0.5, 0.75))
+print("standard deviation")
+sd(df$Calories)
+print("standard error of the mean")
+sd(df$Calories)/sqrt(length(df$Calories)) #can also be calculated using the plotrix package
+```
+
+## Summarize each
+
+Using Tidyverse, you can also apply some of the above statistics more conveniently using the summarize_each function:
+
+```{r}
+by_category <- group_by(df, Category)
+summarize_each(by_category, funs(mean, sd, se=sd(.)/sqrt(n())))
+```
+
+Note that the `se=sd(.)/sqrt(n())` code is a custom made function to calculate the standard error of the mean.
+
+As you can see, Item_mean and Serving Size_mean are not informative. These were of the character type.
+So it is best to omit them:
+
+```{r}
+by_category <- group_by(df, Category)
+summarize_each(by_category, funs(mean, sd, se=sd(.)/sqrt(n()))) %>%
+  select(-Item_mean, -`Serving Size_mean`)
+```
+
+We could simplify this expression by using pipes.You can use %>% to emphasise a sequence of actions.
+
+```{r}
+df %>%
+  group_by(Category) %>%
+  summarize_each(funs(mean, sd, se=sd(.)/sqrt(n()))) %>%
+  select(-Item_mean, -`Serving Size_mean`)
+```
+
+Piping greatly reduces the complexity of your actions and prevents the creation of temporary variables.
+You can read it as:
+First take the data frame `df` then,
+group the data frame by the items in the column `Category` and then,
+summarize each `category` item for `mean`, `sd` and `se` and then,
+select all columns except `Item_mean` and `Serving Size_mean`.
 
 
 
