@@ -80,7 +80,7 @@ Note that this action returns a vector instead of a dataframe.
 You can also select a specific item by index:
 
 ```{r}
-head(df[2, 4]) #select second row and fourth column
+df[2, 4] #select second row and fourth column
 ```
 
 Now we have the value of the second row and the fourth column.
@@ -162,6 +162,43 @@ arrange(df, Category, desc(Calories))
 
 
 ## Select columns with select
+
+You have learned that Variables in data sets should be arranged in columns. Often data sets contain a lot of variables (columns). Most likely, you are not interested in all of them.
+With the select() function, you can select the variables that you are interested in:
+
+```{r}
+select(df, Category, Item, Calories)
+```
+
+Or select all columns except the Calories:
+
+```{r}
+select(df, -Calories)
+```
+
+Or select besides the first two columns, all columns with total in the name:
+
+```{r}
+select(df, Category, Item, starts_with("total"))
+```
+
+
+## Summary data
+
+You can use the base R summary() function to get summary information on a data frame:
+
+```{r}
+summary(df)
+```
+
+As this output can be quit overwhelming you may select for the data that you are interested in (for example calories):
+
+```{r}
+summary(df$Calories)
+```
+
+But the Tidyverse library contains a more sophisticated function:
+
 
 
 

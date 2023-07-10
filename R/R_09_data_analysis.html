@@ -447,7 +447,7 @@ of a column, all columns are selected.</p>
 <div id="select-item-by-index" class="section level2">
 <h2>Select item by index</h2>
 <p>You can also select a specific item by index:</p>
-<pre class="r"><code>head(df[2, 4]) #select second row and fourth column</code></pre>
+<pre class="r"><code>df[2, 4] #select second row and fourth column</code></pre>
 <pre><code>## # A tibble: 1 × 1
 ##   Calories
 ##      &lt;dbl&gt;
@@ -674,6 +674,133 @@ Calories from high to low:</p>
 </div>
 <div id="select-columns-with-select" class="section level2">
 <h2>Select columns with select</h2>
+<p>You have learned that Variables in data sets should be arranged in
+columns. Often data sets contain a lot of variables (columns). Most
+likely, you are not interested in all of them. With the select()
+function, you can select the variables that you are interested in:</p>
+<pre class="r"><code>select(df, Category, Item, Calories)</code></pre>
+<pre><code>## # A tibble: 260 × 3
+##    Category  Item                                                       Calories
+##    &lt;chr&gt;     &lt;chr&gt;                                                         &lt;dbl&gt;
+##  1 Breakfast Egg McMuffin                                                    300
+##  2 Breakfast Egg White Delight                                               250
+##  3 Breakfast Sausage McMuffin                                                370
+##  4 Breakfast Sausage McMuffin with Egg                                       450
+##  5 Breakfast Sausage McMuffin with Egg Whites                                400
+##  6 Breakfast Steak &amp; Egg McMuffin                                            430
+##  7 Breakfast Bacon, Egg &amp; Cheese Biscuit (Regular Biscuit)                   460
+##  8 Breakfast Bacon, Egg &amp; Cheese Biscuit (Large Biscuit)                     520
+##  9 Breakfast Bacon, Egg &amp; Cheese Biscuit with Egg Whites (Regular Bisc…      410
+## 10 Breakfast Bacon, Egg &amp; Cheese Biscuit with Egg Whites (Large Biscui…      470
+## # ℹ 250 more rows</code></pre>
+<p>Or select all columns except the Calories:</p>
+<pre class="r"><code>select(df, -Calories)</code></pre>
+<pre><code>## # A tibble: 260 × 23
+##    Category  Item                 `Serving Size` `Calories from Fat` `Total Fat`
+##    &lt;chr&gt;     &lt;chr&gt;                &lt;chr&gt;                        &lt;dbl&gt;       &lt;dbl&gt;
+##  1 Breakfast Egg McMuffin         4.8 oz (136 g)                 120          13
+##  2 Breakfast Egg White Delight    4.8 oz (135 g)                  70           8
+##  3 Breakfast Sausage McMuffin     3.9 oz (111 g)                 200          23
+##  4 Breakfast Sausage McMuffin wi… 5.7 oz (161 g)                 250          28
+##  5 Breakfast Sausage McMuffin wi… 5.7 oz (161 g)                 210          23
+##  6 Breakfast Steak &amp; Egg McMuffin 6.5 oz (185 g)                 210          23
+##  7 Breakfast Bacon, Egg &amp; Cheese… 5.3 oz (150 g)                 230          26
+##  8 Breakfast Bacon, Egg &amp; Cheese… 5.8 oz (164 g)                 270          30
+##  9 Breakfast Bacon, Egg &amp; Cheese… 5.4 oz (153 g)                 180          20
+## 10 Breakfast Bacon, Egg &amp; Cheese… 5.9 oz (167 g)                 220          25
+## # ℹ 250 more rows
+## # ℹ 18 more variables: `Total Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Saturated Fat` &lt;dbl&gt;, `Saturated Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Trans Fat` &lt;dbl&gt;, Cholesterol &lt;dbl&gt;, `Cholesterol (% Daily Value)` &lt;dbl&gt;,
+## #   Sodium &lt;dbl&gt;, `Sodium (% Daily Value)` &lt;dbl&gt;, Carbohydrates &lt;dbl&gt;,
+## #   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
+## #   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;, …</code></pre>
+<p>Or select besides the first two columns, all columns with total in
+the name:</p>
+<pre class="r"><code>select(df, Category, Item, starts_with(&quot;total&quot;))</code></pre>
+<pre><code>## # A tibble: 260 × 4
+##    Category  Item                             `Total Fat` Total Fat (% Daily V…¹
+##    &lt;chr&gt;     &lt;chr&gt;                                  &lt;dbl&gt;                  &lt;dbl&gt;
+##  1 Breakfast Egg McMuffin                              13                     20
+##  2 Breakfast Egg White Delight                          8                     12
+##  3 Breakfast Sausage McMuffin                          23                     35
+##  4 Breakfast Sausage McMuffin with Egg                 28                     43
+##  5 Breakfast Sausage McMuffin with Egg Whites          23                     35
+##  6 Breakfast Steak &amp; Egg McMuffin                      23                     36
+##  7 Breakfast Bacon, Egg &amp; Cheese Biscuit (Re…          26                     40
+##  8 Breakfast Bacon, Egg &amp; Cheese Biscuit (La…          30                     47
+##  9 Breakfast Bacon, Egg &amp; Cheese Biscuit wit…          20                     32
+## 10 Breakfast Bacon, Egg &amp; Cheese Biscuit wit…          25                     38
+## # ℹ 250 more rows
+## # ℹ abbreviated name: ¹​`Total Fat (% Daily Value)`</code></pre>
+</div>
+<div id="summary-data" class="section level2">
+<h2>Summary data</h2>
+<p>You can use the base R summary() function to get summary information
+on a data frame:</p>
+<pre class="r"><code>summary(df)</code></pre>
+<pre><code>##    Category             Item           Serving Size          Calories     
+##  Length:260         Length:260         Length:260         Min.   :   0.0  
+##  Class :character   Class :character   Class :character   1st Qu.: 210.0  
+##  Mode  :character   Mode  :character   Mode  :character   Median : 340.0  
+##                                                           Mean   : 368.3  
+##                                                           3rd Qu.: 500.0  
+##                                                           Max.   :1880.0  
+##  Calories from Fat   Total Fat       Total Fat (% Daily Value) Saturated Fat   
+##  Min.   :   0.0    Min.   :  0.000   Min.   :  0.00            Min.   : 0.000  
+##  1st Qu.:  20.0    1st Qu.:  2.375   1st Qu.:  3.75            1st Qu.: 1.000  
+##  Median : 100.0    Median : 11.000   Median : 17.00            Median : 5.000  
+##  Mean   : 127.1    Mean   : 14.165   Mean   : 21.82            Mean   : 6.008  
+##  3rd Qu.: 200.0    3rd Qu.: 22.250   3rd Qu.: 35.00            3rd Qu.:10.000  
+##  Max.   :1060.0    Max.   :118.000   Max.   :182.00            Max.   :20.000  
+##  Saturated Fat (% Daily Value)   Trans Fat       Cholesterol    
+##  Min.   :  0.00                Min.   :0.0000   Min.   :  0.00  
+##  1st Qu.:  4.75                1st Qu.:0.0000   1st Qu.:  5.00  
+##  Median : 24.00                Median :0.0000   Median : 35.00  
+##  Mean   : 29.97                Mean   :0.2038   Mean   : 54.94  
+##  3rd Qu.: 48.00                3rd Qu.:0.0000   3rd Qu.: 65.00  
+##  Max.   :102.00                Max.   :2.5000   Max.   :575.00  
+##  Cholesterol (% Daily Value)     Sodium       Sodium (% Daily Value)
+##  Min.   :  0.00              Min.   :   0.0   Min.   :  0.00        
+##  1st Qu.:  2.00              1st Qu.: 107.5   1st Qu.:  4.75        
+##  Median : 11.00              Median : 190.0   Median :  8.00        
+##  Mean   : 18.39              Mean   : 495.8   Mean   : 20.68        
+##  3rd Qu.: 21.25              3rd Qu.: 865.0   3rd Qu.: 36.25        
+##  Max.   :192.00              Max.   :3600.0   Max.   :150.00        
+##  Carbohydrates    Carbohydrates (% Daily Value) Dietary Fiber  
+##  Min.   :  0.00   Min.   : 0.00                 Min.   :0.000  
+##  1st Qu.: 30.00   1st Qu.:10.00                 1st Qu.:0.000  
+##  Median : 44.00   Median :15.00                 Median :1.000  
+##  Mean   : 47.35   Mean   :15.78                 Mean   :1.631  
+##  3rd Qu.: 60.00   3rd Qu.:20.00                 3rd Qu.:3.000  
+##  Max.   :141.00   Max.   :47.00                 Max.   :7.000  
+##  Dietary Fiber (% Daily Value)     Sugars          Protein     
+##  Min.   : 0.000                Min.   :  0.00   Min.   : 0.00  
+##  1st Qu.: 0.000                1st Qu.:  5.75   1st Qu.: 4.00  
+##  Median : 5.000                Median : 17.50   Median :12.00  
+##  Mean   : 6.531                Mean   : 29.42   Mean   :13.34  
+##  3rd Qu.:10.000                3rd Qu.: 48.00   3rd Qu.:19.00  
+##  Max.   :28.000                Max.   :128.00   Max.   :87.00  
+##  Vitamin A (% Daily Value) Vitamin C (% Daily Value) Calcium (% Daily Value)
+##  Min.   :  0.00            Min.   :  0.000           Min.   : 0.00          
+##  1st Qu.:  2.00            1st Qu.:  0.000           1st Qu.: 6.00          
+##  Median :  8.00            Median :  0.000           Median :20.00          
+##  Mean   : 13.43            Mean   :  8.535           Mean   :20.97          
+##  3rd Qu.: 15.00            3rd Qu.:  4.000           3rd Qu.:30.00          
+##  Max.   :170.00            Max.   :240.000           Max.   :70.00          
+##  Iron (% Daily Value)
+##  Min.   : 0.000      
+##  1st Qu.: 0.000      
+##  Median : 4.000      
+##  Mean   : 7.735      
+##  3rd Qu.:15.000      
+##  Max.   :40.000</code></pre>
+<p>As this output can be quit overwhelming you may select for the data
+that you are interested in (for example calories):</p>
+<pre class="r"><code>summary(df$Calories)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     0.0   210.0   340.0   368.3   500.0  1880.0</code></pre>
+<p>But the Tidyverse library contains a more sophisticated function:</p>
 <hr />
 <blockquote>
 <p>This web page is distributed under the terms of the Creative Commons
