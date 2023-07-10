@@ -37,23 +37,25 @@ As you can see, there are two rows with missing values (NA values).
 Here is how to drop them:
 
 ```{r}
-my_tibble_cleaned <- drop_na(my_tibble)
-my_tibble_cleaned
+my_tibble <- drop_na(my_tibble)
+my_tibble
 ```
 
 Later on we will perform multiple manipulations on data frames.
-To prevent overwriting the same variable each time, we will use a different synthax.
+To prevent overwriting the same variable each time, we will use a different syntax.
 Tidyverse came up with a shorthand to prevent overwriting the same variable each time (called forward chaining):
 
 
 ```{r}
-my_tibble_cleaned <- my_tibble %>% drop_na()
-my_tibble_cleaned
+my_tibble <- my_tibble %>% drop_na()
+my_tibble
 ```
 
 The reason to do this will become clear later on.
 
 ## Renaming columns
+
+You can rename a column like shown below:
 
 ```{r}
 category <- c("fruit", "vegetable", "vegetable", "fruit")
@@ -68,11 +70,13 @@ As you can see, the column x is a poor column name.
 Here is how to rename column x to type:
 
 ```{r}
-my_tibble_clean <- my_tibble %>% rename(type = x)
-my_tibble_clean
+my_tibble <- my_tibble %>% rename(type = x)
+my_tibble
 ```
 
 ## Reordering columns
+
+Below is tibble with a column order that is probably not preferred:
 
 ```{r}
 category <- c("fruit", "vegetable", "vegetable", "fruit")
@@ -87,13 +91,13 @@ As you can see, calories becomes before type.
 You might want to reorder columns. This is how to do that:
 
 ```{r}
-my_tibble_clean <- my_tibble %>% select(category, type, calories)
-my_tibble_clean
+my_tibble <- my_tibble %>% select(category, type, calories)
+my_tibble
 ```
 
 ## Changing a columns data type
 
-Be aware the R uses coersion when data types in a vector is not consistent:
+Be aware the R uses coercion when data types in a vector is not consistent:
 
 ```{r}
 category <- c("fruit", "vegetable", "vegetable", "fruit")
@@ -108,8 +112,8 @@ As a result of a single string value the whole column calories is coerced to cha
 You can change that using the `mutate()` function:
 
 ```{r}
-my_tibble_clean <- my_tibble %>% mutate(calories = as.numeric(calories))
-my_tibble_clean
+my_tibble <- my_tibble %>% mutate(calories = as.numeric(calories))
+my_tibble
 ```
 
 ## Deal with missing data from csv files
@@ -134,7 +138,7 @@ my_df <- read_csv2(my_path, na = "/")
 my_df
 ```
 
-If multiple type of "empty" data are present in your dataset:
+If multiple types of "empty" data are present in your dataset:
 
 ```{r}
 my_path = './files_06_data_cleaning/file02_fruits.csv'
@@ -213,23 +217,72 @@ my_tibble
 You can insert an entire row like below:
 
 ```{r}
-my_tibble_ext <- my_tibble %>% add_row(category = "fruit", type = "mango", calories = 104)
-my_tibble_ext
+my_tibble <- my_tibble %>% add_row(category = "fruit", type = "mango", calories = 104)
+my_tibble
 ```
 
 
 
-### Replacing data in whole row:
+### Replacing a whole row:
+
+Replacing a row can be performed by deleting a row and subsequently adding a row.
+Imagine that you want to delete the row containing `mango` and insert a row pineapple.
+You can replace an entire row by first deleting a row:
 
 
+```{r}
+my_tibble <- my_tibble %>% filter(!type == "mango")
+my_tibble
+```
 
+In the above example, we used dplyr `filter` function to filter for all but mango in the column type.
 
+Now we can add the row for pineapple:
 
+```{r}
+my_tibble <- my_tibble %>% add_row(category  = "fruit", type = "pineapple", calories = 105)
+my_tibble
+```
 
-### Replacing data in whole column:
+### Replacing data in a whole column:
+
+If we want to change fruit to fruits (plural) and vegetable to vegetables (plural) we can do that as follows:
+
+```{r}
+my_tibble <- my_tibble %>% mutate(category = str_replace(category, "fruit", "fruits"))
+my_tibble
+```
+
+And next for vegetables:
+
+```{r}
+my_tibble <- my_tibble %>% mutate(category = str_replace(category, "vegetable", "vegetables"))
+my_tibble
+```
 
 
 ### Replacing data in entire data frame:
+
+If you end up with a situation that you want to change all occurrences of a certain value in a tibble you can solve that as follows:
+
+```{r}
+category <- c("-", "vegetable", "-", "fruit")
+type <- c("apple", "-", "cauliflower", "banana")
+calories <- c(52.5, "-", "-", 89.4)
+
+my_tibble <- tibble(category, type, calories)
+my_tibble
+```
+
+Now we change all occurrences for `-` with `NA` using the `replace` function:
+
+```{r}
+my_tibble <- my_tibble %>% replace(. == "-", NA)
+my_tibble
+```
+
+The . is used as a placeholder for every item in the tibble.
+
 
 ---
 

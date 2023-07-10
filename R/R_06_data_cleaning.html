@@ -381,8 +381,8 @@ my_tibble</code></pre>
 ## 4 fruit     banana          89.4</code></pre>
 <p>As you can see, there are two rows with missing values (NA values).
 Here is how to drop them:</p>
-<pre class="r"><code>my_tibble_cleaned &lt;- drop_na(my_tibble)
-my_tibble_cleaned</code></pre>
+<pre class="r"><code>my_tibble &lt;- drop_na(my_tibble)
+my_tibble</code></pre>
 <pre><code>## # A tibble: 2 × 3
 ##   category type   calories
 ##   &lt;chr&gt;    &lt;chr&gt;     &lt;dbl&gt;
@@ -390,10 +390,10 @@ my_tibble_cleaned</code></pre>
 ## 2 fruit    banana     89.4</code></pre>
 <p>Later on we will perform multiple manipulations on data frames. To
 prevent overwriting the same variable each time, we will use a different
-synthax. Tidyverse came up with a shorthand to prevent overwriting the
+syntax. Tidyverse came up with a shorthand to prevent overwriting the
 same variable each time (called forward chaining):</p>
-<pre class="r"><code>my_tibble_cleaned &lt;- my_tibble %&gt;% drop_na()
-my_tibble_cleaned</code></pre>
+<pre class="r"><code>my_tibble &lt;- my_tibble %&gt;% drop_na()
+my_tibble</code></pre>
 <pre><code>## # A tibble: 2 × 3
 ##   category type   calories
 ##   &lt;chr&gt;    &lt;chr&gt;     &lt;dbl&gt;
@@ -403,6 +403,7 @@ my_tibble_cleaned</code></pre>
 </div>
 <div id="renaming-columns" class="section level2">
 <h2>Renaming columns</h2>
+<p>You can rename a column like shown below:</p>
 <pre class="r"><code>category &lt;- c(&quot;fruit&quot;, &quot;vegetable&quot;, &quot;vegetable&quot;, &quot;fruit&quot;)
 x &lt;- c(&quot;apple&quot;, &quot;broccoli&quot;, &quot;cauliflower&quot;, &quot;banana&quot;)
 calories &lt;- c(52.5, 32.2, 25.7, 89.4)
@@ -418,8 +419,8 @@ my_tibble</code></pre>
 ## 4 fruit     banana          89.4</code></pre>
 <p>As you can see, the column x is a poor column name. Here is how to
 rename column x to type:</p>
-<pre class="r"><code>my_tibble_clean &lt;- my_tibble %&gt;% rename(type = x)
-my_tibble_clean</code></pre>
+<pre class="r"><code>my_tibble &lt;- my_tibble %&gt;% rename(type = x)
+my_tibble</code></pre>
 <pre><code>## # A tibble: 4 × 3
 ##   category  type        calories
 ##   &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;
@@ -430,6 +431,8 @@ my_tibble_clean</code></pre>
 </div>
 <div id="reordering-columns" class="section level2">
 <h2>Reordering columns</h2>
+<p>Below is tibble with a column order that is probably not
+preferred:</p>
 <pre class="r"><code>category &lt;- c(&quot;fruit&quot;, &quot;vegetable&quot;, &quot;vegetable&quot;, &quot;fruit&quot;)
 type &lt;- c(&quot;apple&quot;, &quot;broccoli&quot;, &quot;cauliflower&quot;, &quot;banana&quot;)
 calories &lt;- c(52.5, 32.2, 25.7, 89.4)
@@ -445,8 +448,8 @@ my_tibble</code></pre>
 ## 4 fruit         89.4 banana</code></pre>
 <p>As you can see, calories becomes before type. You might want to
 reorder columns. This is how to do that:</p>
-<pre class="r"><code>my_tibble_clean &lt;- my_tibble %&gt;% select(category, type, calories)
-my_tibble_clean</code></pre>
+<pre class="r"><code>my_tibble &lt;- my_tibble %&gt;% select(category, type, calories)
+my_tibble</code></pre>
 <pre><code>## # A tibble: 4 × 3
 ##   category  type        calories
 ##   &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;
@@ -457,7 +460,7 @@ my_tibble_clean</code></pre>
 </div>
 <div id="changing-a-columns-data-type" class="section level2">
 <h2>Changing a columns data type</h2>
-<p>Be aware the R uses coersion when data types in a vector is not
+<p>Be aware the R uses coercion when data types in a vector is not
 consistent:</p>
 <pre class="r"><code>category &lt;- c(&quot;fruit&quot;, &quot;vegetable&quot;, &quot;vegetable&quot;, &quot;fruit&quot;)
 x &lt;- c(&quot;apple&quot;, &quot;broccoli&quot;, &quot;cauliflower&quot;, &quot;banana&quot;)
@@ -475,8 +478,8 @@ my_tibble</code></pre>
 <p>As a result of a single string value the whole column calories is
 coerced to characters instead of doubles. You can change that using the
 <code>mutate()</code> function:</p>
-<pre class="r"><code>my_tibble_clean &lt;- my_tibble %&gt;% mutate(calories = as.numeric(calories))
-my_tibble_clean</code></pre>
+<pre class="r"><code>my_tibble &lt;- my_tibble %&gt;% mutate(calories = as.numeric(calories))
+my_tibble</code></pre>
 <pre><code>## # A tibble: 4 × 3
 ##   category  type        calories
 ##   &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;
@@ -513,7 +516,7 @@ my_df</code></pre>
 ## 2 vegetable broccoli        NA  
 ## 3 vegetable cauliflower     25.7
 ## 4 fruit     banana          89.4</code></pre>
-<p>If multiple type of “empty” data are present in your dataset:</p>
+<p>If multiple types of “empty” data are present in your dataset:</p>
 <pre class="r"><code>my_path = &#39;./files_06_data_cleaning/file02_fruits.csv&#39;
 my_df &lt;- read_csv2(my_path)
 my_df</code></pre>
@@ -608,8 +611,8 @@ my_tibble</code></pre>
 <div id="adding-a-row-in-a-tibble" class="section level3">
 <h3>Adding a row in a tibble</h3>
 <p>You can insert an entire row like below:</p>
-<pre class="r"><code>my_tibble_ext &lt;- my_tibble %&gt;% add_row(category = &quot;fruit&quot;, type = &quot;mango&quot;, calories = 104)
-my_tibble_ext</code></pre>
+<pre class="r"><code>my_tibble &lt;- my_tibble %&gt;% add_row(category = &quot;fruit&quot;, type = &quot;mango&quot;, calories = 104)
+my_tibble</code></pre>
 <pre><code>## # A tibble: 5 × 3
 ##   category  type        calories
 ##   &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;
@@ -619,14 +622,91 @@ my_tibble_ext</code></pre>
 ## 4 fruit     banana          89.4
 ## 5 fruit     mango          104</code></pre>
 </div>
-<div id="replacing-data-in-whole-row" class="section level3">
-<h3>Replacing data in whole row:</h3>
+<div id="replacing-a-whole-row" class="section level3">
+<h3>Replacing a whole row:</h3>
+<p>Replacing a row can be performed by deleting a row and subsequently
+adding a row. Imagine that you want to delete the row containing
+<code>mango</code> and insert a row pineapple. You can replace an entire
+row by first deleting a row:</p>
+<pre class="r"><code>my_tibble &lt;- my_tibble %&gt;% filter(!type == &quot;mango&quot;)
+my_tibble</code></pre>
+<pre><code>## # A tibble: 4 × 3
+##   category  type        calories
+##   &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;
+## 1 fruit     apple           52.5
+## 2 vegetable broccoli        34.2
+## 3 vegetable cauliflower     25.7
+## 4 fruit     banana          89.4</code></pre>
+<p>In the above example, we used dplyr <code>filter</code> function to
+filter for all but mango in the column type.</p>
+<p>Now we can add the row for pineapple:</p>
+<pre class="r"><code>my_tibble &lt;- my_tibble %&gt;% add_row(category  = &quot;fruit&quot;, type = &quot;pineapple&quot;, calories = 105)
+my_tibble</code></pre>
+<pre><code>## # A tibble: 5 × 3
+##   category  type        calories
+##   &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;
+## 1 fruit     apple           52.5
+## 2 vegetable broccoli        34.2
+## 3 vegetable cauliflower     25.7
+## 4 fruit     banana          89.4
+## 5 fruit     pineapple      105</code></pre>
 </div>
-<div id="replacing-data-in-whole-column" class="section level3">
-<h3>Replacing data in whole column:</h3>
+<div id="replacing-data-in-a-whole-column" class="section level3">
+<h3>Replacing data in a whole column:</h3>
+<p>If we want to change fruit to fruits (plural) and vegetable to
+vegetables (plural) we can do that as follows:</p>
+<pre class="r"><code>my_tibble &lt;- my_tibble %&gt;% mutate(category = str_replace(category, &quot;fruit&quot;, &quot;fruits&quot;))
+my_tibble</code></pre>
+<pre><code>## # A tibble: 5 × 3
+##   category  type        calories
+##   &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt;
+## 1 fruits    apple           52.5
+## 2 vegetable broccoli        34.2
+## 3 vegetable cauliflower     25.7
+## 4 fruits    banana          89.4
+## 5 fruits    pineapple      105</code></pre>
+<p>And next for vegetables:</p>
+<pre class="r"><code>my_tibble &lt;- my_tibble %&gt;% mutate(category = str_replace(category, &quot;vegetable&quot;, &quot;vegetables&quot;))
+my_tibble</code></pre>
+<pre><code>## # A tibble: 5 × 3
+##   category   type        calories
+##   &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt;
+## 1 fruits     apple           52.5
+## 2 vegetables broccoli        34.2
+## 3 vegetables cauliflower     25.7
+## 4 fruits     banana          89.4
+## 5 fruits     pineapple      105</code></pre>
 </div>
 <div id="replacing-data-in-entire-data-frame" class="section level3">
 <h3>Replacing data in entire data frame:</h3>
+<p>If you end up with a situation that you want to change all
+occurrences of a certain value in a tibble you can solve that as
+follows:</p>
+<pre class="r"><code>category &lt;- c(&quot;-&quot;, &quot;vegetable&quot;, &quot;-&quot;, &quot;fruit&quot;)
+type &lt;- c(&quot;apple&quot;, &quot;-&quot;, &quot;cauliflower&quot;, &quot;banana&quot;)
+calories &lt;- c(52.5, &quot;-&quot;, &quot;-&quot;, 89.4)
+
+my_tibble &lt;- tibble(category, type, calories)
+my_tibble</code></pre>
+<pre><code>## # A tibble: 4 × 3
+##   category  type        calories
+##   &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;   
+## 1 -         apple       52.5    
+## 2 vegetable -           -       
+## 3 -         cauliflower -       
+## 4 fruit     banana      89.4</code></pre>
+<p>Now we change all occurrences for <code>-</code> with <code>NA</code>
+using the <code>replace</code> function:</p>
+<pre class="r"><code>my_tibble &lt;- my_tibble %&gt;% replace(. == &quot;-&quot;, NA)
+my_tibble</code></pre>
+<pre><code>## # A tibble: 4 × 3
+##   category  type        calories
+##   &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;   
+## 1 &lt;NA&gt;      apple       52.5    
+## 2 vegetable &lt;NA&gt;        &lt;NA&gt;    
+## 3 &lt;NA&gt;      cauliflower &lt;NA&gt;    
+## 4 fruit     banana      89.4</code></pre>
+<p>The . is used as a placeholder for every item in the tibble.</p>
 <hr />
 <blockquote>
 <p>This web page is distributed under the terms of the Creative Commons
