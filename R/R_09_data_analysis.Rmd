@@ -22,9 +22,146 @@ We will filter rows with filter(), arrange rows with arrange() and select column
 In addition, we will make grouped summaries using summarize().
 At last, we will do some basic calculations. Note that plotting data will be the subject of the next section.
 
+>Note: R is like a swiss army knife. Extremely powerfull but also very eloborate.
+>It is impossible to cover all analysis functions of R.
+>So this is not a complete guide for data analysis. Instead, I will focus on some common tasks.
+>You can always elaborate your analysis by exploring the tidyverse documentation. Or even use the base R documentation if the specific task you want to perform some custom tasks.
+>See: [tidyverse documentation](https://style.tidyverse.org/documentation.html)
+>See: [base R documentation](https://cran.r-project.org/manuals.html)
+
 ## Loading a dataset
 
+As an example dataset, we will be using the same dataset as used in the Excel section:
+namely, [the nutritional facts dataset from a fastfood restaurant](https://www.kaggle.com/datasets/mcdonalds/nutrition-facts)
 
+```{r}
+file_path <- "./files_09_data_analysis/file01_menu.csv"
+df <- read_csv(file_path)
+head(df)
+```
+
+As you can see above, the data is loaded well. Also note that the columns are of the correct data type (e.g. dbl for the Calories column).
+
+
+## Select rows by index
+
+Yoy can select rows by index using the following notation:
+
+```{r}
+df[2, ] #select second row
+```
+
+Note the comma between the brackets. Since there is no specification of a column, all columns are selected.
+
+## Select column by index
+
+
+You can also select a column based on an index:
+
+```{r}
+head(df[, 4]) #select fourth column
+```
+
+The head function was used to truncate the output.
+
+## Select column by name
+
+You can also select a column by name:
+
+```{r}
+head(df$Calories) #select column Calories
+```
+
+Note that this action returns a vector instead of a dataframe.
+
+
+## Select item by index
+
+You can also select a specific item by index:
+
+```{r}
+head(df[2, 4]) #select second row and fourth column
+```
+
+Now we have the value of the second row and the fourth column.
+
+## Filter rows
+
+One of the most frequent tasks that you will be doing on data frames is filtering rows.
+Here is how that works:
+
+Filter rows with high caloric values:
+
+```{r}
+filter(df, Calories > 900)
+```
+
+Chicken and Fish meals with high calories:
+
+```{r}
+filter(df, Category == "Chicken & Fish" & Calories > 900)
+```
+
+Meals with high calories that do not belong to the Chicken and Fish category:
+
+```{r}
+filter(df, !Category == "Chicken & Fish" & Calories > 900)
+```
+
+Meals with very low or very high calories:
+
+```{r}
+filter(df, Calories < 100 | Calories > 900)
+```
+
+All meals with 0 calories:
+
+```{r}
+filter(df, Calories == 0)
+```
+
+## Arranging rows
+
+You can use arrange() instead of filter if you want to sort your rows in a data frame instead of filtering it:
+
+Arrange on calories ascending:
+
+```{r}
+arrange(df, Calories)
+```
+
+
+If you want to sort in descending order:
+
+```{r}
+arrange(df, desc(Calories))
+```
+
+And to select the row with the highest value:
+
+```{r}
+arrange(df, desc(Calories))[1, ]
+```
+
+You can also do some multi-level sorting:
+
+Here is an example of sorting on Category first and then sorting on Calories: 
+
+```{r}
+arrange(df, Category, Calories)
+```
+
+Here is an example of sorting on Category first and then sorting on Calories from high to low: 
+
+```{r}
+arrange(df, Category, desc(Calories))
+```
+
+
+>Note: Missing values will always be sorted at the end.
+
+
+## Select columns with select
 
 
 

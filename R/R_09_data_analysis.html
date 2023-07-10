@@ -365,9 +365,315 @@ filter rows with filter(), arrange rows with arrange() and select
 columns with select(). In addition, we will make grouped summaries using
 summarize(). At last, we will do some basic calculations. Note that
 plotting data will be the subject of the next section.</p>
+<blockquote>
+<p>Note: R is like a swiss army knife. Extremely powerfull but also very
+eloborate. It is impossible to cover all analysis functions of R. So
+this is not a complete guide for data analysis. Instead, I will focus on
+some common tasks. You can always elaborate your analysis by exploring
+the tidyverse documentation. Or even use the base R documentation if the
+specific task you want to perform some custom tasks. See: <a href="https://style.tidyverse.org/documentation.html">tidyverse
+documentation</a> See: <a href="https://cran.r-project.org/manuals.html">base R
+documentation</a></p>
+</blockquote>
 </div>
 <div id="loading-a-dataset" class="section level2">
 <h2>Loading a dataset</h2>
+<p>As an example dataset, we will be using the same dataset as used in
+the Excel section: namely, <a href="https://www.kaggle.com/datasets/mcdonalds/nutrition-facts">the
+nutritional facts dataset from a fastfood restaurant</a></p>
+<pre class="r"><code>file_path &lt;- &quot;./files_09_data_analysis/file01_menu.csv&quot;
+df &lt;- read_csv(file_path)
+head(df)</code></pre>
+<pre><code>## # A tibble: 6 × 24
+##   Category  Item         `Serving Size` Calories `Calories from Fat` `Total Fat`
+##   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;             &lt;dbl&gt;               &lt;dbl&gt;       &lt;dbl&gt;
+## 1 Breakfast Egg McMuffin 4.8 oz (136 g)      300                 120          13
+## 2 Breakfast Egg White D… 4.8 oz (135 g)      250                  70           8
+## 3 Breakfast Sausage McM… 3.9 oz (111 g)      370                 200          23
+## 4 Breakfast Sausage McM… 5.7 oz (161 g)      450                 250          28
+## 5 Breakfast Sausage McM… 5.7 oz (161 g)      400                 210          23
+## 6 Breakfast Steak &amp; Egg… 6.5 oz (185 g)      430                 210          23
+## # ℹ 18 more variables: `Total Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Saturated Fat` &lt;dbl&gt;, `Saturated Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Trans Fat` &lt;dbl&gt;, Cholesterol &lt;dbl&gt;, `Cholesterol (% Daily Value)` &lt;dbl&gt;,
+## #   Sodium &lt;dbl&gt;, `Sodium (% Daily Value)` &lt;dbl&gt;, Carbohydrates &lt;dbl&gt;,
+## #   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
+## #   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;,
+## #   `Vitamin A (% Daily Value)` &lt;dbl&gt;, `Vitamin C (% Daily Value)` &lt;dbl&gt;, …</code></pre>
+<p>As you can see above, the data is loaded well. Also note that the
+columns are of the correct data type (e.g. dbl for the Calories
+column).</p>
+</div>
+<div id="select-rows-by-index" class="section level2">
+<h2>Select rows by index</h2>
+<p>Yoy can select rows by index using the following notation:</p>
+<pre class="r"><code>df[2, ] #select second row</code></pre>
+<pre><code>## # A tibble: 1 × 24
+##   Category  Item         `Serving Size` Calories `Calories from Fat` `Total Fat`
+##   &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;             &lt;dbl&gt;               &lt;dbl&gt;       &lt;dbl&gt;
+## 1 Breakfast Egg White D… 4.8 oz (135 g)      250                  70           8
+## # ℹ 18 more variables: `Total Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Saturated Fat` &lt;dbl&gt;, `Saturated Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Trans Fat` &lt;dbl&gt;, Cholesterol &lt;dbl&gt;, `Cholesterol (% Daily Value)` &lt;dbl&gt;,
+## #   Sodium &lt;dbl&gt;, `Sodium (% Daily Value)` &lt;dbl&gt;, Carbohydrates &lt;dbl&gt;,
+## #   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
+## #   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;,
+## #   `Vitamin A (% Daily Value)` &lt;dbl&gt;, `Vitamin C (% Daily Value)` &lt;dbl&gt;, …</code></pre>
+<p>Note the comma between the brackets. Since there is no specification
+of a column, all columns are selected.</p>
+</div>
+<div id="select-column-by-index" class="section level2">
+<h2>Select column by index</h2>
+<p>You can also select a column based on an index:</p>
+<pre class="r"><code>head(df[, 4]) #select fourth column</code></pre>
+<pre><code>## # A tibble: 6 × 1
+##   Calories
+##      &lt;dbl&gt;
+## 1      300
+## 2      250
+## 3      370
+## 4      450
+## 5      400
+## 6      430</code></pre>
+<p>The head function was used to truncate the output.</p>
+</div>
+<div id="select-column-by-name" class="section level2">
+<h2>Select column by name</h2>
+<p>You can also select a column by name:</p>
+<pre class="r"><code>head(df$Calories) #select column Calories</code></pre>
+<pre><code>## [1] 300 250 370 450 400 430</code></pre>
+<p>Note that this action returns a vector instead of a dataframe.</p>
+</div>
+<div id="select-item-by-index" class="section level2">
+<h2>Select item by index</h2>
+<p>You can also select a specific item by index:</p>
+<pre class="r"><code>head(df[2, 4]) #select second row and fourth column</code></pre>
+<pre><code>## # A tibble: 1 × 1
+##   Calories
+##      &lt;dbl&gt;
+## 1      250</code></pre>
+<p>Now we have the value of the second row and the fourth column.</p>
+</div>
+<div id="filter-rows" class="section level2">
+<h2>Filter rows</h2>
+<p>One of the most frequent tasks that you will be doing on data frames
+is filtering rows. Here is how that works:</p>
+<p>Filter rows with high caloric values:</p>
+<pre class="r"><code>filter(df, Calories &gt; 900)</code></pre>
+<pre><code>## # A tibble: 7 × 24
+##   Category         Item  `Serving Size` Calories `Calories from Fat` `Total Fat`
+##   &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt;             &lt;dbl&gt;               &lt;dbl&gt;       &lt;dbl&gt;
+## 1 Breakfast        Big … 14.8 oz (420 …     1090                 510          56
+## 2 Breakfast        Big … 15.3 oz (434 …     1150                 540          60
+## 3 Breakfast        Big … 14.9 oz (423 …      990                 410          46
+## 4 Breakfast        Big … 15.4 oz (437 …     1050                 450          50
+## 5 Chicken &amp; Fish   Chic… 11.4 oz (323 …      940                 530          59
+## 6 Chicken &amp; Fish   Chic… 22.8 oz (646 …     1880                1060         118
+## 7 Smoothies &amp; Sha… McFl… 16.2 oz (460 …      930                 290          33
+## # ℹ 18 more variables: `Total Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Saturated Fat` &lt;dbl&gt;, `Saturated Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Trans Fat` &lt;dbl&gt;, Cholesterol &lt;dbl&gt;, `Cholesterol (% Daily Value)` &lt;dbl&gt;,
+## #   Sodium &lt;dbl&gt;, `Sodium (% Daily Value)` &lt;dbl&gt;, Carbohydrates &lt;dbl&gt;,
+## #   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
+## #   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;,
+## #   `Vitamin A (% Daily Value)` &lt;dbl&gt;, `Vitamin C (% Daily Value)` &lt;dbl&gt;, …</code></pre>
+<p>Chicken and Fish meals with high calories:</p>
+<pre class="r"><code>filter(df, Category == &quot;Chicken &amp; Fish&quot; &amp; Calories &gt; 900)</code></pre>
+<pre><code>## # A tibble: 2 × 24
+##   Category       Item    `Serving Size` Calories `Calories from Fat` `Total Fat`
+##   &lt;chr&gt;          &lt;chr&gt;   &lt;chr&gt;             &lt;dbl&gt;               &lt;dbl&gt;       &lt;dbl&gt;
+## 1 Chicken &amp; Fish Chicke… 11.4 oz (323 …      940                 530          59
+## 2 Chicken &amp; Fish Chicke… 22.8 oz (646 …     1880                1060         118
+## # ℹ 18 more variables: `Total Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Saturated Fat` &lt;dbl&gt;, `Saturated Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Trans Fat` &lt;dbl&gt;, Cholesterol &lt;dbl&gt;, `Cholesterol (% Daily Value)` &lt;dbl&gt;,
+## #   Sodium &lt;dbl&gt;, `Sodium (% Daily Value)` &lt;dbl&gt;, Carbohydrates &lt;dbl&gt;,
+## #   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
+## #   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;,
+## #   `Vitamin A (% Daily Value)` &lt;dbl&gt;, `Vitamin C (% Daily Value)` &lt;dbl&gt;, …</code></pre>
+<p>Meals with high calories that do not belong to the Chicken and Fish
+category:</p>
+<pre class="r"><code>filter(df, !Category == &quot;Chicken &amp; Fish&quot; &amp; Calories &gt; 900)</code></pre>
+<pre><code>## # A tibble: 5 × 24
+##   Category         Item  `Serving Size` Calories `Calories from Fat` `Total Fat`
+##   &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt;             &lt;dbl&gt;               &lt;dbl&gt;       &lt;dbl&gt;
+## 1 Breakfast        Big … 14.8 oz (420 …     1090                 510          56
+## 2 Breakfast        Big … 15.3 oz (434 …     1150                 540          60
+## 3 Breakfast        Big … 14.9 oz (423 …      990                 410          46
+## 4 Breakfast        Big … 15.4 oz (437 …     1050                 450          50
+## 5 Smoothies &amp; Sha… McFl… 16.2 oz (460 …      930                 290          33
+## # ℹ 18 more variables: `Total Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Saturated Fat` &lt;dbl&gt;, `Saturated Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Trans Fat` &lt;dbl&gt;, Cholesterol &lt;dbl&gt;, `Cholesterol (% Daily Value)` &lt;dbl&gt;,
+## #   Sodium &lt;dbl&gt;, `Sodium (% Daily Value)` &lt;dbl&gt;, Carbohydrates &lt;dbl&gt;,
+## #   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
+## #   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;,
+## #   `Vitamin A (% Daily Value)` &lt;dbl&gt;, `Vitamin C (% Daily Value)` &lt;dbl&gt;, …</code></pre>
+<p>Meals with very low or very high calories:</p>
+<pre class="r"><code>filter(df, Calories &lt; 100 | Calories &gt; 900)</code></pre>
+<pre><code>## # A tibble: 28 × 24
+##    Category       Item   `Serving Size` Calories `Calories from Fat` `Total Fat`
+##    &lt;chr&gt;          &lt;chr&gt;  &lt;chr&gt;             &lt;dbl&gt;               &lt;dbl&gt;       &lt;dbl&gt;
+##  1 Breakfast      Big B… 14.8 oz (420 …     1090                 510        56  
+##  2 Breakfast      Big B… 15.3 oz (434 …     1150                 540        60  
+##  3 Breakfast      Big B… 14.9 oz (423 …      990                 410        46  
+##  4 Breakfast      Big B… 15.4 oz (437 …     1050                 450        50  
+##  5 Chicken &amp; Fish Chick… 11.4 oz (323 …      940                 530        59  
+##  6 Chicken &amp; Fish Chick… 22.8 oz (646 …     1880                1060       118  
+##  7 Snacks &amp; Sides Side … 3.1 oz (87 g)        20                   0         0  
+##  8 Snacks &amp; Sides Apple… 1.2 oz (34 g)        15                   0         0  
+##  9 Desserts       Kids … 1 oz (29 g)          45                  10         1.5
+## 10 Beverages      Diet … 16 fl oz cup          0                   0         0  
+## # ℹ 18 more rows
+## # ℹ 18 more variables: `Total Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Saturated Fat` &lt;dbl&gt;, `Saturated Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Trans Fat` &lt;dbl&gt;, Cholesterol &lt;dbl&gt;, `Cholesterol (% Daily Value)` &lt;dbl&gt;,
+## #   Sodium &lt;dbl&gt;, `Sodium (% Daily Value)` &lt;dbl&gt;, Carbohydrates &lt;dbl&gt;,
+## #   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
+## #   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;, …</code></pre>
+<p>All meals with 0 calories:</p>
+<pre class="r"><code>filter(df, Calories == 0)</code></pre>
+<pre><code>## # A tibble: 16 × 24
+##    Category     Item     `Serving Size` Calories `Calories from Fat` `Total Fat`
+##    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;             &lt;dbl&gt;               &lt;dbl&gt;       &lt;dbl&gt;
+##  1 Beverages    Diet Co… 16 fl oz cup          0                   0           0
+##  2 Beverages    Diet Co… 21 fl oz cup          0                   0           0
+##  3 Beverages    Diet Co… 30 fl oz cup          0                   0           0
+##  4 Beverages    Diet Co… 12 fl oz cup          0                   0           0
+##  5 Beverages    Diet Dr… 16 fl oz cup          0                   0           0
+##  6 Beverages    Diet Dr… 21 fl oz cup          0                   0           0
+##  7 Beverages    Diet Dr… 30 fl oz cup          0                   0           0
+##  8 Beverages    Diet Dr… 12 fl oz cup          0                   0           0
+##  9 Beverages    Dasani … 16.9 fl oz            0                   0           0
+## 10 Coffee &amp; Tea Iced Te… 16 fl oz cup          0                   0           0
+## 11 Coffee &amp; Tea Iced Te… 21 fl oz cup          0                   0           0
+## 12 Coffee &amp; Tea Iced Te… 30 fl oz cup          0                   0           0
+## 13 Coffee &amp; Tea Iced Te… 12 fl oz cup          0                   0           0
+## 14 Coffee &amp; Tea Coffee … 12 fl oz cup          0                   0           0
+## 15 Coffee &amp; Tea Coffee … 16 fl oz cup          0                   0           0
+## 16 Coffee &amp; Tea Coffee … 16 fl oz cup          0                   0           0
+## # ℹ 18 more variables: `Total Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Saturated Fat` &lt;dbl&gt;, `Saturated Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Trans Fat` &lt;dbl&gt;, Cholesterol &lt;dbl&gt;, `Cholesterol (% Daily Value)` &lt;dbl&gt;,
+## #   Sodium &lt;dbl&gt;, `Sodium (% Daily Value)` &lt;dbl&gt;, Carbohydrates &lt;dbl&gt;,
+## #   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
+## #   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;,
+## #   `Vitamin A (% Daily Value)` &lt;dbl&gt;, `Vitamin C (% Daily Value)` &lt;dbl&gt;, …</code></pre>
+</div>
+<div id="arranging-rows" class="section level2">
+<h2>Arranging rows</h2>
+<p>You can use arrange() instead of filter if you want to sort your rows
+in a data frame instead of filtering it:</p>
+<p>Arrange on calories ascending:</p>
+<pre class="r"><code>arrange(df, Calories)</code></pre>
+<pre><code>## # A tibble: 260 × 24
+##    Category     Item     `Serving Size` Calories `Calories from Fat` `Total Fat`
+##    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;             &lt;dbl&gt;               &lt;dbl&gt;       &lt;dbl&gt;
+##  1 Beverages    Diet Co… 16 fl oz cup          0                   0           0
+##  2 Beverages    Diet Co… 21 fl oz cup          0                   0           0
+##  3 Beverages    Diet Co… 30 fl oz cup          0                   0           0
+##  4 Beverages    Diet Co… 12 fl oz cup          0                   0           0
+##  5 Beverages    Diet Dr… 16 fl oz cup          0                   0           0
+##  6 Beverages    Diet Dr… 21 fl oz cup          0                   0           0
+##  7 Beverages    Diet Dr… 30 fl oz cup          0                   0           0
+##  8 Beverages    Diet Dr… 12 fl oz cup          0                   0           0
+##  9 Beverages    Dasani … 16.9 fl oz            0                   0           0
+## 10 Coffee &amp; Tea Iced Te… 16 fl oz cup          0                   0           0
+## # ℹ 250 more rows
+## # ℹ 18 more variables: `Total Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Saturated Fat` &lt;dbl&gt;, `Saturated Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Trans Fat` &lt;dbl&gt;, Cholesterol &lt;dbl&gt;, `Cholesterol (% Daily Value)` &lt;dbl&gt;,
+## #   Sodium &lt;dbl&gt;, `Sodium (% Daily Value)` &lt;dbl&gt;, Carbohydrates &lt;dbl&gt;,
+## #   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
+## #   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;, …</code></pre>
+<p>If you want to sort in descending order:</p>
+<pre class="r"><code>arrange(df, desc(Calories))</code></pre>
+<pre><code>## # A tibble: 260 × 24
+##    Category        Item  `Serving Size` Calories `Calories from Fat` `Total Fat`
+##    &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt;             &lt;dbl&gt;               &lt;dbl&gt;       &lt;dbl&gt;
+##  1 Chicken &amp; Fish  Chic… 22.8 oz (646 …     1880                1060         118
+##  2 Breakfast       Big … 15.3 oz (434 …     1150                 540          60
+##  3 Breakfast       Big … 14.8 oz (420 …     1090                 510          56
+##  4 Breakfast       Big … 15.4 oz (437 …     1050                 450          50
+##  5 Breakfast       Big … 14.9 oz (423 …      990                 410          46
+##  6 Chicken &amp; Fish  Chic… 11.4 oz (323 …      940                 530          59
+##  7 Smoothies &amp; Sh… McFl… 16.2 oz (460 …      930                 290          33
+##  8 Smoothies &amp; Sh… Stra… 22 fl oz cup        850                 210          24
+##  9 Smoothies &amp; Sh… Choc… 22 fl oz cup        850                 210          23
+## 10 Smoothies &amp; Sh… Vani… 22 fl oz cup        820                 210          23
+## # ℹ 250 more rows
+## # ℹ 18 more variables: `Total Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Saturated Fat` &lt;dbl&gt;, `Saturated Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Trans Fat` &lt;dbl&gt;, Cholesterol &lt;dbl&gt;, `Cholesterol (% Daily Value)` &lt;dbl&gt;,
+## #   Sodium &lt;dbl&gt;, `Sodium (% Daily Value)` &lt;dbl&gt;, Carbohydrates &lt;dbl&gt;,
+## #   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
+## #   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;, …</code></pre>
+<p>And to select the row with the highest value:</p>
+<pre class="r"><code>arrange(df, desc(Calories))[1, ]</code></pre>
+<pre><code>## # A tibble: 1 × 24
+##   Category       Item    `Serving Size` Calories `Calories from Fat` `Total Fat`
+##   &lt;chr&gt;          &lt;chr&gt;   &lt;chr&gt;             &lt;dbl&gt;               &lt;dbl&gt;       &lt;dbl&gt;
+## 1 Chicken &amp; Fish Chicke… 22.8 oz (646 …     1880                1060         118
+## # ℹ 18 more variables: `Total Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Saturated Fat` &lt;dbl&gt;, `Saturated Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Trans Fat` &lt;dbl&gt;, Cholesterol &lt;dbl&gt;, `Cholesterol (% Daily Value)` &lt;dbl&gt;,
+## #   Sodium &lt;dbl&gt;, `Sodium (% Daily Value)` &lt;dbl&gt;, Carbohydrates &lt;dbl&gt;,
+## #   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
+## #   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;,
+## #   `Vitamin A (% Daily Value)` &lt;dbl&gt;, `Vitamin C (% Daily Value)` &lt;dbl&gt;, …</code></pre>
+<p>You can also do some multi-level sorting:</p>
+<p>Here is an example of sorting on Category first and then sorting on
+Calories:</p>
+<pre class="r"><code>arrange(df, Category, Calories)</code></pre>
+<pre><code>## # A tibble: 260 × 24
+##    Category    Item      `Serving Size` Calories `Calories from Fat` `Total Fat`
+##    &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;             &lt;dbl&gt;               &lt;dbl&gt;       &lt;dbl&gt;
+##  1 Beef &amp; Pork Hamburger 3.5 oz (98 g)       240                  70           8
+##  2 Beef &amp; Pork Cheesebu… 4 oz (113 g)        290                 100          11
+##  3 Beef &amp; Pork McDouble  5.2 oz (147 g)      380                 150          17
+##  4 Beef &amp; Pork Double C… 5.7 oz (161 g)      430                 190          21
+##  5 Beef &amp; Pork Daily Do… 6.7 oz (190 g)      430                 200          22
+##  6 Beef &amp; Pork Jalapeño… 5.6 oz (159 g)      430                 210          23
+##  7 Beef &amp; Pork Bacon Mc… 5.7 oz (161 g)      440                 200          22
+##  8 Beef &amp; Pork McRib     7.3 oz (208 g)      500                 240          26
+##  9 Beef &amp; Pork Quarter … 7.1 oz (202 g)      520                 240          26
+## 10 Beef &amp; Pork Big Mac   7.4 oz (211 g)      530                 240          27
+## # ℹ 250 more rows
+## # ℹ 18 more variables: `Total Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Saturated Fat` &lt;dbl&gt;, `Saturated Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Trans Fat` &lt;dbl&gt;, Cholesterol &lt;dbl&gt;, `Cholesterol (% Daily Value)` &lt;dbl&gt;,
+## #   Sodium &lt;dbl&gt;, `Sodium (% Daily Value)` &lt;dbl&gt;, Carbohydrates &lt;dbl&gt;,
+## #   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
+## #   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;, …</code></pre>
+<p>Here is an example of sorting on Category first and then sorting on
+Calories from high to low:</p>
+<pre class="r"><code>arrange(df, Category, desc(Calories))</code></pre>
+<pre><code>## # A tibble: 260 × 24
+##    Category    Item      `Serving Size` Calories `Calories from Fat` `Total Fat`
+##    &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;             &lt;dbl&gt;               &lt;dbl&gt;       &lt;dbl&gt;
+##  1 Beef &amp; Pork Double Q… 10 oz (283 g)       750                 380          43
+##  2 Beef &amp; Pork Bacon Cl… 9.5 oz (270 g)      720                 360          40
+##  3 Beef &amp; Pork Quarter … 8.3 oz (235 g)      610                 280          31
+##  4 Beef &amp; Pork Quarter … 8 oz (227 g)        600                 260          29
+##  5 Beef &amp; Pork Quarter … 8.6 oz (244 g)      540                 250          27
+##  6 Beef &amp; Pork Big Mac   7.4 oz (211 g)      530                 240          27
+##  7 Beef &amp; Pork Quarter … 7.1 oz (202 g)      520                 240          26
+##  8 Beef &amp; Pork McRib     7.3 oz (208 g)      500                 240          26
+##  9 Beef &amp; Pork Bacon Mc… 5.7 oz (161 g)      440                 200          22
+## 10 Beef &amp; Pork Double C… 5.7 oz (161 g)      430                 190          21
+## # ℹ 250 more rows
+## # ℹ 18 more variables: `Total Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Saturated Fat` &lt;dbl&gt;, `Saturated Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Trans Fat` &lt;dbl&gt;, Cholesterol &lt;dbl&gt;, `Cholesterol (% Daily Value)` &lt;dbl&gt;,
+## #   Sodium &lt;dbl&gt;, `Sodium (% Daily Value)` &lt;dbl&gt;, Carbohydrates &lt;dbl&gt;,
+## #   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
+## #   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;, …</code></pre>
+<blockquote>
+<p>Note: Missing values will always be sorted at the end.</p>
+</blockquote>
+</div>
+<div id="select-columns-with-select" class="section level2">
+<h2>Select columns with select</h2>
 <hr />
 <blockquote>
 <p>This web page is distributed under the terms of the Creative Commons
