@@ -189,10 +189,44 @@ Note that the y-label is modified accordingly.
 
 ## Switch order of groups
 
-If you want to change the order of groups you will need to change the column `Calories origin` from character to a factor.
+If you want to change the order of groups you will need to change the column `Calories origin` from character to a factor as factors do support levels:
 
 ```{r}
-tidy_summ_data
+tidy_summ_data %>% 
+  mutate(across(`Calories origin`, as.factor))
+```
+
+We can explore the levels as follows:
+
+```{r}
+levels(tidy_summ_data$`Calories origin`)
+```
+
+
+And we can change the order of levels accordingly:
+```{r}
+tidy_summ_data$`Calories origin` <- factor(tidy_summ_data$`Calories origin`, levels = c("Calories total", "Calories from Fat"))
+levels(tidy_summ_data$`Calories origin`)
+```
+
+As you can see, the order of the levels is swapped.
+
+```{r}
+p <- ggplot(data = tidy_summ_data, aes(x = Category, y = `Amount of calories`, fill = `Calories origin`)) +
+  geom_bar(stat = "identity", position="dodge") +
+  labs(title="Average of calories from fat for different categories") +
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+p
+```
+
+The same holds for the stacked and the Percent stacked barchart (only the last example is shown below):
+
+```{r}
+p <- ggplot(data = tidy_summ_data, aes(x = Category, y = `Amount of calories`, fill = `Calories origin`)) +
+  geom_bar(stat = "identity", position="fill") +
+  labs(title="Average of calories from fat for different categories", y = "Fraction of calories") +
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+p
 ```
 
 
