@@ -1,0 +1,65 @@
+![](../hanze/hanze.png)
+
+[Go back to the main page](../index.html)
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+# R: Data Visualization
+
+## Data analysis methods
+
+Let's start with loading the tidyverse library:
+
+```{r}
+library(tidyverse)
+```
+
+
+Here we will focus on data visualization.
+
+>Note: We will focus on plotting using Tidyverse ggplot2. While base R has some sophisticated plotting capacities, ggplot2 is more powerful and generates more aesthetically pleasing plots (though this may be subjective of course).
+
+## Base R plotting verses ggplot2
+
+Base R plotting and ggplot2 are two popular plotting systems in R, but they have some key differences in terms of syntax, functionality, and philosophy.
+
+Syntax:
+
+Base R plotting: The base R plotting system uses a procedural approach where plots are built step-by-step using functions like plot(), lines(), points(), etc. The syntax involves specifying the data and then adding elements to the plot using different functions.
+ggplot2: ggplot2 follows a declarative approach inspired by the grammar of graphics. It uses the ggplot() function to initialize a plot object and then adds layers of graphical elements using the + operator. The syntax is more concise and uses a grammar that includes mappings, aesthetics, and geometries.
+Functionality:
+
+Base R plotting: Base R offers a wide range of plotting functions with basic functionalities to create various types of plots. It provides flexibility to customize plots by directly modifying plot parameters, such as axes, labels, colors, etc. However, it requires more manual adjustments to achieve complex or customized plots.
+ggplot2: ggplot2 is a highly customizable plotting system that offers a rich set of high-level plotting functions. It provides a layered approach, allowing users to easily add and modify plot elements. ggplot2 has a consistent API, making it easier to create complex plots with less code. It also includes built-in support for facets, themes, and statistical transformations.
+Philosophy:
+
+Base R plotting: The base R plotting system has been part of R since its early versions and follows a traditional approach. It focuses on providing a set of core plotting functions and allows users to have fine-grained control over plot details. It can be useful for users who prefer a more low-level and flexible plotting system.
+ggplot2: ggplot2, developed by Hadley Wickham, introduces a different philosophy where the emphasis is on the grammar of graphics. It aims to provide a coherent and consistent framework for creating plots by combining independent graphical components. ggplot2 promotes the idea of "layering" to create complex plots and encourages a more structured and reproducible workflow.
+Overall, ggplot2 provides a more elegant and expressive way to create publication-quality plots, particularly for exploratory data analysis and data visualization tasks. It simplifies the process of creating complex plots and offers more options for customization and extensibility compared to the base R plotting system.
+
+
+## Loading a dataset
+
+As an example dataset, we will be using the same dataset as used in the Excel section:
+namely, [the nutritional facts dataset from a fastfood restaurant](https://www.kaggle.com/datasets/mcdonalds/nutrition-facts)
+
+```{r}
+file_path <- "./files_12_data_visualization/file01_menu.csv"
+df <- read_csv(file_path)
+head(df)
+```
+
+As you can see above, the data is loaded well. Also note that the columns are of the correct data type (e.g. dbl for the Calories column).
+
+
+
+
+
+---
+
+
+>This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
+>Creative Commons License: CC BY-SA 4.0.
+
