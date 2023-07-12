@@ -229,6 +229,48 @@ p <- ggplot(data = tidy_summ_data, aes(x = Category, y = `Amount of calories`, f
 p
 ```
 
+## Pie Chart
+
+Pie charts are suitable for displaying data that can be broken down into categories or parts that add up to a whole. They are often used to show proportions or percentages of a whole.
+
+Like Excel, Pie charts are supported in the R package ggplot2:
+
+```{r}
+p <- ggplot(tidy_summ_data, aes(x = "", y = `Amount of calories`, fill = `Category`)) +
+  geom_bar(stat="identity", width=1) +
+  coord_polar("y", start=0) +
+  labs(title="Average of calories from fat for different categories") +
+  theme_void() # remove background, grid, numeric labels
+p
+```
+
+Adding labels with % in the Pie is a bit of a hassle.
+It is easier to show them in the legend:
+First we calculate the percentage for each category:
+
+
+```{r}
+country<-c('Botswana','Botswana','Botswana','Botswana','Botswana','Botswana','Botswana','Botswana')
+key<-c('Retail Margin','Wholesale Margin','BFP Component and Related Costs','Customs and Excise Tax','MVA Levy',"Fuel Tax","Petroleum Fund Levy","Road User Charge")
+value<-c(0.0687,0.0577,0.7393,0.0031,0.01,0.0126,0.0141,0.0945)
+data <-data.frame(country,key,value)
+#Create variable
+data$key2 <- paste0(data$key,' [',100*round(data$value,2),'%',']')
+
+botswana <- ggplot(data, aes("", value, fill = key2)) + 
+  geom_bar(stat = "identity", color = "white", size = 1) +
+  coord_polar(theta = "y") +
+  labs(colour = NULL) +
+  theme_void()
+
+botswana <- botswana + theme(legend.title = element_blank())
+botswana
+```
+
+
+
+
+
 
 
 >This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
