@@ -55,6 +55,11 @@ The grammar of ggplot2 is based on the Grammar of Graphics, a framework for crea
 
 These are the core components of the ggplot2 grammar. By combining and modifying these components, you can create a wide variety of visualizations. Understanding and manipulating each component allows you to tailor your plots to effectively communicate your data.
 
+>Note that there are some differences in naming chart types between Excel and R.
+>Excel's Column charts are called bar charts in R (there are vertical and horizontal bar charts in R).
+>Excel's Clustered column charts are called grouped bar charts in R.
+>I will use the naming conventions in compliance of the corresponding software.
+
 ## Loading Tidyverse
 
 Let's start with loading the tidyverse library:
@@ -86,12 +91,13 @@ First we create a dataset similar as the pivot table from the excel section:
 summ_data <- df %>%
   group_by(Category) %>%
   summarize_each(mean) %>%
-  select(Category, Calories, `Calories from Fat`)
+  select(Category, Calories, `Calories from Fat`) %>%
+  rename(`Calories total` = `Calories`)
 
 summ_data
 ```
 
-## Column Chart base R
+## Bar Chart base R
 
 Like the example in Excel, I will first create a column chart. The example below will show you the code to make a column chart in base R:
 
@@ -110,6 +116,8 @@ As you can see, it worked but the plot is not very aesthetically pleasing.
 Also, the bar labels are to small to properly read but if they are scaled to a bigger size, they will fall of the plot area and will be truncated.
 Now let's compare this with the same type of plot using the same data but now the plot will be created in ggplot2:
 
+## Bar Chart in ggplot2
+
 
 ```{r}
 p <- ggplot(data = summ_data, aes(x = Category, y = `Calories from Fat`)) +
@@ -122,9 +130,71 @@ p
 Plotting with ggplot2 is much more flexible and the plots created are very aesthetically pleasing (although this may be subjective).
 
 
-## Clustered column chart 
+## Grouped bar chart 
 
----
+Now if you would like to compare this to the total amount of calories, you could create a grouped bar chart for this.
+The first thing we do is to make the data tidy:
+
+```{r}
+tidy_summ_data <- summ_data %>%
+  gather(`Calories total`, `Calories from Fat`, key = "Calories origin", value = "Amount of calories")
+tidy_summ_data
+```
+
+As you can see, the data is in tidy format now with only a single column with the amount of calories.
+Now we can easily create a grouped bar chart:
+
+```{r}
+p <- ggplot(data = tidy_summ_data, aes(x = Category, y = `Amount of calories`, fill = `Calories origin`)) +
+  geom_bar(stat = "identity", position="dodge") +
+  labs(title="Average of calories from fat for different categories") +
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+p
+```
+
+Note that ggplot2 now splits the `Amount of calories` data based on `Calories origin`.
+By using the `fill=` argument in the function call both data sets will get their own bar and bar color.
+A legend is automatically generated (and highly warranted).
+The `position = "dodge"` argument creates two bars next to each other.
+
+
+
+## Stacked bar chart 
+
+Creating a stacked bar chart is easy. Just change the `position` argument.to "stack" (or omit it altogether as it is the default parameter, but there is nothing wrong in being explicit):
+
+```{r}
+p <- ggplot(data = tidy_summ_data, aes(x = Category, y = `Amount of calories`, fill = `Calories origin`)) +
+  geom_bar(stat = "identity", position="stack") +
+  labs(title="Average of calories from fat for different categories") +
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+p
+```
+
+## Percent stacked barchart
+
+A percent (actually a fraction) stacked barchart can be created by changing the `position` argument to "fill";
+
+```{r}
+p <- ggplot(data = tidy_summ_data, aes(x = Category, y = `Amount of calories`, fill = `Calories origin`)) +
+  geom_bar(stat = "identity", position="fill") +
+  labs(title="Average of calories from fat for different categories", y = "Fraction of calories") +
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+p
+```
+
+Now, the fraction of each subgroup is represented, allowing to study the change of their proportion in the whole.
+Note that the y-label is modified accordingly.
+
+
+## Switch order of groups
+
+If you want to change the order of groups you will need to change the column `Calories origin` from character to a factor.
+
+```{r}
+tidy_summ_data
+```
+
 
 
 >This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
