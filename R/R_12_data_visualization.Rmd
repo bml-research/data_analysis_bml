@@ -386,6 +386,143 @@ p <- ggplot(tidy_menu, aes(x = `Category`, y = `Amount of calories`, fill = `Cal
 p
 ```
 
+## Violin Charts
+
+A plot type that is often used from ggplot2 but not present in Excel is the violin plot.
+Violin plots are quite similar to box plots, except that they also show the kernel probability density of the data at different values. 
+So they are a bit more informative (but also a bit harder to understand) compared to box plots.
+Like box plots, violin plots do also include a marker for the median of the data and a box indicating the interquartile range.
+Let's show the above example as a violin plot:
+
+
+```{r}
+p <- ggplot(df_menu, aes(x = `Category`, y = `Calories total`)) + 
+  geom_violin() +
+  labs(title="Calories from fat for different food categories") +
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+p
+```
+
+
+## Line plots
+
+
+As an example, we take the same (fictive data) about a weight loss program for 3 individuals (taking 3 different diets) as used in the Excel section.
+The data is as follows:
+
+
+```{r}
+library(readxl)
+file_path <- "./files_12_data_visualization/file03_weight_loss.xlsx"
+weight_loss <- read_excel(file_path) 
+head(weight_loss)
+```
+
+Note that the first column (<S3: POSIXct>) is a date-time format.
+
+
+We first need to make the data tidy:
+
+```{r}
+tidy_weight_loss <- weight_loss %>%
+  gather(`Diet 1`, `Diet 2`, `Diet 3`, key = "Diet", value = "Weight (kg)") 
+tidy_weight_loss
+```
+
+So now we can create a line plot:
+
+```{r}
+p <- ggplot(data= tidy_weight_loss, aes(x = Date, y = `Weight (kg)`, group = `Diet`)) +
+  geom_line() +
+  labs(title="Weight loss from three different diets")
+p
+```
+
+As you can see, all lines in the group do have the same type and color.
+
+We can either discriminate by type/shape:
+
+```{r}
+p <- ggplot(data= tidy_weight_loss, aes(x = Date, y = `Weight (kg)`, group = `Diet`)) +
+  geom_line(aes(linetype = `Diet`)) +
+  labs(title="Weight loss from three different diets")
+p
+```
+
+Or by color:
+
+```{r}
+p <- ggplot(data= tidy_weight_loss, aes(x = Date, y = `Weight (kg)`, group = `Diet`)) +
+  geom_line(aes(color = `Diet`)) +
+  labs(title="Weight loss from three different diets")
+p
+```
+
+
+## XY-scatter plots
+
+As mentioned in the Excel section, XY-scatterplots differ from line plots.
+In XY-scatter plots, the data on the x-axis are separated according to their value instead as being used as labels.
+
+XY-scatter plots are often used to demonstrate a correlation. As for the Excel section, we will use the ChickWeight dataset from R to create a scatter plot using ggplot2.
+First we take only the data from Diet 1:
+
+```{r}
+chickwts_diet1 <- ChickWeight %>% filter(Diet == 1)
+chickwts_diet1
+```
+
+
+```{r}
+p <- ggplot(chickwts_diet1, aes(x = Time, y = weight)) +
+  geom_point() +
+  labs(title="Chicken weigth")
+p
+```
+
+And then we can add a linear regression model:
+
+```{r}
+p <- ggplot(chickwts_diet1, aes(x = Time, y = weight)) +
+  geom_point() +
+  labs(title="Chicken weigth") +
+  geom_smooth(method="lm")
+p
+```
+
+
+## Bubble chart
+
+Like Excel, ggplot2 also supports bubble charts:
+
+First we will load the same data:
+
+
+```{r}
+library(readxl)
+file_path <- "./files_12_data_visualization/file04_bubble_chart.xlsx"
+bubble_data <- read_excel(file_path) 
+head(bubble_data)
+```
+
+
+And now we can create a bubble chart:
+
+```{r}
+p <- ggplot(bubble_data, aes(x = `Sugar Content (g/serving)`, y = `Vitamin C content (mg/serving)`)) + 
+  geom_point(aes(color = Fruit, size = `Number of servings per year`), alpha = 0.5) +
+  scale_size(range = c(0.5, 12))
+p
+```
+
+
+## Other plot types and libraries
+
+ggplot2 offers many more plot types. Way beyond the capabilities of Excel.
+For an example gallery of supported plot types in ggplot2 see [this link](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html). 
+In addition, other packages exist for even more plotting capabilities in R.
+See this [web page](https://blog.digitalogy.co/list-of-top-r-libraries-for-data-visualization/) for an overview.
+
 
 >This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
 >Creative Commons License: CC BY-SA 4.0.
