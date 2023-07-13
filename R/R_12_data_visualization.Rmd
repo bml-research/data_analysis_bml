@@ -244,30 +244,87 @@ p <- ggplot(tidy_summ_data, aes(x = "", y = `Amount of calories`, fill = `Catego
 p
 ```
 
-Adding labels with % in the Pie is a bit of a hassle.
-It is easier to show them in the legend:
-First we calculate the percentage for each category:
+Adding labels with % in the Pie is a bit of a hassle and beyond the scope of this course (as we want to use ggplot2 as much as possible out-of-the-box).
+Nevertheless, you can find multiple blog posts related to this topic on the internet.
+The same holds for pie of pie charts. This chart type is not supported out of the box in ggplot2 though it can be accomplished with (quite a lot) of effort.
 
+## Radar Charts
+
+Like Excel, radar charts can be created in R. The same data set will be used as shown in the Excel section.
 
 ```{r}
-country<-c('Botswana','Botswana','Botswana','Botswana','Botswana','Botswana','Botswana','Botswana')
-key<-c('Retail Margin','Wholesale Margin','BFP Component and Related Costs','Customs and Excise Tax','MVA Levy',"Fuel Tax","Petroleum Fund Levy","Road User Charge")
-value<-c(0.0687,0.0577,0.7393,0.0031,0.01,0.0126,0.0141,0.0945)
-data <-data.frame(country,key,value)
-#Create variable
-data$key2 <- paste0(data$key,' [',100*round(data$value,2),'%',']')
-
-botswana <- ggplot(data, aes("", value, fill = key2)) + 
-  geom_bar(stat = "identity", color = "white", size = 1) +
-  coord_polar(theta = "y") +
-  labs(colour = NULL) +
-  theme_void()
-
-botswana <- botswana + theme(legend.title = element_blank())
-botswana
+file_path <- "./files_12_data_visualization/file02_radar_data.csv"
+rest_data <- read_csv(file_path)
+rest_data
 ```
 
+But before we can create a radar plot we need to transpose the data frame.
+The category items will be the variables (or features) and hence, need to be in columns.
+The different restaurants will be the records (or observations) and need to be organized in rows.
 
+In order to transpose the tibble, we will first make the data tidy:
+
+```{r}
+rest_data_long <- rest_data %>% pivot_longer(cols= -1)
+rest_data_long
+```
+
+And then we can now transpose:
+
+```{r}
+rest_data_trans <- rest_data_long %>%
+  pivot_wider(names_from = Category,values_from = value)
+rest_data_trans
+```
+
+The only thing that is needed is to rename the `name` column:
+
+```{r}
+rest_data_trans <- rest_data_trans %>% rename("Restaurant" = `name`)
+rest_data_trans
+
+```
+The last thing we need to do is to scale the data to numbers ranging from 0-1:
+
+```{r}
+rest_data_scaled <- rest_data_trans[, -1]/1000 
+rest_data_scaled
+```
+Get the first column:
+
+```{r}
+first_col <- rest_data_trans[, 1]
+first_col
+```
+And combine the two tibbles:
+
+```{r}
+rest_data <- cbind(first_col, rest_data_scaled)
+rest_data
+```
+
+And now we can build the radar plot.
+
+We first need to install a ggplot2 extension:
+
+Run the following code to install the module:
+`install.packages("remotes")`
+`remotes::install_github("ricardo-bion/ggradar")`
+
+Now load the module:
+
+```{r}
+library(ggradar)
+```
+
+And now we can create a radar chart:
+
+```{r}
+p <- ggradar(rest_data,  legend.text.size = 8, values.radar = c("0", "500", "1000"), axis.label.size = 3, grid.label.size = 3, legend.position = "right") +
+  labs(title = "Calories from fat in different \nfood categories from different \nrestaurants") +
+  theme(plot.title = element_text(size = 14, ))
+p
+```
 
 
 
