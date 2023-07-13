@@ -190,20 +190,8 @@ Note that the y-label is modified accordingly.
 ## Switch order of groups
 
 If you want to change the order of groups you will need to change the column `Calories origin` from character to a factor as factors do support levels:
-
-```{r}
-tidy_summ_data %>% 
-  mutate(across(`Calories origin`, as.factor))
-```
-
-We can explore the levels as follows:
-
-```{r}
-levels(tidy_summ_data$`Calories origin`)
-```
-
-
 And we can change the order of levels accordingly:
+
 ```{r}
 tidy_summ_data$`Calories origin` <- factor(tidy_summ_data$`Calories origin`, levels = c("Calories total", "Calories from Fat"))
 levels(tidy_summ_data$`Calories origin`)
@@ -326,8 +314,77 @@ p <- ggradar(rest_data,  legend.text.size = 8, values.radar = c("0", "500", "100
 p
 ```
 
+That was actually quite a lot of work...
 
 
+## Boxplots
+
+Fortunately, creating box plots in ggplots2 is easier.
+
+We will take the same data set as earlier:
+
+```{r}
+file_path <- "./files_12_data_visualization/file01_menu.csv"
+df_menu <- read_csv(file_path) %>% rename(`Calories total` = `Calories`)
+head(df_menu)
+```
+
+
+And create a box plot to show the total amount of calories in different food categories.
+
+
+```{r}
+p <- ggplot(df_menu, aes(x = `Category`, y = `Calories total`)) + 
+  geom_boxplot() +
+  labs(title="Calories from fat for different food categories") +
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+p
+```
+
+## Grouped box plots
+
+If we want to compare for example the total calories to the calories from fat between different food categoeries, we need grouped box plots.
+First we need to make the data tidy again.
+
+But first we can just take the culumns that we need:
+
+```{r}
+df_menu_trunc <- df_menu[, c(1, 2, 4, 5)]
+df_menu_trunc
+```
+
+And then make it tidy:
+
+```{r}
+tidy_menu <- df_menu_trunc %>%
+  gather(`Calories total`, `Calories from Fat`, key = "Calories origin", value = "Amount of calories") 
+tidy_menu
+```
+
+And now create the grouped box plot:
+
+```{r}
+p <- ggplot(tidy_menu, aes(x = `Category`, y = `Amount of calories`, fill = `Calories origin`)) + 
+  geom_boxplot() +
+  labs(title="Calories from fat for different food categories") +
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+p
+```
+
+Again, if you want to swap the order of the groups you can change the character columns to factors:
+
+```{r}
+tidy_menu$`Calories origin` <- factor(tidy_menu$`Calories origin`, levels = c("Calories total", "Calories from Fat"))
+levels(tidy_menu$`Calories origin`)
+```
+
+```{r}
+p <- ggplot(tidy_menu, aes(x = `Category`, y = `Amount of calories`, fill = `Calories origin`)) + 
+  geom_boxplot() +
+  labs(title="Calories from fat for different food categories") +
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+p
+```
 
 
 >This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
