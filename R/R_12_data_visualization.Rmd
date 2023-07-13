@@ -469,7 +469,7 @@ First we take only the data from Diet 1:
 
 ```{r}
 chickwts_diet1 <- ChickWeight %>% filter(Diet == 1)
-chickwts_diet1
+head(chickwts_diet1)
 ```
 
 
