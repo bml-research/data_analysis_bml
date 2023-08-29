@@ -40,6 +40,18 @@ Make sure that the observations (or records) and variables (or features) are org
 
 ### Exercise 3
 
+Proper cooking temperatures are important for food safety.
+The advice is to use proper cooking temperatures to ensure safe food.
+See the data below for recommended temperatures:
+
+Fresh beef, veal, lamb, pork, deer, moose, elk or caribou steaks, chops and roasts
+recommended minimum temperature	145°F
+medium	160°F
+well done	170°F
+
+What is the ratio for "medium" and "well done" compared to the recommended minimum temperature?
+
+### Exercise 4
 
 
 ---

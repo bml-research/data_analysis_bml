@@ -32,6 +32,23 @@
 
 ### Exercise 3
 
+Note that fahrenheit scale has no absolute zero (0 °F, was established as the freezing temperature of a solution of brine made from a mixture of water, ice, and ammonium chloride). As a result, we can not directly calculate a ratio as the fahrenheit scale is an interval scale. We first need to convert the data to Kelvin.
+
+We can use the formula K = (F − 32) × 5 ⁄ 9 + 273.15
+
+So will will get the following data:
+
+recommended minimum temperature	145°F = 336 K
+medium	160°F = 344 K
+well done	170°F = 350 K
+
+Ratio medium/recommended minimum temperature = 344/336 = 1.025
+Ratio well done/recommended minimum temperature = 350/336 = 1.041
+
+
+
+
+
 ---
 
 
