@@ -43,7 +43,7 @@ Een voorbeeld opdracht met uitwerkingen is [hier](https://github.com/jurrehagema
 
 ## Under construction
 
-![Under construction](./pics/Under_construction.png)
+This website is still under construction and may contain errors.
 
 ---
 
