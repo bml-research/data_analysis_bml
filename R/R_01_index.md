@@ -70,6 +70,20 @@ Overall, the tidyverse packages provide a more user-friendly, consistent, and ef
 - [Data Analysis](./R_09_data_analysis.html)
 - [Data Visualization](./R_12_data_visualization.html)
 
+## Excercises
+
+- [Data Import](./R_03_data_import_exercises.html)
+- [Data Cleaning](./R_06_data_cleaning_exercises.html)
+- [Data Analysis](./R_09_data_analysis_exercises.html)
+- [Data Visualization](./R_12_data_visualization_exercises.html)
+
+## Solutions
+
+- [Data Import](./R_03_data_import_solutions.html)
+- [Data Cleaning](./R_06_data_cleaning_solutions.html)
+- [Data Analysis](./R_09_data_analysis_solutions.html)
+- [Data Visualization](./R_12_data_visualization_solutions.html)
+
 >This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
 >Creative Commons License: CC BY-SA 4.0.
 
