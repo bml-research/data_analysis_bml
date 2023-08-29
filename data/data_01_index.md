@@ -216,21 +216,12 @@ You can find four data types in Microsoft Excel.
 #### R
 
 In R, there are 6 basic data types. Some of them explained below (rest is beyond the scope of this course.)
-- logical. The Boolean values True and False.
-- numeric. All numbers, whole and decimal. 
+- logical. The Boolean values True and False.  
+- numeric. All numbers, whole and decimal.  
 - character. Text strings like "a" and "hello".
 
-#### Python
 
-In Python, there are also several data types. Some of them explained below. Some of them are explained in the Python section.
-- Numeric data types: int (whole numbers), float (decimal numbers)
-- String data types: str (text).
-- Sequence types: list, tuple, range. These are containers for data.
-- Mapping data type: dict. For efficient lookup of data. 
-- Boolean type: bool. True and False
-- Set data types: set. Container for unique elements.
-
-The Excel, R and Python section contain more about the particular data types. 
+The Excel and R section contain more about the particular data types. 
 
 ---
 
