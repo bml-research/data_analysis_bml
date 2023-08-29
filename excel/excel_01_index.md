@@ -44,11 +44,24 @@ Ultimately, the choice between Excel, Python, and R will depend on your specific
 
 ## Topics:
 
-
 - [Data Import](./excel_02_data_import.md)
 - [Data Cleaning](./excel_05_data_cleaning.md)
 - [Data Analysis](./excel_08_data_analysis.md)
 - [Data Visualization](./excel_11_data_visualization.md)
+
+## Excercises
+
+- [Data Import](./excel_03_data_import_exercises.md)
+- [Data Cleaning](./excel_06_data_cleaning_exercises.md)
+- [Data Analysis](./excel_09_data_analysis_exercises.md)
+- [Data Visualization](./excel_12_data_visualization_exercises.md)
+
+## Solutions
+
+- [Data Import](./excel_04_data_import_solutions.md)
+- [Data Cleaning](./excel_07_data_cleaning_solutions.md)
+- [Data Analysis](./excel_10_data_analysis_solutions.md)
+- [Data Visualization](./excel_13_data_visualization_solutions.md)
 
 >This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
 >Creative Commons License: CC BY-SA 4.0.

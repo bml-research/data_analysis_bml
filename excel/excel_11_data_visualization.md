@@ -317,13 +317,7 @@ The result of the pivot chart (drinks deselected):
 ![Pivot chart](./pics_11_data_visualization/fig30.png)
 *<sub>Figure 30: Pivot chart. Average calories and average calories from fat from different food categories. Drinks deselected. </sub>*
 
----
 
-### Exersises and Solutions:
-
-
-- [Exercises](./excel_12_data_visualization_exercises.md)
-- [Solutions](./excel_13_data_visualization_solutions.md)
 
 ---
 

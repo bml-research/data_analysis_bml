@@ -302,13 +302,6 @@ And than select the categories as well as the columns total calories and calorie
 
 As you can see, food items in the category chicken and fish contain the highest average amount of calories from fat. 
 
----
-
-### Exersises and Solutions:
-
-
-- [Exercises](./excel_09_data_analysis_exercises.md)
-- [Solutions](./excel_10_data_analysis_solutions.md)
 
 ---
 

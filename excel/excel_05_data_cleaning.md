@@ -177,13 +177,6 @@ In the above example, `<>` is a shorthand for the `NOT` operator. So the formula
 
 >Like many things in real life, datasets are often imperfect. Very often, datapoints will be missing. This is just reality and there is not much that you can do about the fact that you will encounter missing data. What is important though, is how you deal with missing data. Make it explicit that data is missing in your analysis and deal with it in a transparant way.
 
----
-
-### Exersises and Solutions:
-
-
-- [Exercises](./excel_06_data_cleaning_exercises.md)
-- [Solutions](./excel_07_data_cleaning_solutions.md)
 
 ---
 
