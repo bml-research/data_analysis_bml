@@ -4,7 +4,7 @@
 [Go back to the main page](../index.md)
 
 
-# Excel Data Analysis
+# Excel Data Cleaning
 
 ## Exercises
 
