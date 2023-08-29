@@ -44,6 +44,7 @@ Een voorbeeld opdracht met uitwerkingen is [hier](https://github.com/jurrehagema
 
 This website is still under construction and may contain errors.
 
+
 ---
 
 >Some text on this web page is copied, adapted and modified from Wikipedia.org  
