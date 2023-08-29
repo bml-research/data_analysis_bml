@@ -229,7 +229,7 @@ The Excel and R section contain more about the particular data types.
 ### Exersises and Solutions:
 
 
-- [Exercises](./data_02_exersises.md)
+- [Exercises](./data_02_exercises.md)
 - [Solutions](./data_03_solutions.md)
 
 
