@@ -111,7 +111,7 @@ Than, remove the unwanted top rows and format as table.
 ### Exersises and Solutions:
 
 
-- [Exercises](./excel_03_data_import_exersises.md)
+- [Exercises](./excel_03_data_import_exercises.md)
 - [Solutions](./excel_04_data_import_solutions.md)
 
 ---

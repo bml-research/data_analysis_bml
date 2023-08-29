@@ -307,7 +307,7 @@ As you can see, food items in the category chicken and fish contain the highest 
 ### Exersises and Solutions:
 
 
-- [Exercises](./excel_09_data_analysis_exersises.md)
+- [Exercises](./excel_09_data_analysis_exercises.md)
 - [Solutions](./excel_10_data_analysis_solutions.md)
 
 ---
