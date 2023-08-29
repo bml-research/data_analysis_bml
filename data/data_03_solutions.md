@@ -45,7 +45,16 @@ well done	170°F = 350 K
 Ratio medium/recommended minimum temperature = 344/336 = 1.025
 Ratio well done/recommended minimum temperature = 350/336 = 1.041
 
+### Exercise 4
 
+|Country        |Year|Volume (l)|
+|:--------------|:---|---------:|
+|Albania        |1996|2.59      |
+|Albania        |2026|7.50      |
+|Algeria        |1996|0.27      |
+|Algeria        |2026|0.90      |
+|Netherlands    |1996|9.80      |
+|Metherlands    |2026|8.70      |
 
 
 
