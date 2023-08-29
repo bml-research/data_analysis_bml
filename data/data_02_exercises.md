@@ -53,8 +53,23 @@ What is the ratio for "medium" and "well done" compared to the recommended minim
 
 ### Exercise 4
 
+The R library Tidyverse will work best with tidy data.
+Remember that there are three interrelated rules which make a dataset tidy:
+- Each variable must have its own column.
+- Each observation must have its own row.
+- Each value must have its own cell.
 
----
+Convert the datatable below to a datatable that is tidy.
+
+Alcohol consumption in litres per year over time.
+
+|Country        |1996  |2016  |
+|:--------------|-----:|-----:|
+|Albania        |2.59  |7.50  |
+|Algeria        |0.27  |0.90  |
+|Netherlands    |9.80  |8.70  |
+
+### Exercise 5
 
 
 >This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
