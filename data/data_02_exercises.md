@@ -30,6 +30,16 @@ Analysed Portion: continuous, ratio scale
 
 ### Exercise 2
 
+Have a look at some raw data below:
+
+Item: Granola, Chicken Leg, Tofu, Salmon, Avocados
+Calories (kcal) per 100 g: 489, 184, 144, 206, 160
+
+Create a data table of the above data.
+Make sure that the observations (or records) and variables (or features) are organised appropriately. Also sort the data based on the amount of calories.
+
+### Exercise 3
+
 
 
 ---

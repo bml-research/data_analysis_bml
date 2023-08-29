@@ -21,7 +21,16 @@
 
 ### Exercise 2
 
+|Item             |Calories (kcal/g)|
+|:----------------|----------------:|
+|Granola          |489              |
+|Salmon           |206              |
+|Chicken Leg      |184              |
+|Avocados         |160              |
+|Tofu             |144              |
 
+
+### Exercise 3
 
 ---
 
