@@ -21,11 +21,10 @@
 
 Find the solutions in the link below.
 
-- [food-composition](https://www.kaggle.com/datasets/vinitshah0110/food-composition)
-- [zie deze file](./files_04_import_solutions/excercise02/01_food-composition/food_composition.xlsx)
 
-- [nutritional-values-for-common-foods-and-products](https://www.kaggle.com/datasets/trolukovich/nutritional-values-for-common-foods-and-products)
-- [zie deze file](./files_04_import_solutions/excercise02/02_nutritional-values-for-common-foods-and-products/nutrition.xlsx)
+- [Oplossing: food-composition](./files_04_import_solutions/excercise02/01_food-composition/food_composition.xlsx)
+
+- [Oplossing: nutritional-values-for-common-foods-and-products](./files_04_import_solutions/excercise02/02_nutritional-values-for-common-foods-and-products/nutrition.xlsx)
 
 As you can see from this file, the units are in the cells instead of the column headers.
 Therefore, all fileds are strings instead of numbers.
