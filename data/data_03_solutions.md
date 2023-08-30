@@ -47,16 +47,42 @@ Ratio well done/recommended minimum temperature = 350/336 = 1.041
 
 ### Exercise 4
 
+The rule "Each variable must have its own column." has not been met. In the untidy table, there are two columns related to the volume. Thus, the column names are not names of variables, but values of a variable. Thus, we need to create a column "year" in order to solve this.
+
 |Country        |Year|Volume (l)|
 |:--------------|:---|---------:|
 |Albania        |1996|2.59      |
-|Albania        |2026|7.50      |
+|Albania        |2016|7.50      |
 |Algeria        |1996|0.27      |
-|Algeria        |2026|0.90      |
+|Algeria        |2016|0.90      |
 |Netherlands    |1996|9.80      |
-|Metherlands    |2026|8.70      |
+|Metherlands    |2016|8.70      |
 
+### Exercise 5
 
+The rule "Each value must have its own cell." has not been met. In the untidy table, there are two values related to the volume in one cell. Thus, we need to seperate them over two records (rows) in order to solve this. Note that we should not seperate these values in two columns as this will create the situation as shown in Exercise 4.
+
+|Country        |Year|Volume (l)|
+|:--------------|:---|---------:|
+|Albania        |1996|2.59      |
+|Albania        |2016|7.50      |
+|Algeria        |1996|0.27      |
+|Algeria        |2016|0.90      |
+|Netherlands    |1996|9.80      |
+|Metherlands    |2016|8.70      |
+
+### Exercise 6
+
+In this case, an observation is scattered across multiple rows.
+An observation is a country in a year, but each observation is spread across two rows.
+We can solve this by defining two columns for Alcohol and Bottled water.
+
+|Country        |Year|Volume Alcohol (l) |Volume Bottles Water (l)|
+|:--------------|:---|------------------:|-----------------------:|
+|Albania        |1996|2.59               |120                     |
+|Albania        |2016|7.50               |131                     |
+|Algeria        |1996|0.27               |144                     |
+|Algeria        |2016|0.90               |154                     |
 
 ---
 

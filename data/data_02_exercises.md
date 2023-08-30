@@ -69,7 +69,36 @@ Alcohol consumption in litres per year over time.
 |Algeria        |0.27  |0.90  |
 |Netherlands    |9.80  |8.70  |
 
+Also mention, which of the three interrelated rules which make a dataset tidy have not been met.
+
 ### Exercise 5
+
+Another untidy data table. Describe which of the three interrelated rules which make a dataset tidy have not been met and convert the data table to a data table that is tidy.
+
+|Country        |1996, 2016   |
+|:--------------|------------:|
+|Albania        |2.59, 7.50   |
+|Algeria        |0.27, 0.90   |
+|Netherlands    |9.80, 8.70   |
+
+### Exercise 6
+
+Another untidy data table. Describe which of the three interrelated rules which make a dataset tidy have not been met and convert the data table to a data table that is tidy.
+
+|Country        |Year|Consumtion type    |Volume (l)|
+|:--------------|:---|:------------------|---------:|
+|Albania        |1996|Alcohol            |2.59      |
+|Albania        |1996|Bottled water      |120       |
+|Albania        |2016|Alcohol            |7.50      |
+|Albania        |2016|Bottled water      |131       |
+|Algeria        |1996|Alcohol            |0.27      |
+|Algeria        |1996|Bottled water      |144       |
+|Algeria        |2016|Alcohol            |0.90      |
+|Algeria        |2016|Bottled water      |154       |
+
+
+
+---
 
 
 >This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
