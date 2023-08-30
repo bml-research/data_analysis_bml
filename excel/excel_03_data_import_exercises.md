@@ -22,6 +22,20 @@ Then load in Excel.
 
 Report the field separator.
 
+### Exercise 2
+
+Load some datasets from [this(https://bml-research.github.io/data_analysis/data_sets/data_sets.html)] link page in Excel using the csv import tool.
+
+For example:
+
+- [food-composition](https://www.kaggle.com/datasets/vinitshah0110/food-composition)
+- [nutritional-values-for-common-foods-and-products](https://www.kaggle.com/datasets/trolukovich/nutritional-values-for-common-foods-and-products)
+- [food-allergens-and-allergies](https://www.kaggle.com/datasets/boltcutters/food-allergens-and-allergies)
+- [uk-food-hygiene-rating-data-london](https://www.kaggle.com/datasets/datota/
+- [foodproductemissions](https://www.kaggle.com/datasets/amandaroseknudsen/foodproductemissions)
+- [food-balance-sheet-europe](https://www.kaggle.com/datasets/cameronappel/food-balance-sheet-europe)
+
+
 ---
 
 
