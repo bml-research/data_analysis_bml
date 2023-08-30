@@ -77,7 +77,7 @@ In this case, an observation is scattered across multiple rows.
 An observation is a country in a year, but each observation is spread across two rows.
 We can solve this by defining two columns for Alcohol and Bottled water.
 
-|Country        |Year|Volume Alcohol (l) |Volume Bottles Water (l)|
+|Country        |Year|Volume Alcohol (l) |Volume Bottled Water (l)|
 |:--------------|:---|------------------:|-----------------------:|
 |Albania        |1996|2.59               |120                     |
 |Albania        |2016|7.50               |131                     |
