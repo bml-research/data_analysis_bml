@@ -19,18 +19,40 @@
 
 ### Exercise 2
 
-Find the solutions in the link below.
+Find the solution in the link below.
 
+[food-composition](./files_04_import_solutions/exercise02/food_composition.xlsx)
 
-- [Oplossing: food-composition](./files_04_import_solutions/excercise02/01_food-composition/food_composition.xlsx)
+### Exercise 3
 
-- [Oplossing: nutritional-values-for-common-foods-and-products](./files_04_import_solutions/excercise02/02_nutritional-values-for-common-foods-and-products/nutrition.xlsx)
+Find the solution in the link below.
+
+[nutritional-values-for-common-foods-and-products](./files_04_import_solutions/exercise03/nutrition.xlsx)
 
 As you can see from this file, the units are in the cells instead of the column headers.
+
+![import](./files_04_import_solutions/exercise03/fig1.png)
+
 Therefore, all fileds are strings instead of numbers.
 This requires cleaning before you can do any calculations!
 
+### Exercise 4
 
+During the import, the column headers where not placed as such.
+See figure below:
+
+![import](./files_04_import_solutions/exercise04/fig1.png)
+
+To fix this, click `Transform Data` and then `Use First Row as Headers`.
+
+![import](./files_04_import_solutions/exercise04/fig2.png)
+
+The column headers are now loaded well:
+
+![import](./files_04_import_solutions/exercise04/fig3.png)
+
+
+The solution can be found [here](./files_04_import_solutions/exercise04/food_data.xlsx)
 
 ---
 

@@ -24,15 +24,24 @@ Report the field separator.
 
 ### Exercise 2
 
-Load some datasets from [this(https://bml-research.github.io/data_analysis/data_sets/data_sets.html)] link page in Excel using the csv import tool.
+Load the [food-composition](https://www.kaggle.com/datasets/vinitshah0110/food-composition) dataset in Excel using the csv import tool.
 
-For example:
+### Exercise 3
 
-- [food-composition](https://www.kaggle.com/datasets/vinitshah0110/food-composition)
-- [nutritional-values-for-common-foods-and-products](https://www.kaggle.com/datasets/trolukovich/nutritional-values-for-common-foods-and-products)
-- [food-allergens-and-allergies](https://www.kaggle.com/datasets/boltcutters/food-allergens-and-allergies)
-- [foodproductemissions](https://www.kaggle.com/datasets/amandaroseknudsen/foodproductemissions)
-- [food-balance-sheet-europe](https://www.kaggle.com/datasets/cameronappel/food-balance-sheet-europe)
+Load the [nutritional-values-for-common-foods-and-products](https://www.kaggle.com/datasets/trolukovich/nutritional-values-for-common-foods-and-products) dataset in Excel using the csv import tool.
+
+### Exercise 4
+
+Load the [food-allergens-and-allergies](https://www.kaggle.com/datasets/boltcutters/food-allergens-and-allergies) dataset in Excel using the csv import tool.
+
+### Exercise 5
+
+Load the [foodproductemissions](https://www.kaggle.com/datasets/amandaroseknudsen/foodproductemissions) dataset in Excel using the csv import tool.
+
+### Exercise 6
+
+Load the [food-balance-sheet-europe](https://www.kaggle.com/datasets/cameronappel/food-balance-sheet-europe)
+ dataset in Excel using the csv import tool.
 
 
 ---
