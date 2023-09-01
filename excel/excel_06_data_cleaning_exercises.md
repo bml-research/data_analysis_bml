@@ -16,7 +16,7 @@
 
 ### Exercise 2
 
-
+The file from the previous exercise contains the units in the cells. This makes it impossible to perform calculations (as the data type is a text string). Remove the units in order to make calculations possible.
 
 
 ---
