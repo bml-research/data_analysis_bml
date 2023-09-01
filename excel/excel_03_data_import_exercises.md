@@ -15,10 +15,10 @@
 Load the following datasets in Excel using the csv import functionality. First have a look at them in your text editor.  
 Then load in Excel.  
 
-- [file 1](./exercises_files/Food_composition_1.csv)  
-- [file 2](./exercises_files/Food_composition_2.csv)  
-- [file 3](./exercises_files/Food_composition_3.csv)  
-- [file 4](./exercises_files/Food_composition_4.csv)  
+- [file 1](./files_03_data_import_exercises/Food_composition_1.csv)  
+- [file 2](./files_03_data_import_exercises/Food_composition_2.csv)  
+- [file 3](./files_03_data_import_exercises/Food_composition_3.csv)  
+- [file 4](./files_03_data_import_exercises/Food_composition_4.csv)  
 
 Report the field separator.
 

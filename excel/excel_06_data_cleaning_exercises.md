@@ -12,7 +12,9 @@
 
 ### Exercise 1
 
-To be done.
+[This](./files_06_data_cleaning_exercises/exercise01/calories.xlsx) first dataset was not loaded well. Use the text to column feature to correct it.
+
+### Exercise 2
 
 ---
 

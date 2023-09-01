@@ -12,7 +12,16 @@
 
 ### Exercise 1
 
-To be done.
+Use the text to column feature. Seperator is the pipe symbol `|`.
+Then, create a data table with the first row as headers.
+
+![solution](./files_07_data_cleaning_solutions/exercise01/fig1.png)
+
+The solution can be found [here](./files_07_data_cleaning_solutions/exercise01/calories.xlsx).
+
+
+
+### Exercise 2
 
 
 ---
