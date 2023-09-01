@@ -43,6 +43,10 @@ Load the [foodproductemissions](https://www.kaggle.com/datasets/amandaroseknudse
 Load the [food-balance-sheet-europe](https://www.kaggle.com/datasets/cameronappel/food-balance-sheet-europe)
  dataset in Excel using the csv import tool.
 
+>You can try to load more data from the [datasets web page](https://bml-research.github.io/data_analysis/data_sets/data_sets.html).
+>Alternatively, you can search for more datasets on [Kaggle](https://www.kaggle.com/), [KDnuggets](https://www.kdnuggets.com/) or other dataset repositories. 
+
+
 
 ---
 

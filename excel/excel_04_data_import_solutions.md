@@ -54,6 +54,25 @@ The column headers are now loaded well:
 
 The solution can be found [here](./files_04_import_solutions/exercise04/food_data.xlsx)
 
+
+### Exercise 5
+
+This file is rather easy to load.
+
+![import](./files_04_import_solutions/exercise05/fig1.png)
+
+
+The solution can be found [here](./files_04_import_solutions/exercise05/Food_Product_Emissions.xlsx)
+
+
+### Exercise 6
+
+This file is easy to load as well:
+
+![import](./files_04_import_solutions/exercise06/fig1.png)
+
+The solution can be found [here](./files_04_import_solutions/exercise06/FAOSTAT_data_10-23-2018.xlsx)
+
 ---
 
 
