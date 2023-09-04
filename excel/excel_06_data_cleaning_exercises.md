@@ -22,6 +22,11 @@ The file from the previous exercise contains the units in the cells. This makes 
 
 [This dataset](./files_06_data_cleaning_exercises/exercise03/Food%20Composition_mod.csv) contains rows with duplicate data. Load the data and remove the duplicates from the data table.
 
+### Exercise 4
+
+
+
+
 
 
 
