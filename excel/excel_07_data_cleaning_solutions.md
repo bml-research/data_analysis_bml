@@ -42,6 +42,15 @@ The solution can be found [here](./files_07_data_cleaning_solutions/exercise02/c
 >For example `=LEFT(C1,LEN(C1)-1)` will strip the g from the numbers.
 >Use whatever gets the job done!
 
+### Exercise 3
+
+Indeed the dataset contains two duplicate rows.
+Use the button on the data tab of the ribbon to remove the duplicate rows:
+
+![remove duplicates](./files_07_data_cleaning_solutions/exercise03/fig1.png)
+
+
+The solution can be found [here](./files_07_data_cleaning_solutions/exercise03/Food%20Composition_mod_solved.xlsx).
 
 ---
 
