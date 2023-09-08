@@ -153,7 +153,7 @@ Or check if they are equal to #N/A using the `ISNA` function:
 
 This is, cumbersome and error prone. You can work with third party add-ons, use VBA script or just use R or Python instead. Both R and Python do have powerfull functions to deal with missing data.
 
-In any case, it is best to convert cells with "empty" values (whether it is truly blank, contains a dash or any other character to mark empty) to #N/A. #N/A is the error value of Excel that means "no value is available." To avoid accidentally including empty cells in your calculations, enter #N/A in the cells where you are missing information. (A formula that references a cell that contains #N/A will return the #N/A error value). Read more about #N/A [here](https://support.microsoft.com/en-gb/office/na-function-5469c2d1-a90c-4fb5-9bbc-64bd9bb6b47c#:~:text=Returns%20the%20error%20value%20%23N,empty%20cells%20in%20your%20calculations.)
+In any case, it is best to convert cells with "empty" values (whether it is truly blank, contains a dash or any other character to mark empty) to #N/A. #N/A is the error value of Excel that means "no value is available." To avoid accidentally including empty cells in your calculations, enter #N/A in the cells where you are missing information. (A formula that references a cell that contains #N/A will return the #N/A error value). Read more about #N/A [here](https://support.microsoft.com/en-gb/office/na-function-5469c2d1-a90c-4fb5-9bbc-64bd9bb6b47c#:~:text=Returns%20the%20error%20value%20%23N,empty%20cells%20in%20your%20calculations.).
 
 Use simply find and replace to insert #N/A in "empty" cells.
 
