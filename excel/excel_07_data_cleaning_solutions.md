@@ -52,6 +52,18 @@ Use the button on the data tab of the ribbon to remove the duplicate rows:
 
 The solution can be found [here](./files_07_data_cleaning_solutions/exercise03/Food%20Composition_mod_solved.xlsx).
 
+
+### Exercise 4
+
+You can find the solution [here](./files_07_data_cleaning_solutions/exercise04/nutrition.xlsx)
+
+|Condition                  |Numer of cells|
+|--------------------------:|-------------:|
+|Numer of data fields       |676753        |
+|Number of non empty fields |675163        |
+|Number of empty fields     |1590          |
+
+
 ---
 
 

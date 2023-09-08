@@ -24,10 +24,13 @@ The file from the previous exercise contains the units in the cells. This makes 
 
 ### Exercise 4
 
+[This dataset](https://www.kaggle.com/datasets/trolukovich/nutritional-values-for-common-foods-and-products) contains empty data.
 
-
-
-
+Make the empty cells more explicit in Excel by converting them to #/NA.  
+Count how many cells you have:
+- in total
+- with missing data
+- without missing data
 
 
 ---
