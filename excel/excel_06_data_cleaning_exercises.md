@@ -26,7 +26,7 @@ The file from the previous exercise contains the units in the cells. This makes 
 
 [This dataset](https://www.kaggle.com/datasets/trolukovich/nutritional-values-for-common-foods-and-products) contains empty data.
 
-Make the empty cells more explicit in Excel by converting them to #/NA.  
+Make the empty cells more explicit in Excel by converting them to #N/A.  
 Count how many cells you have:
 - in total
 - with missing data
