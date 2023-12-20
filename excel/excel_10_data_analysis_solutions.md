@@ -12,7 +12,14 @@
 
 ### Exercise 1
 
-To be done.
+The excel file can be found [here](./files_10_data_analysis_solutions/exercise01/menu.xlsx).  
+Screenshot of the table below:  
+
+![solution exercise01](./files_10_data_analysis_solutions/exercise01/fig1.png)
+
+
+### Exercise 2
+
 
 
 ---
