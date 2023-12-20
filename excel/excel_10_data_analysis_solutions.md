@@ -20,6 +20,13 @@ Screenshot of the table below:
 
 ### Exercise 2
 
+1. Chicken McNuggets (40 piece)  
+2. Big Breakfast with Hotcakes (Regular Biscuit) and Big Breakfast with Hotcakes (Large Biscuit)  
+3. Hamburger  
+4. Chocolate Shake (Large)  
+5. Iced Coffee with Sugar Free French Vanilla Syrup (Medium)
+
+
 
 
 ---

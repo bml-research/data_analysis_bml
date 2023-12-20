@@ -21,8 +21,12 @@ Then perfom the following calculations on a new worksheet and display them as a 
 
 ### Exercise 2
 
-
-
+Use filter and sort to answer the following questions:  
+1. Which item has the highest Calories from fat?  
+2. Which items have the highest Iron (% Daily Value)?  
+3. Which Beef & Pork item has the lowest Calories from fat?  
+4. Which Coffee & Tea or Smoothies & Shakes item has the highest amount of carbohydrates?  
+5. Which item has the highest saturated fat and lowest carbohydrates value (use multi sort)?  
 ---
 
 
