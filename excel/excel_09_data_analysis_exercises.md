@@ -26,7 +26,15 @@ Use filter and sort to answer the following questions:
 2. Which items have the highest Iron (% Daily Value)?  
 3. Which Beef & Pork item has the lowest Calories from fat?  
 4. Which Coffee & Tea or Smoothies & Shakes item has the highest amount of carbohydrates?  
-5. Which item has the highest saturated fat and lowest carbohydrates value (use multi sort)?  
+5. Which item has the highest saturated fat and lowest carbohydrates value (use multi-sort to practice)?  
+
+### Exercise 3
+
+1. More then 600 calories would be considered high energetic. How many items are high energetic?  
+2. How many items are between 300 and 600 calories?  
+3. How many items are measured in the serving size Fluid Ounce (fl oz cup) (hint: use a wildcard)?  
+4. 
+
 ---
 
 

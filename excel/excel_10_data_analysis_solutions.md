@@ -27,6 +27,12 @@ Screenshot of the table below:
 5. Iced Coffee with Sugar Free French Vanilla Syrup (Medium)
 
 
+### Exercise 3
+
+1. high energetic: 37  
+2. 300 > calories > 600: 106  
+3. count fl oz cup: 138  
+
 
 
 ---
