@@ -33,7 +33,18 @@ Use filter and sort to answer the following questions:
 1. More then 600 calories would be considered high energetic. How many items are high energetic?  
 2. How many items are between 300 and 600 calories?  
 3. How many items are measured in the serving size Fluid Ounce (fl oz cup) (hint: use a wildcard)?  
-4. 
+
+### Exercise 4
+
+Create a new worksheet and name it pivot.  
+Create a Pivot table and group the categories.  
+Calculate:  
+- the Average of Total Fat (% Daily Value)  
+- the Average of Saturated Fat (% Daily Value)  
+- the Average of Cholesterol (% Daily Value)  
+
+Round the values to 1 decimal.  
+
 
 ---
 

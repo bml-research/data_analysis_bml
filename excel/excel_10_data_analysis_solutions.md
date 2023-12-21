@@ -17,6 +17,25 @@ Screenshot of the table below:
 
 ![solution exercise01](./files_10_data_analysis_solutions/exercise01/fig1.png)
 
+Examples of used functions:  
+
+Minimum:  
+```
+=MIN(menu[Calories])
+```
+Maximum:  
+```
+=MAX(menu[Calories])
+```
+Average:  
+```
+=AVERAGE(menu[Calories])
+```
+Median:
+```
+=MEDIAN(menu[Calories])
+```
+
 
 ### Exercise 2
 
@@ -30,9 +49,28 @@ Screenshot of the table below:
 ### Exercise 3
 
 1. high energetic: 37  
+
+ ```
+ =COUNTIF(menu[Calories];">600")
+ ```
+
 2. 300 > calories > 600: 106  
+
+ ```
+=COUNTIFS(menu[Calories];">300";menu[Calories];"<600")
+ ```
+
 3. count fl oz cup: 138  
 
+ ```
+=COUNTIF(menu[Serving Size];"*fl oz cup*")
+ ```
+
+### Exercise 4
+
+The excel file can be found [here](./files_10_data_analysis_solutions/exercise01/menu.xlsx).  
+
+![pivot table](./files_10_data_analysis_solutions/exercise04/fig1.png)
 
 
 ---
