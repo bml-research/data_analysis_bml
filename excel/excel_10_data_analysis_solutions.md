@@ -70,7 +70,15 @@ Median:
 
 The excel file can be found [here](./files_10_data_analysis_solutions/exercise01/menu.xlsx).  
 
-![pivot table](./files_10_data_analysis_solutions/exercise04/fig1.png)
+![conditional formatting](./files_10_data_analysis_solutions/exercise04/fig01.png)
+
+
+
+### Exercise 5
+
+The excel file can be found [here](./files_10_data_analysis_solutions/exercise01/menu.xlsx).  
+
+![pivot table](./files_10_data_analysis_solutions/exercise05/fig1.png)
 
 
 ---

@@ -34,7 +34,15 @@ Use filter and sort to answer the following questions:
 2. How many items are between 300 and 600 calories?  
 3. How many items are measured in the serving size Fluid Ounce (fl oz cup) (hint: use a wildcard)?  
 
-### Exercise 4
+### Exersise 4
+
+1. Use conditional formatting to indicate high energetic food items (>600 calories). Use red markup for these.  
+2. Use conditional formatting to check for duplicate food items. Use red markup for these.  
+3. Use conditional formatting to indicate a % Dalily Value < 20% for Vitamin A and Vitamin C. Use red markup for these.  
+4. Use conditional formatting to indicate a % Dalily Value >= 20% for Vitamin A and Vitamin C. Use green markup for these. Make sure that you include 20%!  
+
+
+### Exercise 5
 
 Create a new worksheet and name it pivot.  
 Create a Pivot table and group the categories.  
