@@ -12,7 +12,14 @@
 
 ### Exercise 1
 
-To be done.
+Load the [Food Emissions](https://www.kaggle.com/datasets/amandaroseknudsen/foodproductemissions?resource=download) dataset from Kaggle.
+
+Create a column chart for the `Total Global Average GHG Emissions per kg` per `food product`.
+
+Create the column chart on a new worksheet.
+Annotate the axis and add a proper title.
+
+What food product creates the highest Emission value?
 
 ---
 
