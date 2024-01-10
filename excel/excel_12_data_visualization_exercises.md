@@ -28,6 +28,11 @@ As the differences in the values are rather high, it is wise to use a log scale 
 
 ### Exercise 3
 
+From the previous dataset, filter the data that contain oil in the name.  
+Create a clustered column chart representing the Emissions per kg from `Processing`, `Transport`, `Packaging` and `Retail`. Make sure to add proper axis titles, a tile and a legend.
+
+### Exercise 4
+
 ---
 
 

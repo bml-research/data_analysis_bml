@@ -24,12 +24,21 @@ Beef (beef herd) represents the highest emission value per kg food product.
 
 ### Exercise 2
 
-See the Excel file [here](./files_13_data_visualization_solutions/exercise01/exercise01.xlsx) for the solution.
+See the Excel file [here](./files_13_data_visualization_solutions/exercise02/exercise02.xlsx) for the solution.
 
 Or the figure below:
 
 ![figure](./files_13_data_visualization_solutions/exercise02/fig01.png)
 
+### Exercise 3
+
+See the Excel file [here](./files_13_data_visualization_solutions/exercise03/exercise03.xlsx) for the solution.
+
+Or the figure below:
+
+![figure](./files_13_data_visualization_solutions/exercise03/fig01.png)
+
+### Exercise 4
 
 
 
