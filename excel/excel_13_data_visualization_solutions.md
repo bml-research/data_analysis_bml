@@ -40,7 +40,14 @@ Or the figure below:
 
 ### Exercise 4
 
+See the Excel file [here](./files_13_data_visualization_solutions/exercise04/exercise04.xlsx) for the solution.
 
+Or the figure below:
+
+![figure](./files_13_data_visualization_solutions/exercise04/fig01.png)
+
+
+### Exercise 5
 
 ---
 

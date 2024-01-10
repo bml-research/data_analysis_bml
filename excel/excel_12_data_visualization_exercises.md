@@ -33,6 +33,13 @@ Create a clustered column chart representing the Emissions per kg from `Processi
 
 ### Exercise 4
 
+Use the same data as from exercise 3 to create a stacked column chart. Filter the data that contain oil in the name.  
+Create a stacked column chart representing the Emissions per kg from `Processing`, `Transport`, `Packaging` and `Retail`. Make sure to add proper axis titles, a tile and a legend.
+
+### Exercise 5
+
+
+
 ---
 
 
