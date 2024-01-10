@@ -55,6 +55,15 @@ Or the figure below:
 
 ![figure](./files_13_data_visualization_solutions/exercise05/fig01.png)
 
+
+### Exercise 6
+
+See the Excel file [here](./files_13_data_visualization_solutions/exercise06/exercise06.xlsx) for the solution.
+
+Or the figure below:
+
+![figure](./files_13_data_visualization_solutions/exercise06/fig01.png)
+
 ---
 
 
