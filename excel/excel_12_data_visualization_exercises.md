@@ -21,6 +21,13 @@ Annotate the axis and add a proper title.
 
 What food product creates the highest Emission value?
 
+
+### Exercise 2
+
+As the differences in the values are rather high, it is wise to use a log scale to display your data. Log scales have their advantages and are often used to display data that cover a wide range of values. Use a 2log scale to display your data.
+
+### Exercise 3
+
 ---
 
 
