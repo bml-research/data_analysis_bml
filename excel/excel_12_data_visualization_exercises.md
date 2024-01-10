@@ -38,7 +38,8 @@ Create a stacked column chart representing the Emissions per kg from `Processing
 
 ### Exercise 5
 
-
+Use the same data as from exercise 3 to create a relative stacked column chart. Filter the data that contain oil in the name.  
+Create a stacked column chart representing the Emissions per kg from `Processing`, `Transport`, `Packaging` and `Retail`. Make sure to add proper axis titles, a tile and a legend.
 
 ---
 

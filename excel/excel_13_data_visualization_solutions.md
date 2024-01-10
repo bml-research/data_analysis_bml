@@ -49,6 +49,12 @@ Or the figure below:
 
 ### Exercise 5
 
+See the Excel file [here](./files_13_data_visualization_solutions/exercise05/exercise05.xlsx) for the solution.
+
+Or the figure below:
+
+![figure](./files_13_data_visualization_solutions/exercise05/fig01.png)
+
 ---
 
 
