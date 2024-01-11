@@ -57,6 +57,14 @@ Create a box plot for `Energy per 100 g in KJ` plotted against the `Food Categor
 
 Which two Food Categories show the highest energy per weigth?
 
+### Exercise 8
+
+In [this dataset](./files_12_data_visualization_exercises/exercise08/ChickWeight.csv) you can find Chick Weight data. It shows the weight (in grams) on day 42 for various chickens that were fed with various diets during 42 days.
+
+Create a radar chart for the various diets on day 42.  
+Calculate the average weight per diet.
+
+Wich chickens on which diet generated the highest weight gains?
 
 ---
 

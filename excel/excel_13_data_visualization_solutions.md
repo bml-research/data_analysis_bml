@@ -77,6 +77,17 @@ Or the figure below:
 
 Olis & Fats as well as VegetableOils show the highest energy density.  
 
+
+### Exercise 8
+
+See the Excel file [here](./files_13_data_visualization_solutions/exercise08/exercise08.xlsx) for the solution.
+
+Or the figure below:
+
+![figure](./files_13_data_visualization_solutions/exercise08/fig01.png)
+
+Chicken number 4 and 5 on Diet number 3 gained the most in weight.  
+
 ---
 
 
