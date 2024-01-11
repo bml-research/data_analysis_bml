@@ -64,7 +64,8 @@ In [this dataset](./files_12_data_visualization_exercises/exercise08/ChickWeight
 Create a radar chart for the various diets on day 42.  
 Calculate the average weight per diet.
 
-Wich chickens on which diet generated the highest weight gains?
+Two Chickens on a certain diet clearly gained the most weight.  
+Wich two chickens on which diet generated the highest weight gains?  
 
 ---
 
