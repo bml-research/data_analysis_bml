@@ -47,6 +47,15 @@ Create a relative stacked column chart representing the Emissions per kg from `P
 Use the same data as from exercise 3 to create a pie chart. Filter the data that contain oil in the name.  
 Create a pie chart representing the Emissions per kg from `Processing`, `Transport`, `Packaging` and `Retail`. Make sure to add proper axis titles, a title, data labels and a legend.
 
+### Exercise 7
+
+Download the [data set about](https://www.kaggle.com/datasets/kkhandekar/calories-in-food-items-per-100-grams) food calories per 100 g. 
+
+The data set contains units in the cells.  
+First clean the dataset.  
+Create a box plot for `Energy per 100 g in KJ` plotted against the `Food Categories`.  
+
+Which two Food Categories show the highest energy per weigth?
 
 
 ---
