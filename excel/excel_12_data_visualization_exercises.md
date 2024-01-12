@@ -70,7 +70,6 @@ Wich two chickens on which diet generated the highest weight gains?
 
 ### Exercise 9
 
-
 Have look at the data [here](./files_12_data_visualization_exercises/exercise09/data.csv)
 It contains data about Potassium and Sodium content (in mg/100 g) as well as calories (in kcal/100 g).  
 
