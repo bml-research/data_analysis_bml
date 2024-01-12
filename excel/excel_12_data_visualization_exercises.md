@@ -67,6 +67,24 @@ Calculate the average weight per diet.
 Two Chickens on a certain diet clearly gained the most weight.  
 Wich two chickens on which diet generated the highest weight gains?  
 
+
+### Exercise 9
+
+
+Have look at the data [here](./files_12_data_visualization_exercises/exercise09/data.csv)
+It contains data about Potassium and Sodium content (in mg/100 g) as well as calories (in kcal/100 g).  
+
+The World Health Organization (WHO) recommends ingestion of less than 2000 mg of sodium per day and more than 3510 mg of potassium per day, resulting in a Na-to-K ratio of ≤1.0, which is believed to be optimal for preserving cardiovascular health.
+
+In addition, high caloric food is often bad for cardiovacular health.  
+
+As you can see, only the K-to-Na ratio is calulated.   
+Create a bubble chart with the Na concentration as a function of the K concentration.  
+The bubble size should be based on the calorie values.  
+
+Which two food items would be considered most healthy food items based on the information above?  
+
+
 ---
 
 

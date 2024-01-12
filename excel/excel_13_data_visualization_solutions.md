@@ -88,6 +88,18 @@ Or the figure below:
 
 Chicken number 4 and 5 on Diet number 3 gained the most in weight.  
 
+
+### Exercise 9
+
+See the Excel file [here](./files_13_data_visualization_solutions/exercise09/exercise09.xlsx) for the solution.
+
+Or the figure below:
+
+![figure](./files_13_data_visualization_solutions/exercise09/fig01.png)
+
+Spinach and Parsley would be consired healthy acoording to the criteria (high K/Na ratio and low caloric).  
+
+
 ---
 
 
