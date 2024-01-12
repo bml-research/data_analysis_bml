@@ -99,6 +99,15 @@ Or the figure below:
 
 Spinach and Parsley would be consired healthy acoording to the criteria (high K/Na ratio and low caloric).  
 
+### Exercise 10
+
+See the Excel file [here](./files_13_data_visualization_solutions/exercise10/exercise10.xlsx) for the solution.
+
+Or the figure below:
+
+![figure](./files_13_data_visualization_solutions/exercise10/fig01.png)
+
+
 
 ---
 

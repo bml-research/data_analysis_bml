@@ -67,7 +67,6 @@ Calculate the average weight per diet.
 Two Chickens on a certain diet clearly gained the most weight.  
 Wich two chickens on which diet generated the highest weight gains?  
 
-
 ### Exercise 9
 
 Have look at the data [here](./files_12_data_visualization_exercises/exercise09/data.csv)
@@ -82,6 +81,14 @@ Create a bubble chart with the Na concentration as a function of the K concentra
 The bubble size should be based on the calorie values.  
 
 Which two food items would be considered most healthy food items based on the information above?  
+
+### Exercise 10
+
+In [this dataset](./files_12_data_visualization_exercises/exercise10/meat-production-tonnes.csv) you can find World wide meat production from 1961 to 2021 expressed in tonnes. It includes cattle, poultry, sheep/mutton, goat, pigmeat, and wild game (source: https://ourworldindata.org/meat-production). 
+
+Create a XY-scatter plot with the total production of meat (in tonnes) plotted against time for the asion continent.  
+
+Use Scientific notation for the mass meat production.  
 
 
 ---
