@@ -92,7 +92,15 @@ Use Scientific notation for the mass meat production.
 
 ### Exercise 11
 
-Do people in rich countries eat more meat?  
+For this exercise, we will use the dataset from exercise 7 again. This time, to create a pivot table and plot.
+
+Download the [data set about](https://www.kaggle.com/datasets/kkhandekar/calories-in-food-items-per-100-grams) food calories per 100 g. 
+
+The data set contains units in the cells.  
+First clean the dataset.  
+Create a pivot plot for the **mean** `Energy per 100 g in KJ` plotted against the `Food Categories`.  
+
+Which two Food Categories show the highest mean energy per weigth?
  
 
 ---

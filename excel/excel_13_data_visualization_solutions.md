@@ -110,7 +110,15 @@ Or the figure below:
 
 ### Exercise 11
 
+Data can be cleaned in various ways. You can use (for instance) the text-to-columns feature to split on a space. But there are other strategies as well (like the `RIGHT` or `LEFT` formula).
 
+See the Excel file [here](./files_13_data_visualization_solutions/exercise11/exercise11.xlsx) for the solution.
+
+Or the figure below:
+
+![figure](./files_13_data_visualization_solutions/exercise11/fig01.png)
+
+Olis & Fats as well as VegetableOils show the highest mean energy density. 
 
 ---
 
