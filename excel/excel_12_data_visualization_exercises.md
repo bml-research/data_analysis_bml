@@ -90,6 +90,10 @@ Create a XY-scatter plot with the total production of meat (in tonnes) plotted a
 
 Use Scientific notation for the mass meat production.  
 
+### Exercise 11
+
+Do people in rich countries eat more meat?  
+ 
 
 ---
 

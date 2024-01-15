@@ -108,6 +108,9 @@ Or the figure below:
 ![figure](./files_13_data_visualization_solutions/exercise10/fig01.png)
 
 
+### Exercise 11
+
+
 
 ---
 
