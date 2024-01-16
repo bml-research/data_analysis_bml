@@ -72,7 +72,7 @@ Overall, the tidyverse packages provide a more user-friendly, consistent, and ef
 
 ## Excercises
 
-- [Data Import](./R_04_data_import_exercises.md)
+- [Data Import](./R_04_data_import_exercises.html)
 - [Data Cleaning](./R_07_data_cleaning_exercises.md)
 - [Data Analysis](./R_10_data_analysis_exercises.md)
 - [Data Visualization](./R_13_data_visualization_exercises.md)

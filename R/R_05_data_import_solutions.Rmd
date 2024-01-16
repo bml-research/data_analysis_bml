@@ -66,6 +66,107 @@ df
 
 The field separator used was an at sign. Therefore use the `read_delim` function with a `delim argument` set to the correct delimiter.
 
+### Exercise 2
+
+Download this [dataset](https://www.kaggle.com/datasets/trolukovich/nutritional-values-for-common-foods-and-products).
+Unzip it and import the csv data in R.
+
+```{r}
+file_path <- "./files_04_data_import_exercises/exercise02/nutrition.csv"
+df <- read_csv(file_path)
+df
+```
+
+As you can see, this dataset needs a lot of cleaning (the units are in the data fields) but that will be dealt with in a later chapter.
+
+### Exercise 3
+
+Download this [dataset](https://www.kaggle.com/datasets/vaishnavivenkatesan/food-and-their-calories).
+Unzip it and import the csv data in R.
+
+```{r}
+file_path <- "./files_04_data_import_exercises/exercise03/Food and Calories - Sheet1.csv"
+df <- read_csv(file_path)
+df
+```
+
+As you can see, this dataset needs cleaning (the units are in the data fields) but that will be dealt with in a later chapter.
+
+### Exercise 4
+
+Download this [dataset](https://www.kaggle.com/datasets/amandaroseknudsen/foodproductemissions?resource=download).
+Unzip it and import the csv data in R.
+
+```{r}
+file_path <- "./files_04_data_import_exercises/exercise04/Food_Product_Emissions.csv"
+df <- read_csv(file_path)
+df
+```
+
+### Exercise 5
+
+Download data from [this website](https://ourworldindata.org/meat-production).
+Search for Global meat production
+Meat production across the world.
+Download the csv file and import the csv data in R.
+
+```{r}
+file_path <- "./files_04_data_import_exercises/exercise05/global-meat-production.csv"
+df <- read_csv(file_path)
+df
+```
+
+### Exercise 6
+
+Use R to create a csv file from the following table:
+
+| Food product  | Processing | Transport | Packaging | Retail |
+|---------------|------------|-----------|-----------|--------|
+| Olive Oil     | 66         | 482       | 861       | 46     |
+| Palm Oil      | 1264       | 208       | 886       | 44     |
+| Rapeseed Oil  | 193        | 19        | 844       | 46     |
+| Soybean Oil   | 311        | 299       | 849       | 43     |
+| Sunflower Oil | 229        | 201       | 853       | 43     |
+
+
+```{r}
+food_product <- c("Olive Oil", "Palm Oil", "Rapeseed Oil", "Soybean Oil", "Sunflower Oil")
+processing <- c(66, 1264, 193, 311, 229) 
+transport <- c(482, 208, 19, 299, 201)
+packaging <- c(861, 886, 844, 849, 853)
+retail <- c(46, 44, 46, 43, 43)
+my_tibble <- tibble(food_product, processing, transport, packaging, retail)
+write_csv(my_tibble, "./files_05_data_import_solutions/exercise06/food_emission_data.csv")
+```
+
+To prove that the data was written to a csv file:
+
+```{r}
+file_path <- "././files_05_data_import_solutions/exercise06/food_emission_data.csv"
+df <- read_csv(file_path)
+df
+```
+
+### Exercise 7
+
+Use the same data from exercise 6 but now create an Excel file. Make sure to include the column headers.
+
+```{r}
+library(openxlsx)
+write.xlsx(my_tibble, "./files_05_data_import_solutions/exercise07/food_emission_data.xlsx", colNames = TRUE)
+```
+
+
+### Exercise 8
+
+Use the Excel file from exercise 7 to open the Excel file.
+
+```{r}
+library(readxl)
+my_data <- read_excel("./files_05_data_import_solutions/exercise07/food_emission_data.xlsx")
+my_data
+```
+
 ---
 
 

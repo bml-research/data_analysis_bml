@@ -476,6 +476,203 @@ df</code></pre>
 <p>The field separator used was an at sign. Therefore use the
 <code>read_delim</code> function with a <code>delim argument</code> set
 to the correct delimiter.</p>
+</div>
+<div id="exercise-2" class="section level3">
+<h3>Exercise 2</h3>
+<p>Download this <a href="https://www.kaggle.com/datasets/trolukovich/nutritional-values-for-common-foods-and-products">dataset</a>.
+Unzip it and import the csv data in R.</p>
+<pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise02/nutrition.csv&quot;
+df &lt;- read_csv(file_path)
+df</code></pre>
+<pre><code>## # A tibble: 8,789 × 77
+##     ...1 name   serving_size calories total_fat saturated_fat cholesterol sodium
+##    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt; 
+##  1     0 Corns… 100 g             381 0.1g      &lt;NA&gt;          0           9.00 …
+##  2     1 Nuts,… 100 g             691 72g       6.2g          0           0.00 …
+##  3     2 Eggpl… 100 g              25 0.2g      &lt;NA&gt;          0           2.00 …
+##  4     3 Teff,… 100 g             367 2.4g      0.4g          0           12.00…
+##  5     4 Sherb… 100 g             144 2g        1.2g          1mg         46.00…
+##  6     5 Cauli… 100 g              25 0.3g      0.1g          0           30.00…
+##  7     6 Taro … 100 g              42 0.7g      0.2g          0           3.00 …
+##  8     7 Lamb,… 100 g             282 23g       10g           73mg        59.00…
+##  9     8 Chees… 100 g             300 24g       15g           72mg        842.0…
+## 10     9 Veget… 100 g             290 18g       2.8g          0           490.0…
+## # ℹ 8,779 more rows
+## # ℹ 69 more variables: choline &lt;chr&gt;, folate &lt;chr&gt;, folic_acid &lt;chr&gt;,
+## #   niacin &lt;chr&gt;, pantothenic_acid &lt;chr&gt;, riboflavin &lt;chr&gt;, thiamin &lt;chr&gt;,
+## #   vitamin_a &lt;chr&gt;, vitamin_a_rae &lt;chr&gt;, carotene_alpha &lt;chr&gt;,
+## #   carotene_beta &lt;chr&gt;, cryptoxanthin_beta &lt;chr&gt;, lutein_zeaxanthin &lt;chr&gt;,
+## #   lucopene &lt;dbl&gt;, vitamin_b12 &lt;chr&gt;, vitamin_b6 &lt;chr&gt;, vitamin_c &lt;chr&gt;,
+## #   vitamin_d &lt;chr&gt;, vitamin_e &lt;chr&gt;, tocopherol_alpha &lt;chr&gt;, …</code></pre>
+<p>As you can see, this dataset needs a lot of cleaning (the units are
+in the data fields) but that will be dealt with in a later chapter.</p>
+</div>
+<div id="exercise-3" class="section level3">
+<h3>Exercise 3</h3>
+<p>Download this <a href="https://www.kaggle.com/datasets/vaishnavivenkatesan/food-and-their-calories">dataset</a>.
+Unzip it and import the csv data in R.</p>
+<pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise03/Food and Calories - Sheet1.csv&quot;
+df &lt;- read_csv(file_path)
+df</code></pre>
+<pre><code>## # A tibble: 562 × 3
+##    Food             Serving             Calories
+##    &lt;chr&gt;            &lt;chr&gt;               &lt;chr&gt;   
+##  1 Artichoke        1 artichoke (128 g) 60 cal  
+##  2 Arugula          1 leaf (2 g)        1 cal   
+##  3 Asparagus        1 spear (12 g)      2 cal   
+##  4 Aubergine        1 aubergine (458 g) 115 cal 
+##  5 Beetroot         1 beet (82 g)       35 cal  
+##  6 Bell Pepper      1 pepper (73 g)     15 cal  
+##  7 Black Olives     1 olive (2.7 g)     2 cal   
+##  8 Broccoli         1 bunch (608 g)     207 cal 
+##  9 Brussels Sprouts 1 sprout (19 g)     8 cal   
+## 10 Cabbage          1 head (908 g)      227 cal 
+## # ℹ 552 more rows</code></pre>
+<p>As you can see, this dataset needs cleaning (the units are in the
+data fields) but that will be dealt with in a later chapter.</p>
+</div>
+<div id="exercise-4" class="section level3">
+<h3>Exercise 4</h3>
+<p>Download this <a href="https://www.kaggle.com/datasets/amandaroseknudsen/foodproductemissions?resource=download">dataset</a>.
+Unzip it and import the csv data in R.</p>
+<pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise04/Food_Product_Emissions.csv&quot;
+df &lt;- read_csv(file_path)
+df</code></pre>
+<pre><code>## # A tibble: 43 × 11
+##    `Food product`  `Land Use Change`  Feed   Farm Processing Transport Packaging
+##    &lt;chr&gt;                       &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+##  1 Apples                     -0.029  0     0.225      0.004     0.096     0.044
+##  2 Bananas                    -0.025  0     0.266      0.059     0.292     0.065
+##  3 Barley                      0.009  0     0.176      0.128     0.035     0.497
+##  4 Beef (beef her…            16.3    1.88 39.4        1.27      0.346     0.247
+##  5 Beef (dairy he…             0.906  2.51 15.7        1.11      0.424     0.268
+##  6 Beet Sugar                  0      0     0.536      0.242     0.629     0.09 
+##  7 Berries &amp; Grap…             0.025  0     0.722      0         0.238     0.212
+##  8 Brassicas                   0.002  0     0.278      0         0.095     0.045
+##  9 Cane Sugar                  1.25   0     0.485      0.037     0.784     0.083
+## 10 Cassava                     0.589  0     0.22       0         0.094     0.045
+## # ℹ 33 more rows
+## # ℹ 4 more variables: Retail &lt;dbl&gt;, `Total from Land to Retail` &lt;dbl&gt;,
+## #   `Total Global Average GHG Emissions per kg` &lt;dbl&gt;,
+## #   `Unit of GHG Emissions` &lt;chr&gt;</code></pre>
+</div>
+<div id="exercise-5" class="section level3">
+<h3>Exercise 5</h3>
+<p>Download data from <a href="https://ourworldindata.org/meat-production">this website</a>.
+Search for Global meat production Meat production across the world.
+Download the csv file and import the csv data in R.</p>
+<pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise05/global-meat-production.csv&quot;
+df &lt;- read_csv(file_path)
+df</code></pre>
+<pre><code>## # A tibble: 14,140 × 4
+##    Entity      Code   Year Meat, total | 00001765 || Production | 005510 || to…¹
+##    &lt;chr&gt;       &lt;chr&gt; &lt;dbl&gt;                                                 &lt;dbl&gt;
+##  1 Afghanistan AFG    1961                                                129420
+##  2 Afghanistan AFG    1962                                                132206
+##  3 Afghanistan AFG    1963                                                138971
+##  4 Afghanistan AFG    1964                                                143830
+##  5 Afghanistan AFG    1965                                                150195
+##  6 Afghanistan AFG    1966                                                175210
+##  7 Afghanistan AFG    1967                                                184232
+##  8 Afghanistan AFG    1968                                                201632
+##  9 Afghanistan AFG    1969                                                202232
+## 10 Afghanistan AFG    1970                                                189120
+## # ℹ 14,130 more rows
+## # ℹ abbreviated name:
+## #   ¹​`Meat, total | 00001765 || Production | 005510 || tonnes`</code></pre>
+</div>
+<div id="exercise-6" class="section level3">
+<h3>Exercise 6</h3>
+<p>Use R to create a csv file from the following table:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Food product</th>
+<th>Processing</th>
+<th>Transport</th>
+<th>Packaging</th>
+<th>Retail</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Olive Oil</td>
+<td>66</td>
+<td>482</td>
+<td>861</td>
+<td>46</td>
+</tr>
+<tr class="even">
+<td>Palm Oil</td>
+<td>1264</td>
+<td>208</td>
+<td>886</td>
+<td>44</td>
+</tr>
+<tr class="odd">
+<td>Rapeseed Oil</td>
+<td>193</td>
+<td>19</td>
+<td>844</td>
+<td>46</td>
+</tr>
+<tr class="even">
+<td>Soybean Oil</td>
+<td>311</td>
+<td>299</td>
+<td>849</td>
+<td>43</td>
+</tr>
+<tr class="odd">
+<td>Sunflower Oil</td>
+<td>229</td>
+<td>201</td>
+<td>853</td>
+<td>43</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>food_product &lt;- c(&quot;Olive Oil&quot;, &quot;Palm Oil&quot;, &quot;Rapeseed Oil&quot;, &quot;Soybean Oil&quot;, &quot;Sunflower Oil&quot;)
+processing &lt;- c(66, 1264, 193, 311, 229) 
+transport &lt;- c(482, 208, 19, 299, 201)
+packaging &lt;- c(861, 886, 844, 849, 853)
+retail &lt;- c(46, 44, 46, 43, 43)
+my_tibble &lt;- tibble(food_product, processing, transport, packaging, retail)
+write_csv(my_tibble, &quot;./files_05_data_import_solutions/exercise06/food_emission_data.csv&quot;)</code></pre>
+<p>To prove that the data was written to a csv file:</p>
+<pre class="r"><code>file_path &lt;- &quot;././files_05_data_import_solutions/exercise06/food_emission_data.csv&quot;
+df &lt;- read_csv(file_path)
+df</code></pre>
+<pre><code>## # A tibble: 5 × 5
+##   food_product  processing transport packaging retail
+##   &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;
+## 1 Olive Oil             66       482       861     46
+## 2 Palm Oil            1264       208       886     44
+## 3 Rapeseed Oil         193        19       844     46
+## 4 Soybean Oil          311       299       849     43
+## 5 Sunflower Oil        229       201       853     43</code></pre>
+</div>
+<div id="exercise-7" class="section level3">
+<h3>Exercise 7</h3>
+<p>Use the same data from exercise 6 but now create an Excel file. Make
+sure to include the column headers.</p>
+<pre class="r"><code>library(openxlsx)
+write.xlsx(my_tibble, &quot;./files_05_data_import_solutions/exercise07/food_emission_data.xlsx&quot;, colNames = TRUE)</code></pre>
+</div>
+<div id="exercise-8" class="section level3">
+<h3>Exercise 8</h3>
+<p>Use the Excel file from exercise 7 to open the Excel file.</p>
+<pre class="r"><code>library(readxl)
+my_data &lt;- read_excel(&quot;./files_05_data_import_solutions/exercise07/food_emission_data.xlsx&quot;)
+my_data</code></pre>
+<pre><code>## # A tibble: 5 × 5
+##   food_product  processing transport packaging retail
+##   &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;
+## 1 Olive Oil             66       482       861     46
+## 2 Palm Oil            1264       208       886     44
+## 3 Rapeseed Oil         193        19       844     46
+## 4 Soybean Oil          311       299       849     43
+## 5 Sunflower Oil        229       201       853     43</code></pre>
 <hr />
 <blockquote>
 <p>This web page is distributed under the terms of the Creative Commons

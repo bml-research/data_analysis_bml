@@ -8,319 +8,108 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 
 # R: Data Import
 
-## Introduction
 
-We have dealt with data import in Excel before.
-Remember that in data science, data is often stored as csv (comma-separated values) files.
-Other formats are tsv (tab-separated values) files.
-Data may also come from an SQL or NoSQL database (beyond the scope of this course).
-R has powerful functions to deal with plain-text rectangular files such as csv and tsv files.
-In addition, R can also import and export Excel files.
-
-Let's start with loading the tidyverse library:
+## Data Import Exercises
 
 ```{r}
 library(tidyverse)
 ```
 
-As shown before, you can create your own data frame in R. 
-In R, a tibble is a modern data frame that is optimized for data analysis and provides some additional features beyond the traditional data frame. 
-Tibbles are the core data structure of the tidyverse and are used to facilitate the display and analysis of information in a tidy format.
+### Exercise 1
 
-You can use the as_tibble() function in R to convert a data frame, matrix, or list into a tibble
-Here we use the tibble function to create a tiblle directly from 3 vectors:
+Load the following datasets in R using the csv import functionality. First have a look at them in your text editor.  
+Then load in R.  
+
+- [file 1](./files_04_data_import_exercises/exercise01/Food_composition_1.csv)  
+- [file 2](./files_04_data_import_exercises/exercise01/Food_composition_2.csv)  
+- [file 3](./files_04_data_import_exercises/exercise01/Food_composition_3.csv)  
+- [file 4](./files_04_data_import_exercises/exercise01/Food_composition_4.csv)  
+
+Report the field separator.
+
+
+
+### Exercise 2
+
+Download this [dataset](https://www.kaggle.com/datasets/trolukovich/nutritional-values-for-common-foods-and-products).
+Unzip it and import the csv data in R.
+
+```{r}
+#Your code here
+```
+
+As you can see, this dataset needs a lot of cleaning (the units are in the data fields) but that will be dealt with in a later chapter.
+
+### Exercise 3
+
+Download this [dataset](https://www.kaggle.com/datasets/vaishnavivenkatesan/food-and-their-calories).
+Unzip it and import the csv data in R.
+
+```{r}
+#Your code here
+```
+
+As you can see, this dataset needs cleaning (the units are in the data fields) but that will be dealt with in a later chapter.
+
+### Exercise 4
+
+Download this [dataset](https://www.kaggle.com/datasets/amandaroseknudsen/foodproductemissions?resource=download).
+Unzip it and import the csv data in R.
+
+```{r}
+#Your code here
+```
+
+### Exercise 5
+
+Download data from [this website](https://ourworldindata.org/meat-production).
+Search for Global meat production
+Meat production across the world.
+Download the csv file and import the csv data in R.
+
+```{r}
+#Your code here
+```
+
+### Exercise 6
+
+Use R to create a csv file from the following table:
+
+| Food product  | Processing | Transport | Packaging | Retail |
+|---------------|------------|-----------|-----------|--------|
+| Olive Oil     | 66         | 482       | 861       | 46     |
+| Palm Oil      | 1264       | 208       | 886       | 44     |
+| Rapeseed Oil  | 193        | 19        | 844       | 46     |
+| Soybean Oil   | 311        | 299       | 849       | 43     |
+| Sunflower Oil | 229        | 201       | 853       | 43     |
 
 
 ```{r}
-category <- c("fruit", "vegetable", "vegetable", "fruit")
-type <- c("apple", "broccoli", "cauliflower", "banana")
-calories <- c(52.5, 34.2, 25.7, 89.4)
-
-my_tibble <- tibble(category, type, calories)
-my_tibble
+#Your code here
 ```
 
-As you can see, this resembles a bit an Excel worksheet.
-Later, you will learn what you can do with a tibble.
-
-## The readr package
-
-
-Fortunately, you do not need to type data in R.
-You can load it using the readr package.
-
-In R, readr is a package that provides a fast and friendly way to read rectangular data (like csv or fixed-width format) into R. It provides a set of functions to simplify reading data from files. The main functions should read most common R datafile types without needing any parameters except the filename. Other functions provide simple ways of handling file paths and extensions, and automatically detecting file format and structure.
-
-Let's try it out:
-
-We can try to load the same datafile as we did for Excel.
-Here you can see the [Food Composition](https://www.kaggle.com/datasets/vinitshah0110/food-composition?resource=download&select=Food+Composition.csv) file.'
-
-So we have downloaded the csv file (it came as zip so we needed to extract the zip).
-
-It can be found [here](./files_03_data_import/file01_food_composition.csv)
-
->Like explained under data import in Excel, the first thing you should do is to check your csv file in a text editor.
-RStudio is capable of opening text files.
-The screenshot below shows you the text file in RStudio:
-
-![](./pics_03_data_import/fig01.png)
-
-As you can see, the column separator is a comma. The csv file contains headers.
-The function to open the file is the `read_csv()` function.
-So we can load it as follows:
-
-
+To prove that the data was written to a csv file:
 
 ```{r}
-file_path <- "./files_03_data_import/file01_food_composition.csv"
-my_df <- read_csv(file_path)
-head(my_df)
+#Your code here
 ```
 
+### Exercise 7
 
->Important note for MS Windows users:
-R is not able to understand normal windows paths correctly because the "\" has a special meaning as escape character.
-Just replace the "\" with "/" for file paths.
-This is the common way for Unix systems but also works for R code on Windows systems.
-
-
-
-The `read_csv()` function reads comma-delimited files. The `read_csv2()` function reads semi-colon seperated files (used in countries where , is the decimal separator like Holland). The `read_tsv()` function reads tab-delimited files. The `read_delim()` function reads files with any delimiter.  
-You may have noticed that the data frame returned is actually a tibble.  
-The `head()` function shows only the first 6 rows (by default) in order not to overwhelm the user with data.
-
-
-Likewise, we can also directly load data from the web. Since the file above is stored on e webserver, we can also load it using the URL:
+Use the same data from exercise 6 but now create an Excel file. Make sure to include the column headers.
 
 ```{r}
-URL <- "https://github.com/bml-research/data_analysis/raw/main/R/files_03_data_import/file01_food_composition.csv"
-my_df <- read_csv(URL)
-head(my_df)
+#Your code here
 ```
 
-So in principle, you could also directly load data from Kaggle.
-However, since authentication is needed for this, it is slightly more complicated.
-You need to connect using the API and unzip the zip file.
-Of course, you are welcome to do this but it is beyond the scope of this course.
 
+### Exercise 8
 
-Now let's explore the other `read_csv` variants.
-We have another text file.
-It can be found [here](./files_03_data_import/file02_fruits.csv)
-
-Exploring it using a text editor:
-
-![](./pics_03_data_import/fig02.png)
-
-This shows us that:
-- the file contains a header
-- the deliminator is a semicolon.
-- the decimal separator is a `.`
-Thus, the `read_csv2()` function should be used to open this file.
+Use the Excel file from exercise 7 to open the Excel file.
 
 ```{r}
-file_path <- "./files_03_data_import/file02_fruits.csv"
-my_df <- read_csv2(file_path)
-head(my_df)
+#Your code here
 ```
-
-So what would happen if we accidentally used the wrong function?
-
-```{r}
-file_path <- "./files_03_data_import/file02_fruits.csv"
-my_df <- read_csv(file_path) #note that read_csv was used instead of read_csv2
-head(my_df)
-```
-
-As you can see, the data was not read in different columns. So always check the file using a text editor.
-
-Now imagine a file without a header.
-It can be found [here](./files_03_data_import/file03_fruits.csv)
-
-![](./pics_03_data_import/fig03.png)
-
-
-Loading it causes trouble:
-
-```{r}
-file_path <- "./files_03_data_import/file03_fruits.csv"
-my_df <- read_csv2(file_path) 
-head(my_df)
-```
-
-
-As you can see, the first row is read as header.
-We can find more information about the read_csv2 function using the following code:
-
-```{r}
-?read_csv2
-```
-
-The information will be found within the help pane.
-This learns us that we can set the col_names parameter to FALSE:
-
-```{r}
-file_path <- "./files_03_data_import/file03_fruits.csv"
-my_df <- read_csv2(file_path, col_names = FALSE) 
-head(my_df)
-```
-
-Now we have al the rows correctly loaded but we still miss column names.
-We can add them as follows:
-
-```{r}
-my_col_names <- c("category", "type", "calories")
-names(my_df) <- my_col_names
-my_df
-```
-
-What if a comma is used as a decimal separator? This is often the case when a text file is used using a semi-colon as separator.
-
-
-![](./pics_03_data_import/fig04.png)
-
-
-An example of this file can be found [here](./files_03_data_import/file04_fruits.csv)
-
-
-
-```{r}
-file_path <- "./files_03_data_import/file04_fruits.csv"
-my_df <- read_csv2(file_path) 
-head(my_df)
-```
-
-As you can see, the `read_csv2()` function can take care of this.
-
-Often TSV are used. They can be imported using `read_tsv()`:
-
-An example of this file can be found [here](./files_03_data_import/file05_fruits.csv)
-
-
-![](./pics_03_data_import/fig05.png)
-
-```{r}
-file_path <- "./files_03_data_import/file05_fruits.csv"
-my_df <- read_tsv(file_path) 
-head(my_df)
-```
-
-
-When things get really ugly, such as this file, we need some more tweaking...
-
-An example of this file can be found [here](./files_03_data_import/file06_fruits.csv)
-
-
-![](./pics_03_data_import/fig06.png)
-
-
-```{r}
-file_path <- "./files_03_data_import/file06_fruits.csv"
-my_df <- read_csv2(file_path) 
-head(my_df)
-```
-
-The data is obviously not correctly loaded.
-The delimiter is an asterisk. So we could use the `read_delim()` function here:
-
-```{r}
-file_path <- "./files_03_data_import/file06_fruits.csv"
-my_df <- read_delim(file_path, delim = "*", comment = "@", locale=locale(decimal_mark = ",")) 
-head(my_df)
-```
-
-
->Also, always check that the column in your tibble is of the correct data type.
-calories are doubles as you can see while the other columns are of the character type.
-
-
-## Writing csv files
-
-Like reading csv file, you can also write them.
-Here is an example:
-
-```{r}
-category <- c("fruit", "vegetable", "vegetable", "fruit")
-type <- c("apple", "broccoli", "cauliflower", "banana")
-calories <- c(52.5, 34.2, 25.7, 89.4)
-
-my_tibble <- tibble(category, type, calories)
-write_csv(my_tibble, "./files_03_data_import/file07_tibble.csv")
-```
-
-To show that the data was written to file:
-
-```{r}
-my_path <- "./files_03_data_import/file07_tibble.csv"
-my_df <- read_csv(my_path)
-my_df
-```
-
-
-## Reading Excel files
-
-Although csv files and tsv files are often used in data science, Microsoft Excel is arguably the most used software package to analyze data.  
-But also a lot of data is directly stored as Excel file. Think about data downloaded from the web.  
-Very often, data can be downloaded as Excel file instead of csv or tsv file.  
-Instead of converting data from Excel to csv or tsv file, R can handle Excel files directly.
-
-It also gives you the opportunity to firs do some analysis in Excel and continue in R, for example if the dataset appears to be to big to be handled by Excel.
-
-The `readxl` package is the most used package for reading and writing Excel files.
-It comes with tidyverse so there is no need to install it.
-If somehow you do not have it, you can install it with the following command:
-
-```
-install.packages("readxl")
-```
-
-And load it as follows:
-
-```{r}
-library(readxl)
-```
-
-[Here](./files_03_data_import/file07_food_composition.xlsx) you can find an example of an Excel file.
-
-And here is how you can load in to a tibble:
-
-```{r}
-file_path <- "./files_03_data_import/file08_food_composition.xlsx"
-my_df <- read_excel(file_path) 
-head(my_df)
-```
-
-## Write to Excel
-
-Like reading Excel, you can also write it.
-But you will need to install another package:
-
-```
-install.packages("openxlsx")
-```
-
-And load it:
-
-```{r}
-library(openxlsx)
-```
-
-In the following code you will see an example how to do that.
-
-```{r}
-category <- c("fruit", "vegetable", "vegetable", "fruit")
-type <- c("apple", "broccoli", "cauliflower", "banana")
-calories <- c(52.5, 34.2, 25.7, 89.4)
-
-my_tibble <- tibble(category, type, calories)
-write.xlsx(my_tibble, './files_03_data_import/file09_tibble.xlsx', colNames = TRUE)
-```
-
-
-And a screenshot of the file loaded in a spreadsheet (Libre Office was used instead of Excel as I created this on a Linux machine):
-
-![](./pics_03_data_import/fig07.png)
 
 
 ---
