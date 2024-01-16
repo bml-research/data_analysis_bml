@@ -75,8 +75,8 @@ Download the csv file and import the csv data in R.
 
 Use R to create a csv file from the following table:
 
-| Food product  | Processing | Transport | Packaging | Retail |
-|---------------|------------|-----------|-----------|--------|
+|Food product   |Processing  |Transport  |Packaging  |Retail  |
+|:--------------|-----------:|----------:|----------:|-------:|
 | Olive Oil     | 66         | 482       | 861       | 46     |
 | Palm Oil      | 1264       | 208       | 886       | 44     |
 | Rapeseed Oil  | 193        | 19        | 844       | 46     |
