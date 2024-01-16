@@ -1,0 +1,64 @@
+![](../hanze/hanze.png)
+
+[Go back to the main page](../index.html)
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+# R
+
+## Data Cleaning Exercises
+
+```{r}
+library(tidyverse)
+```
+
+### Exercise 1
+
+[This](./files_07_data_cleaning_exercises/exercise01/calories.xlsx) first data set was not loaded well in Excel. Load the Excel file as a tibble in R. Separate the columns correctly.
+Hint: use the `separate_wider_delim` function from tidyverse.
+
+```{r}
+#Your code here
+```
+
+### Exercise 2
+
+The file from the previous exercise contains the units in the cells. This makes it impossible to perform calculations (as the data type is a text string). Remove the units in order to make calculations possible.
+
+```{r}
+#Your code here
+```
+
+### Exercise 3
+
+[This](./files_07_data_cleaning_exercises/exercise03/Food Composition_mod.csv) data set contains rows with duplicate data. Load the data and remove the duplicates from the data table.
+
+```{r}
+#Your code here
+```
+
+
+### Exercise 4
+
+[This](./files_07_data_cleaning_exercises/exercise04/nutrition.csv) data set contains empty data.
+
+Make the empty elements more explicit in R by converting them to `NA`.
+Count how many elements you have:
+
+- in total
+- with missing data
+- without missing data
+
+```{r}
+#Your code here
+```
+
+
+---
+
+
+>This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
+>Creative Commons License: CC BY-SA 4.0.
+
