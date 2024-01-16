@@ -79,7 +79,7 @@ Overall, the tidyverse packages provide a more user-friendly, consistent, and ef
 
 ## Solutions
 
-- [Data Import](./R_05_data_import_solutions.md)
+- [Data Import](./R_05_data_import_solutions.html)
 - [Data Cleaning](./R_08_data_cleaning_solutions.md)
 - [Data Analysis](./R_11_data_analysis_solutions.md)
 - [Data Visualization](./R_14_data_visualization_solutions.md)

@@ -1,0 +1,74 @@
+![](../hanze/hanze.png)
+
+[Go back to the main page](../index.html)
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+# R
+
+## Data Import Exercises
+
+```{r}
+library(tidyverse)
+```
+
+### Exercise 1
+
+Load the following datasets in R using the csv import functionality. First have a look at them in your text editor.  
+Then load in R.  
+
+- [file 1](./files_04_data_import_exercises/exercise01/Food_composition_1.csv)  
+- [file 2](./files_04_data_import_exercises/exercise01/Food_composition_2.csv)  
+- [file 3](./files_04_data_import_exercises/exercise01/Food_composition_3.csv)  
+- [file 4](./files_04_data_import_exercises/exercise01/Food_composition_4.csv)  
+
+Report the field separator.
+
+File 1:
+
+```{r}
+file_path <- "./files_04_data_import_exercises/exercise01/Food_composition_1.csv"
+df <- read_csv(file_path)
+df
+```
+
+The field separator used was a comma. Therefore use the `read_csv` function.
+
+File 2:
+
+```{r}
+file_path <- "./files_04_data_import_exercises/exercise01/Food_composition_2.csv"
+df <- read_csv2(file_path)
+df
+```
+
+The field separator used was a semi-colon. Therefore use the `read_csv2` function.
+
+File 3:
+
+```{r}
+file_path <- "./files_04_data_import_exercises/exercise01/Food_composition_3.csv"
+df <- read_delim(file_path, delim="|")
+df
+```
+
+The field separator used was a pipe symbol. Therefore use the `read_delim` function with a `delim argument` set to the correct delimiter.
+
+File 4:
+
+```{r}
+file_path <- "./files_04_data_import_exercises/exercise01/Food_composition_4.csv"
+df <- read_delim(file_path, delim="@")
+df
+```
+
+The field separator used was an at sign. Therefore use the `read_delim` function with a `delim argument` set to the correct delimiter.
+
+---
+
+
+>This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
+>Creative Commons License: CC BY-SA 4.0.
+
