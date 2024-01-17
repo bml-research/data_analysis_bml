@@ -1,0 +1,209 @@
+![](../hanze/hanze.png)
+
+[Go back to the main page](../index.html)
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+# R
+
+## Data Analysis Solutions
+
+
+```{r}
+library(tidyverse)
+```
+
+> In order to compare the analysis in R with Excel, the exercises where kept as similar as possible. 
+
+### Exercise 1
+
+Import the [Nutrition facts data](https://www.kaggle.com/datasets/mcdonalds/nutrition-facts) from a fastfood restaurant in an Rmd file. 
+Then perfom the following calculations on a new worksheet and display them as a table:  
+
+- Calculate the minimum, maximum, average, median from the columns `Calories` and `Calories from fat`. Display the answers in a data frame.  
+
+```{r}
+file_path <- "./files_10_data_analysis_exercises/exercise01/menu.csv"
+df <- read_csv(file_path)
+head(df)
+```
+
+```{r}
+min_cal <- min(df$Calories)
+max_cal <- max(df$Calories)
+mean_cal <- mean(df$Calories)
+median_cal <- median(df$Calories)
+
+min_fat <- min(df$`Calories from Fat`)
+max_fat <- max(df$`Calories from Fat`)
+mean_fat <- mean(df$`Calories from Fat`)
+median_fat <- median(df$`Calories from Fat`)
+
+results_ex1 <- tibble("measure" = c("minimum", "maximum", "mean", "median"), 
+                      "calories" = c(min_cal, max_cal, mean_cal, median_cal),
+                      "calories from fat" = c(min_fat, max_fat, mean_fat, median_fat)
+                      )
+
+results_ex1
+```
+
+Note that the summary function also provides easy access to this data:
+
+```{r}
+"Summary data calories"
+summary(df$Calories)
+"Summary data calories from fat"
+summary(df$`Calories from Fat`)
+```
+
+
+### Exercise 2
+
+Index, filter and sort your data frame to answer the following questions:  
+1. Which item has the highest Calories from fat?  
+2. Which items have the highest Iron (% Daily Value)?  
+3. Which Beef & Pork item has the lowest Calories from fat?  
+4. Which Coffee & Tea or Smoothies & Shakes item has the highest amount of carbohydrates?  
+5. Which item has the highest saturated fat and lowest carbohydrates value?  
+
+Item  with the highest Calories from fat:
+```{r}
+df[df$`Calories from Fat` == max(df$`Calories from Fat`), ]
+```
+
+or:
+```{r}
+filter(df, `Calories from Fat` == max(df$`Calories from Fat`))
+```
+
+
+Item  with the highest highest Iron (% Daily Value)
+```{r}
+df[df$`Iron (% Daily Value)` == max(df$`Iron (% Daily Value)`), ]
+```
+or:
+```{r}
+filter(df, `Iron (% Daily Value)` == max(df$`Iron (% Daily Value)`))
+```
+
+Beef & Pork item with the lowest Calories from fat?  
+```{r}
+df %>% 
+  arrange(Category, `Calories from Fat`) %>%
+  filter(Category == "Beef & Pork") %>%
+  slice(1:1)
+```
+
+Coffee & Tea or Smoothies & Shakes item with the highest amount of carbohydrates:
+
+```{r}
+df %>% 
+  filter(Category == "Coffee & Tea" | Category == "Smoothies & Shakes") %>%
+  arrange(-`Carbohydrates`) %>%
+  slice(1:1)
+```
+
+
+Item with the highest saturated fat and lowest carbohydrates value:
+
+```{r}
+df %>% 
+  arrange(-`Saturated Fat`, `Carbohydrates`) %>%
+  slice(1:1)
+```
+
+
+### Exercise 3
+
+1. More then 600 calories would be considered high energetic. How many items are high energetic?  
+2. How many items are between 300 and 600 calories?  
+3. How many items are measured in the serving size Fluid Ounce (fl oz cup) (hint: use a wildcard)?  
+
+High energetic:
+
+```{r}
+nrow(df[df$Calories > 600, ])
+```
+
+Number of items between 300 and 600 calories:
+
+```{r}
+nrow(df[df$Calories > 300 & df$Calories < 600, ])
+```
+
+How many items are measured in the serving size Fluid Ounce (fl oz cup) (hint: use a wildcard)
+
+```{r}
+nrow(df[str_detect(df$`Serving Size`, "fl oz cup"), ])
+```
+
+
+### Exersise 4
+
+> Note that this exercise differs a bit from the Excel counterpart.
+
+1. Select rows with high energetic food items (>600 calories). 
+2. Select rows with duplicate food items.  
+3. Select rows with % Dalily Value < 20% for Vitamin A and Vitamin C. 
+4. Select rows with a % Dalily Value >= 20% for Vitamin A and Vitamin C. Make sure that you include 20%!  
+
+Select rows with high energetic food items (>600 calories). 
+
+```{r}
+df %>%
+  filter(Calories > 600) 
+```
+
+Select rows with duplicate food items.  
+
+```{r}
+df %>% 
+  group_by(Item) %>% 
+  filter(n()>1)
+```
+
+There are no duplicates!
+
+Select rows with % Dalily Value < 20% for Vitamin A and Vitamin C. 
+
+```{r}
+df %>%
+  filter(`Vitamin A (% Daily Value)` < 20 & `Vitamin C (% Daily Value)` < 20)
+```
+
+Select rows with a % Dalily Value >= 20% for Vitamin A and Vitamin C. Make sure that you include 20%!  
+
+```{r}
+df %>%
+  filter(`Vitamin A (% Daily Value)` >= 20 & `Vitamin C (% Daily Value)` >= 20)
+```
+
+
+### Exercise 5
+
+Group the categories.  
+Calculate:  
+- the Average of Total Fat (% Daily Value)  
+- the Average of Saturated Fat (% Daily Value)  
+- the Average of Cholesterol (% Daily Value)  
+
+Round the values to 1 decimal.  
+
+```{r}
+df %>% 
+  group_by(Category) %>% 
+  summarize("Mean Total Fat (% Daily Value)" = round(mean(`Total Fat (% Daily Value)`), 1),
+            "Mean Saturated Fat (% Daily Value)" = round(mean(`Saturated Fat (% Daily Value)`), 1),
+            "Mean Cholesterol (% Daily Value)" = round(mean(`Cholesterol (% Daily Value)`), 1)
+            )
+```
+
+
+---
+
+
+>This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
+>Creative Commons License: CC BY-SA 4.0.
+
