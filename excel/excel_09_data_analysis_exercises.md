@@ -13,6 +13,9 @@
 ### Exercise 1
 
 Import the [Nutrition facts data](https://www.kaggle.com/datasets/mcdonalds/nutrition-facts) from a fastfood restaurant in Excel.
+
+> Be very careful as some columns contain decimal characters!
+
 Rename this worksheet `data`.  
 Create a new worksheet and name it `analysis`.  
 Then perfom the following calculations on a new worksheet and display them as a table:  
