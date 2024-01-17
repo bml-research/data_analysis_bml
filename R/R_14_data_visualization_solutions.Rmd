@@ -1,0 +1,371 @@
+![](../hanze/hanze.png)
+
+[Go back to the main page](../index.html)
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+# R 
+
+## Data Visualization
+
+```{r}
+library("tidyverse")
+```
+
+> The exercises will be similar to the exercises in Excel in order to compare the results.
+
+### Exercise 1
+
+Load the [Food Emissions](https://www.kaggle.com/datasets/amandaroseknudsen/foodproductemissions?resource=download) dataset from Kaggle.
+
+Create a column chart for the `Total Global Average GHG Emissions per kg` per `food product`.
+
+Annotate the axis and add a proper title.
+
+What food product creates the highest Emission value?
+
+```{r}
+file_path_ex1 <- "./files_13_data_visualization_exercises/exercise01/Food_Product_Emissions.csv"
+df_ex1 <- read_csv(file_path_ex1)
+df_ex1
+```
+
+```{r}
+barplot(df_ex1$`Total Global Average GHG Emissions per kg`, 
+        ylab = "Total Global Average GHG Emissions per kg", 
+        ylim = c(0, max(df_ex1$`Total Global Average GHG Emissions per kg` + 20)), 
+        names = df_ex1$`Food product`, 
+        las = 2,
+        cex.names = 0.5,
+        col = "steelblue",
+        main = "Food Product Emissions")  
+```
+
+Highest is Beef (Beef Herd)
+
+### Exercise 2
+
+As the differences in the values are rather high, it is wise to use a log scale to display your data. Log scales have their advantages and are often used to display data that cover a wide range of values. Use a 2log scale to display your data.
+```{r}
+log2(8)
+```
+
+```{r}
+`Log2 Total Global Average GHG Emissions per kg` <- log2(df_ex1$`Total Global Average GHG Emissions per kg`)
+df_ex2 <- df_ex1 %>%
+  add_column(`Log2 Total Global Average GHG Emissions per kg`)
+df_ex2
+```
+
+
+```{r}
+barplot(df_ex2$`Log2 Total Global Average GHG Emissions per kg`, 
+        ylab = "Log2 Total Global Average GHG Emissions per kg", 
+        ylim = c(0, max(df_ex2$`Log2 Total Global Average GHG Emissions per kg` + 4)), 
+        names = df_ex2$`Food product`, 
+        las = 2,
+        cex.names = 0.5,
+        col = "steelblue",
+        main = "Food Product Emissions")  
+```
+
+
+### Exercise 3
+
+From the previous data set, filter the data that contain oil in the name.  
+Create a clustered column chart representing the Emissions per kg from `Processing`, `Transport`, `Packaging` and `Retail`. Make sure to add proper axis titles, a title and a legend.
+
+
+First we create a df with the rows of Oil products:
+```{r}
+df_ex3 <- df_ex1[str_detect(df_ex1$`Food product`, "Oil"), ]
+df_ex3
+```
+Remove the columns that we do not need:
+
+```{r}
+df_ex3$`Land Use Change` <- NULL
+df_ex3$Feed <- NULL
+df_ex3 <- df_ex3[, 1:6]
+df_ex3
+```
+
+Make the df tidy:
+```{r}
+tidy_df_ex3 <- df_ex3 %>%
+  gather(`Farm`, `Processing`, `Transport`, `Packaging`, `Retail`, key = "Emission origin", value = "Emission per kg")
+tidy_df_ex3
+```
+
+
+
+```{r}
+p <- ggplot(data = tidy_df_ex3, aes(x = `Food product`, y = `Emission per kg`, fill = `Emission origin`)) +
+  geom_bar(stat = "identity", position="dodge") +
+  labs(title="Food Product Emissions") +
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+p
+```
+
+
+### Exercise 4
+
+Use the same data as from exercise 3 to create a stacked column chart. Filter the data that contain oil in the name.  
+Create a stacked column chart representing the Emissions per kg from `Processing`, `Transport`, `Packaging` and `Retail`. Make sure to add proper axis titles, a title and a legend.
+
+```{r}
+p <- ggplot(data = tidy_df_ex3, aes(x = `Food product`, y = `Emission per kg`, fill = `Emission origin`)) +
+  geom_bar(stat = "identity", position="stack") +
+  labs(title="Food Product Emissions") +
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+p
+```
+
+
+
+### Exercise 5
+
+Use the same data as from exercise 3 to create a relative stacked column chart. Filter the data that contain oil in the name.  
+Create a relative stacked column chart representing the Emissions per kg from `Processing`, `Transport`, `Packaging` and `Retail`. Make sure to add proper axis titles, a title and a legend.
+
+```{r}
+p <- ggplot(data = tidy_df_ex3, aes(x = `Food product`, y = `Emission per kg`, fill = `Emission origin`)) +
+  geom_bar(stat = "identity", position="fill") +
+  labs(title="Food Product Emissions") +
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+p
+```
+
+
+### Exercise 6
+
+Use the same data as from exercise 3 to create a pie chart. Filter the data that contain oil in the name.  
+Create a pie chart representing the Emissions per kg from `Processing`, `Transport`, `Packaging` and `Retail`. Make sure to add proper axis titles, a title, data labels and a legend.
+
+```{r}
+p <- ggplot(tidy_df_ex3, aes(x = "", y = `Emission per kg`, fill = `Emission origin`)) +
+  geom_bar(stat="identity", width=1) +
+  coord_polar("y", start=0) +
+  labs(title="Food Product Emissions") +
+  theme_void() # remove background, grid, numeric labels
+p
+```
+
+
+### Exercise 7
+
+Download the [data set about](https://www.kaggle.com/datasets/kkhandekar/calories-in-food-items-per-100-grams) food calories per 100 g. 
+
+The data set contains units in the cells.  
+First clean the data set.  
+Create a box plot for `Energy per 100 g in KJ` plotted against the `Food Categories`.  
+
+Which two Food Categories show the highest energy per weigth?
+
+```{r}
+file_path <- "./files_13_data_visualization_exercises/exercise07/calories.csv"
+df_ex7 <- read_csv(file_path)
+df_ex7
+```
+
+Now we need to clean it:
+```{r}
+df_ex7 <- df_ex7 %>% 
+  separate_wider_delim(Cals_per100grams, delim = " ", names = c("Cals_per100grams", "waste")) %>% 
+  separate_wider_delim(KJ_per100grams, delim = " ", names = c("KJ_per100grams", "waste2")) %>%
+  select (-c(waste, waste2)) %>% #Note that this is a negative selection. Selects all but the listed columns.
+  mutate_at(c('Cals_per100grams', 'KJ_per100grams'), as.numeric) #Creates numbers from strings
+df_ex7
+```
+
+Create Boxplot:
+```{r}
+p <- ggplot(df_ex7, aes(x = `FoodCategory`, y = `KJ_per100grams`)) + 
+  geom_boxplot() +
+  labs(title="Energy per weight in different food categories") +
+  theme(axis.text.x = element_text(angle = 45, hjust=1)) +
+  ylab("Energy Density (KJ per 100 grams)") +
+  xlab("Food Category")
+p
+```
+
+Highest: Oils and Fats and Vegatable Oils
+
+### Exercise 8
+
+In [this dataset](./files_12_data_visualization_exercises/exercise08/ChickWeight.csv) you can find Chick Weight data. It shows the weight (in grams) on day 42 for various chickens that were fed with various diets during 42 days.
+
+Create a radar chart for the various diets on day 42.  
+Calculate the average weight per diet.
+
+Two Chickens on a certain diet clearly gained the most weight.  
+Which two chickens on which diet generated the highest weight gains?  
+
+```{r}
+file_path <- "./files_13_data_visualization_exercises/exercise08/ChickWeight.csv"
+df_ex8 <- read_tsv(file_path)
+df_ex8
+```
+
+```{r}
+library(ggradar)
+```
+
+For a radar chart we need to scale the data from 0-1
+
+```{r}
+df_ex8_scaled <- df_ex8[, -1]/400
+df_ex8_scaled
+```
+
+Grab the first column:
+
+```{r}
+first_col <- df_ex8[, 1]
+first_col
+```
+And add together:
+
+```{r}
+df_ex8_mod <- cbind(first_col, df_ex8_scaled)
+df_ex8_mod
+```
+
+And now we can create the plot:
+```{r}
+p <- ggradar(df_ex8_mod,  legend.text.size = 8, values.radar = c("0", "200", "400"), axis.label.size = 3, grid.label.size = 3, legend.position = "right") +
+  labs(title = "Chick weight from different diets at day 42") +
+  theme(plot.title = element_text(size = 14, ))
+p
+```
+Chick 4 and 5 gained the highest weight (on Diet 3).
+
+### Exercise 9
+
+Have look at the data [here](./files_12_data_visualization_exercises/exercise09/data.csv)
+It contains data about Potassium and Sodium content (in mg/100 g) as well as calories (in kcal/100 g).  
+
+The World Health Organization (WHO) recommends ingestion of less than 2000 mg of sodium per day and more than 3510 mg of potassium per day, resulting in a Na-to-K ratio of ≤1.0, which is believed to be optimal for preserving cardiovascular health.
+
+In addition, high caloric food is often bad for cardiovacular health.  
+
+As you can see, only the K-to-Na ratio is calculated.   
+Create a bubble chart with the Na concentration as a function of the K concentration.  
+The bubble size should be based on the calorie values.  
+
+Which two food items would be considered most healthy food items based on the information above?  
+
+```{r}
+file_path <- "./files_13_data_visualization_exercises/exercise09/data.csv"
+df_ex9 <- read_delim(file_path, delim=" ")
+df_ex9$...6 <- NULL
+df_ex9
+```
+```{r}
+p <- ggplot(df_ex9, aes(x = `Potassium_conc`, y = `Sodium_conc`)) + 
+  geom_point(aes(size = `Calories`), alpha = 0.5) +
+  scale_size(range = c(0.5, 12)) +
+  geom_text(aes(label=Item)) +
+  xlab("Potassium concentration (mg/100 g)") +
+  ylab("Sodium concentration (mg/100 g)")
+p
+```
+Spinach and Parsley are low Caloric and have a high Potassium concentration and low sodium concentration.
+
+### Exercise 10
+
+In [this dataset](./files_12_data_visualization_exercises/exercise10/meat-production-tonnes.csv) you can find World wide meat production from 1961 to 2021 expressed in tonnes. It includes cattle, poultry, sheep/mutton, goat, pigmeat, and wild game (source: https://ourworldindata.org/meat-production). 
+
+Create a XY-scatter plot with the total production of meat (in tonnes) plotted against time for the asion continent.  
+
+Use Scientific notation for the mass meat production.  
+
+```{r}
+file_path <- "./files_13_data_visualization_exercises/exercise10/meat-production-tonnes.csv"
+df_ex10 <- read_csv(file_path)
+df_ex10 <- rename(df_ex10, `Total mass (tonnes)`= `Meat, total | 00001765 || Production | 005510 || tonnes`)
+df_ex10
+```
+
+Filter the data to be used:
+```{r}
+df_ex10_asia <- df_ex10 %>%
+  filter(Entity == "Asia")
+df_ex10_asia
+```
+
+Create the plot:
+```{r}
+p <- ggplot(data= df_ex10_asia, aes(x = Year, y = `Total mass (tonnes)`)) +
+  geom_line() +
+  labs(title="Meat production in Asia")
+p
+```
+Or without line (just the data points):
+
+```{r}
+p <- ggplot(data= df_ex10_asia, aes(x = Year, y = `Total mass (tonnes)`)) +
+  geom_point() +
+  labs(title="Meat production in Asia")
+p
+```
+
+### Exercise 11
+
+For this exercise, we will use the dataset from exercise 7 again. This time, to create a `pivot table and plot` (note that there are no real pivot tables and plots in R).
+
+Download the [data set about](https://www.kaggle.com/datasets/kkhandekar/calories-in-food-items-per-100-grams) food calories per 100 g. 
+
+The data set contains units in the cells.  
+First clean the data set.  
+Create a pivot plot for the **mean** `Energy per 100 g in KJ` plotted against the `Food Categories`.  
+
+Which two Food Categories show the highest mean energy per weight?
+ 
+```{r}
+file_path <- "./files_13_data_visualization_exercises/exercise11/calories.csv"
+df_ex11 <- read_csv(file_path)
+df_ex11
+```
+Clean the data:
+
+```{r}
+df_ex11 <- df_ex11 %>% 
+  separate_wider_delim(Cals_per100grams, delim = " ", names = c("Cals_per100grams", "waste")) %>% 
+  separate_wider_delim(KJ_per100grams, delim = " ", names = c("KJ_per100grams", "waste2")) %>%
+  select (-c(waste, waste2)) %>% #Note that this is a negative selection. Selects all but the listed columns.
+  mutate_at(c('Cals_per100grams', 'KJ_per100grams'), as.numeric) #Creates numbers from strings
+df_ex11
+```
+
+
+Now group the food Categories:
+```{r}
+df_ex11_summ <- df_ex11 %>% 
+  group_by(FoodCategory) %>% 
+  summarize("Energy density (KJ/100 g)" = round(mean(`KJ_per100grams`), 1))
+df_ex11_summ
+```
+
+And now we can create the plot:
+```{r}
+barplot(df_ex11_summ$`Energy density (KJ/100 g)`, 
+        ylab = "Energy density (KJ/100 g)", 
+        ylim = c(0, max(df_ex11_summ$`Energy density (KJ/100 g)` + 1000)), 
+        names = df_ex11_summ$`FoodCategory`, 
+        las = 2,
+        cex.names = 0.5,
+        col = "steelblue",
+        main = "Energy Density per food catagory")  
+```
+
+
+Oils & Fats as well as VegetableOils show the highest mean energy density.
+
+---
+
+>This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
+>Creative Commons License: CC BY-SA 4.0.
+
