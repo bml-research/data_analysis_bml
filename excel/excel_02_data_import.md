@@ -32,13 +32,13 @@ Regardless of the specific format used, it is important to ensure that the data 
 
 The first step in data import is to check your data using a text editor.
 There are many text editors and all operating systems do have a default build-in text editor.
-However, I do recommend [Visual Studio Code](https://code.visualstudio.com/) as it allows you to view and manipulate text files on all main operating systems.
+However, I do recommend [Visual Studio Code](https://code.visualstudio.com/) as it allows you to view and manipulate text files on all main operating systems. In addition, it features the rainbow csv plugin that allows you to see the csv file with color highlighting to discriminate between the columns (this only works for comma separated files).
 
 Open your text file and check how the data are organised.
 
 Here you can see the [Food Composition](https://www.kaggle.com/datasets/vinitshah0110/food-composition?resource=download&select=Food+Composition.csv) file.
 
-![food composition](./pics_02_data_import/01.png)
+![food composition](./pics_02_data_import/01.png)  
 *<sub>Figure 1: a csv file in Visual Studio Code</sub>*
 
 As can be seen from the screenshot above, the csv file contains a header and the column seperator that is used is a comma. It can also be seen that the file is UTF-8 encoded and contains a BOM.
@@ -47,8 +47,8 @@ As can be seen from the screenshot above, the csv file contains a header and the
 ## Check the decimal separator
 
 On Windows, the decimal seperator is set at the OS level.
-To set this, click the windows button and `intl.cpl`.
-Then click `Additional settings`. Here you can vies your decimal separator at the OS level.
+To set this, click the Windows button and type `intl.cpl`.
+Then click `Additional settings`. Here you can specify your decimal separator at the OS level.
 
 ![decimal separator](./pics_02_data_import/01_1.png)
 *<sub>Figure 1_1: Change the decimal separator at the OS level.</sub>*
@@ -68,10 +68,11 @@ There are several ways to import a csv file in Excel.
 The most common ways are:
 - Using Power Query (also known as Get & Transform in Excel)
 - Using the csv import wizard
+- Open the csv file with Excel directly (all bets are off using this option). Unless you are pretty sure about the content of the csv file I do not reccomment this. 
 
-> Although Power Query is a very convenient way to import csv files in Excel, it can cause major problems with the decimal separator and thousends separator (independent of your OS settings and the Excel settings for the separator signs). It oftens completely ignors the decimal sign causing major errors in analysis later on. The csv import wizard is a bit more work but gives you more control later on. I do recommend the import wizard but I will also explain how to import using Power Query. Always check the result of the import and compare with the csv file in a text editor. 
+> Although Power Query is a very convenient way to import csv files in Excel, it can cause major problems with the decimal separator and thousends separator (independent of your OS settings and the Excel settings for the separator signs). You need to set the region correct (see below). Always check the result of the import and compare with the csv file in a text editor. 
 
-### Import csv files using Power Query
+## Import csv files using Power Query
 
 To import a CSV file into Microsoft Excel, follow these steps:
 
@@ -99,7 +100,7 @@ As you can see from above, the data is loaded in a Table with filters to sort ro
 >Note that the file is still a csv file. To save Excel features such a tables and plots, you should save in the `xlsx` format.
 
 
-## Import TSV and other text file in Excel
+### Import TSV and other text file in Excel with Power Query
 
 As mentioned above, sometimes text files use another column seperator such as a tab or a pipe `|` symbol.
 These are fairly easy to load in Excel as well:
@@ -129,11 +130,67 @@ You need to spicify the file type (UTF-8). But even then it will not load well:
 *<sub>Figure 7: a difficult file to load in Excel</sub>*
 
 
-However, using the "Text to columns" feature, you can easily seperate the columns.
+However, using the "Text to columns" feature, you can easily separate the columns.
 Than, remove the unwanted top rows and format as table.
 
 |![Data loaded](./pics_02_data_import/08.png)
 *<sub>Figure 8: a difficult file loaded in Excel</sub>*
+
+### Power Query and decimal separators
+
+As mentioned above, alway check if the decimal separator is set correctly.
+As an example we will have a look at [this dataset](https://www.kaggle.com/datasets/amandaroseknudsen/foodproductemissions?resource=download).
+
+The data contains the period (.) as a decimal separator:
+
+|![Data loaded](./pics_02_data_import/09.png)
+*<sub>Figure 9: This file contains the period as a decimal separator</sub>*
+
+Note that the import with Power Query goes wrong:
+
+|![Data loaded](./pics_02_data_import/10.png)
+*<sub>Figure 10: Data is imported in Power Query but decimal settings where not correct.</sub>*
+
+This is because the region settings where on Dutch (the Netherlands). Change the to Englisch (United States).
+
+You can set this at `Data > Get Data > Query Options > regional Settings.
+
+|![Data loaded](./pics_02_data_import/11.png)
+*<sub>Figure 11: Change region settings.</sub>*
+
+As you can see, the data is now loaded correctly:
+
+|![Data loaded](./pics_02_data_import/12.png)
+*<sub>Figure 12: Import with correct region settings.</sub>*
+
+
+## Import csv files using the Text Import Wizard.
+
+As mentioned above, you can also import your csv files using the csv import wizard. Use `File > open > browse` and browse to the location of your csv file. Change the dropdown box from `All Excell Files` to `All Files`. Open your file and select Delimited from the wizard:
+
+
+|![Data loaded](./pics_02_data_import/13.png)
+*<sub>Figure 13: Import with the Text Import Wizard.</sub>*
+
+Hit `Next` and click on `Advanced` to specify the Decimal and Thousands Separator.
+
+|![Data loaded](./pics_02_data_import/14.png)
+*<sub>Figure 14: Specify the decimal separator.</sub>*
+
+The csv file is now imported but not yet formatted in a data table.
+
+|![Data loaded](./pics_02_data_import/15.png)
+*<sub>Figure 15: Result of the import.</sub>*
+
+After formatting the dataset in a table you can start your analysis (preferrentially on a separate worksheet).
+
+|![Data loaded](./pics_02_data_import/16.png)
+*<sub>Figure 15: Data in a table format.</sub>*
+
+## Import csv files directly using `open with` from the file explorer in your OS.
+
+If you feel lucky, you can directly open een csv file in Excel. Only do this if you are pretty aware of the organization of the particular Excel file. It can save a lot of time if you are working with a lot of similar excel files.  
+
 
 ---
 
