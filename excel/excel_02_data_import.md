@@ -21,10 +21,11 @@ Another important aspect of text files are character encoding formats. The most 
 
 Another important aspect of text files is the BOM. A BOM (Byte Order Mark) is a special character that can be placed at the beginning of a text file to indicate the endianness (byte order) of the file's encoding. It is often used in Unicode encoding formats, such as UTF-8. The BOM character is not visible when the text file is opened in a text editor, but it can be detected by software that is specifically designed to look for it. The BOM is used to ensure that text files are interpreted correctly when they are transferred between systems.
 
-At last, you should realize that there are different types of line endings in text files. CRLF stands for "Carriage Return" (CR) and "Line Feed" (LF). In text files, these characters are used to indicate the end of a line of text. The CR character moves the cursor to the beginning of the current line, while the LF character moves the cursor to the next line. In Windows and DOS operating systems, the CRLF sequence (CR+LF) is used to represent the end of a line of text. In Unix-based systems, such as Linux and macOS, the LF character (also known as a newline) is used to represent the end of a line of text. When text files are transferred between systems that use different line endings, it can cause problems if the line endings are not interpreted correctly. For example, if a text file created on a Windows system is transferred to a Unix system, the CRLF line endings will not be recognized and the text file may appear to be a single, long line of text. To fix this, the line endings must be converted to the appropriate format for the target system.
+Another important aspect is that you should realize that there are different types of line endings in text files. CRLF stands for "Carriage Return" (CR) and "Line Feed" (LF). In text files, these characters are used to indicate the end of a line of text. The CR character moves the cursor to the beginning of the current line, while the LF character moves the cursor to the next line. In Windows and DOS operating systems, the CRLF sequence (CR+LF) is used to represent the end of a line of text. In Unix-based systems, such as Linux and macOS, the LF character (also known as a newline) is used to represent the end of a line of text. When text files are transferred between systems that use different line endings, it can cause problems if the line endings are not interpreted correctly. For example, if a text file created on a Windows system is transferred to a Unix system, the CRLF line endings will not be recognized and the text file may appear to be a single, long line of text. To fix this, the line endings must be converted to the appropriate format for the target system.
 
+At last, always make sure that you are aware of decimal numbers in the csv file and be sure what decimal and thousend separator is used. These differ by region.  
 
-Regardless of the specific format used, it is important to ensure that the data is well-organized, accurate, and consistent, as this will make it easier to manipulate and analyze.
+Regardless of the specific format used, it is important to ensure that the data is well-organized, accurate, and consistent, as this will make it easier to manipulate and analyze. In the United States, the period (.) is used as the standard decimal separator. In the Netherlands, a comma (,) is used. As a thousend separator, the comma (,) is used in many Englisch speaking countries while the period (.) is used in many non-English speaking countries. As a concequence, csv files from English speaking countries often use the comma as a column separator, while "csv" files from non-Englisch speaking countries often use a semi-colon as a column separator.
 
 
 ## Check your data file
@@ -43,7 +44,34 @@ Here you can see the [Food Composition](https://www.kaggle.com/datasets/vinitsha
 As can be seen from the screenshot above, the csv file contains a header and the column seperator that is used is a comma. It can also be seen that the file is UTF-8 encoded and contains a BOM.
 
 
+## Check the decimal separator
+
+On Windows, the decimal seperator is set at the OS level.
+To set this, click the windows button and `intl.cpl`.
+Then click `Additional settings`. Here you can vies your decimal separator at the OS level.
+
+![decimal separator](./pics_02_data_import/01_1.png)
+*<sub>Figure 1_1: Change the decimal separator at the OS level.</sub>*
+
+Another level where you can set the decimal separator is in Excel.
+In `File > Options > Advanced` you can set the decimal separator.
+You can either set it to `Use system seperators` or choose your own.
+
+![decimal separator](./pics_02_data_import/01_2.png)
+*<sub>Figure 1_2: Change the decimal separator in Excel.</sub>*
+
+A last level to choose the decimal separator is during the import of a csv file using either Power Query or the csv import wizard. This is described below.
+
 ## Import CSV files in Excel
+
+There are several ways to import a csv file in Excel.
+The most common ways are:
+- Using Power Query (also known as Get & Transform in Excel)
+- Using the csv import wizard
+
+> Although Power Query is a very convenient way to import csv files in Excel, it can cause major problems with the decimal separator and thousends separator (independent of your OS settings and the Excel settings for the separator signs). It oftens completely ignors the decimal sign causing major errors in analysis later on. The csv import wizard is a bit more work but gives you more control later on. I do recommend the import wizard but I will also explain how to import using Power Query. Always check the result of the import and compare with the csv file in a text editor. 
+
+### Import csv files using Power Query
 
 To import a CSV file into Microsoft Excel, follow these steps:
 
