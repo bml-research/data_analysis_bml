@@ -50,15 +50,15 @@ On Windows, the decimal seperator is set at the OS level.
 To set this, click the Windows button and type `intl.cpl`.
 Then click `Additional settings`. Here you can specify your decimal separator at the OS level.
 
-![decimal separator](./pics_02_data_import/01_1.png)
-*<sub>Figure 1_1: Change the decimal separator at the OS level.</sub>*
+![decimal separator](./pics_02_data_import/02.png)
+*<sub>Figure 2: Change the decimal separator at the OS level.</sub>*
 
 Another level where you can set the decimal separator is in Excel.
 In `File > Options > Advanced` you can set the decimal separator.
 You can either set it to `Use system seperators` or choose your own.
 
-![decimal separator](./pics_02_data_import/01_2.png)
-*<sub>Figure 1_2: Change the decimal separator in Excel.</sub>*
+![decimal separator](./pics_02_data_import/03.png)
+*<sub>Figure 3: Change the decimal separator in Excel.</sub>*
 
 A last level to choose the decimal separator is during the import of a csv file using either Power Query or the csv import wizard. This is described below.
 
@@ -88,12 +88,12 @@ To import a CSV file into Microsoft Excel, follow these steps:
 
 Here are some screenshots of the import process:
 
-![Data loading](./pics_02_data_import/02.png)
-*<sub>Figure 2: Loading a csv file in Excel</sub>*
+![Data loading](./pics_02_data_import/04.png)
+*<sub>Figure 4: Loading a csv file in Excel</sub>*
 
 
-![Data loaded](./pics_02_data_import/03.png)
-*<sub>Figure 3: Loaded csv file in Excel</sub>*
+![Data loaded](./pics_02_data_import/05.png)
+*<sub>Figure 5: Loaded csv file in Excel</sub>*
 
 As you can see from above, the data is loaded in a Table with filters to sort rows. 
 
@@ -106,8 +106,8 @@ As mentioned above, sometimes text files use another column seperator such as a 
 These are fairly easy to load in Excel as well:
 
 
-![Data loaded](./pics_02_data_import/04.png)
-*<sub>Figure 4: a TSV file in Visual Studio Code</sub>*
+![Data loaded](./pics_02_data_import/06.png)
+*<sub>Figure 6: a TSV file in Visual Studio Code</sub>*
 
 Loading this file in Excel is easy as it will recognize the tabs.
 However, if in case you run into trouble, you can may need to help with file loading
@@ -115,26 +115,26 @@ However, if in case you run into trouble, you can may need to help with file loa
 Consider the [this](./files/file01.txt) file.
 
 
-![Data loaded](./pics_02_data_import/05.png)
-*<sub>Figure 5: a text file in Visual Studio Code that uses the `@` symbol as a column seperator</sub>*
+![Data loaded](./pics_02_data_import/07.png)
+*<sub>Figure 7: a text file in Visual Studio Code that uses the `@` symbol as a column seperator</sub>*
 
 As you can see, it uses the `@` symbol as the column seperator.
 It will not easily load in Excel:
 
-|![Data loaded](./pics_02_data_import/06.png)
-*<sub>Figure 6: a text file loaded in Excel that uses the pipe symbol `@` symbol as a column seperator</sub>*
+|![Data loaded](./pics_02_data_import/08.png)
+*<sub>Figure 8: a text file loaded in Excel that uses the pipe symbol `@` symbol as a column seperator</sub>*
 
 You need to spicify the file type (UTF-8). But even then it will not load well:
 
-|![Data loaded](./pics_02_data_import/07.png)
-*<sub>Figure 7: a difficult file to load in Excel</sub>*
+|![Data loaded](./pics_02_data_import/09.png)
+*<sub>Figure 9: a difficult file to load in Excel</sub>*
 
 
 However, using the "Text to columns" feature, you can easily separate the columns.
 Than, remove the unwanted top rows and format as table.
 
-|![Data loaded](./pics_02_data_import/08.png)
-*<sub>Figure 8: a difficult file loaded in Excel</sub>*
+|![Data loaded](./pics_02_data_import/10.png)
+*<sub>Figure 10: a difficult file loaded in Excel</sub>*
 
 ### Power Query and decimal separators
 
@@ -143,25 +143,25 @@ As an example we will have a look at [this dataset](https://www.kaggle.com/datas
 
 The data contains the period (.) as a decimal separator:
 
-|![Data loaded](./pics_02_data_import/09.png)
-*<sub>Figure 9: This file contains the period as a decimal separator</sub>*
+|![Data loaded](./pics_02_data_import/11.png)
+*<sub>Figure 11: This file contains the period as a decimal separator</sub>*
 
 Note that the import with Power Query goes wrong:
 
-|![Data loaded](./pics_02_data_import/10.png)
-*<sub>Figure 10: Data is imported in Power Query but decimal settings where not correct.</sub>*
+|![Data loaded](./pics_02_data_import/12.png)
+*<sub>Figure 12: Data is imported in Power Query but decimal settings where not correct.</sub>*
 
 This is because the region settings where on Dutch (the Netherlands). Change the to Englisch (United States).
 
 You can set this at `Data > Get Data > Query Options > regional Settings.
 
-|![Data loaded](./pics_02_data_import/11.png)
-*<sub>Figure 11: Change region settings.</sub>*
+|![Data loaded](./pics_02_data_import/13.png)
+*<sub>Figure 13: Change region settings.</sub>*
 
 As you can see, the data is now loaded correctly:
 
-|![Data loaded](./pics_02_data_import/12.png)
-*<sub>Figure 12: Import with correct region settings.</sub>*
+|![Data loaded](./pics_02_data_import/14.png)
+*<sub>Figure 14: Import with correct region settings.</sub>*
 
 
 ## Import csv files using the Text Import Wizard.
@@ -169,25 +169,25 @@ As you can see, the data is now loaded correctly:
 As mentioned above, you can also import your csv files using the csv import wizard. Use `File > open > browse` and browse to the location of your csv file. Change the dropdown box from `All Excell Files` to `All Files`. Open your file and select Delimited from the wizard:
 
 
-|![Data loaded](./pics_02_data_import/13.png)
-*<sub>Figure 13: Import with the Text Import Wizard.</sub>*
+|![Data loaded](./pics_02_data_import/15.png)
+*<sub>Figure 15: Import with the Text Import Wizard.</sub>*
 
 Hit `Next` and click on `Advanced` to specify the Decimal and Thousands Separator.
 
-|![Data loaded](./pics_02_data_import/14.png)
-*<sub>Figure 14: Specify the decimal separator.</sub>*
+|![Data loaded](./pics_02_data_import/16.png)
+*<sub>Figure 16: Specify the decimal separator.</sub>*
 
 The csv file is now imported but not yet formatted in a data table.
 
-|![Data loaded](./pics_02_data_import/15.png)
-*<sub>Figure 15: Result of the import.</sub>*
+|![Data loaded](./pics_02_data_import/17.png)
+*<sub>Figure 17: Result of the import.</sub>*
 
 After formatting the dataset in a table you can start your analysis (preferrentially on a separate worksheet).
 
-|![Data loaded](./pics_02_data_import/16.png)
-*<sub>Figure 15: Data in a table format.</sub>*
+|![Data loaded](./pics_02_data_import/18.png)
+*<sub>Figure 18: Data in a table format.</sub>*
 
-## Import csv files directly using `open with` from the file explorer in your OS.
+## Import csv files directly using open with from the file explorer in your OS.
 
 If you feel lucky, you can directly open een csv file in Excel. Only do this if you are pretty aware of the organization of the particular Excel file. It can save a lot of time if you are working with a lot of similar excel files.  
 
