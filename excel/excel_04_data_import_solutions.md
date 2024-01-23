@@ -57,17 +57,22 @@ The solution can be found [here](./files_04_import_solutions/exercise04/food_dat
 
 ### Exercise 5
 
-This file is rather easy to load.
+While this file appears rather easy to load:
 
 ![import](./files_04_import_solutions/exercise05/fig1.png)
 
+>The data is not loaded well. The decimal separator is not set correctly.
+
+`Land use Change` for `apples` should be `0.029`.  
+>Make sure that you set the Regional Setting correctly to Englisch (United States). 
 
 The solution can be found [here](./files_04_import_solutions/exercise05/Food_Product_Emissions.xlsx)
 
+Both the wrong and correct import can be found in the file.
 
 ### Exercise 6
 
-This file is easy to load as well:
+This file is easy to load:
 
 ![import](./files_04_import_solutions/exercise06/fig1.png)
 
