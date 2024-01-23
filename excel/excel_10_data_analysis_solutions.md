@@ -39,11 +39,17 @@ Median:
 
 ### Exercise 2
 
-1. Chicken McNuggets (40 piece)  
-2. Big Breakfast with Hotcakes (Regular Biscuit) and Big Breakfast with Hotcakes (Large Biscuit)  
-3. Hamburger  
-4. Chocolate Shake (Large)  
-5. Iced Coffee with Sugar Free French Vanilla Syrup (Medium)
+1. Which item has the highest Calories from fat? 
+>Chicken McNuggets (40 piece)  
+2. Which items have the highest Iron (% Daily Value)? 
+>Big Breakfast with Hotcakes (Regular Biscuit) and Big Breakfast with Hotcakes (Large Biscuit)  
+3. Which Beef & Pork item has the lowest Calories from fat?
+>Hamburger  
+4. Which Coffee & Tea or Smoothies & Shakes item has the highest amount of carbohydrates?  
+>Chocolate Shake (Large)  
+5. Which item has the highest saturated fat and lowest carbohydrates value (use multi-sort to practice)?  
+>Frappé Chocolate Chip (Large)  
+
 
 
 ### Exercise 3
@@ -67,6 +73,16 @@ Median:
  ```
 
 ### Exercise 4
+
+1. Use conditional formatting to indicate high energetic food items (>600 calories). Use red markup for these. Which two categories show the highest number of red cells?  
+>Breakfast and Chicken & Fish
+2. Use conditional formatting to check for duplicate food items. Use red markup for these. Are there any duplicate items?  
+>No
+3. Use conditional formatting to indicate a % Dalily Value > 100% for Vitamin A. Which catagory are these items found?  
+> Salads
+4. Use conditional formatting to indicate a % Dalily Value >= 100% for Vitamin C. Use green markup for these. Make sure that you include 100%! How many items do you find?  
+> 7
+
 
 The excel file can be found [here](./files_10_data_analysis_solutions/exercise01/menu.xlsx).  
 

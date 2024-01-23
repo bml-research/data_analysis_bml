@@ -39,10 +39,10 @@ Use filter and sort to answer the following questions:
 
 ### Exersise 4
 
-1. Use conditional formatting to indicate high energetic food items (>600 calories). Use red markup for these.  
-2. Use conditional formatting to check for duplicate food items. Use red markup for these.  
-3. Use conditional formatting to indicate a % Dalily Value < 20% for Vitamin A and Vitamin C. Use red markup for these.  
-4. Use conditional formatting to indicate a % Dalily Value >= 20% for Vitamin A and Vitamin C. Use green markup for these. Make sure that you include 20%!  
+1. Use conditional formatting to indicate high energetic food items (>600 calories). Use red markup for these. Which two categories show the highest number of red cells?  
+2. Use conditional formatting to check for duplicate food items. Use red markup for these. Are there any duplicate items?  
+3. Use conditional formatting to indicate a % Dalily Value > 100% for Vitamin A. Which catagory are these items found?  
+4. Use conditional formatting to indicate a % Dalily Value >= 100% for Vitamin C. Use green markup for these. Make sure that you include 100%! How many items do you find?  
 
 
 ### Exercise 5
