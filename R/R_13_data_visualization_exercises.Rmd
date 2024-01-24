@@ -14,6 +14,9 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 library("tidyverse")
 ```
 
+
+This file can be found [here](./R_13_data_visualization_exercises.Rmd)
+
 > The exercises will be similar to the exercises in Excel in order to compare the results.
 
 ### Exercise 1

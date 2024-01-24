@@ -6,6 +6,8 @@
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
 ```
 
+This file can be downloaded [here](./R_06_data_cleaning.Rmd)
+
 # R: Data Cleaning
 
 ## Data cleaning methods

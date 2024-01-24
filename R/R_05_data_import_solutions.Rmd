@@ -8,11 +8,13 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 
 # R
 
-## Data Import Exercises
+## Data Import Solutions
 
 ```{r}
 library(tidyverse)
 ```
+
+This file can be downloaded [here](./R_05_data_import_solutions.Rmd)
 
 ### Exercise 1
 

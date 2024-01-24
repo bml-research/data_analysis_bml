@@ -6,6 +6,8 @@
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
 ```
 
+This file can be downloaded [here](./R_03_data_import.Rmd)
+
 # R: Data Import
 
 ## Introduction

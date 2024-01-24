@@ -11,7 +11,7 @@
 
 
 
-<title>R_11_data_analysis_exercises.knit</title>
+<title>R_10_data_analysis_exercises.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -359,6 +359,7 @@ display: none;
 <div id="data-analysis-exercises" class="section level2">
 <h2>Data Analysis Exercises</h2>
 <pre class="r"><code>library(tidyverse)</code></pre>
+<p>This file can be downloaded <a href="./R_10_data_analysis_exercises.Rmd">here</a></p>
 <blockquote>
 <p>In order to compare the analysis in R with Excel, the exercises where
 kept as similar as possible.</p>
@@ -422,31 +423,43 @@ cup) (hint: use a wildcard)</p>
 <div id="exersise-4" class="section level3">
 <h3>Exersise 4</h3>
 <blockquote>
-<p>Note that this exercise differs a bit from the Excel counterpart.</p>
+<p>Note that this exercise differs a bit from the Excel counterpart. We
+do not use conditional formatting but selection of rows instead.</p>
 </blockquote>
 <ol style="list-style-type: decimal">
-<li>Select rows with high energetic food items (&gt;600 calories).</li>
-<li>Select rows with duplicate food items.<br />
+<li>Select rows with high energetic food items (&gt;600 calories). Which
+three categories show the highest number of red cells?<br />
 </li>
-<li>Select rows with % Dalily Value &lt; 20% for Vitamin A and Vitamin
-C.</li>
-<li>Select rows with a % Dalily Value &gt;= 20% for Vitamin A and
-Vitamin C. Make sure that you include 20%!</li>
+<li>Select rows with duplicate food items. Are there any duplicate
+items?<br />
+</li>
+<li>Select rows with a % Daily Value &gt; 100% for Vitamin A. Which
+category are these items mainly found?</li>
+<li>Select rows with a % Daily Value &gt;= 100% for Vitamin C. Use green
+markup for these. Make sure that you include 100%! How many items do you
+find that meet this criteria?</li>
 </ol>
-<p>Select rows with high energetic food items (&gt;600 calories).</p>
+<p>Select rows with high energetic food items (&gt;600 calories). Which
+three categories show the highest number of red cells?</p>
 <pre class="r"><code>#Your code here</code></pre>
-<p>Select rows with duplicate food items.</p>
+<p>Select rows with duplicate food items. Are there any duplicate
+items?</p>
 <pre class="r"><code>#Your code here</code></pre>
 <p>There are no duplicates!</p>
-<p>Select rows with % Dalily Value &lt; 20% for Vitamin A and Vitamin
-C.</p>
+<p>Select rows with a % Daily Value &gt; 100% for Vitamin A. Which
+category are these items mainly found?</p>
 <pre class="r"><code>#Your code here</code></pre>
-<p>Select rows with a % Dalily Value &gt;= 20% for Vitamin A and Vitamin
-C. Make sure that you include 20%!</p>
+<p>Select rows with a % Daily Value &gt;= 100% for Vitamin C. Use green
+markup for these. Make sure that you include 100%! How many items do you
+find that meet this criteria?</p>
 <pre class="r"><code>#Your code here</code></pre>
 </div>
 <div id="exercise-5" class="section level3">
 <h3>Exercise 5</h3>
+<blockquote>
+<p>Note that this exercise differs a bit from the Excel counterpart. We
+do not use a pivot table but the results will be similar.</p>
+</blockquote>
 <p>Group the categories.<br />
 Calculate:<br />
 - the Average of Total Fat (% Daily Value)<br />

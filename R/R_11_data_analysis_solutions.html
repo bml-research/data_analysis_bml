@@ -359,6 +359,7 @@ display: none;
 <div id="data-analysis-solutions" class="section level2">
 <h2>Data Analysis Solutions</h2>
 <pre class="r"><code>library(tidyverse)</code></pre>
+<p>This file can be downloaded <a href="./R_11_data_analysis_solutions.Rmd">here</a></p>
 <blockquote>
 <p>In order to compare the analysis in R with Excel, the exercises where
 kept as similar as possible.</p>
@@ -374,6 +375,7 @@ table:</p>
 <code>Calories</code> and <code>Calories from fat</code>. Display the
 answers in a data frame.</li>
 </ul>
+<p>First load the data:</p>
 <pre class="r"><code>file_path &lt;- &quot;./files_10_data_analysis_exercises/exercise01/menu.csv&quot;
 df &lt;- read_csv(file_path)
 head(df)</code></pre>
@@ -393,6 +395,7 @@ head(df)</code></pre>
 ## #   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
 ## #   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;,
 ## #   `Vitamin A (% Daily Value)` &lt;dbl&gt;, `Vitamin C (% Daily Value)` &lt;dbl&gt;, …</code></pre>
+<p>Then the calculations:</p>
 <pre class="r"><code>min_cal &lt;- min(df$Calories)
 max_cal &lt;- max(df$Calories)
 mean_cal &lt;- mean(df$Calories)
@@ -453,6 +456,7 @@ value?</p>
 ## #   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
 ## #   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;,
 ## #   `Vitamin A (% Daily Value)` &lt;dbl&gt;, `Vitamin C (% Daily Value)` &lt;dbl&gt;, …</code></pre>
+<p>Chicken McNuggets (40 piece)</p>
 <p>or:</p>
 <pre class="r"><code>filter(df, `Calories from Fat` == max(df$`Calories from Fat`))</code></pre>
 <pre><code>## # A tibble: 1 × 24
@@ -466,6 +470,7 @@ value?</p>
 ## #   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
 ## #   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;,
 ## #   `Vitamin A (% Daily Value)` &lt;dbl&gt;, `Vitamin C (% Daily Value)` &lt;dbl&gt;, …</code></pre>
+<p>Chicken McNuggets (40 piece)</p>
 <p>Item with the highest highest Iron (% Daily Value)</p>
 <pre class="r"><code>df[df$`Iron (% Daily Value)` == max(df$`Iron (% Daily Value)`), ]</code></pre>
 <pre><code>## # A tibble: 2 × 24
@@ -480,6 +485,8 @@ value?</p>
 ## #   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
 ## #   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;,
 ## #   `Vitamin A (% Daily Value)` &lt;dbl&gt;, `Vitamin C (% Daily Value)` &lt;dbl&gt;, …</code></pre>
+<p>Big Breakfast with Hotcakes (Regular Biscuit) Big Breakfast with
+Hotcakes (Large Biscuit)</p>
 <p>or:</p>
 <pre class="r"><code>filter(df, `Iron (% Daily Value)` == max(df$`Iron (% Daily Value)`))</code></pre>
 <pre><code>## # A tibble: 2 × 24
@@ -494,6 +501,8 @@ value?</p>
 ## #   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
 ## #   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;,
 ## #   `Vitamin A (% Daily Value)` &lt;dbl&gt;, `Vitamin C (% Daily Value)` &lt;dbl&gt;, …</code></pre>
+<p>Big Breakfast with Hotcakes (Regular Biscuit) Big Breakfast with
+Hotcakes (Large Biscuit)</p>
 <p>Beef &amp; Pork item with the lowest Calories from fat?</p>
 <pre class="r"><code>df %&gt;% 
   arrange(Category, `Calories from Fat`) %&gt;%
@@ -510,6 +519,7 @@ value?</p>
 ## #   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
 ## #   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;,
 ## #   `Vitamin A (% Daily Value)` &lt;dbl&gt;, `Vitamin C (% Daily Value)` &lt;dbl&gt;, …</code></pre>
+<p>Hamburger</p>
 <p>Coffee &amp; Tea or Smoothies &amp; Shakes item with the highest
 amount of carbohydrates:</p>
 <pre class="r"><code>df %&gt;% 
@@ -543,6 +553,7 @@ value:</p>
 ## #   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
 ## #   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;,
 ## #   `Vitamin A (% Daily Value)` &lt;dbl&gt;, `Vitamin C (% Daily Value)` &lt;dbl&gt;, …</code></pre>
+<p>Frappé Chocolate Chip (Large)</p>
 </div>
 <div id="exercise-3" class="section level3">
 <h3>Exercise 3</h3>
@@ -558,29 +569,25 @@ cup) (hint: use a wildcard)?</li>
 <p>High energetic:</p>
 <pre class="r"><code>nrow(df[df$Calories &gt; 600, ])</code></pre>
 <pre><code>## [1] 37</code></pre>
+<p>37 items</p>
 <p>Number of items between 300 and 600 calories:</p>
 <pre class="r"><code>nrow(df[df$Calories &gt; 300 &amp; df$Calories &lt; 600, ])</code></pre>
 <pre><code>## [1] 106</code></pre>
+<p>106 items</p>
 <p>How many items are measured in the serving size Fluid Ounce (fl oz
 cup) (hint: use a wildcard)</p>
 <pre class="r"><code>nrow(df[str_detect(df$`Serving Size`, &quot;fl oz cup&quot;), ])</code></pre>
 <pre><code>## [1] 138</code></pre>
+<p>138 items</p>
 </div>
 <div id="exersise-4" class="section level3">
 <h3>Exersise 4</h3>
 <blockquote>
-<p>Note that this exercise differs a bit from the Excel counterpart.</p>
+<p>Note that this exercise differs a bit from the Excel counterpart. We
+do not use conditional formatting but selection of rows instead.</p>
 </blockquote>
-<ol style="list-style-type: decimal">
-<li>Select rows with high energetic food items (&gt;600 calories).</li>
-<li>Select rows with duplicate food items.<br />
-</li>
-<li>Select rows with % Dalily Value &lt; 20% for Vitamin A and Vitamin
-C.</li>
-<li>Select rows with a % Dalily Value &gt;= 20% for Vitamin A and
-Vitamin C. Make sure that you include 20%!</li>
-</ol>
-<p>Select rows with high energetic food items (&gt;600 calories).</p>
+<p>Select rows with high energetic food items (&gt;600 calories). Which
+three categories show the highest number of red cells?</p>
 <pre class="r"><code>df %&gt;%
   filter(Calories &gt; 600) </code></pre>
 <pre><code>## # A tibble: 37 × 24
@@ -603,7 +610,9 @@ Vitamin C. Make sure that you include 20%!</li>
 ## #   Sodium &lt;dbl&gt;, `Sodium (% Daily Value)` &lt;dbl&gt;, Carbohydrates &lt;dbl&gt;,
 ## #   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
 ## #   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;, …</code></pre>
-<p>Select rows with duplicate food items.</p>
+<p>Breakfast and Chicken &amp; Fish and Smoothies and shakes</p>
+<p>Select rows with duplicate food items. Are there any duplicate
+items?</p>
 <pre class="r"><code>df %&gt;% 
   group_by(Item) %&gt;% 
   filter(n()&gt;1)</code></pre>
@@ -617,49 +626,18 @@ Vitamin C. Make sure that you include 20%!</li>
 ## #   Sodium (% Daily Value) &lt;dbl&gt;, Carbohydrates &lt;dbl&gt;,
 ## #   Carbohydrates (% Daily Value) &lt;dbl&gt;, Dietary Fiber &lt;dbl&gt;, …</code></pre>
 <p>There are no duplicates!</p>
-<p>Select rows with % Dalily Value &lt; 20% for Vitamin A and Vitamin
-C.</p>
+<p>Select rows with a % Daily Value &gt; 100% for Vitamin A. Which
+category are these items mainly found?</p>
 <pre class="r"><code>df %&gt;%
-  filter(`Vitamin A (% Daily Value)` &lt; 20 &amp; `Vitamin C (% Daily Value)` &lt; 20)</code></pre>
-<pre><code>## # A tibble: 193 × 24
-##    Category  Item        `Serving Size` Calories `Calories from Fat` `Total Fat`
-##    &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;             &lt;dbl&gt;               &lt;dbl&gt;       &lt;dbl&gt;
-##  1 Breakfast Egg McMuff… 4.8 oz (136 g)      300                 120          13
-##  2 Breakfast Egg White … 4.8 oz (135 g)      250                  70           8
-##  3 Breakfast Sausage Mc… 3.9 oz (111 g)      370                 200          23
-##  4 Breakfast Sausage Mc… 5.7 oz (161 g)      450                 250          28
-##  5 Breakfast Sausage Mc… 5.7 oz (161 g)      400                 210          23
-##  6 Breakfast Steak &amp; Eg… 6.5 oz (185 g)      430                 210          23
-##  7 Breakfast Bacon, Egg… 5.3 oz (150 g)      460                 230          26
-##  8 Breakfast Bacon, Egg… 5.8 oz (164 g)      520                 270          30
-##  9 Breakfast Bacon, Egg… 5.4 oz (153 g)      410                 180          20
-## 10 Breakfast Bacon, Egg… 5.9 oz (167 g)      470                 220          25
-## # ℹ 183 more rows
-## # ℹ 18 more variables: `Total Fat (% Daily Value)` &lt;dbl&gt;,
-## #   `Saturated Fat` &lt;dbl&gt;, `Saturated Fat (% Daily Value)` &lt;dbl&gt;,
-## #   `Trans Fat` &lt;dbl&gt;, Cholesterol &lt;dbl&gt;, `Cholesterol (% Daily Value)` &lt;dbl&gt;,
-## #   Sodium &lt;dbl&gt;, `Sodium (% Daily Value)` &lt;dbl&gt;, Carbohydrates &lt;dbl&gt;,
-## #   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
-## #   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;, …</code></pre>
-<p>Select rows with a % Dalily Value &gt;= 20% for Vitamin A and Vitamin
-C. Make sure that you include 20%!</p>
-<pre class="r"><code>df %&gt;%
-  filter(`Vitamin A (% Daily Value)` &gt;= 20 &amp; `Vitamin C (% Daily Value)` &gt;= 20)</code></pre>
-<pre><code>## # A tibble: 12 × 24
-##    Category        Item  `Serving Size` Calories `Calories from Fat` `Total Fat`
-##    &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt;             &lt;dbl&gt;               &lt;dbl&gt;       &lt;dbl&gt;
-##  1 Chicken &amp; Fish  Prem… 11.1 oz (316 …      630                 280        32  
-##  2 Chicken &amp; Fish  Prem… 10.7 oz (302 …      480                 170        19  
-##  3 Salads          Prem… 7.9 oz (223 g)      140                  70         7  
-##  4 Salads          Prem… 9 oz (255 g)        380                 190        21  
-##  5 Salads          Prem… 8.5 oz (241 g)      220                  80         8  
-##  6 Salads          Prem… 8.1 oz (230 g)      140                  40         4.5
-##  7 Salads          Prem… 12.3 oz (348 …      450                 190        22  
-##  8 Salads          Prem… 11.8 oz (335 …      290                  80         8  
-##  9 Snacks &amp; Sides  Side… 3.1 oz (87 g)        20                   0         0  
-## 10 Smoothies &amp; Sh… Mang… 12 fl oz cup        210                   5         0.5
-## 11 Smoothies &amp; Sh… Mang… 16 fl oz cup        260                  10         1  
-## 12 Smoothies &amp; Sh… Mang… 22 fl oz cup        340                  10         1  
+  filter(`Vitamin A (% Daily Value)` &gt; 100)</code></pre>
+<pre><code>## # A tibble: 5 × 24
+##   Category Item          `Serving Size` Calories `Calories from Fat` `Total Fat`
+##   &lt;chr&gt;    &lt;chr&gt;         &lt;chr&gt;             &lt;dbl&gt;               &lt;dbl&gt;       &lt;dbl&gt;
+## 1 Salads   Premium Baco… 7.9 oz (223 g)      140                  70         7  
+## 2 Salads   Premium Baco… 8.5 oz (241 g)      220                  80         8  
+## 3 Salads   Premium Sout… 8.1 oz (230 g)      140                  40         4.5
+## 4 Salads   Premium Sout… 12.3 oz (348 …      450                 190        22  
+## 5 Salads   Premium Sout… 11.8 oz (335 …      290                  80         8  
 ## # ℹ 18 more variables: `Total Fat (% Daily Value)` &lt;dbl&gt;,
 ## #   `Saturated Fat` &lt;dbl&gt;, `Saturated Fat (% Daily Value)` &lt;dbl&gt;,
 ## #   `Trans Fat` &lt;dbl&gt;, Cholesterol &lt;dbl&gt;, `Cholesterol (% Daily Value)` &lt;dbl&gt;,
@@ -667,9 +645,41 @@ C. Make sure that you include 20%!</p>
 ## #   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
 ## #   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;,
 ## #   `Vitamin A (% Daily Value)` &lt;dbl&gt;, `Vitamin C (% Daily Value)` &lt;dbl&gt;, …</code></pre>
+<p>Salads</p>
+<p>Select rows with a % Daily Value &gt;= 100% for Vitamin C. Use green
+markup for these. Make sure that you include 100%! How many items do you
+find that meet this criteria?</p>
+<pre class="r"><code>df %&gt;%
+  filter(`Vitamin C (% Daily Value)` &gt;= 100)</code></pre>
+<pre><code>## # A tibble: 7 × 24
+##   Category       Item    `Serving Size` Calories `Calories from Fat` `Total Fat`
+##   &lt;chr&gt;          &lt;chr&gt;   &lt;chr&gt;             &lt;dbl&gt;               &lt;dbl&gt;       &lt;dbl&gt;
+## 1 Breakfast      Fruit … 9.6 oz (251 g)      290                  35           4
+## 2 Breakfast      Fruit … 9.6 oz (251 g)      260                  40           4
+## 3 Snacks &amp; Sides Apple … 1.2 oz (34 g)        15                   0           0
+## 4 Beverages      Minute… 6 fl oz (177 …       80                   0           0
+## 5 Beverages      Minute… 12 fl oz cup        150                   0           0
+## 6 Beverages      Minute… 16 fl oz cup        190                   0           0
+## 7 Beverages      Minute… 22 fl oz cup        280                   0           0
+## # ℹ 18 more variables: `Total Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Saturated Fat` &lt;dbl&gt;, `Saturated Fat (% Daily Value)` &lt;dbl&gt;,
+## #   `Trans Fat` &lt;dbl&gt;, Cholesterol &lt;dbl&gt;, `Cholesterol (% Daily Value)` &lt;dbl&gt;,
+## #   Sodium &lt;dbl&gt;, `Sodium (% Daily Value)` &lt;dbl&gt;, Carbohydrates &lt;dbl&gt;,
+## #   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
+## #   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;,
+## #   `Vitamin A (% Daily Value)` &lt;dbl&gt;, `Vitamin C (% Daily Value)` &lt;dbl&gt;, …</code></pre>
+<p>The number of items:</p>
+<pre class="r"><code>nrow(df %&gt;%
+  filter(`Vitamin C (% Daily Value)` &gt;= 100))</code></pre>
+<pre><code>## [1] 7</code></pre>
+<p>7</p>
 </div>
 <div id="exercise-5" class="section level3">
 <h3>Exercise 5</h3>
+<blockquote>
+<p>Note that this exercise differs a bit from the Excel counterpart. We
+do not use a pivot table but the results will be similar.</p>
+</blockquote>
 <p>Group the categories.<br />
 Calculate:<br />
 - the Average of Total Fat (% Daily Value)<br />

@@ -15,6 +15,9 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 library(tidyverse)
 ```
 
+This file can be downloaded [here](./R_11_data_analysis_solutions.Rmd)
+
+
 > In order to compare the analysis in R with Excel, the exercises where kept as similar as possible. 
 
 ### Exercise 1
@@ -24,12 +27,13 @@ Then perfom the following calculations on a new worksheet and display them as a 
 
 - Calculate the minimum, maximum, average, median from the columns `Calories` and `Calories from fat`. Display the answers in a data frame.  
 
+First load the data:
 ```{r}
 file_path <- "./files_10_data_analysis_exercises/exercise01/menu.csv"
 df <- read_csv(file_path)
 head(df)
 ```
-
+Then the calculations:
 ```{r}
 min_cal <- min(df$Calories)
 max_cal <- max(df$Calories)
@@ -73,20 +77,29 @@ Item  with the highest Calories from fat:
 df[df$`Calories from Fat` == max(df$`Calories from Fat`), ]
 ```
 
+Chicken McNuggets (40 piece)
+
 or:
 ```{r}
 filter(df, `Calories from Fat` == max(df$`Calories from Fat`))
 ```
-
+Chicken McNuggets (40 piece)
 
 Item  with the highest highest Iron (% Daily Value)
 ```{r}
 df[df$`Iron (% Daily Value)` == max(df$`Iron (% Daily Value)`), ]
 ```
+
+Big Breakfast with Hotcakes (Regular Biscuit)
+Big Breakfast with Hotcakes (Large Biscuit)
+
 or:
 ```{r}
 filter(df, `Iron (% Daily Value)` == max(df$`Iron (% Daily Value)`))
 ```
+
+Big Breakfast with Hotcakes (Regular Biscuit)
+Big Breakfast with Hotcakes (Large Biscuit)
 
 Beef & Pork item with the lowest Calories from fat?  
 ```{r}
@@ -95,6 +108,8 @@ df %>%
   filter(Category == "Beef & Pork") %>%
   slice(1:1)
 ```
+
+Hamburger
 
 Coffee & Tea or Smoothies & Shakes item with the highest amount of carbohydrates:
 
@@ -114,6 +129,8 @@ df %>%
   slice(1:1)
 ```
 
+Frappé Chocolate Chip (Large)
+
 
 ### Exercise 3
 
@@ -126,6 +143,7 @@ High energetic:
 ```{r}
 nrow(df[df$Calories > 600, ])
 ```
+37 items
 
 Number of items between 300 and 600 calories:
 
@@ -133,30 +151,31 @@ Number of items between 300 and 600 calories:
 nrow(df[df$Calories > 300 & df$Calories < 600, ])
 ```
 
+106 items
+
 How many items are measured in the serving size Fluid Ounce (fl oz cup) (hint: use a wildcard)
 
 ```{r}
 nrow(df[str_detect(df$`Serving Size`, "fl oz cup"), ])
 ```
 
+138 items
 
 ### Exersise 4
 
-> Note that this exercise differs a bit from the Excel counterpart.
+> Note that this exercise differs a bit from the Excel counterpart. We do not use conditional formatting but selection of rows instead.  
 
-1. Select rows with high energetic food items (>600 calories). 
-2. Select rows with duplicate food items.  
-3. Select rows with % Dalily Value < 20% for Vitamin A and Vitamin C. 
-4. Select rows with a % Dalily Value >= 20% for Vitamin A and Vitamin C. Make sure that you include 20%!  
 
-Select rows with high energetic food items (>600 calories). 
+Select rows with high energetic food items (>600 calories). Which three categories show the highest number of red cells? 
 
 ```{r}
 df %>%
   filter(Calories > 600) 
 ```
 
-Select rows with duplicate food items.  
+Breakfast and Chicken & Fish and Smoothies and shakes
+
+Select rows with duplicate food items. Are there any duplicate items?   
 
 ```{r}
 df %>% 
@@ -166,22 +185,33 @@ df %>%
 
 There are no duplicates!
 
-Select rows with % Dalily Value < 20% for Vitamin A and Vitamin C. 
+Select rows with a % Daily Value > 100% for Vitamin A. Which category are these items mainly found?   
 
 ```{r}
 df %>%
-  filter(`Vitamin A (% Daily Value)` < 20 & `Vitamin C (% Daily Value)` < 20)
+  filter(`Vitamin A (% Daily Value)` > 100)
 ```
 
-Select rows with a % Dalily Value >= 20% for Vitamin A and Vitamin C. Make sure that you include 20%!  
+Salads
+
+Select rows with a % Daily Value >= 100% for Vitamin C. Use green markup for these. Make sure that you include 100%! How many items do you find that meet this criteria? 
 
 ```{r}
 df %>%
-  filter(`Vitamin A (% Daily Value)` >= 20 & `Vitamin C (% Daily Value)` >= 20)
+  filter(`Vitamin C (% Daily Value)` >= 100)
 ```
 
+The number of items:
+
+```{r}
+nrow(df %>%
+  filter(`Vitamin C (% Daily Value)` >= 100))
+```
+7
 
 ### Exercise 5
+
+> Note that this exercise differs a bit from the Excel counterpart. We do not use a pivot table but the results will be similar.  
 
 Group the categories.  
 Calculate:  

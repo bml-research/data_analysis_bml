@@ -15,6 +15,9 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 library(tidyverse)
 ```
 
+This file can be downloaded [here](./R_04_data_import_exercises.Rmd)
+
+
 ### Exercise 1
 
 Load the following datasets in R using the csv import functionality. First have a look at them in your text editor.  

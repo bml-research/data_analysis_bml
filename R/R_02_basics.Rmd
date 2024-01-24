@@ -6,6 +6,8 @@
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
 ```
 
+This file can be downloaded [here](./R_02_basics.Rmd)
+
 # R: Basics of R
 
 ## Basics of R

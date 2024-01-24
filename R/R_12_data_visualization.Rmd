@@ -6,6 +6,8 @@
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
 ```
 
+This file can be found [here](./R_12_data_visualization.Rmd)
+
 # R: Data Visualization
 
 ## Data analysis methods

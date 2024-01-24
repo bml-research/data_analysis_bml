@@ -14,6 +14,8 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 library("tidyverse")
 ```
 
+This file can be found [here](./R_14_data_visualization_solutions.Rmd)
+
 > The exercises will be similar to the exercises in Excel in order to compare the results.
 
 ### Exercise 1
@@ -63,7 +65,7 @@ df_ex2
 ```{r}
 barplot(df_ex2$`Log2 Total Global Average GHG Emissions per kg`, 
         ylab = "Log2 Total Global Average GHG Emissions per kg", 
-        ylim = c(0, max(df_ex2$`Log2 Total Global Average GHG Emissions per kg` + 4)), 
+        ylim = c(min(df_ex2$`Log2 Total Global Average GHG Emissions per kg` - 4), max(df_ex2$`Log2 Total Global Average GHG Emissions per kg` + 4)), 
         names = df_ex2$`Food product`, 
         las = 2,
         cex.names = 0.5,

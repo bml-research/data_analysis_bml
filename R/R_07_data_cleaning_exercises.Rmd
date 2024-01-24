@@ -14,6 +14,8 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 library(tidyverse)
 ```
 
+This file can be downloaded [here](./R_07_data_cleaning_exercises.Rmd)
+
 ### Exercise 1
 
 [This](./files_07_data_cleaning_exercises/exercise01/calories.xlsx) first data set was not loaded well in Excel. Load the Excel file as a tibble in R. Separate the columns correctly.
