@@ -78,9 +78,9 @@ Median:
 >Breakfast and Chicken & Fish
 2. Use conditional formatting to check for duplicate food items. Use red markup for these. Are there any duplicate items?  
 >No
-3. Use conditional formatting to indicate a % Dalily Value > 100% for Vitamin A. Which catagory are these items found?  
+3. Use conditional formatting to indicate a % Dalily Value > 100% for Vitamin A. Which catagory are these items mainly found?  
 > Salads
-4. Use conditional formatting to indicate a % Dalily Value >= 100% for Vitamin C. Use green markup for these. Make sure that you include 100%! How many items do you find?  
+4. Use conditional formatting to indicate a % Dalily Value >= 100% for Vitamin C. Use green markup for these. Make sure that you include 100%! How many items do you find that meet this criteria?  
 > 7
 
 
