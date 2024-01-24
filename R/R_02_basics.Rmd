@@ -140,6 +140,41 @@ Tibbles do have some advantageous over base R data frames such as:
 
 >As we are using the tidyverse library during this course, we will use the tidyverse main data type: The Tibble.
 
+## Pimping tibbles
+
+Tibbles look nice in markdown documents but look very basic in html documents.
+To create nice looking tibbles, we can use the `kableExtra` library:
+
+See for documentation [this](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html) page.
+
+
+First we load the library:
+
+```{r}
+library(kableExtra)
+```
+
+And then we create a nice looking table:
+
+```{r}
+kbl(my_tibble) %>%
+  kable_material()
+```
+
+You can do a lot of styling here. Example of using a dark theme:
+
+```{r}
+kbl(my_tibble) %>%
+  kable_material_dark()
+```
+
+But I prefer the Twitter Bootstrap theme with striped rows that light up when you hover over it at that scales nicely on small screens like phones (you will get a horizontal slider when horizontal space is limited):
+
+```{r}
+kbl(my_tibble) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "responsive"))
+```
+
 ---
 
 
