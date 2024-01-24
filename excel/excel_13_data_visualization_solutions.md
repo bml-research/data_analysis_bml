@@ -103,10 +103,13 @@ Spinach and Parsley would be consired healthy acoording to the criteria (high K/
 
 See the Excel file [here](./files_13_data_visualization_solutions/exercise10/exercise10.xlsx) for the solution.
 
-Or the figure below:
+Or the figure below for the line plot:
 
 ![figure](./files_13_data_visualization_solutions/exercise10/fig01.png)
 
+Or without line (just the data points):
+
+![figure](./files_13_data_visualization_solutions/exercise10/fig02.png)
 
 ### Exercise 11
 
