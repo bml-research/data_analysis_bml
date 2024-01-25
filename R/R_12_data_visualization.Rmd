@@ -26,22 +26,22 @@ Base R plotting: The base R plotting system uses a procedural approach where plo
 ggplot2: ggplot2 follows a declarative approach inspired by the grammar of graphics. It uses the ggplot() function to initialize a plot object and then adds layers of graphical elements using the + operator. The syntax is more concise and uses a grammar that includes mappings, aesthetics, and geometries.
 Functionality:
 
-Base R plotting: Base R offers a wide range of plotting functions with basic functionalities to create various types of plots. It provides flexibility to customize plots by directly modifying plot parameters, such as axes, labels, colors, etc. However, it requires more manual adjustments to achieve complex or customized plots.
-ggplot2: ggplot2 is a highly customizable plotting system that offers a rich set of high-level plotting functions. It provides a layered approach, allowing users to easily add and modify plot elements. ggplot2 has a consistent API, making it easier to create complex plots with less code. It also includes built-in support for facets, themes, and statistical transformations.
+Base R plotting: Base R offers a wide range of plotting functions with basic functionality to create various types of plots. It provides flexibility to customize plots by directly modifying plot parameters, such as axes, labels, colors, etc. However, it requires more manual adjustments to achieve complex or customized plots.
+ggplot2: ggplot2 is a plotting system that offers a rich set of high-level plotting functions. It provides a layered approach, allowing users to easily add and modify plot elements. ggplot2 has a consistent API, making it easier to create complex plots with less code. It also includes built-in support for facets, themes, and statistical transformations.
 Philosophy:
 
 Base R plotting: The base R plotting system has been part of R since its early versions and follows a traditional approach. It focuses on providing a set of core plotting functions and allows users to have fine-grained control over plot details. It can be useful for users who prefer a more low-level and flexible plotting system.
 ggplot2: ggplot2, developed by Hadley Wickham, introduces a different philosophy where the emphasis is on the grammar of graphics. It aims to provide a coherent and consistent framework for creating plots by combining independent graphical components. ggplot2 promotes the idea of "layering" to create complex plots and encourages a more structured and reproducible workflow.
-Overall, ggplot2 provides a more elegant and expressive way to create publication-quality plots, particularly for exploratory data analysis and data visualization tasks. It simplifies the process of creating complex plots and offers more options for customization and extensibility compared to the base R plotting system.
+Overall, ggplot2 provides a more elegant and expressive way to create publication-quality plots, particularly for exploratory data analysis and data visualization tasks. It simplifies the process of creating complex plots and offers more options for customization compared to the base R plotting system.
 
 
 ## The Grammar of ggplot2
 
 The grammar of ggplot2 is based on the Grammar of Graphics, a framework for creating visualizations. It revolves around the idea that every plot can be broken down into a set of fundamental components. Here are the main components of ggplot2:
 
-1. Data: The first step in creating a plot with ggplot2 is to specify the dataset you want to visualize. This is typically done by passing a data frame to the ggplot() function.
+1. Data: The first step in creating a plot with ggplot2 is to specify the data set you want to visualize. This is typically done by passing a data frame to the ggplot() function.
 
-2. Aesthetic mappings: Aesthetics define how variables in the dataset are mapped to visual properties of the plot, such as position, size, color, or shape. You define aesthetics using the aes() function and associate variables in your dataset with specific plot elements.
+2. Aesthetic mappings: Aesthetics define how variables in the data set are mapped to visual properties of the plot, such as position, size, color, or shape. You define aesthetics using the aes() function and associate variables in your data set with specific plot elements.
 
 3. Geometric objects (geoms): Geoms are the visual representations of data points on a plot, such as points, lines, bars, or polygons. Geoms are added to the plot using the geom_*() functions, where * represents the type of geometric object you want to use.
 

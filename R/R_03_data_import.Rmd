@@ -61,7 +61,7 @@ Later, you will learn what you can do with a tibble.
 Fortunately, you do not need to type data in R.
 You can load it using the readr package.
 
-In R, readr is a package that provides a fast and friendly way to read rectangular data (like csv or fixed-width format) into R. It provides a set of functions to simplify reading data from files. The main functions should read most common R datafile types without needing any parameters except the filename. Other functions provide simple ways of handling file paths and extensions, and automatically detecting file format and structure.
+In R, readr is a package that provides a fast and friendly way to read rectangular data (like csv or fixed-width format) into R. It provides a set of functions to simplify reading data from files. The main functions should read most common R data file types without needing any parameters except the file name. Other functions provide simple ways of handling file paths and extensions, and automatically detecting file format and structure.
 
 Let's try it out:
 
@@ -98,12 +98,12 @@ This is the common way for Unix systems but also works for R code on Windows sys
 
 
 
-The `read_csv()` function reads comma-delimited files. The `read_csv2()` function reads semi-colon seperated files (used in countries where , is the decimal separator like Holland). The `read_tsv()` function reads tab-delimited files. The `read_delim()` function reads files with any delimiter.  
+The `read_csv()` function reads comma-delimited files. The `read_csv2()` function reads semi-colon separated files (used in countries where , is the decimal separator like Holland). The `read_tsv()` function reads tab-delimited files. The `read_delim()` function reads files with any delimiter.  
 You may have noticed that the data frame returned is actually a tibble.  
 The `head()` function shows only the first 6 rows (by default) in order not to overwhelm the user with data.
 
 
-Likewise, we can also directly load data from the web. Since the file above is stored on e webserver, we can also load it using the URL:
+Likewise, we can also directly load data from the web. Since the file above is stored on e web server, we can also load it using the URL:
 
 ```{r}
 URL <- "https://github.com/bml-research/data_analysis/raw/main/R/files_03_data_import/file01_food_composition.csv"

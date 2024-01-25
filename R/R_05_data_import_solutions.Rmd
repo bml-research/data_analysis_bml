@@ -87,7 +87,7 @@ df <- read_csv(file_path)
 formatted_table(head(df))
 ```
 
-As you can see, this dataset needs a lot of cleaning (the units are in the data fields) but that will be dealt with in a later chapter.
+As you can see, this data set needs a lot of cleaning (the units are in the data fields) but that will be dealt with in a later chapter.
 
 ### Exercise 3
 
@@ -100,7 +100,7 @@ df <- read_csv(file_path)
 formatted_table(head(df))
 ```
 
-As you can see, this dataset needs cleaning (the units are in the data fields) but that will be dealt with in a later chapter.
+As you can see, this data set needs cleaning (the units are in the data fields) but that will be dealt with in a later chapter.
 
 ### Exercise 4
 

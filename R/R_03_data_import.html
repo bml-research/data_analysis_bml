@@ -682,8 +682,8 @@ the readr package.</p>
 <p>In R, readr is a package that provides a fast and friendly way to
 read rectangular data (like csv or fixed-width format) into R. It
 provides a set of functions to simplify reading data from files. The
-main functions should read most common R datafile types without needing
-any parameters except the filename. Other functions provide simple ways
+main functions should read most common R data file types without needing
+any parameters except the file name. Other functions provide simple ways
 of handling file paths and extensions, and automatically detecting file
 format and structure.</p>
 <p>Let’s try it out:</p>
@@ -1038,7 +1038,7 @@ the common way for Unix systems but also works for R code on Windows
 systems.</p>
 </blockquote>
 <p>The <code>read_csv()</code> function reads comma-delimited files. The
-<code>read_csv2()</code> function reads semi-colon seperated files (used
+<code>read_csv2()</code> function reads semi-colon separated files (used
 in countries where , is the decimal separator like Holland). The
 <code>read_tsv()</code> function reads tab-delimited files. The
 <code>read_delim()</code> function reads files with any delimiter.<br />
@@ -1047,7 +1047,7 @@ tibble.<br />
 The <code>head()</code> function shows only the first 6 rows (by
 default) in order not to overwhelm the user with data.</p>
 <p>Likewise, we can also directly load data from the web. Since the file
-above is stored on e webserver, we can also load it using the URL:</p>
+above is stored on e web server, we can also load it using the URL:</p>
 <pre class="r"><code>URL &lt;- &quot;https://github.com/bml-research/data_analysis/raw/main/R/files_03_data_import/file01_food_composition.csv&quot;
 my_df &lt;- read_csv(URL)
 formatted_table(head(my_df))</code></pre>

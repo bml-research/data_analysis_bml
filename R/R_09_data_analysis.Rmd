@@ -41,7 +41,7 @@ At last, we will do some basic calculations. Note that plotting data will be the
 
 ## Loading a dataset
 
-As an example dataset, we will be using the same dataset as used in the Excel section:
+As an example data set, we will be using the same data set as used in the Excel section:
 namely, [the nutritional facts dataset from a fastfood restaurant](https://www.kaggle.com/datasets/mcdonalds/nutrition-facts)
 
 ```{r}
