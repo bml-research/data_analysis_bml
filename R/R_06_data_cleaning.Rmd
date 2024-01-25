@@ -18,6 +18,13 @@ Let's start with loading the tidyverse library:
 library(tidyverse)
 ```
 
+```{r}
+library(kableExtra)
+formatted_table <- function(df){
+  kbl(df) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "responsive"))
+}
+```
 
 Whether you use Excel, R or Python, data cleaning will often be required for the data.
 So here are some examples of data cleaning:
@@ -32,7 +39,7 @@ type <- c("apple", "broccoli", "cauliflower", "banana")
 calories <- c(52.5, NA, NA, 89.4)
 
 my_tibble <- tibble(category, type, calories)
-my_tibble
+formatted_table(head(my_tibble))
 ```
 
 As you can see, there are two rows with missing values (NA values).
@@ -40,7 +47,7 @@ Here is how to drop them:
 
 ```{r}
 my_tibble <- drop_na(my_tibble)
-my_tibble
+formatted_table(my_tibble)
 ```
 
 Later on we will perform multiple manipulations on data frames.
@@ -50,7 +57,7 @@ Tidyverse came up with a shorthand to prevent overwriting the same variable each
 
 ```{r}
 my_tibble <- my_tibble %>% drop_na()
-my_tibble
+formatted_table(my_tibble)
 ```
 
 The reason to do this will become clear later on.
@@ -65,7 +72,7 @@ x <- c("apple", "broccoli", "cauliflower", "banana")
 calories <- c(52.5, 32.2, 25.7, 89.4)
 
 my_tibble <- tibble(category, x, calories)
-my_tibble
+formatted_table(my_tibble)
 ```
 
 As you can see, the column x is a poor column name.
@@ -73,7 +80,7 @@ Here is how to rename column x to type:
 
 ```{r}
 my_tibble <- my_tibble %>% rename(type = x)
-my_tibble
+formatted_table(my_tibble)
 ```
 
 ## Reordering columns
@@ -86,7 +93,7 @@ type <- c("apple", "broccoli", "cauliflower", "banana")
 calories <- c(52.5, 32.2, 25.7, 89.4)
 
 my_tibble <- tibble(category, calories, type)
-my_tibble
+formatted_table(my_tibble)
 ```
 
 As you can see, calories becomes before type.
@@ -94,7 +101,7 @@ You might want to reorder columns. This is how to do that:
 
 ```{r}
 my_tibble <- my_tibble %>% select(category, type, calories)
-my_tibble
+formatted_table(my_tibble)
 ```
 
 ## Changing a columns data type
@@ -127,7 +134,7 @@ The best thing to do is to "mark"  them with `NA`.
 ```{r}
 my_path = './files_06_data_cleaning/file01_fruits.csv'
 my_df <- read_csv2(my_path)
-my_df
+formatted_table(my_df)
 ```
 
 As you can see, the calorie data for broccoli is missing. Instead a forward slash is included indicating that the data is missing.
@@ -137,7 +144,7 @@ Let's correct that:
 ```{r}
 my_path = './files_06_data_cleaning/file01_fruits.csv'
 my_df <- read_csv2(my_path, na = "/")
-my_df
+formatted_table(my_df)
 ```
 
 If multiple types of "empty" data are present in your dataset:
@@ -145,7 +152,7 @@ If multiple types of "empty" data are present in your dataset:
 ```{r}
 my_path = './files_06_data_cleaning/file02_fruits.csv'
 my_df <- read_csv2(my_path)
-my_df
+formatted_table(my_df)
 ```
 
 You can use a vector in the `NA =` parameter:
@@ -153,7 +160,7 @@ You can use a vector in the `NA =` parameter:
 ```{r}
 my_path = './files_06_data_cleaning/file02_fruits.csv'
 my_df <- read_csv2(my_path, na = c("/", "-"))
-my_df
+formatted_table(my_df)
 ```
 
 ## Deal with missing data from Excel files
@@ -167,7 +174,7 @@ Now if we load the data the following will happen:
 library(readxl)
 my_path = './files_06_data_cleaning/file03_fruits.xlsx'
 my_df <- read_excel(my_path)
-my_df
+formatted_table(my_df)
 ```
 
 Like for csv files, we can specify the missing values:
@@ -175,7 +182,7 @@ Like for csv files, we can specify the missing values:
 ```{r}
 my_path = './files_06_data_cleaning/file03_fruits.xlsx'
 my_df <- read_excel(my_path, na=  c("/", "-"))
-my_df
+formatted_table(my_df)
 ```
 
 What if cells are left blank?
@@ -186,7 +193,7 @@ If we load the data:
 ```{r}
 my_path = './files_06_data_cleaning/file04_fruits.xlsx'
 my_df <- read_excel(my_path)
-my_df
+formatted_table(my_df)
 ```
 
 As you can see, the read_excel function deals with them automatically.
@@ -202,7 +209,7 @@ category <- c("fruit", "vegetable", "vegetable", "fruit")
 type <- c("apple", "broccoli", "cauliflower", "banana")
 calories <- c(52.5, 999,25.7, 89.4)
 my_tibble <- tibble(category, type, calories)
-my_tibble
+formatted_table(my_tibble)
 ```
 
 The 999 calories for broccoli should be replaced with 34.2.
@@ -211,7 +218,7 @@ Replacing this specific data point can be done as follows:
 
 ```{r}
 my_tibble[2,3] <- 34.2
-my_tibble
+formatted_table(my_tibble)
 ```
 
 ### Adding a row in a tibble
@@ -220,7 +227,7 @@ You can insert an entire row like below:
 
 ```{r}
 my_tibble <- my_tibble %>% add_row(category = "fruit", type = "mango", calories = 104)
-my_tibble
+formatted_table(my_tibble)
 ```
 
 
@@ -234,7 +241,7 @@ You can replace an entire row by first deleting a row:
 
 ```{r}
 my_tibble <- my_tibble %>% filter(!type == "mango")
-my_tibble
+formatted_table(my_tibble)
 ```
 
 In the above example, we used dplyr `filter` function to filter for all but mango in the column type.
@@ -243,7 +250,7 @@ Now we can add the row for pineapple:
 
 ```{r}
 my_tibble <- my_tibble %>% add_row(category  = "fruit", type = "pineapple", calories = 105)
-my_tibble
+formatted_table(my_tibble)
 ```
 
 ### Replacing data in a whole column:
@@ -252,14 +259,14 @@ If we want to change fruit to fruits (plural) and vegetable to vegetables (plura
 
 ```{r}
 my_tibble <- my_tibble %>% mutate(category = str_replace(category, "fruit", "fruits"))
-my_tibble
+formatted_table(my_tibble)
 ```
 
 And next for vegetables:
 
 ```{r}
 my_tibble <- my_tibble %>% mutate(category = str_replace(category, "vegetable", "vegetables"))
-my_tibble
+formatted_table(my_tibble)
 ```
 
 
@@ -273,14 +280,14 @@ type <- c("apple", "-", "cauliflower", "banana")
 calories <- c(52.5, "-", "-", 89.4)
 
 my_tibble <- tibble(category, type, calories)
-my_tibble
+formatted_table(my_tibble)
 ```
 
 Now we change all occurrences for `-` with `NA` using the `replace` function:
 
 ```{r}
 my_tibble <- my_tibble %>% replace(. == "-", NA)
-my_tibble
+formatted_table(my_tibble)
 ```
 
 The . is used as a placeholder for every item in the tibble.

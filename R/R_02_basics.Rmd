@@ -175,6 +175,26 @@ kbl(my_tibble) %>%
   kable_styling(bootstrap_options = c("striped", "hover", "responsive"))
 ```
 
+
+## Functions
+
+In addition to the functions that R and it's packages have to offer, you can write your own functions. While creating your own functions is a bit out of scope of this course, I will provide an example below to re-use code to create the formatted tables as shown above.
+
+```{r}
+formatted_table <- function(df){
+  kbl(df) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "responsive"))
+}
+```
+
+
+Now you can print the formatted table by calling the function and passing the tibble as argument without writing the whole code each time:
+
+```{r}
+formatted_table(my_tibble)
+```
+
+
 ---
 
 

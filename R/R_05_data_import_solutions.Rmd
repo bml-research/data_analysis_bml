@@ -14,6 +14,14 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 library(tidyverse)
 ```
 
+```{r}
+library(kableExtra)
+formatted_table <- function(df){
+  kbl(df) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "responsive"))
+}
+```
+
 This file can be downloaded [here](./R_05_data_import_solutions.Rmd)
 
 ### Exercise 1
@@ -33,7 +41,7 @@ File 1:
 ```{r}
 file_path <- "./files_04_data_import_exercises/exercise01/Food_composition_1.csv"
 df <- read_csv(file_path)
-df
+formatted_table(head(df))
 ```
 
 The field separator used was a comma. Therefore use the `read_csv` function.
@@ -43,7 +51,7 @@ File 2:
 ```{r}
 file_path <- "./files_04_data_import_exercises/exercise01/Food_composition_2.csv"
 df <- read_csv2(file_path)
-df
+formatted_table(head(df))
 ```
 
 The field separator used was a semi-colon. Therefore use the `read_csv2` function.
@@ -53,7 +61,7 @@ File 3:
 ```{r}
 file_path <- "./files_04_data_import_exercises/exercise01/Food_composition_3.csv"
 df <- read_delim(file_path, delim="|")
-df
+formatted_table(head(df))
 ```
 
 The field separator used was a pipe symbol. Therefore use the `read_delim` function with a `delim argument` set to the correct delimiter.
@@ -63,7 +71,7 @@ File 4:
 ```{r}
 file_path <- "./files_04_data_import_exercises/exercise01/Food_composition_4.csv"
 df <- read_delim(file_path, delim="@")
-df
+formatted_table(head(df))
 ```
 
 The field separator used was an at sign. Therefore use the `read_delim` function with a `delim argument` set to the correct delimiter.
@@ -76,7 +84,7 @@ Unzip it and import the csv data in R.
 ```{r}
 file_path <- "./files_04_data_import_exercises/exercise02/nutrition.csv"
 df <- read_csv(file_path)
-df
+formatted_table(head(df))
 ```
 
 As you can see, this dataset needs a lot of cleaning (the units are in the data fields) but that will be dealt with in a later chapter.
@@ -89,7 +97,7 @@ Unzip it and import the csv data in R.
 ```{r}
 file_path <- "./files_04_data_import_exercises/exercise03/Food and Calories - Sheet1.csv"
 df <- read_csv(file_path)
-df
+formatted_table(head(df))
 ```
 
 As you can see, this dataset needs cleaning (the units are in the data fields) but that will be dealt with in a later chapter.
@@ -102,7 +110,7 @@ Unzip it and import the csv data in R.
 ```{r}
 file_path <- "./files_04_data_import_exercises/exercise04/Food_Product_Emissions.csv"
 df <- read_csv(file_path)
-df
+formatted_table(head(df))
 ```
 
 ### Exercise 5
@@ -115,7 +123,7 @@ Download the csv file and import the csv data in R.
 ```{r}
 file_path <- "./files_04_data_import_exercises/exercise05/global-meat-production.csv"
 df <- read_csv(file_path)
-df
+formatted_table(head(df))
 ```
 
 ### Exercise 6
@@ -146,7 +154,7 @@ To prove that the data was written to a csv file:
 ```{r}
 file_path <- "././files_05_data_import_solutions/exercise06/food_emission_data.csv"
 df <- read_csv(file_path)
-df
+formatted_table(head(df))
 ```
 
 ### Exercise 7
@@ -166,7 +174,7 @@ Use the Excel file from exercise 7 to open the Excel file.
 ```{r}
 library(readxl)
 my_data <- read_excel("./files_05_data_import_solutions/exercise07/food_emission_data.xlsx")
-my_data
+formatted_table(head(my_data))
 ```
 
 ---
