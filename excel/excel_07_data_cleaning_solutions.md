@@ -24,7 +24,7 @@ The solution can be found [here](./files_07_data_cleaning_solutions/exercise01/c
 ### Exercise 2
 
 Use the following steps to clean the data:
-- First load the data as previously mentioned using the `text-to-column` feature.
+- First, load the data as previously mentioned using the `text-to-column` feature.
 - Remove the header row.
 - Split the last two columns using the `text-to-column` feature with a space as deliminator.
 - Remove the columns containing the units.
@@ -57,11 +57,11 @@ The solution can be found [here](./files_07_data_cleaning_solutions/exercise03/F
 
 You can find the solution [here](./files_07_data_cleaning_solutions/exercise04/nutrition.xlsx)
 
-|Condition                  |Numer of cells|
-|--------------------------:|-------------:|
-|Numer of data fields       |676753        |
-|Number of non empty fields |675163        |
-|Number of empty fields     |1590          |
+|Condition                  |Number of cells|
+|--------------------------:|--------------:|
+|Number of data fields      |676753         |
+|Number of non empty fields |675163         |
+|Number of empty fields     |1590           |
 
 
 ---

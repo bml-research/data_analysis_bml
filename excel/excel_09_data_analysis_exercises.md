@@ -12,13 +12,13 @@
 
 ### Exercise 1
 
-Import the [Nutrition facts data](https://www.kaggle.com/datasets/mcdonalds/nutrition-facts) from a fastfood restaurant in Excel.
+Import the [Nutrition facts data](https://www.kaggle.com/datasets/mcdonalds/nutrition-facts) from a fast food restaurant in Excel.
 
 > Be very careful as some columns contain decimal characters!
 
 Rename this worksheet `data`.  
 Create a new worksheet and name it `analysis`.  
-Then perfom the following calculations on a new worksheet and display them as a table:  
+Then perform the following calculations on a new worksheet and display them as a table:  
 
 - Calculate the minimum, maximum, average, median from the columns `Calories` and `Calories from fat`. Display the answers in a table.  
 
@@ -41,8 +41,8 @@ Use filter and sort to answer the following questions:
 
 1. Use conditional formatting to indicate high energetic food items (>600 calories). Use red markup for these. Which two categories show the highest number of red cells?  
 2. Use conditional formatting to check for duplicate food items. Use red markup for these. Are there any duplicate items?  
-3. Use conditional formatting to indicate a % Dalily Value > 100% for Vitamin A. Which catagory are these items mainly found?  
-4. Use conditional formatting to indicate a % Dalily Value >= 100% for Vitamin C. Use green markup for these. Make sure that you include 100%! How many items do you find that meet this criteria?  
+3. Use conditional formatting to indicate a % Daily Value > 100% for Vitamin A. Which category are these items mainly found?  
+4. Use conditional formatting to indicate a % Daily Value >= 100% for Vitamin C. Use green markup for these. Make sure that you include 100%! How many items do you find that meet this criteria?  
 
 
 ### Exercise 5

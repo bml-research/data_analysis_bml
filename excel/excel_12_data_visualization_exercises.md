@@ -55,7 +55,7 @@ The data set contains units in the cells.
 First clean the dataset.  
 Create a box plot for `Energy per 100 g in KJ` plotted against the `Food Categories`.  
 
-Which two Food Categories show the highest energy per weigth?
+Which two Food Categories show the highest energy per weight?
 
 ### Exercise 8
 
@@ -74,9 +74,9 @@ It contains data about Potassium and Sodium content (in mg/100 g) as well as cal
 
 The World Health Organization (WHO) recommends ingestion of less than 2000 mg of sodium per day and more than 3510 mg of potassium per day, resulting in a Na-to-K ratio of ≤1.0, which is believed to be optimal for preserving cardiovascular health.
 
-In addition, high caloric food is often bad for cardiovacular health.  
+In addition, high caloric food is often bad for cardiovascular health.  
 
-As you can see, only the K-to-Na ratio is calulated.   
+As you can see, only the K-to-Na ratio is calculated.   
 Create a bubble chart with the Na concentration as a function of the K concentration.  
 The bubble size should be based on the calorie values.  
 
@@ -84,9 +84,9 @@ Which two food items would be considered most healthy food items based on the in
 
 ### Exercise 10
 
-In [this dataset](./files_12_data_visualization_exercises/exercise10/meat-production-tonnes.csv) you can find World wide meat production from 1961 to 2021 expressed in tonnes. It includes cattle, poultry, sheep/mutton, goat, pigmeat, and wild game (source: https://ourworldindata.org/meat-production). 
+In [this dataset](./files_12_data_visualization_exercises/exercise10/meat-production-tonnes.csv) you can find World wide meat production from 1961 to 2021 expressed in tonnes. It includes cattle, poultry, sheep/mutton, goat, pig meat, and wild game (source: https://ourworldindata.org/meat-production). 
 
-Create a XY-scatter plot with the total production of meat (in tonnes) plotted against time for the asion continent.  
+Create a XY-scatter plot with the total production of meat (in tonnes) plotted against time for the asian continent.  
 
 Use Scientific notation for the mass meat production.  
 
@@ -100,7 +100,7 @@ The data set contains units in the cells.
 First clean the dataset.  
 Create a pivot plot for the **mean** `Energy per 100 g in KJ` plotted against the `Food Categories`.  
 
-Which two Food Categories show the highest mean energy per weigth?
+Which two Food Categories show the highest mean energy per weight?
  
 
 ---

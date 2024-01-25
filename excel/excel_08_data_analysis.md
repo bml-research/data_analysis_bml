@@ -13,9 +13,8 @@
 
 ## Introduction
 
-Now that the data is imported and cleaned. It is time to analyse the data. 
+Now that the data is imported and cleaned. It is time to analyze the data.  
 This means that, depending on your specific question, you can do all sorts of calculations using Excel formulas (you can even create custom formulas), sort data, perform conditional formatting and create pivot tables. The creation of plots will be dealt with in the next chapter.
-
 
 ## How to organise your worksheet
 
@@ -30,7 +29,7 @@ Imagine that you would like to calculate the percentage of calories from fat as 
 
 We first resize the table to the appropriate dimension:
 
-![impreresize table](./pics_08_data_analysis/fig3.png)
+![resize table](./pics_08_data_analysis/fig3.png)
 *<sub>Figure 3: Resizing a table</sub>*
 
 And then we can type the appropriate formula:
@@ -53,13 +52,13 @@ In addition, all the values from the column-based analysis can be linked to a va
 Let's take the `AVERAGE` with `STDEV` and `MEDIAN` with `IQR` as an example:
 
 ![tabs](./pics_08_data_analysis/fig5.png)
-*<sub>Figure 5: Data analysis on a seperate tab.</sub>*
+*<sub>Figure 5: Data analysis on a separate tab.</sub>*
 
-Probably, you have noticed a problem with the organisation of this spreadsheet: Records should be in rows and variables in columns.
+Probably, you have noticed a problem with the organization of this spreadsheet: Records should be in rows and variables in columns.
 This is swabbed in the sheet above. So we should transpose the data. 
 
 We can use the `TRANSPOSE` function to accomplish this.
-The `TRANSPOSE` function is an array formula wich means that it can perform multiple calculations on one or more items in an array. The result is shown below:
+The `TRANSPOSE` function is an array formula which means that it can perform multiple calculations on one or more items in an array. The result is shown below:
 
 ![transposition](./pics_08_data_analysis/fig6.png)
 *<sub>Figure 6: Result of the transposition of rows and columns.</sub>*
@@ -68,7 +67,7 @@ The `TRANSPOSE` function is an array formula wich means that it can perform mult
 
 Excel has a lot of functions ready to use like the `SUM` function, the `AVERAGE` function and the `COUNTIF` function. You can even [create your own function in Excel](https://support.microsoft.com/en-us/office/create-custom-functions-in-excel-2f06c10b-3622-40d6-a1b2-b6748ae8231f) (which is beyond the scope of this course). If you frequently need to create your own function, you are probably better of with R or Python. But what is an function?
 
->In Microsoft Excel, a function is a built-in formula that is designed to perform a specific calculation. Functions can help you perform a wide range of calculations, from simple arithmetic operations such as addition, subtraction, and multiplication to more complex calculations such as statistical analysis and data manipulation. 
+>In Microsoft Excel, a function is a built-in formula that is designed to perform a specific calculation. Functions can help you perform a wide range of calculations, from simple arithmetic operations such as addition, subtraction, and multiplication to more complex calculations such as statistical analysis and data manipulation.  
 
 Excel functions are identified by their names, which typically begin with the equal sign (=) followed by the function name and any required arguments. For example, the SUM function adds up a range of numbers and is written as:
 
@@ -84,7 +83,7 @@ Other functions require multiple arguments. For example, the COUNTIF function re
 =COUNTIF(A1:A10;">10")
 ```
 
-where A1:A10 (the first argument) is the range of cells to be evaluated and ">10" (the secons argument) is the condition to be evaluated.
+where A1:A10 (the first argument) is the range of cells to be evaluated and ">10" (the second argument) is the condition to be evaluated.
 
  
 So the basic anatomy of a function is:
@@ -109,11 +108,11 @@ The arguments are filled in and the function returns the result in cell A12:
 ![countifs](./pics_08_data_analysis/fig8.png)
 *<sub>Figure 8: The result of the function is returned and shown in cell A12.</sub>*
 
-So to summerize:
+So to summarize:
 
 >In Microsoft Excel, a function is a built-in formula that is designed to perform a specific calculation. Arguments go in the function. This can be the value of one cell or a range of cells. Excel performs the calculation and the result will be returned in the cell where the formula was typed.
 
-This is the standard behaviour of Excel but some functions in Excel are array functions. And they behave a bit different.
+This is the standard behavior of Excel but some functions in Excel are array functions. And they behave a bit different.
 
 ## Array formulas
 
@@ -135,7 +134,7 @@ What we would like to calculate is the total calories from all the beverages of 
 
 As you can see, the answer is directly calculated. If you are not interested in the total calories of the individual beverages but just the total calories of all the beverages this will save you adding an extra column. You can put the calculation directly on an analysis tab.
 
-There is just one detail left out. Although the formula works, it is adviced to press the keyboard shortcut CTRL + SHIFT + ENTER to complete the array formula. As a result, Microsoft Excel surrounds the formula with curly braces, which is an indication of an array formula so that people know that we are dealing with an array formula.
+There is just one detail left out. Although the formula works, it is advised to press the keyboard shortcut CTRL + SHIFT + ENTER to complete the array formula. As a result, Microsoft Excel surrounds the formula with curly braces, which is an indication of an array formula so that people know that we are dealing with an array formula.
 
 ![array](./pics_08_data_analysis/fig11.png)
 *<sub>Figure 11: Curly braces are a visual indication for an array formula.</sub>*
@@ -161,7 +160,7 @@ Or the example that we have seen before:
 
 ## Nesting functions
 
-It is possible to nest functions. Although this is ligit in some cases, be aware that this becomes very complex easily.
+It is possible to nest functions. Although this is allowed in some cases, be aware that this becomes very complex easily.
 
 Example:
 
@@ -180,7 +179,7 @@ Example:
 
 ## Examples of useful functions
 
-There are more than 300 functions in Excel. Fortunately, there are online recources that you can use to select functions.
+There are more than 300 functions in Excel. Fortunately, there are online resources that you can use to select functions.
 For example [this one from Microsoft](https://support.microsoft.com/en-us/office/excel-functions-alphabetical-b3944572-255d-4efb-bb96-c6d90033e188).
 
 Excel functions can get complicated easily if you need to nest them.
@@ -221,7 +220,7 @@ These are just some examples. Use the online resources or the recommended Excel 
 Excel has many functions for statistics like `STDEV.P`, `T.TEST`, `F.TEST` and `CHISQ.DIST.RT`. 
 A comprehensive list can be found [here](https://support.microsoft.com/en-us/office/statistical-functions-reference-624dac86-a375-4435-bc25-76d659719ffd)
 
-In addition, Excel has a a [statistics analysis pack](https://support.microsoft.com/en-us/office/statistical-functions-reference-624dac86-a375-4435-bc25-76d659719ffd) vailable as plugin.
+In addition, Excel has a a [statistics analysis pack](https://support.microsoft.com/en-us/office/statistical-functions-reference-624dac86-a375-4435-bc25-76d659719ffd) available as plugin.
 
 
 Here is an example of a diet intervention. Because the same subjects are measured twice, a paired T-test was used. The is a one-tailed test as we are looking for a weight reduction (alpha = 0.05)
@@ -229,7 +228,7 @@ Here is an example of a diet intervention. Because the same subjects are measure
 ![t-test](./pics_08_data_analysis/fig19.png)
 *<sub>Figure 19: A paired T-test in Excel.</sub>*
 
-The result is significant so H1 is true. The diet resulted in a significant weigth reduction (alpha = 0.05)
+The result is significant so H1 is true. The diet resulted in a significant weight reduction (alpha = 0.05)
 Note that the result is static. If we change the values, we need do redo the test.
 
 Statics in Excel is limited. For example, non-parametric tests like the Mann–Whitney U test are not included in Excel. If you need to do more complex statistics, use R or Python instead.
@@ -246,7 +245,7 @@ Have a look at the earlier used [Nutrition facts data](https://www.kaggle.com/da
 *<sub>Figure 20: Data to be sorted.</sub>*
 
 Imagine that we would like to know which Item from the Category "Chicken and Fish" contains the highest amount of calories from fat.
-We can do a multiu-level sort to accomplish this.
+We can do a multi-level sort to accomplish this.
 - First level: Category
 - Second level: Calories from fat sorted descending.
 
@@ -268,7 +267,7 @@ The result:
 ![sort](./pics_08_data_analysis/fig24.png)
 *<sub>Figure 24: Filtering data.</sub>*
 
-Note that the first datarow shown is row number 86.
+Note that the first data row shown is row number 86.
 
 
 ## Conditional formatting

@@ -97,7 +97,7 @@ Or the figure below:
 
 ![figure](./files_13_data_visualization_solutions/exercise09/fig01.png)
 
-Spinach and Parsley would be consired healthy acoording to the criteria (high K/Na ratio and low caloric).  
+Spinach and Parsley would be conssired healthy according to the criteria (high K/Na ratio and low caloric).  
 
 ### Exercise 10
 
@@ -121,7 +121,7 @@ Or the figure below:
 
 ![figure](./files_13_data_visualization_solutions/exercise11/fig01.png)
 
-Olis & Fats as well as VegetableOils show the highest mean energy density. 
+Oils & Fats as well as VegetableOils show the highest mean energy density.  
 
 ---
 

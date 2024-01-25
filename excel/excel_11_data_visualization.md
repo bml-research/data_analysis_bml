@@ -8,12 +8,12 @@
 
 
 ![impression](./pics_11_data_visualization/fig1.png)
-*<sub>Figure 1: Data visualization of bacteria grown in the precence of anthocyanins isolated from red grapes.</sub>*
+*<sub>Figure 1: Data visualization of bacteria grown in the presence of anthocyanins isolated from red grapes.</sub>*
 
 
 ## Introduction
 
-Though not as powerfull as R or Python, Excel is a user friendly tool for data analysis and visualization. Whether you're working in the food industry or conducting research on nutrition, Excel can help you make sense of your data and present your findings in a clear and compelling way. By using Excel's built-in charting features, you can easily create a variety of charts and graphs that visualize key trends and patterns in your data, such as changes in nutrient levels over time, differences between different food products, or correlations between different variables. With Excel, you can create professional-looking charts and graphs that are easy to understand and can help you communicate your insights to others. Excel offers a wide range of tools and capabilities that can help you make sense of your food-related data and present it in a way that is meaningful and informative.
+Though not as powerful as R or Python, Excel is a user friendly tool for data analysis and visualization. Whether you're working in the food industry or conducting research on nutrition, Excel can help you make sense of your data and present your findings in a clear and compelling way. By using Excel's built-in charting features, you can easily create a variety of charts and graphs that visualize key trends and patterns in your data, such as changes in nutrient levels over time, differences between different food products, or correlations between different variables. With Excel, you can create professional-looking charts and graphs that are easy to understand and can help you communicate your insights to others. Excel offers a wide range of tools and capabilities that can help you make sense of your food-related data and present it in a way that is meaningful and informative.
 
 
 ## Data visualization charts in Excel
@@ -110,7 +110,7 @@ We take our previous example as an example to create a pie chart:
 ![Pie chart](./pics_11_data_visualization/fig7.png)
 *<sub>Figure 7: Pie chart representing the relative average amount of calories from fat per serving related to the total amount of calories for different food categories in a fast food restaurant.</sub>*
 
-Or with the datalabels and percentages shown connected to the pie slices (choose: chart design > chart elements > Data labels > Outside End):
+Or with the data labels and percentages shown connected to the pie slices (choose: chart design > chart elements > Data labels > Outside End):
 
 
 ![Pie chart](./pics_11_data_visualization/fig8.png)
@@ -152,7 +152,7 @@ Note that it becomes clear that restaurant B sells desserts with a lot of calori
 
 ## Box plots
 
-A box plot, also known as a box and whisker plot, is a graphical representation of a dataset that shows the distribution of the data through its quartiles, outliers and extremes. It is called a box plot because it uses a box to represent the second and third quartiles (the interquartile range or IQR), and lines to represent the first and fourth quartiles (the lowest and highest data points within the IQR), as well as the outliers, if any.
+A box plot, also known as a box and whisker plot, is a graphical representation of a dataset that shows the distribution of the data through its quartiles, outliers and extremes. It is called a box plot because it uses a box to represent the second and third quartiles (the inter-quartile range or IQR), and lines to represent the first and fourth quartiles (the lowest and highest data points within the IQR), as well as the outliers, if any.
 
 Box plots are useful for visualizing the distribution and spread of data, as well as for identifying potential outliers. They can also be used to compare the distribution of data between different groups or datasets. Box plots are particularly useful when the data is non-parametric (not normally distributed) or when the distribution is skewed or multi-modal.
 
@@ -178,7 +178,7 @@ We choose the columns `Calories from fat` and `Calories` for the series. The foo
 ![Box plot](./pics_11_data_visualization/fig13.png)
 *<sub>Figure 13: Box plot about calories from fat for different food Categories.</sub>*
 
-The above picture is the standard layout of the boxplot in Excel. However, you could argue that it would be better to tweak some things in the plot. First of all, the mean is shown as a cross. Boxplots are often used in combination with nonparametric statistics and quantile (including median) values are much more appropriate to use. In addition, inner points are visible and we can not discriminate them from outliers. Finally, we should look if our number of values (N) are odd or even. The median is included in the calculation if N is odd. The median is excluded from the calculation if N is odd. Since this varies per food category, we will choose the excluded method. We can tweak each series (select the series and choose: `Format Data Series`) accordingly. See the result below:
+The above picture is the standard layout of the box plot in Excel. However, you could argue that it would be better to tweak some things in the plot. First of all, the mean is shown as a cross. Box plots are often used in combination with nonparametric statistics and quantile (including median) values are much more appropriate to use. In addition, inner points are visible and we can not discriminate them from outliers. Finally, we should look if our number of values (N) are odd or even. The median is included in the calculation if N is odd. The median is excluded from the calculation if N is odd. Since this varies per food category, we will choose the excluded method. We can tweak each series (select the series and choose: `Format Data Series`) accordingly. See the result below:
 
 ![Box plot](./pics_11_data_visualization/fig14.png)
 *<sub>Figure 14: Tweaked box plot about calories from fat for different food categories.</sub>*
@@ -210,14 +210,14 @@ As you can see, diet 2 is relatively ineffective. Not much weight loss. Diet 1 c
 
 Of course, one should take into account that only three persons are included in this dietary intervention.
 
-Realise that a line chart is only plotted well if the data points are intgerspaced evenly.
+Realize that a line chart is only plotted well if the data points are inter-spaced evenly.
 
 Consider the following mini dataset:
 
 ![small data set](./pics_11_data_visualization/fig17.png)
 *<sub>Figure 17: Dietary intervention for 365 days.</sub>*
 
-As you can see, the datapoints for x are not evenly distributed.
+As you can see, the data points for x are not evenly distributed.
 Plotting this with a line plot will go wrong:
 
 ![line plot](./pics_11_data_visualization/fig18.png)
@@ -228,7 +228,7 @@ As you can see, the data points on the x-axis are just labels and do not corresp
 ![line plot](./pics_11_data_visualization/fig19.png)
 *<sub>Figure 19: XY-scatter plot for dietary intervention for 365 days.</sub>*
 
-As you can see from the above chart, the data on the x-axis are now seperated according to their value.
+As you can see from the above chart, the data on the x-axis are now separated according to their value.
 
 To show the use of an XY-scatter plot to visualize a correlation, the [ChickWeight dataset](https://github.com/selva86/datasets/blob/master/ChickWeight.csv) from R was used. The weight column represents the body weight of the chick (g). The time column represents the number of days since birth when the measurement was made.
 
@@ -272,7 +272,7 @@ X-axis: Sugar content (grams per serving)
 Y-axis: Vitamin C content (milligrams per serving)
 Bubble size: Represents the number of servings per year of each fruit that were tested.
 
-An extra dimension could be included by using colors. For example you could add categorial data (ordinal data in this case) such as high vitamin B9 (folate) data points in green color, intermediate vitamin B9 content as orange dots and low vitamin B9 content in red.
+An extra dimension could be included by using colors. For example you could add categorical data (ordinal data in this case) such as high vitamin B9 (folate) data points in green color, intermediate vitamin B9 content as orange dots and low vitamin B9 content in red.
 
 
 ## Pivot charts
