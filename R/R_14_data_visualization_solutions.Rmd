@@ -39,7 +39,7 @@ What food product creates the highest Emission value?
 ```{r}
 file_path_ex1 <- "./files_13_data_visualization_exercises/exercise01/Food_Product_Emissions.csv"
 df_ex1 <- read_csv(file_path_ex1)
-formatted_table(df_ex1)
+formatted_table(head(df_ex1))
 ```
 
 ```{r}
@@ -69,7 +69,7 @@ log2(8)
 `Log2 Total Global Average GHG Emissions per kg` <- log2(df_ex1$`Total Global Average GHG Emissions per kg`)
 df_ex2 <- df_ex1 %>%
   add_column(`Log2 Total Global Average GHG Emissions per kg`)
-df_ex2
+formatted_table(head(df_ex2))
 ```
 
 
@@ -109,7 +109,7 @@ Make the df tidy:
 ```{r}
 tidy_df_ex3 <- df_ex3 %>%
   gather(`Farm`, `Processing`, `Transport`, `Packaging`, `Retail`, key = "Emission origin", value = "Emission per kg")
-formatted_table(tidy_df_ex3)
+formatted_table(head(tidy_df_ex3))
 ```
 
 
