@@ -14,6 +14,13 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 library(tidyverse)
 ```
 
+```{r}
+library(kableExtra)
+formatted_table <- function(df){
+  kbl(df) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "responsive"))
+}
+```
 
 This file can be downloaded [here](./R_08_data_cleaning_solutions.Rmd)
 
@@ -28,7 +35,7 @@ file_path <- "./files_07_data_cleaning_exercises/exercise01/calories.xlsx"
 df <- read_excel(file_path)
 colname <- "FoodCategory|FoodItem|per100grams|Cals_per100grams|KJ_per100grams"
 df <- df %>% separate_wider_delim(colname, delim = "|", names = c("FoodCategory", "FoodItem", "per100grams", "Cals_per100grams", "KJ_per100grams"))
-df
+formatted_table(head(df))
 ```
 
 ### Exercise 2
@@ -41,7 +48,7 @@ df <- df %>%
   separate_wider_delim(KJ_per100grams, delim = " ", names = c("KJ_per100grams", "waste2")) %>%
   select (-c(waste, waste2)) %>% #Note that this is a negative selection. Selects all but the listed columns.
   mutate_at(c('Cals_per100grams', 'KJ_per100grams'), as.numeric) #Creates numbers from strings
-df
+formatted_table(head(df))
 ```
 
 ### Exercise 3
@@ -51,7 +58,7 @@ df
 ```{r}
 file_path <- "./files_07_data_cleaning_exercises/exercise03/Food Composition_mod.csv"
 df <- read_csv(file_path)
-df
+formatted_table(head(df))
 ```
 
 Let's first find duplicate elements in the columns:
@@ -67,22 +74,35 @@ df$`Food Profile ID`[duplicated(df$`Food Profile ID`)]
 Are they in the same rows?
 
 ```{r}
-df[df$`Public Food Key` == "F009575", ]
+formatted_table(df[df$`Public Food Key` == "F009575", ])
 ```
 
 ```{r}
-df[df$`Public Food Key` == "F006725", ]
+formatted_table(df[df$`Public Food Key` == "F006725", ])
 ```
 
 Yes, they are in the same rows.
+First count the number of rows:
+
+```{r}
+nrow(df)
+```
+
+
 Now we can delete the duplicated rows:
 
 ```{r}
 my_data_cleaned <- df[!duplicated(df$`Public Food Key`), ]
-my_data_cleaned
+formatted_table(head(my_data_cleaned))
 ```
 
 Note that there are 1561 rows in the above tibble. Two less compared to the beginning (1563).
+
+```{r}
+nrow(my_data_cleaned)
+```
+
+
 Check if we still have duplicated rows:
 
 ```{r}
@@ -109,7 +129,7 @@ Count how many elements you have:
 ```{r}
 file_path <- "./files_07_data_cleaning_exercises/exercise04/nutrition.csv"
 df <- read_csv(file_path)
-df
+formatted_table(head(df))
 ```
 
 ```{r}
