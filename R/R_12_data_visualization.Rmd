@@ -147,7 +147,7 @@ The first thing we do is to make the data tidy:
 ```{r}
 tidy_summ_data <- summ_data %>%
   gather(`Calories total`, `Calories from Fat`, key = "Calories origin", value = "Amount of calories")
-formatted_table(tidy_summ_data)
+formatted_table(head(tidy_summ_data))
 ```
 
 As you can see, the data is in tidy format now with only a single column with the amount of calories.
@@ -358,7 +358,7 @@ But first we can just take the columns that we need:
 
 ```{r}
 df_menu_trunc <- df_menu[, c(1, 2, 4, 5)]
-formatted_table(df_menu_trunc)
+formatted_table(head(df_menu_trunc))
 ```
 
 And then make it tidy:
@@ -366,7 +366,7 @@ And then make it tidy:
 ```{r}
 tidy_menu <- df_menu_trunc %>%
   gather(`Calories total`, `Calories from Fat`, key = "Calories origin", value = "Amount of calories") 
-formatted_table(tidy_menu)
+formatted_table(head(tidy_menu))
 ```
 
 And now create the grouped box plot:
