@@ -56,7 +56,7 @@ Overall, the tidyverse packages provide a more user-friendly, consistent, and ef
 
 ### Goal of the course:
 
-> The goal of this course is to get you started using R for data analysis. We will not cover all the ins and outs of R programming. Instead, we will minimize the use of basic computer programming. Instead, premade R functions will be used as much as possible.
+> The goal of this course is to get you started using R for data analysis. We will not cover all the ins and outs of R programming. Instead, we will minimize the use of basic computer programming. Instead, pre-made R functions will be used as much as possible.
 
 
 ---
