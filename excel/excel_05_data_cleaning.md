@@ -27,7 +27,7 @@ As you can see, all data is loaded in the first column. You can use the `text to
 ![food2](./pics_05_data_cleaning/fig2.png)
 *<sub>Figure 2: Select the delimiter</sub>*
 
-Here the correct culumn separator is selected to parse the text. The result is as follows:
+Here the correct column separator is selected to parse the text. The result is as follows:
 
 ![food3](./pics_05_data_cleaning/fig3.png)
 *<sub>Figure 3: Text separated to columns</sub>*
@@ -78,7 +78,7 @@ As a result, the tailing whitespace is now removed and the `COUNTIF` function re
 
 ## Find and replace
 
-Find and replace is usefull to clean data. This example shows some HTML tags in cells:
+Find and replace is useful to clean data. This example shows some HTML tags in cells:
 
 ![find replace](./pics_05_data_cleaning/fig11.png)
 *<sub>Figure 11: HTML tags in cells.</sub>*
@@ -88,7 +88,7 @@ Removing them is easy using find and replace:
 ![find replace](./pics_05_data_cleaning/fig12.png)
 *<sub>Figure 12: Remove HTML tags in cells.</sub>*
 
-The `*` is a wildcard that represents any text. Note that you do not need to exlicitely specify an empty string in the `replace with` field. Excel will take care of this.
+The `*` is a wildcard that represents any text. Note that you do not need to explicitly specify an empty string in the `replace with` field. Excel will take care of this.
 
 ![find replace](./pics_05_data_cleaning/fig13.png)
 *<sub>Figure 13: HTML tags removed.</sub>*
@@ -126,7 +126,7 @@ Here you can see it in action:
 
 ## Dealing with missing data
 
-Often, data analysts are dealing with missing data in datasets. Data fields may be simply empty, contain a dash (-) or may contain an `#N/A` error. There are various approaches one can take when dealing with missing data. For example, you can throw out all the data for any sample missing one or more data elements. However, be aware that missing data might not be randomly distribured. 
+Often, data analysts are dealing with missing data in datasets. Data fields may be simply empty, contain a dash (-) or may contain an `#N/A` error. There are various approaches one can take when dealing with missing data. For example, you can throw out all the data for any sample missing one or more data elements. However, be aware that missing data might not be randomly distributed. 
 
 The approaches that can be taken are:
 - Delete the samples (rows) with one or more missing data elements;
@@ -151,7 +151,7 @@ Or check if they are equal to #N/A using the `ISNA` function:
 *<sub>Figure 19: Validate if cell equals #N/A.</sub>*
 
 
-This is, cumbersome and error prone. You can work with third party add-ons, use VBA script or just use R or Python instead. Both R and Python do have powerfull functions to deal with missing data.
+This is, cumbersome and error prone. You can work with third party add-ons, use VBA script or just use R or Python instead. Both R and Python do have powerful functions to deal with missing data.
 
 In any case, it is best to convert cells with "empty" values (whether it is truly blank, contains a dash or any other character to mark empty) to #N/A. #N/A is the error value of Excel that means "no value is available." To avoid accidentally including empty cells in your calculations, enter #N/A in the cells where you are missing information. (A formula that references a cell that contains #N/A will return the #N/A error value). Read more about #N/A [here](https://support.microsoft.com/en-gb/office/na-function-5469c2d1-a90c-4fb5-9bbc-64bd9bb6b47c#:~:text=Returns%20the%20error%20value%20%23N,empty%20cells%20in%20your%20calculations.).
 
@@ -175,7 +175,7 @@ As a result, the `SUM` function does not work. It does notify you that there are
 
 In the above example, `<>` is a shorthand for the `NOT` operator. So the formula reads as: Only sum cells that are not equal to #N/A and ignore the #N/A's. This is a strategy that is very similar to what is used in R and Python. Your are dealing with missing data in an explicit way instead of implicit.
 
->Like many things in real life, datasets are often imperfect. Very often, datapoints will be missing. This is just reality and there is not much that you can do about the fact that you will encounter missing data. What is important though, is how you deal with missing data. Make it explicit that data is missing in your analysis and deal with it in a transparant way.
+>Like many things in real life, datasets are often imperfect. Very often, data points will be missing. This is just reality and there is not much that you can do about the fact that you will encounter missing data. What is important though, is how you deal with missing data. Make it explicit that data is missing in your analysis and deal with it in a transparent way.
 
 
 ---

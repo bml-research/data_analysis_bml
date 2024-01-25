@@ -33,7 +33,7 @@ As you can see from this file, the units are in the cells instead of the column 
 
 ![import](./files_04_import_solutions/exercise03/fig1.png)
 
-Therefore, all fileds are strings instead of numbers.
+Therefore, all fields are strings instead of numbers.
 This requires cleaning before you can do any calculations!
 
 ### Exercise 4
@@ -64,7 +64,7 @@ While this file appears rather easy to load:
 >The data is not loaded well. The decimal separator is not set correctly.
 
 `Land use Change` for `apples` should be `0.029`.  
->Make sure that you set the Regional Setting correctly to Englisch (United States). 
+>Make sure that you set the Regional Setting correctly to English (United States). 
 
 The solution can be found [here](./files_04_import_solutions/exercise05/Food_Product_Emissions.xlsx)
 

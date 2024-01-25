@@ -27,7 +27,7 @@ Data Visualization: Excel has a range of chart types that can be used to visuali
 
 Overall, Excel is a useful tool for data science because it is widely available, easy to use, and has a variety of functions and features that can be used to work with and analyze data.
 
-Excel also has its limit for data analysis and visualization though. Although R and Python have a steeper learning curve, data analysis with R and Python is much more powerfull.
+Excel also has its limit for data analysis and visualization though. Although R and Python have a steeper learning curve, data analysis with R and Python is much more powerful.
 
 There are several factors to consider when deciding whether to use Excel, Python, or R for a particular task. Here are some points to consider:
 

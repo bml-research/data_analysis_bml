@@ -13,19 +13,19 @@ In data science, data is typically organized in a structured format, such as a t
 
 A common way to organize data for data science is to use a tabular format, with each row representing a record (e.g., a measurement) and each column representing a feature or attribute (e.g., protein concentration, mass of product, date of product purchased). This format is commonly used in data storage and retrieval systems, such as databases.
 
-In many cases, data is organised in CSV and TSV files.
+In many cases, data is organized in CSV and TSV files.
 
 A delimited text file is a plaintext file that uses a special character, called the delimiter, to separate the fields (columns) within each line of the file. Delimited text files can use any character as a delimiter, but the most common delimiter is the tab character (also known as the tab-separated values or TSV file format). Other common delimiters include the comma (used in CSV files), the semicolon, and the pipe symbol. Like CSV files, delimited text files are often used to store data that can be imported into a spreadsheet or database program.
 
 Another important aspect of text files are character encoding formats. The most widely used is UTF-8. UTF-8 is a character encoding format that is used to represent text as a sequence of bytes for storage or transmission. It is part of the Unicode standard, which defines a unique number for every character in the world's scripts, including Latin, Greek, Chinese, and emoji. It is the default character encoding format for the web and is often used as the default character encoding format in software and applications. 
 
-Another important aspect of text files is the BOM. A BOM (Byte Order Mark) is a special character that can be placed at the beginning of a text file to indicate the endianness (byte order) of the file's encoding. It is often used in Unicode encoding formats, such as UTF-8. The BOM character is not visible when the text file is opened in a text editor, but it can be detected by software that is specifically designed to look for it. The BOM is used to ensure that text files are interpreted correctly when they are transferred between systems.
+Another important aspect of text files is the BOM. A BOM (Byte Order Mark) is a special character that can be placed at the beginning of a text file to indicate the byte order of the file's encoding. It is often used in Unicode encoding formats, such as UTF-8. The BOM character is not visible when the text file is opened in a text editor, but it can be detected by software that is specifically designed to look for it. The BOM is used to ensure that text files are interpreted correctly when they are transferred between systems.
 
 Another important aspect is that you should realize that there are different types of line endings in text files. CRLF stands for "Carriage Return" (CR) and "Line Feed" (LF). In text files, these characters are used to indicate the end of a line of text. The CR character moves the cursor to the beginning of the current line, while the LF character moves the cursor to the next line. In Windows and DOS operating systems, the CRLF sequence (CR+LF) is used to represent the end of a line of text. In Unix-based systems, such as Linux and macOS, the LF character (also known as a newline) is used to represent the end of a line of text. When text files are transferred between systems that use different line endings, it can cause problems if the line endings are not interpreted correctly. For example, if a text file created on a Windows system is transferred to a Unix system, the CRLF line endings will not be recognized and the text file may appear to be a single, long line of text. To fix this, the line endings must be converted to the appropriate format for the target system.
 
-At last, always make sure that you are aware of decimal numbers in the csv file and be sure what decimal and thousend separator is used. These differ by region.  
+At last, always make sure that you are aware of decimal numbers in the csv file and be sure what decimal and thousands separator is used. These differ by region.  
 
-Regardless of the specific format used, it is important to ensure that the data is well-organized, accurate, and consistent, as this will make it easier to manipulate and analyze. In the United States, the period (.) is used as the standard decimal separator. In the Netherlands, a comma (,) is used. As a thousend separator, the comma (,) is used in many Englisch speaking countries while the period (.) is used in many non-English speaking countries. As a concequence, csv files from English speaking countries often use the comma as a column separator, while "csv" files from non-Englisch speaking countries often use a semi-colon as a column separator.
+Regardless of the specific format used, it is important to ensure that the data is well-organized, accurate, and consistent, as this will make it easier to manipulate and analyze. In the United States, the period (.) is used as the standard decimal separator. In the Netherlands, a comma (,) is used. As a thousands separator, the comma (,) is used in many English speaking countries while the period (.) is used in many non-English speaking countries. As a consequence, csv files from English speaking countries often use the comma as a column separator, while "csv" files from non-English speaking countries often use a semi-colon as a column separator.
 
 
 ## Check your data file
@@ -34,19 +34,19 @@ The first step in data import is to check your data using a text editor.
 There are many text editors and all operating systems do have a default build-in text editor.
 However, I do recommend [Visual Studio Code](https://code.visualstudio.com/) as it allows you to view and manipulate text files on all main operating systems. In addition, it features the rainbow csv plugin that allows you to see the csv file with color highlighting to discriminate between the columns (this only works for comma separated files).
 
-Open your text file and check how the data are organised.
+Open your text file and check how the data are organized.
 
 Here you can see the [Food Composition](https://www.kaggle.com/datasets/vinitshah0110/food-composition?resource=download&select=Food+Composition.csv) file.
 
 ![food composition](./pics_02_data_import/01.png)  
 *<sub>Figure 1: a csv file in Visual Studio Code</sub>*
 
-As can be seen from the screenshot above, the csv file contains a header and the column seperator that is used is a comma. It can also be seen that the file is UTF-8 encoded and contains a BOM.
+As can be seen from the screenshot above, the csv file contains a header and the column separator that is used is a comma. It can also be seen that the file is UTF-8 encoded and contains a BOM.
 
 
 ## Check the decimal separator
 
-On Windows, the decimal seperator is set at the OS level.
+On Windows, the decimal separator is set at the OS level.
 To set this, click the Windows button and type `intl.cpl`.
 Then click `Additional settings`. Here you can specify your decimal separator at the OS level.
 
@@ -55,7 +55,7 @@ Then click `Additional settings`. Here you can specify your decimal separator at
 
 Another level where you can set the decimal separator is in Excel.
 In `File > Options > Advanced` you can set the decimal separator.
-You can either set it to `Use system seperators` or choose your own.
+You can either set it to `Use system separators` or choose your own.
 
 ![decimal separator](./pics_02_data_import/03.png)
 *<sub>Figure 3: Change the decimal separator in Excel.</sub>*
@@ -68,9 +68,9 @@ There are several ways to import a csv file in Excel.
 The most common ways are:
 - Using Power Query (also known as Get & Transform in Excel)
 - Using the csv import wizard
-- Open the csv file with Excel directly (all bets are off using this option). Unless you are pretty sure about the content of the csv file I do not reccomment this. 
+- Open the csv file with Excel directly (all bets are off using this option). Unless you are pretty sure about the content of the csv file I do not recommend this. 
 
-> Although Power Query is a very convenient way to import csv files in Excel, it can cause major problems with the decimal separator and thousends separator (independent of your OS settings and the Excel settings for the separator signs). You need to set the region correct (see below). Always check the result of the import and compare with the csv file in a text editor. 
+> Although Power Query is a very convenient way to import csv files in Excel, it can cause major problems with the decimal separator and thousands separator (independent of your OS settings and the Excel settings for the separator signs). You need to set the region correct (see below). Always check the result of the import and compare with the csv file in a text editor. 
 
 ## Import csv files using Power Query
 
@@ -102,7 +102,7 @@ As you can see from above, the data is loaded in a Table with filters to sort ro
 
 ### Import TSV and other text file in Excel with Power Query
 
-As mentioned above, sometimes text files use another column seperator such as a tab or a pipe `|` symbol.
+As mentioned above, sometimes text files use another column separator such as a tab or a pipe `|` symbol.
 These are fairly easy to load in Excel as well:
 
 
@@ -116,15 +116,15 @@ Consider the [this](./files/file01.txt) file.
 
 
 ![Data loaded](./pics_02_data_import/07.png)
-*<sub>Figure 7: a text file in Visual Studio Code that uses the `@` symbol as a column seperator</sub>*
+*<sub>Figure 7: a text file in Visual Studio Code that uses the `@` symbol as a column separator</sub>*
 
-As you can see, it uses the `@` symbol as the column seperator.
+As you can see, it uses the `@` symbol as the column separator.
 It will not easily load in Excel:
 
 |![Data loaded](./pics_02_data_import/08.png)
-*<sub>Figure 8: a text file loaded in Excel that uses the pipe symbol `@` symbol as a column seperator</sub>*
+*<sub>Figure 8: a text file loaded in Excel that uses the pipe symbol `@` symbol as a column separator</sub>*
 
-You need to spicify the file type (UTF-8). But even then it will not load well:
+You need to specify the file type (UTF-8). But even then it will not load well:
 
 |![Data loaded](./pics_02_data_import/09.png)
 *<sub>Figure 9: a difficult file to load in Excel</sub>*
@@ -151,7 +151,7 @@ Note that the import with Power Query goes wrong:
 |![Data loaded](./pics_02_data_import/12.png)
 *<sub>Figure 12: Data is imported in Power Query but decimal settings where not correct.</sub>*
 
-This is because the region settings where on Dutch (the Netherlands). Change the to Englisch (United States).
+This is because the region settings where on Dutch (the Netherlands). Change the to English (United States).
 
 You can set this at `Data > Get Data > Query Options > regional Settings.
 
@@ -182,7 +182,7 @@ The csv file is now imported but not yet formatted in a data table.
 |![Data loaded](./pics_02_data_import/17.png)
 *<sub>Figure 17: Result of the import.</sub>*
 
-After formatting the dataset in a table you can start your analysis (preferrentially on a separate worksheet).
+After formatting the dataset in a table you can start your analysis (preferentially on a separate worksheet).
 
 |![Data loaded](./pics_02_data_import/18.png)
 *<sub>Figure 18: Data in a table format.</sub>*
