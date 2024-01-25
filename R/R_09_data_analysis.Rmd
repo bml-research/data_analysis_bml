@@ -19,6 +19,14 @@ library(tidyverse)
 ```
 
 
+```{r}
+library(kableExtra)
+formatted_table <- function(df){
+  kbl(df) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "responsive"))
+}
+```
+
 Here we will focus on data transformation and analysis.
 We will filter rows with filter(), arrange rows with arrange() and select columns with select().
 In addition, we will make grouped summaries using summarize().
@@ -39,7 +47,7 @@ namely, [the nutritional facts dataset from a fastfood restaurant](https://www.k
 ```{r}
 file_path <- "./files_09_data_analysis/file01_menu.csv"
 df <- read_csv(file_path)
-head(df)
+formatted_table(head(df))
 ```
 
 As you can see above, the data is loaded well. Also note that the columns are of the correct data type (e.g. dbl for the Calories column).
@@ -50,7 +58,7 @@ As you can see above, the data is loaded well. Also note that the columns are of
 Yoy can select rows by index using the following notation:
 
 ```{r}
-df[2, ] #select second row
+formatted_table(df[2, ]) #select second row
 ```
 
 Note the comma between the brackets. Since there is no specification of a column, all columns are selected.
@@ -61,7 +69,7 @@ Note the comma between the brackets. Since there is no specification of a column
 You can also select a column based on an index:
 
 ```{r}
-head(df[, 4]) #select fourth column
+formatted_table(head(df[, 4])) #select fourth column
 ```
 
 The head function was used to truncate the output.
@@ -82,7 +90,7 @@ Note that this action returns a vector instead of a dataframe.
 You can also select a specific item by index:
 
 ```{r}
-df[2, 4] #select second row and fourth column
+formatted_table(df[2, 4]) #select second row and fourth column
 ```
 
 Now we have the value of the second row and the fourth column.
@@ -95,31 +103,31 @@ Here is how that works:
 Filter rows with high caloric values:
 
 ```{r}
-filter(df, Calories > 900)
+formatted_table(head(filter(df, Calories > 900)))
 ```
 
 Chicken and Fish meals with high calories:
 
 ```{r}
-filter(df, Category == "Chicken & Fish" & Calories > 900)
+formatted_table(filter(df, Category == "Chicken & Fish" & Calories > 900))
 ```
 
 Meals with high calories that do not belong to the Chicken and Fish category:
 
 ```{r}
-filter(df, !Category == "Chicken & Fish" & Calories > 900)
+formatted_table(head(filter(df, !Category == "Chicken & Fish" & Calories > 900)))
 ```
 
 Meals with very low or very high calories:
 
 ```{r}
-filter(df, Calories < 100 | Calories > 900)
+formatted_table(head(filter(df, Calories < 100 | Calories > 900)))
 ```
 
 All meals with 0 calories:
 
 ```{r}
-filter(df, Calories == 0)
+formatted_table(head(filter(df, Calories == 0)))
 ```
 
 ## Arranging rows
@@ -129,20 +137,20 @@ You can use arrange() instead of filter if you want to sort your rows in a data 
 Arrange on calories ascending:
 
 ```{r}
-arrange(df, Calories)
+formatted_table(head(arrange(df, Calories)))
 ```
 
 
 If you want to sort in descending order:
 
 ```{r}
-arrange(df, desc(Calories))
+formatted_table(head(arrange(df, desc(Calories))))
 ```
 
 And to select the row with the highest value:
 
 ```{r}
-arrange(df, desc(Calories))[1, ]
+formatted_table(arrange(df, desc(Calories))[1, ])
 ```
 
 You can also do some multi-level sorting:
@@ -150,13 +158,13 @@ You can also do some multi-level sorting:
 Here is an example of sorting on Category first and then sorting on Calories: 
 
 ```{r}
-arrange(df, Category, Calories)
+formatted_table(head(arrange(df, Category, Calories)))
 ```
 
 Here is an example of sorting on Category first and then sorting on Calories from high to low: 
 
 ```{r}
-arrange(df, Category, desc(Calories))
+formatted_table(head(arrange(df, Category, desc(Calories))))
 ```
 
 
@@ -169,19 +177,19 @@ You have learned that Variables in data sets should be arranged in columns. Ofte
 With the select() function, you can select the variables that you are interested in:
 
 ```{r}
-select(df, Category, Item, Calories)
+formatted_table(head(select(df, Category, Item, Calories)))
 ```
 
 Or select all columns except the Calories:
 
 ```{r}
-select(df, -Calories)
+formatted_table(head(select(df, -Calories)))
 ```
 
 Or select besides the first two columns, all columns with total in the name:
 
 ```{r}
-select(df, Category, Item, starts_with("total"))
+formatted_table(head(select(df, Category, Item, starts_with("total"))))
 ```
 
 
@@ -202,14 +210,14 @@ summary(df$Calories)
 But the Tidyverse library also contains a summarize() function:
 
 ```{r}
-summarize(df, Calories = mean(Calories))
+formatted_table(summarize(df, Calories = mean(Calories)))
 ```
 
 You can combine this with the group_by() function for powerful analysis:
 
 ```{r}
 by_category <- group_by(df, Category)
-summarize(by_category, Average_calories = mean(Calories))
+formatted_table(summarize(by_category, Average_calories = mean(Calories)))
 ```
 
 Recall that this looks very much like the pivot table function in Excel (see figure 28 at [data analysis Excel](https://bml-research.github.io/data_analysis/excel/excel_08_data_analysis.html)).
@@ -218,7 +226,7 @@ To create a similar output as the pivot tables in Excel:
 
 ```{r}
 by_category <- group_by(df, Category)
-summarize(by_category, average_calories = mean(Calories), average_calories_fat = mean(`Calories from Fat`))
+formatted_table(summarize(by_category, average_calories = mean(Calories), average_calories_fat = mean(`Calories from Fat`)))
 ```
 
 >Note that backticks were used to call the column name `Calories from Fat`.
@@ -231,7 +239,7 @@ Likewise, you can extend this by providing the standard deviation:
 
 ```{r}
 by_category <- group_by(df, Category)
-summarize(by_category, average_calories = mean(Calories), sd_calories = sd(Calories), average_calories_fat = mean(`Calories from Fat`), sd_calories_from_fat = sd(`Calories from Fat`))
+formatted_table(summarize(by_category, average_calories = mean(Calories), sd_calories = sd(Calories), average_calories_fat = mean(`Calories from Fat`), sd_calories_from_fat = sd(`Calories from Fat`)))
 
 ```
 
@@ -254,7 +262,7 @@ So if you like your values to be rounded in the example above, just wrap it in t
 
 ```{r}
 by_category <- group_by(df, Category)
-summarize(by_category, average_calories = round(mean(Calories)), sd_calories = round(sd(Calories)), average_calories_fat = round(mean(`Calories from Fat`)), sd_calories_from_fat = round(sd(`Calories from Fat`)))
+formatted_table(summarize(by_category, average_calories = round(mean(Calories)), sd_calories = round(sd(Calories)), average_calories_fat = round(mean(`Calories from Fat`)), sd_calories_from_fat = round(sd(`Calories from Fat`))))
 
 ```
 
@@ -288,7 +296,7 @@ Using Tidyverse, you can also apply some of the above statistics more convenient
 
 ```{r}
 by_category <- group_by(df, Category)
-summarize_each(by_category, funs(mean, sd, se=sd(.)/sqrt(n())))
+formatted_table(summarize_each(by_category, funs(mean, sd, se=sd(.)/sqrt(n()))))
 ```
 
 Note that the `se=sd(.)/sqrt(n())` code is a custom made function to calculate the standard error of the mean.
@@ -298,17 +306,17 @@ So it is best to omit them:
 
 ```{r}
 by_category <- group_by(df, Category)
-summarize_each(by_category, funs(mean, sd, se=sd(.)/sqrt(n()))) %>%
-  select(-Item_mean, -`Serving Size_mean`)
+formatted_table(summarize_each(by_category, funs(mean, sd, se=sd(.)/sqrt(n()))) %>%
+  select(-Item_mean, -`Serving Size_mean`))
 ```
 
 We could simplify this expression by using pipes.You can use %>% to emphasise a sequence of actions.
 
 ```{r}
-df %>%
+formatted_table(df %>%
   group_by(Category) %>%
   summarize_each(funs(mean, sd, se=sd(.)/sqrt(n()))) %>%
-  select(-Item_mean, -`Serving Size_mean`)
+  select(-Item_mean, -`Serving Size_mean`))
 ```
 
 Piping greatly reduces the complexity of your actions and prevents the creation of temporary variables.

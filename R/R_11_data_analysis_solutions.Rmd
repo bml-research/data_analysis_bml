@@ -15,6 +15,14 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 library(tidyverse)
 ```
 
+```{r}
+library(kableExtra)
+formatted_table <- function(df){
+  kbl(df) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "responsive"))
+}
+```
+
 This file can be downloaded [here](./R_11_data_analysis_solutions.Rmd)
 
 
@@ -31,7 +39,7 @@ First load the data:
 ```{r}
 file_path <- "./files_10_data_analysis_exercises/exercise01/menu.csv"
 df <- read_csv(file_path)
-head(df)
+formatted_table(head(df))
 ```
 Then the calculations:
 ```{r}
@@ -50,7 +58,7 @@ results_ex1 <- tibble("measure" = c("minimum", "maximum", "mean", "median"),
                       "calories from fat" = c(min_fat, max_fat, mean_fat, median_fat)
                       )
 
-results_ex1
+formatted_table(results_ex1)
 ```
 
 Note that the summary function also provides easy access to this data:
@@ -74,20 +82,20 @@ Index, filter and sort your data frame to answer the following questions:
 
 Item  with the highest Calories from fat:
 ```{r}
-df[df$`Calories from Fat` == max(df$`Calories from Fat`), ]
+formatted_table(df[df$`Calories from Fat` == max(df$`Calories from Fat`), ])
 ```
 
 Chicken McNuggets (40 piece)
 
 or:
 ```{r}
-filter(df, `Calories from Fat` == max(df$`Calories from Fat`))
+formatted_table(filter(df, `Calories from Fat` == max(df$`Calories from Fat`)))
 ```
 Chicken McNuggets (40 piece)
 
 Item  with the highest highest Iron (% Daily Value)
 ```{r}
-df[df$`Iron (% Daily Value)` == max(df$`Iron (% Daily Value)`), ]
+formatted_table(df[df$`Iron (% Daily Value)` == max(df$`Iron (% Daily Value)`), ])
 ```
 
 Big Breakfast with Hotcakes (Regular Biscuit)
@@ -95,7 +103,7 @@ Big Breakfast with Hotcakes (Large Biscuit)
 
 or:
 ```{r}
-filter(df, `Iron (% Daily Value)` == max(df$`Iron (% Daily Value)`))
+formatted_table(filter(df, `Iron (% Daily Value)` == max(df$`Iron (% Daily Value)`)))
 ```
 
 Big Breakfast with Hotcakes (Regular Biscuit)
@@ -103,10 +111,10 @@ Big Breakfast with Hotcakes (Large Biscuit)
 
 Beef & Pork item with the lowest Calories from fat?  
 ```{r}
-df %>% 
+formatted_table(df %>% 
   arrange(Category, `Calories from Fat`) %>%
   filter(Category == "Beef & Pork") %>%
-  slice(1:1)
+  slice(1:1))
 ```
 
 Hamburger
@@ -114,19 +122,19 @@ Hamburger
 Coffee & Tea or Smoothies & Shakes item with the highest amount of carbohydrates:
 
 ```{r}
-df %>% 
+formatted_table(df %>% 
   filter(Category == "Coffee & Tea" | Category == "Smoothies & Shakes") %>%
   arrange(-`Carbohydrates`) %>%
-  slice(1:1)
+  slice(1:1))
 ```
 
 
 Item with the highest saturated fat and lowest carbohydrates value:
 
 ```{r}
-df %>% 
+formatted_table(df %>% 
   arrange(-`Saturated Fat`, `Carbohydrates`) %>%
-  slice(1:1)
+  slice(1:1))
 ```
 
 Frappé Chocolate Chip (Large)
@@ -169,8 +177,8 @@ nrow(df[str_detect(df$`Serving Size`, "fl oz cup"), ])
 Select rows with high energetic food items (>600 calories). Which three categories show the highest number of red cells? 
 
 ```{r}
-df %>%
-  filter(Calories > 600) 
+formatted_table(df %>%
+  filter(Calories > 600))
 ```
 
 Breakfast and Chicken & Fish and Smoothies and shakes
@@ -188,8 +196,8 @@ There are no duplicates!
 Select rows with a % Daily Value > 100% for Vitamin A. Which category are these items mainly found?   
 
 ```{r}
-df %>%
-  filter(`Vitamin A (% Daily Value)` > 100)
+formatted_table(df %>%
+  filter(`Vitamin A (% Daily Value)` > 100))
 ```
 
 Salads
@@ -197,8 +205,8 @@ Salads
 Select rows with a % Daily Value >= 100% for Vitamin C. Use green markup for these. Make sure that you include 100%! How many items do you find that meet this criteria? 
 
 ```{r}
-df %>%
-  filter(`Vitamin C (% Daily Value)` >= 100)
+formatted_table(df %>%
+  filter(`Vitamin C (% Daily Value)` >= 100))
 ```
 
 The number of items:
@@ -222,12 +230,12 @@ Calculate:
 Round the values to 1 decimal.  
 
 ```{r}
-df %>% 
+formatted_table(df %>% 
   group_by(Category) %>% 
   summarize("Mean Total Fat (% Daily Value)" = round(mean(`Total Fat (% Daily Value)`), 1),
             "Mean Saturated Fat (% Daily Value)" = round(mean(`Saturated Fat (% Daily Value)`), 1),
             "Mean Cholesterol (% Daily Value)" = round(mean(`Cholesterol (% Daily Value)`), 1)
-            )
+            ))
 ```
 
 
