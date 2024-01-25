@@ -14,6 +14,14 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 library("tidyverse")
 ```
 
+```{r}
+library(kableExtra)
+formatted_table <- function(df){
+  kbl(df) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "responsive"))
+}
+```
+
 This file can be found [here](./R_14_data_visualization_solutions.Rmd)
 
 > The exercises will be similar to the exercises in Excel in order to compare the results.
@@ -31,7 +39,7 @@ What food product creates the highest Emission value?
 ```{r}
 file_path_ex1 <- "./files_13_data_visualization_exercises/exercise01/Food_Product_Emissions.csv"
 df_ex1 <- read_csv(file_path_ex1)
-df_ex1
+formatted_table(df_ex1)
 ```
 
 ```{r}
@@ -50,6 +58,9 @@ Highest is Beef (Beef Herd)
 ### Exercise 2
 
 As the differences in the values are rather high, it is wise to use a log scale to display your data. Log scales have their advantages and are often used to display data that cover a wide range of values. Use a 2log scale to display your data.
+
+Example of using log:
+
 ```{r}
 log2(8)
 ```
@@ -83,7 +94,7 @@ Create a clustered column chart representing the Emissions per kg from `Processi
 First we create a df with the rows of Oil products:
 ```{r}
 df_ex3 <- df_ex1[str_detect(df_ex1$`Food product`, "Oil"), ]
-df_ex3
+formatted_table(df_ex3)
 ```
 Remove the columns that we do not need:
 
@@ -91,14 +102,14 @@ Remove the columns that we do not need:
 df_ex3$`Land Use Change` <- NULL
 df_ex3$Feed <- NULL
 df_ex3 <- df_ex3[, 1:6]
-df_ex3
+formatted_table(df_ex3)
 ```
 
 Make the df tidy:
 ```{r}
 tidy_df_ex3 <- df_ex3 %>%
   gather(`Farm`, `Processing`, `Transport`, `Packaging`, `Retail`, key = "Emission origin", value = "Emission per kg")
-tidy_df_ex3
+formatted_table(tidy_df_ex3)
 ```
 
 
@@ -169,7 +180,7 @@ Which two Food Categories show the highest energy per weigth?
 ```{r}
 file_path <- "./files_13_data_visualization_exercises/exercise07/calories.csv"
 df_ex7 <- read_csv(file_path)
-df_ex7
+formatted_table(head(df_ex7))
 ```
 
 Now we need to clean it:
@@ -179,7 +190,7 @@ df_ex7 <- df_ex7 %>%
   separate_wider_delim(KJ_per100grams, delim = " ", names = c("KJ_per100grams", "waste2")) %>%
   select (-c(waste, waste2)) %>% #Note that this is a negative selection. Selects all but the listed columns.
   mutate_at(c('Cals_per100grams', 'KJ_per100grams'), as.numeric) #Creates numbers from strings
-df_ex7
+formatted_table(head(df_ex7))
 ```
 
 Create Boxplot:
@@ -208,7 +219,7 @@ Which two chickens on which diet generated the highest weight gains?
 ```{r}
 file_path <- "./files_13_data_visualization_exercises/exercise08/ChickWeight.csv"
 df_ex8 <- read_tsv(file_path)
-df_ex8
+formatted_table(df_ex8)
 ```
 
 ```{r}
@@ -219,20 +230,20 @@ For a radar chart we need to scale the data from 0-1
 
 ```{r}
 df_ex8_scaled <- df_ex8[, -1]/400
-df_ex8_scaled
+formatted_table(df_ex8_scaled)
 ```
 
 Grab the first column:
 
 ```{r}
 first_col <- df_ex8[, 1]
-first_col
+formatted_table(first_col)
 ```
 And add together:
 
 ```{r}
 df_ex8_mod <- cbind(first_col, df_ex8_scaled)
-df_ex8_mod
+formatted_table(df_ex8_mod)
 ```
 
 And now we can create the plot:
@@ -263,7 +274,7 @@ Which two food items would be considered most healthy food items based on the in
 file_path <- "./files_13_data_visualization_exercises/exercise09/data.csv"
 df_ex9 <- read_delim(file_path, delim=" ")
 df_ex9$...6 <- NULL
-df_ex9
+formatted_table(head(df_ex9))
 ```
 ```{r}
 p <- ggplot(df_ex9, aes(x = `Potassium_conc`, y = `Sodium_conc`)) + 
@@ -288,14 +299,14 @@ Use Scientific notation for the mass meat production.
 file_path <- "./files_13_data_visualization_exercises/exercise10/meat-production-tonnes.csv"
 df_ex10 <- read_csv(file_path)
 df_ex10 <- rename(df_ex10, `Total mass (tonnes)`= `Meat, total | 00001765 || Production | 005510 || tonnes`)
-df_ex10
+formatted_table(head(df_ex10))
 ```
 
 Filter the data to be used:
 ```{r}
 df_ex10_asia <- df_ex10 %>%
   filter(Entity == "Asia")
-df_ex10_asia
+formatted_table(head(df_ex10_asia))
 ```
 
 Create the plot:
@@ -329,7 +340,7 @@ Which two Food Categories show the highest mean energy per weight?
 ```{r}
 file_path <- "./files_13_data_visualization_exercises/exercise11/calories.csv"
 df_ex11 <- read_csv(file_path)
-df_ex11
+formatted_table(head(df_ex11))
 ```
 Clean the data:
 
@@ -339,7 +350,7 @@ df_ex11 <- df_ex11 %>%
   separate_wider_delim(KJ_per100grams, delim = " ", names = c("KJ_per100grams", "waste2")) %>%
   select (-c(waste, waste2)) %>% #Note that this is a negative selection. Selects all but the listed columns.
   mutate_at(c('Cals_per100grams', 'KJ_per100grams'), as.numeric) #Creates numbers from strings
-df_ex11
+formatted_table(head(df_ex11))
 ```
 
 
@@ -348,7 +359,7 @@ Now group the food Categories:
 df_ex11_summ <- df_ex11 %>% 
   group_by(FoodCategory) %>% 
   summarize("Energy density (KJ/100 g)" = round(mean(`KJ_per100grams`), 1))
-df_ex11_summ
+formatted_table(head(df_ex11_summ))
 ```
 
 And now we can create the plot:
