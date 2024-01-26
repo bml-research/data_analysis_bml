@@ -58,7 +58,7 @@ formatted_table(head(df))
 ```{r}
 file_path <- "./files_07_data_cleaning_exercises/exercise03/Food Composition_mod.csv"
 df <- read_csv(file_path)
-formatted_table(head(df))
+formatted_table(head(df, 1))
 ```
 
 Let's first find duplicate elements in the columns:
@@ -93,7 +93,7 @@ Now we can delete the duplicated rows:
 
 ```{r}
 my_data_cleaned <- df[!duplicated(df$`Public Food Key`), ]
-formatted_table(head(my_data_cleaned))
+formatted_table(head(my_data_cleaned, 1))
 ```
 
 Note that there are 1561 rows in the above tibble. Two less compared to the beginning (1563).
