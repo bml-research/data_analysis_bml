@@ -41,7 +41,7 @@ File 1:
 ```{r}
 file_path <- "./files_04_data_import_exercises/exercise01/Food_composition_1.csv"
 df <- read_csv(file_path)
-formatted_table(head(df))
+formatted_table(head(df, 1)) 
 ```
 
 The field separator used was a comma. Therefore use the `read_csv` function.
@@ -51,7 +51,7 @@ File 2:
 ```{r}
 file_path <- "./files_04_data_import_exercises/exercise01/Food_composition_2.csv"
 df <- read_csv2(file_path)
-formatted_table(head(df))
+formatted_table(head(df, 1))
 ```
 
 The field separator used was a semi-colon. Therefore use the `read_csv2` function.
@@ -61,7 +61,7 @@ File 3:
 ```{r}
 file_path <- "./files_04_data_import_exercises/exercise01/Food_composition_3.csv"
 df <- read_delim(file_path, delim="|")
-formatted_table(head(df))
+formatted_table(head(df, 1))
 ```
 
 The field separator used was a pipe symbol. Therefore use the `read_delim` function with a `delim argument` set to the correct delimiter.
@@ -71,7 +71,7 @@ File 4:
 ```{r}
 file_path <- "./files_04_data_import_exercises/exercise01/Food_composition_4.csv"
 df <- read_delim(file_path, delim="@")
-formatted_table(head(df))
+formatted_table(head(df, 1))
 ```
 
 The field separator used was an at sign. Therefore use the `read_delim` function with a `delim argument` set to the correct delimiter.
