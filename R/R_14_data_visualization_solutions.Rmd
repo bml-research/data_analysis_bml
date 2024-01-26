@@ -84,6 +84,8 @@ barplot(df_ex2$`Log2 Total Global Average GHG Emissions per kg`,
         main = "Food Product Emissions")  
 ```
 
+Note that this plot differs from the Excel counterpart. Here I calculated the 2log values (for example: the highest value is around 100. log2(100) = 6.6) and plotted the 2log GHG values on a linear y-scale while in the Excel counterpart, I plotted the GHG values on a 2log scaled y-axis. Both are permitted as long as you clearly indicate what is plotted on the y-axis. Note that values below 1 become negative on a log scale (log2(1) = 0 and log2(0.5) = -1).
+
 
 ### Exercise 3
 
