@@ -24,10 +24,6 @@ Tijdens de gehele keten van ontwikkeling, opwerking en productie van voedingsing
 2. De student visualiseert verschillende typen data in Excel, R of Python met behulp van diverse plot typen;
 3. De student verbindt de juiste conclusies aan de analyses en visualisaties.
 
-## Link naar github:
-
-Een voorbeeld opdracht met uitwerkingen is [hier](https://github.com/jurrehageman/master_food_data_analysis) te vinden.
-
 
 ## Inhoudsopgave
 
@@ -39,6 +35,11 @@ Een voorbeeld opdracht met uitwerkingen is [hier](https://github.com/jurrehagema
 ## Links naar data set webpagina
 
 - [Data sets](./data_sets/data_sets.md)
+
+
+## Link naar vorbeeld opdracht:
+
+Een voorbeeld opdracht met uitwerkingen is [hier](./example_assignment/example_assignment.md) te vinden.
 
 ## Under construction
 

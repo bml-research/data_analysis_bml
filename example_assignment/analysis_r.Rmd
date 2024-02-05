@@ -1,0 +1,307 @@
+---
+title: "Anthocyanen uit druiven als conserveermiddel?"
+author: "Jurre Hageman"
+date: '2022-11-30'
+version: '2022-11-30'
+output:
+  word_document: default
+  html_document: default
+---
+
+# Inleiding
+
+Anthocyanen zijn in water oplosbare flavonoïden. Anthocyanen hebben een diverse functie in planten. Ze lokken insecten zoals bijen voor bestuiving maar ze hebben ook antioxidant en antimicrobiële eigenschappen.
+Hoewel anthocyanen in de Europese Unie zijn goedgekeurd als kleurstof voor voedingsmiddelen en dranken, zijn ze nog niet goedgekeurd voor gebruik als voedseladditief omdat ze niet als veilig zijn geverifieerd bij gebruik als voedsel- of supplementingrediënten.
+Het bedrijf waar ik mee samenwerk (projectpartner) wil anthocyanen gebruiken als voedseladditief in voedingsmiddelen om bacteriebederf tegen te gaan. 
+Er heeft een laboratoriumonderzoek plaatsgevonden waarbij de groei van een bacterie is onderzocht in media met verschillende concentraties anthocyanen uit rode en groene druiven.
+
+# Onderzoeksvraag
+
+Werken anthocyanen uit rode druiven of groene druiven antimicrobieel?
+
+# Het experiment
+
+Anthocyanen zijn uit rode en groene druiven geextraheerd. Daarna is een experiment ingezet om te testen of de anthocyanen ingezet kunnen worden als conserveringsmiddel.
+
+# Plate setup
+
+De plate setup is hieronder te zien:
+
+![Plate Setup](./pics/plate_setup.png)
+# Analyse
+
+## User Settings
+
+```{r}
+# Set organism
+organism <- "Bacterie"
+
+# Set file and folder
+filename <- "2020-01-30.csv"
+excel_file <- "2020-01-30.xlsx"
+folder <- "sample_data"
+
+# Set samples
+sample_1 <- "Rode druif"
+sample_2 <- "Groene druif"
+sample_3 <- "Negatieve controle"
+
+# Set columns (sample#_replicate).
+# This is for user input convenience. 
+# Sample and replicate will be separated later using dplyr::separate
+col_1 <- "1_1" 
+col_2 <- "1_2" 
+col_3 <- "1_3" 
+col_4 <- "1_c" 
+col_5 <- "2_1" 
+col_6 <- "2_2" 
+col_7 <- "2_3" 
+col_8 <- "2_c" 
+col_9 <- "3_1" 
+col_10 <- "3_2" 
+col_11 <- "3_3" 
+col_12 <- "3_c" 
+
+# Set dilutions
+row_1 <- 2
+row_2 <- 1
+row_3 <- 0.5
+row_4 <- 0.25
+row_5 <- 0.13
+row_6 <- 0.06
+row_7 <- 0.03
+row_8 <- 0
+
+# Set line colors
+linecolors <- c("#FF3633", "#FF8933", "#FCFF33", "#62FF33", "#33FFEB", "#33A7FF", "#5F33FF", "#EA33FF")
+
+```
+
+## Imports
+
+```{r}
+library(Rmisc)
+library(tidyverse)
+```
+
+## Converting user input
+
+```{r}
+samples <- c(sample_1, sample_2, sample_3)
+columns <- c("row", col_1, col_2, col_3, col_4, col_5, col_6, col_7, col_8, col_9, col_10, col_11, col_12)
+dilution_series <- factor(c(row_1, row_2, row_3, row_4, row_5, row_6, row_7, row_8))
+filepath <- file.path(folder, filename)
+filepath_excel <- file.path(folder, excel_file)
+group1 <- c('1_1', '1_2', '1_3', '1_c')
+group2 <- c('2_1', '2_2', '2_3', '2_c')
+group3 <- c('3_1', '3_2', '3_3', '3_c')
+```
+
+## Loading the data
+
+## Read from Excel in `xlsx` format
+
+```{r}
+library("readxl")
+df <- read_excel(filepath_excel, sheet = 2) %>% slice(-1:-1) #drop the first row 
+
+skip <- 14 #each time, 14 rows of plate info that will be skipped
+collect <- 8 #there are 8 rows of OD data that I will keep
+reps <- nrow(df) %/% (skip + collect) #number of repetitions
+index <- rep(0:(reps - 1), each = collect) * (skip + collect) + (1 : collect) + skip
+df <- df[index, ] #collect the blocks of OD data
+df <- df[, 1:13]
+colnames(df) <- columns
+df[2:13] <- lapply(df[2:13], function(x) as.numeric(as.character(x)))
+df
+```
+
+## Read from a `csv` file.
+
+```{r}
+# df <- read_csv2(filepath,
+#                 col_types = cols(row = 'c', .default = col_double()),
+#                 col_names = columns) %>% #Using col_names also removes the empty columns
+#   slice(-1:-2) #drop the first two rows
+# 
+# skip <- 14 #each time, 14 rows of plate info that will be skipped
+# collect <- 8 #there are 8 rows of OD data that I will keep
+# reps <- nrow(df) %/% (skip + collect) #number of repetitions
+# index <- rep(0:(reps - 1), each = collect) * (skip + collect) + (1 : collect) + skip
+# df <- df[index, ] #collect the blocks of OD data
+# df
+```
+
+
+## Add timepoint and dillution columns
+
+```{r}
+num_of_timepoints <- nrow(df) / 8 - 1
+timepoints_actual <- seq(0, (10 * num_of_timepoints), by = 10)
+timepoints <- rep(timepoints_actual, each = 8)
+dilutions <- rep(dilution_series, times = num_of_timepoints + 1)
+
+df <- mutate(df, timepoint = timepoints, dilution = dilutions) %>%
+  select(1, timepoint, dilution, everything())
+#View(df)
+```
+
+## Make tidy
+
+```{r}
+#Use dplyr to make tidy df tables
+#Need to gather at multiple levels, hence the function.
+generateTidy <- function(df_t, selector){
+  df_t <- df_t %>% 
+    select(row, timepoint, dilution, all_of(selector)) %>%
+    gather(selector[1], selector[2], selector[3], key = 'sample', value = 'OD_S') %>%
+    separate(sample, into = c('sample', 'replicate')) %>%
+    select(1:3, sample, replicate, 'OD_S', selector[4]) %>%
+    dplyr::rename('OD_C' = selector[4]) %>%
+    mutate(OD_N = OD_S - OD_C)
+  return(df_t)
+}
+
+df_tidy_s1 <- generateTidy(df, group1)
+df_tidy_s2 <- generateTidy(df, group2)
+df_tidy_s3 <- generateTidy(df, group3)
+#View(df_tidy_s1)
+```
+
+## Summary Data
+
+```{r}
+#Use the summarySE package to calculate the mean, SD, SE and CI data at once.
+vars <- c("dilution", "timepoint")
+stat.sample1 <- summarySE(df_tidy_s1, measurevar="OD_N", groupvars=vars)
+stat.sample2 <- summarySE(df_tidy_s2, measurevar="OD_N", groupvars=vars)
+stat.sample3 <- summarySE(df_tidy_s3, measurevar="OD_N", groupvars=vars)
+#View(stat.sample3)
+```
+
+# Visualisatie
+
+## Set-up plots
+
+```{r, echo=F}
+
+base.string <- sprintf("(%s) file: %s",organism, filename)
+title.string.s1 <- sprintf("%s %s", samples[1], base.string)
+title.string.s2 <- sprintf("%s %s", samples[2], base.string)
+title.string.s3 <- sprintf("%s %s", samples[3], base.string)
+
+generatePlot <- function(sample, title.string){
+  ggplot(data = sample, mapping = aes(x = timepoint, y = OD_N, group=dilution)) + 
+  geom_point(aes(color = dilution)) + 
+  geom_line(aes(color = dilution)) +
+  scale_color_manual(values = linecolors) +
+  labs(x = "Time (min)", y = "OD", title = title.string) +
+  geom_errorbar(aes(ymin = OD_N - sd, ymax = OD_N + sd), width = .05, colour = "#A9A9A9") +
+  theme(plot.title = element_text(size=12))
+}
+
+```
+
+## Generate Plots
+
+## Plot 1
+
+```{r, echo=F}
+generatePlot(stat.sample1, title.string.s1)
+```
+
+## Plot 2
+
+```{r, echo=F}
+generatePlot(stat.sample2, title.string.s2)
+```
+
+## Plot 3
+
+```{r, echo=F}
+generatePlot(stat.sample3, title.string.s3)
+```
+
+## Controls (can be used to find a contamination)
+
+```{r}
+generatePlotControl <- function(sample, title.string){
+  ggplot(data=sample, mapping = aes(x = timepoint, y = OD_C, group = dilution)) + 
+  geom_point(aes(color = dilution)) + 
+  geom_line(aes(color = dilution)) +
+  scale_color_manual(values = linecolors) +
+  labs(x = "Time (min)", y = "OD", title = paste("Control:", title.string, sep = " ")) +
+    ylim(0, 0.5) +
+    theme(plot.title = element_text(size=12))
+}
+```
+
+## Plot 4
+
+```{r, echo=F}
+
+generatePlotControl(df_tidy_s1, title.string.s1)
+
+```
+
+## Plot 5
+
+```{r, echo=F}
+
+generatePlotControl(df_tidy_s2, title.string.s2)
+
+```
+
+## Plot 6
+
+```{r, echo=F}
+
+generatePlotControl(df_tidy_s3, title.string.s3)
+
+```
+
+## Each data series separate (can be used to find a contamination)
+
+```{r}
+generatePlotEachLine <- function(sample, title.string){
+  ggplot(data=sample, mapping = aes(x = timepoint, y = OD_N, group = dilution)) + 
+  geom_point(aes(color = dilution)) + 
+  scale_color_manual(values = linecolors) +
+  labs(x = "Time (min)", y = "OD", title = paste("Each sample separate:", title.string, sep = " ")) +
+    theme(plot.title = element_text(size=12))
+}
+```
+
+## Plot 7
+
+```{r, echo=F}
+
+generatePlotEachLine(df_tidy_s1, title.string.s1)
+
+```
+
+## Plot 8
+
+```{r, echo=F}
+
+generatePlotEachLine(df_tidy_s2, title.string.s2)
+
+```
+
+## Plot 9
+
+```{r, echo=F}
+
+generatePlotEachLine(df_tidy_s3, title.string.s3)
+
+```
+
+# Conclusie
+
+De steriliteitscontroles zijn allemaal negatief voor bacteriegroei.
+
+Uit de data blijkt verder dat de anthocyanen van de rode druif het sterkst antimicrobieel werken. De groene druif werkt ook antimicrobieel maar de negatieve controle niet. Er is een duidelijke dosis-afhankelijke remming van de groei waar te nemen bij de anthocyanen van de rode en de groene druif.
+
+
+
+The end...
