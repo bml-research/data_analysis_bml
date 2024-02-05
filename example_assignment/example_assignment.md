@@ -71,6 +71,15 @@ Uitwerkingen zijn hieronder te downloaden:
 
 [Volledige uitwerking in html](./example_analysis/analysis_r.html)
 
+#### Voorbeeld plot uitwerking Python
+
+>Let op: Python is geen onderdeel van deze module maar een uitwerking in Python mag wel.
+>Deze uitwerking is hier ter inspiratie gegeven.
+
+![voorbeeld Python](./pics/python.png)
+
+[Volledige uitwerking in html](./example_analysis/analysis_python.html)
+
 
 ### Conclusie
 
