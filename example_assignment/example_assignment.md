@@ -59,6 +59,7 @@ Uitwerkingen zijn hieronder te downloaden:
 - [Uitwerking in R](.//example_analysis/analysis_r.Rmd)
 - [Uitwerking in Python (optioneel)](./example_analysis/analysis_python.ipynb)
 
+De volledige uitwerking is ook te vinden op deze [Github](https://github.com/jurrehageman/master_food_data_analysis) pagina.  
 
 #### Voorbeeld plot uitwerking Excel
 
@@ -69,7 +70,7 @@ Uitwerkingen zijn hieronder te downloaden:
 
 ![voorbeeld R](./pics/R.png)
 
-[Volledige uitwerking in html](./example_analysis/analysis_r.html)
+[Volledige uitwerking van de Rmd file in html](./example_analysis/analysis_r.html)
 
 #### Voorbeeld plot uitwerking Python
 
@@ -78,7 +79,7 @@ Uitwerkingen zijn hieronder te downloaden:
 
 ![voorbeeld Python](./pics/python.png)
 
-[Volledige uitwerking in html](./example_analysis/analysis_python.html)
+[Volledige uitwerking van het Jupyter Notebook in html](./example_analysis/analysis_python.html)
 
 
 ### Conclusie
