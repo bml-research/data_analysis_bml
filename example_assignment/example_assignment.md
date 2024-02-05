@@ -22,18 +22,20 @@ Werken anthocyanen uit rode druiven of groene druiven antimicrobiëel?
 ### Het experiment
 
 Anthocyanen zijn uit rode en groene druiven geextraheerd. Daarna is een experiment ingezet om te testen of de anthocyanen ingezet kunnen worden als conserveringsmiddel.  
-Er is een verdunningsreeks gebruikt van anthocyanen namelijk:  
-- 0,000%
-- 0,031%
-- 0,062%
-- 0,125%
-- 0,250%
-- 0,500%
-- 1,000%
-- 2,000%
+Er is een twee-voudige verdunningsreeks gebruikt van anthocyanen namelijk:  
+- 2,00%
+- 1,00%
+- 0,50%
+- 0,25%
+- 0,13%
+- 0,06%
+- 0,03%
+- 0,02%
+
+Bovenstaande waarden zijn afgerond op 2 decimalen.  
 
 De helft van elk welletje (100 µl) bevat de verdunde anthocyanen oplossing. De andere helft (100 µl) een vaste verdunning van de bacterie.  
-De plaat werd geïncubeerd in een spectrofotometer die kan verwarmen en de optische dichtheid werd elke 10 minuten gemeten bij 600 nm.  
+De plaat werd geïncubeerd in een spectrofotometer die kan verwarmen en de optische dichtheid werd elke 10 minuten gemeten bij 630 nm.  
 
 
 ### Experiment setup
