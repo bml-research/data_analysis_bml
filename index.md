@@ -39,7 +39,7 @@ Tijdens de gehele keten van ontwikkeling, opwerking en productie van voedingsing
 
 ## Link naar vorbeeld opdracht:
 
-Een voorbeeld opdracht met uitwerkingen is [hier](./example_assignment/example_assignment.md) te vinden.
+- [Hier is een voorbeeld eindopdracht met uitwerkingen te vinden](./example_assignment/example_assignment.md) 
 
 ## Under construction
 
