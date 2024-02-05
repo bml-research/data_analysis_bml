@@ -55,9 +55,22 @@ De ruwe data zijn [hier](./sample_data/2020-01-30.csv) te downloaden.
 ### Uitwerkingen
 
 Uitwerkingen zijn hieronder te downloaden:
-- [Uitwerking in Excel](./analysis_excel.xlsx)
-- [Uitwerking in R](./analysis_r.Rmd)
-- [Uitwerking in Python (optioneel)](./analysis_python.ipynb)
+- [Uitwerking in Excel](./example_analysis/analysis_excel.xlsx)
+- [Uitwerking in R](.//example_analysis/analysis_r.Rmd)
+- [Uitwerking in Python (optioneel)](./example_analysis/analysis_python.ipynb)
+
+
+#### Voorbeeld plot uitwerking Excel
+
+![voorbeeld Excel](./pics/excel.png)
+
+
+#### Voorbeeld plot uitwerking R
+
+![voorbeeld R](./pics/R.png)
+
+[Volledige uitwerking in html](./example_analysis/analysis_r.html)
+
 
 ### Conclusie
 

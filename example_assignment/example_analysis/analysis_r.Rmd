@@ -4,8 +4,8 @@ author: "Jurre Hageman"
 date: '2022-11-30'
 version: '2022-11-30'
 output:
-  word_document: default
   html_document: default
+  word_document: default
 ---
 
 # Inleiding
@@ -27,7 +27,7 @@ Anthocyanen zijn uit rode en groene druiven geextraheerd. Daarna is een experime
 
 De plate setup is hieronder te zien:
 
-![Plate Setup](./pics/plate_setup.png)
+![Plate Setup](../pics/plate_setup.png)
 # Analyse
 
 ## User Settings
@@ -39,7 +39,7 @@ organism <- "Bacterie"
 # Set file and folder
 filename <- "2020-01-30.csv"
 excel_file <- "2020-01-30.xlsx"
-folder <- "sample_data"
+folder <- "../sample_data"
 
 # Set samples
 sample_1 <- "Rode druif"
