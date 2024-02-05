@@ -9,9 +9,6 @@
 
 ---
 
-![Pic](./impression/kaggle.png)
-*<sub>Source: own work</sub>*
-
 ## Opdrachtbeschrijving
 
 ### Inleiding
