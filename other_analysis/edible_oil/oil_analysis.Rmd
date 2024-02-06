@@ -1,29 +1,26 @@
 ---
-title: "Oil price analysis"
+title: "Edible Oil Price Analysis"
 output: html_document
 date: "2024-02-06"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
-## Oil price analysis
+## Edible Oil Price Analysis
 
 
 Data source:
 https://www.kaggle.com/datasets/chinmayshanbhag/historical-price-data-of-8-edible-oils-commodity
 
 
-```{r cars}
-library(tidyverse, warn.conflicts=FALSE)
+```{r}
+library(tidyverse)
 library(lubridate)
+library(kableExtra)
 ```
 
 Format tables:
 
 ```{r}
-library(kableExtra)
 formatted_table <- function(df){
   kbl(df) %>%
   kable_styling(bootstrap_options = c("striped", "hover", "responsive"))
@@ -41,13 +38,11 @@ formatted_table(head(df))
 
 Transform dates:
 
-
 ```{r}
 df <- df %>%
   mutate(Month = my(Month))
 formatted_table(head(df))
 ```
-
 
 
 Make the data tidy:

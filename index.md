@@ -37,9 +37,13 @@ Tijdens de gehele keten van ontwikkeling, opwerking en productie van voedingsing
 - [Data sets](./data_sets/data_sets.md)
 
 
-## Link naar vorbeeld opdracht:
+## Link naar vorbeeld opdracht
 
-- [Hier is een voorbeeld eindopdracht met uitwerkingen te vinden](./example_assignment/example_assignment.md) 
+- [Hier is een voorbeeld eindopdracht met uitwerkingen te vinden](./example_assignment/example_assignment.md)
+
+## Overige analyses
+
+- [Prijs van diverse soorten spijsolie in de tijd](./other_analysis/edible_oil/olie_analyse.html)
 
 ## Under construction
 
