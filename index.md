@@ -43,7 +43,7 @@ Tijdens de gehele keten van ontwikkeling, opwerking en productie van voedingsing
 
 ## Overige analyses
 
-- [Prijs van diverse soorten spijsolie in de tijd](./other_analysis/edible_oil/olie_analyse.html)
+- [Prijs van diverse soorten spijsolie in de tijd](./other_analysis/edible_oil/oil_analysis.html)
 
 ## Under construction
 
