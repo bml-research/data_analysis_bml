@@ -1,9 +1,17 @@
+![](../../hanze/hanze.png)
+
+[Go back to the main page](../../index.html)
+
 ---
 title: "Edible Oil Price Analysis"
 output: html_document
 date: "2024-02-06"
 ---
 
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
 
 ## Edible Oil Price Analysis
 
