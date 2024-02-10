@@ -7,8 +7,8 @@
 
 ---
 
-![Pic](./impression/impression.svg.png)
-*<sub>Source: https://en.wikipedia.org/wiki/Omics#/media/File:Genome-en.svg</sub>*
+![Pic](./impression/impression.jpg)
+*<sub>Source: https://www.deviantart.com/gabimedia/art/3D-Illustration-of-human-brain-nerve-4-977052356, Created using AI tools. Creative Commons Attribution-Noncommercial-No Derivative Works 3.0 License</sub>*
 
 ## Introduction
 
