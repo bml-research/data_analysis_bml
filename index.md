@@ -42,7 +42,8 @@ To be done
 
 ## Under construction
 
-This website is still under construction and may contain errors.
+Disclaimer:  
+This website is still under construction and may contain errors.  
 
 
 ---
