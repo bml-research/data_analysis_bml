@@ -3,7 +3,7 @@
 
 [Go back to the main page](../index.md)
 
-# Master Gezonde en Duurzame Voeding
+# Data Analysis and Visualization
 
 ## Data Sets
 
