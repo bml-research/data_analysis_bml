@@ -37,11 +37,16 @@
 - [Cervical Cancer Risk Classification](https://www.kaggle.com/datasets/loveall/cervical-cancer-risk-classification)
 - [Dementia Patient Health,Prescriptions ML Dataset](https://www.kaggle.com/datasets/kaggler2412/dementia-patient-health-and-prescriptions-dataset)
 - [Predict lifespan of a comet goldfish](https://www.kaggle.com/datasets/stealthtechnologies/predict-lifespan-of-a-comet-goldfish)
+- [Predicting Heart Disease Using Clinical Variables](https://www.kaggle.com/datasets/thedevastator/predicting-heart-disease-risk-using-clinical-var)
 
 ### Imaging
 
 - [Brain MRI Scan Images - Tumor Detection](https://www.kaggle.com/datasets/volodymyrpivoshenko/brain-mri-scan-images-tumor-detection)
 
+
+### Metagenomics
+
+- [Metagenomics](https://www.kaggle.com/datasets/thedevastator/predicting-heart-disease-risk-using-clinical-var)
 
 ### Food Health, Allergens, allergies and hygiene:
 - [food-allergens-and-allergies](https://www.kaggle.com/datasets/boltcutters/food-allergens-and-allergies)
