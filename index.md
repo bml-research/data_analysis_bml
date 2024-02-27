@@ -12,13 +12,30 @@
 
 ## Introduction
 
-To be done
+The health sciences and biological sciences are undergoing a transformation, driven by the ever-growing flood of data generated from diverse sources. Genomic sequencing, proteomics, pharmacological data, clinical trials and wearable devices all contribute to a vast and complex landscape of information. To navigate this landscape effectively and gain valuable insights, researchers are increasingly turning to the powerful tools of data analysis and visualization.
 
+Data analysis involves the systematic process of collecting, cleaning, processing, and interpreting health and biology related data. This allows researchers to uncover hidden patterns, identify trends, and understand complex relationships within the data. However, raw data can be overwhelming and difficult to interpret. This is where data visualization comes into play.
+
+By transforming data into clear and concise visual representations such as graphs, charts, and maps, data visualization empowers users to:
+
+- Gain deeper understanding: Visualizations make complex relationships and trends readily apparent, facilitating a more intuitive grasp of the data.
+- Identify patterns and trends: Visualizations can readily reveal patterns and trends that might be missed in raw data, leading to new discoveries and potential breakthroughs.
+- Communicate effectively: Complex data can be difficult to communicate clearly with text alone. Visualizations provide a powerful tool for conveying insights to colleagues, patients, and the public in a way that is both informative and engaging.
+
+In conclusion, data analysis and visualization are critical tools in the modern health sciences and biology. They enable researchers to unlock the hidden potential of health-related data, leading to improved understanding of biological systems and improved healthcare delivery.
+
+
+In this module, you will learn to distinguish and analyze different types of data. You will also learn to visualize data in an attractive way for reports. The focus will be on using the spreadsheet program Microsoft Excel and the programming language R (using the Tidyverse framework). The assignments can also be completed with Python, but there will be no explanation of Python on this website.
+
+R and Python are currently the two most used programming languages in the field. R is used to gain some familiarity with the possibilities of data analysis with R, but not to teach you all the ins and outs of programming. The assignments that are offered can be completed with Excel, R, or Python. You can choose which software you want to use to complete the assignment.
+
+This module will conclude with an assignment that you will complete independently. 
 
 ## Learning Outcomes
 
-To be done
-
+- The student analyzes different types of data in Excel, R, or Python using various functions;
+- The student visualizes different types of data in Excel, R, or Python using various plot types;
+- The student connects the correct conclusions to the analyses and visualizations.
 
 ## Contents
 
