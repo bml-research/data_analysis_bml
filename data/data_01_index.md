@@ -24,7 +24,7 @@ In statistics and data analysis, there are several ways to categorize different 
 - ordinal 
 
 Nominal data is data that can be placed into categories without any inherent ordering. For example, "eye color" is a nominal data type, as there is no inherent order to the different categories (e.g. blue, brown, green, etc.).  
-Ordinal data, on the other hand, is data that can be placed into categories and those categories have an order to them. Example ordinal data can be a "rating scale" in questionares, like "unsatisfied", "satisfied" and "very satisfied". 
+Ordinal data, on the other hand, is data that can be placed into categories and those categories have an order to them. Example ordinal data can be a "rating scale" in questionnaires, like "unsatisfied", "satisfied" and "very satisfied". 
 
 **Numerical data**, also known as quantitative data, is data that can be measured and represented by numbers. There are two main types of numerical data: 
 - discrete
@@ -57,9 +57,9 @@ It is important to note that ratio data allows for meaningful statement about th
 
 ### Calculations and visualization methods on different data types
 
-It is not possible to perform all types of calculations, comparisons and visualizations on all data types. As explained above, you can not perform ratio comparisons on interval data. Obviously, you can not (directly) create bar graphs or histograms on nominal or ordinal data. However, you can calculate frequencies and a proportion (by dividing the frequency by the total number of events) on nominal and ordinal data. Proper visualisations of nominal and ordinal data are Pie Charts and Bar Charts. Because nominal data is categorical data that can take on a limited number of values that don't have an inherent order or numerical meaning, some types of visualizations that are used to represent quantitative data, such as continuous data, are not suitable for representing nominal data. 
+It is not possible to perform all types of calculations, comparisons and visualizations on all data types. As explained above, you can not perform ratio comparisons on interval data. Obviously, you can not (directly) create bar graphs or histograms on nominal or ordinal data. However, you can calculate frequencies and a proportion (by dividing the frequency by the total number of events) on nominal and ordinal data. Proper visualizations of nominal and ordinal data are Pie Charts and Bar Charts. Because nominal data is categorical data that can take on a limited number of values that don't have an inherent order or numerical meaning, some types of visualizations that are used to represent quantitative data, such as continuous data, are not suitable for representing nominal data. 
 
-Some examples of visualization types that are not suitible on certain data types are listed below:
+Some examples of visualization types that are not suitable on certain data types are listed below:
 
 **Nominal data:**
 
@@ -91,9 +91,9 @@ Some examples of visualization that are not suitable for discrete data are:
 
 These are some examples of visualizations that are not suitable for discrete data, but there are many other visualizations that can be used to represent discrete data. Examples of visualizations that are well suited for discrete data include bar charts, dot plots, pie charts, and stacked bar charts. These visualizations can help to effectively display the frequency or count of specific values in a dataset.
 
-**Continous data**
+**Continuous data**
 
-Even continuous data has some types of visualization that is not suitable or recommanded. Some examples include:
+Even continuous data has some types of visualization that is not suitable or recommended. Some examples include:
 
 - Stacked bar chart: This visualization is typically used to show the distribution of different categories within each category. Because continuous data is not necessarily divided into distinct categories, a stacked bar chart doesn't make sense to use.  
 
@@ -130,7 +130,7 @@ Columns:
 |Gene Name            |DNAJB1       |DNAJB2       |DNAJB3         |DNAJB4        |
 |Gene ID              |3337         |3300         |414061         |11080         |
 |Chromosome #         |19           |2            |2              |1             |
-|Protein length (# aa)|340          |277          |NA (pseudegene)|337           |
+|Protein length (# aa)|340          |277          |NA (pseudogene)|337           |
 
 >When you encounter this, the data need to be transposed. Data analysis software contains functions to assist with this.
 
@@ -141,7 +141,7 @@ Columns:
 
 ### Untidy data versus tidy data:
 
-In data science, a lot of time is spent on data cleaning and data organisation.
+In data science, a lot of time is spent on data cleaning and data organization.
 A more standardized way to structure data is the [tidy data format](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html).
 
 
@@ -217,7 +217,7 @@ The Excel and R section contain more about the particular data types.
 ---
 
 
-### Exersises and Solutions:
+### Exercises and Solutions:
 
 
 - [Exercises](./data_02_exercises.md)
