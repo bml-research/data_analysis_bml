@@ -15,7 +15,7 @@
 
 ## Introduction
 
-### Categorial data and numerical data
+### Categorical data and numerical data
 
 In statistics and data analysis, there are several ways to categorize different types of data. Two main categories of data are categorical and numerical.
 
