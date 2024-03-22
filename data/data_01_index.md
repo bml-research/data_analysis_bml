@@ -104,33 +104,33 @@ Even continuous data has some types of visualization that is not suitable or rec
 
 ### Data tables
 
-Scientist often organise data in a table such as:
+Scientist often organize data in a table such as:
 
-|Public Food Key   |Food Profile ID  |Derivation   |Food Name                     |
-|:-----------------|:----------------|:------------|:-----------------------------|
-|F002258           |14723            |Borrowed     |Cardamom seed, dried, ground  |
-|F002963           |14718            |Borrowed     |Cinnamon, dried, ground       |
-|F002970           |14725            |Borrowed     |Cloves, dried, ground         |
-|F003190           |14727            |Borrowed     |Coriander seed, dried, ground |
+|Gene Name         |Gene ID          |Chromosome # |Protein length (# aa)         |
+|:-----------------|----------------:|------------:|-----------------------------:|
+|DNAJB1            |3337             |19           |340                           |
+|DNAJB2            |3300             |2            |277                           |
+|DNAJB3            |414061           |2            |NA (pseudogene)               |
+|DNAJB4            |11080            |1            |337                           |
 
 
-The text "Public Food Key", "Food Profile ID", "Derivation" and "Food Name" are all found on the first line of the table. This is the table header. All of the remaining lines are rows. `Rows` are also called `records`, `observations` or trials which corresponds to the statistical unit of the dataset. Since the table above is about food products, each row represents a different food product. 
+The text "Gene Name", "Gene ID", "Chromosome #" and "Protein length" are all found on the first line of the table. This is the table header. All of the remaining lines are rows. `Rows` are also called `records`, `observations` or trials which corresponds to the statistical unit of the dataset. Since the table above is about human genes, each row represents a different gene. 
 
 Columns:
 
-`Columns` are also called `variables` or `features`. For example, this first column contains the public food key, a unique identifyer for each food item. The third column represents information about the type of food but also contains information about the processing. You could argue that this column should be be separated in two columns (food name and processing).
+`Columns` are also called `variables` or `features`. For example, the second column contains the Gene ID, a unique identifier for each Gene. The third column represents the chromosome number and the fourth column the length of the protein in amino acids.
 
-`Values` are found on the cross-section of columns and rows in csv files or other tabulated text file formats. In Excell, each cell contains a value. Values may represent tekst strings, whole numbers (integers), decimal values (floats) or booleans (true, false). Other values do excist as well but are beyond the scope of this course.
+`Values` are found on the cross-section of columns and rows in csv files or other tabulated text file formats. In Excel, each cell contains a value. Values may represent text strings, whole numbers (integers), decimal values (floats) or booleans (true, false). Other values do exist as well but are beyond the scope of this course.
 
 
 >Do not put records in columns and variables in rows like this:
 
-|Variable             |Item 1       |Item 2       |Item 3      |Item 4        |
-|:--------------------|:------------|:------------|:-----------|:-------------|
-|Public Food Key      |F002258      |F002963      |F002970     |F003190       |
-|Food Profile ID      |14723        |14718        |14725       |14727         |
-|Derivation           |Borrowed     |Borrowed     |Borrowed    |Borrowed      |
-|Food Name            |Cardamom seed dried, ground|Cinnamon, dried, ground|Cloves, dried, ground|Coriander seed, dried, ground|
+|Variable             |Item 1       |Item 2       |Item 3         |Item 4        |
+|:--------------------|:------------|:------------|:--------------|:-------------|
+|Gene Name            |DNAJB1       |DNAJB2       |DNAJB3         |DNAJB4        |
+|Gene ID              |3337         |3300         |414061         |11080         |
+|Chromosome #         |19           |2            |2              |1             |
+|Protein length (# aa)|340          |277          |NA (pseudegene)|337           |
 
 >When you encounter this, the data need to be transposed. Data analysis software contains functions to assist with this.
 
@@ -156,45 +156,36 @@ Rules for tidy data:
 
 Let's first have a look at untidy data.
 
-|Public Food Key   |Food Profile ID  |
+|Gene Name         |Gene ID          |
 |:-----------------|:----------------|
-|F002258           |14723            |
-|F002963           |14718            |
-|F002970           |14725            |
-|F003190           |14727            |
+|DNAJB1            |3337             |
+|DNAJB2            |3300             |
+|DNAJB3            |414061           |
+|DNAJB4            |11080            |
 
 <br />
 
-|Public Food Key   |Derivation   |Food Name                     |
-|:-----------------|:------------|:-----------------------------|
-|F002258           |Borrowed     |Cardamom seed, dried, ground  |
-|F002963           |Borrowed     |Cinnamon, dried, ground       |
-|F002970           |Borrowed     |Cloves, dried, ground         |
-|F003190           |Borrowed     |Coriander seed, dried, ground |
+|Gene Name         |Chromosome # |Protein length (# aa)         |
+|:-----------------|------------:|-----------------------------:|
+|DNAJB1            |19           |340                           |
+|DNAJB2            |2            |277                           |
+|DNAJB3            |2            |NA (pseudogene)               |
+|DNAJB4            |1            |337                           |
 
 
-As you can see, there are two tables and the `Public Food Key` column is repeated.
+As you can see, there are two tables and the `Gene Name` column is repeated.
 
 Another example of untidy data:
 
-|Public Food Key   |Food Profile ID  |Type          |Data                          |
-|:-----------------|:----------------|:-------------|:-----------------------------|
-|F002258           |14723            |Derivation    |Borrowed                      |
-|F002258           |14723            |Food Name     |Cardamom seed, dried, ground  |
-|F002963           |14718            |Derivation    |Borrowed                      |
-|F002963           |14718            |Food Name     |Cinnamon, dried, ground       |
+|Gene Name         |Gene ID          |Type                 |Data                          |
+|:-----------------|:----------------|:--------------------|:-----------------------------|
+|DNAJB1            |3337             |Chromosome #         |19                            |
+|DNAJB1            |3337             |Protein length (# aa)|340                           |
+|DNAJB2            |3300             |Chromosome #         |2                             |
+|DNAJB2            |3300             |Protein length (# aa)|277                           |
 
 As you can see in this example, not each variable has its own column and as a result, not each observation has its own row.
 
-But even organization of the data from Kaggle can be improved.
-The column food name can arguable be better splitted in a column `Food name` and a column `Processing`:
-
-|Public Food Key   |Food Profile ID  |Derivation   |Food Name     |Processing     |
-|:-----------------|:----------------|:------------|:-------------|:--------------|
-|F002258           |14723            |Borrowed     |Cardamom seed |dried, ground |
-|F002963           |14718            |Borrowed     |Cinnamon      |dried, ground  |
-|F002970           |14725            |Borrowed     |Cloves        |dried, ground  |
-|F003190           |14727            |Borrowed     |Coriander seed|dried, ground |
 
 >In summary: always make sure that your data are well organized. This will consume time and effort but it will be worth the time and effort as the data analysis later on will be much more straightforward.
 
