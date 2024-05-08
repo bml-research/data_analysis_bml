@@ -73,9 +73,7 @@ The rule "Each value must have its own cell." has not been met. In the untidy ta
 
 ### Exercise 6
 
-In this case, an observation is scattered across multiple rows.
-An observation is a Cell type on a day, but each observation is spread across two rows.
-We can solve this by defining two columns for Alcohol and Bottled water.
+The data table spread out (wider):
 
 |Cell type      |Day |Number of cells DMEM |Number of cells RPMI    |
 |:--------------|---:|--------------------:|-----------------------:|
