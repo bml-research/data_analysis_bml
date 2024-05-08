@@ -12,31 +12,27 @@
 
 ### Exercise 1
 
-Download the [this dataset](https://www.kaggle.com/datasets/vinitshah0110/food-composition).
+Download the [this dataset](https://www.kaggle.com/datasets/anoopjohny/comprehensive-drug-information-dataset).
 Open it with a text editor (or Excel).
 
-Decribe for the following columns what kind of data it holds. Also describe the scale.
+Describe for the following columns what kind of data it holds. Also describe the scale.
 
 |Column           |Data type       |Scale            |
 |:----------------|:---------------|:----------------|
-|Food Name        |                |                 |
-|Fat factor       |                |                 |
-|Analysed Portion |                |                 |
-
-Food Name: nominal data, nominal scale
-Fat factor: continuous, ratio scale
-Analysed Portion: continuous, ratio scale
+|Drug Name        |                |                 |
+|NDC              |                |                 |
+|Price            |                |                 |
 
 
 ### Exercise 2
 
 Have a look at some raw data below:
 
-Item: Granola, Chicken Leg, Tofu, Salmon, Avocados
-Calories (kcal) per 100 g: 489, 184, 144, 206, 160
+Protein symbol: HBA1, HBA2, HBB, HBD, HBM
+Length (aa): 142, 142, 147, 147, 141
 
 Create a data table of the above data.
-Make sure that the observations (or records) and variables (or features) are organised appropriately. Also sort the data based on the amount of calories.
+Make sure that the observations (or records) and variables (or features) are organized appropriately. Also sort the data based on the protein length (primary) and on protein symbol (secondary).
 
 ### Exercise 3
 
@@ -59,7 +55,7 @@ Remember that there are three interrelated rules which make a dataset tidy:
 - Each observation must have its own row.
 - Each value must have its own cell.
 
-Convert the datatable below to a datatable that is tidy.
+Convert the data table below to a data table that is tidy.
 
 Alcohol consumption in litres per year over time.
 

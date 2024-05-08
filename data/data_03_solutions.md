@@ -14,20 +14,20 @@
 
 |Column           |Data type       |Scale            |
 |:----------------|:---------------|:----------------|
-|Food Name        |Nominal         |Nominal          |
-|Fat factor       |Continuous      |Ratio            |
-|Analysed Portion |Continuous      |Ratio            |
+|Drug Name        |Nominal         |Nominal          |
+|NDC              |Continuous      |Ratio            |
+|Price            |Continuous      |Ratio            |
 
 
 ### Exercise 2
 
 |Item             |Calories (kcal/g)|
 |:----------------|----------------:|
-|Granola          |489              |
-|Salmon           |206              |
-|Chicken Leg      |184              |
-|Avocados         |160              |
-|Tofu             |144              |
+|HBB              |147              |
+|HBD              |147              |
+|HBA1             |142              |
+|HBA2             |142              |
+|HBM              |141              |
 
 
 ### Exercise 3
