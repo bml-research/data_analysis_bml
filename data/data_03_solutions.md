@@ -21,13 +21,13 @@
 
 ### Exercise 2
 
-|Item             |Calories (kcal/g)|
-|:----------------|----------------:|
-|HBB              |147              |
-|HBD              |147              |
-|HBA1             |142              |
-|HBA2             |142              |
-|HBM              |141              |
+|Item             |Protein length (aa)|
+|:----------------|------------------:|
+|HBB              |147                |
+|HBD              |147                |
+|HBA1             |142                |
+|HBA2             |142                |
+|HBM              |141                |
 
 
 ### Exercise 3
