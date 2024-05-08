@@ -36,16 +36,13 @@ Make sure that the observations (or records) and variables (or features) are org
 
 ### Exercise 3
 
-Proper cooking temperatures are important for food safety.
-The advice is to use proper cooking temperatures to ensure safe food.
-See the data below for recommended temperatures:
+Heat shock in biology refers to the cellular response to sudden exposure to elevated temperatures. This stress response triggers the production of heat shock proteins (HSPs), which help cells maintain proper protein folding, prevent protein aggregation, and promote cell survival under heat stress conditions. We can apply different temperatures to induce a heat shock for human cells cultured in a laboratory.
 
-Fresh beef, veal, lamb, pork, deer, moose, elk or caribou steaks, chops and roasts
-recommended minimum temperature	145°F
-medium	160°F
-well done	170°F
+No heat shock is applied if a temperature of 98.6°F is used for 30 minutes.
+A medium heat shock is applied if a temperature of 104.0°F is used for 30 minutes.
+A strong heat shock is applied if a temperature of 107.6°F is used for 30 minutes.
 
-What is the ratio for "medium" and "well done" compared to the recommended minimum temperature?
+What is the ratio for "medium" and "strong" compared to no heat shock? Calculate the fold induction.
 
 ### Exercise 4
 
@@ -57,13 +54,13 @@ Remember that there are three interrelated rules which make a dataset tidy:
 
 Convert the data table below to a data table that is tidy.
 
-Alcohol consumption in litres per year over time.
+Cell growth in a 6-well plate over time for various cell types.
 
-|Country        |1996  |2016  |
+|Cell type      |Day 1 |Day 2 |
 |:--------------|-----:|-----:|
-|Albania        |2.59  |7.50  |
-|Algeria        |0.27  |0.90  |
-|Netherlands    |9.80  |8.70  |
+|HEK293         |1.2E4 |2.2E4 |
+|A549           |1.1E4 |2.6E4 |
+|K562           |0.9E4 |1.9E4 |
 
 Also mention, which of the three interrelated rules which make a dataset tidy have not been met.
 
@@ -71,26 +68,26 @@ Also mention, which of the three interrelated rules which make a dataset tidy ha
 
 Another untidy data table. Describe which of the three interrelated rules which make a dataset tidy have not been met and convert the data table to a data table that is tidy.
 
-|Country        |1996, 2016   |
+|Cell type      |Day 1, Day 2 |
 |:--------------|------------:|
-|Albania        |2.59, 7.50   |
-|Algeria        |0.27, 0.90   |
-|Netherlands    |9.80, 8.70   |
+|HEK293         |1.2E4, 2.2E4 |
+|A549           |1.1E4, 2.6E4 |
+|K562           |0.9E4, 1.9E4 |
 
 ### Exercise 6
 
-Another untidy data table. Describe which of the three interrelated rules which make a dataset tidy have not been met and convert the data table to a data table that is tidy.
+Here we have a tidy data table. Spread the data set to make it wider and untidy.
 
-|Country        |Year|Consumtion type    |Volume (l)|
-|:--------------|:---|:------------------|---------:|
-|Albania        |1996|Alcohol            |2.59      |
-|Albania        |1996|Bottled water      |120       |
-|Albania        |2016|Alcohol            |7.50      |
-|Albania        |2016|Bottled water      |131       |
-|Algeria        |1996|Alcohol            |0.27      |
-|Algeria        |1996|Bottled water      |144       |
-|Algeria        |2016|Alcohol            |0.90      |
-|Algeria        |2016|Bottled water      |154       |
+|Cell type      |Day |Medium             |Number of cells|
+|:--------------|---:|:------------------|--------------:|
+|HEK293         |1   |DMEM               |2.5E4          |
+|HEK293         |1   |RPMI               |2.7E4          |
+|HEK293         |2   |DMEM               |5.4E4          |
+|HEK293         |2   |RPMI               |7.8E4          |
+|A549           |1   |DMEM               |1.2E4          |
+|A549           |1   |RPMI               |1.4E4          |
+|A549           |2   |DMEM               |2.5E4          |
+|A549           |2   |RPMI               |5.2E4          |
 
 
 

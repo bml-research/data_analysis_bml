@@ -38,51 +38,51 @@ We can use the formula K = (F − 32) × 5 ⁄ 9 + 273.15
 
 So will will get the following data:
 
-recommended minimum temperature	145°F = 336 K
-medium	160°F = 344 K
-well done	170°F = 350 K
+no heat shock: 98.6°F = 310.15 K
+medium head shock: 104.0°F = 313.15 K
+strong heat shock: 170°F = 315.15 K
 
-Ratio medium/recommended minimum temperature = 344/336 = 1.025
-Ratio well done/recommended minimum temperature = 350/336 = 1.041
+Ratio medium/no heat shock = 313.15/310.15 = 1.0097
+Ratio strong/no heat shock = 315.15/310.15 = 1.0161
 
 ### Exercise 4
 
-The rule "Each variable must have its own column." has not been met. In the untidy table, there are two columns related to the volume. Thus, the column names are not names of variables, but values of a variable. Thus, we need to create a column "year" in order to solve this.
+The rule "Each variable must have its own column." has not been met. In the untidy table, there are two columns related to the number of cells. Thus, the column names are not names of variables, but values of a variable. Thus, we need to create a column "Day" in order to solve this.
 
-|Country        |Year|Volume (l)|
-|:--------------|:---|---------:|
-|Albania        |1996|2.59      |
-|Albania        |2016|7.50      |
-|Algeria        |1996|0.27      |
-|Algeria        |2016|0.90      |
-|Netherlands    |1996|9.80      |
-|Metherlands    |2016|8.70      |
+|Cell type      |Day |Number of cells|
+|:--------------|---:|--------------:|
+|HEK293         |1   |1.2E4          |
+|HEK293         |2   |2.2E4          |
+|A549           |1   |1.1E4          |
+|A549           |2   |2.6E4          |
+|K562           |1   |0.9E4          |
+|K562           |2   |1.9E4          |
 
 ### Exercise 5
 
-The rule "Each value must have its own cell." has not been met. In the untidy table, there are two values related to the volume in one cell. Thus, we need to seperate them over two records (rows) in order to solve this. Note that we should not seperate these values in two columns as this will create the situation as shown in Exercise 4.
+The rule "Each value must have its own cell." has not been met. In the untidy table, there are two values related to the number of cells in one cell of the table. Thus, we need to separate them over two records (rows) in order to solve this. Note that we should not separate these values in two columns as this will create the situation as shown in Exercise 4.
 
-|Country        |Year|Volume (l)|
-|:--------------|:---|---------:|
-|Albania        |1996|2.59      |
-|Albania        |2016|7.50      |
-|Algeria        |1996|0.27      |
-|Algeria        |2016|0.90      |
-|Netherlands    |1996|9.80      |
-|Metherlands    |2016|8.70      |
+|Cell type      |Day |Number of cells|
+|:--------------|---:|--------------:|
+|HEK293         |1   |1.2E4          |
+|HEK293         |2   |2.2E4          |
+|A549           |1   |1.1E4          |
+|A549           |2   |2.6E4          |
+|K562           |1   |0.9E4          |
+|K562           |2   |1.9E4          |
 
 ### Exercise 6
 
 In this case, an observation is scattered across multiple rows.
-An observation is a country in a year, but each observation is spread across two rows.
+An observation is a Cell type on a day, but each observation is spread across two rows.
 We can solve this by defining two columns for Alcohol and Bottled water.
 
-|Country        |Year|Volume Alcohol (l) |Volume Bottled Water (l)|
-|:--------------|:---|------------------:|-----------------------:|
-|Albania        |1996|2.59               |120                     |
-|Albania        |2016|7.50               |131                     |
-|Algeria        |1996|0.27               |144                     |
-|Algeria        |2016|0.90               |154                     |
+|Cell type      |Day |Number of cells DMEM |Number of cells RPMI    |
+|:--------------|---:|--------------------:|-----------------------:|
+|HEK293         |1   |2.5E4                |2.7E4                   |
+|HEK293         |2   |5.4E4                |7.8E4                   |
+|A549           |1   |1.2E4                |1.4E4                   |
+|A549           |2   |2.5E4                |5.2E4                   |
 
 ---
 
