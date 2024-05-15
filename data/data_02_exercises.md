@@ -62,7 +62,7 @@ Cell growth in a 6-well plate over time for various cell types.
 |A549           |1.1E4 |2.6E4 |
 |K562           |0.9E4 |1.9E4 |
 
-Also mention, which of the three interrelated rules which make a dataset tidy have not been met.
+Also mention, which of the interrelated rules which make a dataset tidy have not been met.
 
 ### Exercise 5
 

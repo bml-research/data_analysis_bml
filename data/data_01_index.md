@@ -148,11 +148,12 @@ A more standardized way to structure data is the [tidy data format](https://cran
 So what is tidy data?
 Tidying data is a common method of relating a dataset's meaning to its structure. Depending on how rows, columns, and tables are matched with observations, variables, and types, a dataset might be unorganized or well-organized. 
 
-Rules for tidy data:
-- Each dataset should have a single column  
+Rules for tidy data: 
 - Each feature/variable should have its own column  
 - Each observation must have its own row  
 - Each value must be in its own cell  
+
+In addition: There should be one spreadsheet (table) for each type of data. 
 
 Let's first have a look at untidy data.
 
@@ -185,6 +186,15 @@ Another example of untidy data:
 |DNAJB2            |3300             |Protein length (# aa)|277                           |
 
 As you can see in this example, not each variable has its own column and as a result, not each observation has its own row.
+
+The data above in tidy format:
+
+|Gene Name         |Gene ID          |Chromosome # |Protein length (# aa)         |
+|:-----------------|:----------------|------------:|-----------------------------:|
+|DNAJB1            |3337             |19           |340                           |
+|DNAJB2            |3300             |2            |277                           |
+|DNAJB3            |414061           |2            |NA (pseudogene)               |
+|DNAJB4            |11080            |1            |337                           |
 
 
 >In summary: always make sure that your data are well organized. This will consume time and effort but it will be worth the time and effort as the data analysis later on will be much more straightforward.
