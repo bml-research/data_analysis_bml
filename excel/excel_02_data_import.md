@@ -139,7 +139,7 @@ Than, click "Use First Row as Headers" and click " Close & Load".
 ### Power Query and decimal separators
 
 As mentioned above, alway check if the decimal separator is set correctly.
-As an example we will have a look at [this dataset](https://www.kaggle.com/datasets/amandaroseknudsen/foodproductemissions?resource=download).
+As an example we will have a look at [this dataset](https://www.kaggle.com/datasets/stealthtechnologies/predict-lifespan-of-a-comet-goldfish) about predicter variables in order to predict lifespan in Goldfish.
 
 The data contains the period (.) as a decimal separator:
 
