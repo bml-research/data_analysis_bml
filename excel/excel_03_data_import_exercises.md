@@ -24,11 +24,11 @@ Report the field separator.
 
 ### Exercise 2
 
-Load the [food-composition](https://www.kaggle.com/datasets/vinitshah0110/food-composition) dataset in Excel using the csv import tool.
+Load the [Heart Disease Health Indicators Dataset](https://www.kaggle.com/datasets/alexteboul/heart-disease-health-indicators-dataset) dataset in Excel using the csv import tool. 
 
 ### Exercise 3
 
-Load the [nutritional-values-for-common-foods-and-products](https://www.kaggle.com/datasets/trolukovich/nutritional-values-for-common-foods-and-products) dataset in Excel using the csv import tool.
+Load the [Properties of ATC accepted medicines](https://www.kaggle.com/datasets/tonibois/properties-of-atc-accepted-medicines) dataset in Excel using the csv import tool.
 
 ### Exercise 4
 
@@ -36,14 +36,15 @@ Load the [food-allergens-and-allergies](https://www.kaggle.com/datasets/boltcutt
 
 ### Exercise 5
 
-Load the [foodproductemissions](https://www.kaggle.com/datasets/amandaroseknudsen/foodproductemissions) dataset in Excel using the csv import tool.
+Load the [Beta-Lactamase](https://www.kaggle.com/datasets/thedataprof/betalactamase) dataset in Excel using the csv import tool. This dataset contains several csv files. Just use the first (CHEMBL1989.csv)
 
 ### Exercise 6
 
-Load the [food-balance-sheet-europe](https://www.kaggle.com/datasets/cameronappel/food-balance-sheet-europe)
+Load the [SARS-CoV-2 Genetics](https://www.kaggle.com/datasets/rtwillett/sarscov2-genetics)
  dataset in Excel using the csv import tool.
+ There are two separate csv files. Load both in the same Excel file (albeit at different worksheets).  
 
->You can try to load more data from the [datasets web page](https://bml-research.github.io/data_analysis/data_sets/data_sets.html).
+>You can try to load more data from the [datasets web page](https://bml-research.github.io/data_analysis_bml/data_sets/data_sets.html).
 >Alternatively, you can search for more datasets on [Kaggle](https://www.kaggle.com/), [KDnuggets](https://www.kdnuggets.com/) or other dataset repositories. 
 
 

@@ -21,20 +21,19 @@
 
 Find the solution in the link below.
 
-[food-composition](./files_04_import_solutions/exercise02/food_composition.xlsx)
+[Heart Disease Health Indicators Dataset](./files_04_import_solutions/exercise02/heart_disease_health_indicators.xlsx)
 
 ### Exercise 3
 
 Find the solution in the link below.
 
-[nutritional-values-for-common-foods-and-products](./files_04_import_solutions/exercise03/nutrition.xlsx)
+[Properties of ATC accepted medicines](./files_04_import_solutions/exercise03/KEGG_DRUG_ATC_PROPERTIES_PED_FP.xlsx)
 
-As you can see from this file, the units are in the cells instead of the column headers.
+As you can see from this file, decimal separator is a dot.
 
 ![import](./files_04_import_solutions/exercise03/fig1.png)
 
-Therefore, all fields are strings instead of numbers.
-This requires cleaning before you can do any calculations!
+>Make sure that you properly import the file with the correct decimal separator selected. You can do this by setting the Regional Setting correctly to English (United States). !
 
 ### Exercise 4
 
@@ -57,26 +56,29 @@ The solution can be found [here](./files_04_import_solutions/exercise04/food_dat
 
 ### Exercise 5
 
-While this file appears rather easy to load:
+Note that this file uses the dot as a decimal separator. In addition, some cells contain `null` values (something that we will deal with later on).
 
 ![import](./files_04_import_solutions/exercise05/fig1.png)
 
->The data is not loaded well. The decimal separator is not set correctly.
 
-`Land use Change` for `apples` should be `0.029`.  
->Make sure that you set the Regional Setting correctly to English (United States). 
+The solution can be found [here](./files_04_import_solutions/exercise05/CHEMBL1989.xlsx)
 
-The solution can be found [here](./files_04_import_solutions/exercise05/Food_Product_Emissions.xlsx)
-
-Both the wrong and correct import can be found in the file.
 
 ### Exercise 6
 
-This file is easy to load:
 
-![import](./files_04_import_solutions/exercise06/fig1.png)
+As you probably noted, there are no column headers in covid_cds. You can add these manually after the import. You can find information about the column headers at Kaggle: [SARS-CoV-2 Genetics](https://www.kaggle.com/datasets/rtwillett/sarscov2-genetics)
 
-The solution can be found [here](./files_04_import_solutions/exercise06/FAOSTAT_data_10-23-2018.xlsx)
+See a screenshot below:
+
+![screen shot](./files_04_import_solutions/exercise06/fig1.png)
+
+
+You can rename the column headers to: Location, Protein Name, Protein Sequence etc.
+
+
+>As you might have observed, this is a very large dataset (one of the csv files is almost 1 GB in size). Excel has a lot of trouble in rendering the data in real-time. You are probably way better off doing analysis of such large datasets in R or Python. The solution is not included as the file size is to large to include on the website.  
+
 
 ---
 
