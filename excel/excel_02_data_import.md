@@ -32,16 +32,16 @@ Regardless of the specific format used, it is important to ensure that the data 
 
 The first step in data import is to check your data using a text editor.
 There are many text editors and all operating systems do have a default build-in text editor.
-However, I do recommend [Visual Studio Code](https://code.visualstudio.com/) as it allows you to view and manipulate text files on all main operating systems. In addition, it features the rainbow csv plugin that allows you to see the csv file with color highlighting to discriminate between the columns (this only works for comma separated files).
+However, I do recommend [Visual Studio Code](https://code.visualstudio.com/) as it allows you to view and manipulate text files on all main operating systems. In addition, it features the [rainbow csv plugin](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv) that allows you to see the csv file with color highlighting to discriminate between the columns (this only works for comma separated files).
 
 Open your text file and check how the data are organized.
 
-Here you can see the [Food Composition](https://www.kaggle.com/datasets/vinitshah0110/food-composition?resource=download&select=Food+Composition.csv) file.
+Here you can see the [Human Genes](https://www.kaggle.com/datasets/mohamedabdullah/human-genes) file.
 
-![food composition](./pics_02_data_import/01.png)  
+![Human Genes](./pics_02_data_import/01.png)  
 *<sub>Figure 1: a csv file in Visual Studio Code</sub>*
 
-As can be seen from the screenshot above, the csv file contains a header and the column separator that is used is a comma. It can also be seen that the file is UTF-8 encoded and contains a BOM.
+As can be seen from the screenshot above, the csv file contains a header and the column separator that is used is a comma. It can also be seen that the file is UTF-8 encoded and contains a CRLF encoding for newlines.
 
 
 ## Check the decimal separator
