@@ -17,7 +17,7 @@ Excel lacks behind Python and R in capabilities of data reorganization and clean
 
 ## Text to column feature
 
-If your csv data import fails, you can manually parse your text to various columns. Take a look at the following example:
+If your csv data import fails, you can manually parse your text to various columns. Take a look at the following example ([source](https://www.kaggle.com/datasets/tonibois/properties-of-atc-accepted-medicines)):
 
 ![food](./pics_05_data_cleaning/fig1.png)
 *<sub>Figure 1: All data in a single column</sub>*
