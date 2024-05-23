@@ -67,7 +67,7 @@ And the result is 1 duplicate row removed.
 Often, data will contain extra whitespace such as spaces. Extra spaces are notoriously difficult to spot, especially those at the end. Those extra spaces may interfere with later analysis. 
 
 ![extra spaces](./pics_05_data_cleaning/fig9.png)
-*<sub>Figure 9: Only 1 Milk counted as one cell contains Milk with a tailing space.</sub>*
+*<sub>Figure 9: Only 2 "lakes" counted as one cell contains "lakes " with a tailing space.</sub>*
 
 The `TRIM` function will remove trailing whitespace:
 
