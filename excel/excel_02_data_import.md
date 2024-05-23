@@ -166,7 +166,9 @@ As you can see, the data is now loaded correctly:
 
 ## Import csv files using the Text Import Wizard.
 
-As mentioned above, you can also import your csv files using the csv import wizard. Use `File > open > browse` and browse to the location of your csv file. Change the dropdown box from `All Excell Files` to `All Files`. Open your file and select Delimited from the wizard:
+>Note: to force excel to use the text file import wizard, make a copy of your file and change the file extension to txt instead of csv. If the file extension is csv, Excel will try to load the file directly and you will have less control over the import process.  
+
+As mentioned above, you can also import your txt files using the txt import wizard. Use `File > open > browse` and browse to the location of your txt file. Change the dropdown box from `All Excel Files` to `All Files`. Open your file and select Delimited from the wizard:
 
 
 |![Data loaded](./pics_02_data_import/15.png)
