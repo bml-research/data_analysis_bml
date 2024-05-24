@@ -75,7 +75,6 @@
 
 ### Metagenomics, Microbiomes and Classification
 
-- [Metagenomics](https://www.kaggle.com/datasets/thedevastator/predicting-heart-disease-risk-using-clinical-var)
 - [Microbes Dataset](https://www.kaggle.com/datasets/sayansh001/microbes-dataset)
 - [Human gut microbiome of the children with ASD](https://www.kaggle.com/datasets/antaresnyc/human-gut-microbiome-with-asd)
 - [Mushroom classification](https://www.kaggle.com/datasets/mathieuduverne/mushroom-classification)
