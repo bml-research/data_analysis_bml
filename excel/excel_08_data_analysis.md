@@ -43,7 +43,7 @@ Note that the IF function was used to prevent a division by zero error.
 =IF([@Weight]=0,0,[@HeartRate]/[@Weight])
 ```
 
-If the denominator is zero, the result will be 0. In this way, a division by zero error will be prevented.
+If the denominator is zero, the result will be 0. In this way, a division by zero error will be prevented. Although a 0 is not to be expected here, it is always a good idea to prevent such errors from occurring.
 
 Now we will calculate averages of some whole columns (such ast the average heart rate, the average weight etc.). You might be tempted to put the output below the table. However, it is better to get the output of calculations on whole columns on another sheet (name it analysis).
 First of all, there might be new future data records and you can perform calculations on whole columns (not restricted to a block of rows).
