@@ -8,7 +8,7 @@
 
 
 ![impression](./pics_08_data_analysis/fig1.png)
-*<sub>Figure 1: Data loaded and ready to be analyzed. Source: https://www.kaggle.com/datasets/mcdonalds/nutrition-facts</sub>*
+*<sub>Figure 1: Data loaded and ready to be analyzed. Source: https://www.kaggle.com/datasets/zusmani/mygenome</sub>*
 
 
 ## Introduction
@@ -16,18 +16,18 @@
 Now that the data is imported and cleaned. It is time to analyze the data.  
 This means that, depending on your specific question, you can do all sorts of calculations using Excel formulas (you can even create custom formulas), sort data, perform conditional formatting and create pivot tables. The creation of plots will be dealt with in the next chapter.
 
-## How to organise your worksheet
+## How to organize your worksheet
 
 Lets first discuss how to organize a worksheet.
-[Nutrition facts data](https://www.kaggle.com/datasets/mcdonalds/nutrition-facts) from a fastfood restaurant was imported using the csv import function in Excel:
+[Dementia Patient Health,Prescriptions ML Dataset](https://www.kaggle.com/datasets/kaggler2412/dementia-patient-health-and-prescriptions-dataset) was imported using the csv import function in Excel:
 
 ![nutrition](./pics_08_data_analysis/fig2.png)
-*<sub>Figure 2: Nutrition facts fastfood menu. Source: https://www.kaggle.com/datasets/mcdonalds/nutrition-facts</sub>*
+*<sub>Figure 2: Dementia Patient Health,Prescriptions ML Dataset. Source: https://www.kaggle.com/datasets/kaggler2412/dementia-patient-health-and-prescriptions-dataset</sub>*
 
 
-Imagine that you would like to calculate the percentage of calories from fat as compared to total calories. Obviously, the easiest way to do this is to add a column to the table and calculate the % calories from fat (as related to the total amount of calories):  
+Imagine that you would like to calculate the heart rate per kg body weight (there is a well known correlation between heart rate and body weight). Obviously, the easiest way to do this is to add a column to the table and divide the heart rate by weight:  
 
-We first resize the table to the appropriate dimension:
+We first resize the table to the appropriate dimension (to add an extra column):
 
 ![resize table](./pics_08_data_analysis/fig3.png)
 *<sub>Figure 3: Resizing a table</sub>*
@@ -40,12 +40,12 @@ And then we can type the appropriate formula:
 Note that the IF function was used to prevent a division by zero error.
 
 ```
-=IF([@Calories]=0;0;[@[Calories from Fat]]/[@Calories]*100)
+=IF([@Weight]=0,0,[@HeartRate]/[@Weight])
 ```
 
 If the denominator is zero, the result will be 0. In this way, a division by zero error will be prevented.
 
-However, it is better to get the output of calculations on whole columns on another sheet.
+Now we will calculate averages of some whole columns (such ast the average heart rate, the average weight etc.). You might be tempted to put the output below the table. However, it is better to get the output of calculations on whole columns on another sheet (name it analysis).
 First of all, there might be new future data records and you can perform calculations on whole columns (not restricted to a block of rows).
 In addition, all the values from the column-based analysis can be linked to a variable.
 
