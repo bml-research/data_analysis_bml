@@ -25,14 +25,15 @@ Source: [Predicting Heart Disease Using Clinical Variables](https://www.kaggle.c
 
 ### Exercise 4
 
-[This dataset](https://www.kaggle.com/datasets/trolukovich/nutritional-values-for-common-foods-and-products) contains empty data.
+Load the [Beta-Lactamase](https://www.kaggle.com/datasets/thedataprof/betalactamase) dataset in Excel using the csv import tool. This dataset contains several csv files. Just use the first (CHEMBL1989.csv). 
+
+This dataset contains empty data cells.
 
 Make the empty cells more explicit in Excel by converting them to #N/A.  
 Count how many cells you have:
 - in total
 - with missing data
 - without missing data
-
 
 ---
 

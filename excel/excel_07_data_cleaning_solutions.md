@@ -54,13 +54,13 @@ The solution can be found [here](./files_07_data_cleaning_solutions/exercise03/H
 
 ### Exercise 4
 
-You can find the solution [here](./files_07_data_cleaning_solutions/exercise04/nutrition.xlsx)
+You can find the solution [here](./files_07_data_cleaning_solutions/exercise04/CHEMBL1989.xlsx)
 
 |Condition                  |Number of cells|
 |--------------------------:|--------------:|
-|Number of data fields      |676753         |
-|Number of non empty fields |675163         |
-|Number of empty fields     |1590           |
+|Number of data fields      |504            |
+|Number of non empty fields |442            |
+|Number of empty fields     |62             |
 
 
 ---
