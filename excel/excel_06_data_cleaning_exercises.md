@@ -21,7 +21,7 @@ Source: [Predicting Heart Disease Using Clinical Variables](https://www.kaggle.c
 
 ### Exercise 3
 
-[This dataset](./files_06_data_cleaning_exercises/exercise03/Food%20Composition_mod.csv) contains rows with duplicate data. Load the data and remove the duplicates from the data table.
+[This dataset](./files_06_data_cleaning_exercises/exercise03/Heart_Disease_Prediction_mod.csv) contains rows with duplicate data. Load the data and remove the duplicates from the data table.
 
 ### Exercise 4
 

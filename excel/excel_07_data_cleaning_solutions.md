@@ -43,13 +43,13 @@ The solution can be found [here](./files_07_data_cleaning_solutions/exercise02/c
 
 ### Exercise 3
 
-Indeed the dataset contains two duplicate rows.
+Indeed the dataset contains duplicate rows.
 Use the button on the data tab of the ribbon to remove the duplicate rows:
 
 ![remove duplicates](./files_07_data_cleaning_solutions/exercise03/fig1.png)
 
 
-The solution can be found [here](./files_07_data_cleaning_solutions/exercise03/Food%20Composition_mod_solved.xlsx).
+The solution can be found [here](./files_07_data_cleaning_solutions/exercise03/Heart_Disease_Prediction_solved.xlsx).
 
 
 ### Exercise 4
