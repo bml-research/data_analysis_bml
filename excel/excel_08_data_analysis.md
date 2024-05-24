@@ -271,7 +271,7 @@ The result:
 ## Conditional formatting
 
 Conditional formatting makes it easy to highlight certain values.
-Here is an example for Calories from fat for more than 300.
+Here is an example for heart rates higher then 90.
 
 ![conditional formatting](./pics_08_data_analysis/fig25.png)
 *<sub>Figure 25: Conditional formatting.</sub>*
