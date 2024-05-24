@@ -285,19 +285,19 @@ And the result:
 ## Pivot tables
 
 Pivot tables come in handy to analyze data quickly and in an organized manner.
-Let's pretend that we are mainly interested in comparing the average amount of calories from fat (both total and saturated) of each food category from the earlier used dataset [Nutrition facts data](https://www.kaggle.com/datasets/mcdonalds/nutrition-facts).
+Let's pretend that we are interested in comparing the average heart rate and the count of diabetics for each activity category (sedentary, mild and moderate activity) from the earlier used dataset [Dementia Patient Health,Prescriptions ML Dataset](https://www.kaggle.com/datasets/kaggler2412/dementia-patient-health-and-prescriptions-dataset).
 
 We can select the table. Than choose insert > Pivot table:
 
 ![pivot table](./pics_08_data_analysis/fig27.png)
 *<sub>Figure 27: Pivot table.</sub>*
 
-And than select the categories as well as the columns total calories and calories from fat. We also change `SUM` in `AVERAGE`.
+And than select the categorie `Physical_Activity` as well as the columns `Diabetic` and `HeartRate`. We also change `SUM` in `AVERAGE` and `Count`.
 
 ![pivot table](./pics_08_data_analysis/fig28.png)
-*<sub>Figure 28: Pivot table about the calories from fat compared to total calories.</sub>*
+*<sub>Figure 28: Pivot table showing the average heart rate and diabetic status for different Physical Activity categories.</sub>*
 
-As you can see, food items in the category chicken and fish contain the highest average amount of calories from fat. 
+As you can see, there is no clear correlation between a sedentary life style, mild activity and moderate activity and the number of diabetics in this dataset (though there is convincing evidence in the literature, so physical exercise is highly recommended).    
 
 
 ---
