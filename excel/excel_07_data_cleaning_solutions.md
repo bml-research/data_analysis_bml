@@ -12,19 +12,18 @@
 
 ### Exercise 1
 
-Use the text to column feature. Separator is the pipe symbol `|`.
+Use the text to column feature. Separator is the dollar symbol `$`.
 Then, create a data table with the first row as headers.
 
 ![solution](./files_07_data_cleaning_solutions/exercise01/fig1.png)
 
-The solution can be found [here](./files_07_data_cleaning_solutions/exercise01/calories.xlsx).
-
+The solution can be found [here](./files_07_data_cleaning_solutions/exercise01/Heart_Disease_Prediction.xlsx).
 
 
 ### Exercise 2
 
 Use the following steps to clean the data:
-- First, load the data as previously mentioned using the `text-to-column` feature.
+- First, load the data as previously mentioned using the `text-to-column` feature. Delimiter is a pipe symbol `|`.
 - Remove the header row.
 - Split the last two columns using the `text-to-column` feature with a space as deliminator.
 - Remove the columns containing the units.
