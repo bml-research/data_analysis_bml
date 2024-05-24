@@ -21,7 +21,7 @@ This means that, depending on your specific question, you can do all sorts of ca
 Lets first discuss how to organize a worksheet.
 [Dementia Patient Health,Prescriptions ML Dataset](https://www.kaggle.com/datasets/kaggler2412/dementia-patient-health-and-prescriptions-dataset) was imported using the csv import function in Excel:
 
-![nutrition](./pics_08_data_analysis/fig2.png)
+![dementia](./pics_08_data_analysis/fig2.png)
 *<sub>Figure 2: Dementia Patient Health,Prescriptions ML Dataset. Source: https://www.kaggle.com/datasets/kaggler2412/dementia-patient-health-and-prescriptions-dataset</sub>*
 
 
@@ -239,20 +239,20 @@ The actual content of statistics is beyond the scope of this course. Attend a st
 
 Excel has multi-level sorting capabilities.
 
-Have a look at the earlier used [Nutrition facts data](https://www.kaggle.com/datasets/mcdonalds/nutrition-facts) dataset.
+Have a look at the earlier used [Dementia Patient Health,Prescriptions ML Dataset](https://www.kaggle.com/datasets/kaggler2412/dementia-patient-health-and-prescriptions-dataset) dataset:
 
 ![sort](./pics_08_data_analysis/fig20.png)
 *<sub>Figure 20: Data to be sorted.</sub>*
 
-Imagine that we would like to know which Item from the Category "Chicken and Fish" contains the highest amount of calories from fat.
+Imagine that we would like to know which person from the Category Physical Activity value "Mild Activity" has the highest weight.
 We can do a multi-level sort to accomplish this.
-- First level: Category
-- Second level: Calories from fat sorted descending.
+- First level: Physical Activity
+- Second level: Weight sorted descending.
 
 ![sort](./pics_08_data_analysis/fig21.png)
 *<sub>Figure 21: Sorting data.</sub>*
 
-Here is the result:
+Here is the result (note that some columns are hidden):
 
 ![sort](./pics_08_data_analysis/fig22.png)
 *<sub>Figure 22: Sorting data.</sub>*
@@ -266,8 +266,6 @@ The result:
 
 ![sort](./pics_08_data_analysis/fig24.png)
 *<sub>Figure 24: Filtering data.</sub>*
-
-Note that the first data row shown is row number 86.
 
 
 ## Conditional formatting
