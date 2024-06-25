@@ -12,7 +12,7 @@
 
 ### Exercise 1
 
-The excel file can be found [here](./files_10_data_analysis_solutions/exercise01/menu.xlsx).  
+The excel file can be found [here](./files_10_data_analysis_solutions/exercise01/Data_Cortex_Nuclear.xlsx).  
 Screenshot of the table below:  
 
 ![solution exercise01](./files_10_data_analysis_solutions/exercise01/fig1.png)
@@ -21,19 +21,19 @@ Examples of used functions:
 
 Minimum:  
 ```
-=MIN(menu[Calories])
+=MIN(Data!B:B)
 ```
 Maximum:  
 ```
-=MAX(menu[Calories])
+=MAX(Data!B:B)
 ```
 Average:  
 ```
-=AVERAGE(menu[Calories])
+=AVARAGE(Data!B:B)
 ```
 Median:
 ```
-=MEDIAN(menu[Calories])
+=MEDIAN(Data!B:B)
 ```
 
 

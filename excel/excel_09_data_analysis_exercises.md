@@ -12,15 +12,17 @@
 
 ### Exercise 1
 
-Import the [Nutrition facts data](https://www.kaggle.com/datasets/mcdonalds/nutrition-facts) from a fast food restaurant in Excel.
+Import the [Mice Protein Expression](https://www.kaggle.com/datasets/ruslankl/mice-protein-expression?resource=download) in Excel. This dataset contains data about expression levels of 77 proteins measured in the cerebral cortex in mice.
 
-> Be very careful as some columns contain decimal characters!
+> Take a good look to column separators and the decimal separators!
 
 Rename this worksheet `data`.  
 Create a new worksheet and name it `analysis`.  
 Then perform the following calculations on a new worksheet and display them as a table:  
 
-- Calculate the minimum, maximum, average, median from the columns `Calories` and `Calories from fat`. Display the answers in a table.  
+- Calculate the minimum, maximum, average, median from all the columns (proteins). Display the answers in a table.  
+
+> Although there are different classes of mice in the dataset (there are 38 control mice and 34 trisomic mice (Down syndrome)), you do not need to take care of this (yet).
 
 ### Exercise 2
 
