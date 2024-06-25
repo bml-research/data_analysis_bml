@@ -39,17 +39,18 @@ Median:
 
 ### Exercise 2
 
-1. Which item has the highest Calories from fat? 
->Chicken McNuggets (40 piece)  
-2. Which items have the highest Iron (% Daily Value)? 
->Big Breakfast with Hotcakes (Regular Biscuit) and Big Breakfast with Hotcakes (Large Biscuit)  
-3. Which Beef & Pork item has the lowest Calories from fat?
->Hamburger  
-4. Which Coffee & Tea or Smoothies & Shakes item has the highest amount of carbohydrates?  
->Chocolate Shake (Large)  
-5. Which item has the highest saturated fat and lowest carbohydrates value (use multi-sort to practice)?  
->Frappé Chocolate Chip (Large)  
-
+1. Which mouse has the highest expression of Tau?  
+>3516_12 
+2. What is the relative expression value in this mouse?   
+>0.602768056 
+3. Which mouse has the lowest expression of pAKT?  
+>3479_9  
+4. How many empty cells are in the BAD column? 
+>213  
+5. Which mouse of the Ts65Dn genotype group has the highest Tau expression (use multi-sort to practice)? (use multi-sort or filters)?  
+>293_15  
+6. Which mouse of the Ts65Dn genotype, and saline treatment group has the highest Tau expression (se multi-sort or filters)?  
+>J3295_14
 
 
 ### Exercise 3

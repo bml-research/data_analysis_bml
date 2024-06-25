@@ -27,11 +27,12 @@ Then perform the following calculations on a new worksheet and display them as a
 ### Exercise 2
 
 Use filter and sort to answer the following questions:  
-1. Which item has the highest Calories from fat?  
-2. Which items have the highest Iron (% Daily Value)?  
-3. Which Beef & Pork item has the lowest Calories from fat?  
-4. Which Coffee & Tea or Smoothies & Shakes item has the highest amount of carbohydrates?  
-5. Which item has the highest saturated fat and lowest carbohydrates value (use multi-sort to practice)?  
+1. Which mouse has the highest expression of Tau?  
+2. What is the relative expression value in this mouse?  
+3. Which mouse has the lowest expression of pAKT?  
+4. How many empty cells are in the BAD column?  
+5. Which mouse of the Ts65Dn genotype group has the highest Tau expression (se multi-sort or filters)?  
+6. Which mouse of the Ts65Dn genotype, and saline treatment group has the highest Tau expression (se multi-sort or filters)?  
 
 ### Exercise 3
 
