@@ -67,10 +67,10 @@ Median:
 =XLOOKUP(218,B6:BZ6,Table2[[#Headers],[DYRK1A_N]:[CaNA_N]])
  ```
 
-3. higher levels NR1 compared to NR2A: 1077 
+3. pELK > 0.75 AND pERK > 0.25: 1040 
 
  ```
-=COUNTIFS(Data!E:E, ">0.5", Data!F:F, ">0.5")
+=COUNTIFS(Data!K:K, ">0.75",Data!L:L,">0.25")
  ```
 
 ### Exercise 4

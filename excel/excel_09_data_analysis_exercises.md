@@ -38,7 +38,7 @@ Use filter and sort to answer the following questions:
 
 1. An relative expression level > 0.5 would be considered a high expression level. How many mice do have a high expression level for DYRK1A?  
 2. Apply this calculation for all proteins. For which protein do you observe a count of 218?  
-3. Glutamate receptor subunits NR1 and NR2A are included in the dataset. How many mice do have higher expression levels for NR1 compared to NR2A?  
+3. The average pELK expression is higher than pERK. But how many mice do have higher expression levels for pELK than 0.75 AND higher expression levels for pERK than 0.25?    
 
 ### Exercise 4
 
