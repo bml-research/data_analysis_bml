@@ -55,22 +55,22 @@ Median:
 
 ### Exercise 3
 
-1. high energetic: 37  
+1. high expression DYRK1A: 255  
 
  ```
- =COUNTIF(menu[Calories];">600")
+ =COUNTIF(Data!B:B,">0.5")
  ```
 
-2. 300 > calories > 600: 106  
+2. Count of 218: SYP
 
  ```
-=COUNTIFS(menu[Calories];">300";menu[Calories];"<600")
+=XLOOKUP(218,B6:BZ6,Table2[[#Headers],[DYRK1A_N]:[CaNA_N]])
  ```
 
-3. count fl oz cup: 138  
+3. higher levels NR1 compared to NR2A: 1077 
 
  ```
-=COUNTIF(menu[Serving Size];"*fl oz cup*")
+=COUNTIFS(Data!E:E, ">0.5", Data!F:F, ">0.5")
  ```
 
 ### Exercise 4

@@ -12,7 +12,7 @@
 
 ### Exercise 1
 
-Import the [Mice Protein Expression](https://www.kaggle.com/datasets/ruslankl/mice-protein-expression?resource=download) in Excel. This dataset contains data about expression levels of 77 proteins measured in the cerebral cortex in mice.
+Import the [Mice Protein Expression](https://www.kaggle.com/datasets/ruslankl/mice-protein-expression?resource=download) in Excel. This dataset contains data about expression levels of 77 proteins measured in the cerebral cortex in mice. The protein names are abbreviated. The abbreviations of protein names are followed by N indicating that they were measured in the nuclear fraction meaning that for the protein name you should remove the `_N`.
 
 > Take a good look to column separators and the decimal separators!
 
@@ -36,11 +36,11 @@ Use filter and sort to answer the following questions:
 
 ### Exercise 3
 
-1. More then 600 calories would be considered high energetic. How many items are high energetic?  
-2. How many items are between 300 and 600 calories?  
-3. How many items are measured in the serving size Fluid Ounce (fl oz cup) (hint: use a wildcard)?  
+1. An relative expression level > 0.5 would be considered a high expression level. How many mice do have a high expression level for DYRK1A?  
+2. Apply this calculation for all proteins. For which protein do you observe a count of 218?  
+3. Glutamate receptor subunits NR1 and NR2A are included in the dataset. How many mice do have higher expression levels for NR1 compared to NR2A?  
 
-### Exersise 4
+### Exercise 4
 
 1. Use conditional formatting to indicate high energetic food items (>600 calories). Use red markup for these. Which two categories show the highest number of red cells?  
 2. Use conditional formatting to check for duplicate food items. Use red markup for these. Are there any duplicate items?  
