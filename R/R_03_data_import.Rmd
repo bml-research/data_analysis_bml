@@ -44,11 +44,11 @@ Here we use the tibble function to create a tiblle directly from 3 vectors:
 
 
 ```{r}
-category <- c("fruit", "vegetable", "vegetable", "fruit")
-type <- c("apple", "broccoli", "cauliflower", "banana")
-calories <- c(52.5, 34.2, 25.7, 89.4)
+gene <- c("AAAS", "ABAT", "ABCC2", "ABL1", "FMR1")
+chromosome <- c(12, 16, 10, 9, "X")
+length_protein <- c(546, 500, 1545, 1130, 632)
 
-my_tibble <- tibble(category, type, calories)
+my_tibble <- tibble(gene, chromosome, length_protein)
 formatted_table(head(my_tibble))
 ```
 
@@ -66,17 +66,17 @@ In R, readr is a package that provides a fast and friendly way to read rectangul
 Let's try it out:
 
 We can try to load the same datafile as we did for Excel.
-Here you can see the [Food Composition](https://www.kaggle.com/datasets/vinitshah0110/food-composition?resource=download&select=Food+Composition.csv) file.'
+Here you can see the [Human Genes](https://www.kaggle.com/datasets/mohamedabdullah/human-genes?resource=download) file.'
 
 So we have downloaded the csv file (it came as zip so we needed to extract the zip).
 
-It can be found [here](./files_03_data_import/file01_food_composition.csv)
+It can be found [here](./files_03_data_import/file01_human_genes.csv)
 
 >Like explained under data import in Excel, the first thing you should do is to check your csv file in a text editor.
 RStudio is capable of opening text files.
 The screenshot below shows you the text file in RStudio:
 
-![](./pics_03_data_import/fig01.png)
+![](./pics_03_data_import/fig01_human_genes.png)
 
 As you can see, the column separator is a comma. The csv file contains headers.
 The function to open the file is the `read_csv()` function.
@@ -85,7 +85,7 @@ So we can load it as follows:
 
 
 ```{r}
-file_path <- "./files_03_data_import/file01_food_composition.csv"
+file_path <- "./files_03_data_import/file01_human_genes.csv"
 my_df <- read_csv(file_path)
 formatted_table(head(my_df))
 ```
@@ -98,7 +98,7 @@ This is the common way for Unix systems but also works for R code on Windows sys
 
 
 
-The `read_csv()` function reads comma-delimited files. The `read_csv2()` function reads semi-colon separated files (used in countries where , is the decimal separator like Holland). The `read_tsv()` function reads tab-delimited files. The `read_delim()` function reads files with any delimiter.  
+The `read_csv()` function reads comma-delimited files. The `read_csv2()` function reads semi-colon separated files (used in countries where the comma (,) is the decimal separator like in the Netherlands). The `read_tsv()` function reads tab-delimited files. The `read_delim()` function reads files with any delimiter.  
 You may have noticed that the data frame returned is actually a tibble.  
 The `head()` function shows only the first 6 rows (by default) in order not to overwhelm the user with data.
 
@@ -106,7 +106,7 @@ The `head()` function shows only the first 6 rows (by default) in order not to o
 Likewise, we can also directly load data from the web. Since the file above is stored on e web server, we can also load it using the URL:
 
 ```{r}
-URL <- "https://github.com/bml-research/data_analysis/raw/main/R/files_03_data_import/file01_food_composition.csv"
+URL <- "https://github.com/bml-research/data_analysis/raw/main/R/files_03_data_import/file01_human_genes.csv"
 my_df <- read_csv(URL)
 formatted_table(head(my_df))
 ```
@@ -119,7 +119,7 @@ Of course, you are welcome to do this but it is beyond the scope of this course.
 
 Now let's explore the other `read_csv` variants.
 We have another text file.
-It can be found [here](./files_03_data_import/file02_fruits.csv)
+It can be found [here](./files_03_data_import/file02_genes.csv)
 
 Exploring it using a text editor:
 
