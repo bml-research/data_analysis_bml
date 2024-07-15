@@ -106,7 +106,7 @@ The `head()` function shows only the first 6 rows (by default) in order not to o
 Likewise, we can also directly load data from the web. Since the file above is stored on e web server, we can also load it using the URL:
 
 ```{r}
-URL <- "https://github.com/bml-research/data_analysis/raw/main/R/files_03_data_import/file01_human_genes.csv"
+URL <- "https://raw.githubusercontent.com/bml-research/data_analysis_bml/main/R/files_03_data_import/file01_human_genes.csv"
 my_df <- read_csv(URL)
 formatted_table(head(my_df))
 ```
@@ -123,7 +123,7 @@ It can be found [here](./files_03_data_import/file02_genes.csv)
 
 Exploring it using a text editor:
 
-![](./pics_03_data_import/fig02.png)
+![](./pics_03_data_import/fig02_genes.png)
 
 This shows us that:
 - the file contains a header
@@ -132,7 +132,7 @@ This shows us that:
 Thus, the `read_csv2()` function should be used to open this file.
 
 ```{r}
-file_path <- "./files_03_data_import/file02_fruits.csv"
+file_path <- "./files_03_data_import/file02_genes.csv"
 my_df <- read_csv2(file_path)
 formatted_table(head(my_df))
 ```
