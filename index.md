@@ -2,7 +2,7 @@
 ![Hanze](./hanze/hanze.png)
 
 # Data Analysis BML
-
+NOG EEN KEER
 ## Course Data Analysis and Visualisation
 
 ---
