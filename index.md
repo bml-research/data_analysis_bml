@@ -2,7 +2,7 @@
 ![Hanze](./hanze/hanze.png)
 
 # Data Analysis BML
-TEST
+
 ## Course Data Analysis and Visualisation
 
 ---
