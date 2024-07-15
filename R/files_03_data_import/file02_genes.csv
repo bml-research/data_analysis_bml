@@ -1,6 +1,6 @@
-gene;chromsome;length_protein
-AAAS;12;546
-ABAT;16;500
-ABCC2;10;1545
-ABL1;9;1130
-FMR1;X;632
+gene;chromsome;mol_weight_kD
+AAAS;12;52.2
+ABAT;16;56.4
+ABCC2;10;174.2
+ABL1;9;122.9
+FMR1;X;71.1
