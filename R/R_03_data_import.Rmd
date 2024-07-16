@@ -140,7 +140,7 @@ formatted_table(head(my_df))
 So what would happen if we accidentally used the wrong function?
 
 ```{r}
-file_path <- "./files_03_data_import/file02_fruits.csv"
+file_path <- "./files_03_data_import/file02_genes.csv"
 my_df <- read_csv(file_path) #note that read_csv was used instead of read_csv2
 formatted_table(head(my_df))
 ```
@@ -148,15 +148,15 @@ formatted_table(head(my_df))
 As you can see, the data was not read in different columns. So always check the file using a text editor.
 
 Now imagine a file without a header.
-It can be found [here](./files_03_data_import/file03_fruits.csv)
+It can be found [here](./files_03_data_import/file03_genes.csv)
 
-![](./pics_03_data_import/fig03.png)
+![](./pics_03_data_import/fig03_genes.png)
 
 
 Loading it causes trouble:
 
 ```{r}
-file_path <- "./files_03_data_import/file03_fruits.csv"
+file_path <- "./files_03_data_import/file03_genes.csv"
 my_df <- read_csv2(file_path) 
 formatted_table(head(my_df))
 ```
@@ -170,81 +170,95 @@ We can find more information about the read_csv2 function using the following co
 ```
 
 The information will be found within the help pane.
-This learns us that we can set the col_names parameter to FALSE:
+Reading the information on read_csv2 learns us that the default setting for headers is TRUE and that R will read (by default) the first row as a header. We can ommit this problem by setting the col_names parameter to FALSE:
 
 ```{r}
-file_path <- "./files_03_data_import/file03_fruits.csv"
+file_path <- "./files_03_data_import/file03_genes.csv"
 my_df <- read_csv2(file_path, col_names = FALSE) 
 formatted_table(head(my_df))
 ```
 
-Now we have al the rows correctly loaded but we still miss column names.
+Now we have all the rows correctly loaded but we still miss column names.
 We can add them as follows:
 
 ```{r}
-my_col_names <- c("category", "type", "calories")
+my_col_names <- c("gene", "chromosome", "mol_weight_kD")
 names(my_df) <- my_col_names
 formatted_table(head(my_df))
 ```
 
-What if a comma is used as a decimal separator? This is often the case when a text file is used using a semi-colon as separator.
+What if a dot is used as a decimal separator? In many countries the dot is used as the decimal separator, so there is a chance you will encounter files using the dot as the decimal separator.
 
 
-![](./pics_03_data_import/fig04.png)
+![](./pics_03_data_import/fig04_genes.png)
 
 
-An example of this file can be found [here](./files_03_data_import/file04_fruits.csv)
+An example of this file can be found [here](./files_03_data_import/file04_genes.csv)
 
-
+Let's see what happens if you try to read a file with `read_csv2()` that contains numbers with the comma as delimiter (separator of values) and the dot as decimal separator.
 
 ```{r}
-file_path <- "./files_03_data_import/file04_fruits.csv"
+file_path <- "./files_03_data_import/file04_genes.csv"
 my_df <- read_csv2(file_path) 
 formatted_table(head(my_df))
 ```
 
-As you can see, the `read_csv2()` function can take care of this.
-
-Often TSV are used. They can be imported using `read_tsv()`:
-
-An example of this file can be found [here](./files_03_data_import/file05_fruits.csv)
-
-
-![](./pics_03_data_import/fig05.png)
+As you can see, the values are not separated anymore. In this case, you should use the `read_csv()` function to take care of this.
 
 ```{r}
-file_path <- "./files_03_data_import/file05_fruits.csv"
-my_df <- read_tsv(file_path) 
+file_path <- "./files_03_data_import/file04_genes.csv"
+my_df <- read_csv(file_path) 
+formatted_table(head(my_df))
+```
+
+
+
+Often TSV-files are used. These are files where the values are separated by a tab. They can be imported using `read_tsv()`.
+
+An example of this file can be found [here](./files_03_data_import/file05_genes.csv)
+
+
+![](./pics_03_data_import/fig05_genes.png)
+
+Note that `read_tsv` can only read numerical values correctly that have the dot as the decimal separator. We can solve this problem using the argument `locale =` in the `read_tsv` function.
+
+```{r}
+file_path <- "./files_03_data_import/file05_genes.csv"
+my_df <- read_tsv(file_path, locale = locale(decimal_mark = ",")) 
 formatted_table(head(my_df))
 ```
 
 
 When things get really ugly, such as this file, we need some more tweaking...
 
-An example of this file can be found [here](./files_03_data_import/file06_fruits.csv)
+An example of this file can be found [here](./files_03_data_import/file06_genes.csv)
 
 
-![](./pics_03_data_import/fig06.png)
+![](./pics_03_data_import/fig06_genes.png)
 
 
 ```{r}
-file_path <- "./files_03_data_import/file06_fruits.csv"
+file_path <- "./files_03_data_import/file06_genes.csv"
 my_df <- read_csv2(file_path) 
 formatted_table(head(my_df))
 ```
 
 The data is obviously not correctly loaded.
-The delimiter is an asterisk. So we could use the `read_delim()` function here:
+The delimiter is an asterisk and there seems to be a comment at the first line of the file. So we could use the `read_delim()` function here and use the arguments `delim =` and `comment =` to bypass these problems. Also, the `read_delim()` function uses the dot as decimal separator by default (as we have seen for the `read_tsv()` function).
 
 ```{r}
-file_path <- "./files_03_data_import/file06_fruits.csv"
+file_path <- "./files_03_data_import/file06_genes.csv"
 my_df <- read_delim(file_path, delim = "*", comment = "@", locale=locale(decimal_mark = ",")) 
 formatted_table(head(my_df))
 ```
 
 
->Also, always check that the column in your tibble is of the correct data type.
-calories are doubles as you can see while the other columns are of the character type.
+>Also, always check that the column in your tibble is of the correct data type. You can have a quick overview of the data types in your data frame using the `str()` function.
+
+```{r}
+str(my_df)
+```
+You can see that gene are of the characters type and mol_weight_kD are of the numerical type. Most values in chromosomes are of the numerical type. Because there is a character (chromosome "X") in this column, R converts the other values also to a character. Only one type of values can be stored in a column (in this case all character type).
 
 
 ## Writing csv files
@@ -253,18 +267,18 @@ Like reading csv file, you can also write them.
 Here is an example:
 
 ```{r}
-category <- c("fruit", "vegetable", "vegetable", "fruit")
-type <- c("apple", "broccoli", "cauliflower", "banana")
-calories <- c(52.5, 34.2, 25.7, 89.4)
+gene <- c("AAAS", "ABAT", "ABCC2", "ABL1","FMR1")
+chromosome <- c(12, 16, 10, 9, "X")
+mol_weight_kD <- c(52.5, 56.4, 174.2, 122.9, 71.1)
 
-my_tibble <- tibble(category, type, calories)
-write_csv(my_tibble, "./files_03_data_import/file07_tibble.csv")
+my_tibble <- tibble(gene, chromosome, mol_weight_kD)
+write_csv(my_tibble, "./files_03_data_import/file07_genes_tibble.csv")
 ```
 
 To show that the data was written to file:
 
 ```{r}
-my_path <- "./files_03_data_import/file07_tibble.csv"
+my_path <- "./files_03_data_import/file07_genes_tibble.csv"
 my_df <- read_csv(my_path)
 formatted_table(head(my_df))
 ```
@@ -277,7 +291,7 @@ But also a lot of data is directly stored as Excel file. Think about data downlo
 Very often, data can be downloaded as Excel file instead of csv or tsv file.  
 Instead of converting data from Excel to csv or tsv file, R can handle Excel files directly.
 
-It also gives you the opportunity to firs do some analysis in Excel and continue in R, for example if the dataset appears to be to big to be handled by Excel.
+It also gives you the opportunity to first do some analysis in Excel and continue in R, for example if the dataset appears to be to big to be handled by Excel.
 
 The `readxl` package is the most used package for reading and writing Excel files.
 It comes with tidyverse so there is no need to install it.
@@ -293,12 +307,12 @@ And load it as follows:
 library(readxl)
 ```
 
-[Here](./files_03_data_import/file08_food_composition.xlsx) you can find an example of an Excel file.
+[Here](./files_03_data_import/file08_human_genes.xlsx) you can find an example of an Excel file.
 
 And here is how you can load in to a tibble:
 
 ```{r}
-file_path <- "./files_03_data_import/file08_food_composition.xlsx"
+file_path <- "./files_03_data_import/file08_human_genes.xlsx"
 my_df <- read_excel(file_path) 
 formatted_table(head(my_df))
 ```
@@ -321,18 +335,18 @@ library(openxlsx)
 In the following code you will see an example how to do that.
 
 ```{r}
-category <- c("fruit", "vegetable", "vegetable", "fruit")
-type <- c("apple", "broccoli", "cauliflower", "banana")
-calories <- c(52.5, 34.2, 25.7, 89.4)
+gene <- c("AAAS", "ABAT", "ABCC2", "ABL1","FMR1")
+chromosome <- c(12, 16, 10, 9, "X")
+mol_weight_kD <- c(52.5, 56.4, 174.2, 122.9, 71.1)
 
-my_tibble <- tibble(category, type, calories)
-write.xlsx(my_tibble, './files_03_data_import/file09_tibble.xlsx', colNames = TRUE)
+my_tibble <- tibble(gene, chromosome, mol_weight_kD)
+write.xlsx(my_tibble, './files_03_data_import/file09_genes_tibble.xlsx')
 ```
 
 
-And a screenshot of the file loaded in a spreadsheet (Libre Office was used instead of Excel as I created this on a Linux machine):
+And a screenshot of the file loaded in an Excel spreadsheet:
 
-![](./pics_03_data_import/fig07.png)
+![](./pics_03_data_import/fig07_genes_Excel.png)
 
 
 ---
