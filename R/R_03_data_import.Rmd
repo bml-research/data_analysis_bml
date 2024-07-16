@@ -98,9 +98,9 @@ This is the common way for Unix systems but also works for R code on Windows sys
 
 
 
-The `read_csv()` function reads comma-delimited files. The `read_csv2()` function reads semi-colon separated files (used in countries where the comma (,) is the decimal separator like in the Netherlands). The `read_tsv()` function reads tab-delimited files. The `read_delim()` function reads files with any delimiter.  
+The `read_csv` function reads comma-delimited files. The `read_csv2` function reads semi-colon separated files (used in countries where the comma (,) is the decimal separator like in the Netherlands). The `read_tsv` function reads tab-delimited files. The `read_delim` function reads files with any delimiter.  
 You may have noticed that the data frame returned is actually a tibble.  
-The `head()` function shows only the first 6 rows (by default) in order not to overwhelm the user with data.
+The `head` function shows only the first 6 rows (by default) in order not to overwhelm the user with data.
 
 
 Likewise, we can also directly load data from the web. Since the file above is stored on e web server, we can also load it using the URL:
@@ -128,8 +128,8 @@ Exploring it using a text editor:
 This shows us that:
 - the file contains a header
 - the deliminator is a semicolon.
-- the decimal separator is a `.`
-Thus, the `read_csv2()` function should be used to open this file.
+- the decimal separator is a `,`
+Thus, the `read_csv2` function should be used to open this file.
 
 ```{r}
 file_path <- "./files_03_data_import/file02_genes.csv"
@@ -195,7 +195,7 @@ What if a dot is used as a decimal separator? In many countries the dot is used 
 
 An example of this file can be found [here](./files_03_data_import/file04_genes.csv)
 
-Let's see what happens if you try to read a file with `read_csv2()` that contains numbers with the comma as delimiter (separator of values) and the dot as decimal separator.
+Let's see what happens if you try to read a file with `read_csv2` that contains numbers with the comma as delimiter (separator of values) and the dot as decimal separator.
 
 ```{r}
 file_path <- "./files_03_data_import/file04_genes.csv"
@@ -203,7 +203,7 @@ my_df <- read_csv2(file_path)
 formatted_table(head(my_df))
 ```
 
-As you can see, the values are not separated anymore. In this case, you should use the `read_csv()` function to take care of this.
+As you can see, the values are not separated anymore. In this case, you should use the `read_csv` function to take care of this.
 
 ```{r}
 file_path <- "./files_03_data_import/file04_genes.csv"
@@ -213,7 +213,7 @@ formatted_table(head(my_df))
 
 
 
-Often TSV-files are used. These are files where the values are separated by a tab. They can be imported using `read_tsv()`.
+Often TSV-files are used. These are files where the values are separated by a tab. They can be imported using `read_tsv`.
 
 An example of this file can be found [here](./files_03_data_import/file05_genes.csv)
 
@@ -244,7 +244,7 @@ formatted_table(head(my_df))
 ```
 
 The data is obviously not correctly loaded.
-The delimiter is an asterisk and there seems to be a comment at the first line of the file. So we could use the `read_delim()` function here and use the arguments `delim =` and `comment =` to bypass these problems. Also, the `read_delim()` function uses the dot as decimal separator by default (as we have seen for the `read_tsv()` function).
+The delimiter is an asterisk and there seems to be a comment at the first line of the file. So we could use the `read_delim` function here and use the arguments `delim =` and `comment =` to bypass these problems. Also, the `read_delim` function uses the dot as decimal separator by default (as we have seen for the `read_tsv` function).
 
 ```{r}
 file_path <- "./files_03_data_import/file06_genes.csv"

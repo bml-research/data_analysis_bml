@@ -26,133 +26,130 @@ This file can be downloaded [here](./R_05_data_import_solutions.Rmd)
 
 ### Exercise 1
 
-Load the following datasets in R using the csv import functionality. First have a look at them in your text editor.  
-Then load in R.  
+First, check the following files in your text editor. 
 
-- [file 1](./files_04_data_import_exercises/exercise01/Food_composition_1.csv)  
-- [file 2](./files_04_data_import_exercises/exercise01/Food_composition_2.csv)  
-- [file 3](./files_04_data_import_exercises/exercise01/Food_composition_3.csv)  
-- [file 4](./files_04_data_import_exercises/exercise01/Food_composition_4.csv)  
+- [file 1](./files_04_data_import_exercises/exercise01/fish_data_1.csv)  
+- [file 2](./files_04_data_import_exercises/exercise01/fish_data_2.csv)  
+- [file 3](./files_04_data_import_exercises/exercise01/fish_data_3.csv)  
+- [file 4](./files_04_data_import_exercises/exercise01/fish_data_4.csv)  
 
-Report the field separator.
+Next, report the field separator and the function that you will use to import the data. Also think of you need extra arguments in your function to import the data correctly (for example: do you need the `locale =` argument?).
+Last, load the datasets in R using the csv, csv2, or tsv import functionality and check if the data is imported correctly.
 
 File 1:
-
+The field separator used is a comma (,). Therefore use the `read_csv` function.
 ```{r}
-file_path <- "./files_04_data_import_exercises/exercise01/Food_composition_1.csv"
+file_path <- "./files_04_data_import_exercises/exercise01/fish_data_1.csv"
 df <- read_csv(file_path)
-formatted_table(head(df, 1)) 
+formatted_table(head(df)) 
 ```
 
-The field separator used was a comma. Therefore use the `read_csv` function.
+
 
 File 2:
-
+The field separator used is a semi-colon (;). Therefore use the `read_csv2` function.
 ```{r}
-file_path <- "./files_04_data_import_exercises/exercise01/Food_composition_2.csv"
-df <- read_csv2(file_path)
-formatted_table(head(df, 1))
+file_path <- "./files_04_data_import_exercises/exercise01/fish_data_2.csv"
+df <- read_csv2(file_path, locale = locale(decimal_mark = "."))
+formatted_table(head(df))
 ```
 
-The field separator used was a semi-colon. Therefore use the `read_csv2` function.
+
 
 File 3:
-
+The field separator used is a pipe symbol (|). Therefore use the `read_delim` function with a `delim =` argument set to the correct delimiter.
 ```{r}
-file_path <- "./files_04_data_import_exercises/exercise01/Food_composition_3.csv"
+file_path <- "./files_04_data_import_exercises/exercise01/fish_data_3.csv"
 df <- read_delim(file_path, delim="|")
-formatted_table(head(df, 1))
+formatted_table(head(df))
 ```
 
-The field separator used was a pipe symbol. Therefore use the `read_delim` function with a `delim argument` set to the correct delimiter.
 
 File 4:
+The field separator used is a tab and the decimal separator is a comma. Therefore use the `read_tsv` function with a `locale =` argument set to the correct decimal separator.
 
 ```{r}
-file_path <- "./files_04_data_import_exercises/exercise01/Food_composition_4.csv"
-df <- read_delim(file_path, delim="@")
-formatted_table(head(df, 1))
+file_path <- "./files_04_data_import_exercises/exercise01/fish_data_4.csv"
+df <- read_tsv(file_path, locale = locale(decimal_mark = ","))
+formatted_table(head(df))
 ```
 
-The field separator used was an at sign. Therefore use the `read_delim` function with a `delim argument` set to the correct delimiter.
 
 ### Exercise 2
 
-Download this [dataset](https://www.kaggle.com/datasets/trolukovich/nutritional-values-for-common-foods-and-products).
-Unzip it and import the csv data in R.
+Download the [Heart Disease Health Indicators](https://www.kaggle.com/datasets/alexteboul/heart-disease-health-indicators-dataset) dataset to your computer.
+Unzip the file and import the csv data in R.
 
 ```{r}
-file_path <- "./files_04_data_import_exercises/exercise02/nutrition.csv"
+file_path <- "./files_04_data_import_exercises/exercise02/heart_disease_health_indicators_BRFSS2015.csv"
 df <- read_csv(file_path)
-formatted_table(head(df))
+formatted_table(head(df, c(6,10)))
 ```
 
-As you can see, this data set needs a lot of cleaning (the units are in the data fields) but that will be dealt with in a later chapter.
+
 
 ### Exercise 3
 
-Download this [dataset](https://www.kaggle.com/datasets/vaishnavivenkatesan/food-and-their-calories).
-Unzip it and import the csv data in R.
+Download the [Properties of ATC-accepted medicines](https://www.kaggle.com/datasets/tonibois/properties-of-atc-accepted-medicines) dataset to your computer.
+Unzip the file and import the csv data in R.
 
 ```{r}
-file_path <- "./files_04_data_import_exercises/exercise03/Food and Calories - Sheet1.csv"
+file_path <- "./files_04_data_import_exercises/exercise03/KEGG_DRUG_ATC_PROPERTIES_PED_FP.csv"
 df <- read_csv(file_path)
-formatted_table(head(df))
+formatted_table(head(df, c(6,6)))
 ```
 
-As you can see, this data set needs cleaning (the units are in the data fields) but that will be dealt with in a later chapter.
 
 ### Exercise 4
 
-Download this [dataset](https://www.kaggle.com/datasets/amandaroseknudsen/foodproductemissions?resource=download).
-Unzip it and import the csv data in R.
+Download the [Food allergens and allergies](https://www.kaggle.com/datasets/boltcutters/food-allergens-and-allergies) dataset to your computer.
+Unzip the file and import the csv data in R.
 
 ```{r}
-file_path <- "./files_04_data_import_exercises/exercise04/Food_Product_Emissions.csv"
+file_path <- "./files_04_data_import_exercises/exercise04/FoodData.csv"
 df <- read_csv(file_path)
 formatted_table(head(df))
 ```
 
 ### Exercise 5
 
-Download data from [this website](https://ourworldindata.org/meat-production).
-Search for Global meat production
-Meat production across the world.
-Download the csv file and import the csv data in R.
+Download the [Patients](https://www.kaggle.com/datasets/ouzkoca/patients) dataset to your computer.
+Unzip the file and import the csv data in R.
+NOTE: this file contains the semi-colon as field separator, so you have to use the `read_csv2` function to read the data correctly.
 
 ```{r}
-file_path <- "./files_04_data_import_exercises/exercise05/global-meat-production.csv"
-df <- read_csv(file_path)
-formatted_table(head(df))
+file_path <- "./files_04_data_import_exercises/exercise05/22.11.2021.csv"
+df <- read_csv2(file_path)
+formatted_table(head(df, c(6, 15)))
 ```
 
 ### Exercise 6
 
 Use R to create a csv file from the following table:
 
-|Food product   |Processing  |Transport  |Packaging  |Retail  |
-|:--------------|-----------:|----------:|----------:|-------:|
-| Olive Oil     | 66         | 482       | 861       | 46     |
-| Palm Oil      | 1264       | 208       | 886       | 44     |
-| Rapeseed Oil  | 193        | 19        | 844       | 46     |
-| Soybean Oil   | 311        | 299       | 849       | 43     |
-| Sunflower Oil | 229        | 201       | 853       | 43     |
+|Protein Name |Location       |Weight (kD)|Date submission |Source       |
+|:------------|--------------:|----------:|---------------:|------------:|
+| ORF1        | 21571..25392  | 14.3      | 29-FEB-2020    | Published   |
+| ORF3a       | 25401..26228  | 23.9      | 29-FEB-2020    | Unpublished |
+| ORF4b       | 26253..26480  | 161.1     | 29-FEB-2020    | Unpublished |
+| ORF6        | 27210..27395  | 35.9      | 29-FEB-2020    | Submitted   |
+| ORF7a       | 27402..27767  | 24.6      | 29-FEB-2020    | Unpublished |
 
 
 ```{r}
-food_product <- c("Olive Oil", "Palm Oil", "Rapeseed Oil", "Soybean Oil", "Sunflower Oil")
-processing <- c(66, 1264, 193, 311, 229) 
-transport <- c(482, 208, 19, 299, 201)
-packaging <- c(861, 886, 844, 849, 853)
-retail <- c(46, 44, 46, 43, 43)
-my_tibble <- tibble(food_product, processing, transport, packaging, retail)
-write_csv(my_tibble, "./files_05_data_import_solutions/exercise06/food_emission_data.csv")
+protein_name <- c("ORF1", "ORF3a", "ORF4b", "ORF6", "ORF7a")
+location <- c("21571..25392", "25401..26228", "26253..26480", "27210..27395", "27402..27767") 
+weight <- c(14.3, 23.9, 161.1, 35.9, 24.6)
+date_submission <- c("29-FEB-2020", "29-FEB-2020", "29-FEB-2020", "29-FEB-2020", "29-FEB-2020")
+source <- c("Published", "Unpublished", "Unpublished", "Submitted", "Unpublished")
+my_tibble <- tibble(protein_name, location, weight, date_submission, source)
+write_csv(my_tibble, "./files_05_data_import_solutions/exercise06/virus_genome.csv")
 ```
 
 To prove that the data was written to a csv file:
 
 ```{r}
-file_path <- "././files_05_data_import_solutions/exercise06/food_emission_data.csv"
+file_path <- "././files_05_data_import_solutions/exercise06/virus_genome.csv"
 df <- read_csv(file_path)
 formatted_table(head(df))
 ```
@@ -163,7 +160,7 @@ Use the same data from exercise 6 but now create an Excel file. Make sure to inc
 
 ```{r}
 library(openxlsx)
-write.xlsx(my_tibble, "./files_05_data_import_solutions/exercise07/food_emission_data.xlsx", colNames = TRUE)
+write.xlsx(my_tibble, "./files_05_data_import_solutions/exercise07/virus_genome.xlsx", colNames = TRUE)
 ```
 
 
@@ -173,7 +170,7 @@ Use the Excel file from exercise 7 to open the Excel file.
 
 ```{r}
 library(readxl)
-my_data <- read_excel("./files_05_data_import_solutions/exercise07/food_emission_data.xlsx")
+my_data <- read_excel("./files_05_data_import_solutions/exercise07/virus_genome.xlsx")
 formatted_table(head(my_data))
 ```
 

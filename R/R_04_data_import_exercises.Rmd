@@ -20,78 +20,95 @@ This file can be downloaded [here](./R_04_data_import_exercises.Rmd)
 
 ### Exercise 1
 
-Load the following datasets in R using the csv import functionality. First have a look at them in your text editor.  
-Then load in R.  
+First, check the following files in your text editor. 
 
-- [file 1](./files_04_data_import_exercises/exercise01/Food_composition_1.csv)  
-- [file 2](./files_04_data_import_exercises/exercise01/Food_composition_2.csv)  
-- [file 3](./files_04_data_import_exercises/exercise01/Food_composition_3.csv)  
-- [file 4](./files_04_data_import_exercises/exercise01/Food_composition_4.csv)  
+- [file 1](./files_04_data_import_exercises/exercise01/fish_data_1.csv)  
+- [file 2](./files_04_data_import_exercises/exercise01/fish_data_2.csv)  
+- [file 3](./files_04_data_import_exercises/exercise01/fish_data_3.csv)  
+- [file 4](./files_04_data_import_exercises/exercise01/fish_data_4.csv)  
 
-Report the field separator.
+Next, report the field separator and the function that you will use to import the data. Also think of you need extra arguments in your function to import the data correctly (for example: do you need the `locale =` argument?).
+Last, load the datasets in R using the csv, csv2, or tsv import functionality and check if the data is imported correctly.
 
+File 1:
+```{r}
+#Your code here for file 1
+```
+
+File 2:
+```{r}
+#Your code here for file 2
+```
+
+File3:
+```{r}
+#Your code here for file 3
+```
+
+File 4:
+```{r}
+#Your code here for file 4
+```
 
 
 ### Exercise 2
 
-Download this [dataset](https://www.kaggle.com/datasets/trolukovich/nutritional-values-for-common-foods-and-products).
-Unzip it and import the csv data in R.
+Download the [Heart Disease Health Indicators](https://www.kaggle.com/datasets/alexteboul/heart-disease-health-indicators-dataset) dataset to your computer.
+Unzip the file and import the csv data in R.
 
 ```{r}
 #Your code here
 ```
 
-As you can see, this dataset needs a lot of cleaning (the units are in the data fields) but that will be dealt with in a later chapter.
 
 ### Exercise 3
 
-Download this [dataset](https://www.kaggle.com/datasets/vaishnavivenkatesan/food-and-their-calories).
-Unzip it and import the csv data in R.
+Download the [Properties of ATC-accepted medicines](https://www.kaggle.com/datasets/tonibois/properties-of-atc-accepted-medicines) dataset to your computer.
+Unzip the file and import the csv data in R.
 
 ```{r}
 #Your code here
 ```
 
-As you can see, this dataset needs cleaning (the units are in the data fields) but that will be dealt with in a later chapter.
 
 ### Exercise 4
 
-Download this [dataset](https://www.kaggle.com/datasets/amandaroseknudsen/foodproductemissions?resource=download).
-Unzip it and import the csv data in R.
+Download the [Food allergens and allergies](https://www.kaggle.com/datasets/boltcutters/food-allergens-and-allergies) dataset to your computer.
+Unzip the file and import the csv data in R.
 
 ```{r}
 #Your code here
 ```
+
 
 ### Exercise 5
 
-Download data from [this website](https://ourworldindata.org/meat-production).
-Search for Global meat production
-Meat production across the world.
-Download the csv file and import the csv data in R.
+Download the [Patients](https://www.kaggle.com/datasets/ouzkoca/patients) dataset to your computer.
+Unzip the file and import the csv data in R.
 
 ```{r}
 #Your code here
 ```
+
 
 ### Exercise 6
 
 Use R to create a csv file from the following table:
 
-|Food product   |Processing  |Transport  |Packaging  |Retail  |
-|:--------------|-----------:|----------:|----------:|-------:|
-| Olive Oil     | 66         | 482       | 861       | 46     |
-| Palm Oil      | 1264       | 208       | 886       | 44     |
-| Rapeseed Oil  | 193        | 19        | 844       | 46     |
-| Soybean Oil   | 311        | 299       | 849       | 43     |
-| Sunflower Oil | 229        | 201       | 853       | 43     |
+|Protein Name |Location       |Weight (kD)|Date submission |Source       |
+|:------------|--------------:|----------:|---------------:|------------:|
+| ORF1        | 21571..25392  | 14.3      | 29-FEB-2020    | Published   |
+| ORF3a       | 25401..26228  | 23.9      | 29-FEB-2020    | Unpublished |
+| ORF4b       | 26253..26480  | 161.1     | 29-FEB-2020    | Unpublished |
+| ORF6        | 27210..27395  | 35.9      | 29-FEB-2020    | Submitted   |
+| ORF7a       | 27402..27767  | 24.6      | 29-FEB-2020    | Unpublished |
 
 
 ```{r}
 #Your code here
 ```
 
-To prove that the data was written to a csv file:
+Use code to prove that the data was written to a csv file (code to read the csv file that you have just created):
 
 ```{r}
 #Your code here
@@ -99,7 +116,7 @@ To prove that the data was written to a csv file:
 
 ### Exercise 7
 
-Use the same data from exercise 6 but now create an Excel file. Make sure to include the column headers.
+Use the same data from exercise 6 but now write code to create an Excel file. Make sure to include the column headers.
 
 ```{r}
 #Your code here
@@ -108,7 +125,7 @@ Use the same data from exercise 6 but now create an Excel file. Make sure to inc
 
 ### Exercise 8
 
-Use the Excel file from exercise 7 to open the Excel file.
+Use code to open the Excel file from exercise 7.
 
 ```{r}
 #Your code here

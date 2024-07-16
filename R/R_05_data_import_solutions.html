@@ -521,17 +521,23 @@ overflow-y: auto;
 border: 1px solid #ddd;
 border-radius: 4px;
 }
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-content: "\e259";
+.tabset-dropdown > .nav-tabs > li.active:before {
+content: "";
 font-family: 'Glyphicons Halflings';
 display: inline-block;
 padding: 10px;
 border-right: 1px solid #ddd;
 }
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-content: "\e258";
-font-family: 'Glyphicons Halflings';
+content: "";
 border: none;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+content: "";
+font-family: 'Glyphicons Halflings';
+display: inline-block;
+padding: 10px;
+border-right: 1px solid #ddd;
 }
 .tabset-dropdown > .nav-tabs > li.active {
 display: block;
@@ -591,441 +597,1048 @@ formatted_table &lt;- function(df){
 <p>This file can be downloaded <a href="./R_05_data_import_solutions.Rmd">here</a></p>
 <div id="exercise-1" class="section level3">
 <h3>Exercise 1</h3>
-<p>Load the following datasets in R using the csv import functionality.
-First have a look at them in your text editor.<br />
-Then load in R.</p>
+<p>First, check the following files in your text editor.</p>
 <ul>
-<li><a href="./files_04_data_import_exercises/exercise01/Food_composition_1.csv">file
+<li><a href="./files_04_data_import_exercises/exercise01/fish_data_1.csv">file
 1</a><br />
 </li>
-<li><a href="./files_04_data_import_exercises/exercise01/Food_composition_2.csv">file
+<li><a href="./files_04_data_import_exercises/exercise01/fish_data_2.csv">file
 2</a><br />
 </li>
-<li><a href="./files_04_data_import_exercises/exercise01/Food_composition_3.csv">file
+<li><a href="./files_04_data_import_exercises/exercise01/fish_data_3.csv">file
 3</a><br />
 </li>
-<li><a href="./files_04_data_import_exercises/exercise01/Food_composition_4.csv">file
+<li><a href="./files_04_data_import_exercises/exercise01/fish_data_4.csv">file
 4</a></li>
 </ul>
-<p>Report the field separator.</p>
-<p>File 1:</p>
-<pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise01/Food_composition_1.csv&quot;
-df &lt;- read_csv(file_path)
-formatted_table(head(df, 1)) </code></pre>
-<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Public Food Key
-</th>
-<th style="text-align:right;">
-Food Profile ID
-</th>
-<th style="text-align:left;">
-Derivation
-</th>
-<th style="text-align:left;">
-Food Name
-</th>
-<th style="text-align:left;">
-Food Description
-</th>
-<th style="text-align:left;">
-Sampling Details
-</th>
-<th style="text-align:right;">
-Nitrogen Factor
-</th>
-<th style="text-align:right;">
-Fat Factor
-</th>
-<th style="text-align:right;">
-Specific Gravity
-</th>
-<th style="text-align:left;">
-Analysed Portion
-</th>
-<th style="text-align:left;">
-Unanalysed Portion
-</th>
-<th style="text-align:right;">
-Classification
-</th>
-<th style="text-align:left;">
-Classification Name
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-F002258
-</td>
-<td style="text-align:right;">
-14723
-</td>
-<td style="text-align:left;">
-Borrowed
-</td>
-<td style="text-align:left;">
-Cardamom seed, dried, ground
-</td>
-<td style="text-align:left;">
-Ground spice commonly used in Indian cooking and drinks, in Middle
-Eastern cooking and in Scandinavian baking
-</td>
-<td style="text-align:left;">
-The majority of nutrient data were borrowed from USDA SR28, 02006 -
-Spices, cardamom. Proximates (starch, total sugars), vitamins
-(alpha-tocopherol, beta-carotene, folate) and Se were borrowed from
-Indian Food Composition Tables 2017, G020 - Cardamom, green. Dry matter
-adjustment was applied to starch and sugar. Tryptophan was imputed from
-dried fenugreek seed. Alcohol, vitamins (B12, folic acid, retinol, D),
-I, caffeine and cholesterol were imputed zero. Note low sum of
-proximates - data should be used with caution.
-</td>
-<td style="text-align:right;">
-6.25
-</td>
-<td style="text-align:right;">
-0.96
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-100%
-</td>
-<td style="text-align:left;">
-0%
-</td>
-<td style="text-align:right;">
-31302
-</td>
-<td style="text-align:left;">
-Herbs(dried) and spices
-</td>
-</tr>
-</tbody>
-</table>
-<p>The field separator used was a comma. Therefore use the
+<p>Next, report the field separator and the function that you will use
+to import the data. Also think of you need extra arguments in your
+function to import the data correctly (for example: do you need the
+<code>locale =</code> argument?). Last, load the datasets in R using the
+csv, csv2, or tsv import functionality and check if the data is imported
+correctly.</p>
+<p>File 1: The field separator used is a comma (,). Therefore use the
 <code>read_csv</code> function.</p>
-<p>File 2:</p>
-<pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise01/Food_composition_2.csv&quot;
-df &lt;- read_csv2(file_path)
-formatted_table(head(df, 1))</code></pre>
+<pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise01/fish_data_1.csv&quot;
+df &lt;- read_csv(file_path)
+formatted_table(head(df)) </code></pre>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
-<th style="text-align:left;">
-Public Food Key
+<th style="text-align:right;">
+id
 </th>
 <th style="text-align:right;">
-Food Profile ID
-</th>
-<th style="text-align:left;">
-Derivation
-</th>
-<th style="text-align:left;">
-Food Name
-</th>
-<th style="text-align:left;">
-Food Description
-</th>
-<th style="text-align:left;">
-Sampling Details
+average_length(inches))
 </th>
 <th style="text-align:right;">
-Nitrogen Factor
+average_weight(inches))
 </th>
 <th style="text-align:left;">
-Fat Factor
-</th>
-<th style="text-align:left;">
-Specific Gravity
-</th>
-<th style="text-align:left;">
-Analysed Portion
-</th>
-<th style="text-align:left;">
-Unanalysed Portion
+habitat
 </th>
 <th style="text-align:right;">
-Classification
+ph_of_water
 </th>
 <th style="text-align:left;">
-Classification Name
+color
+</th>
+<th style="text-align:left;">
+Gender
+</th>
+<th style="text-align:right;">
+life_span
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
-F002258
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:right;">
-14723
-</td>
-<td style="text-align:left;">
-Borrowed
-</td>
-<td style="text-align:left;">
-Cardamom seed; dried; ground
-</td>
-<td style="text-align:left;">
-Ground spice commonly used in Indian cooking and drinks; in Middle
-Eastern cooking and in Scandinavian baking
-</td>
-<td style="text-align:left;">
-The majority of nutrient data were borrowed from USDA SR28; 02006 -
-Spices; cardamom. Proximates (starch; total sugars); vitamins
-(alpha-tocopherol; beta-carotene; folate) and Se were borrowed from
-Indian Food Composition Tables 2017; G020 - Cardamom; green. Dry matter
-adjustment was applied to starch and sugar. Tryptophan was imputed from
-dried fenugreek seed. Alcohol; vitamins (B12; folic acid; retinol; D);
-I; caffeine and cholesterol were imputed zero. Note low sum of
-proximates - data should be used with caution.
+14.69
 </td>
 <td style="text-align:right;">
-625
+5.87
 </td>
 <td style="text-align:left;">
-0.96
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-100%
-</td>
-<td style="text-align:left;">
-0%
+ponds
 </td>
 <td style="text-align:right;">
-31302
+6.2
 </td>
 <td style="text-align:left;">
-Herbs(dried) and spices
+Reddish_Orange
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+10.9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1.32
+</td>
+<td style="text-align:right;">
+3.86
+</td>
+<td style="text-align:left;">
+idlewater
+</td>
+<td style="text-align:right;">
+6.8
+</td>
+<td style="text-align:left;">
+Calico
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+5.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+14.23
+</td>
+<td style="text-align:right;">
+12.09
+</td>
+<td style="text-align:left;">
+lakes
+</td>
+<td style="text-align:right;">
+7.9
+</td>
+<td style="text-align:left;">
+Reddish_Orange
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+25.3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2.54
+</td>
+<td style="text-align:right;">
+3.20
+</td>
+<td style="text-align:left;">
+rivers
+</td>
+<td style="text-align:right;">
+6.7
+</td>
+<td style="text-align:left;">
+White
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+16.4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+13.10
+</td>
+<td style="text-align:right;">
+9.81
+</td>
+<td style="text-align:left;">
+lakes
+</td>
+<td style="text-align:right;">
+7.8
+</td>
+<td style="text-align:left;">
+Orange
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+3.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+15.20
+</td>
+<td style="text-align:right;">
+8.99
+</td>
+<td style="text-align:left;">
+lakes
+</td>
+<td style="text-align:right;">
+7.8
+</td>
+<td style="text-align:left;">
+White
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+21.6
 </td>
 </tr>
 </tbody>
 </table>
-<p>The field separator used was a semi-colon. Therefore use the
-<code>read_csv2</code> function.</p>
-<p>File 3:</p>
-<pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise01/Food_composition_3.csv&quot;
+<p>File 2: The field separator used is a semi-colon (;). Therefore use
+the <code>read_csv2</code> function.</p>
+<pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise01/fish_data_2.csv&quot;
+df &lt;- read_csv2(file_path, locale = locale(decimal_mark = &quot;.&quot;))
+formatted_table(head(df))</code></pre>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+id
+</th>
+<th style="text-align:right;">
+average_length(inches))
+</th>
+<th style="text-align:right;">
+average_weight(inches))
+</th>
+<th style="text-align:left;">
+habitat
+</th>
+<th style="text-align:right;">
+ph_of_water
+</th>
+<th style="text-align:left;">
+color
+</th>
+<th style="text-align:left;">
+Gender
+</th>
+<th style="text-align:right;">
+life_span
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+14.69
+</td>
+<td style="text-align:right;">
+5.87
+</td>
+<td style="text-align:left;">
+ponds
+</td>
+<td style="text-align:right;">
+6.2
+</td>
+<td style="text-align:left;">
+Reddish_Orange
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+10.9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1.32
+</td>
+<td style="text-align:right;">
+3.86
+</td>
+<td style="text-align:left;">
+idlewater
+</td>
+<td style="text-align:right;">
+6.8
+</td>
+<td style="text-align:left;">
+Calico
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+5.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+14.23
+</td>
+<td style="text-align:right;">
+12.09
+</td>
+<td style="text-align:left;">
+lakes
+</td>
+<td style="text-align:right;">
+7.9
+</td>
+<td style="text-align:left;">
+Reddish_Orange
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+25.3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2.54
+</td>
+<td style="text-align:right;">
+3.20
+</td>
+<td style="text-align:left;">
+rivers
+</td>
+<td style="text-align:right;">
+6.7
+</td>
+<td style="text-align:left;">
+White
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+16.4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+13.10
+</td>
+<td style="text-align:right;">
+9.81
+</td>
+<td style="text-align:left;">
+lakes
+</td>
+<td style="text-align:right;">
+7.8
+</td>
+<td style="text-align:left;">
+Orange
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+3.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+15.20
+</td>
+<td style="text-align:right;">
+8.99
+</td>
+<td style="text-align:left;">
+lakes
+</td>
+<td style="text-align:right;">
+7.8
+</td>
+<td style="text-align:left;">
+White
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+21.6
+</td>
+</tr>
+</tbody>
+</table>
+<p>File 3: The field separator used is a pipe symbol (|). Therefore use
+the <code>read_delim</code> function with a <code>delim =</code>
+argument set to the correct delimiter.</p>
+<pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise01/fish_data_3.csv&quot;
 df &lt;- read_delim(file_path, delim=&quot;|&quot;)
-formatted_table(head(df, 1))</code></pre>
+formatted_table(head(df))</code></pre>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
-<th style="text-align:left;">
-Public Food Key
+<th style="text-align:right;">
+id
 </th>
 <th style="text-align:right;">
-Food Profile ID
-</th>
-<th style="text-align:left;">
-Derivation
-</th>
-<th style="text-align:left;">
-Food Name
-</th>
-<th style="text-align:left;">
-Food Description
-</th>
-<th style="text-align:left;">
-Sampling Details
+average_length(inches))
 </th>
 <th style="text-align:right;">
-Nitrogen Factor
-</th>
-<th style="text-align:right;">
-Fat Factor
-</th>
-<th style="text-align:right;">
-Specific Gravity
+average_weight(inches))
 </th>
 <th style="text-align:left;">
-Analysed Portion
-</th>
-<th style="text-align:left;">
-Unanalysed Portion
+habitat
 </th>
 <th style="text-align:right;">
-Classification
+ph_of_water
 </th>
 <th style="text-align:left;">
-Classification Name
+color
+</th>
+<th style="text-align:left;">
+Gender
+</th>
+<th style="text-align:right;">
+life_span
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
-F002258
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:right;">
-14723
-</td>
-<td style="text-align:left;">
-Borrowed
-</td>
-<td style="text-align:left;">
-Cardamom seed| dried| ground
-</td>
-<td style="text-align:left;">
-Ground spice commonly used in Indian cooking and drinks| in Middle
-Eastern cooking and in Scandinavian baking
-</td>
-<td style="text-align:left;">
-The majority of nutrient data were borrowed from USDA SR28| 02006 -
-Spices| cardamom. Proximates (starch| total sugars)| vitamins
-(alpha-tocopherol| beta-carotene| folate) and Se were borrowed from
-Indian Food Composition Tables 2017| G020 - Cardamom| green. Dry matter
-adjustment was applied to starch and sugar. Tryptophan was imputed from
-dried fenugreek seed. Alcohol| vitamins (B12| folic acid| retinol| D)|
-I| caffeine and cholesterol were imputed zero. Note low sum of
-proximates - data should be used with caution.
+14.69
 </td>
 <td style="text-align:right;">
-6.25
-</td>
-<td style="text-align:right;">
-0.96
-</td>
-<td style="text-align:right;">
-0
+5.87
 </td>
 <td style="text-align:left;">
-100%
-</td>
-<td style="text-align:left;">
-0%
+ponds
 </td>
 <td style="text-align:right;">
-31302
+6.2
 </td>
 <td style="text-align:left;">
-Herbs(dried) and spices
+Reddish_Orange
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+10.9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1.32
+</td>
+<td style="text-align:right;">
+3.86
+</td>
+<td style="text-align:left;">
+idlewater
+</td>
+<td style="text-align:right;">
+6.8
+</td>
+<td style="text-align:left;">
+Calico
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+5.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+14.23
+</td>
+<td style="text-align:right;">
+12.09
+</td>
+<td style="text-align:left;">
+lakes
+</td>
+<td style="text-align:right;">
+7.9
+</td>
+<td style="text-align:left;">
+Reddish_Orange
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+25.3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2.54
+</td>
+<td style="text-align:right;">
+3.20
+</td>
+<td style="text-align:left;">
+rivers
+</td>
+<td style="text-align:right;">
+6.7
+</td>
+<td style="text-align:left;">
+White
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+16.4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+13.10
+</td>
+<td style="text-align:right;">
+9.81
+</td>
+<td style="text-align:left;">
+lakes
+</td>
+<td style="text-align:right;">
+7.8
+</td>
+<td style="text-align:left;">
+Orange
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+3.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+15.20
+</td>
+<td style="text-align:right;">
+8.99
+</td>
+<td style="text-align:left;">
+lakes
+</td>
+<td style="text-align:right;">
+7.8
+</td>
+<td style="text-align:left;">
+White
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+21.6
 </td>
 </tr>
 </tbody>
 </table>
-<p>The field separator used was a pipe symbol. Therefore use the
-<code>read_delim</code> function with a <code>delim argument</code> set
-to the correct delimiter.</p>
-<p>File 4:</p>
-<pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise01/Food_composition_4.csv&quot;
-df &lt;- read_delim(file_path, delim=&quot;@&quot;)
-formatted_table(head(df, 1))</code></pre>
+<p>File 4: The field separator used is a tab and the decimal separator
+is a comma. Therefore use the <code>read_tsv</code> function with a
+<code>locale =</code> argument set to the correct decimal separator.</p>
+<pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise01/fish_data_4.csv&quot;
+df &lt;- read_tsv(file_path, locale = locale(decimal_mark = &quot;,&quot;))
+formatted_table(head(df))</code></pre>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
-<th style="text-align:left;">
-Public Food Key
+<th style="text-align:right;">
+id
 </th>
 <th style="text-align:right;">
-Food Profile ID
-</th>
-<th style="text-align:left;">
-Derivation
-</th>
-<th style="text-align:left;">
-Food Name
-</th>
-<th style="text-align:left;">
-Food Description
-</th>
-<th style="text-align:left;">
-Sampling Details
+average_length(inches))
 </th>
 <th style="text-align:right;">
-Nitrogen Factor
-</th>
-<th style="text-align:right;">
-Fat Factor
-</th>
-<th style="text-align:right;">
-Specific Gravity
+average_weight(inches))
 </th>
 <th style="text-align:left;">
-Analysed Portion
-</th>
-<th style="text-align:left;">
-Unanalysed Portion
+habitat
 </th>
 <th style="text-align:right;">
-Classification
+ph_of_water
 </th>
 <th style="text-align:left;">
-Classification Name
+color
+</th>
+<th style="text-align:left;">
+Gender
+</th>
+<th style="text-align:right;">
+life_span
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
-F002258
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:right;">
-14723
-</td>
-<td style="text-align:left;">
-Borrowed
-</td>
-<td style="text-align:left;">
-Cardamom seed@ dried@ ground
-</td>
-<td style="text-align:left;">
-Ground spice commonly used in Indian cooking and drinks@ in Middle
-Eastern cooking and in Scandinavian baking
-</td>
-<td style="text-align:left;">
-The majority of nutrient data were borrowed from USDA SR28@ 02006 -
-Spices@ cardamom. Proximates (starch@ total sugars)@ vitamins
-(alpha-tocopherol@ beta-carotene@ folate) and Se were borrowed from
-Indian Food Composition Tables 2017@ G020 - Cardamom@ green. Dry matter
-adjustment was applied to starch and sugar. Tryptophan was imputed from
-dried fenugreek seed. Alcohol@ vitamins (B12@ folic acid@ retinol@ D)@
-I@ caffeine and cholesterol were imputed zero. Note low sum of
-proximates - data should be used with caution.
+14.69
 </td>
 <td style="text-align:right;">
-6.25
-</td>
-<td style="text-align:right;">
-0.96
-</td>
-<td style="text-align:right;">
-0
+5.87
 </td>
 <td style="text-align:left;">
-100%
-</td>
-<td style="text-align:left;">
-0%
+ponds
 </td>
 <td style="text-align:right;">
-31302
+6.2
 </td>
 <td style="text-align:left;">
-Herbs(dried) and spices
+Reddish_Orange
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+10.9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1.32
+</td>
+<td style="text-align:right;">
+3.86
+</td>
+<td style="text-align:left;">
+idlewater
+</td>
+<td style="text-align:right;">
+6.8
+</td>
+<td style="text-align:left;">
+Calico
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+5.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+14.23
+</td>
+<td style="text-align:right;">
+12.09
+</td>
+<td style="text-align:left;">
+lakes
+</td>
+<td style="text-align:right;">
+7.9
+</td>
+<td style="text-align:left;">
+Reddish_Orange
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+25.3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2.54
+</td>
+<td style="text-align:right;">
+3.20
+</td>
+<td style="text-align:left;">
+rivers
+</td>
+<td style="text-align:right;">
+6.7
+</td>
+<td style="text-align:left;">
+White
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+16.4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+13.10
+</td>
+<td style="text-align:right;">
+9.81
+</td>
+<td style="text-align:left;">
+lakes
+</td>
+<td style="text-align:right;">
+7.8
+</td>
+<td style="text-align:left;">
+Orange
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+3.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+15.20
+</td>
+<td style="text-align:right;">
+8.99
+</td>
+<td style="text-align:left;">
+lakes
+</td>
+<td style="text-align:right;">
+7.8
+</td>
+<td style="text-align:left;">
+White
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+21.6
 </td>
 </tr>
 </tbody>
 </table>
-<p>The field separator used was an at sign. Therefore use the
-<code>read_delim</code> function with a <code>delim argument</code> set
-to the correct delimiter.</p>
 </div>
 <div id="exercise-2" class="section level3">
 <h3>Exercise 2</h3>
-<p>Download this <a href="https://www.kaggle.com/datasets/trolukovich/nutritional-values-for-common-foods-and-products">dataset</a>.
-Unzip it and import the csv data in R.</p>
-<pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise02/nutrition.csv&quot;
+<p>Download the <a href="https://www.kaggle.com/datasets/alexteboul/heart-disease-health-indicators-dataset">Heart
+Disease Health Indicators</a> dataset to your computer. Unzip the file
+and import the csv data in R.</p>
+<pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise02/heart_disease_health_indicators_BRFSS2015.csv&quot;
 df &lt;- read_csv(file_path)
-formatted_table(head(df))</code></pre>
+formatted_table(head(df, c(6,10)))</code></pre>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+HeartDiseaseorAttack
+</th>
+<th style="text-align:right;">
+HighBP
+</th>
+<th style="text-align:right;">
+HighChol
+</th>
+<th style="text-align:right;">
+CholCheck
+</th>
+<th style="text-align:right;">
+BMI
+</th>
+<th style="text-align:right;">
+Smoker
+</th>
+<th style="text-align:right;">
+Stroke
+</th>
+<th style="text-align:right;">
+Diabetes
+</th>
+<th style="text-align:right;">
+PhysActivity
+</th>
+<th style="text-align:right;">
+Fruits
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="exercise-3" class="section level3">
+<h3>Exercise 3</h3>
+<p>Download the <a href="https://www.kaggle.com/datasets/tonibois/properties-of-atc-accepted-medicines">Properties
+of ATC-accepted medicines</a> dataset to your computer. Unzip the file
+and import the csv data in R.</p>
+<pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise03/KEGG_DRUG_ATC_PROPERTIES_PED_FP.csv&quot;
+df &lt;- read_csv(file_path)
+formatted_table(head(df, c(6,6)))</code></pre>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1033,232 +1646,19 @@ formatted_table(head(df))</code></pre>
 …1
 </th>
 <th style="text-align:left;">
-name
+KEGG_code
 </th>
 <th style="text-align:left;">
-serving_size
+CompoundName
 </th>
-<th style="text-align:right;">
-calories
-</th>
-<th style="text-align:left;">
-total_fat
-</th>
-<th style="text-align:left;">
-saturated_fat
-</th>
-<th style="text-align:left;">
-cholesterol
-</th>
-<th style="text-align:left;">
-sodium
-</th>
-<th style="text-align:left;">
-choline
-</th>
-<th style="text-align:left;">
-folate
-</th>
-<th style="text-align:left;">
-folic_acid
-</th>
-<th style="text-align:left;">
-niacin
-</th>
-<th style="text-align:left;">
-pantothenic_acid
-</th>
-<th style="text-align:left;">
-riboflavin
-</th>
-<th style="text-align:left;">
-thiamin
-</th>
-<th style="text-align:left;">
-vitamin_a
-</th>
-<th style="text-align:left;">
-vitamin_a_rae
-</th>
-<th style="text-align:left;">
-carotene_alpha
-</th>
-<th style="text-align:left;">
-carotene_beta
-</th>
-<th style="text-align:left;">
-cryptoxanthin_beta
-</th>
-<th style="text-align:left;">
-lutein_zeaxanthin
-</th>
-<th style="text-align:right;">
-lucopene
-</th>
-<th style="text-align:left;">
-vitamin_b12
-</th>
-<th style="text-align:left;">
-vitamin_b6
-</th>
-<th style="text-align:left;">
-vitamin_c
-</th>
-<th style="text-align:left;">
-vitamin_d
-</th>
-<th style="text-align:left;">
-vitamin_e
-</th>
-<th style="text-align:left;">
-tocopherol_alpha
-</th>
-<th style="text-align:left;">
-vitamin_k
-</th>
-<th style="text-align:left;">
-calcium
-</th>
-<th style="text-align:left;">
-copper
-</th>
-<th style="text-align:left;">
-irom
-</th>
-<th style="text-align:left;">
-magnesium
-</th>
-<th style="text-align:left;">
-manganese
-</th>
-<th style="text-align:left;">
-phosphorous
-</th>
-<th style="text-align:left;">
-potassium
-</th>
-<th style="text-align:left;">
-selenium
-</th>
-<th style="text-align:left;">
-zink
-</th>
-<th style="text-align:left;">
-protein
-</th>
-<th style="text-align:left;">
-alanine
-</th>
-<th style="text-align:left;">
-arginine
-</th>
-<th style="text-align:left;">
-aspartic_acid
-</th>
-<th style="text-align:left;">
-cystine
-</th>
-<th style="text-align:left;">
-glutamic_acid
-</th>
-<th style="text-align:left;">
-glycine
-</th>
-<th style="text-align:left;">
-histidine
-</th>
-<th style="text-align:left;">
-hydroxyproline
-</th>
-<th style="text-align:left;">
-isoleucine
-</th>
-<th style="text-align:left;">
-leucine
-</th>
-<th style="text-align:left;">
-lysine
-</th>
-<th style="text-align:left;">
-methionine
-</th>
-<th style="text-align:left;">
-phenylalanine
-</th>
-<th style="text-align:left;">
-proline
-</th>
-<th style="text-align:left;">
-serine
-</th>
-<th style="text-align:left;">
-threonine
-</th>
-<th style="text-align:left;">
-tryptophan
-</th>
-<th style="text-align:left;">
-tyrosine
-</th>
-<th style="text-align:left;">
-valine
-</th>
-<th style="text-align:left;">
-carbohydrate
-</th>
-<th style="text-align:left;">
-fiber
-</th>
-<th style="text-align:left;">
-sugars
-</th>
-<th style="text-align:left;">
-fructose
-</th>
-<th style="text-align:left;">
-galactose
-</th>
-<th style="text-align:left;">
-glucose
-</th>
-<th style="text-align:left;">
-lactose
-</th>
-<th style="text-align:left;">
-maltose
-</th>
-<th style="text-align:left;">
-sucrose
-</th>
-<th style="text-align:left;">
-fat
-</th>
-<th style="text-align:left;">
-saturated_fatty_acids
-</th>
-<th style="text-align:left;">
-monounsaturated_fatty_acids
-</th>
-<th style="text-align:left;">
-polyunsaturated_fatty_acids
-</th>
-<th style="text-align:left;">
-fatty_acids_total_trans
-</th>
-<th style="text-align:left;">
-alcohol
-</th>
-<th style="text-align:left;">
-ash
-</th>
 <th style="text-align:left;">
-caffeine
+ATC_label_class
 </th>
 <th style="text-align:left;">
-theobromine
+ATC_full_code
 </th>
 <th style="text-align:left;">
-water
+BigGroup_ATC_class
 </th>
 </tr>
 </thead>
@@ -1268,232 +1668,19 @@ water
 0
 </td>
 <td style="text-align:left;">
-Cornstarch
+D05864
 </td>
 <td style="text-align:left;">
-100 g
+Sodium monofluorophosphate (USP)
 </td>
-<td style="text-align:right;">
-381
-</td>
-<td style="text-align:left;">
-0.1g
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-9.00 mg
-</td>
-<td style="text-align:left;">
-0.4 mg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.000 mg
-</td>
-<td style="text-align:left;">
-0.000 mg
-</td>
-<td style="text-align:left;">
-0.000 mg
-</td>
-<td style="text-align:left;">
-0.000 mg
-</td>
-<td style="text-align:left;">
-0.00 IU
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.000 mg
-</td>
-<td style="text-align:left;">
-0.0 mg
-</td>
-<td style="text-align:left;">
-0.00 IU
-</td>
-<td style="text-align:left;">
-0.00 mg
-</td>
-<td style="text-align:left;">
-0.00 mg
-</td>
-<td style="text-align:left;">
-0.0 mcg
-</td>
-<td style="text-align:left;">
-2.00 mg
-</td>
-<td style="text-align:left;">
-0.050 mg
-</td>
-<td style="text-align:left;">
-0.47 mg
-</td>
-<td style="text-align:left;">
-3.00 mg
-</td>
-<td style="text-align:left;">
-0.053 mg
-</td>
-<td style="text-align:left;">
-13.00 mg
-</td>
-<td style="text-align:left;">
-3.00 mg
-</td>
-<td style="text-align:left;">
-2.8 mcg
-</td>
-<td style="text-align:left;">
-0.06 mg
-</td>
-<td style="text-align:left;">
-0.26 g
-</td>
-<td style="text-align:left;">
-0.019 g
-</td>
-<td style="text-align:left;">
-0.012 g
-</td>
-<td style="text-align:left;">
-0.020 g
-</td>
-<td style="text-align:left;">
-0.006 g
-</td>
-<td style="text-align:left;">
-0.053 g
-</td>
-<td style="text-align:left;">
-0.009 g
-</td>
-<td style="text-align:left;">
-0.008 g
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0.010 g
-</td>
-<td style="text-align:left;">
-0.036 g
-</td>
-<td style="text-align:left;">
-0.006 g
-</td>
-<td style="text-align:left;">
-0.006 g
-</td>
-<td style="text-align:left;">
-0.013 g
-</td>
-<td style="text-align:left;">
-0.024 g
-</td>
-<td style="text-align:left;">
-0.012 g
-</td>
-<td style="text-align:left;">
-0.009 g
-</td>
-<td style="text-align:left;">
-0.001 g
-</td>
-<td style="text-align:left;">
-0.010 g
-</td>
-<td style="text-align:left;">
-0.014 g
-</td>
-<td style="text-align:left;">
-91.27 g
-</td>
-<td style="text-align:left;">
-0.9 g
-</td>
-<td style="text-align:left;">
-0.00 g
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0.05 g
-</td>
-<td style="text-align:left;">
-0.009 g
-</td>
-<td style="text-align:left;">
-0.016 g
-</td>
-<td style="text-align:left;">
-0.025 g
-</td>
-<td style="text-align:left;">
-0.00 mg
-</td>
-<td style="text-align:left;">
-0.0 g
-</td>
-<td style="text-align:left;">
-0.09 g
-</td>
 <td style="text-align:left;">
-0.00 mg
+Caries prophylactic agents
 </td>
 <td style="text-align:left;">
-0.00 mg
+A01AA02
 </td>
 <td style="text-align:left;">
-8.32 g
+ALIMENTARY TRACT AND METABOLISM
 </td>
 </tr>
 <tr>
@@ -1501,232 +1688,19 @@ NA
 1
 </td>
 <td style="text-align:left;">
-Nuts, pecans
+D05864
 </td>
 <td style="text-align:left;">
-100 g
+Sodium monofluorophosphate (USP)
 </td>
-<td style="text-align:right;">
-691
-</td>
-<td style="text-align:left;">
-72g
-</td>
-<td style="text-align:left;">
-6.2g
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0.00 mg
-</td>
-<td style="text-align:left;">
-40.5 mg
-</td>
-<td style="text-align:left;">
-22.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-1.167 mg
-</td>
-<td style="text-align:left;">
-0.863 mg
-</td>
-<td style="text-align:left;">
-0.130 mg
-</td>
-<td style="text-align:left;">
-0.660 mg
-</td>
-<td style="text-align:left;">
-56.00 IU
-</td>
-<td style="text-align:left;">
-3.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-29.00 mcg
-</td>
-<td style="text-align:left;">
-9.00 mcg
-</td>
-<td style="text-align:left;">
-17.00 mcg
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.210 mg
-</td>
-<td style="text-align:left;">
-1.1 mg
-</td>
-<td style="text-align:left;">
-0.00 IU
-</td>
-<td style="text-align:left;">
-1.40 mg
-</td>
-<td style="text-align:left;">
-1.40 mg
-</td>
-<td style="text-align:left;">
-3.5 mcg
-</td>
-<td style="text-align:left;">
-70.00 mg
-</td>
-<td style="text-align:left;">
-1.200 mg
-</td>
-<td style="text-align:left;">
-2.53 mg
-</td>
-<td style="text-align:left;">
-121.00 mg
-</td>
-<td style="text-align:left;">
-4.500 mg
-</td>
-<td style="text-align:left;">
-277.00 mg
-</td>
-<td style="text-align:left;">
-410.00 mg
-</td>
-<td style="text-align:left;">
-3.8 mcg
-</td>
-<td style="text-align:left;">
-4.53 mg
-</td>
-<td style="text-align:left;">
-9.17 g
-</td>
-<td style="text-align:left;">
-0.397 g
-</td>
-<td style="text-align:left;">
-1.177 g
-</td>
-<td style="text-align:left;">
-0.929 g
-</td>
-<td style="text-align:left;">
-0.152 g
-</td>
-<td style="text-align:left;">
-1.829 g
-</td>
-<td style="text-align:left;">
-0.453 g
-</td>
-<td style="text-align:left;">
-0.262 g
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0.336 g
-</td>
-<td style="text-align:left;">
-0.598 g
-</td>
-<td style="text-align:left;">
-0.287 g
-</td>
-<td style="text-align:left;">
-0.183 g
-</td>
-<td style="text-align:left;">
-0.426 g
-</td>
-<td style="text-align:left;">
-0.363 g
-</td>
-<td style="text-align:left;">
-0.474 g
-</td>
-<td style="text-align:left;">
-0.306 g
-</td>
-<td style="text-align:left;">
-0.093 g
-</td>
-<td style="text-align:left;">
-0.215 g
-</td>
-<td style="text-align:left;">
-0.411 g
-</td>
-<td style="text-align:left;">
-13.86 g
-</td>
-<td style="text-align:left;">
-9.6 g
-</td>
-<td style="text-align:left;">
-3.97 g
-</td>
-<td style="text-align:left;">
-0.04 g
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0.04 g
-</td>
-<td style="text-align:left;">
-0.00 g
-</td>
-<td style="text-align:left;">
-0.00 g
-</td>
-<td style="text-align:left;">
-3.90 g
-</td>
-<td style="text-align:left;">
-71.97 g
-</td>
-<td style="text-align:left;">
-6.180 g
-</td>
-<td style="text-align:left;">
-40.801 g
-</td>
-<td style="text-align:left;">
-21.614 g
-</td>
-<td style="text-align:left;">
-0.00 mg
-</td>
-<td style="text-align:left;">
-0.0 g
-</td>
-<td style="text-align:left;">
-1.49 g
-</td>
 <td style="text-align:left;">
-0.00 mg
+Fluoride
 </td>
 <td style="text-align:left;">
-0.00 mg
+A12CD02
 </td>
 <td style="text-align:left;">
-3.52 g
+ALIMENTARY TRACT AND METABOLISM
 </td>
 </tr>
 <tr>
@@ -1734,232 +1708,19 @@ Nuts, pecans
 2
 </td>
 <td style="text-align:left;">
-Eggplant, raw
+D05241
 </td>
 <td style="text-align:left;">
-100 g
+Olaflur (USAN/INN)
 </td>
-<td style="text-align:right;">
-25
-</td>
-<td style="text-align:left;">
-0.2g
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-2.00 mg
-</td>
-<td style="text-align:left;">
-6.9 mg
-</td>
-<td style="text-align:left;">
-22.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.649 mg
-</td>
-<td style="text-align:left;">
-0.281 mg
-</td>
-<td style="text-align:left;">
-0.037 mg
-</td>
-<td style="text-align:left;">
-0.039 mg
-</td>
-<td style="text-align:left;">
-23.00 IU
-</td>
-<td style="text-align:left;">
-1.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-14.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-36.00 mcg
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.084 mg
-</td>
-<td style="text-align:left;">
-2.2 mg
-</td>
-<td style="text-align:left;">
-0.00 IU
-</td>
-<td style="text-align:left;">
-0.30 mg
-</td>
-<td style="text-align:left;">
-0.30 mg
-</td>
-<td style="text-align:left;">
-3.5 mcg
-</td>
-<td style="text-align:left;">
-9.00 mg
-</td>
-<td style="text-align:left;">
-0.081 mg
-</td>
-<td style="text-align:left;">
-0.23 mg
-</td>
-<td style="text-align:left;">
-14.00 mg
-</td>
-<td style="text-align:left;">
-0.232 mg
-</td>
-<td style="text-align:left;">
-24.00 mg
-</td>
-<td style="text-align:left;">
-229.00 mg
-</td>
-<td style="text-align:left;">
-0.3 mcg
-</td>
-<td style="text-align:left;">
-0.16 mg
-</td>
-<td style="text-align:left;">
-0.98 g
-</td>
-<td style="text-align:left;">
-0.051 g
-</td>
-<td style="text-align:left;">
-0.057 g
-</td>
-<td style="text-align:left;">
-0.164 g
-</td>
-<td style="text-align:left;">
-0.006 g
-</td>
-<td style="text-align:left;">
-0.186 g
-</td>
-<td style="text-align:left;">
-0.041 g
-</td>
-<td style="text-align:left;">
-0.023 g
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0.045 g
-</td>
-<td style="text-align:left;">
-0.064 g
-</td>
-<td style="text-align:left;">
-0.047 g
-</td>
-<td style="text-align:left;">
-0.011 g
-</td>
-<td style="text-align:left;">
-0.043 g
-</td>
-<td style="text-align:left;">
-0.043 g
-</td>
-<td style="text-align:left;">
-0.042 g
-</td>
-<td style="text-align:left;">
-0.037 g
-</td>
-<td style="text-align:left;">
-0.009 g
-</td>
-<td style="text-align:left;">
-0.027 g
-</td>
-<td style="text-align:left;">
-0.053 g
-</td>
-<td style="text-align:left;">
-5.88 g
-</td>
-<td style="text-align:left;">
-3.0 g
-</td>
-<td style="text-align:left;">
-3.53 g
-</td>
-<td style="text-align:left;">
-1.54 g
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-1.58 g
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0.26 g
-</td>
-<td style="text-align:left;">
-0.18 g
-</td>
-<td style="text-align:left;">
-0.034 g
-</td>
-<td style="text-align:left;">
-0.016 g
-</td>
-<td style="text-align:left;">
-0.076 g
-</td>
-<td style="text-align:left;">
-0.00 mg
-</td>
-<td style="text-align:left;">
-0.0 g
-</td>
-<td style="text-align:left;">
-0.66 g
-</td>
 <td style="text-align:left;">
-0.00 mg
+Caries prophylactic agents
 </td>
 <td style="text-align:left;">
-0.00 mg
+A01AA03
 </td>
 <td style="text-align:left;">
-92.30 g
+ALIMENTARY TRACT AND METABOLISM
 </td>
 </tr>
 <tr>
@@ -1967,232 +1728,19 @@ NA
 3
 </td>
 <td style="text-align:left;">
-Teff, uncooked
+D00008
 </td>
 <td style="text-align:left;">
-100 g
+Hydrogen peroxide (USP)
 </td>
-<td style="text-align:right;">
-367
-</td>
-<td style="text-align:left;">
-2.4g
-</td>
-<td style="text-align:left;">
-0.4g
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-12.00 mg
-</td>
-<td style="text-align:left;">
-13.1 mg
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-3.363 mg
-</td>
-<td style="text-align:left;">
-0.942 mg
-</td>
-<td style="text-align:left;">
-0.270 mg
-</td>
-<td style="text-align:left;">
-0.390 mg
-</td>
-<td style="text-align:left;">
-9.00 IU
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-5.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-66.00 mcg
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0.482 mg
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0.08 mg
-</td>
-<td style="text-align:left;">
-0.08 mg
-</td>
-<td style="text-align:left;">
-1.9 mcg
-</td>
-<td style="text-align:left;">
-180.00 mg
-</td>
-<td style="text-align:left;">
-0.810 mg
-</td>
-<td style="text-align:left;">
-7.63 mg
-</td>
-<td style="text-align:left;">
-184.00 mg
-</td>
-<td style="text-align:left;">
-9.240 mg
-</td>
-<td style="text-align:left;">
-429.00 mg
-</td>
-<td style="text-align:left;">
-427.00 mg
-</td>
-<td style="text-align:left;">
-4.4 mcg
-</td>
-<td style="text-align:left;">
-3.63 mg
-</td>
-<td style="text-align:left;">
-13.30 g
-</td>
-<td style="text-align:left;">
-0.747 g
-</td>
-<td style="text-align:left;">
-0.517 g
-</td>
-<td style="text-align:left;">
-0.820 g
-</td>
-<td style="text-align:left;">
-0.236 g
-</td>
-<td style="text-align:left;">
-3.349 g
-</td>
-<td style="text-align:left;">
-0.477 g
-</td>
-<td style="text-align:left;">
-0.301 g
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0.501 g
-</td>
-<td style="text-align:left;">
-1.068 g
-</td>
-<td style="text-align:left;">
-0.376 g
-</td>
-<td style="text-align:left;">
-0.428 g
-</td>
-<td style="text-align:left;">
-0.698 g
-</td>
-<td style="text-align:left;">
-0.664 g
-</td>
-<td style="text-align:left;">
-0.622 g
-</td>
-<td style="text-align:left;">
-0.510 g
-</td>
-<td style="text-align:left;">
-0.139 g
-</td>
-<td style="text-align:left;">
-0.458 g
-</td>
-<td style="text-align:left;">
-0.686 g
-</td>
-<td style="text-align:left;">
-73.13 g
-</td>
-<td style="text-align:left;">
-8.0 g
-</td>
-<td style="text-align:left;">
-1.84 g
-</td>
-<td style="text-align:left;">
-0.47 g
-</td>
-<td style="text-align:left;">
-0.00 g
-</td>
-<td style="text-align:left;">
-0.73 g
-</td>
-<td style="text-align:left;">
-0.00 g
-</td>
-<td style="text-align:left;">
-0.01 g
-</td>
-<td style="text-align:left;">
-0.62 g
-</td>
-<td style="text-align:left;">
-2.38 g
-</td>
-<td style="text-align:left;">
-0.449 g
-</td>
-<td style="text-align:left;">
-0.589 g
-</td>
-<td style="text-align:left;">
-1.071 g
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-2.37 g
-</td>
 <td style="text-align:left;">
-0
+Antiinfectives and antiseptics for local oral treatment
 </td>
 <td style="text-align:left;">
-0
+A01AB02
 </td>
 <td style="text-align:left;">
-8.82 g
+ALIMENTARY TRACT AND METABOLISM
 </td>
 </tr>
 <tr>
@@ -2200,232 +1748,19 @@ Teff, uncooked
 4
 </td>
 <td style="text-align:left;">
-Sherbet, orange
+D00008
 </td>
 <td style="text-align:left;">
-100 g
+Hydrogen peroxide (USP)
 </td>
-<td style="text-align:right;">
-144
-</td>
-<td style="text-align:left;">
-2g
-</td>
-<td style="text-align:left;">
-1.2g
-</td>
-<td style="text-align:left;">
-1mg
-</td>
-<td style="text-align:left;">
-46.00 mg
-</td>
-<td style="text-align:left;">
-7.7 mg
-</td>
-<td style="text-align:left;">
-4.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.063 mg
-</td>
-<td style="text-align:left;">
-0.224 mg
-</td>
-<td style="text-align:left;">
-0.097 mg
-</td>
-<td style="text-align:left;">
-0.027 mg
-</td>
-<td style="text-align:left;">
-46.00 IU
-</td>
-<td style="text-align:left;">
-12.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-1.00 mcg
-</td>
-<td style="text-align:left;">
-5.00 mcg
-</td>
-<td style="text-align:left;">
-7.00 mcg
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-0.13 mcg
-</td>
-<td style="text-align:left;">
-0.023 mg
-</td>
-<td style="text-align:left;">
-2.3 mg
-</td>
-<td style="text-align:left;">
-0.00 IU
-</td>
-<td style="text-align:left;">
-0.01 mg
-</td>
-<td style="text-align:left;">
-0.01 mg
-</td>
-<td style="text-align:left;">
-0.0 mcg
-</td>
-<td style="text-align:left;">
-54.00 mg
-</td>
-<td style="text-align:left;">
-0.028 mg
-</td>
-<td style="text-align:left;">
-0.14 mg
-</td>
-<td style="text-align:left;">
-8.00 mg
-</td>
-<td style="text-align:left;">
-0.011 mg
-</td>
-<td style="text-align:left;">
-40.00 mg
-</td>
-<td style="text-align:left;">
-96.00 mg
-</td>
-<td style="text-align:left;">
-1.5 mcg
-</td>
-<td style="text-align:left;">
-0.48 mg
-</td>
-<td style="text-align:left;">
-1.10 g
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-30.40 g
-</td>
-<td style="text-align:left;">
-1.3 g
-</td>
-<td style="text-align:left;">
-24.32 g
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-2.00 g
-</td>
-<td style="text-align:left;">
-1.160 g
-</td>
-<td style="text-align:left;">
-0.530 g
-</td>
-<td style="text-align:left;">
-0.080 g
-</td>
-<td style="text-align:left;">
-1.00 mg
-</td>
-<td style="text-align:left;">
-0.0 g
-</td>
-<td style="text-align:left;">
-0.40 g
-</td>
 <td style="text-align:left;">
-0.00 mg
+Other antiseptics and disinfectants
 </td>
 <td style="text-align:left;">
-0.00 mg
+D08AX01
 </td>
 <td style="text-align:left;">
-66.10 g
+DERMATOLOGICALS
 </td>
 </tr>
 <tr>
@@ -2433,586 +1768,153 @@ Sherbet, orange
 5
 </td>
 <td style="text-align:left;">
-Cauliflower, raw
+D00008
 </td>
 <td style="text-align:left;">
-100 g
+Hydrogen peroxide (USP)
 </td>
-<td style="text-align:right;">
-25
-</td>
-<td style="text-align:left;">
-0.3g
-</td>
-<td style="text-align:left;">
-0.1g
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-30.00 mg
-</td>
-<td style="text-align:left;">
-44.3 mg
-</td>
-<td style="text-align:left;">
-57.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.507 mg
-</td>
-<td style="text-align:left;">
-0.667 mg
-</td>
-<td style="text-align:left;">
-0.060 mg
-</td>
-<td style="text-align:left;">
-0.050 mg
-</td>
-<td style="text-align:left;">
-0.00 IU
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-1.00 mcg
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.184 mg
-</td>
-<td style="text-align:left;">
-48.2 mg
-</td>
-<td style="text-align:left;">
-0.00 IU
-</td>
-<td style="text-align:left;">
-0.08 mg
-</td>
-<td style="text-align:left;">
-0.08 mg
-</td>
-<td style="text-align:left;">
-15.5 mcg
-</td>
-<td style="text-align:left;">
-22.00 mg
-</td>
-<td style="text-align:left;">
-0.039 mg
-</td>
-<td style="text-align:left;">
-0.42 mg
-</td>
-<td style="text-align:left;">
-15.00 mg
-</td>
-<td style="text-align:left;">
-0.155 mg
-</td>
-<td style="text-align:left;">
-44.00 mg
-</td>
-<td style="text-align:left;">
-299.00 mg
-</td>
-<td style="text-align:left;">
-0.6 mcg
-</td>
-<td style="text-align:left;">
-0.27 mg
-</td>
-<td style="text-align:left;">
-1.92 g
-</td>
-<td style="text-align:left;">
-0.116 g
-</td>
-<td style="text-align:left;">
-0.086 g
-</td>
-<td style="text-align:left;">
-0.177 g
-</td>
-<td style="text-align:left;">
-0.020 g
-</td>
-<td style="text-align:left;">
-0.257 g
-</td>
-<td style="text-align:left;">
-0.071 g
-</td>
-<td style="text-align:left;">
-0.056 g
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0.071 g
-</td>
-<td style="text-align:left;">
-0.106 g
-</td>
-<td style="text-align:left;">
-0.217 g
-</td>
-<td style="text-align:left;">
-0.020 g
-</td>
-<td style="text-align:left;">
-0.065 g
-</td>
-<td style="text-align:left;">
-0.071 g
-</td>
-<td style="text-align:left;">
-0.086 g
-</td>
-<td style="text-align:left;">
-0.076 g
-</td>
-<td style="text-align:left;">
-0.020 g
-</td>
-<td style="text-align:left;">
-0.051 g
-</td>
-<td style="text-align:left;">
-0.125 g
-</td>
-<td style="text-align:left;">
-4.97 g
-</td>
-<td style="text-align:left;">
-2.0 g
-</td>
-<td style="text-align:left;">
-1.91 g
-</td>
-<td style="text-align:left;">
-0.97 g
-</td>
-<td style="text-align:left;">
-0.00 g
-</td>
-<td style="text-align:left;">
-0.94 g
-</td>
-<td style="text-align:left;">
-0.00 g
-</td>
-<td style="text-align:left;">
-0.00 g
-</td>
-<td style="text-align:left;">
-0.00 g
-</td>
-<td style="text-align:left;">
-0.28 g
-</td>
-<td style="text-align:left;">
-0.130 g
-</td>
-<td style="text-align:left;">
-0.034 g
-</td>
-<td style="text-align:left;">
-0.031 g
-</td>
-<td style="text-align:left;">
-0.00 mg
-</td>
-<td style="text-align:left;">
-0.0 g
-</td>
-<td style="text-align:left;">
-0.76 g
-</td>
 <td style="text-align:left;">
-0.00 mg
+Antiinfectives
 </td>
 <td style="text-align:left;">
-0.00 mg
+S02AA06
 </td>
 <td style="text-align:left;">
-92.07 g
+SENSORY ORGANS
 </td>
 </tr>
 </tbody>
 </table>
-<p>As you can see, this data set needs a lot of cleaning (the units are
-in the data fields) but that will be dealt with in a later chapter.</p>
 </div>
-<div id="exercise-3" class="section level3">
-<h3>Exercise 3</h3>
-<p>Download this <a href="https://www.kaggle.com/datasets/vaishnavivenkatesan/food-and-their-calories">dataset</a>.
-Unzip it and import the csv data in R.</p>
-<pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise03/Food and Calories - Sheet1.csv&quot;
+<div id="exercise-4" class="section level3">
+<h3>Exercise 4</h3>
+<p>Download the <a href="https://www.kaggle.com/datasets/boltcutters/food-allergens-and-allergies">Food
+allergens and allergies</a> dataset to your computer. Unzip the file and
+import the csv data in R.</p>
+<pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise04/FoodData.csv&quot;
 df &lt;- read_csv(file_path)
 formatted_table(head(df))</code></pre>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
+<th style="text-align:left;">
+Class
+</th>
+<th style="text-align:left;">
+Type
+</th>
+<th style="text-align:left;">
+Group
+</th>
 <th style="text-align:left;">
 Food
 </th>
 <th style="text-align:left;">
-Serving
-</th>
-<th style="text-align:left;">
-Calories
+Allergy
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align:left;">
+Plant origin
+</td>
+<td style="text-align:left;">
+Nut and seed
+</td>
+<td style="text-align:left;">
+Oil seed
+</td>
+<td style="text-align:left;">
+Almond
+</td>
+<td style="text-align:left;">
+Nut Allergy
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Plant origin
+</td>
+<td style="text-align:left;">
+Fruit
+</td>
+<td style="text-align:left;">
+Pome fruit
+</td>
+<td style="text-align:left;">
+Apple
+</td>
+<td style="text-align:left;">
+Oral Allergy Syndrome
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Plant origin
+</td>
+<td style="text-align:left;">
+Fruit
+</td>
+<td style="text-align:left;">
+Stone fruit
+</td>
+<td style="text-align:left;">
+Apricot
+</td>
+<td style="text-align:left;">
+Stone Fruit Allergy
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Plant origin
+</td>
+<td style="text-align:left;">
+Vegetable
+</td>
+<td style="text-align:left;">
+Composite vegetable
+</td>
 <td style="text-align:left;">
 Artichoke
 </td>
 <td style="text-align:left;">
-1 artichoke (128 g)
-</td>
-<td style="text-align:left;">
-60 cal
+Insulin Allergy
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Arugula
+Plant origin
 </td>
 <td style="text-align:left;">
-1 leaf (2 g)
+Vegetable
 </td>
 <td style="text-align:left;">
-1 cal
+Liliaceous vegetable
 </td>
-</tr>
-<tr>
 <td style="text-align:left;">
 Asparagus
 </td>
 <td style="text-align:left;">
-1 spear (12 g)
-</td>
-<td style="text-align:left;">
-2 cal
+Allium Allergy
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Aubergine
+Plant origin
 </td>
 <td style="text-align:left;">
-1 aubergine (458 g)
+Fruit
 </td>
 <td style="text-align:left;">
-115 cal
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Beetroot
+Tropical fruit
 </td>
 <td style="text-align:left;">
-1 beet (82 g)
+Avocado
 </td>
 <td style="text-align:left;">
-35 cal
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Bell Pepper
-</td>
-<td style="text-align:left;">
-1 pepper (73 g)
-</td>
-<td style="text-align:left;">
-15 cal
-</td>
-</tr>
-</tbody>
-</table>
-<p>As you can see, this data set needs cleaning (the units are in the
-data fields) but that will be dealt with in a later chapter.</p>
-</div>
-<div id="exercise-4" class="section level3">
-<h3>Exercise 4</h3>
-<p>Download this <a href="https://www.kaggle.com/datasets/amandaroseknudsen/foodproductemissions?resource=download">dataset</a>.
-Unzip it and import the csv data in R.</p>
-<pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise04/Food_Product_Emissions.csv&quot;
-df &lt;- read_csv(file_path)
-formatted_table(head(df))</code></pre>
-<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Food product
-</th>
-<th style="text-align:right;">
-Land Use Change
-</th>
-<th style="text-align:right;">
-Feed
-</th>
-<th style="text-align:right;">
-Farm
-</th>
-<th style="text-align:right;">
-Processing
-</th>
-<th style="text-align:right;">
-Transport
-</th>
-<th style="text-align:right;">
-Packaging
-</th>
-<th style="text-align:right;">
-Retail
-</th>
-<th style="text-align:right;">
-Total from Land to Retail
-</th>
-<th style="text-align:right;">
-Total Global Average GHG Emissions per kg
-</th>
-<th style="text-align:left;">
-Unit of GHG Emissions
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Apples
-</td>
-<td style="text-align:right;">
--0.029
-</td>
-<td style="text-align:right;">
-0.000
-</td>
-<td style="text-align:right;">
-0.225
-</td>
-<td style="text-align:right;">
-0.004
-</td>
-<td style="text-align:right;">
-0.096
-</td>
-<td style="text-align:right;">
-0.044
-</td>
-<td style="text-align:right;">
-0.017
-</td>
-<td style="text-align:right;">
-0.357
-</td>
-<td style="text-align:right;">
-0.43
-</td>
-<td style="text-align:left;">
-kg CO2e per kg food produced
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Bananas
-</td>
-<td style="text-align:right;">
--0.025
-</td>
-<td style="text-align:right;">
-0.000
-</td>
-<td style="text-align:right;">
-0.266
-</td>
-<td style="text-align:right;">
-0.059
-</td>
-<td style="text-align:right;">
-0.292
-</td>
-<td style="text-align:right;">
-0.065
-</td>
-<td style="text-align:right;">
-0.021
-</td>
-<td style="text-align:right;">
-0.678
-</td>
-<td style="text-align:right;">
-0.86
-</td>
-<td style="text-align:left;">
-kg CO2e per kg food produced
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Barley
-</td>
-<td style="text-align:right;">
-0.009
-</td>
-<td style="text-align:right;">
-0.000
-</td>
-<td style="text-align:right;">
-0.176
-</td>
-<td style="text-align:right;">
-0.128
-</td>
-<td style="text-align:right;">
-0.035
-</td>
-<td style="text-align:right;">
-0.497
-</td>
-<td style="text-align:right;">
-0.264
-</td>
-<td style="text-align:right;">
-1.109
-</td>
-<td style="text-align:right;">
-1.18
-</td>
-<td style="text-align:left;">
-kg CO2e per kg food produced
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Beef (beef herd)
-</td>
-<td style="text-align:right;">
-16.278
-</td>
-<td style="text-align:right;">
-1.878
-</td>
-<td style="text-align:right;">
-39.388
-</td>
-<td style="text-align:right;">
-1.269
-</td>
-<td style="text-align:right;">
-0.346
-</td>
-<td style="text-align:right;">
-0.247
-</td>
-<td style="text-align:right;">
-0.164
-</td>
-<td style="text-align:right;">
-59.570
-</td>
-<td style="text-align:right;">
-99.48
-</td>
-<td style="text-align:left;">
-kg CO2e per kg food produced
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Beef (dairy herd)
-</td>
-<td style="text-align:right;">
-0.906
-</td>
-<td style="text-align:right;">
-2.508
-</td>
-<td style="text-align:right;">
-15.689
-</td>
-<td style="text-align:right;">
-1.108
-</td>
-<td style="text-align:right;">
-0.424
-</td>
-<td style="text-align:right;">
-0.268
-</td>
-<td style="text-align:right;">
-0.182
-</td>
-<td style="text-align:right;">
-21.085
-</td>
-<td style="text-align:right;">
-33.30
-</td>
-<td style="text-align:left;">
-kg CO2e per kg food produced
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Beet Sugar
-</td>
-<td style="text-align:right;">
-0.000
-</td>
-<td style="text-align:right;">
-0.000
-</td>
-<td style="text-align:right;">
-0.536
-</td>
-<td style="text-align:right;">
-0.242
-</td>
-<td style="text-align:right;">
-0.629
-</td>
-<td style="text-align:right;">
-0.090
-</td>
-<td style="text-align:right;">
-0.039
-</td>
-<td style="text-align:right;">
-1.536
-</td>
-<td style="text-align:right;">
-1.81
-</td>
-<td style="text-align:left;">
-kg CO2e per kg food produced
+Oral Allergy Syndrome
 </td>
 </tr>
 </tbody>
@@ -3020,112 +1922,345 @@ kg CO2e per kg food produced
 </div>
 <div id="exercise-5" class="section level3">
 <h3>Exercise 5</h3>
-<p>Download data from <a href="https://ourworldindata.org/meat-production">this website</a>.
-Search for Global meat production Meat production across the world.
-Download the csv file and import the csv data in R.</p>
-<pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise05/global-meat-production.csv&quot;
-df &lt;- read_csv(file_path)
-formatted_table(head(df))</code></pre>
+<p>Download the <a href="https://www.kaggle.com/datasets/ouzkoca/patients">Patients</a>
+dataset to your computer. Unzip the file and import the csv data in R.
+NOTE: this file contains the semi-colon as field separator, so you have
+to use the <code>read_csv2</code> function to read the data
+correctly.</p>
+<pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise05/22.11.2021.csv&quot;
+df &lt;- read_csv2(file_path)
+formatted_table(head(df, c(6, 15)))</code></pre>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
-<th style="text-align:left;">
-Entity
-</th>
-<th style="text-align:left;">
-Code
+<th style="text-align:right;">
+PATIENT NO
 </th>
 <th style="text-align:right;">
-Year
+PE
+</th>
+<th style="text-align:left;">
+GENDER
 </th>
 <th style="text-align:right;">
-Meat, total | 00001765 || Production | 005510 || tonnes
+AGE
+</th>
+<th style="text-align:right;">
+ALBUMIN
+</th>
+<th style="text-align:right;">
+ALP
+</th>
+<th style="text-align:right;">
+ALT
+</th>
+<th style="text-align:right;">
+AMYLASE
+</th>
+<th style="text-align:right;">
+aPTT
+</th>
+<th style="text-align:right;">
+AST
+</th>
+<th style="text-align:right;">
+BASO#
+</th>
+<th style="text-align:right;">
+BE(B)
+</th>
+<th style="text-align:right;">
+BO2
+</th>
+<th style="text-align:right;">
+CA++
+</th>
+<th style="text-align:right;">
+CK
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
-Afghanistan
-</td>
-<td style="text-align:left;">
-AFG
+<td style="text-align:right;">
+1406
 </td>
 <td style="text-align:right;">
-1961
+0
+</td>
+<td style="text-align:left;">
+MALE
 </td>
 <td style="text-align:right;">
-129420
+83
+</td>
+<td style="text-align:right;">
+37.81
+</td>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:right;">
+79
+</td>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+153
+</td>
+<td style="text-align:right;">
+0.03
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+159
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-Afghanistan
-</td>
-<td style="text-align:left;">
-AFG
+<td style="text-align:right;">
+2123
 </td>
 <td style="text-align:right;">
-1962
+0
+</td>
+<td style="text-align:left;">
+FEMALE
 </td>
 <td style="text-align:right;">
-132206
+47
+</td>
+<td style="text-align:right;">
+42.23
+</td>
+<td style="text-align:right;">
+92
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:right;">
+29.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.04
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-Afghanistan
-</td>
-<td style="text-align:left;">
-AFG
+<td style="text-align:right;">
+2829
 </td>
 <td style="text-align:right;">
-1963
+0
+</td>
+<td style="text-align:left;">
+MALE
 </td>
 <td style="text-align:right;">
-138971
+36
+</td>
+<td style="text-align:right;">
+36.92
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:right;">
+25.4
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+0.03
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+161
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-Afghanistan
-</td>
-<td style="text-align:left;">
-AFG
+<td style="text-align:right;">
+3340
 </td>
 <td style="text-align:right;">
-1964
+0
+</td>
+<td style="text-align:left;">
+FEMALE
 </td>
 <td style="text-align:right;">
-143830
+59
+</td>
+<td style="text-align:right;">
+38.51
+</td>
+<td style="text-align:right;">
+101
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+30.2
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+0.01
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+55
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-Afghanistan
-</td>
-<td style="text-align:left;">
-AFG
+<td style="text-align:right;">
+3848
 </td>
 <td style="text-align:right;">
-1965
+0
+</td>
+<td style="text-align:left;">
+MALE
 </td>
 <td style="text-align:right;">
-150195
+87
+</td>
+<td style="text-align:right;">
+35.80
+</td>
+<td style="text-align:right;">
+129
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+0.01
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+49
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-Afghanistan
-</td>
-<td style="text-align:left;">
-AFG
+<td style="text-align:right;">
+4048
 </td>
 <td style="text-align:right;">
-1966
+0
+</td>
+<td style="text-align:left;">
+MALE
 </td>
 <td style="text-align:right;">
-175210
+79
+</td>
+<td style="text-align:right;">
+35.17
+</td>
+<td style="text-align:right;">
+123
+</td>
+<td style="text-align:right;">
+88
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+30.8
+</td>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+117
 </td>
 </tr>
 </tbody>
@@ -3135,168 +2270,175 @@ AFG
 <h3>Exercise 6</h3>
 <p>Use R to create a csv file from the following table:</p>
 <table>
+<colgroup>
+<col width="19%" />
+<col width="22%" />
+<col width="16%" />
+<col width="23%" />
+<col width="19%" />
+</colgroup>
 <thead>
 <tr class="header">
-<th align="left">Food product</th>
-<th align="right">Processing</th>
-<th align="right">Transport</th>
-<th align="right">Packaging</th>
-<th align="right">Retail</th>
+<th align="left">Protein Name</th>
+<th align="right">Location</th>
+<th align="right">Weight (kD)</th>
+<th align="right">Date submission</th>
+<th align="right">Source</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Olive Oil</td>
-<td align="right">66</td>
-<td align="right">482</td>
-<td align="right">861</td>
-<td align="right">46</td>
+<td align="left">ORF1</td>
+<td align="right">21571..25392</td>
+<td align="right">14.3</td>
+<td align="right">29-FEB-2020</td>
+<td align="right">Published</td>
 </tr>
 <tr class="even">
-<td align="left">Palm Oil</td>
-<td align="right">1264</td>
-<td align="right">208</td>
-<td align="right">886</td>
-<td align="right">44</td>
+<td align="left">ORF3a</td>
+<td align="right">25401..26228</td>
+<td align="right">23.9</td>
+<td align="right">29-FEB-2020</td>
+<td align="right">Unpublished</td>
 </tr>
 <tr class="odd">
-<td align="left">Rapeseed Oil</td>
-<td align="right">193</td>
-<td align="right">19</td>
-<td align="right">844</td>
-<td align="right">46</td>
+<td align="left">ORF4b</td>
+<td align="right">26253..26480</td>
+<td align="right">161.1</td>
+<td align="right">29-FEB-2020</td>
+<td align="right">Unpublished</td>
 </tr>
 <tr class="even">
-<td align="left">Soybean Oil</td>
-<td align="right">311</td>
-<td align="right">299</td>
-<td align="right">849</td>
-<td align="right">43</td>
+<td align="left">ORF6</td>
+<td align="right">27210..27395</td>
+<td align="right">35.9</td>
+<td align="right">29-FEB-2020</td>
+<td align="right">Submitted</td>
 </tr>
 <tr class="odd">
-<td align="left">Sunflower Oil</td>
-<td align="right">229</td>
-<td align="right">201</td>
-<td align="right">853</td>
-<td align="right">43</td>
+<td align="left">ORF7a</td>
+<td align="right">27402..27767</td>
+<td align="right">24.6</td>
+<td align="right">29-FEB-2020</td>
+<td align="right">Unpublished</td>
 </tr>
 </tbody>
 </table>
-<pre class="r"><code>food_product &lt;- c(&quot;Olive Oil&quot;, &quot;Palm Oil&quot;, &quot;Rapeseed Oil&quot;, &quot;Soybean Oil&quot;, &quot;Sunflower Oil&quot;)
-processing &lt;- c(66, 1264, 193, 311, 229) 
-transport &lt;- c(482, 208, 19, 299, 201)
-packaging &lt;- c(861, 886, 844, 849, 853)
-retail &lt;- c(46, 44, 46, 43, 43)
-my_tibble &lt;- tibble(food_product, processing, transport, packaging, retail)
-write_csv(my_tibble, &quot;./files_05_data_import_solutions/exercise06/food_emission_data.csv&quot;)</code></pre>
+<pre class="r"><code>protein_name &lt;- c(&quot;ORF1&quot;, &quot;ORF3a&quot;, &quot;ORF4b&quot;, &quot;ORF6&quot;, &quot;ORF7a&quot;)
+location &lt;- c(&quot;21571..25392&quot;, &quot;25401..26228&quot;, &quot;26253..26480&quot;, &quot;27210..27395&quot;, &quot;27402..27767&quot;) 
+weight &lt;- c(14.3, 23.9, 161.1, 35.9, 24.6)
+date_submission &lt;- c(&quot;29-FEB-2020&quot;, &quot;29-FEB-2020&quot;, &quot;29-FEB-2020&quot;, &quot;29-FEB-2020&quot;, &quot;29-FEB-2020&quot;)
+source &lt;- c(&quot;Published&quot;, &quot;Unpublished&quot;, &quot;Unpublished&quot;, &quot;Submitted&quot;, &quot;Unpublished&quot;)
+my_tibble &lt;- tibble(protein_name, location, weight, date_submission, source)
+write_csv(my_tibble, &quot;./files_05_data_import_solutions/exercise06/virus_genome.csv&quot;)</code></pre>
 <p>To prove that the data was written to a csv file:</p>
-<pre class="r"><code>file_path &lt;- &quot;././files_05_data_import_solutions/exercise06/food_emission_data.csv&quot;
+<pre class="r"><code>file_path &lt;- &quot;././files_05_data_import_solutions/exercise06/virus_genome.csv&quot;
 df &lt;- read_csv(file_path)
 formatted_table(head(df))</code></pre>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
-food_product
+protein_name
+</th>
+<th style="text-align:left;">
+location
 </th>
 <th style="text-align:right;">
-processing
+weight
 </th>
-<th style="text-align:right;">
-transport
+<th style="text-align:left;">
+date_submission
 </th>
-<th style="text-align:right;">
-packaging
-</th>
-<th style="text-align:right;">
-retail
+<th style="text-align:left;">
+source
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
-Olive Oil
+ORF1
+</td>
+<td style="text-align:left;">
+21571..25392
 </td>
 <td style="text-align:right;">
-66
+14.3
 </td>
-<td style="text-align:right;">
-482
+<td style="text-align:left;">
+29-FEB-2020
 </td>
-<td style="text-align:right;">
-861
-</td>
-<td style="text-align:right;">
-46
+<td style="text-align:left;">
+Published
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Palm Oil
+ORF3a
+</td>
+<td style="text-align:left;">
+25401..26228
 </td>
 <td style="text-align:right;">
-1264
+23.9
 </td>
-<td style="text-align:right;">
-208
+<td style="text-align:left;">
+29-FEB-2020
 </td>
-<td style="text-align:right;">
-886
-</td>
-<td style="text-align:right;">
-44
+<td style="text-align:left;">
+Unpublished
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Rapeseed Oil
+ORF4b
+</td>
+<td style="text-align:left;">
+26253..26480
 </td>
 <td style="text-align:right;">
-193
+161.1
 </td>
-<td style="text-align:right;">
-19
+<td style="text-align:left;">
+29-FEB-2020
 </td>
-<td style="text-align:right;">
-844
-</td>
-<td style="text-align:right;">
-46
+<td style="text-align:left;">
+Unpublished
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Soybean Oil
+ORF6
+</td>
+<td style="text-align:left;">
+27210..27395
 </td>
 <td style="text-align:right;">
-311
+35.9
 </td>
-<td style="text-align:right;">
-299
+<td style="text-align:left;">
+29-FEB-2020
 </td>
-<td style="text-align:right;">
-849
-</td>
-<td style="text-align:right;">
-43
+<td style="text-align:left;">
+Submitted
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Sunflower Oil
+ORF7a
+</td>
+<td style="text-align:left;">
+27402..27767
 </td>
 <td style="text-align:right;">
-229
+24.6
 </td>
-<td style="text-align:right;">
-201
+<td style="text-align:left;">
+29-FEB-2020
 </td>
-<td style="text-align:right;">
-853
-</td>
-<td style="text-align:right;">
-43
+<td style="text-align:left;">
+Unpublished
 </td>
 </tr>
 </tbody>
@@ -3307,118 +2449,118 @@ Sunflower Oil
 <p>Use the same data from exercise 6 but now create an Excel file. Make
 sure to include the column headers.</p>
 <pre class="r"><code>library(openxlsx)
-write.xlsx(my_tibble, &quot;./files_05_data_import_solutions/exercise07/food_emission_data.xlsx&quot;, colNames = TRUE)</code></pre>
+write.xlsx(my_tibble, &quot;./files_05_data_import_solutions/exercise07/virus_genome.xlsx&quot;, colNames = TRUE)</code></pre>
 </div>
 <div id="exercise-8" class="section level3">
 <h3>Exercise 8</h3>
 <p>Use the Excel file from exercise 7 to open the Excel file.</p>
 <pre class="r"><code>library(readxl)
-my_data &lt;- read_excel(&quot;./files_05_data_import_solutions/exercise07/food_emission_data.xlsx&quot;)
+my_data &lt;- read_excel(&quot;./files_05_data_import_solutions/exercise07/virus_genome.xlsx&quot;)
 formatted_table(head(my_data))</code></pre>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
-food_product
+protein_name
+</th>
+<th style="text-align:left;">
+location
 </th>
 <th style="text-align:right;">
-processing
+weight
 </th>
-<th style="text-align:right;">
-transport
+<th style="text-align:left;">
+date_submission
 </th>
-<th style="text-align:right;">
-packaging
-</th>
-<th style="text-align:right;">
-retail
+<th style="text-align:left;">
+source
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
-Olive Oil
+ORF1
+</td>
+<td style="text-align:left;">
+21571..25392
 </td>
 <td style="text-align:right;">
-66
+14.3
 </td>
-<td style="text-align:right;">
-482
+<td style="text-align:left;">
+29-FEB-2020
 </td>
-<td style="text-align:right;">
-861
-</td>
-<td style="text-align:right;">
-46
+<td style="text-align:left;">
+Published
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Palm Oil
+ORF3a
+</td>
+<td style="text-align:left;">
+25401..26228
 </td>
 <td style="text-align:right;">
-1264
+23.9
 </td>
-<td style="text-align:right;">
-208
+<td style="text-align:left;">
+29-FEB-2020
 </td>
-<td style="text-align:right;">
-886
-</td>
-<td style="text-align:right;">
-44
+<td style="text-align:left;">
+Unpublished
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Rapeseed Oil
+ORF4b
+</td>
+<td style="text-align:left;">
+26253..26480
 </td>
 <td style="text-align:right;">
-193
+161.1
 </td>
-<td style="text-align:right;">
-19
+<td style="text-align:left;">
+29-FEB-2020
 </td>
-<td style="text-align:right;">
-844
-</td>
-<td style="text-align:right;">
-46
+<td style="text-align:left;">
+Unpublished
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Soybean Oil
+ORF6
+</td>
+<td style="text-align:left;">
+27210..27395
 </td>
 <td style="text-align:right;">
-311
+35.9
 </td>
-<td style="text-align:right;">
-299
+<td style="text-align:left;">
+29-FEB-2020
 </td>
-<td style="text-align:right;">
-849
-</td>
-<td style="text-align:right;">
-43
+<td style="text-align:left;">
+Submitted
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Sunflower Oil
+ORF7a
+</td>
+<td style="text-align:left;">
+27402..27767
 </td>
 <td style="text-align:right;">
-229
+24.6
 </td>
-<td style="text-align:right;">
-201
+<td style="text-align:left;">
+29-FEB-2020
 </td>
-<td style="text-align:right;">
-853
-</td>
-<td style="text-align:right;">
-43
+<td style="text-align:left;">
+Unpublished
 </td>
 </tr>
 </tbody>

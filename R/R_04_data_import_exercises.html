@@ -297,17 +297,23 @@ overflow-y: auto;
 border: 1px solid #ddd;
 border-radius: 4px;
 }
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-content: "\e259";
+.tabset-dropdown > .nav-tabs > li.active:before {
+content: "";
 font-family: 'Glyphicons Halflings';
 display: inline-block;
 padding: 10px;
 border-right: 1px solid #ddd;
 }
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-content: "\e258";
-font-family: 'Glyphicons Halflings';
+content: "";
 border: none;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+content: "";
+font-family: 'Glyphicons Halflings';
+display: inline-block;
+padding: 10px;
+border-right: 1px solid #ddd;
 }
 .tabset-dropdown > .nav-tabs > li.active {
 display: block;
@@ -362,117 +368,135 @@ display: none;
 <p>This file can be downloaded <a href="./R_04_data_import_exercises.Rmd">here</a></p>
 <div id="exercise-1" class="section level3">
 <h3>Exercise 1</h3>
-<p>Load the following datasets in R using the csv import functionality.
-First have a look at them in your text editor.<br />
-Then load in R.</p>
+<p>First, check the following files in your text editor.</p>
 <ul>
-<li><a href="./files_04_data_import_exercises/exercise01/Food_composition_1.csv">file
+<li><a href="./files_04_data_import_exercises/exercise01/fish_data_1.csv">file
 1</a><br />
 </li>
-<li><a href="./files_04_data_import_exercises/exercise01/Food_composition_2.csv">file
+<li><a href="./files_04_data_import_exercises/exercise01/fish_data_2.csv">file
 2</a><br />
 </li>
-<li><a href="./files_04_data_import_exercises/exercise01/Food_composition_3.csv">file
+<li><a href="./files_04_data_import_exercises/exercise01/fish_data_3.csv">file
 3</a><br />
 </li>
-<li><a href="./files_04_data_import_exercises/exercise01/Food_composition_4.csv">file
+<li><a href="./files_04_data_import_exercises/exercise01/fish_data_4.csv">file
 4</a></li>
 </ul>
-<p>Report the field separator.</p>
+<p>Next, report the field separator and the function that you will use
+to import the data. Also think of you need extra arguments in your
+function to import the data correctly (for example: do you need the
+<code>locale =</code> argument?). Last, load the datasets in R using the
+csv, csv2, or tsv import functionality and check if the data is imported
+correctly.</p>
+<p>File 1:</p>
+<pre class="r"><code>#Your code here for file 1</code></pre>
+<p>File 2:</p>
+<pre class="r"><code>#Your code here for file 2</code></pre>
+<p>File3:</p>
+<pre class="r"><code>#Your code here for file 3</code></pre>
+<p>File 4:</p>
+<pre class="r"><code>#Your code here for file 4</code></pre>
 </div>
 <div id="exercise-2" class="section level3">
 <h3>Exercise 2</h3>
-<p>Download this <a href="https://www.kaggle.com/datasets/trolukovich/nutritional-values-for-common-foods-and-products">dataset</a>.
-Unzip it and import the csv data in R.</p>
+<p>Download the <a href="https://www.kaggle.com/datasets/alexteboul/heart-disease-health-indicators-dataset">Heart
+Disease Health Indicators</a> dataset to your computer. Unzip the file
+and import the csv data in R.</p>
 <pre class="r"><code>#Your code here</code></pre>
-<p>As you can see, this dataset needs a lot of cleaning (the units are
-in the data fields) but that will be dealt with in a later chapter.</p>
 </div>
 <div id="exercise-3" class="section level3">
 <h3>Exercise 3</h3>
-<p>Download this <a href="https://www.kaggle.com/datasets/vaishnavivenkatesan/food-and-their-calories">dataset</a>.
-Unzip it and import the csv data in R.</p>
+<p>Download the <a href="https://www.kaggle.com/datasets/tonibois/properties-of-atc-accepted-medicines">Properties
+of ATC-accepted medicines</a> dataset to your computer. Unzip the file
+and import the csv data in R.</p>
 <pre class="r"><code>#Your code here</code></pre>
-<p>As you can see, this dataset needs cleaning (the units are in the
-data fields) but that will be dealt with in a later chapter.</p>
 </div>
 <div id="exercise-4" class="section level3">
 <h3>Exercise 4</h3>
-<p>Download this <a href="https://www.kaggle.com/datasets/amandaroseknudsen/foodproductemissions?resource=download">dataset</a>.
-Unzip it and import the csv data in R.</p>
+<p>Download the <a href="https://www.kaggle.com/datasets/boltcutters/food-allergens-and-allergies">Food
+allergens and allergies</a> dataset to your computer. Unzip the file and
+import the csv data in R.</p>
 <pre class="r"><code>#Your code here</code></pre>
 </div>
 <div id="exercise-5" class="section level3">
 <h3>Exercise 5</h3>
-<p>Download data from <a href="https://ourworldindata.org/meat-production">this website</a>.
-Search for Global meat production Meat production across the world.
-Download the csv file and import the csv data in R.</p>
+<p>Download the <a href="https://www.kaggle.com/datasets/ouzkoca/patients">Patients</a>
+dataset to your computer. Unzip the file and import the csv data in
+R.</p>
 <pre class="r"><code>#Your code here</code></pre>
 </div>
 <div id="exercise-6" class="section level3">
 <h3>Exercise 6</h3>
 <p>Use R to create a csv file from the following table:</p>
 <table>
+<colgroup>
+<col width="19%" />
+<col width="22%" />
+<col width="16%" />
+<col width="23%" />
+<col width="19%" />
+</colgroup>
 <thead>
 <tr class="header">
-<th align="left">Food product</th>
-<th align="right">Processing</th>
-<th align="right">Transport</th>
-<th align="right">Packaging</th>
-<th align="right">Retail</th>
+<th align="left">Protein Name</th>
+<th align="right">Location</th>
+<th align="right">Weight (kD)</th>
+<th align="right">Date submission</th>
+<th align="right">Source</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Olive Oil</td>
-<td align="right">66</td>
-<td align="right">482</td>
-<td align="right">861</td>
-<td align="right">46</td>
+<td align="left">ORF1</td>
+<td align="right">21571..25392</td>
+<td align="right">14.3</td>
+<td align="right">29-FEB-2020</td>
+<td align="right">Published</td>
 </tr>
 <tr class="even">
-<td align="left">Palm Oil</td>
-<td align="right">1264</td>
-<td align="right">208</td>
-<td align="right">886</td>
-<td align="right">44</td>
+<td align="left">ORF3a</td>
+<td align="right">25401..26228</td>
+<td align="right">23.9</td>
+<td align="right">29-FEB-2020</td>
+<td align="right">Unpublished</td>
 </tr>
 <tr class="odd">
-<td align="left">Rapeseed Oil</td>
-<td align="right">193</td>
-<td align="right">19</td>
-<td align="right">844</td>
-<td align="right">46</td>
+<td align="left">ORF4b</td>
+<td align="right">26253..26480</td>
+<td align="right">161.1</td>
+<td align="right">29-FEB-2020</td>
+<td align="right">Unpublished</td>
 </tr>
 <tr class="even">
-<td align="left">Soybean Oil</td>
-<td align="right">311</td>
-<td align="right">299</td>
-<td align="right">849</td>
-<td align="right">43</td>
+<td align="left">ORF6</td>
+<td align="right">27210..27395</td>
+<td align="right">35.9</td>
+<td align="right">29-FEB-2020</td>
+<td align="right">Submitted</td>
 </tr>
 <tr class="odd">
-<td align="left">Sunflower Oil</td>
-<td align="right">229</td>
-<td align="right">201</td>
-<td align="right">853</td>
-<td align="right">43</td>
+<td align="left">ORF7a</td>
+<td align="right">27402..27767</td>
+<td align="right">24.6</td>
+<td align="right">29-FEB-2020</td>
+<td align="right">Unpublished</td>
 </tr>
 </tbody>
 </table>
 <pre class="r"><code>#Your code here</code></pre>
-<p>To prove that the data was written to a csv file:</p>
+<p>Use code to prove that the data was written to a csv file (code to
+read the csv file that you have just created):</p>
 <pre class="r"><code>#Your code here</code></pre>
 </div>
 <div id="exercise-7" class="section level3">
 <h3>Exercise 7</h3>
-<p>Use the same data from exercise 6 but now create an Excel file. Make
-sure to include the column headers.</p>
+<p>Use the same data from exercise 6 but now write code to create an
+Excel file. Make sure to include the column headers.</p>
 <pre class="r"><code>#Your code here</code></pre>
 </div>
 <div id="exercise-8" class="section level3">
 <h3>Exercise 8</h3>
-<p>Use the Excel file from exercise 7 to open the Excel file.</p>
+<p>Use code to open the Excel file from exercise 7.</p>
 <pre class="r"><code>#Your code here</code></pre>
 <hr />
 <blockquote>
