@@ -521,17 +521,23 @@ overflow-y: auto;
 border: 1px solid #ddd;
 border-radius: 4px;
 }
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-content: "\e259";
+.tabset-dropdown > .nav-tabs > li.active:before {
+content: "";
 font-family: 'Glyphicons Halflings';
 display: inline-block;
 padding: 10px;
 border-right: 1px solid #ddd;
 }
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-content: "\e258";
-font-family: 'Glyphicons Halflings';
+content: "";
 border: none;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+content: "";
+font-family: 'Glyphicons Halflings';
+display: inline-block;
+padding: 10px;
+border-right: 1px solid #ddd;
 }
 .tabset-dropdown > .nav-tabs > li.active {
 display: block;
@@ -593,135 +599,307 @@ formatted_table &lt;- function(df){
 <h3>Exercise 1</h3>
 <p><a href="./files_07_data_cleaning_exercises/exercise01/calories.xlsx">This</a>
 first data set was not loaded well in Excel. Load the Excel file as a
-tibble in R. Separate the columns correctly. Hint: use the
-<code>separate_wider_delim</code> function from tidyverse.</p>
+tibble in R. Separate the columns correctly. <em>Hint:</em> use the
+<code>separate_wider_delim</code> function from tidyverse. Consult the
+information on this function with <code>?separate_wider_delim</code>. On
+the bottom you will find examples you can run. Take a close look at the
+first example. This should give you a clue how to solve this
+problem.</p>
 <pre class="r"><code>library(readxl)
-file_path &lt;- &quot;./files_07_data_cleaning_exercises/exercise01/calories.xlsx&quot;
+file_path &lt;- &quot;./files_07_data_cleaning_exercises/exercise01/Heart_Disease_Prediction.xlsx&quot;
 df &lt;- read_excel(file_path)
-colname &lt;- &quot;FoodCategory|FoodItem|per100grams|Cals_per100grams|KJ_per100grams&quot;
-df &lt;- df %&gt;% separate_wider_delim(colname, delim = &quot;|&quot;, names = c(&quot;FoodCategory&quot;, &quot;FoodItem&quot;, &quot;per100grams&quot;, &quot;Cals_per100grams&quot;, &quot;KJ_per100grams&quot;))
-formatted_table(head(df))</code></pre>
+colname &lt;- &quot;index$Age$Sex$Chest pain type$BP$Cholesterol$FBS over 120$EKG results$Max HR$Exercise angina$ST depression$Slope of ST$Number of vessels fluro$Thallium$Heart Disease&quot;
+df &lt;- df %&gt;% separate_wider_delim(colname, delim = &quot;$&quot;, names = c(&quot;index&quot;, &quot;Age&quot;, &quot;Sex&quot;, &quot;Chest pain type&quot; ,&quot;BP&quot;, &quot;Cholesterol&quot;, &quot;FBS over 120&quot;, &quot;EKG results&quot;, &quot;Max HR&quot;, &quot;Exercise angina&quot;, &quot;ST depression&quot;, &quot;Slope of ST&quot;, &quot;Number of vessels fluro&quot;, &quot;Thallium&quot;, &quot;Heart Disease&quot;))
+formatted_table(head(df, c(6, 13)))</code></pre>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
-FoodCategory
+index
 </th>
 <th style="text-align:left;">
-FoodItem
+Age
 </th>
 <th style="text-align:left;">
-per100grams
+Sex
 </th>
 <th style="text-align:left;">
-Cals_per100grams
+Chest pain type
 </th>
 <th style="text-align:left;">
-KJ_per100grams
+BP
+</th>
+<th style="text-align:left;">
+Cholesterol
+</th>
+<th style="text-align:left;">
+FBS over 120
+</th>
+<th style="text-align:left;">
+EKG results
+</th>
+<th style="text-align:left;">
+Max HR
+</th>
+<th style="text-align:left;">
+Exercise angina
+</th>
+<th style="text-align:left;">
+ST depression
+</th>
+<th style="text-align:left;">
+Slope of ST
+</th>
+<th style="text-align:left;">
+Number of vessels fluro
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
-CannedFruit
+0
 </td>
 <td style="text-align:left;">
-Applesauce
+70
 </td>
 <td style="text-align:left;">
-100g
+1
 </td>
 <td style="text-align:left;">
-62 cal
+4
 </td>
 <td style="text-align:left;">
-260 kJ
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-CannedFruit
+130
 </td>
 <td style="text-align:left;">
-Canned Apricots
+322
 </td>
 <td style="text-align:left;">
-100g
+0
 </td>
 <td style="text-align:left;">
-48 cal
+2
 </td>
 <td style="text-align:left;">
-202 kJ
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-CannedFruit
+109
 </td>
 <td style="text-align:left;">
-Canned Blackberries
+0
 </td>
 <td style="text-align:left;">
-100g
+2.4
 </td>
 <td style="text-align:left;">
-92 cal
+2
 </td>
 <td style="text-align:left;">
-386 kJ
+3
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-CannedFruit
+1
 </td>
 <td style="text-align:left;">
-Canned Blueberries
+67
 </td>
 <td style="text-align:left;">
-100g
+0
 </td>
 <td style="text-align:left;">
-88 cal
+3
 </td>
 <td style="text-align:left;">
-370 kJ
+115
+</td>
+<td style="text-align:left;">
+564
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+160
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+1.6
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+0
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-CannedFruit
+2
 </td>
 <td style="text-align:left;">
-Canned Cherries
+57
 </td>
 <td style="text-align:left;">
-100g
+1
 </td>
 <td style="text-align:left;">
-54 cal
+2
 </td>
 <td style="text-align:left;">
-227 kJ
+124
+</td>
+<td style="text-align:left;">
+261
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+141
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+0.3
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-CannedFruit
+3
 </td>
 <td style="text-align:left;">
-Canned Cranberries
+64
 </td>
 <td style="text-align:left;">
-100g
+1
 </td>
 <td style="text-align:left;">
-178 cal
+4
 </td>
 <td style="text-align:left;">
-748 kJ
+128
+</td>
+<td style="text-align:left;">
+263
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+105
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0.2
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+74
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+120
+</td>
+<td style="text-align:left;">
+269
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+121
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0.2
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+65
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+120
+</td>
+<td style="text-align:left;">
+177
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+140
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+0.4
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+0
 </td>
 </tr>
 </tbody>
@@ -729,137 +907,203 @@ Canned Cranberries
 </div>
 <div id="exercise-2" class="section level3">
 <h3>Exercise 2</h3>
-<p>The file from the previous exercise contains the units in the cells.
-This makes it impossible to perform calculations (as the data type is a
-text string). Remove the units in order to make calculations
-possible.</p>
-<pre class="r"><code>df &lt;- df %&gt;% 
-  separate_wider_delim(Cals_per100grams, delim = &quot; &quot;, names = c(&quot;Cals_per100grams&quot;, &quot;waste&quot;)) %&gt;% 
-  separate_wider_delim(KJ_per100grams, delim = &quot; &quot;, names = c(&quot;KJ_per100grams&quot;, &quot;waste2&quot;)) %&gt;%
-  select (-c(waste, waste2)) %&gt;% #Note that this is a negative selection. Selects all but the listed columns.
-  mutate_at(c(&#39;Cals_per100grams&#39;, &#39;KJ_per100grams&#39;), as.numeric) #Creates numbers from strings
+<p>The data in <a href="./files_07_data_cleaning_exercises/exercise02/fish_data_mod.csv">this</a>
+file contains the units in the cells. This makes it impossible to
+perform calculations (as the data type is a text string). Remove the
+units in order to make calculations possible.</p>
+<pre class="r"><code>file_path &lt;- &quot;./files_07_data_cleaning_exercises/exercise02/fish_data_mod.csv&quot;
+df &lt;- read_csv2(file_path)
+df &lt;- df %&gt;% 
+  separate_wider_delim(average_length, delim = &quot; &quot;, names = c(&quot;average_length&quot;, &quot;length_unit&quot;)) %&gt;% 
+  separate_wider_delim(average_weight, delim = &quot; &quot;, names = c(&quot;average_weight&quot;, &quot;weight_unit&quot;)) %&gt;%
+  separate_wider_delim(life_span, delim = &quot; &quot;, names = c(&quot;life_span&quot;, &quot;time_unit&quot;)) %&gt;%
+  select (-c(length_unit, weight_unit, time_unit)) %&gt;% #Note that this is a negative selection. Selects all but the listed columns.
+  mutate_at(c(&#39;average_length&#39;, &#39;average_weight&#39;, &#39;life_span&#39;), as.numeric) #Creates numbers from strings
 formatted_table(head(df))</code></pre>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
-<th style="text-align:left;">
-FoodCategory
-</th>
-<th style="text-align:left;">
-FoodItem
-</th>
-<th style="text-align:left;">
-per100grams
+<th style="text-align:right;">
+id
 </th>
 <th style="text-align:right;">
-Cals_per100grams
+average_length
 </th>
 <th style="text-align:right;">
-KJ_per100grams
+average_weight
+</th>
+<th style="text-align:left;">
+habitat
+</th>
+<th style="text-align:right;">
+ph_of_water
+</th>
+<th style="text-align:left;">
+color
+</th>
+<th style="text-align:left;">
+Gender
+</th>
+<th style="text-align:right;">
+life_span
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
-CannedFruit
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+14.69
+</td>
+<td style="text-align:right;">
+5.87
 </td>
 <td style="text-align:left;">
-Applesauce
-</td>
-<td style="text-align:left;">
-100g
+ponds
 </td>
 <td style="text-align:right;">
 62
 </td>
+<td style="text-align:left;">
+Reddish_Orange
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
 <td style="text-align:right;">
-260
+10.9
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-CannedFruit
-</td>
-<td style="text-align:left;">
-Canned Apricots
-</td>
-<td style="text-align:left;">
-100g
+<td style="text-align:right;">
+2
 </td>
 <td style="text-align:right;">
-48
+1.32
 </td>
 <td style="text-align:right;">
-202
+3.86
+</td>
+<td style="text-align:left;">
+idlewater
+</td>
+<td style="text-align:right;">
+68
+</td>
+<td style="text-align:left;">
+Calico
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+5.2
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-CannedFruit
-</td>
-<td style="text-align:left;">
-Canned Blackberries
-</td>
-<td style="text-align:left;">
-100g
+<td style="text-align:right;">
+3
 </td>
 <td style="text-align:right;">
-92
+14.23
 </td>
 <td style="text-align:right;">
-386
+12.09
+</td>
+<td style="text-align:left;">
+lakes
+</td>
+<td style="text-align:right;">
+79
+</td>
+<td style="text-align:left;">
+Reddish_Orange
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+25.3
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-CannedFruit
-</td>
-<td style="text-align:left;">
-Canned Blueberries
-</td>
-<td style="text-align:left;">
-100g
+<td style="text-align:right;">
+4
 </td>
 <td style="text-align:right;">
-88
+2.54
 </td>
 <td style="text-align:right;">
-370
+3.20
+</td>
+<td style="text-align:left;">
+rivers
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:left;">
+White
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+16.4
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-CannedFruit
-</td>
-<td style="text-align:left;">
-Canned Cherries
-</td>
-<td style="text-align:left;">
-100g
+<td style="text-align:right;">
+5
 </td>
 <td style="text-align:right;">
-54
+13.10
 </td>
 <td style="text-align:right;">
-227
+9.81
+</td>
+<td style="text-align:left;">
+lakes
+</td>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:left;">
+Orange
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+3.2
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-CannedFruit
-</td>
-<td style="text-align:left;">
-Canned Cranberries
-</td>
-<td style="text-align:left;">
-100g
+<td style="text-align:right;">
+6
 </td>
 <td style="text-align:right;">
-178
+15.20
 </td>
 <td style="text-align:right;">
-748
+8.99
+</td>
+<td style="text-align:left;">
+lakes
+</td>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:left;">
+White
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+21.6
 </td>
 </tr>
 </tbody>
@@ -867,781 +1111,53 @@ Canned Cranberries
 </div>
 <div id="exercise-3" class="section level3">
 <h3>Exercise 3</h3>
-<p><a href="./files_07_data_cleaning_exercises/exercise03/Food%20Composition_mod.csv">This</a>
+<p><a href="./files_07_data_cleaning_exercises/exercise03/Heart_Disease_Prediction_mod.csv">This</a>
 data set contains rows with duplicate data. Load the data and remove the
 duplicates from the data table.</p>
-<pre class="r"><code>file_path &lt;- &quot;./files_07_data_cleaning_exercises/exercise03/Food Composition_mod.csv&quot;
-df &lt;- read_csv(file_path)
-formatted_table(head(df, 1))</code></pre>
-<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Public Food Key
-</th>
-<th style="text-align:right;">
-Food Profile ID
-</th>
-<th style="text-align:left;">
-Derivation
-</th>
-<th style="text-align:left;">
-Food Name
-</th>
-<th style="text-align:left;">
-Food Description
-</th>
-<th style="text-align:left;">
-Sampling Details
-</th>
-<th style="text-align:right;">
-Nitrogen Factor
-</th>
-<th style="text-align:right;">
-Fat Factor
-</th>
-<th style="text-align:right;">
-Specific Gravity
-</th>
-<th style="text-align:left;">
-Analysed Portion
-</th>
-<th style="text-align:left;">
-Unanalysed Portion
-</th>
-<th style="text-align:right;">
-Classification
-</th>
-<th style="text-align:left;">
-Classification Name
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-F002258
-</td>
-<td style="text-align:right;">
-14723
-</td>
-<td style="text-align:left;">
-Borrowed
-</td>
-<td style="text-align:left;">
-Cardamom seed, dried, ground
-</td>
-<td style="text-align:left;">
-Ground spice commonly used in Indian cooking and drinks, in Middle
-Eastern cooking and in Scandinavian baking
-</td>
-<td style="text-align:left;">
-The majority of nutrient data were borrowed from USDA SR28, 02006 -
-Spices, cardamom. Proximates (starch, total sugars), vitamins
-(alpha-tocopherol, beta-carotene, folate) and Se were borrowed from
-Indian Food Composition Tables 2017, G020 - Cardamom, green. Dry matter
-adjustment was applied to starch and sugar. Tryptophan was imputed from
-dried fenugreek seed. Alcohol, vitamins (B12, folic acid, retinol, D),
-I, caffeine and cholesterol were imputed zero. Note low sum of
-proximates - data should be used with caution.
-</td>
-<td style="text-align:right;">
-6.25
-</td>
-<td style="text-align:right;">
-0.96
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-100%
-</td>
-<td style="text-align:left;">
-0%
-</td>
-<td style="text-align:right;">
-31302
-</td>
-<td style="text-align:left;">
-Herbs(dried) and spices
-</td>
-</tr>
-</tbody>
-</table>
-<p>Let’s first find duplicate elements in the columns:</p>
-<pre class="r"><code>df$`Public Food Key`[duplicated(df$`Public Food Key`)]</code></pre>
-<pre><code>## [1] &quot;F009575&quot; &quot;F006725&quot;</code></pre>
-<pre class="r"><code>df$`Food Profile ID`[duplicated(df$`Food Profile ID`)]</code></pre>
-<pre><code>## [1]   95 3526</code></pre>
-<p>Are they in the same rows?</p>
-<pre class="r"><code>formatted_table(df[df$`Public Food Key` == &quot;F009575&quot;, ])</code></pre>
-<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Public Food Key
-</th>
-<th style="text-align:right;">
-Food Profile ID
-</th>
-<th style="text-align:left;">
-Derivation
-</th>
-<th style="text-align:left;">
-Food Name
-</th>
-<th style="text-align:left;">
-Food Description
-</th>
-<th style="text-align:left;">
-Sampling Details
-</th>
-<th style="text-align:right;">
-Nitrogen Factor
-</th>
-<th style="text-align:right;">
-Fat Factor
-</th>
-<th style="text-align:right;">
-Specific Gravity
-</th>
-<th style="text-align:left;">
-Analysed Portion
-</th>
-<th style="text-align:left;">
-Unanalysed Portion
-</th>
-<th style="text-align:right;">
-Classification
-</th>
-<th style="text-align:left;">
-Classification Name
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-F009575
-</td>
-<td style="text-align:right;">
-95
-</td>
-<td style="text-align:left;">
-Analysed
-</td>
-<td style="text-align:left;">
-Wine, red, pinot noir
-</td>
-<td style="text-align:left;">
-Alcoholic beverage produced by fermentation of grape juice from the
-pinot noir grape, with prolonged grape skin contact to produce wine of a
-deep red colour. Includes wine produced in Australia and New Zealand.
-Approximately 12% v/v alcohol.
-</td>
-<td style="text-align:left;">
-Proximates, organic acids and iodine were derived from a composite of 8
-samples of Australian bottled red wine made from pinot noir grapes
-(Ninth Island, Stonier, Artemis, Devils Corner, Taylors, Red Hill, Saint
-Clair and Oyster Bay) purchased in VIC in 2015. Alcohol and the
-remaining minerals were derived from individual analysis of the same
-samples. Vitamins (B1, B2, B3, B5, B6, tocopherols, carotenes, folate)
-were imputed from merlot. Proximates (fibre, starch), vitamins (folic
-acid, B12, D, retinol), fatty acids, cholesterol and caffeine were
-imputed zero.
-</td>
-<td style="text-align:right;">
-6.25
-</td>
-<td style="text-align:right;">
-0.8
-</td>
-<td style="text-align:right;">
-0.99
-</td>
-<td style="text-align:left;">
-100%
-</td>
-<td style="text-align:left;">
-0%
-</td>
-<td style="text-align:right;">
-29201
-</td>
-<td style="text-align:left;">
-Wines, red (including sparkling varieties and rose styles)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-F009575
-</td>
-<td style="text-align:right;">
-95
-</td>
-<td style="text-align:left;">
-Analysed
-</td>
-<td style="text-align:left;">
-Wine, red, pinot noir
-</td>
-<td style="text-align:left;">
-Alcoholic beverage produced by fermentation of grape juice from the
-pinot noir grape, with prolonged grape skin contact to produce wine of a
-deep red colour. Includes wine produced in Australia and New Zealand.
-Approximately 12% v/v alcohol.
-</td>
-<td style="text-align:left;">
-Proximates, organic acids and iodine were derived from a composite of 8
-samples of Australian bottled red wine made from pinot noir grapes
-(Ninth Island, Stonier, Artemis, Devils Corner, Taylors, Red Hill, Saint
-Clair and Oyster Bay) purchased in VIC in 2015. Alcohol and the
-remaining minerals were derived from individual analysis of the same
-samples. Vitamins (B1, B2, B3, B5, B6, tocopherols, carotenes, folate)
-were imputed from merlot. Proximates (fibre, starch), vitamins (folic
-acid, B12, D, retinol), fatty acids, cholesterol and caffeine were
-imputed zero.
-</td>
-<td style="text-align:right;">
-6.25
-</td>
-<td style="text-align:right;">
-0.8
-</td>
-<td style="text-align:right;">
-0.99
-</td>
-<td style="text-align:left;">
-100%
-</td>
-<td style="text-align:left;">
-0%
-</td>
-<td style="text-align:right;">
-29201
-</td>
-<td style="text-align:left;">
-Wines, red (including sparkling varieties and rose styles)
-</td>
-</tr>
-</tbody>
-</table>
-<pre class="r"><code>formatted_table(df[df$`Public Food Key` == &quot;F006725&quot;, ])</code></pre>
-<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Public Food Key
-</th>
-<th style="text-align:right;">
-Food Profile ID
-</th>
-<th style="text-align:left;">
-Derivation
-</th>
-<th style="text-align:left;">
-Food Name
-</th>
-<th style="text-align:left;">
-Food Description
-</th>
-<th style="text-align:left;">
-Sampling Details
-</th>
-<th style="text-align:right;">
-Nitrogen Factor
-</th>
-<th style="text-align:right;">
-Fat Factor
-</th>
-<th style="text-align:right;">
-Specific Gravity
-</th>
-<th style="text-align:left;">
-Analysed Portion
-</th>
-<th style="text-align:left;">
-Unanalysed Portion
-</th>
-<th style="text-align:right;">
-Classification
-</th>
-<th style="text-align:left;">
-Classification Name
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-F006725
-</td>
-<td style="text-align:right;">
-3526
-</td>
-<td style="text-align:left;">
-Analysed
-</td>
-<td style="text-align:left;">
-Pizza, cheese &amp; tomato, commercial
-</td>
-<td style="text-align:left;">
-Commercially produced pizza dough topped with tomato-based sauce and
-cheese. Includes frozen, fast food and takeaway styles.
-</td>
-<td style="text-align:left;">
-The majority of nutrient data were derived from a composite of 8 samples
-of pizzas described as margherita or cheese-topped (2x frozen and
-reheated (McCains), 4x fast food outlets (Pizza Hut, Dominos) and 2x
-independent take away food outlets) purchased in Melbourne and Canberra
-in 2006. Resistant starch and fibre were derived from a composite of 3
-samples of frozen margherita pizza (1x McCain, 1x Dr Oetker and 1x
-Woolworths Select) purchased in NSW in 2012. Vitamins (B1, B2, B3, B6,
-alpha-tocopherol, beta-carotene), tryptophan, cholesterol and fatty
-acids were imputed from frozen supreme pizza. B12 was imputed from
-frozen ham &amp; pineapple pizza. Vitamin D was estimated based on the
-proportion of cheese. Alcohol, caffeine and folic acid were imputed
-zero.
-</td>
-<td style="text-align:right;">
-6.25
-</td>
-<td style="text-align:right;">
-0.92
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-100%
-</td>
-<td style="text-align:left;">
-0%
-</td>
-<td style="text-align:right;">
-13501
-</td>
-<td style="text-align:left;">
-Pizza, saturated fat &lt;=5 g/100 g
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-F006725
-</td>
-<td style="text-align:right;">
-3526
-</td>
-<td style="text-align:left;">
-Analysed
-</td>
-<td style="text-align:left;">
-Pizza, cheese &amp; tomato, commercial
-</td>
-<td style="text-align:left;">
-Commercially produced pizza dough topped with tomato-based sauce and
-cheese. Includes frozen, fast food and takeaway styles.
-</td>
-<td style="text-align:left;">
-The majority of nutrient data were derived from a composite of 8 samples
-of pizzas described as margherita or cheese-topped (2x frozen and
-reheated (McCains), 4x fast food outlets (Pizza Hut, Dominos) and 2x
-independent take away food outlets) purchased in Melbourne and Canberra
-in 2006. Resistant starch and fibre were derived from a composite of 3
-samples of frozen margherita pizza (1x McCain, 1x Dr Oetker and 1x
-Woolworths Select) purchased in NSW in 2012. Vitamins (B1, B2, B3, B6,
-alpha-tocopherol, beta-carotene), tryptophan, cholesterol and fatty
-acids were imputed from frozen supreme pizza. B12 was imputed from
-frozen ham &amp; pineapple pizza. Vitamin D was estimated based on the
-proportion of cheese. Alcohol, caffeine and folic acid were imputed
-zero.
-</td>
-<td style="text-align:right;">
-6.25
-</td>
-<td style="text-align:right;">
-0.92
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-100%
-</td>
-<td style="text-align:left;">
-0%
-</td>
-<td style="text-align:right;">
-13501
-</td>
-<td style="text-align:left;">
-Pizza, saturated fat &lt;=5 g/100 g
-</td>
-</tr>
-</tbody>
-</table>
-<p>Yes, they are in the same rows. First count the number of rows:</p>
-<pre class="r"><code>nrow(df)</code></pre>
-<pre><code>## [1] 1563</code></pre>
-<p>Now we can delete the duplicated rows:</p>
-<pre class="r"><code>my_data_cleaned &lt;- df[!duplicated(df$`Public Food Key`), ]
-formatted_table(head(my_data_cleaned, 1))</code></pre>
-<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Public Food Key
-</th>
-<th style="text-align:right;">
-Food Profile ID
-</th>
-<th style="text-align:left;">
-Derivation
-</th>
-<th style="text-align:left;">
-Food Name
-</th>
-<th style="text-align:left;">
-Food Description
-</th>
-<th style="text-align:left;">
-Sampling Details
-</th>
-<th style="text-align:right;">
-Nitrogen Factor
-</th>
-<th style="text-align:right;">
-Fat Factor
-</th>
-<th style="text-align:right;">
-Specific Gravity
-</th>
-<th style="text-align:left;">
-Analysed Portion
-</th>
-<th style="text-align:left;">
-Unanalysed Portion
-</th>
-<th style="text-align:right;">
-Classification
-</th>
-<th style="text-align:left;">
-Classification Name
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-F002258
-</td>
-<td style="text-align:right;">
-14723
-</td>
-<td style="text-align:left;">
-Borrowed
-</td>
-<td style="text-align:left;">
-Cardamom seed, dried, ground
-</td>
-<td style="text-align:left;">
-Ground spice commonly used in Indian cooking and drinks, in Middle
-Eastern cooking and in Scandinavian baking
-</td>
-<td style="text-align:left;">
-The majority of nutrient data were borrowed from USDA SR28, 02006 -
-Spices, cardamom. Proximates (starch, total sugars), vitamins
-(alpha-tocopherol, beta-carotene, folate) and Se were borrowed from
-Indian Food Composition Tables 2017, G020 - Cardamom, green. Dry matter
-adjustment was applied to starch and sugar. Tryptophan was imputed from
-dried fenugreek seed. Alcohol, vitamins (B12, folic acid, retinol, D),
-I, caffeine and cholesterol were imputed zero. Note low sum of
-proximates - data should be used with caution.
-</td>
-<td style="text-align:right;">
-6.25
-</td>
-<td style="text-align:right;">
-0.96
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-100%
-</td>
-<td style="text-align:left;">
-0%
-</td>
-<td style="text-align:right;">
-31302
-</td>
-<td style="text-align:left;">
-Herbs(dried) and spices
-</td>
-</tr>
-</tbody>
-</table>
-<p>Note that there are 1561 rows in the above tibble. Two less compared
-to the beginning (1563).</p>
-<pre class="r"><code>nrow(my_data_cleaned)</code></pre>
-<pre><code>## [1] 1561</code></pre>
-<p>Check if we still have duplicated rows:</p>
-<pre class="r"><code>my_data_cleaned$`Public Food Key`[duplicated(my_data_cleaned$`Public Food Key`)]</code></pre>
-<pre><code>## character(0)</code></pre>
-<pre class="r"><code>my_data_cleaned$`Food Profile ID`[duplicated(my_data_cleaned$`Food Profile ID`)]</code></pre>
-<pre><code>## numeric(0)</code></pre>
-<p>Both yielded an empty vector meaning the tibble does not contain
-duplicated rows anymore.</p>
-</div>
-<div id="exercise-4" class="section level3">
-<h3>Exercise 4</h3>
-<p><a href="./files_07_data_cleaning_exercises/exercise04/nutrition.csv">This</a>
-data set contains empty data.</p>
-<p>Make the empty elements more explicit in R by converting them to
-<code>NA</code>. Count how many elements you have:</p>
-<ul>
-<li>in total</li>
-<li>with missing data</li>
-<li>without missing data</li>
-</ul>
-<pre class="r"><code>file_path &lt;- &quot;./files_07_data_cleaning_exercises/exercise04/nutrition.csv&quot;
-df &lt;- read_csv(file_path)
-formatted_table(head(df))</code></pre>
+<pre class="r"><code>file_path &lt;- &quot;./files_07_data_cleaning_exercises/exercise03/Heart_Disease_Prediction_mod.xlsx&quot;
+df &lt;- read_excel(file_path)
+formatted_table(head(df, c(6, 13)))</code></pre>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:right;">
-…1
-</th>
-<th style="text-align:left;">
-name
-</th>
-<th style="text-align:left;">
-serving_size
+index
 </th>
 <th style="text-align:right;">
-calories
-</th>
-<th style="text-align:left;">
-total_fat
-</th>
-<th style="text-align:left;">
-saturated_fat
-</th>
-<th style="text-align:left;">
-cholesterol
-</th>
-<th style="text-align:left;">
-sodium
-</th>
-<th style="text-align:left;">
-choline
-</th>
-<th style="text-align:left;">
-folate
-</th>
-<th style="text-align:left;">
-folic_acid
-</th>
-<th style="text-align:left;">
-niacin
-</th>
-<th style="text-align:left;">
-pantothenic_acid
-</th>
-<th style="text-align:left;">
-riboflavin
-</th>
-<th style="text-align:left;">
-thiamin
-</th>
-<th style="text-align:left;">
-vitamin_a
-</th>
-<th style="text-align:left;">
-vitamin_a_rae
-</th>
-<th style="text-align:left;">
-carotene_alpha
-</th>
-<th style="text-align:left;">
-carotene_beta
-</th>
-<th style="text-align:left;">
-cryptoxanthin_beta
-</th>
-<th style="text-align:left;">
-lutein_zeaxanthin
+Age
 </th>
 <th style="text-align:right;">
-lucopene
+Sex
 </th>
-<th style="text-align:left;">
-vitamin_b12
+<th style="text-align:right;">
+Chest pain type
 </th>
-<th style="text-align:left;">
-vitamin_b6
+<th style="text-align:right;">
+BP
 </th>
-<th style="text-align:left;">
-vitamin_c
+<th style="text-align:right;">
+Cholesterol
 </th>
-<th style="text-align:left;">
-vitamin_d
+<th style="text-align:right;">
+FBS over 120
 </th>
-<th style="text-align:left;">
-vitamin_e
+<th style="text-align:right;">
+EKG results
 </th>
-<th style="text-align:left;">
-tocopherol_alpha
+<th style="text-align:right;">
+Max HR
 </th>
-<th style="text-align:left;">
-vitamin_k
+<th style="text-align:right;">
+Exercise angina
 </th>
-<th style="text-align:left;">
-calcium
+<th style="text-align:right;">
+ST depression
 </th>
-<th style="text-align:left;">
-copper
+<th style="text-align:right;">
+Slope of ST
 </th>
-<th style="text-align:left;">
-irom
-</th>
-<th style="text-align:left;">
-magnesium
-</th>
-<th style="text-align:left;">
-manganese
-</th>
-<th style="text-align:left;">
-phosphorous
-</th>
-<th style="text-align:left;">
-potassium
-</th>
-<th style="text-align:left;">
-selenium
-</th>
-<th style="text-align:left;">
-zink
-</th>
-<th style="text-align:left;">
-protein
-</th>
-<th style="text-align:left;">
-alanine
-</th>
-<th style="text-align:left;">
-arginine
-</th>
-<th style="text-align:left;">
-aspartic_acid
-</th>
-<th style="text-align:left;">
-cystine
-</th>
-<th style="text-align:left;">
-glutamic_acid
-</th>
-<th style="text-align:left;">
-glycine
-</th>
-<th style="text-align:left;">
-histidine
-</th>
-<th style="text-align:left;">
-hydroxyproline
-</th>
-<th style="text-align:left;">
-isoleucine
-</th>
-<th style="text-align:left;">
-leucine
-</th>
-<th style="text-align:left;">
-lysine
-</th>
-<th style="text-align:left;">
-methionine
-</th>
-<th style="text-align:left;">
-phenylalanine
-</th>
-<th style="text-align:left;">
-proline
-</th>
-<th style="text-align:left;">
-serine
-</th>
-<th style="text-align:left;">
-threonine
-</th>
-<th style="text-align:left;">
-tryptophan
-</th>
-<th style="text-align:left;">
-tyrosine
-</th>
-<th style="text-align:left;">
-valine
-</th>
-<th style="text-align:left;">
-carbohydrate
-</th>
-<th style="text-align:left;">
-fiber
-</th>
-<th style="text-align:left;">
-sugars
-</th>
-<th style="text-align:left;">
-fructose
-</th>
-<th style="text-align:left;">
-galactose
-</th>
-<th style="text-align:left;">
-glucose
-</th>
-<th style="text-align:left;">
-lactose
-</th>
-<th style="text-align:left;">
-maltose
-</th>
-<th style="text-align:left;">
-sucrose
-</th>
-<th style="text-align:left;">
-fat
-</th>
-<th style="text-align:left;">
-saturated_fatty_acids
-</th>
-<th style="text-align:left;">
-monounsaturated_fatty_acids
-</th>
-<th style="text-align:left;">
-polyunsaturated_fatty_acids
-</th>
-<th style="text-align:left;">
-fatty_acids_total_trans
-</th>
-<th style="text-align:left;">
-alcohol
-</th>
-<th style="text-align:left;">
-ash
-</th>
-<th style="text-align:left;">
-caffeine
-</th>
-<th style="text-align:left;">
-theobromine
-</th>
-<th style="text-align:left;">
-water
+<th style="text-align:right;">
+Number of vessels fluro
 </th>
 </tr>
 </thead>
@@ -1650,1408 +1166,1386 @@ water
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:left;">
-Cornstarch
-</td>
-<td style="text-align:left;">
-100 g
+<td style="text-align:right;">
+70
 </td>
 <td style="text-align:right;">
-381
+1
 </td>
-<td style="text-align:left;">
-0.1g
+<td style="text-align:right;">
+4
 </td>
-<td style="text-align:left;">
-NA
+<td style="text-align:right;">
+130
 </td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-9.00 mg
-</td>
-<td style="text-align:left;">
-0.4 mg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.000 mg
-</td>
-<td style="text-align:left;">
-0.000 mg
-</td>
-<td style="text-align:left;">
-0.000 mg
-</td>
-<td style="text-align:left;">
-0.000 mg
-</td>
-<td style="text-align:left;">
-0.00 IU
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
+<td style="text-align:right;">
+322
 </td>
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:left;">
-0.00 mcg
+<td style="text-align:right;">
+2
 </td>
-<td style="text-align:left;">
-0.000 mg
+<td style="text-align:right;">
+109
 </td>
-<td style="text-align:left;">
-0.0 mg
-</td>
-<td style="text-align:left;">
-0.00 IU
-</td>
-<td style="text-align:left;">
-0.00 mg
-</td>
-<td style="text-align:left;">
-0.00 mg
-</td>
-<td style="text-align:left;">
-0.0 mcg
-</td>
-<td style="text-align:left;">
-2.00 mg
-</td>
-<td style="text-align:left;">
-0.050 mg
-</td>
-<td style="text-align:left;">
-0.47 mg
-</td>
-<td style="text-align:left;">
-3.00 mg
-</td>
-<td style="text-align:left;">
-0.053 mg
-</td>
-<td style="text-align:left;">
-13.00 mg
-</td>
-<td style="text-align:left;">
-3.00 mg
-</td>
-<td style="text-align:left;">
-2.8 mcg
-</td>
-<td style="text-align:left;">
-0.06 mg
-</td>
-<td style="text-align:left;">
-0.26 g
-</td>
-<td style="text-align:left;">
-0.019 g
-</td>
-<td style="text-align:left;">
-0.012 g
-</td>
-<td style="text-align:left;">
-0.020 g
-</td>
-<td style="text-align:left;">
-0.006 g
-</td>
-<td style="text-align:left;">
-0.053 g
-</td>
-<td style="text-align:left;">
-0.009 g
-</td>
-<td style="text-align:left;">
-0.008 g
-</td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 0
 </td>
-<td style="text-align:left;">
-0.010 g
+<td style="text-align:right;">
+2.4
 </td>
-<td style="text-align:left;">
-0.036 g
+<td style="text-align:right;">
+2
 </td>
-<td style="text-align:left;">
-0.006 g
-</td>
-<td style="text-align:left;">
-0.006 g
-</td>
-<td style="text-align:left;">
-0.013 g
-</td>
-<td style="text-align:left;">
-0.024 g
-</td>
-<td style="text-align:left;">
-0.012 g
-</td>
-<td style="text-align:left;">
-0.009 g
-</td>
-<td style="text-align:left;">
-0.001 g
-</td>
-<td style="text-align:left;">
-0.010 g
-</td>
-<td style="text-align:left;">
-0.014 g
-</td>
-<td style="text-align:left;">
-91.27 g
-</td>
-<td style="text-align:left;">
-0.9 g
-</td>
-<td style="text-align:left;">
-0.00 g
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0.05 g
-</td>
-<td style="text-align:left;">
-0.009 g
-</td>
-<td style="text-align:left;">
-0.016 g
-</td>
-<td style="text-align:left;">
-0.025 g
-</td>
-<td style="text-align:left;">
-0.00 mg
-</td>
-<td style="text-align:left;">
-0.0 g
-</td>
-<td style="text-align:left;">
-0.09 g
-</td>
-<td style="text-align:left;">
-0.00 mg
-</td>
-<td style="text-align:left;">
-0.00 mg
-</td>
-<td style="text-align:left;">
-8.32 g
+<td style="text-align:right;">
+3
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
 1
 </td>
-<td style="text-align:left;">
-Nuts, pecans
-</td>
-<td style="text-align:left;">
-100 g
-</td>
 <td style="text-align:right;">
-691
-</td>
-<td style="text-align:left;">
-72g
-</td>
-<td style="text-align:left;">
-6.2g
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0.00 mg
-</td>
-<td style="text-align:left;">
-40.5 mg
-</td>
-<td style="text-align:left;">
-22.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-1.167 mg
-</td>
-<td style="text-align:left;">
-0.863 mg
-</td>
-<td style="text-align:left;">
-0.130 mg
-</td>
-<td style="text-align:left;">
-0.660 mg
-</td>
-<td style="text-align:left;">
-56.00 IU
-</td>
-<td style="text-align:left;">
-3.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-29.00 mcg
-</td>
-<td style="text-align:left;">
-9.00 mcg
-</td>
-<td style="text-align:left;">
-17.00 mcg
+67
 </td>
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:left;">
-0.00 mcg
+<td style="text-align:right;">
+3
 </td>
-<td style="text-align:left;">
-0.210 mg
+<td style="text-align:right;">
+115
 </td>
-<td style="text-align:left;">
-1.1 mg
+<td style="text-align:right;">
+564
 </td>
-<td style="text-align:left;">
-0.00 IU
-</td>
-<td style="text-align:left;">
-1.40 mg
-</td>
-<td style="text-align:left;">
-1.40 mg
-</td>
-<td style="text-align:left;">
-3.5 mcg
-</td>
-<td style="text-align:left;">
-70.00 mg
-</td>
-<td style="text-align:left;">
-1.200 mg
-</td>
-<td style="text-align:left;">
-2.53 mg
-</td>
-<td style="text-align:left;">
-121.00 mg
-</td>
-<td style="text-align:left;">
-4.500 mg
-</td>
-<td style="text-align:left;">
-277.00 mg
-</td>
-<td style="text-align:left;">
-410.00 mg
-</td>
-<td style="text-align:left;">
-3.8 mcg
-</td>
-<td style="text-align:left;">
-4.53 mg
-</td>
-<td style="text-align:left;">
-9.17 g
-</td>
-<td style="text-align:left;">
-0.397 g
-</td>
-<td style="text-align:left;">
-1.177 g
-</td>
-<td style="text-align:left;">
-0.929 g
-</td>
-<td style="text-align:left;">
-0.152 g
-</td>
-<td style="text-align:left;">
-1.829 g
-</td>
-<td style="text-align:left;">
-0.453 g
-</td>
-<td style="text-align:left;">
-0.262 g
-</td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 0
 </td>
-<td style="text-align:left;">
-0.336 g
+<td style="text-align:right;">
+2
 </td>
-<td style="text-align:left;">
-0.598 g
+<td style="text-align:right;">
+160
 </td>
-<td style="text-align:left;">
-0.287 g
-</td>
-<td style="text-align:left;">
-0.183 g
-</td>
-<td style="text-align:left;">
-0.426 g
-</td>
-<td style="text-align:left;">
-0.363 g
-</td>
-<td style="text-align:left;">
-0.474 g
-</td>
-<td style="text-align:left;">
-0.306 g
-</td>
-<td style="text-align:left;">
-0.093 g
-</td>
-<td style="text-align:left;">
-0.215 g
-</td>
-<td style="text-align:left;">
-0.411 g
-</td>
-<td style="text-align:left;">
-13.86 g
-</td>
-<td style="text-align:left;">
-9.6 g
-</td>
-<td style="text-align:left;">
-3.97 g
-</td>
-<td style="text-align:left;">
-0.04 g
-</td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 0
 </td>
-<td style="text-align:left;">
-0.04 g
+<td style="text-align:right;">
+1.6
 </td>
-<td style="text-align:left;">
-0.00 g
+<td style="text-align:right;">
+2
 </td>
-<td style="text-align:left;">
-0.00 g
-</td>
-<td style="text-align:left;">
-3.90 g
-</td>
-<td style="text-align:left;">
-71.97 g
-</td>
-<td style="text-align:left;">
-6.180 g
-</td>
-<td style="text-align:left;">
-40.801 g
-</td>
-<td style="text-align:left;">
-21.614 g
-</td>
-<td style="text-align:left;">
-0.00 mg
-</td>
-<td style="text-align:left;">
-0.0 g
-</td>
-<td style="text-align:left;">
-1.49 g
-</td>
-<td style="text-align:left;">
-0.00 mg
-</td>
-<td style="text-align:left;">
-0.00 mg
-</td>
-<td style="text-align:left;">
-3.52 g
+<td style="text-align:right;">
+0
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
 2
 </td>
-<td style="text-align:left;">
-Eggplant, raw
-</td>
-<td style="text-align:left;">
-100 g
+<td style="text-align:right;">
+57
 </td>
 <td style="text-align:right;">
-25
+1
 </td>
-<td style="text-align:left;">
-0.2g
+<td style="text-align:right;">
+2
 </td>
-<td style="text-align:left;">
-NA
+<td style="text-align:right;">
+124
 </td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-2.00 mg
-</td>
-<td style="text-align:left;">
-6.9 mg
-</td>
-<td style="text-align:left;">
-22.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.649 mg
-</td>
-<td style="text-align:left;">
-0.281 mg
-</td>
-<td style="text-align:left;">
-0.037 mg
-</td>
-<td style="text-align:left;">
-0.039 mg
-</td>
-<td style="text-align:left;">
-23.00 IU
-</td>
-<td style="text-align:left;">
-1.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-14.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-36.00 mcg
+<td style="text-align:right;">
+261
 </td>
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.084 mg
-</td>
-<td style="text-align:left;">
-2.2 mg
-</td>
-<td style="text-align:left;">
-0.00 IU
-</td>
-<td style="text-align:left;">
-0.30 mg
-</td>
-<td style="text-align:left;">
-0.30 mg
-</td>
-<td style="text-align:left;">
-3.5 mcg
-</td>
-<td style="text-align:left;">
-9.00 mg
-</td>
-<td style="text-align:left;">
-0.081 mg
-</td>
-<td style="text-align:left;">
-0.23 mg
-</td>
-<td style="text-align:left;">
-14.00 mg
-</td>
-<td style="text-align:left;">
-0.232 mg
-</td>
-<td style="text-align:left;">
-24.00 mg
-</td>
-<td style="text-align:left;">
-229.00 mg
-</td>
-<td style="text-align:left;">
-0.3 mcg
-</td>
-<td style="text-align:left;">
-0.16 mg
-</td>
-<td style="text-align:left;">
-0.98 g
-</td>
-<td style="text-align:left;">
-0.051 g
-</td>
-<td style="text-align:left;">
-0.057 g
-</td>
-<td style="text-align:left;">
-0.164 g
-</td>
-<td style="text-align:left;">
-0.006 g
-</td>
-<td style="text-align:left;">
-0.186 g
-</td>
-<td style="text-align:left;">
-0.041 g
-</td>
-<td style="text-align:left;">
-0.023 g
-</td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 0
 </td>
-<td style="text-align:left;">
-0.045 g
+<td style="text-align:right;">
+141
 </td>
-<td style="text-align:left;">
-0.064 g
-</td>
-<td style="text-align:left;">
-0.047 g
-</td>
-<td style="text-align:left;">
-0.011 g
-</td>
-<td style="text-align:left;">
-0.043 g
-</td>
-<td style="text-align:left;">
-0.043 g
-</td>
-<td style="text-align:left;">
-0.042 g
-</td>
-<td style="text-align:left;">
-0.037 g
-</td>
-<td style="text-align:left;">
-0.009 g
-</td>
-<td style="text-align:left;">
-0.027 g
-</td>
-<td style="text-align:left;">
-0.053 g
-</td>
-<td style="text-align:left;">
-5.88 g
-</td>
-<td style="text-align:left;">
-3.0 g
-</td>
-<td style="text-align:left;">
-3.53 g
-</td>
-<td style="text-align:left;">
-1.54 g
-</td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 0
 </td>
-<td style="text-align:left;">
-1.58 g
+<td style="text-align:right;">
+0.3
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
 0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0.26 g
-</td>
-<td style="text-align:left;">
-0.18 g
-</td>
-<td style="text-align:left;">
-0.034 g
-</td>
-<td style="text-align:left;">
-0.016 g
-</td>
-<td style="text-align:left;">
-0.076 g
-</td>
-<td style="text-align:left;">
-0.00 mg
-</td>
-<td style="text-align:left;">
-0.0 g
-</td>
-<td style="text-align:left;">
-0.66 g
-</td>
-<td style="text-align:left;">
-0.00 mg
-</td>
-<td style="text-align:left;">
-0.00 mg
-</td>
-<td style="text-align:left;">
-92.30 g
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
 3
 </td>
-<td style="text-align:left;">
-Teff, uncooked
-</td>
-<td style="text-align:left;">
-100 g
+<td style="text-align:right;">
+64
 </td>
 <td style="text-align:right;">
-367
+1
 </td>
-<td style="text-align:left;">
-2.4g
+<td style="text-align:right;">
+4
 </td>
-<td style="text-align:left;">
-0.4g
+<td style="text-align:right;">
+128
 </td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-12.00 mg
-</td>
-<td style="text-align:left;">
-13.1 mg
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-3.363 mg
-</td>
-<td style="text-align:left;">
-0.942 mg
-</td>
-<td style="text-align:left;">
-0.270 mg
-</td>
-<td style="text-align:left;">
-0.390 mg
-</td>
-<td style="text-align:left;">
-9.00 IU
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-5.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-66.00 mcg
+<td style="text-align:right;">
+263
 </td>
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 0
 </td>
-<td style="text-align:left;">
-0.482 mg
+<td style="text-align:right;">
+105
 </td>
-<td style="text-align:left;">
-0
+<td style="text-align:right;">
+1
 </td>
-<td style="text-align:left;">
-0
+<td style="text-align:right;">
+0.2
 </td>
-<td style="text-align:left;">
-0.08 mg
+<td style="text-align:right;">
+2
 </td>
-<td style="text-align:left;">
-0.08 mg
-</td>
-<td style="text-align:left;">
-1.9 mcg
-</td>
-<td style="text-align:left;">
-180.00 mg
-</td>
-<td style="text-align:left;">
-0.810 mg
-</td>
-<td style="text-align:left;">
-7.63 mg
-</td>
-<td style="text-align:left;">
-184.00 mg
-</td>
-<td style="text-align:left;">
-9.240 mg
-</td>
-<td style="text-align:left;">
-429.00 mg
-</td>
-<td style="text-align:left;">
-427.00 mg
-</td>
-<td style="text-align:left;">
-4.4 mcg
-</td>
-<td style="text-align:left;">
-3.63 mg
-</td>
-<td style="text-align:left;">
-13.30 g
-</td>
-<td style="text-align:left;">
-0.747 g
-</td>
-<td style="text-align:left;">
-0.517 g
-</td>
-<td style="text-align:left;">
-0.820 g
-</td>
-<td style="text-align:left;">
-0.236 g
-</td>
-<td style="text-align:left;">
-3.349 g
-</td>
-<td style="text-align:left;">
-0.477 g
-</td>
-<td style="text-align:left;">
-0.301 g
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0.501 g
-</td>
-<td style="text-align:left;">
-1.068 g
-</td>
-<td style="text-align:left;">
-0.376 g
-</td>
-<td style="text-align:left;">
-0.428 g
-</td>
-<td style="text-align:left;">
-0.698 g
-</td>
-<td style="text-align:left;">
-0.664 g
-</td>
-<td style="text-align:left;">
-0.622 g
-</td>
-<td style="text-align:left;">
-0.510 g
-</td>
-<td style="text-align:left;">
-0.139 g
-</td>
-<td style="text-align:left;">
-0.458 g
-</td>
-<td style="text-align:left;">
-0.686 g
-</td>
-<td style="text-align:left;">
-73.13 g
-</td>
-<td style="text-align:left;">
-8.0 g
-</td>
-<td style="text-align:left;">
-1.84 g
-</td>
-<td style="text-align:left;">
-0.47 g
-</td>
-<td style="text-align:left;">
-0.00 g
-</td>
-<td style="text-align:left;">
-0.73 g
-</td>
-<td style="text-align:left;">
-0.00 g
-</td>
-<td style="text-align:left;">
-0.01 g
-</td>
-<td style="text-align:left;">
-0.62 g
-</td>
-<td style="text-align:left;">
-2.38 g
-</td>
-<td style="text-align:left;">
-0.449 g
-</td>
-<td style="text-align:left;">
-0.589 g
-</td>
-<td style="text-align:left;">
-1.071 g
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-2.37 g
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-8.82 g
+<td style="text-align:right;">
+1
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
 4
 </td>
-<td style="text-align:left;">
-Sherbet, orange
-</td>
-<td style="text-align:left;">
-100 g
-</td>
 <td style="text-align:right;">
-144
-</td>
-<td style="text-align:left;">
-2g
-</td>
-<td style="text-align:left;">
-1.2g
-</td>
-<td style="text-align:left;">
-1mg
-</td>
-<td style="text-align:left;">
-46.00 mg
-</td>
-<td style="text-align:left;">
-7.7 mg
-</td>
-<td style="text-align:left;">
-4.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.063 mg
-</td>
-<td style="text-align:left;">
-0.224 mg
-</td>
-<td style="text-align:left;">
-0.097 mg
-</td>
-<td style="text-align:left;">
-0.027 mg
-</td>
-<td style="text-align:left;">
-46.00 IU
-</td>
-<td style="text-align:left;">
-12.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-1.00 mcg
-</td>
-<td style="text-align:left;">
-5.00 mcg
-</td>
-<td style="text-align:left;">
-7.00 mcg
+74
 </td>
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:left;">
-0.13 mcg
+<td style="text-align:right;">
+2
 </td>
-<td style="text-align:left;">
-0.023 mg
+<td style="text-align:right;">
+120
 </td>
-<td style="text-align:left;">
-2.3 mg
+<td style="text-align:right;">
+269
 </td>
-<td style="text-align:left;">
-0.00 IU
-</td>
-<td style="text-align:left;">
-0.01 mg
-</td>
-<td style="text-align:left;">
-0.01 mg
-</td>
-<td style="text-align:left;">
-0.0 mcg
-</td>
-<td style="text-align:left;">
-54.00 mg
-</td>
-<td style="text-align:left;">
-0.028 mg
-</td>
-<td style="text-align:left;">
-0.14 mg
-</td>
-<td style="text-align:left;">
-8.00 mg
-</td>
-<td style="text-align:left;">
-0.011 mg
-</td>
-<td style="text-align:left;">
-40.00 mg
-</td>
-<td style="text-align:left;">
-96.00 mg
-</td>
-<td style="text-align:left;">
-1.5 mcg
-</td>
-<td style="text-align:left;">
-0.48 mg
-</td>
-<td style="text-align:left;">
-1.10 g
-</td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 0
 </td>
-<td style="text-align:left;">
-0
+<td style="text-align:right;">
+2
 </td>
-<td style="text-align:left;">
-0
+<td style="text-align:right;">
+121
 </td>
-<td style="text-align:left;">
-0
+<td style="text-align:right;">
+1
 </td>
-<td style="text-align:left;">
-0
+<td style="text-align:right;">
+0.2
 </td>
-<td style="text-align:left;">
-0
+<td style="text-align:right;">
+1
 </td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-30.40 g
-</td>
-<td style="text-align:left;">
-1.3 g
-</td>
-<td style="text-align:left;">
-24.32 g
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-2.00 g
-</td>
-<td style="text-align:left;">
-1.160 g
-</td>
-<td style="text-align:left;">
-0.530 g
-</td>
-<td style="text-align:left;">
-0.080 g
-</td>
-<td style="text-align:left;">
-1.00 mg
-</td>
-<td style="text-align:left;">
-0.0 g
-</td>
-<td style="text-align:left;">
-0.40 g
-</td>
-<td style="text-align:left;">
-0.00 mg
-</td>
-<td style="text-align:left;">
-0.00 mg
-</td>
-<td style="text-align:left;">
-66.10 g
+<td style="text-align:right;">
+1
 </td>
 </tr>
 <tr>
 <td style="text-align:right;">
 5
 </td>
-<td style="text-align:left;">
-Cauliflower, raw
-</td>
-<td style="text-align:left;">
-100 g
+<td style="text-align:right;">
+65
 </td>
 <td style="text-align:right;">
-25
+1
 </td>
-<td style="text-align:left;">
-0.3g
+<td style="text-align:right;">
+4
 </td>
-<td style="text-align:left;">
-0.1g
+<td style="text-align:right;">
+120
 </td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-30.00 mg
-</td>
-<td style="text-align:left;">
-44.3 mg
-</td>
-<td style="text-align:left;">
-57.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.507 mg
-</td>
-<td style="text-align:left;">
-0.667 mg
-</td>
-<td style="text-align:left;">
-0.060 mg
-</td>
-<td style="text-align:left;">
-0.050 mg
-</td>
-<td style="text-align:left;">
-0.00 IU
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-1.00 mcg
+<td style="text-align:right;">
+177
 </td>
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:left;">
-0.00 mcg
-</td>
-<td style="text-align:left;">
-0.184 mg
-</td>
-<td style="text-align:left;">
-48.2 mg
-</td>
-<td style="text-align:left;">
-0.00 IU
-</td>
-<td style="text-align:left;">
-0.08 mg
-</td>
-<td style="text-align:left;">
-0.08 mg
-</td>
-<td style="text-align:left;">
-15.5 mcg
-</td>
-<td style="text-align:left;">
-22.00 mg
-</td>
-<td style="text-align:left;">
-0.039 mg
-</td>
-<td style="text-align:left;">
-0.42 mg
-</td>
-<td style="text-align:left;">
-15.00 mg
-</td>
-<td style="text-align:left;">
-0.155 mg
-</td>
-<td style="text-align:left;">
-44.00 mg
-</td>
-<td style="text-align:left;">
-299.00 mg
-</td>
-<td style="text-align:left;">
-0.6 mcg
-</td>
-<td style="text-align:left;">
-0.27 mg
-</td>
-<td style="text-align:left;">
-1.92 g
-</td>
-<td style="text-align:left;">
-0.116 g
-</td>
-<td style="text-align:left;">
-0.086 g
-</td>
-<td style="text-align:left;">
-0.177 g
-</td>
-<td style="text-align:left;">
-0.020 g
-</td>
-<td style="text-align:left;">
-0.257 g
-</td>
-<td style="text-align:left;">
-0.071 g
-</td>
-<td style="text-align:left;">
-0.056 g
-</td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 0
 </td>
-<td style="text-align:left;">
-0.071 g
+<td style="text-align:right;">
+140
 </td>
-<td style="text-align:left;">
-0.106 g
+<td style="text-align:right;">
+0
 </td>
-<td style="text-align:left;">
-0.217 g
+<td style="text-align:right;">
+0.4
 </td>
-<td style="text-align:left;">
-0.020 g
+<td style="text-align:right;">
+1
 </td>
-<td style="text-align:left;">
-0.065 g
-</td>
-<td style="text-align:left;">
-0.071 g
-</td>
-<td style="text-align:left;">
-0.086 g
-</td>
-<td style="text-align:left;">
-0.076 g
-</td>
-<td style="text-align:left;">
-0.020 g
-</td>
-<td style="text-align:left;">
-0.051 g
-</td>
-<td style="text-align:left;">
-0.125 g
-</td>
-<td style="text-align:left;">
-4.97 g
-</td>
-<td style="text-align:left;">
-2.0 g
-</td>
-<td style="text-align:left;">
-1.91 g
-</td>
-<td style="text-align:left;">
-0.97 g
-</td>
-<td style="text-align:left;">
-0.00 g
-</td>
-<td style="text-align:left;">
-0.94 g
-</td>
-<td style="text-align:left;">
-0.00 g
-</td>
-<td style="text-align:left;">
-0.00 g
-</td>
-<td style="text-align:left;">
-0.00 g
-</td>
-<td style="text-align:left;">
-0.28 g
-</td>
-<td style="text-align:left;">
-0.130 g
-</td>
-<td style="text-align:left;">
-0.034 g
-</td>
-<td style="text-align:left;">
-0.031 g
-</td>
-<td style="text-align:left;">
-0.00 mg
-</td>
-<td style="text-align:left;">
-0.0 g
-</td>
-<td style="text-align:left;">
-0.76 g
-</td>
-<td style="text-align:left;">
-0.00 mg
-</td>
-<td style="text-align:left;">
-0.00 mg
-</td>
-<td style="text-align:left;">
-92.07 g
+<td style="text-align:right;">
+0
 </td>
 </tr>
 </tbody>
 </table>
-<pre class="r"><code>paste(&quot;total elements:&quot;, nrow(df) * ncol(df))</code></pre>
-<pre><code>## [1] &quot;total elements: 676753&quot;</code></pre>
-<pre class="r"><code>paste(&quot;non empty elements:&quot;, sum(!is.na(df)))</code></pre>
-<pre><code>## [1] &quot;non empty elements: 675163&quot;</code></pre>
+<p>Let’s first find duplicate elements in the first column. The Index
+should be a unique number, so duplicates should be easily found in this
+column:</p>
+<pre class="r"><code>df$index[duplicated(df$index)]</code></pre>
+<pre><code>## [1] 10  8 10  8 10 10 10</code></pre>
+<p>Yes, there seems to be duplicates of the rows with index numbers 8
+and 10. NOTE: R shows the extra duplicates here (in total there are 3
+rows with index 8 and 6 rows with index 10; see below).</p>
+<p>Do the rows with index numbers 8 and 10 contain the same data?</p>
+<pre class="r"><code>formatted_table(df[df$index == 8, ])</code></pre>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+index
+</th>
+<th style="text-align:right;">
+Age
+</th>
+<th style="text-align:right;">
+Sex
+</th>
+<th style="text-align:right;">
+Chest pain type
+</th>
+<th style="text-align:right;">
+BP
+</th>
+<th style="text-align:right;">
+Cholesterol
+</th>
+<th style="text-align:right;">
+FBS over 120
+</th>
+<th style="text-align:right;">
+EKG results
+</th>
+<th style="text-align:right;">
+Max HR
+</th>
+<th style="text-align:right;">
+Exercise angina
+</th>
+<th style="text-align:right;">
+ST depression
+</th>
+<th style="text-align:right;">
+Slope of ST
+</th>
+<th style="text-align:right;">
+Number of vessels fluro
+</th>
+<th style="text-align:right;">
+Thallium
+</th>
+<th style="text-align:left;">
+Heart Disease
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+140
+</td>
+<td style="text-align:right;">
+293
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+170
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Presence
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+140
+</td>
+<td style="text-align:right;">
+293
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+170
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Presence
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+140
+</td>
+<td style="text-align:right;">
+293
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+170
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Presence
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>formatted_table(df[df$index == 10, ])</code></pre>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+index
+</th>
+<th style="text-align:right;">
+Age
+</th>
+<th style="text-align:right;">
+Sex
+</th>
+<th style="text-align:right;">
+Chest pain type
+</th>
+<th style="text-align:right;">
+BP
+</th>
+<th style="text-align:right;">
+Cholesterol
+</th>
+<th style="text-align:right;">
+FBS over 120
+</th>
+<th style="text-align:right;">
+EKG results
+</th>
+<th style="text-align:right;">
+Max HR
+</th>
+<th style="text-align:right;">
+Exercise angina
+</th>
+<th style="text-align:right;">
+ST depression
+</th>
+<th style="text-align:right;">
+Slope of ST
+</th>
+<th style="text-align:right;">
+Number of vessels fluro
+</th>
+<th style="text-align:right;">
+Thallium
+</th>
+<th style="text-align:left;">
+Heart Disease
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+135
+</td>
+<td style="text-align:right;">
+234
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+161
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Absence
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+135
+</td>
+<td style="text-align:right;">
+234
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+161
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Absence
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+135
+</td>
+<td style="text-align:right;">
+234
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+161
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Absence
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+135
+</td>
+<td style="text-align:right;">
+234
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+161
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Absence
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+135
+</td>
+<td style="text-align:right;">
+234
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+161
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Absence
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+135
+</td>
+<td style="text-align:right;">
+234
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+161
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Absence
+</td>
+</tr>
+</tbody>
+</table>
+<p>Yes, the rows with index numbers 8 and 10 contain the same data in
+the rows. Before we delete the duplicates, let us count the number of
+rows:</p>
+<pre class="r"><code>nrow(df)</code></pre>
+<pre><code>## [1] 277</code></pre>
+<p>Now we can delete the duplicated rows:</p>
+<pre class="r"><code>my_data_cleaned &lt;- df[!duplicated(df$index), ]
+formatted_table(head(my_data_cleaned, c(6,13)))</code></pre>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+index
+</th>
+<th style="text-align:right;">
+Age
+</th>
+<th style="text-align:right;">
+Sex
+</th>
+<th style="text-align:right;">
+Chest pain type
+</th>
+<th style="text-align:right;">
+BP
+</th>
+<th style="text-align:right;">
+Cholesterol
+</th>
+<th style="text-align:right;">
+FBS over 120
+</th>
+<th style="text-align:right;">
+EKG results
+</th>
+<th style="text-align:right;">
+Max HR
+</th>
+<th style="text-align:right;">
+Exercise angina
+</th>
+<th style="text-align:right;">
+ST depression
+</th>
+<th style="text-align:right;">
+Slope of ST
+</th>
+<th style="text-align:right;">
+Number of vessels fluro
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:right;">
+322
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+109
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2.4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+115
+</td>
+<td style="text-align:right;">
+564
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.6
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+57
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+124
+</td>
+<td style="text-align:right;">
+261
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+141
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+128
+</td>
+<td style="text-align:right;">
+263
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+105
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+74
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+269
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+121
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+177
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+140
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.4
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>nrow(my_data_cleaned)</code></pre>
+<pre><code>## [1] 270</code></pre>
+<p>Note that there are 270 rows in the above tibble. Seven rows less
+compared to the tibble we started with (277).</p>
+<p>Check if we still have duplicated rows:</p>
+<pre class="r"><code>my_data_cleaned$index[duplicated(my_data_cleaned$index)]</code></pre>
+<pre><code>## numeric(0)</code></pre>
+<p>This yielded an empty vector meaning the tibble does not contain
+duplicated rows anymore.</p>
+</div>
+<div id="exercise-4" class="section level3">
+<h3>Exercise 4</h3>
+<p><a href="./files_07_data_cleaning_exercises/exercise04/CHEMBL1989.csv">This</a>
+data set contains empty data. Make the empty elements more explicit in R
+by converting them to <code>NA</code>.</p>
+<pre class="r"><code>file_path &lt;- &quot;./files_07_data_cleaning_exercises/exercise04/CHEMBL1989.csv&quot;
+df &lt;- read_csv(file_path)
+formatted_table(head(df, c(6, 5)))</code></pre>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+molecule_chembl_id
+</th>
+<th style="text-align:left;">
+canonical_smiles
+</th>
+<th style="text-align:left;">
+standard_relation
+</th>
+<th style="text-align:right;">
+standard_value
+</th>
+<th style="text-align:left;">
+standard_units
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+CHEMBL332970
+</td>
+<td style="text-align:left;">
+NC(CC1CCCCC1)P(=O)(O)C/C(=Cccc(Cl)c(Cl)c1)C(=O)O
+</td>
+<td style="text-align:left;">
+=
+</td>
+<td style="text-align:right;">
+20.00
+</td>
+<td style="text-align:left;">
+nM
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CHEMBL120198
+</td>
+<td style="text-align:left;">
+Nc1ccc(/C=C(/CP(=O)(O)C(N)CC2CCCCC2)C(=O)O)cc1
+</td>
+<td style="text-align:left;">
+=
+</td>
+<td style="text-align:right;">
+150.00
+</td>
+<td style="text-align:left;">
+nM
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CHEMBL171708
+</td>
+<td style="text-align:left;">
+C<a href="O">C@<span class="citation">@H</span></a>[<a href="mailto:C@H" class="email">C@H</a>]1C(=O)N2C(C(=O)[O-])=C(c3ccccc3)C[<a href="mailto:C@H" class="email">C@H</a>]12.[K+]
+</td>
+<td style="text-align:left;">
+=
+</td>
+<td style="text-align:right;">
+0.20
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CHEMBL434102
+</td>
+<td style="text-align:left;">
+C[<a href="mailto:C@H" class="email">C@H</a>]1C(c2cccnc2)=C(C(=O)[O-])N2C(=O)<a href="%5BC@@H%5D(C)O">C@H</a><span class="citation">[C@@H]</span>12.[K+]
+</td>
+<td style="text-align:left;">
+=
+</td>
+<td style="text-align:right;">
+0.70
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CHEMBL1161528
+</td>
+<td style="text-align:left;">
+C[<a href="mailto:C@H" class="email">C@H</a>]1C(c2ccc(CN)cc2)=C(C(=O)O)N2C(=O)<a href="%5BC@@H%5D(C)O">C@H</a><span class="citation">[C@@H]</span>12
+</td>
+<td style="text-align:left;">
+=
+</td>
+<td style="text-align:right;">
+0.07
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CHEMBL350605
+</td>
+<td style="text-align:left;">
+C<a href="O">C@<span class="citation">@H</span></a>[<a href="mailto:C@H" class="email">C@H</a>]1C(=O)N2C(C(=O)[O-])=C(c3cccnc3)C[<a href="mailto:C@H" class="email">C@H</a>]12.[K+]
+</td>
+<td style="text-align:left;">
+=
+</td>
+<td style="text-align:right;">
+0.40
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<p>You see that also the <code>read_csv</code> function automatically
+replaces empty fields with <code>NA</code>.</p>
+<p>Count how many elements you have:</p>
+<ul>
+<li>in total</li>
+<li>with missing data</li>
+<li>without missing data</li>
+</ul>
+<pre class="r"><code>paste(&quot;total elements:&quot;, nrow(df), &quot;x&quot;, ncol(df), &quot;=&quot;, nrow(df) * ncol(df))</code></pre>
+<pre><code>## [1] &quot;total elements: 55 x 9 = 495&quot;</code></pre>
+<pre class="r"><code>paste(&quot;non-empty elements:&quot;, sum(!is.na(df)))</code></pre>
+<pre><code>## [1] &quot;non-empty elements: 433&quot;</code></pre>
 <pre class="r"><code>paste(&quot;empty elements:&quot;, sum(is.na(df)))</code></pre>
-<pre><code>## [1] &quot;empty elements: 1590&quot;</code></pre>
+<pre><code>## [1] &quot;empty elements: 62&quot;</code></pre>
+</div>
+<div id="exercise-5" class="section level3">
+<h3>Exercise 5</h3>
+<p><a href="./files_07_data_cleaning_exercises/exercise05/CHEMBL1989_mod.csv">This</a>
+also contains missing data in many fields. However, instead of leaving
+the cells empty, the author used a character to indicate a missing
+value. Open the file in a text editor to find what character has been
+used for missing data and replace this character with
+<code>NA</code>.</p>
+<pre class="r"><code>file_path &lt;- &quot;./files_07_data_cleaning_exercises/exercise05/CHEMBL1989_mod.csv&quot;
+df &lt;- read_csv2(file_path)
+df &lt;- df %&gt;% replace(. == &quot;-&quot;, NA)
+formatted_table(head(df, c(6, 5)))</code></pre>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+molecule_chembl_id
+</th>
+<th style="text-align:left;">
+canonical_smiles
+</th>
+<th style="text-align:left;">
+standard_relation
+</th>
+<th style="text-align:left;">
+standard_value
+</th>
+<th style="text-align:left;">
+standard_units
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+CHEMBL332970
+</td>
+<td style="text-align:left;">
+NC(CC1CCCCC1)P(=O)(O)C/C(=Cccc(Cl)c(Cl)c1)C(=O)O
+</td>
+<td style="text-align:left;">
+=
+</td>
+<td style="text-align:left;">
+20.0
+</td>
+<td style="text-align:left;">
+nM
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CHEMBL120198
+</td>
+<td style="text-align:left;">
+Nc1ccc(/C=C(/CP(=O)(O)C(N)CC2CCCCC2)C(=O)O)cc1
+</td>
+<td style="text-align:left;">
+=
+</td>
+<td style="text-align:left;">
+150.0
+</td>
+<td style="text-align:left;">
+nM
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CHEMBL171708
+</td>
+<td style="text-align:left;">
+C<a href="O">C@<span class="citation">@H</span></a>[<a href="mailto:C@H" class="email">C@H</a>]1C(=O)N2C(C(=O)[O-])=C(c3ccccc3)C[<a href="mailto:C@H" class="email">C@H</a>]12.[K+]
+</td>
+<td style="text-align:left;">
+=
+</td>
+<td style="text-align:left;">
+0.2
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CHEMBL434102
+</td>
+<td style="text-align:left;">
+C[<a href="mailto:C@H" class="email">C@H</a>]1C(c2cccnc2)=C(C(=O)[O-])N2C(=O)<a href="%5BC@@H%5D(C)O">C@H</a><span class="citation">[C@@H]</span>12.[K+]
+</td>
+<td style="text-align:left;">
+=
+</td>
+<td style="text-align:left;">
+0.7
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CHEMBL1161528
+</td>
+<td style="text-align:left;">
+C[<a href="mailto:C@H" class="email">C@H</a>]1C(c2ccc(CN)cc2)=C(C(=O)O)N2C(=O)<a href="%5BC@@H%5D(C)O">C@H</a><span class="citation">[C@@H]</span>12
+</td>
+<td style="text-align:left;">
+=
+</td>
+<td style="text-align:left;">
+0.07
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CHEMBL350605
+</td>
+<td style="text-align:left;">
+C<a href="O">C@<span class="citation">@H</span></a>[<a href="mailto:C@H" class="email">C@H</a>]1C(=O)N2C(C(=O)[O-])=C(c3cccnc3)C[<a href="mailto:C@H" class="email">C@H</a>]12.[K+]
+</td>
+<td style="text-align:left;">
+=
+</td>
+<td style="text-align:left;">
+0.4
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <blockquote>
 <p>This web page is distributed under the terms of the Creative Commons

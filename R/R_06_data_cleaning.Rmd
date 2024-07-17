@@ -34,16 +34,16 @@ So here are some examples of data cleaning:
 Let's start with creating a tibble with missing data:
 
 ```{r}
-category <- c("fruit", "vegetable", "vegetable", "fruit")
-type <- c("apple", "broccoli", "cauliflower", "banana")
-calories <- c(52.5, NA, NA, 89.4)
+gene <- c("AAAS", "ABAT", "ABCC2", "ABL1", "FMR1")
+chromosome <- c(12, 16, 10, 9, "X")
+mol_weight_kD <- c(52.2, NA, NA, 122.9, 71.1)
 
-my_tibble <- tibble(category, type, calories)
-formatted_table(head(my_tibble))
+my_tibble <- tibble(gene, chromosome, mol_weight_kD)
+formatted_table(my_tibble)
 ```
 
 As you can see, there are two rows with missing values (NA values).
-Here is how to drop them:
+Here is how to drop these missing (NA) values:
 
 ```{r}
 my_tibble <- drop_na(my_tibble)
@@ -52,7 +52,7 @@ formatted_table(my_tibble)
 
 Later on we will perform multiple manipulations on data frames.
 To prevent overwriting the same variable each time, we will use a different syntax.
-Tidyverse came up with a shorthand to prevent overwriting the same variable each time (called forward chaining):
+Tidyverse came up with a shorthand to prevent overwriting the same variable each time (this is called forward chaining):
 
 
 ```{r}
@@ -67,11 +67,11 @@ The reason to do this will become clear later on.
 You can rename a column like shown below:
 
 ```{r}
-category <- c("fruit", "vegetable", "vegetable", "fruit")
-x <- c("apple", "broccoli", "cauliflower", "banana")
-calories <- c(52.5, 32.2, 25.7, 89.4)
+gene <- c("AAAS", "ABAT", "ABCC2", "ABL1", "FMR1")
+x <- c(12, 16, 10, 9, "X")
+mol_weight_kD <- c(52.2, 56.4, 174.2, 122.9, 71.1)
 
-my_tibble <- tibble(category, x, calories)
+my_tibble <- tibble(gene, x, mol_weight_kD)
 formatted_table(my_tibble)
 ```
 
@@ -79,86 +79,98 @@ As you can see, the column x is a poor column name.
 Here is how to rename column x to type:
 
 ```{r}
-my_tibble <- my_tibble %>% rename(type = x)
+my_tibble <- my_tibble %>% rename(chromosome = x)
 formatted_table(my_tibble)
 ```
+As you can see, the name of the second column (x) has been replaced (it is now called chromosome).
+
 
 ## Reordering columns
 
 Below is tibble with a column order that is probably not preferred:
 
 ```{r}
-category <- c("fruit", "vegetable", "vegetable", "fruit")
-type <- c("apple", "broccoli", "cauliflower", "banana")
-calories <- c(52.5, 32.2, 25.7, 89.4)
+gene <- c("AAAS", "ABAT", "ABCC2", "ABL1", "FMR1")
+chromosome <- c(12, 16, 10, 9, "X")
+mol_weight_kD <- c(52.2, 56.4, 174.2, 122.9, 71.1)
 
-my_tibble <- tibble(category, calories, type)
+my_tibble <- tibble(gene, mol_weight_kD, chromosome)
 formatted_table(my_tibble)
 ```
 
-As you can see, calories becomes before type.
+As you can see, mol_weight_kD becomes before chromosome.
 You might want to reorder columns. This is how to do that:
 
 ```{r}
-my_tibble <- my_tibble %>% select(category, type, calories)
+my_tibble <- my_tibble %>% select(gene, chromosome, mol_weight_kD)
 formatted_table(my_tibble)
 ```
 
 ## Changing a columns data type
 
-Be aware the R uses coercion when data types in a vector is not consistent:
+Be aware that R uses coercion when data types in a vector is not consistent:
 
 ```{r}
-category <- c("fruit", "vegetable", "vegetable", "fruit")
-x <- c("apple", "broccoli", "cauliflower", "banana")
-calories <- c(52.5, 32.2, "25.7", 89.4) # Note that this vector contains a string.
+gene <- c("AAAS", "ABAT", "ABCC2", "ABL1", "FMR1")
+chromosome <- c(12, 16, 10, 9, "X")
+mol_weight_kD <- c(52.2, 56.4, "174.2", 122.9, 71.1)
 
-my_tibble <- tibble(category, type, calories)
+my_tibble <- tibble(gene, chromosome, mol_weight_kD)
 my_tibble
 ```
 
-As a result of a single string value the whole column calories is coerced to characters instead of doubles.
-You can change that using the `mutate()` function:
+As a result of a single string value the whole column mol_weight_kD is coerced to characters instead of doubles (stored numbers as decimals). You can spot this quite easily, since the numbers are now outlined on the left of the column (numbers are outlined on the right of the column). Compare with the previous table to see the difference.
+You can change the type of data in the column using the `mutate` function:
 
 ```{r}
-my_tibble <- my_tibble %>% mutate(calories = as.numeric(calories))
+my_tibble <- my_tibble %>% mutate(mol_weight_kD = as.numeric(mol_weight_kD))
 my_tibble
 ```
+
+NOTE: you cannot apply the same strategy to the column chromosome (you cannot convert 'X' to a number):
+
+```{r}
+my_tibble <- my_tibble %>% mutate(chromosome = as.numeric(chromosome))
+my_tibble
+```
+The numbers in column chromosome have been converted to the data type 'double'. However, as a result the field(s) with non-numeric types of data are removed from the column ('X' has been replaced by `NA`).
+
 
 ## Deal with missing data from csv files
 
 How to deal with missing data from csv files?
 Obviously, you can not make up data.
-The best thing to do is to "mark"  them with `NA`. 
+The best thing to do is to "mark" missing data with `NA`. 
 
 ```{r}
-my_path = './files_06_data_cleaning/file01_fruits.csv'
+my_path = './files_06_data_cleaning/file01_genes.csv'
 my_df <- read_csv2(my_path)
 formatted_table(my_df)
 ```
 
-As you can see, the calorie data for broccoli is missing. Instead a forward slash is included indicating that the data is missing.
-Note that the column is coerced to character.
+As you can see, the molecular weight data for the *ABAT* gene is missing. Instead, a forward slash is included indicating that the data is missing.
+Note that the column is coerced to character (numbers in the column are outlined on the left side of the column).
 Let's correct that:
 
 ```{r}
-my_path = './files_06_data_cleaning/file01_fruits.csv'
+my_path = './files_06_data_cleaning/file01_genes.csv'
 my_df <- read_csv2(my_path, na = "/")
 formatted_table(my_df)
 ```
+All data that has the value / will has been replaced with `NA`.
 
 If multiple types of "empty" data are present in your dataset:
 
 ```{r}
-my_path = './files_06_data_cleaning/file02_fruits.csv'
+my_path = './files_06_data_cleaning/file02_genes.csv'
 my_df <- read_csv2(my_path)
 formatted_table(my_df)
 ```
 
-You can use a vector in the `NA =` parameter:
+You can use a vector in the `NA =` argument in the `read_csv2` function:
 
 ```{r}
-my_path = './files_06_data_cleaning/file02_fruits.csv'
+my_path = './files_06_data_cleaning/file02_genes.csv'
 my_df <- read_csv2(my_path, na = c("/", "-"))
 formatted_table(my_df)
 ```
@@ -167,12 +179,15 @@ formatted_table(my_df)
 
 Like csv files, Excel files can have missing data too:
 
-![fig1](./pics_06_data_cleaning/fig1.png)
+![**Figure 1.** *Excel file with missing data.*](./pics_06_data_cleaning/fig01_genes.png)
+
+<br>
+
 Now if we load the data the following will happen:
 
 ```{r}
 library(readxl)
-my_path = './files_06_data_cleaning/file03_fruits.xlsx'
+my_path = './files_06_data_cleaning/file03_genes.xlsx'
 my_df <- read_excel(my_path)
 formatted_table(my_df)
 ```
@@ -180,23 +195,26 @@ formatted_table(my_df)
 Like for csv files, we can specify the missing values:
 
 ```{r}
-my_path = './files_06_data_cleaning/file03_fruits.xlsx'
+my_path = './files_06_data_cleaning/file03_genes.xlsx'
 my_df <- read_excel(my_path, na=  c("/", "-"))
 formatted_table(my_df)
 ```
 
 What if cells are left blank?
 
-![fig1](./pics_06_data_cleaning/fig2.png)
+![**Figure 2.** *Excel file with empty cells.*](./pics_06_data_cleaning/fig02_genes.png)
+
+<br>
+
 If we load the data:
 
 ```{r}
-my_path = './files_06_data_cleaning/file04_fruits.xlsx'
+my_path = './files_06_data_cleaning/file04_genes.xlsx'
 my_df <- read_excel(my_path)
 formatted_table(my_df)
 ```
 
-As you can see, the read_excel function deals with them automatically.
+As you can see, the `read_excel` function deals with them automatically.
 
 
 ## Replace data
@@ -205,19 +223,20 @@ Imagine we have a clear erroneous data item:
 
 
 ```{r}
-category <- c("fruit", "vegetable", "vegetable", "fruit")
-type <- c("apple", "broccoli", "cauliflower", "banana")
-calories <- c(52.5, 999,25.7, 89.4)
-my_tibble <- tibble(category, type, calories)
+gene <- c("AAAS", "ABAT", "ABCC2", "ABL1", "FMR1")
+chromosome <- c(14, 16, 10, 9, "X")
+mol_weight_kD <- c(52.2, 56.4, 174.2, 0.023, 71.1)
+
+my_tibble <- tibble(gene, chromosome, mol_weight_kD)
 formatted_table(my_tibble)
 ```
 
-The 999 calories for broccoli should be replaced with 34.2.
+The molecular weigth of the *ABL1* gene should be replaced with 122.9.
 
 Replacing this specific data point can be done as follows: 
 
 ```{r}
-my_tibble[2,3] <- 34.2
+my_tibble[4,3] <- 122.9 #NOTE:my_tibble[row, column]
 formatted_table(my_tibble)
 ```
 
@@ -226,46 +245,40 @@ formatted_table(my_tibble)
 You can insert an entire row like below:
 
 ```{r}
-my_tibble <- my_tibble %>% add_row(category = "fruit", type = "mango", calories = 104)
+my_tibble <- my_tibble %>% add_row(gene = "PNOC", chromosome = "8", mol_weight_kD = 20.3)
 formatted_table(my_tibble)
 ```
 
+NOTE: the chromosome number is entered as a character, since all the data in this column are characters (because of the 'X' value of the *FMR1* gene which is on the X chromosome).
 
 
 ### Replacing a whole row:
 
 Replacing a row can be performed by deleting a row and subsequently adding a row.
-Imagine that you want to delete the row containing `mango` and insert a row pineapple.
+Imagine that you want to delete the row containing the *PNOC* gene and insert a row for the *KTN1* gene.
 You can replace an entire row by first deleting a row:
 
 
 ```{r}
-my_tibble <- my_tibble %>% filter(!type == "mango")
+my_tibble <- my_tibble %>% filter(!gene == "PNOC")
 formatted_table(my_tibble)
 ```
 
-In the above example, we used dplyr `filter` function to filter for all but mango in the column type.
+In the above example, we used the `filter` function to filter for all but PNOC in the column gene
 
-Now we can add the row for pineapple:
+Now we can add the row for the *KTN1* gene:
 
 ```{r}
-my_tibble <- my_tibble %>% add_row(category  = "fruit", type = "pineapple", calories = 105)
+my_tibble <- my_tibble %>% add_row(gene  = "MDM2", chromosome = "14", mol_weight_kD = 56.0)
 formatted_table(my_tibble)
 ```
 
 ### Replacing data in a whole column:
 
-If we want to change fruit to fruits (plural) and vegetable to vegetables (plural) we can do that as follows:
+There seems to be a mistake in the data All fields in the column chromosome containing the value 14 should be replaced by the value 12. If we want to make these changes in the column chromosome, we can do that as follows:
 
 ```{r}
-my_tibble <- my_tibble %>% mutate(category = str_replace(category, "fruit", "fruits"))
-formatted_table(my_tibble)
-```
-
-And next for vegetables:
-
-```{r}
-my_tibble <- my_tibble %>% mutate(category = str_replace(category, "vegetable", "vegetables"))
+my_tibble <- my_tibble %>% mutate(chromosome = str_replace(chromosome, "14", "12"))
 formatted_table(my_tibble)
 ```
 
@@ -275,11 +288,11 @@ formatted_table(my_tibble)
 If you end up with a situation that you want to change all occurrences of a certain value in a tibble you can solve that as follows:
 
 ```{r}
-category <- c("-", "vegetable", "-", "fruit")
-type <- c("apple", "-", "cauliflower", "banana")
-calories <- c(52.5, "-", "-", 89.4)
+gene <- c("-", "ABAT", "-", "ABL1", "FMR1")
+chromosome <- c("-", 16, 10, 9, "X")
+mol_weight_kD <- c(52.2, "-", 174.2, 0.023, "-")
 
-my_tibble <- tibble(category, type, calories)
+my_tibble <- tibble(gene, chromosome, mol_weight_kD)
 formatted_table(my_tibble)
 ```
 

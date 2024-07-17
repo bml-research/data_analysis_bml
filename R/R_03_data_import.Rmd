@@ -46,9 +46,9 @@ Here we use the tibble function to create a tiblle directly from 3 vectors:
 ```{r}
 gene <- c("AAAS", "ABAT", "ABCC2", "ABL1", "FMR1")
 chromosome <- c(12, 16, 10, 9, "X")
-length_protein <- c(546, 500, 1545, 1130, 632)
+mol_weight_kD <- c(52.2, 56.4, 174.2, 122.9, 71.1)
 
-my_tibble <- tibble(gene, chromosome, length_protein)
+my_tibble <- tibble(gene, chromosome, mol_weight_kD)
 formatted_table(head(my_tibble))
 ```
 

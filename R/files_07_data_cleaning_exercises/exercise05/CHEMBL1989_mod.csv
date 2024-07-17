@@ -1,0 +1,56 @@
+molecule_chembl_id;canonical_smiles;standard_relation;standard_value;standard_units;standard_type;pchembl_value;target_pref_name;bao_label
+CHEMBL332970;NC(CC1CCCCC1)P(=O)(O)C/C(=C\c1ccc(Cl)c(Cl)c1)C(=O)O;=;20.0;nM;IC50;7.70;Renal dipeptidase;single protein format
+CHEMBL120198;Nc1ccc(/C=C(/CP(=O)(O)C(N)CC2CCCCC2)C(=O)O)cc1;=;150.0;nM;IC50;6.82;Renal dipeptidase;single protein format
+CHEMBL171708;C[C@@H](O)[C@H]1C(=O)N2C(C(=O)[O-])=C(c3ccccc3)C[C@H]12.[K+];=;0.2;-;Relative susceptibility;-;Renal dipeptidase;single protein format
+CHEMBL434102;C[C@H]1C(c2cccnc2)=C(C(=O)[O-])N2C(=O)[C@H]([C@@H](C)O)[C@@H]12.[K+];=;0.7;-;Relative susceptibility;-;Renal dipeptidase;single protein format
+CHEMBL1161528;C[C@H]1C(c2ccc(CN)cc2)=C(C(=O)O)N2C(=O)[C@H]([C@@H](C)O)[C@@H]12;=;0.07;-;Relative susceptibility;-;Renal dipeptidase;single protein format
+CHEMBL350605;C[C@@H](O)[C@H]1C(=O)N2C(C(=O)[O-])=C(c3cccnc3)C[C@H]12.[K+];=;0.4;-;Relative susceptibility;-;Renal dipeptidase;single protein format
+CHEMBL120600;NC(CC1CCCCC1)P(=O)(O)C/C(=C/c1ccc(Br)cc1)C(=O)O;=;30.0;nM;IC50;7.52;Renal dipeptidase;single protein format
+CHEMBL333841;NC(CC1CCCCC1)P(=O)(O)C/C(=C\c1ccc(C(F)(F)F)cc1)C(=O)O;=;10.0;nM;IC50;8.00;Renal dipeptidase;single protein format
+CHEMBL117337;NC(CC1CCCCC1)P(=O)(O)C/C(=C\c1ccc(Br)cc1)C(=O)O;=;6.0;nM;IC50;8.22;Renal dipeptidase;single protein format
+CHEMBL352337;C[C@@H](O)[C@H]1C(=O)N2C(C(=O)[O-])=C(c3cccnc3)[C@@H](C)[C@H]12.[K+];=;0.1;-;Relative susceptibility;-;Renal dipeptidase;single protein format
+CHEMBL332290;NC(CC1CCCCC1)P(=O)(O)C/C(=C\c1ccc(F)c(Br)c1)C(=O)O;=;40.0;nM;IC50;7.40;Renal dipeptidase;single protein format
+CHEMBL118275;NC(CC1CCCCC1)P(=O)(O)C/C(=C/c1ccc(F)c(Br)c1)C(=O)O;=;3000.0;nM;IC50;5.52;Renal dipeptidase;single protein format
+CHEMBL353924;C[C@@H](O)[C@H]1C(=O)N2C(C(=O)[O-])=C(c3ccc(CO)cc3)C[C@H]12.[K+];=;0.28;-;Relative susceptibility;-;Renal dipeptidase;single protein format
+CHEMBL1161526;C[C@@H](O)[C@H]1C(=O)N2C(C(=O)O)=C(c3ccc(CN)nc3)C[C@H]12;=;0.1;-;Relative susceptibility;-;Renal dipeptidase;single protein format
+CHEMBL325021;NC(CC1CCCCC1)P(=O)(O)C/C(=C\c1ccccc1I)C(=O)O;=;100.0;nM;IC50;7.00;Renal dipeptidase;single protein format
+CHEMBL334279;NC(CC1CCCCC1)P(=O)(O)C/C(=C/c1ccc(I)cc1)C(=O)O;=;25.0;nM;IC50;7.60;Renal dipeptidase;single protein format
+CHEMBL119392;NC(CC1CCCCC1)P(=O)(O)C/C(=C/c1ccc(F)c(Cl)c1)C(=O)O;=;350.0;nM;IC50;6.46;Renal dipeptidase;single protein format
+CHEMBL326292;NC(CC1CCCCC1)P(=O)(O)C/C(=C\c1ccc(I)cc1)C(=O)O;=;8.0;nM;IC50;8.10;Renal dipeptidase;single protein format
+CHEMBL118190;NC(CC1CCCCC1)P(=O)(O)C/C(=C/c1cccc(I)c1)C(=O)O;=;250.0;nM;IC50;6.60;Renal dipeptidase;single protein format
+CHEMBL119118;NC(CC1CCCCC1)P(=O)(O)C/C(=C/c1ccc(Cl)c(Cl)c1)C(=O)O;=;200.0;nM;IC50;6.70;Renal dipeptidase;single protein format
+CHEMBL334143;NC(CC1CCCCC1)P(=O)(O)C/C(=C\c1ccc(F)c(Cl)c1)C(=O)O;=;30.0;nM;IC50;7.52;Renal dipeptidase;single protein format
+CHEMBL119261;Nc1ccc(/C=C(\CP(=O)(O)C(N)CC2CCCCC2)C(=O)O)cc1;=;70.0;nM;IC50;7.16;Renal dipeptidase;single protein format
+CHEMBL420537;NC(CC1CCCCC1)P(=O)(O)C/C(=C/c1ccc(C(F)(F)F)cc1)C(=O)O;=;200.0;nM;IC50;6.70;Renal dipeptidase;single protein format
+CHEMBL169109;C[C@H]1C(c2ccc(CO)cc2)=C(C(=O)[O-])N2C(=O)[C@H]([C@@H](C)O)[C@@H]12.[K+];=;0.22;-;Relative susceptibility;-;Renal dipeptidase;single protein format
+CHEMBL69181;C[C@H](O)[C@H]1C(=O)N2C(C(=O)O)=C(c3ccc(CN)cc3)C[C@H]12;=;0.02;-;Relative susceptibility;-;Renal dipeptidase;single protein format
+CHEMBL119723;NC(CC1CCCCC1)P(=O)(O)C/C(=C\c1ccc(F)cc1)C(=O)O;=;5.0;nM;IC50;8.30;Renal dipeptidase;single protein format
+CHEMBL1161524;O=C(O)C1=C(c2ccccc2)CC2CC(=O)N12;=;0.35;-;Relative susceptibility;-;Renal dipeptidase;single protein format
+CHEMBL1161530;O=C(O)C1=C(c2cccnc2)CC2CC(=O)N12;=;0.3;-;Relative susceptibility;-;Renal dipeptidase;single protein format
+CHEMBL367170;C[C@@H](O)[C@H]1C(=O)N2C(C(=O)[O-])=C(c3ccc(O)cc3)C[C@H]12.[K+];=;0.2;-;Relative susceptibility;-;Renal dipeptidase;single protein format
+CHEMBL122415;NC(CC1CCCCC1)P(=O)(O)C/C(=C\c1cccc(I)c1)C(=O)O;=;45.0;nM;IC50;7.35;Renal dipeptidase;single protein format
+CHEMBL119055;NC(CC1CCCCC1)P(=O)(O)C/C(=C/c1ccc(F)cc1)C(=O)O;=;15.0;nM;IC50;7.82;Renal dipeptidase;single protein format
+CHEMBL331554;NC(CC1CCCCC1)P(=O)(O)C/C(=C/c1ccccc1I)C(=O)O;=;1000.0;nM;IC50;6.00;Renal dipeptidase;single protein format
+CHEMBL1161527;C[C@H]1C(c2ccc(CN)nc2)=C(C(=O)O)N2C(=O)[C@H]([C@@H](C)O)[C@@H]12;=;0.16;-;Relative susceptibility;-;Renal dipeptidase;single protein format
+CHEMBL171871;C[C@H]1C(c2ccccc2)=C(C(=O)[O-])N2C(=O)[C@H]([C@@H](C)O)[C@@H]12.[K+];=;0.25;-;Relative susceptibility;-;Renal dipeptidase;single protein format
+CHEMBL278773;C[C@@H](O)[C@H]1C(=O)N2C(C(=O)O)=C(SCCN)C[C@H]12;=;1.0;-;Relative susceptibility;-;Renal dipeptidase;single protein format
+CHEMBL126428;CC(=N)N1CC[C@@H](C2=C(C(=O)O)N3C(=O)[C@H]([C@@H](C)O)[C@H]3C2)C1;=;34.0;%;Stability;-;Renal dipeptidase;assay format
+CHEMBL339738;C/C(=C\[C@@]1(C)CCCN1)C1=C(C(=O)O)N2C(=O)[C@H]([C@@H](C)O)[C@H]2C1;=;45.0;%;Stability;-;Renal dipeptidase;assay format
+CHEMBL124701;C[C@@H](O)[C@H]1C(=O)N2C(C(=O)O)=C([C@@H]3CCN(C(=N)COC(N)=O)C3)C[C@H]12;=;13.0;%;Stability;-;Renal dipeptidase;assay format
+CHEMBL127145;C[C@@H](O)[C@H]1C(=O)N2C(C(=O)O)=C(C3CCNCC3)C[C@H]12;-;-;-;Stability;-;Renal dipeptidase;assay format
+CHEMBL339323;CC(=N)N1CC[C@H](SC2=C(C(=O)O)N3C(=O)[C@H]([C@@H](C)O)[C@H]3C2)C1;-;-;-;Stability;-;Renal dipeptidase;assay format
+CHEMBL339616;C[C@@H](O)[C@H]1C(=O)N2C(C(=O)O)=C([C@@H]3CCN(C(=N)CC(N)=O)C3)C[C@H]12;=;14.0;%;Stability;-;Renal dipeptidase;assay format
+CHEMBL338188;C[C@@H](O)[C@H]1C(=O)N2C(C(=O)O)=C([C@@H]3CCNC3)C[C@H]12;=;48.0;%;Stability;-;Renal dipeptidase;assay format
+CHEMBL148;C[C@@H](O)[C@H]1C(=O)N2C(C(=O)O)=C(SCCNC=N)C[C@H]12;=;100.0;%;Stability;-;Renal dipeptidase;assay format
+CHEMBL126186;C[C@@H](O)[C@H]1C(=O)N2C(C(=O)O)=C([C@@H]3CCN(C(=N)CNC(N)=O)C3)C[C@H]12;=;20.0;%;Stability;-;Renal dipeptidase;assay format
+CHEMBL125355;C[C@@H](O)[C@H]1C(=O)N2C(C(=O)O)=C([C@H]3CCNC3)C[C@H]12;=;78.0;%;Stability;-;Renal dipeptidase;assay format
+CHEMBL126532;C[C@@H](O)[C@H]1C(=O)N2C(C(=O)O)=C(C3CNC3)C[C@H]12;-;-;-;Stability;-;Renal dipeptidase;assay format
+CHEMBL125740;C[C@@H](O)[C@H]1C(=O)N2C(C(=O)O)=C(C3CCCNC3)C[C@H]12;=;4.4;%;Stability;-;Renal dipeptidase;assay format
+CHEMBL338251;C/N=C/N1CC[C@@H](C2=C(C(=O)O)N3C(=O)[C@H]([C@@H](C)O)[C@H]3C2)C1;=;91.0;%;Stability;-;Renal dipeptidase;assay format
+CHEMBL127297;C[C@@H](O)[C@H]1C(=O)N2C(C(=O)O)=C([C@@H]3CCN(C4=NCCC4)C3)C[C@H]12;=;28.0;%;Stability;-;Renal dipeptidase;assay format
+CHEMBL128025;C[C@@H](O)[C@H]1C(=O)N2C(C(=O)O)=C([C@@H]3CCN(C(=N)CO)C3)C[C@H]12;-;-;-;Stability;-;Renal dipeptidase;assay format
+CHEMBL127889;C[C@@H](O)[C@H]1C(=O)N2C(C(=O)O)=C([C@@H]3CCN(C=N)C3)C[C@H]12;=;39.0;%;Stability;-;Renal dipeptidase;assay format
+CHEMBL126612;C[C@@H](O)[C@H]1C(=O)N2C(C(=O)O)=C(C3CCNC3)C[C@H]12;=;58.0;%;Stability;-;Renal dipeptidase;assay format
+CHEMBL285347;C[C@@H](O)[C@H]1C(=O)N2C(C(=O)[O-])=C(SC3Cn4cnc[n+]4C3)[C@H](C)[C@H]12;=;15.4;%;Stability;-;Renal dipeptidase;single protein format
+CHEMBL30841;C[C@@H](O)[C@H]1C(=O)N2C(C(=O)O)=C(S[C@@H]3CN[C@H](Cc4cc[n+](CCO)n4C)C3)[C@H](C)[C@H]12.[Cl-];=;26.0;%;Stability;-;Renal dipeptidase;single protein format
+CHEMBL127;C[C@@H](O)[C@H]1C(=O)N2C(C(=O)O)=C(S[C@@H]3CN[C@H](C(=O)N(C)C)C3)[C@H](C)[C@H]12;=;100.0;%;Stability;-;Renal dipeptidase;single protein format

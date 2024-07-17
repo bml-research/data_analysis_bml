@@ -19,7 +19,7 @@ This file can be downloaded [here](./R_07_data_cleaning_exercises.Rmd)
 ### Exercise 1
 
 [This](./files_07_data_cleaning_exercises/exercise01/calories.xlsx) first data set was not loaded well in Excel. Load the Excel file as a tibble in R. Separate the columns correctly.
-Hint: use the `separate_wider_delim` function from tidyverse.
+*Hint:* use the `separate_wider_delim` function from tidyverse. Consult the information on this function with `?separate_wider_delim`. On the bottom you will find examples you can run. Take a close look at the first example. This should give you a clue how to solve this problem.
 
 ```{r}
 #Your code here
@@ -27,7 +27,7 @@ Hint: use the `separate_wider_delim` function from tidyverse.
 
 ### Exercise 2
 
-The file from the previous exercise contains the units in the cells. This makes it impossible to perform calculations (as the data type is a text string). Remove the units in order to make calculations possible.
+The data in [this](./files_07_data_cleaning_exercises/exercise02/fish_data_mod.csv) file contains the units in the cells. This makes it impossible to perform calculations (as the data type is a text string). Remove the units in order to make calculations possible.
 
 ```{r}
 #Your code here
@@ -35,7 +35,7 @@ The file from the previous exercise contains the units in the cells. This makes 
 
 ### Exercise 3
 
-[This](./files_07_data_cleaning_exercises/exercise03/Food Composition_mod.csv) data set contains rows with duplicate data. Load the data and remove the duplicates from the data table.
+[This](./files_07_data_cleaning_exercises/exercise03/Heart_Disease_Prediction_mod.csv) data set contains rows with duplicate data. Load the data and remove the duplicates from the data table.
 
 ```{r}
 #Your code here
@@ -44,8 +44,7 @@ The file from the previous exercise contains the units in the cells. This makes 
 
 ### Exercise 4
 
-[This](./files_07_data_cleaning_exercises/exercise04/nutrition.csv) data set contains empty data.
-
+[This](./files_07_data_cleaning_exercises/exercise04/CHEMBL1989.csv) data set contains empty data.
 Make the empty elements more explicit in R by converting them to `NA`.
 Count how many elements you have:
 
@@ -57,6 +56,14 @@ Count how many elements you have:
 #Your code here
 ```
 
+
+### Exercise 5
+
+[This](./files_07_data_cleaning_exercises/exercise05/CHEMBL1989_mod.csv) also contains missing data in many fields. However, instead of leaving the cells empty, the author used a character to indicate a missing value. Open the file in a text editor to find what character has been used for missing data and replace this character with `NA`.
+
+```{r}
+#Your code here
+```
 
 ---
 

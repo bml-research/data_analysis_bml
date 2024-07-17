@@ -613,9 +613,9 @@ matrix, or list into a tibble Here we use the tibble function to create
 a tiblle directly from 3 vectors:</p>
 <pre class="r"><code>gene &lt;- c(&quot;AAAS&quot;, &quot;ABAT&quot;, &quot;ABCC2&quot;, &quot;ABL1&quot;, &quot;FMR1&quot;)
 chromosome &lt;- c(12, 16, 10, 9, &quot;X&quot;)
-length_protein &lt;- c(546, 500, 1545, 1130, 632)
+mol_weight_kD &lt;- c(52.2, 56.4, 174.2, 122.9, 71.1)
 
-my_tibble &lt;- tibble(gene, chromosome, length_protein)
+my_tibble &lt;- tibble(gene, chromosome, mol_weight_kD)
 formatted_table(head(my_tibble))</code></pre>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
@@ -627,7 +627,7 @@ gene
 chromosome
 </th>
 <th style="text-align:right;">
-length_protein
+mol_weight_kD
 </th>
 </tr>
 </thead>
@@ -640,7 +640,7 @@ AAAS
 12
 </td>
 <td style="text-align:right;">
-546
+52.2
 </td>
 </tr>
 <tr>
@@ -651,7 +651,7 @@ ABAT
 16
 </td>
 <td style="text-align:right;">
-500
+56.4
 </td>
 </tr>
 <tr>
@@ -662,7 +662,7 @@ ABCC2
 10
 </td>
 <td style="text-align:right;">
-1545
+174.2
 </td>
 </tr>
 <tr>
@@ -673,7 +673,7 @@ ABL1
 9
 </td>
 <td style="text-align:right;">
-1130
+122.9
 </td>
 </tr>
 <tr>
@@ -684,7 +684,7 @@ FMR1
 X
 </td>
 <td style="text-align:right;">
-632
+71.1
 </td>
 </tr>
 </tbody>
