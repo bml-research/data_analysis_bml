@@ -200,23 +200,23 @@ proteins <- c("PKCA_N", "RRP1_N", "BRAF_N", "JNK_N") # make a selection of colum
 summary(df[proteins]) # check the selected columns for NA values
 ```
 
-Ah, nice! The summary already gives the mean and median for these proteins.
+The summary gives the mean and median for these proteins. However, this is the mean and median for all measurements (not for the groups (Saline en Memantine treated) that we are interested in)
 It seems that only the column of the RRP1 protein does not contain `NA` values. This means that we have to use the `na.rm =` argument to calculate the standard deviation for the other three proteins:
 ```{r}
 formatted_table(df %>%
                   group_by(Genotype) %>%
                   summarize("St.Dev PKCA" = round(sd(PKCA_N, na.rm = T), 3),
-                            "Mean PKCA" = round(mean(PKCA_N, na.rm = T), 3), # just to check
-                            "Median PKCA" = round(median(PKCA_N, na.rm = T), 3), # just to check
+                            "Mean PKCA" = round(mean(PKCA_N, na.rm = T), 3),
+                            "Median PKCA" = round(median(PKCA_N, na.rm = T), 3),
                             "SD.Dev RRP1" = round(sd(RRP1_N), 3),
-                            "Mean RRP1" = round(mean(RRP1_N, na.rm = T), 3), # just to check
-                            "Median RRP1" = round(median(RRP1_N, na.rm = T), 3), # just to check
+                            "Mean RRP1" = round(mean(RRP1_N, na.rm = T), 3),
+                            "Median RRP1" = round(median(RRP1_N, na.rm = T), 3),
                             "SD.Dev BRAF" = round(sd(BRAF_N, na.rm = T), 3),
-                            "Mean BRAF" = round(mean(BRAF_N, na.rm = T), 3), # just to check
-                            "Median BRAF" = round(median(BRAF_N, na.rm = T), 3), # just to check
+                            "Mean BRAF" = round(mean(BRAF_N, na.rm = T), 3),
+                            "Median BRAF" = round(median(BRAF_N, na.rm = T), 3),
                             "SD.Dev JNK" = round(sd(JNK_N, na.rm = T), 3),
-                            "Mean JNK" = round(mean(JNK_N, na.rm = T), 3), # just to check
-                            "Median JNK" = round(median(JNK_N, na.rm = T), 3) # just to check
+                            "Mean JNK" = round(mean(JNK_N, na.rm = T), 3),
+                            "Median JNK" = round(median(JNK_N, na.rm = T), 3)
                             ))
 ```
 

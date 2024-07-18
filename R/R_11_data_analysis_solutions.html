@@ -9370,25 +9370,26 @@ summary(df[proteins]) # check the selected columns for NA values</code></pre>
 ##  3rd Qu.:0.3523   3rd Qu.: 0.17741   3rd Qu.:0.4136   3rd Qu.:0.2633  
 ##  Max.   :0.4740   Max.   : 0.61238   Max.   :2.1334   Max.   :0.3872  
 ##  NA&#39;s   :3                           NA&#39;s   :3        NA&#39;s   :3</code></pre>
-<p>Ah, nice! The summary already gives the mean and median for these
-proteins. It seems that only the column of the RRP1 protein does not
-contain <code>NA</code> values. This means that we have to use the
-<code>na.rm =</code> argument to calculate the standard deviation for
-the other three proteins:</p>
+<p>The summary gives the mean and median for these proteins. However,
+this is the mean and median for all measurements (not for the groups
+(Saline en Memantine treated) that we are interested in) It seems that
+only the column of the RRP1 protein does not contain <code>NA</code>
+values. This means that we have to use the <code>na.rm =</code> argument
+to calculate the standard deviation for the other three proteins:</p>
 <pre class="r"><code>formatted_table(df %&gt;%
                   group_by(Genotype) %&gt;%
                   summarize(&quot;St.Dev PKCA&quot; = round(sd(PKCA_N, na.rm = T), 3),
-                            &quot;Mean PKCA&quot; = round(mean(PKCA_N, na.rm = T), 3), # just to check
-                            &quot;Median PKCA&quot; = round(median(PKCA_N, na.rm = T), 3), # just to check
+                            &quot;Mean PKCA&quot; = round(mean(PKCA_N, na.rm = T), 3),
+                            &quot;Median PKCA&quot; = round(median(PKCA_N, na.rm = T), 3),
                             &quot;SD.Dev RRP1&quot; = round(sd(RRP1_N), 3),
-                            &quot;Mean RRP1&quot; = round(mean(RRP1_N, na.rm = T), 3), # just to check
-                            &quot;Median RRP1&quot; = round(median(RRP1_N, na.rm = T), 3), # just to check
+                            &quot;Mean RRP1&quot; = round(mean(RRP1_N, na.rm = T), 3),
+                            &quot;Median RRP1&quot; = round(median(RRP1_N, na.rm = T), 3),
                             &quot;SD.Dev BRAF&quot; = round(sd(BRAF_N, na.rm = T), 3),
-                            &quot;Mean BRAF&quot; = round(mean(BRAF_N, na.rm = T), 3), # just to check
-                            &quot;Median BRAF&quot; = round(median(BRAF_N, na.rm = T), 3), # just to check
+                            &quot;Mean BRAF&quot; = round(mean(BRAF_N, na.rm = T), 3),
+                            &quot;Median BRAF&quot; = round(median(BRAF_N, na.rm = T), 3),
                             &quot;SD.Dev JNK&quot; = round(sd(JNK_N, na.rm = T), 3),
-                            &quot;Mean JNK&quot; = round(mean(JNK_N, na.rm = T), 3), # just to check
-                            &quot;Median JNK&quot; = round(median(JNK_N, na.rm = T), 3) # just to check
+                            &quot;Mean JNK&quot; = round(mean(JNK_N, na.rm = T), 3),
+                            &quot;Median JNK&quot; = round(median(JNK_N, na.rm = T), 3)
                             ))</code></pre>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
