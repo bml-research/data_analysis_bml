@@ -31,8 +31,8 @@ Use filter and sort to answer the following questions:
 2. What is the relative expression value in this mouse?  
 3. Which mouse has the lowest expression of pAKT?  
 4. How many empty cells are in the BAD column?  
-5. Which mouse of the Ts65Dn genotype group has the highest Tau expression (se multi-sort or filters)?  
-6. Which mouse of the Ts65Dn genotype, and saline treatment group has the highest Tau expression (se multi-sort or filters)?  
+5. Which mouse of the Ts65Dn genotype group has the highest Tau expression (use multi-sort or filters)?  
+6. Which mouse of the Ts65Dn genotype, and saline treatment group has the highest Tau expression (use multi-sort or filters)?  
 
 ### Exercise 3
 

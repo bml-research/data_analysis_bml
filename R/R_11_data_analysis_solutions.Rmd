@@ -8,7 +8,7 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 
 # R
 
-## Data Analysis Solutions
+## Data Analysis Exercises
 
 
 ```{r}
@@ -23,221 +23,202 @@ formatted_table <- function(df){
 }
 ```
 
-This file can be downloaded [here](./R_11_data_analysis_solutions.Rmd)
-
+This file can be downloaded [here](./R_10_data_analysis_exercises.Rmd)
 
 > In order to compare the analysis in R with Excel, the exercises where kept as similar as possible. 
 
 ### Exercise 1
 
-Import the [Nutrition facts data](https://www.kaggle.com/datasets/mcdonalds/nutrition-facts) from a fastfood restaurant in an Rmd file. 
-Then perfom the following calculations on a new worksheet and display them as a table:  
+Import the [Mice Protein Expression ](https://www.kaggle.com/datasets/ruslankl/mice-protein-expression?resource=download) dataset in R. It contains data on the levels of protein expression of mice proteins in different mice.
+Perform the following calculations on this dataframe and display them as a table:  
 
-- Calculate the minimum, maximum, average, median from the columns `Calories` and `Calories from fat`. Display the answers in a data frame.  
+- Calculate the minimum, maximum, average, median from the columns `CDK5_N` and `Tau_N`. Display the answers in a data frame.  
 
-First load the data:
 ```{r}
-file_path <- "./files_10_data_analysis_exercises/exercise01/menu.csv"
+file_path <- "./files_10_data_analysis_exercises/exercise01/Data_Cortex_Nuclear.csv"
 df <- read_csv(file_path)
 formatted_table(head(df))
 ```
-Then the calculations:
-```{r}
-min_cal <- min(df$Calories)
-max_cal <- max(df$Calories)
-mean_cal <- mean(df$Calories)
-median_cal <- median(df$Calories)
 
-min_fat <- min(df$`Calories from Fat`)
-max_fat <- max(df$`Calories from Fat`)
-mean_fat <- mean(df$`Calories from Fat`)
-median_fat <- median(df$`Calories from Fat`)
+The calculations of the minimum, maximum, average and median of these two proteins:
+```{r}
+min_CDK5_N <- min(df$CDK5_N)
+max_CDK5_N <- max(df$CDK5_N)
+mean_CDK5_N <- mean(df$CDK5_N)
+median_CDK5_N <- median(df$CDK5_N)
+
+min_Tau_N <- min(df$Tau_N)
+max_Tau_N <- max(df$Tau_N)
+mean_Tau_N <- mean(df$Tau_N)
+median_Tau_N <- median(df$Tau_N)
 
 results_ex1 <- tibble("measure" = c("minimum", "maximum", "mean", "median"), 
-                      "calories" = c(min_cal, max_cal, mean_cal, median_cal),
-                      "calories from fat" = c(min_fat, max_fat, mean_fat, median_fat)
+                      "CDK5_N" = c(min_CDK5_N, max_CDK5_N, mean_CDK5_N, median_CDK5_N),
+                      "Tau_N" = c(min_Tau_N, max_Tau_N, mean_Tau_N, median_Tau_N)
                       )
 
 formatted_table(results_ex1)
 ```
 
-Note that the summary function also provides easy access to this data:
-
-```{r}
-"Summary data calories"
-summary(df$Calories)
-"Summary data calories from fat"
-summary(df$`Calories from Fat`)
-```
-
-
 ### Exercise 2
 
 Index, filter and sort your data frame to answer the following questions:  
-1. Which item has the highest Calories from fat?  
-2. Which items have the highest Iron (% Daily Value)?  
-3. Which Beef & Pork item has the lowest Calories from fat?  
-4. Which Coffee & Tea or Smoothies & Shakes item has the highest amount of carbohydrates?  
-5. Which item has the highest saturated fat and lowest carbohydrates value?  
+1. Which mouse has the highest expression of the Tau protein?  
+2. What is the relative expression value of this protein in this particular mouse?  
+3. Which mouse has the lowest expression of the pAKT protein?  
+4. How many empty cells (`NA`) are in the BAD column? Use the `summary` function to find the amount of empty cells.
+5. Which mouse of the Ts65Dn genotype group has the highest Tau expression (use multi-sorting)? 
+6. Which mouse of the Ts65Dn genotype, and saline treatment group has the highest Tau expression (use multi-sorting)?  
 
-Item  with the highest Calories from fat:
+Mouse with the highest expression of the protein `Tau_N`:
 ```{r}
-formatted_table(df[df$`Calories from Fat` == max(df$`Calories from Fat`), ])
-```
-
-Chicken McNuggets (40 piece)
-
-or:
-```{r}
-formatted_table(filter(df, `Calories from Fat` == max(df$`Calories from Fat`)))
-```
-Chicken McNuggets (40 piece)
-
-Item  with the highest highest Iron (% Daily Value)
-```{r}
-formatted_table(df[df$`Iron (% Daily Value)` == max(df$`Iron (% Daily Value)`), ])
-```
-
-Big Breakfast with Hotcakes (Regular Biscuit)
-Big Breakfast with Hotcakes (Large Biscuit)
-
-or:
-```{r}
-formatted_table(filter(df, `Iron (% Daily Value)` == max(df$`Iron (% Daily Value)`)))
-```
-
-Big Breakfast with Hotcakes (Regular Biscuit)
-Big Breakfast with Hotcakes (Large Biscuit)
-
-Beef & Pork item with the lowest Calories from fat?  
-```{r}
-formatted_table(df %>% 
-  arrange(Category, `Calories from Fat`) %>%
-  filter(Category == "Beef & Pork") %>%
-  slice(1:1))
-```
-
-Hamburger
-
-Coffee & Tea or Smoothies & Shakes item with the highest amount of carbohydrates:
-
-```{r}
-formatted_table(df %>% 
-  filter(Category == "Coffee & Tea" | Category == "Smoothies & Shakes") %>%
-  arrange(-`Carbohydrates`) %>%
-  slice(1:1))
+formatted_table(filter(df, `Tau_N` == max(df$Tau_N)))
 ```
 
 
-Item with the highest saturated fat and lowest carbohydrates value:
-
+The relative expression value for this protein in this particular mouse.
+First, we need to find in which row the maximum value for the highest expression of the Tau protein is stored. You can use the `match` function for this:
 ```{r}
-formatted_table(df %>% 
-  arrange(-`Saturated Fat`, `Carbohydrates`) %>%
-  slice(1:1))
+match(max(df$Tau_N), df$Tau_N)
 ```
 
-Frappé Chocolate Chip (Large)
+Then we can search in the dataframe, because we know the row number and which column we have to look:
+```{r}
+df$Tau_N[match(max(df$Tau_N), df$Tau_N)]
+```
+
+Mouse with the lowest expression of the pAKT protein. There are NA values in this column, so will have to use the `na.rm =` argument in the calculation:
+```{r}
+min(df$pAKT_N) # check there are NA values in this column
+
+formatted_table(filter(df, `pAKT_N` == min(df$pAKT_N, na.rm = TRUE))) # this will remove all NA values and then show the mouse with minimal value for pAKT
+```
+
+Amount of empty cells (`NA`) in the BAD column:
+```{r}
+summary(df$BAD_N)
+```
+The amount of empty cells is in the last column.
+
+Mouse of the Ts65Dn genotype group with the highest Tau expression:
+```{r}
+formatted_table(head(arrange(df, desc(Genotype), desc(Tau_N))))
+```
+
+
+Mouse of the Ts65Dn genotype, and saline treatment group with the highest Tau expression (use multi-sorting):
+```{r}
+formatted_table(head(arrange(df, desc(Genotype), desc(Tau_N))))
+```
 
 
 ### Exercise 3
 
-1. More then 600 calories would be considered high energetic. How many items are high energetic?  
-2. How many items are between 300 and 600 calories?  
-3. How many items are measured in the serving size Fluid Ounce (fl oz cup) (hint: use a wildcard)?  
+1. An relative expression level > 0.5 would be considered a high expression level. How many mice do have a high expression level for DYRK1A?  
+2. Apply this calculation for all proteins. For which protein do you observe a count of 218? Hint: you can calculate the mean and the sum for multiple columns at once with the `colMeans` and `colSums` functions.
+3. The average pELK expression is higher than pERK. But how many mice do have higher expression levels for pELK than 0.75 AND higher expression levels for pERK than 0.25?  
 
-High energetic:
-
+You can use the `sum` function to count how many times the value for DYRK1A is higher than 0.5. However, there are NA values in this column, so you will have to use the `na.rm =` argument in the `sum` function.
 ```{r}
-nrow(df[df$Calories > 600, ])
-```
-37 items
+summary(df$DYRK1A_N) # to check whether there NA values in this column
+print("Yes, there are 3 NA values in this column!")
 
-Number of items between 300 and 600 calories:
-
-```{r}
-nrow(df[df$Calories > 300 & df$Calories < 600, ])
+sum(df$DYRK1A_N > 0.5, na.rm = TRUE)
 ```
 
-106 items
-
-How many items are measured in the serving size Fluid Ounce (fl oz cup) (hint: use a wildcard)
-
+Note: the `nrow` function does not work in this case, because it will include the rows with `NA` values. Compare with the previous answer:
 ```{r}
-nrow(df[str_detect(df$`Serving Size`, "fl oz cup"), ])
+nrow(df[df$DYRK1A_N > 0.5, ])
 ```
 
-138 items
+The protein that has a higher relative expression value than 0.5 in 218 mice.
+```{r}
+only_nums <- select_if(df, is.numeric) # select only columns with numeric values
+colSums(only_nums > 0.5, na.rm = TRUE)
+```
+
+Also here, you can use the `sum` function to count how many times the value for pELK is higher than 0.75 anf for pERK is lower than 0.25.
+```{r}
+sum(df$pELK_N > 0.75 & df$pERK_N > 0.25, na.rm = T)
+```
+
 
 ### Exersise 4
 
 > Note that this exercise differs a bit from the Excel counterpart. We do not use conditional formatting but selection of rows instead.  
 
+1. Select rows with a relative expression value higher than 2.3 for the pCASP9 protein. Which treatment is mostly found for these selected proteins ?  
+2. Select rows with duplicate MouseIDs. Are there any duplicate MouseIDs?  
+3. Select the following columns: MouseID, APP_N, NR1_N, pCREB_N, S6_N, and Genotype. 
+4. Select everything but the columns with relative expression measurements. Hint: the column names of the column with relative expression values all have something in common.  
 
-Select rows with high energetic food items (>600 calories). Which three categories show the highest number of red cells? 
-
+Select rows with a relative expression value higher than 2.3 for the pCASP9 protein:  
 ```{r}
-formatted_table(df %>%
-  filter(Calories > 600))
+formatted_table(filter(df, pCASP9_N > 2.3))
 ```
+It seams that in this selection of mice most are treated with Saline.
 
-Breakfast and Chicken & Fish and Smoothies and shakes
-
-Select rows with duplicate food items. Are there any duplicate items?   
+Select rows with duplicate MouseIDs. Are there any duplicate MouseIDs?  
 
 ```{r}
-df %>% 
-  group_by(Item) %>% 
-  filter(n()>1)
+df %>%
+  group_by(MouseID) %>%
+  filter(n() > 1)
 ```
 
 There are no duplicates!
 
-Select rows with a % Daily Value > 100% for Vitamin A. Which category are these items mainly found?   
+Select the following columns: MouseID, APP_N, NR1_N, pCREB_N, S6_N, and Genotype. 
 
 ```{r}
-formatted_table(df %>%
-  filter(`Vitamin A (% Daily Value)` > 100))
+formatted_table(head(select(df, MouseID, APP_N, NR1_N, pCREB_N, S6_N, Genotype)))
 ```
 
-Salads
-
-Select rows with a % Daily Value >= 100% for Vitamin C. Use green markup for these. Make sure that you include 100%! How many items do you find that meet this criteria? 
+Select everything but the columns with relative expression measurements.  
 
 ```{r}
-formatted_table(df %>%
-  filter(`Vitamin C (% Daily Value)` >= 100))
+formatted_table(head(select(df, -ends_with("_N"))))
 ```
 
-The number of items:
-
-```{r}
-nrow(df %>%
-  filter(`Vitamin C (% Daily Value)` >= 100))
-```
-7
 
 ### Exercise 5
 
 > Note that this exercise differs a bit from the Excel counterpart. We do not use a pivot table but the results will be similar.  
 
-Group the categories.  
-Calculate:  
-- the Average of Total Fat (% Daily Value)  
-- the Average of Saturated Fat (% Daily Value)  
-- the Average of Cholesterol (% Daily Value)  
+Group the genotypes of the mice.  
+Calculate the standard deviation, average and the median of the relative expression of the following genes:
+- PKCA
+- RRP1
+- BRAF
+- JNK
 
-Round the values to 1 decimal.  
+Round the values to 3 decimals.  
 
+First, check whether the columns contain `NA` values:
 ```{r}
-formatted_table(df %>% 
-  group_by(Category) %>% 
-  summarize("Mean Total Fat (% Daily Value)" = round(mean(`Total Fat (% Daily Value)`), 1),
-            "Mean Saturated Fat (% Daily Value)" = round(mean(`Saturated Fat (% Daily Value)`), 1),
-            "Mean Cholesterol (% Daily Value)" = round(mean(`Cholesterol (% Daily Value)`), 1)
-            ))
+proteins <- c("PKCA_N", "RRP1_N", "BRAF_N", "JNK_N") # make a selection of columns to check if there are NA values
+summary(df[proteins]) # check the selected columns for NA values
 ```
 
+Ah, nice! The summary already gives the mean and median for these proteins.
+It seems that only the column of the RRP1 protein does not contain `NA` values. This means that we have to use the `na.rm =` argument to calculate the standard deviation for the other three proteins:
+```{r}
+formatted_table(df %>%
+                  group_by(Genotype) %>%
+                  summarize("St.Dev PKCA" = round(sd(PKCA_N, na.rm = T), 3),
+                            "Mean PKCA" = round(mean(PKCA_N, na.rm = T), 3), # just to check
+                            "Median PKCA" = round(median(PKCA_N, na.rm = T), 3), # just to check
+                            "SD.Dev RRP1" = round(sd(RRP1_N), 3),
+                            "Mean RRP1" = round(mean(RRP1_N, na.rm = T), 3), # just to check
+                            "Median RRP1" = round(median(RRP1_N, na.rm = T), 3), # just to check
+                            "SD.Dev BRAF" = round(sd(BRAF_N, na.rm = T), 3),
+                            "Mean BRAF" = round(mean(BRAF_N, na.rm = T), 3), # just to check
+                            "Median BRAF" = round(median(BRAF_N, na.rm = T), 3), # just to check
+                            "SD.Dev JNK" = round(sd(JNK_N, na.rm = T), 3),
+                            "Mean JNK" = round(mean(JNK_N, na.rm = T), 3), # just to check
+                            "Median JNK" = round(median(JNK_N, na.rm = T), 3) # just to check
+                            ))
+```
 
 ---
 

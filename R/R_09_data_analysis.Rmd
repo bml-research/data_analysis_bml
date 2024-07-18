@@ -34,7 +34,7 @@ At last, we will do some basic calculations. Note that plotting data will be the
 
 >Note: R is like a swiss army knife. Extremely powerfull but also very eloborate.
 >It is impossible to cover all analysis functions of R.
->So this is not a complete guide for data analysis. Instead, I will focus on some common tasks.
+>So this is not a complete guide for data analysis. Instead, this course will focus on some common tasks.
 >You can always elaborate your analysis by exploring the tidyverse documentation. Or even use the base R documentation if the specific task you want to perform some custom tasks.
 >See: [tidyverse documentation](https://style.tidyverse.org/documentation.html)
 >See: [base R documentation](https://cran.r-project.org/manuals.html)
@@ -42,10 +42,10 @@ At last, we will do some basic calculations. Note that plotting data will be the
 ## Loading a dataset
 
 As an example data set, we will be using the same data set as used in the Excel section:
-namely, [the nutritional facts dataset from a fastfood restaurant](https://www.kaggle.com/datasets/mcdonalds/nutrition-facts)
+namely, [Dementia Patient Health,Prescriptions ML Dataset ](https://www.kaggle.com/datasets/kaggler2412/dementia-patient-health-and-prescriptions-dataset)
 
 ```{r}
-file_path <- "./files_09_data_analysis/file01_menu.csv"
+file_path <- "./files_09_data_analysis/file01_dementia_patients_health_data.csv"
 df <- read_csv(file_path)
 formatted_table(head(df))
 ```
@@ -55,7 +55,7 @@ As you can see above, the data is loaded well. Also note that the columns are of
 
 ## Select rows by index
 
-Yoy can select rows by index using the following notation:
+You can select rows by index using the following notation:
 
 ```{r}
 formatted_table(df[2, ]) #select second row
@@ -69,7 +69,7 @@ Note the comma between the brackets. Since there is no specification of a column
 You can also select a column based on an index:
 
 ```{r}
-formatted_table(head(df[, 4])) #select fourth column
+formatted_table(head(df[, 8])) #select eighth column
 ```
 
 The head function was used to truncate the output.
@@ -79,7 +79,7 @@ The head function was used to truncate the output.
 You can also select a column by name:
 
 ```{r}
-head(df$Calories) #select column Calories
+head(df$Prescription) #select column Prescription
 ```
 
 Note that this action returns a vector instead of a dataframe.
@@ -90,81 +90,81 @@ Note that this action returns a vector instead of a dataframe.
 You can also select a specific item by index:
 
 ```{r}
-formatted_table(df[2, 4]) #select second row and fourth column
+formatted_table(df[2, 8]) #select second row and eighth column
 ```
 
-Now we have the value of the second row and the fourth column.
+Now we have the value of the second row and the eighth column.
 
 ## Filter rows
 
 One of the most frequent tasks that you will be doing on data frames is filtering rows.
 Here is how that works:
 
-Filter rows with high caloric values:
+Filter rows on measured oxygen level in blood considered as normal:
 
 ```{r}
-formatted_table(head(filter(df, Calories > 900)))
+formatted_table(head(filter(df, BloodOxygenLevel > 95)))
 ```
 
-Chicken and Fish meals with high calories:
+Current smoker and normal blood oxygen levels:
 
 ```{r}
-formatted_table(filter(df, Category == "Chicken & Fish" & Calories > 900))
+formatted_table(head(filter(df, Smoking_Status == "Current Smoker" & BloodOxygenLevel > 95)))
 ```
 
-Meals with high calories that do not belong to the Chicken and Fish category:
+NOT a current smoker and normal blood oxygen levels:
 
 ```{r}
-formatted_table(head(filter(df, !Category == "Chicken & Fish" & Calories > 900)))
+formatted_table(head(filter(df, !Smoking_Status == "Current Smoker" & BloodOxygenLevel > 95)))
 ```
 
-Meals with very low or very high calories:
+Normal blood oxygen levels or very low blood oxygen levels:
 
 ```{r}
-formatted_table(head(filter(df, Calories < 100 | Calories > 900)))
+formatted_table(head(filter(df, BloodOxygenLevel < 92 | BloodOxygenLevel > 95)))
 ```
 
-All meals with 0 calories:
+All patients of age 65:
 
 ```{r}
-formatted_table(head(filter(df, Calories == 0)))
+formatted_table(head(filter(df, Age == 65)))
 ```
 
 ## Arranging rows
 
 You can use arrange() instead of filter if you want to sort your rows in a data frame instead of filtering it:
 
-Arrange on calories ascending:
+Arrange on blood oxygen levels **ascending** (from low to high values):
 
 ```{r}
-formatted_table(head(arrange(df, Calories)))
+formatted_table(head(arrange(df, BloodOxygenLevel)))
 ```
 
 
-If you want to sort in descending order:
+If you want to sort in **descending** order (from high to low values):
 
 ```{r}
-formatted_table(head(arrange(df, desc(Calories))))
+formatted_table(head(arrange(df, desc(BloodOxygenLevel))))
 ```
 
 And to select the row with the highest value:
 
 ```{r}
-formatted_table(arrange(df, desc(Calories))[1, ])
+formatted_table(arrange(df, desc(BloodOxygenLevel))[1, ])
 ```
 
 You can also do some multi-level sorting:
 
-Here is an example of sorting on Category first and then sorting on Calories: 
+Here is an example of sorting on age first and then sorting on blood oxygen levels: 
 
 ```{r}
-formatted_table(head(arrange(df, Category, Calories)))
+formatted_table(head(arrange(df, Age, BloodOxygenLevel)))
 ```
 
-Here is an example of sorting on Category first and then sorting on Calories from high to low: 
+Here is an example of sorting on age first and then sorting on blood oxygen levels from high to low: 
 
 ```{r}
-formatted_table(head(arrange(df, Category, desc(Calories))))
+formatted_table(head(arrange(df, Age, desc(BloodOxygenLevel))))
 ```
 
 
@@ -174,50 +174,50 @@ formatted_table(head(arrange(df, Category, desc(Calories))))
 ## Select columns with select
 
 You have learned that Variables in data sets should be arranged in columns. Often data sets contain a lot of variables (columns). Most likely, you are not interested in all of them.
-With the select() function, you can select the variables that you are interested in:
+With the `select` function, you can select the variables that you are interested in:
 
 ```{r}
-formatted_table(head(select(df, Category, Item, Calories)))
+formatted_table(head(select(df, Age, Smoking_Status, BloodOxygenLevel, HeartRate)))
 ```
 
-Or select all columns except the Calories:
+Or select all columns except the blood oxygen levels:
 
 ```{r}
-formatted_table(head(select(df, -Calories)))
+formatted_table(head(select(df, -BloodOxygenLevel)))
 ```
 
-Or select besides the first two columns, all columns with total in the name:
+Or select besides the age, all columns with "Level" in the name:
 
 ```{r}
-formatted_table(head(select(df, Category, Item, starts_with("total"))))
+formatted_table(head(select(df, Age, ends_with("Level"))))
 ```
 
 
 ## Summary data
 
-You can use the base R summary() function to get summary information on a data frame:
+You can use the base R `summary` function to get summary information on a data frame:
 
 ```{r}
 summary(df)
 ```
 
-As this output can be quit overwhelming you may select for the data that you are interested in (for example calories):
+As this output can be quit overwhelming you may select for the data that you are interested in (for example blood oxygen levels):
 
 ```{r}
-summary(df$Calories)
+summary(df$BloodOxygenLevel)
 ```
 
-But the Tidyverse library also contains a summarize() function:
+But the Tidyverse library also contains a `summarize` function:
 
 ```{r}
-formatted_table(summarize(df, Calories = mean(Calories)))
+formatted_table(summarize(df, BloodOxygenLevel = mean(BloodOxygenLevel)))
 ```
 
-You can combine this with the group_by() function for powerful analysis:
+You can combine this with the `group_by` function for powerful analysis:
 
 ```{r}
-by_category <- group_by(df, Category)
-formatted_table(summarize(by_category, Average_calories = mean(Calories)))
+by_smoking_status <- group_by(df, Smoking_Status)
+formatted_table(summarize(by_smoking_status, Average_BloodOxygenLevel = mean(BloodOxygenLevel)))
 ```
 
 Recall that this looks very much like the pivot table function in Excel (see figure 28 at [data analysis Excel](https://bml-research.github.io/data_analysis/excel/excel_08_data_analysis.html)).
@@ -225,12 +225,9 @@ Recall that this looks very much like the pivot table function in Excel (see fig
 To create a similar output as the pivot tables in Excel:
 
 ```{r}
-by_category <- group_by(df, Category)
-formatted_table(summarize(by_category, average_calories = mean(Calories), average_calories_fat = mean(`Calories from Fat`)))
+by_smoking_status <- group_by(df, Smoking_Status)
+formatted_table(summarize(by_smoking_status, average_BOL = mean(BloodOxygenLevel), average_BT = mean(BodyTemperature)))
 ```
-
->Note that backticks were used to call the column name `Calories from Fat`.
->You can also deal with that by renaming column names and replacing spaces with underscores.
 
 
 Now compare this output with figure 28 at [data analysis Excel](https://bml-research.github.io/data_analysis/excel/excel_08_data_analysis.html).
@@ -238,9 +235,8 @@ Now compare this output with figure 28 at [data analysis Excel](https://bml-rese
 Likewise, you can extend this by providing the standard deviation:
 
 ```{r}
-by_category <- group_by(df, Category)
-formatted_table(summarize(by_category, average_calories = mean(Calories), sd_calories = sd(Calories), average_calories_fat = mean(`Calories from Fat`), sd_calories_from_fat = sd(`Calories from Fat`)))
-
+by_smoking_status <- group_by(df, Smoking_Status)
+formatted_table(summarize(by_smoking_status, average_BOL = mean(BloodOxygenLevel), sd_BOL = sd(BloodOxygenLevel), average_BT = mean(BodyTemperature), sd_BT = sd(BodyTemperature)))
 ```
 
 ## Round values
@@ -252,18 +248,15 @@ round(2.40, digits = 1)
 round(2.45, digits = 1)
 round(2.45) #defaults to 0 digits
 round(2.5) #defaults to 0 digits
-?round
 ```
 
 >Note that for rounding off a 5, the IEC 60559 standard (see also ‘IEEE 754’) is expected to be used, ‘go to the even digit’. Therefore round(0.5) is 0 and round(-1.5) is -2.
 
 So if you like your values to be rounded in the example above, just wrap it in the round function:
 
-
 ```{r}
-by_category <- group_by(df, Category)
-formatted_table(summarize(by_category, average_calories = round(mean(Calories)), sd_calories = round(sd(Calories)), average_calories_fat = round(mean(`Calories from Fat`)), sd_calories_from_fat = round(sd(`Calories from Fat`))))
-
+by_smoking_status <- group_by(df, Smoking_Status)
+formatted_table(summarize(by_smoking_status, average_BOL = round(mean(BloodOxygenLevel), digits = 1), sd_BOL = round(sd(BloodOxygenLevel), digits = 2), average_BT = round(mean(BodyTemperature), digits = 1), sd_BT = round(sd(BodyTemperature), digits = 2)))
 ```
 
 ## Statistics
@@ -271,62 +264,80 @@ formatted_table(summarize(by_category, average_calories = round(mean(Calories)),
 R is build for statistics so you can do all kind of sophisticated statistics in R.
 As this is not a statistics course, the use of statistics is beyond the scope of this course.
 
-Some very basic functions that might be useful (all applied on the Calories column):
+Some very basic functions that might be useful (all applied on the BloodOxygenLevel column):
 
 ```{r}
-print("mean")
-mean(df$Calories)
-print("min")
-min(df$Calories)
-print("max")
-max(df$Calories)
-print("median") 
-median(df$Calories)
-print("percentile")
-quantile(df$Calories, c(0.25, 0.5, 0.75))
-print("standard deviation")
-sd(df$Calories)
-print("standard error of the mean")
-sd(df$Calories)/sqrt(length(df$Calories)) #can also be calculated using the plotrix package
+paste("mean:", round(mean(df$BloodOxygenLevel), digits = 3))
+paste("min:", round(min(df$BloodOxygenLevel), digits = 2))
+paste("max:", round(max(df$BloodOxygenLevel), digits = 2))
+paste("median:", round(median(df$BloodOxygenLevel), digits = 2))
+round(quantile(df$BloodOxygenLevel, c(0.25, 0.5, 0.75)), digits = 2)
+paste("standard deviation:", round(sd(df$BloodOxygenLevel), digits = 3))
+paste("standard error of the mean:", round(sd(df$BloodOxygenLevel)/sqrt(length(df$BloodOxygenLevel)), digits = 3)) #can also be calculated using the plotrix package
 ```
 
 ## Summarize each
 
-Using Tidyverse, you can also apply some of the above statistics more conveniently using the summarize_each function:
+Using Tidyverse, you can also apply some of the above statistics more conveniently using the `summarize_each` function:
 
 ```{r}
-by_category <- group_by(df, Category)
-formatted_table(summarize_each(by_category, funs(mean, sd, se=sd(.)/sqrt(n()))))
+by_smoking_status <- group_by(df, Smoking_Status)
+formatted_table(summarize_each(by_smoking_status, funs(mean, sd, se=sd(.)/sqrt(n()))))
 ```
 
-Note that the `se=sd(.)/sqrt(n())` code is a custom made function to calculate the standard error of the mean.
+Note: that the `se=sd(.)/sqrt(n())` code is a custom made function to calculate the standard error of the mean.
 
-As you can see, Item_mean and Serving Size_mean are not informative. These were of the character type.
-So it is best to omit them:
+Columns with characters cannot be used to do these kind of calculations. If you check the complete formatted table you will find that these are empty (`NA`). For example the column for Prescription; it is not possible to calculate the mean value for character type of data (in this case: name of the medicine). So it is best to omit them:
 
 ```{r}
-by_category <- group_by(df, Category)
-formatted_table(summarize_each(by_category, funs(mean, sd, se=sd(.)/sqrt(n()))) %>%
-  select(-Item_mean, -`Serving Size_mean`))
+by_smoking_status <- group_by(df, Smoking_Status)
+formatted_table(summarize_each(by_smoking_status, funs(mean, sd, se=sd(.)/sqrt(n()))) %>%
+                       select(-Prescription_mean))
 ```
 
-We could simplify this expression by using pipes.You can use %>% to emphasise a sequence of actions.
+We could simplify the second expression by using pipes.You can use `%>%` to emphasize a sequence of actions.
 
 ```{r}
 formatted_table(df %>%
-  group_by(Category) %>%
-  summarize_each(funs(mean, sd, se=sd(.)/sqrt(n()))) %>%
-  select(-Item_mean, -`Serving Size_mean`))
+                  group_by(Smoking_Status) %>%
+                  summarize_each(funs(mean, sd, se=sd(.)/sqrt(n()))) %>%
+                  select(-Prescription_mean))
 ```
 
 Piping greatly reduces the complexity of your actions and prevents the creation of temporary variables.
 You can read it as:
 First take the data frame `df` then,
-group the data frame by the items in the column `Category` and then,
-summarize each `category` item for `mean`, `sd` and `se` and then,
-select all columns except `Item_mean` and `Serving Size_mean`.
+group the data frame by the items in the column `Smoking_Status` and then,
+summarize each `Smoking_Status` item for `mean`, `sd` and `se` and then,
+select all columns except `Prescription`.
 
+In this case, we can also remove all character type columns at once (and then do the calculations) with the `select_if` function.
 
+```{r}
+by_smoking_status <- select_if(group_by(df, Smoking_Status), is.numeric)
+formatted_table(summarize_each(by_smoking_status, funs(mean, sd, se=sd(.)/sqrt(n()))))
+```
+This way, the only character type column that is preserved is the Smoking_Status column.
+Note: there are still fields with `NA` in this overview. These are caused by missing values in the original dataset. If you try to calculate the mean value of a set of numbers, including `NA`, the result will be `NA`:
+
+```{r}
+paste("mean with no `NA` values:", mean(c(5.7, 3.5, 2.7, 4.6, 7.9)))
+paste("mean with `NA` values:", mean(c(5.7, 3.5, 2.7, NA, 7.9)))
+paste("standard deviation with no `NA` values:", sd(c(5.7, 3.5, 2.7, 4.6, 7.9)))
+paste("standard deviation with `NA` values:", sd(c(5.7, 3.5, 2.7, NA, 7.9)))
+paste("sum with no `NA` values:", sum(c(5.7, 3.5, 2.7, 4.6, 7.9)))
+paste("sum with `NA` values:", sum(c(5.7, 3.5, 2.7, NA, 7.9)))
+```
+We can get around this problem using the `na.rm =` argument in the functions used. The default setting is `na.rm = FALSE`. If we set this argument to `TRUE`, all `NA` values will be removed before the mean/sd/sum is calculated.
+
+```{r}
+paste("mean with no `NA` values:", mean(c(5.7, 3.5, 2.7, 4.6, 7.9)))
+paste("mean with `NA` values:", mean(c(5.7, 3.5, 2.7, NA, 7.9), na.rm = TRUE))
+paste("standard deviation with no `NA` values:", sd(c(5.7, 3.5, 2.7, 4.6, 7.9)))
+paste("standard deviation with `NA` values:", sd(c(5.7, 3.5, 2.7, NA, 7.9), na.rm = TRUE))
+paste("sum with no `NA` values:", sum(c(5.7, 3.5, 2.7, 4.6, 7.9)))
+paste("sum with `NA` values:", sum(c(5.7, 3.5, 2.7, NA, 7.9), na.rm = TRUE))
+```
 
 ---
 

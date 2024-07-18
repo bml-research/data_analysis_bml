@@ -297,17 +297,23 @@ overflow-y: auto;
 border: 1px solid #ddd;
 border-radius: 4px;
 }
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-content: "\e259";
+.tabset-dropdown > .nav-tabs > li.active:before {
+content: "";
 font-family: 'Glyphicons Halflings';
 display: inline-block;
 padding: 10px;
 border-right: 1px solid #ddd;
 }
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-content: "\e258";
-font-family: 'Glyphicons Halflings';
+content: "";
 border: none;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+content: "";
+font-family: 'Glyphicons Halflings';
+display: inline-block;
+padding: 10px;
+border-right: 1px solid #ddd;
 }
 .tabset-dropdown > .nav-tabs > li.active {
 display: block;
@@ -359,6 +365,11 @@ display: none;
 <div id="data-analysis-exercises" class="section level2">
 <h2>Data Analysis Exercises</h2>
 <pre class="r"><code>library(tidyverse)</code></pre>
+<pre class="r"><code>library(kableExtra)
+formatted_table &lt;- function(df){
+  kbl(df) %&gt;%
+  kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;responsive&quot;))
+}</code></pre>
 <p>This file can be downloaded <a href="./R_10_data_analysis_exercises.Rmd">here</a></p>
 <blockquote>
 <p>In order to compare the analysis in R with Excel, the exercises where
@@ -366,14 +377,15 @@ kept as similar as possible.</p>
 </blockquote>
 <div id="exercise-1" class="section level3">
 <h3>Exercise 1</h3>
-<p>Import the <a href="https://www.kaggle.com/datasets/mcdonalds/nutrition-facts">Nutrition
-facts data</a> from a fastfood restaurant in an Rmd file. Then perfom
-the following calculations on a new worksheet and display them as a
+<p>Import the <a href="https://www.kaggle.com/datasets/ruslankl/mice-protein-expression?resource=download">Mice
+Protein Expression</a> dataset in R. It contains data on the levels of
+protein expression of mice proteins in different mice. Perform the
+following calculations on this dataframe and display them as a
 table:</p>
 <ul>
 <li>Calculate the minimum, maximum, average, median from the columns
-<code>Calories</code> and <code>Calories from fat</code>. Display the
-answers in a data frame.</li>
+<code>CDK5_N</code> and <code>Tau_N</code>. Display the answers in a
+data frame.</li>
 </ul>
 <pre class="r"><code>#Your code here</code></pre>
 </div>
@@ -381,43 +393,53 @@ answers in a data frame.</li>
 <h3>Exercise 2</h3>
 <p>Index, filter and sort your data frame to answer the following
 questions:<br />
-1. Which item has the highest Calories from fat?<br />
-2. Which items have the highest Iron (% Daily Value)?<br />
-3. Which Beef &amp; Pork item has the lowest Calories from fat?<br />
-4. Which Coffee &amp; Tea or Smoothies &amp; Shakes item has the highest
-amount of carbohydrates?<br />
-5. Which item has the highest saturated fat and lowest carbohydrates
-value?</p>
-<p>Item with the highest Calories from fat:</p>
+1. Which mouse has the highest expression of the Tau protein?<br />
+2. What is the relative expression value of this protein in this
+particular mouse?<br />
+3. Which mouse has the lowest expression of the pAKT protein?<br />
+4. How many empty cells (<code>NA</code>) are in the BAD column? Use the
+<code>summary</code> function to find the amount of empty cells. 5.
+Which mouse of the Ts65Dn genotype group has the highest Tau expression
+(use multi-sorting)? 6. Which mouse of the Ts65Dn genotype, and saline
+treatment group has the highest Tau expression (use multi-sorting)?</p>
+<p>Mouse with the highest expression of the protein
+<code>Tau_N</code>:</p>
 <pre class="r"><code>#Your code here</code></pre>
-<p>Item with the highest highest Iron (% Daily Value)</p>
+<p>The relative expression value for this protein in this particular
+mouse:</p>
 <pre class="r"><code>#Your code here</code></pre>
-<p>Beef &amp; Pork item with the lowest Calories from fat?</p>
+<p>Mouse with the lowest expression of the pAKT protein:</p>
 <pre class="r"><code>#Your code here</code></pre>
-<p>Coffee &amp; Tea or Smoothies &amp; Shakes item with the highest
-amount of carbohydrates:</p>
+<p>Amount of empty cells (<code>NA</code>) in the BAD column:</p>
 <pre class="r"><code>#Your code here</code></pre>
-<p>Item with the highest saturated fat and lowest carbohydrates
-value:</p>
+<p>Mouse of the Ts65Dn genotype group with the highest Tau
+expression:</p>
+<pre class="r"><code>#Your code here</code></pre>
+<p>Mouse of the Ts65Dn genotype, and saline treatment group with the
+highest Tau expression (use multi-sorting):</p>
 <pre class="r"><code>#Your code here</code></pre>
 </div>
 <div id="exercise-3" class="section level3">
 <h3>Exercise 3</h3>
 <ol style="list-style-type: decimal">
-<li>More then 600 calories would be considered high energetic. How many
-items are high energetic?<br />
+<li>An relative expression level &gt; 0.5 would be considered a high
+expression level. How many mice do have a high expression level for
+DYRK1A?<br />
 </li>
-<li>How many items are between 300 and 600 calories?<br />
-</li>
-<li>How many items are measured in the serving size Fluid Ounce (fl oz
-cup) (hint: use a wildcard)?</li>
+<li>Apply this calculation for all proteins. For which protein do you
+observe a count of 218? Hint: you can calculate the mean and the sum for
+multiple columns at once with the <code>colMeans</code> and
+<code>colSums</code> functions.</li>
+<li>The average pELK expression is higher than pERK. But how many mice
+do have higher expression levels for pELK than 0.75 AND higher
+expression levels for pERK than 0.25?</li>
 </ol>
-<p>High energetic:</p>
+<p>High expression level:</p>
 <pre class="r"><code>#Your code here</code></pre>
-<p>Number of items between 300 and 600 calories:</p>
+<p>High expression levels for all proteins:</p>
 <pre class="r"><code>#Your code here</code></pre>
-<p>How many items are measured in the serving size Fluid Ounce (fl oz
-cup) (hint: use a wildcard)</p>
+<p>Higher expression levels for pELK than 0.75 AND higher expression
+levels for pERK than 0.25:</p>
 <pre class="r"><code>#Your code here</code></pre>
 </div>
 <div id="exersise-4" class="section level3">
@@ -427,31 +449,30 @@ cup) (hint: use a wildcard)</p>
 do not use conditional formatting but selection of rows instead.</p>
 </blockquote>
 <ol style="list-style-type: decimal">
-<li>Select rows with high energetic food items (&gt;600 calories). Which
-three categories show the highest number of red cells?<br />
+<li>Select rows with a relative expression value higher than 2.3 for the
+pCASP9 protein. Which treatment is mostly found for these selected
+proteins ?<br />
 </li>
-<li>Select rows with duplicate food items. Are there any duplicate
-items?<br />
+<li>Select rows with duplicate MouseIDs. Are there any duplicate
+MouseIDs?<br />
 </li>
-<li>Select rows with a % Daily Value &gt; 100% for Vitamin A. Which
-category are these items mainly found?</li>
-<li>Select rows with a % Daily Value &gt;= 100% for Vitamin C. Use green
-markup for these. Make sure that you include 100%! How many items do you
-find that meet this criteria?</li>
+<li>Select the following columns: MouseID, APP_N, NR1_N, pCREB_N, S6_N,
+and Genotype.</li>
+<li>Select everything but the columns with relative expression
+measurements. Hint: the column names of the column with relative
+expression values all have something in common.</li>
 </ol>
-<p>Select rows with high energetic food items (&gt;600 calories). Which
-three categories show the highest number of red cells?</p>
+<p>Select rows with a relative expression value higher than 2.3 for the
+pCASP9 protein:</p>
 <pre class="r"><code>#Your code here</code></pre>
-<p>Select rows with duplicate food items. Are there any duplicate
-items?</p>
+<p>Select rows with duplicate MouseIDs. Are there any duplicate
+MouseIDs?</p>
 <pre class="r"><code>#Your code here</code></pre>
-<p>There are no duplicates!</p>
-<p>Select rows with a % Daily Value &gt; 100% for Vitamin A. Which
-category are these items mainly found?</p>
+<p>Select the following columns: MouseID, APP_N, NR1_N, pCREB_N, S6_N,
+and Genotype:</p>
 <pre class="r"><code>#Your code here</code></pre>
-<p>Select rows with a % Daily Value &gt;= 100% for Vitamin C. Use green
-markup for these. Make sure that you include 100%! How many items do you
-find that meet this criteria?</p>
+<p>Select everything but the columns with relative expression
+measurements:</p>
 <pre class="r"><code>#Your code here</code></pre>
 </div>
 <div id="exercise-5" class="section level3">
@@ -460,12 +481,10 @@ find that meet this criteria?</p>
 <p>Note that this exercise differs a bit from the Excel counterpart. We
 do not use a pivot table but the results will be similar.</p>
 </blockquote>
-<p>Group the categories.<br />
-Calculate:<br />
-- the Average of Total Fat (% Daily Value)<br />
-- the Average of Saturated Fat (% Daily Value)<br />
-- the Average of Cholesterol (% Daily Value)</p>
-<p>Round the values to 1 decimal.</p>
+<p>Group the genotypes of the mice.<br />
+Calculate the standard deviation, average and the median of the relative
+expression of the following genes: - PKCA - RRP1 - BRAF - JNK</p>
+<p>Round the values to 3 decimals.</p>
 <pre class="r"><code>#Your code here</code></pre>
 <hr />
 <blockquote>
