@@ -75,8 +75,8 @@ Median:
 
 ### Exercise 4
 
-1. Use conditional formatting to indicate a very high expression levels for DYRK1A (> 2.0 relative expression level). Use red markup for these. How many red cells do you obtain?  
->9
+1. Use conditional formatting to indicate a very high expression levels for rows with a relative expression value higher than 2.3 for the pCASP9 protein. Which treatment is mostly found for these selected proteins?  
+>It seams that in this selection of mice most are treated with Saline.
 2. Use conditional formatting to check for duplicate mouse IDs. Use red markup for these. Are there any duplicate mouse IDs?   
 >No
 3. Use conditional formatting to indicate the top 10% expression levels for ITSN1. What is the lowest value included?  

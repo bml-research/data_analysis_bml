@@ -42,7 +42,7 @@ Use filter and sort to answer the following questions:
 
 ### Exercise 4
 
-1. Use conditional formatting to indicate a very high expression levels for DYRK1A (> 2.0 relative expression level). Use red markup for these. How many red cells do you obtain?  
+1. Use conditional formatting to indicate a very high expression levels for rows with a relative expression value higher than 2.3 for the pCASP9 protein. Which treatment is mostly found for these selected proteins?  
 2. Use conditional formatting to check for duplicate mouse IDs. Use red markup for these. Are there any duplicate mouse IDs?  
 3. Use conditional formatting to indicate the top 10% expression levels for ITSN1. What is the lowest value included?  
 4. Use conditional formatting to indicate the above average expression levels for NR1? What is the lowest level included?  
