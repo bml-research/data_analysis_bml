@@ -60,7 +60,7 @@ Calculate the standard deviation and average of the relative expression of the f
 
 Round the values to 3 decimals.
 
->Note that for the R-equivalent of this question you are also asked to calculates the median. This is not a standard option in Excel. This shows again that Excel is a little less flexible compared to R.  
+>Note that for the R-equivalent of this question you are also asked to calculate the median. This is not a standard option in Excel. This shows again that Excel is a little less flexible compared to R.  
 
 ---
 
