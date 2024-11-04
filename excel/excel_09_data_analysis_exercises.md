@@ -51,17 +51,16 @@ Use filter and sort to answer the following questions:
 ### Exercise 5
 
 Create a new worksheet and name it pivot.  
-Create a Pivot table and group the Treatment, Genotype and Behavior.  
-Calculate:  
-- the Average of DYRK1A expression    
-- the Average of ISTN1 expression    
-- the Average of BDNF expression  
-- the Average of NR1 expression  
+Group the genotypes of the mice.
+Calculate the standard deviation and average of the relative expression of the following genes: 
+- PKCA 
+- RRP1 
+- BRAF 
+- JNK
 
-Round the values to 2 decimals.  
+Round the values to 3 decimals.
 
-Do you see a pattern (of course, this should be supported with proper statistics which is beyond the scope of this course)?  
-
+>Note that for the R-equivalent of this question you are also asked to calculates the median. This is not a standard option in Excel. This shows again that Excel is a little less flexible compared to R.  
 
 ---
 
