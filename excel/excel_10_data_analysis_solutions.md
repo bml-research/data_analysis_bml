@@ -75,14 +75,15 @@ Median:
 
 ### Exercise 4
 
-1. Use conditional formatting to indicate high energetic food items (>600 calories). Use red markup for these. Which two categories show the highest number of red cells?  
->Breakfast and Chicken & Fish
-2. Use conditional formatting to check for duplicate food items. Use red markup for these. Are there any duplicate items?  
+1. Use conditional formatting to indicate a very high expression levels for DYRK1A (> 2.0 relative expression level). Use red markup for these. How many red cells do you obtain?  
+>9
+2. Use conditional formatting to check for duplicate mouse IDs. Use red markup for these. Are there any duplicate mouse IDs?   
 >No
-3. Use conditional formatting to indicate a % Dalily Value > 100% for Vitamin A. Which catagory are these items mainly found?  
-> Salads
-4. Use conditional formatting to indicate a % Dalily Value >= 100% for Vitamin C. Use green markup for these. Make sure that you include 100%! How many items do you find that meet this criteria?  
-> 7
+3. Use conditional formatting to indicate the top 10% expression levels for ITSN1. What is the lowest value included?  
+> 0.865630205
+4. Use conditional formatting to indicate the above average expression levels for NR1? What is the lowest level included?  
+> 2.298052977  
+
 
 
 The excel file can be found [here](./files_10_data_analysis_solutions/exercise01/menu.xlsx).  
@@ -93,7 +94,7 @@ The excel file can be found [here](./files_10_data_analysis_solutions/exercise01
 
 ### Exercise 5
 
-The excel file can be found [here](./files_10_data_analysis_solutions/exercise01/menu.xlsx).  
+The excel file can be found [here](./files_10_data_analysis_solutions/exercise01/Data_Cortex_Nuclear.xlsx).  
 
 ![pivot table](./files_10_data_analysis_solutions/exercise05/fig1.png)
 
