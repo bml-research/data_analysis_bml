@@ -86,7 +86,7 @@ Median:
 
 
 
-The excel file can be found [here](./files_10_data_analysis_solutions/exercise01/menu.xlsx).  
+The excel file can be found [here](./files_10_data_analysis_solutions/exercise04/Data_Cortex_Nuclear.xlsx).  
 
 ![conditional formatting](./files_10_data_analysis_solutions/exercise04/fig01.png)
 
@@ -94,9 +94,12 @@ The excel file can be found [here](./files_10_data_analysis_solutions/exercise01
 
 ### Exercise 5
 
-The excel file can be found [here](./files_10_data_analysis_solutions/exercise01/Data_Cortex_Nuclear.xlsx).  
+The excel file can be found [here](./files_10_data_analysis_solutions/exercise05/Data_Cortex_Nuclear.xlsx).  
 
 ![pivot table](./files_10_data_analysis_solutions/exercise05/fig1.png)
+
+In general, the S/C Genotype seems to have lower expression levels for DYRK1A, ISTN1, BDNF but not for NR1.  
+Of course, this should be supported with proper statistics.  
 
 
 ---

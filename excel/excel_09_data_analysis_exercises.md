@@ -51,13 +51,16 @@ Use filter and sort to answer the following questions:
 ### Exercise 5
 
 Create a new worksheet and name it pivot.  
-Create a Pivot table and group the categories.  
+Create a Pivot table and group the Treatment, Genotype and Behavior.  
 Calculate:  
-- the Average of Total Fat (% Daily Value)  
-- the Average of Saturated Fat (% Daily Value)  
-- the Average of Cholesterol (% Daily Value)  
+- the Average of DYRK1A expression    
+- the Average of ISTN1 expression    
+- the Average of BDNF expression  
+- the Average of NR1 expression  
 
-Round the values to 1 decimal.  
+Round the values to 2 decimals.  
+
+Do you see a pattern (of course, this should be supported with proper statistics which is beyond the scope of this course)?  
 
 
 ---
