@@ -13,7 +13,7 @@
 
 ## Introduction
 
-Though not as powerful as R or Python, Excel is a user friendly tool for data analysis and visualization. Whether you're working in the food industry or conducting research on nutrition, Excel can help you make sense of your data and present your findings in a clear and compelling way. By using Excel's built-in charting features, you can easily create a variety of charts and graphs that visualize key trends and patterns in your data, such as changes in nutrient levels over time, differences between different food products, or correlations between different variables. With Excel, you can create professional-looking charts and graphs that are easy to understand and can help you communicate your insights to others. Excel offers a wide range of tools and capabilities that can help you make sense of your food-related data and present it in a way that is meaningful and informative.
+Though not as powerful as R or Python, Excel is a user friendly tool for data analysis and visualization. Regardless of the field you are working in, Excel can help you make sense of your data and present your findings in a clear and compelling way. By using Excel's built-in charting features, you can easily create a variety of charts and graphs that visualize key trends and patterns in your data or correlations between different variables. With Excel, you can create professional-looking charts and graphs that are easy to understand and can help you communicate your insights to others. Excel offers a wide range of tools and capabilities that can help you make sense of your food-related data and present it in a way that is meaningful and informative.
 
 
 ## Data visualization charts in Excel
@@ -59,41 +59,72 @@ Column charts are particularly useful for:
 
 Overall, Column charts are a versatile and effective way to visualize categorical data and to communicate important insights and trends to others.
 
-So let's take the pivot table from the fast food restaurant menu data as an example.
-We have the average amount of total calories as well as the calories from fat of the different food categories.
+So let's take the [following dataset](https://genomics.senescence.info/species/index.html) as an example:
+The AnAge Database of Animal Ageing and Longevity.
+It is a curated database of ageing and life history in animals, including extensive longevity records. 
 
-![pivot](./pics_11_data_visualization/fig2.png)
-*<sub>Figure 2: Pivot table showing the average amount of total calories as well as the calories from fat of the different food categories.</sub>*
+We are interested in the maximum age of different felines (species of cats).
+To select the relevant data, we first filter the Order for Carnivora and the Family for Felidae. 
 
-What the data tell you is that meet and fish are high in fat and beverages are low (they are high in sugar). Not very surprising, but useful as an example. 
+>Note that as all Felidae are also carnivora, this is not strictly necessary.
 
-Let's first start with a Column chart for the average amount of calories from fat for the different food categories:
+In addition, the data was filtered for Data quality (acceptable or better).
+
+Next, the data was alphabetically sorted for the common names.
+
+The data sheet looks as follows:
+
+![Data Sheet](./pics_11_data_visualization/fig2.png)
+*<sub>Figure 2: Data Sheet filtered for the Felidae.</sub>*
+
+
+Let's first start with a Column chart for the maximum life span for the different Felidae:
 
 If you need more help (each individual step explained), have a look [here](https://support.microsoft.com/en-us/office/present-your-data-in-a-column-chart-d89050ba-e6b6-47de-b090-e9ab353c4c00).
 
-![Column chart](./pics_11_data_visualization/fig3.png)
-*<sub>Figure 3: Column chart representing the average amount of calories from fat per serving for different food categories in a fast food restaurant.</sub>*
+![Column chart](./pics_11_data_visualization/fig3a.png)
+*<sub>Figure 3a: Column chart representing the maximum life span for different cat species.</sub>*
 
 >Note that providing different colors for each different bar does not provide extra information. It will confuse the reader.
 
-Now if you would like to compare this to the total amount of calories, you could create a clustered column chart for this:
+Note that the Bobcat has the highest maximum life span.
 
-![Column chart](./pics_11_data_visualization/fig4.png)
-*<sub>Figure 4: Clustered column chart representing the average amount of calories from fat per serving related to the total amount of calories for different food categories in a fast food restaurant.</sub>*
+In a similar way, we can also create a bar chart for the adult body weight:  
 
->Note that providing different colors for each different set does provide extra information. Thus, it is highly recommended in this case.
+![Column chart](./pics_11_data_visualization/fig3b.png)
+*<sub>Figure 3b: Column chart representing the adult weight for different cat species.</sub>*
 
-But these data are difficult to compare. You could use a stacked column chart to have it all in one overview:
+Not very surprising, the lion and tiger show the highest adult weights. 
+
+Now if you would like to compare this to the weight at birth, you could create a clustered column chart for this.
+
+However, not every entry contains a Birth weight so we first deselect the blank rows using filters.
+
+Next, we can create the clustered bar chart:
+
+![Column chart](./pics_11_data_visualization/fig4a.png)
+*<sub>Figure 4: Clustered column chart representing the animal weight at birth and the adult weight for different cat species.</sub>*
+
+>Note that providing different colors for each different set now does provide extra information. Thus, it is highly recommended in this case.
+
+The problem with this chart is that the birth weights are barely visible. To improve this, we can use a logarithmic scale for the y-axis:
+
+![Column chart](./pics_11_data_visualization/fig4b.png)
+*<sub>Figure 4: Clustered column chart representing the animal weight at birth and the adult weight for different cat species. logarithmic scale.</sub>*
+
+
+You could use a stacked column chart to have it all in one overview:
+
 
 ![Stacked column chart](./pics_11_data_visualization/fig5.png)
-*<sub>Figure 5: Stacked column chart representing the average amount of calories from fat per serving related to the total amount of calories for different food categories in a fast food restaurant.</sub>*
+*<sub>Figure 5: Stacked column chart representing the animal weight at birth and the adult weight for different cat species. logarithmic scale.</sub>*
 
 
-But how do these calories from fat relate relatively to the total calories?
+But how do these birth weights relate relatively to the adult weights?
 We could calculate this but Excel provides a plot type that takes this work out of your hands:
 
 ![Relative Stacked column chart](./pics_11_data_visualization/fig6.png)
-*<sub>Figure 6: Relative stacked column chart representing the relative average amount of calories from fat per serving related to the total amount of calories for different food categories in a fast food restaurant.</sub>*
+*<sub>Figure 6: Relative stacked column chart representing the relative animal weight at birth and the adult weight for different cat species. logarithmic scale.</sub>*
 
 Like the relative stacked column chart, the pie chart is another chart type that is suitable for such a representation.
 
