@@ -136,31 +136,31 @@ Pie charts are effective for conveying information quickly and intuitively, as t
 
 However, pie charts may not be the best choice for all types of data. For example, they can become difficult to read when there are too many categories or when the differences between the sizes of the slices are small. In these cases, a bar chart or other visualization (Pie of Pie) may be more appropriate.
 
-We take our previous example as an example to create a pie chart:
+We take our previous example as an example to create a pie chart.
+The problem is that there are too many categories. Therefore, we will narrow down the number of rows by focussing on big cats. According to [Wikipedia](https://en.wikipedia.org/wiki/Big_cat) The term "big cat" is typically used to refer to any of the five living members of the genus Panthera, namely the tiger, lion, jaguar, leopard, and snow leopard, as well as the non-pantherine cheetah and cougar. So we select these species first and then create the Pie Chart:
 
 ![Pie chart](./pics_11_data_visualization/fig7.png)
-*<sub>Figure 7: Pie chart representing the relative average amount of calories from fat per serving related to the total amount of calories for different food categories in a fast food restaurant.</sub>*
+*<sub>Figure 7: Pie chart representing the relative weight of big cats in grams</sub>*
 
 Or with the data labels and percentages shown connected to the pie slices (choose: chart design > chart elements > Data labels > Outside End):
 
 
 ![Pie chart](./pics_11_data_visualization/fig8.png)
-*<sub>Figure 8: Pie chart representing the relative average amount of calories from fat per serving related to the total amount of calories for different food categories in a fast food restaurant. Data labels and percentages are connected to the pie slices.</sub>*
-
+*<sub>Figure 8: Pie chart representing the relative weight of big cats in grams. Data labels and percentages are connected to the pie slices.</sub>*
 
 
 ## Pie of Pie
 
 Pie of Pie charts can become handy if the individual slices become small and the Pie chart becomes cluttered. 
 
-Here is an example of a Pie of Pie chart:
+Here is an example of a Pie of Pie chart with all the Feline species:
 
 ![Pie of Pie chart](./pics_11_data_visualization/fig9.png)
-*<sub>Figure 9: Pie of Pie chart representing the relative average amount of calories from fat per serving related to the total amount of calories for different food categories in a fast food restaurant. Data labels and percentages are connected to the pie slices.</sub>*
+*<sub>Figure 9: Pie of Pie chart representing the relative weight of big cats in grams Data labels and percentages are connected to the pie slices.</sub>*
 
-As you can see, the second Pie is created from the smallest Pie slices from the first Pie chart. This creates less clutter when the individual slices become to small. Although in this case, the original Pie chart would do well.
+As you can see, the second Pie is created from the smallest Pie slices from the first Pie chart. This creates less clutter when the individual slices become to small. 
 
-You can format the secondary Pie by right-clicking it > Format Data Series and then use the drop down to select the appropriate Split Series (percentage value was used here).
+You can format the secondary Pie by right-clicking it > Format Data Series and then use the drop down to select the appropriate Split Series.
 
 ## Radar charts
 
