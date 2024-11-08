@@ -168,18 +168,18 @@ A radar chart, also known as a spider chart or a star chart, is a graphical repr
 
 Radar charts are often used to compare multiple variables or data sets, particularly when the values have different units or scales. 
 
-Let's view some (imaginary) data from three fast food restaurants. These data show the average of calories of fat per serving from different Categories (like the previous data). But compared to the previous data, we now have these numbers from three different vendors.
+Let's view some (imaginary) protein quantification data for 5 different protein quantification methods (Lowry, Bradford, BCA, UV/VIS and Kjeldahl). These data show the concentration of protein in mg/L. We have these data from three different protein samples.
 
 ![Data for a radar chart](./pics_11_data_visualization/fig10.png)
-*<sub>Figure 10: Data suitable for a radar chart. Calories from fat for different food Categories purchased from different vendors.</sub>*
+*<sub>Figure 10: Data suitable for a radar chart. Protein quantification data for different methods and different samples compared.</sub>*
 
 The resulting radar chart is shown below:
 
 ![Radar chart](./pics_11_data_visualization/fig11.png)
-*<sub>Figure 11: Radar chart created from the previous data set. Calories from fat for different food Categories purchased from different vendors.</sub>*
+*<sub>Figure 11: Radar chart created from the previous data set. Protein quantification data for different methods and different samples compared.</sub>*
 
 
-Note that it becomes clear that restaurant B sells desserts with a lot of calories from fat. So either the fat percentage of fat is high or the portions are very large. 
+>Summary here. 
 
 ## Box plots
 
