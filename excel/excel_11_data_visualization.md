@@ -179,7 +179,7 @@ The resulting radar chart is shown below:
 *<sub>Figure 11: Radar chart created from the previous data set. Protein quantification data for different methods and different samples compared.</sub>*
 
 
->Summary here. 
+>Note that we can conclude that the Kjedahl method shows considerable higher amounts. Although the protein concentration in sample 3 is lower compared to the other two samples, the same pattern can be seen. The  Kjeldahl method seems to overestimate the protein concentration.
 
 ## Box plots
 
