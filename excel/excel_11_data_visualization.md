@@ -192,9 +192,9 @@ Overall, box plots are a useful tool for summarizing and visualizing complex dat
 Let's have a look at the following dataset:
 
 ![Box plot data](./pics_11_data_visualization/fig12.png)
-*<sub>Figure 12: Data about calories from fat for different food categories.</sub>*
+*<sub>Figure 12: Data about life span in different animal species.</sub>*
 
-And compare the different categories for calories from fat and total calories.
+And compare the maximum life span between different classes.
 
 The questions that can be asked are:
 - What is the median value per category? 
@@ -204,19 +204,23 @@ The questions that can be asked are:
 
 A box plot will answer all these questions at once:
 
-We choose the columns `Calories from fat` and `Calories` for the series. The food categories are selected as labels. See the result below.
+We choose the columns `Maximum longevity (yrs)` for the series. The column `class` is selected as labels. See the result below.
 
 ![Box plot](./pics_11_data_visualization/fig13.png)
-*<sub>Figure 13: Box plot about calories from fat for different food Categories.</sub>*
+*<sub>Figure 13: Box plot about maximum life span for different animal classes.</sub>*
 
-The above picture is the standard layout of the box plot in Excel. However, you could argue that it would be better to tweak some things in the plot. First of all, the mean is shown as a cross. Box plots are often used in combination with nonparametric statistics and quantile (including median) values are much more appropriate to use. In addition, inner points are visible and we can not discriminate them from outliers. Finally, we should look if our number of values (N) are odd or even. The median is included in the calculation if N is odd. The median is excluded from the calculation if N is odd. Since this varies per food category, we will choose the excluded method. We can tweak each series (select the series and choose: `Format Data Series`) accordingly. See the result below:
+The above picture is the standard layout of the box plot in Excel. However, you could argue that it would be better to tweak some things in the plot. First of all, the mean is shown as a cross. Box plots are often used in combination with nonparametric statistics and quantile (including median) values are much more appropriate to use. In addition, inner points are visible and we can not discriminate them from outliers. Finally, we should look if our number of values (N) are odd or even. The median is included in the calculation if N is odd. The median is excluded from the calculation if N is odd. Since this varies per animal class, we will choose the excluded method. We can tweak each series (select the series and choose: `Format Data Series`) accordingly. See the result below:
 
 ![Box plot](./pics_11_data_visualization/fig14.png)
-*<sub>Figure 14: Tweaked box plot about calories from fat for different food categories.</sub>*
+*<sub>Figure 14: Tweaked box plot about maximum life span for different animal classes.</sub>*
+
+Of course you can also choose to omit the outliers in de plot. Select the series and choose: `Format Data Series`.Deselect the `Show outlier points` checkbox.
+
+![Box plot](./pics_11_data_visualization/fig15.png)
+*<sub>Figure 15: Tweaked box plot about maximum life span for different animal classes. Note that outliers are omitted.</sub>*
 
 
 ## Line and XY-scatter plots
-
 
 Line charts are useful when you want to visualize trends or changes in data over time or another continuous variable. They are particularly good for showing how a particular variable changes over time or in response to another variable. For example, a line chart can be used to show how a persons weight has changed over time. 
 
