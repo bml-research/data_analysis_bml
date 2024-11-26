@@ -212,6 +212,14 @@ We choose the columns `Maximum longevity (yrs)` for the series. The column `orde
 ![Box plot](./pics_11_data_visualization/fig13.png)
 *<sub>Figure 13: Box plot about maximum life span for different orders of mammals.</sub>*
 
+From this plot, we can conclude that Proboscidea are an order of mammals that live long and have a narrow variation of maximum lifespan. Proboscidea is a taxonomic order of afrotherian mammals that includes all species of elephants.  
+
+In addition, Cetacea (whales, dolphins and porpoises) also tend to live long but their is a wide variation in maximum life span. The same holds for Sirenia (sea cows). 
+
+You can also find an outlier in the order of primates. You might already have an idea which species that is...
+
+The largest living mammal in the data set is an outlier in the order Cetacea. Can you identify the species?
+
 The above picture is the standard layout of the box plot in Excel. However, you could argue that it would be better to tweak some things in the plot. First of all, the mean is shown as a cross. Box plots are often used in combination with nonparametric statistics and quantile (including median) values are much more appropriate to use. In addition, inner points are visible and we can not discriminate them from outliers. Finally, we should look if our number of values (N) are odd or even. The median is included in the calculation if N is odd. The median is excluded from the calculation if N is odd. Since this varies per animal class, we will choose the excluded method. We can tweak this (select the series and choose: `Format Data Series`) accordingly. See the result below:
 
 ![Box plot](./pics_11_data_visualization/fig14.png)
