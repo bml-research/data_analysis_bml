@@ -7,7 +7,7 @@
 # Excel: Data Visualization
 
 
-![impression](./pics_11_data_visualization/fig1.png)
+![impression](./pics_11_data_visualization/fig01.png)
 *<sub>Figure 1: Data visualization of bacteria grown in the presence of anthocyanins isolated from red grapes.</sub>*
 
 
@@ -74,7 +74,7 @@ Next, the data was alphabetically sorted for the common names.
 
 The data sheet looks as follows:
 
-![Data Sheet](./pics_11_data_visualization/fig2.png)
+![Data Sheet](./pics_11_data_visualization/fig02.png)
 *<sub>Figure 2: Data Sheet filtered for the Felidae.</sub>*
 
 
@@ -82,8 +82,8 @@ Let's first start with a Column chart for the maximum life span for the differen
 
 If you need more help (each individual step explained), have a look [here](https://support.microsoft.com/en-us/office/present-your-data-in-a-column-chart-d89050ba-e6b6-47de-b090-e9ab353c4c00).
 
-![Column chart](./pics_11_data_visualization/fig3a.png)
-*<sub>Figure 3a: Column chart representing the maximum life span for different cat species.</sub>*
+![Column chart](./pics_11_data_visualization/fig03.png)
+*<sub>Figure 3: Column chart representing the maximum life span for different cat species.</sub>*
 
 >Note that providing different colors for each different bar does not provide extra information. It will confuse the reader.
 
@@ -91,8 +91,8 @@ Note that the Bobcat has the highest maximum life span.
 
 In a similar way, we can also create a bar chart for the adult body weight:  
 
-![Column chart](./pics_11_data_visualization/fig3b.png)
-*<sub>Figure 3b: Column chart representing the adult weight for different cat species.</sub>*
+![Column chart](./pics_11_data_visualization/fig04.png)
+*<sub>Figure 4: Column chart representing the adult weight for different cat species.</sub>*
 
 Not very surprising, the lion and tiger show the highest adult weights. 
 
@@ -102,29 +102,29 @@ However, not every entry contains a Birth weight so we first deselect the blank 
 
 Next, we can create the clustered bar chart:
 
-![Column chart](./pics_11_data_visualization/fig4a.png)
-*<sub>Figure 4: Clustered column chart representing the animal weight at birth and the adult weight for different cat species.</sub>*
+![Column chart](./pics_11_data_visualization/fig05.png)
+*<sub>Figure 5: Clustered column chart representing the animal weight at birth and the adult weight for different cat species.</sub>*
 
 >Note that providing different colors for each different set now does provide extra information. Thus, it is highly recommended in this case.
 
 The problem with this chart is that the birth weights are barely visible. To improve this, we can use a logarithmic scale for the y-axis:
 
-![Column chart](./pics_11_data_visualization/fig4b.png)
-*<sub>Figure 4: Clustered column chart representing the animal weight at birth and the adult weight for different cat species. logarithmic scale.</sub>*
+![Column chart](./pics_11_data_visualization/fig06.png)
+*<sub>Figure 6: Clustered column chart representing the animal weight at birth and the adult weight for different cat species. logarithmic scale.</sub>*
 
 
 You could use a stacked column chart to have it all in one overview:
 
 
-![Stacked column chart](./pics_11_data_visualization/fig5.png)
-*<sub>Figure 5: Stacked column chart representing the animal weight at birth and the adult weight for different cat species. logarithmic scale.</sub>*
+![Stacked column chart](./pics_11_data_visualization/fig07.png)
+*<sub>Figure 7: Stacked column chart representing the animal weight at birth and the adult weight for different cat species. logarithmic scale.</sub>*
 
 
 But how do these birth weights relate relatively to the adult weights?
 We could calculate this but Excel provides a plot type that takes this work out of your hands:
 
-![Relative Stacked column chart](./pics_11_data_visualization/fig6.png)
-*<sub>Figure 6: Relative stacked column chart representing the relative animal weight at birth and the adult weight for different cat species. logarithmic scale.</sub>*
+![Relative Stacked column chart](./pics_11_data_visualization/fig08.png)
+*<sub>Figure 8: Relative stacked column chart representing the relative animal weight at birth and the adult weight for different cat species. logarithmic scale.</sub>*
 
 Like the relative stacked column chart, the pie chart is another chart type that is suitable for such a representation.
 
@@ -139,14 +139,14 @@ However, pie charts may not be the best choice for all types of data. For exampl
 We take our previous example as an example to create a pie chart.
 The problem is that there are too many categories. Therefore, we will narrow down the number of rows by focussing on big cats. According to [Wikipedia](https://en.wikipedia.org/wiki/Big_cat) The term "big cat" is typically used to refer to any of the five living members of the genus Panthera, namely the tiger, lion, jaguar, leopard, and snow leopard, as well as the non-pantherine cheetah and cougar. So we select these species first and then create the Pie Chart:
 
-![Pie chart](./pics_11_data_visualization/fig7.png)
-*<sub>Figure 7: Pie chart representing the relative weight of big cats in grams</sub>*
+![Pie chart](./pics_11_data_visualization/fig09.png)
+*<sub>Figure 9: Pie chart representing the relative weight of big cats in grams</sub>*
 
 Or with the data labels and percentages shown connected to the pie slices (choose: chart design > chart elements > Data labels > Outside End):
 
 
-![Pie chart](./pics_11_data_visualization/fig8.png)
-*<sub>Figure 8: Pie chart representing the relative weight of big cats in grams. Data labels and percentages are connected to the pie slices.</sub>*
+![Pie chart](./pics_11_data_visualization/fig10.png)
+*<sub>Figure 10: Pie chart representing the relative weight of big cats in grams. Data labels and percentages are connected to the pie slices.</sub>*
 
 
 ## Pie of Pie
@@ -155,8 +155,8 @@ Pie of Pie charts can become handy if the individual slices become small and the
 
 Here is an example of a Pie of Pie chart with all the Feline species:
 
-![Pie of Pie chart](./pics_11_data_visualization/fig9.png)
-*<sub>Figure 9: Pie of Pie chart representing the relative weight of big cats in grams Data labels and percentages are connected to the pie slices.</sub>*
+![Pie of Pie chart](./pics_11_data_visualization/fig11.png)
+*<sub>Figure 11: Pie of Pie chart representing the relative weight of big cats in grams Data labels and percentages are connected to the pie slices.</sub>*
 
 As you can see, the second Pie is created from the smallest Pie slices from the first Pie chart. This creates less clutter when the individual slices become to small. 
 
@@ -170,13 +170,13 @@ Radar charts are often used to compare multiple variables or data sets, particul
 
 Let's view some (imaginary) protein quantification data for 5 different protein quantification methods (Lowry, Bradford, BCA, UV/VIS and Kjeldahl). These data show the concentration of protein in mg/L. We have these data from three different protein samples.
 
-![Data for a radar chart](./pics_11_data_visualization/fig10.png)
-*<sub>Figure 10: Data suitable for a radar chart. Protein quantification data for different methods and different samples compared.</sub>*
+![Data for a radar chart](./pics_11_data_visualization/fig12.png)
+*<sub>Figure 12: Data suitable for a radar chart. Protein quantification data for different methods and different samples compared.</sub>*
 
 The resulting radar chart is shown below:
 
-![Radar chart](./pics_11_data_visualization/fig11.png)
-*<sub>Figure 11: Radar chart created from the previous data set. Protein quantification data for different methods and different samples compared.</sub>*
+![Radar chart](./pics_11_data_visualization/fig13.png)
+*<sub>Figure 13: Radar chart created from the previous data set. Protein quantification data for different methods and different samples compared.</sub>*
 
 
 >Note that we can conclude that the Kjedahl method shows considerable higher amounts. Although the protein concentration in sample 3 is lower compared to the other two samples, the same pattern can be seen. The  Kjeldahl method seems to overestimate the protein concentration.
@@ -191,8 +191,8 @@ Overall, box plots are a useful tool for summarizing and visualizing complex dat
 
 Let's have a look at the following dataset:
 
-![Box plot data](./pics_11_data_visualization/fig12.png)
-*<sub>Figure 12: Data about life span in different animal species.</sub>*
+![Box plot data](./pics_11_data_visualization/fig14.png)
+*<sub>Figure 14: Data about life span in different animal species.</sub>*
 
 And compare the maximum life span between different orders in mammals.
 
@@ -209,8 +209,8 @@ A box plot will answer all these questions at once:
 
 We choose the columns `Maximum longevity (yrs)` for the series. The column `order` is selected as labels. See the result below.
 
-![Box plot](./pics_11_data_visualization/fig13.png)
-*<sub>Figure 13: Box plot about maximum life span for different orders of mammals.</sub>*
+![Box plot](./pics_11_data_visualization/fig15.png)
+*<sub>Figure 15: Box plot about maximum life span for different orders of mammals.</sub>*
 
 From this plot, we can conclude that Proboscidea are an order of mammals that live long and have a narrow variation of maximum lifespan. Proboscidea is a taxonomic order of afrotherian mammals that includes all species of elephants.  
 
@@ -222,18 +222,18 @@ The largest living mammal in the data set is an outlier in the order Cetacea. Ca
 
 The above picture is the standard layout of the box plot in Excel. However, you could argue that it would be better to tweak some things in the plot. First of all, the mean is shown as a cross. Box plots are often used in combination with nonparametric statistics and quantile (including median) values are much more appropriate to use. In addition, inner points are visible and we can not discriminate them from outliers. Finally, we should look if our number of values (N) are odd or even. The median is included in the calculation if N is odd. The median is excluded from the calculation if N is odd. Since this varies per animal class, we will choose the excluded method. We can tweak this (select the series and choose: `Format Data Series`) accordingly. See the result below:
 
-![Box plot](./pics_11_data_visualization/fig14.png)
-*<sub>Figure 14: Tweaked box plot about maximum life span for different orders of mammals.</sub>*
+![Box plot](./pics_11_data_visualization/fig16.png)
+*<sub>Figure 16: Tweaked box plot about maximum life span for different orders of mammals.</sub>*
 
 Of course you can also choose to omit the outliers in de plot. Select the series and choose: `Format Data Series`.Deselect the `Show outlier points` checkbox.
 
-![Box plot](./pics_11_data_visualization/fig15.png)
-*<sub>Figure 15: Tweaked box plot about maximum life span for different orders of mammals. Note that outliers are now omitted.</sub>*
+![Box plot](./pics_11_data_visualization/fig17.png)
+*<sub>Figure 17: Tweaked box plot about maximum life span for different orders of mammals. Note that outliers are now omitted.</sub>*
 
 We can also create box plots with more data series. In the example below, days to reach maturity between females and males is compared for different orders of mammals.
 
-![Box plot](./pics_11_data_visualization/fig16.png)
-*<sub>Figure 15: Tweaked box plot comparing the time to reach maturity between females and males of different orders of mammals. Note that outliers are omitted.</sub>*
+![Box plot](./pics_11_data_visualization/fig18.png)
+*<sub>Figure 18: Tweaked box plot comparing the time to reach maturity between females and males of different orders of mammals. Note that outliers are omitted.</sub>*
 
 
 >You might have noticed that for some orders, no clear Tukey box shape is seen (minimum, lower percentile, median, higher percentile and maximum). This is because some orders only contain one or two data points (animal species). You can omit these by filtering of course. Or (even better) try to obtain a more complete data set. 
@@ -251,13 +251,13 @@ As an example, we take some fictive data about a weight loss program for 3 indiv
 
 The data is as follows:
 
-![data](./pics_11_data_visualization/fig15.png)
-*<sub>Figure 15: Fictive data for a weight loss program for three different diets over the course of 1 year.</sub>*
+![data](./pics_11_data_visualization/fig19.png)
+*<sub>Figure 19: Fictive data for a weight loss program for three different diets over the course of 1 year.</sub>*
 
 The corresponding line plot looks as follows:
 
-![line plot](./pics_11_data_visualization/fig16.png)
-*<sub>Figure 16: Line plot of fictive data for a weight loss program for three different diets over the course of 1 year.</sub>*
+![line plot](./pics_11_data_visualization/fig20.png)
+*<sub>Figure 20: Line plot of fictive data for a weight loss program for three different diets over the course of 1 year.</sub>*
 
 As you can see, diet 2 is relatively ineffective. Not much weight loss. Diet 1 could be considered a crash diet with a sharp initial decline that halts later in the year. Diet 3 shows a very linear weight loss for a much larger period of time and could be considered the dietary intervention of choice.
 
@@ -267,32 +267,32 @@ Realize that a line chart is only plotted well if the data points are inter-spac
 
 Consider the following mini dataset:
 
-![small data set](./pics_11_data_visualization/fig17.png)
-*<sub>Figure 17: Dietary intervention for 365 days.</sub>*
+![small data set](./pics_11_data_visualization/fig21.png)
+*<sub>Figure 21: Dietary intervention for 365 days.</sub>*
 
 As you can see, the data points for x are not evenly distributed.
 Plotting this with a line plot will go wrong:
 
-![line plot](./pics_11_data_visualization/fig18.png)
-*<sub>Figure 18: Line plot for dietary intervention for 365 days.</sub>*
+![line plot](./pics_11_data_visualization/fig22.png)
+*<sub>Figure 22: Line plot for dietary intervention for 365 days.</sub>*
 
 As you can see, the data points on the x-axis are just labels and do not correspond to their actual value. Thats why we need an XY-scatter plot for this purpose:
 
-![line plot](./pics_11_data_visualization/fig19.png)
-*<sub>Figure 19: XY-scatter plot for dietary intervention for 365 days.</sub>*
+![line plot](./pics_11_data_visualization/fig23.png)
+*<sub>Figure 23: XY-scatter plot for dietary intervention for 365 days.</sub>*
 
 As you can see from the above chart, the data on the x-axis are now separated according to their value.
 
 To show the use of an XY-scatter plot to visualize a correlation, the [ChickWeight dataset](https://github.com/selva86/datasets/blob/master/ChickWeight.csv) from R was used. The weight column represents the body weight of the chick (g). The time column represents the number of days since birth when the measurement was made.
 
-![Chicken Weight](./pics_11_data_visualization/fig20.png)
-*<sub>Figure 20: Chicken weight data set. Dataset was filtered for Diet 1</sub>*
+![Chicken Weight](./pics_11_data_visualization/fig24.png)
+*<sub>Figure 24: Chicken weight data set. Dataset was filtered for Diet 1</sub>*
 
 The data of all chickens from diet 1 plotted as XY-scatter:
 A linear regression model was added as trendline and the equation is shown on the chart (together with the r^2 value).
 
-![Chicken Weight](./pics_11_data_visualization/fig21.png)
-*<sub>Figure 21: Chicken weight data set plotted as XY-scatter. Dataset was filtered for Diet 1</sub>*
+![Chicken Weight](./pics_11_data_visualization/fig25.png)
+*<sub>Figure 25: Chicken weight data set plotted as XY-scatter. Dataset was filtered for Diet 1</sub>*
 
 
 
@@ -311,13 +311,13 @@ Y-axis: Vitamin C content (milligrams per serving)
 Bubble size: Represents the number of servings per year of each fruit that were tested.
 By using a bubble chart to display this data, you can quickly see patterns and trends among the different types of fruits based on their sugar and vitamin C content, as well as their number of servings per years.
 
-![Fruit data](./pics_11_data_visualization/fig22.png)
-*<sub>Figure 22: data set suitable to display in a bubble chart. Note that these are fictive data.</sub>*
+![Fruit data](./pics_11_data_visualization/fig26.png)
+*<sub>Figure 26: data set suitable to display in a bubble chart. Note that these are fictive data.</sub>*
 
 Below is a bubble chart of this dataset:
 
-![Fruit data](./pics_11_data_visualization/fig23.png)
-*<sub>Figure 23: Bubble chart of fruit data. Note that the bubble size (and the numbers in the labels) represents the number of servings per year.</sub>*
+![Fruit data](./pics_11_data_visualization/fig27.png)
+*<sub>Figure 27: Bubble chart of fruit data. Note that the bubble size (and the numbers in the labels) represents the number of servings per year.</sub>*
 
 The Chart includes the following:
 
@@ -336,39 +336,39 @@ We will use the example from the data analysis section to create a pivot chart.
 
 Let’s pretend that we are mainly interested in comparing the average amount of calories from fat (both total and saturated) of each food category from the earlier used dataset [Nutrition facts](https://www.kaggle.com/datasets/mcdonalds/nutrition-facts) data.
 
-![Nutritional food data](./pics_11_data_visualization/fig24.png)
-*<sub>Figure 24: Nutritional facts data about different food categories of a fast food restaurant</sub>*
+![Nutritional food data](./pics_11_data_visualization/fig28.png)
+*<sub>Figure 28: Nutritional facts data about different food categories of a fast food restaurant</sub>*
 
 The corresponding pivot table was as follows:
 
-![Nutritional food data pivot table](./pics_11_data_visualization/fig25.png)
-*<sub>Figure 25: Pivot table of average calories and average calories from fat from nutritional facts data.</sub>*
+![Nutritional food data pivot table](./pics_11_data_visualization/fig29.png)
+*<sub>Figure 29: Pivot table of average calories and average calories from fat from nutritional facts data.</sub>*
 
 So first we choose pivot chart from the ribbon and select the data source as well as the sheet for the output data:
 
-![Pivot chart](./pics_11_data_visualization/fig26.png)
-*<sub>Figure 26: Data source and the output sheet selected.</sub>*
+![Pivot chart](./pics_11_data_visualization/fig30.png)
+*<sub>Figure 30: Data source and the output sheet selected.</sub>*
 
 Next, we select the correct fields and the calculations on the data (we use average for this example).
 
-![Pivot chart](./pics_11_data_visualization/fig27.png)
-*<sub>Figure 27: Select the correct fields and calculation types.</sub>*
+![Pivot chart](./pics_11_data_visualization/fig31.png)
+*<sub>Figure 31: Select the correct fields and calculation types.</sub>*
 
 This results in the following chart. 
 
-![Pivot chart](./pics_11_data_visualization/fig28.png)
-*<sub>Figure 28: Pivot chart. Average calories and average calories from fat from different food categories.</sub>*
+![Pivot chart](./pics_11_data_visualization/fig32.png)
+*<sub>Figure 32: Pivot chart. Average calories and average calories from fat from different food categories.</sub>*
 
 Note that you can dynamically select or unselect specific categories. We can for example deselect the drinks:
 
-![Pivot chart](./pics_11_data_visualization/fig29.png)
-*<sub>Figure 29: Pivot chart. Average calories and average calories from fat from different food categories. Drinks deselected. </sub>*
+![Pivot chart](./pics_11_data_visualization/fig33.png)
+*<sub>Figure 33: Pivot chart. Average calories and average calories from fat from different food categories. Drinks deselected. </sub>*
 
 
 The result of the pivot chart (drinks deselected):
 
-![Pivot chart](./pics_11_data_visualization/fig30.png)
-*<sub>Figure 30: Pivot chart. Average calories and average calories from fat from different food categories. Drinks deselected. </sub>*
+![Pivot chart](./pics_11_data_visualization/fig34.png)
+*<sub>Figure 34: Pivot chart. Average calories and average calories from fat from different food categories. Drinks deselected. </sub>*
 
 
 
