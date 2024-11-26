@@ -194,7 +194,10 @@ Let's have a look at the following dataset:
 ![Box plot data](./pics_11_data_visualization/fig12.png)
 *<sub>Figure 12: Data about life span in different animal species.</sub>*
 
-And compare the maximum life span between different classes.
+And compare the maximum life span between different orders in mammals.
+
+First we filter our data for mammals.
+For the categories, we will use order (such as afrosoricida that is an order of placental mammals. Members of this order are called afrosoricids, and include golden moles, otter shrews, and tenrecs). 
 
 The questions that can be asked are:
 - What is the median value per category? 
@@ -204,21 +207,28 @@ The questions that can be asked are:
 
 A box plot will answer all these questions at once:
 
-We choose the columns `Maximum longevity (yrs)` for the series. The column `class` is selected as labels. See the result below.
+We choose the columns `Maximum longevity (yrs)` for the series. The column `order` is selected as labels. See the result below.
 
 ![Box plot](./pics_11_data_visualization/fig13.png)
-*<sub>Figure 13: Box plot about maximum life span for different animal classes.</sub>*
+*<sub>Figure 13: Box plot about maximum life span for different orders of mammals.</sub>*
 
-The above picture is the standard layout of the box plot in Excel. However, you could argue that it would be better to tweak some things in the plot. First of all, the mean is shown as a cross. Box plots are often used in combination with nonparametric statistics and quantile (including median) values are much more appropriate to use. In addition, inner points are visible and we can not discriminate them from outliers. Finally, we should look if our number of values (N) are odd or even. The median is included in the calculation if N is odd. The median is excluded from the calculation if N is odd. Since this varies per animal class, we will choose the excluded method. We can tweak each series (select the series and choose: `Format Data Series`) accordingly. See the result below:
+The above picture is the standard layout of the box plot in Excel. However, you could argue that it would be better to tweak some things in the plot. First of all, the mean is shown as a cross. Box plots are often used in combination with nonparametric statistics and quantile (including median) values are much more appropriate to use. In addition, inner points are visible and we can not discriminate them from outliers. Finally, we should look if our number of values (N) are odd or even. The median is included in the calculation if N is odd. The median is excluded from the calculation if N is odd. Since this varies per animal class, we will choose the excluded method. We can tweak this (select the series and choose: `Format Data Series`) accordingly. See the result below:
 
 ![Box plot](./pics_11_data_visualization/fig14.png)
-*<sub>Figure 14: Tweaked box plot about maximum life span for different animal classes.</sub>*
+*<sub>Figure 14: Tweaked box plot about maximum life span for different orders of mammals.</sub>*
 
 Of course you can also choose to omit the outliers in de plot. Select the series and choose: `Format Data Series`.Deselect the `Show outlier points` checkbox.
 
 ![Box plot](./pics_11_data_visualization/fig15.png)
-*<sub>Figure 15: Tweaked box plot about maximum life span for different animal classes. Note that outliers are omitted.</sub>*
+*<sub>Figure 15: Tweaked box plot about maximum life span for different orders of mammals. Note that outliers are now omitted.</sub>*
 
+We can also create box plots with more data series. In the example below, days to reach maturity between females and males is compared for different orders of mammals.
+
+![Box plot](./pics_11_data_visualization/fig16.png)
+*<sub>Figure 15: Tweaked box plot comparing the time to reach maturity between females and males of different orders of mammals. Note that outliers are omitted.</sub>*
+
+
+>You might have noticed that for some orders, no clear Tukey box shape is seen (minimum, lower percentile, median, higher percentile and maximum). This is because some orders only contain one or two data points (animal species). You can omit these by filtering of course. Or (even better) try to obtain a more complete data set. 
 
 ## Line and XY-scatter plots
 
