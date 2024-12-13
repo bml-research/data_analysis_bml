@@ -48,7 +48,6 @@ Load the [SARS-CoV-2 Genetics](https://www.kaggle.com/datasets/rtwillett/sarscov
 >Alternatively, you can search for more datasets on [Kaggle](https://www.kaggle.com/), [KDnuggets](https://www.kdnuggets.com/) or other dataset repositories. 
 
 
-
 ---
 
 
