@@ -20,17 +20,19 @@ Here we will focus on data visualization.
 
 Base R plotting and ggplot2 are two popular plotting systems in R, but they have some key differences in terms of syntax, functionality, and philosophy.
 
-Syntax:
+**Syntax:**
 
-Base R plotting: The base R plotting system uses a procedural approach where plots are built step-by-step using functions like plot(), lines(), points(), etc. The syntax involves specifying the data and then adding elements to the plot using different functions.
-ggplot2: ggplot2 follows a declarative approach inspired by the grammar of graphics. It uses the ggplot() function to initialize a plot object and then adds layers of graphical elements using the + operator. The syntax is more concise and uses a grammar that includes mappings, aesthetics, and geometries.
-Functionality:
+*Base R plotting:* The base R plotting system uses a procedural approach where plots are built step-by-step using functions like `plot()`, `lines()`, `points()`, etc. The syntax involves specifying the data and then adding elements to the plot using different functions.
+ggplot2: ggplot2 follows a declarative approach inspired by the grammar of graphics. It uses the `ggplot()` function to initialize a plot object and then adds layers of graphical elements using the + operator. The syntax is more concise and uses a grammar that includes mappings, aesthetics, and geometries.
 
-Base R plotting: Base R offers a wide range of plotting functions with basic functionality to create various types of plots. It provides flexibility to customize plots by directly modifying plot parameters, such as axes, labels, colors, etc. However, it requires more manual adjustments to achieve complex or customized plots.
+**Functionality:**
+
+*Base R plotting:* Base R offers a wide range of plotting functions with basic functionality to create various types of plots. It provides flexibility to customize plots by directly modifying plot parameters, such as axes, labels, colors, etc. However, it requires more manual adjustments to achieve complex or customized plots.
 ggplot2: ggplot2 is a plotting system that offers a rich set of high-level plotting functions. It provides a layered approach, allowing users to easily add and modify plot elements. ggplot2 has a consistent API, making it easier to create complex plots with less code. It also includes built-in support for facets, themes, and statistical transformations.
-Philosophy:
 
-Base R plotting: The base R plotting system has been part of R since its early versions and follows a traditional approach. It focuses on providing a set of core plotting functions and allows users to have fine-grained control over plot details. It can be useful for users who prefer a more low-level and flexible plotting system.
+**Philosophy:**
+
+*Base R plotting:* The base R plotting system has been part of R since its early versions and follows a traditional approach. It focuses on providing a set of core plotting functions and allows users to have fine-grained control over plot details. It can be useful for users who prefer a more low-level and flexible plotting system.
 ggplot2: ggplot2, developed by Hadley Wickham, introduces a different philosophy where the emphasis is on the grammar of graphics. It aims to provide a coherent and consistent framework for creating plots by combining independent graphical components. ggplot2 promotes the idea of "layering" to create complex plots and encourages a more structured and reproducible workflow.
 Overall, ggplot2 provides a more elegant and expressive way to create publication-quality plots, particularly for exploratory data analysis and data visualization tasks. It simplifies the process of creating complex plots and offers more options for customization compared to the base R plotting system.
 
@@ -39,21 +41,21 @@ Overall, ggplot2 provides a more elegant and expressive way to create publicatio
 
 The grammar of ggplot2 is based on the Grammar of Graphics, a framework for creating visualizations. It revolves around the idea that every plot can be broken down into a set of fundamental components. Here are the main components of ggplot2:
 
-1. Data: The first step in creating a plot with ggplot2 is to specify the data set you want to visualize. This is typically done by passing a data frame to the ggplot() function.
+1. Data: The first step in creating a plot with ggplot2 is to specify the data set you want to visualize. This is typically done by passing a data frame to the `ggplot()` function.
 
-2. Aesthetic mappings: Aesthetics define how variables in the data set are mapped to visual properties of the plot, such as position, size, color, or shape. You define aesthetics using the aes() function and associate variables in your data set with specific plot elements.
+2. Aesthetic mappings: Aesthetics define how variables in the data set are mapped to visual properties of the plot, such as position, size, color, or shape. You define aesthetics using the `aes()` function and associate variables in your data set with specific plot elements.
 
-3. Geometric objects (geoms): Geoms are the visual representations of data points on a plot, such as points, lines, bars, or polygons. Geoms are added to the plot using the geom_*() functions, where * represents the type of geometric object you want to use.
+3. Geometric objects (geoms): Geoms are the visual representations of data points on a plot, such as points, lines, bars, or polygons. Geoms are added to the plot using the `geom_*()` functions, where * represents the type of geometric object you want to use (*e.g.* bars, line, etc.).
 
-4. Scales: Scales control how data values are mapped to visual properties. For example, you can use scales to adjust the range and labels of axes, apply transformations, or set color palettes. ggplot2 provides various scale functions like scale_x_continuous(), scale_color_manual(), etc.
+4. Scales: Scales control how data values are mapped to visual properties. For example, you can use scales to adjust the range and labels of axes, apply transformations, or set color palettes. ggplot2 provides various scale functions like `scale_x_continuous()`, `scale_color_manual()`, etc.
 
-5. Facets: Faceting allows you to create multiple small plots, each showing a subset of the data based on one or more categorical variables. Facets are added using the facet_*() functions, such as facet_grid() or facet_wrap().
+5. Facets: Faceting allows you to create multiple small plots, each showing a subset of the data based on one or more categorical variables. Facets are added using the `facet_*()` functions, such as `facet_grid()` or `facet_wrap()`.
 
-6. Statistical transformations: ggplot2 provides a range of statistical transformations that summarize data before plotting. These transformations can be used to compute summaries like means, medians, or counts. Statistical transformations are applied using the stat_*() functions, such as stat_summary() or stat_smooth().
+6. Statistical transformations: ggplot2 provides a range of statistical transformations that summarize data before plotting. These transformations can be used to compute summaries like means, medians, or counts. Statistical transformations are applied using the `stat_*()` functions, such as `stat_summary()` or `stat_smooth()`.
 
-7. Coordinates: The coordinate system defines the space in which the plot is created. The default coordinate system in ggplot2 is Cartesian (x-y), but there are other coordinate systems available, such as polar coordinates. Coordinate systems are modified using the coord_*() functions.
+7. Coordinates: The coordinate system defines the space in which the plot is created. The default coordinate system in ggplot2 is Cartesian (x-y), but there are other coordinate systems available, such as polar coordinates. Coordinate systems are modified using the `coord_*()` functions.
 
-8. Themes: Themes control the overall appearance of the plot, including the background, gridlines, fonts, and margins. ggplot2 provides several built-in themes, but you can also customize the appearance by modifying theme elements with the theme() function.
+8. Themes: Themes control the overall appearance of the plot, including the background, gridlines, fonts, and margins. ggplot2 provides several built-in themes, but you can also customize the appearance by modifying theme elements with the `theme()` function.
 
 These are the core components of the ggplot2 grammar. By combining and modifying these components, you can create a wide variety of visualizations. Understanding and manipulating each component allows you to tailor your plots to effectively communicate your data.
 
@@ -77,6 +79,8 @@ formatted_table <- function(df){
   kable_styling(bootstrap_options = c("striped", "hover", "responsive"))
 }
 ```
+
+TOT HIER GEKOMEN
 
 ## Loading a dataset
 
