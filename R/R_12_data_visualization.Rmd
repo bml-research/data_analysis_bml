@@ -3,9 +3,8 @@
 [Go back to the main page](../index.html)
 
 ```{r setup, include=FALSE} 
-knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 ```
-
 This file can be found [here](./R_12_data_visualization.Rmd)
 
 # R: Data Visualization
@@ -20,7 +19,7 @@ Here we will focus on data visualization.
 
 Base R plotting and ggplot2 are two popular plotting systems in R, but they have some key differences in terms of syntax, functionality, and philosophy.
 
-**Syntax:** oh yeah
+**Syntax:**
 
 *Base R plotting:* The base R plotting system uses a procedural approach where plots are built step-by-step using functions like `plot()`, `lines()`, `points()`, etc. The syntax involves specifying the data and then adding elements to the plot using different functions.
 ggplot2: ggplot2 follows a declarative approach inspired by the grammar of graphics. It uses the `ggplot()` function to initialize a plot object and then adds layers of graphical elements using the + operator. The syntax is more concise and uses a grammar that includes mappings, aesthetics, and geometries.
