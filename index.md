@@ -57,9 +57,9 @@ This module is part of the [CureQ project](https://cureq.nl/). CureQ is a consor
 
 - [Here you can find an example of the final assignment with solutions](./example_assignment/example_assignment.md)
 
-## Installeren van MS Excel, R en RStudio 
+## Installation of MS Excel, R en RStudio 
 
-- [Hier vind je informatie voor de installatie van Excel, R en RStudio](./install/data_01_install.md)
+- [Here you can find information to install Excel, R en RStudio](./install/data_01_install.md)
 
 ## Under construction
 
