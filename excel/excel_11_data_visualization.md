@@ -304,32 +304,32 @@ A linear regression model was added as trendline and the equation is shown on th
 
 If you have data that is most suitable to present in a XY-grid but you have an extra dimension, bubble charts might be a good chart type.
 
-Bubble charts are a great way to display data that includes three variables. In the context of food science, here is an example of a dataset that could be presented in a bubble chart:
+Bubble charts are a great way to display data that includes three variables. In the context of a laboratory, here is an example of a dataset that could be presented in a bubble chart:
 
-Suppose you have collected data on the nutritional content of different types of fruits. Specifically, you have measured the sugar content (in grams per serving) and the vitamin C content (in milligrams per serving) of six different types of fruit: apples, bananas, oranges, strawberries, blueberries, and grapes. In addition, you have collected the number of servings per year for a particular person.
+Suppose you have collected data on the protein concentration for different analysis methods. In addition, you have also measured the analysis time for each method and the analysis volume (number of assays per day).
 
 To display this data in a bubble chart, you could use the following format:
 
-X-axis: Sugar content (grams per serving)
-Y-axis: Vitamin C content (milligrams per serving)
-Bubble size: Represents the number of servings per year of each fruit that were tested.
-By using a bubble chart to display this data, you can quickly see patterns and trends among the different types of fruits based on their sugar and vitamin C content, as well as their number of servings per years.
+X-axis: Analysis time (minutes)
+Y-axis: Protein concentration (mg/mL)
+Bubble size: Represents the number of assays per day in the laboratory.
+By using a bubble chart to display this data, you can quickly see patterns and trends among the different types of protein quantification methods, the required analysis time as well as their number of analysis per day.
 
-![Fruit data](./pics_11_data_visualization/fig26.png)
+![Protein quantification methods](./pics_11_data_visualization/fig26.png)
 *<sub>Figure 26: data set suitable to display in a bubble chart. Note that these are fictive data.</sub>*
 
 Below is a bubble chart of this dataset:
 
-![Fruit data](./pics_11_data_visualization/fig27.png)
-*<sub>Figure 27: Bubble chart of fruit data. Note that the bubble size (and the numbers in the labels) represents the number of servings per year.</sub>*
+![Protein quantification methods](./pics_11_data_visualization/fig27.png)
+*<sub>Figure 27: Bubble chart of protein quantification methods. Note that the bubble size (and the numbers in the labels) represents the number of analysis per day.</sub>*
 
 The Chart includes the following:
 
-X-axis: Sugar content (grams per serving)
-Y-axis: Vitamin C content (milligrams per serving)
-Bubble size: Represents the number of servings per year of each fruit that were tested.
+X-axis: Analysis time (minutes)
+Y-axis: Protein concentration (mg/mL)
+Bubble size: Represents the number of assays per day in the laboratory.
 
-An extra dimension could be included by using colors. For example you could add categorical data (ordinal data in this case) such as high vitamin B9 (folate) data points in green color, intermediate vitamin B9 content as orange dots and low vitamin B9 content in red.
+An extra dimension could be included by using colors. For example you could add categorical data (ordinal data in this case) such as sensitivity to chemical interferences like sugars and detergents, which Lowry and Bradford are very susceptible to (in red), but the other methods are less so (in green).
 
 
 ## Pivot charts
