@@ -338,22 +338,22 @@ In the [data analysis](./excel_08_data_analysis.md) section, we have seen the us
 
 We will use the example from the data analysis section to create a pivot chart.
 
-Let’s pretend that we are mainly interested in comparing the average amount of calories from fat (both total and saturated) of each food category from the earlier used dataset [Nutrition facts](https://www.kaggle.com/datasets/mcdonalds/nutrition-facts) data.
+Here is a recap from the dataset used:.
 
-![Nutritional food data](./pics_11_data_visualization/fig28.png)
-*<sub>Figure 28: Nutritional facts data about different food categories of a fast food restaurant</sub>*
+![Dementia dataset](./pics_11_data_visualization/fig28.png)
+*<sub>Figure 28: Dementia Patient Health,Prescriptions ML Dataset.</sub>*
 
 The corresponding pivot table was as follows:
 
-![Nutritional food data pivot table](./pics_11_data_visualization/fig29.png)
-*<sub>Figure 29: Pivot table of average calories and average calories from fat from nutritional facts data.</sub>*
+![Dementia dataset pivot table](./pics_11_data_visualization/fig29.png)
+*<sub>Figure 29: Pivot table showing the average heart rate and diabetic status for different Physical Activity categories.</sub>*
 
-So first we choose pivot chart from the ribbon and select the data source as well as the sheet for the output data:
+So first we choose pivot chart from the ribbon (insert>PivotChart) and select the data source (all the data) as well as the sheet for the output data:
 
 ![Pivot chart](./pics_11_data_visualization/fig30.png)
 *<sub>Figure 30: Data source and the output sheet selected.</sub>*
 
-Next, we select the correct fields and the calculations on the data (we use average for this example).
+Next, we select the correct fields and the calculations on the data (we use `count` for the diabetic and `average` for the heart rate in this example).
 
 ![Pivot chart](./pics_11_data_visualization/fig31.png)
 *<sub>Figure 31: Select the correct fields and calculation types.</sub>*
@@ -361,20 +361,20 @@ Next, we select the correct fields and the calculations on the data (we use aver
 This results in the following chart. 
 
 ![Pivot chart](./pics_11_data_visualization/fig32.png)
-*<sub>Figure 32: Pivot chart. Average calories and average calories from fat from different food categories.</sub>*
+*<sub>Figure 32: Pivot chart. Counts for diabetics and Average of Heart rate from different Physical activity categories.</sub>*
 
-Note that you can dynamically select or unselect specific categories. We can for example deselect the drinks:
+Note that you can dynamically select or unselect specific categories. We can for example deselect `Moderate Activity`:
 
 ![Pivot chart](./pics_11_data_visualization/fig33.png)
-*<sub>Figure 33: Pivot chart. Average calories and average calories from fat from different food categories. Drinks deselected. </sub>*
+*<sub>Figure 33: Pivot chart. Counts for diabetics and Average of Heart rate from different Physical activity categories. Moderate Activity deselected.</sub>*
 
 
-The result of the pivot chart (drinks deselected):
+The result of the pivot chart (Moderate Activity deselected):
 
 ![Pivot chart](./pics_11_data_visualization/fig34.png)
-*<sub>Figure 34: Pivot chart. Average calories and average calories from fat from different food categories. Drinks deselected. </sub>*
+*<sub>Figure 34: Pivot chart. Counts for diabetics and Average of Heart rate from different Physical activity categories. Moderate Activity deselected.</sub>*
 
-
+>Note that the y-axis does not contain proper labels with quantities and units. While this is OK for investigative analysis, publication quality charts should always have proper y-axis labels with quantities and units specified.
 
 ---
 

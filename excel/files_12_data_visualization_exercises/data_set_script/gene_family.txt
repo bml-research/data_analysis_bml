@@ -1,0 +1,74 @@
+14-3-3 protein family	Regulatory protein gene families
+Achaete-scute complex (neuroblast formation)	Regulatory protein gene families
+Cyclins	Regulatory protein gene families
+Cyclin dependent kinases	Regulatory protein gene families
+CDK inhibitors	Regulatory protein gene families
+FOX proteins (forkhead box proteins)	Regulatory protein gene families
+Families containing homeobox domains	Regulatory protein gene families
+DLX gene family	Regulatory protein gene families
+Hox gene family	Regulatory protein gene families
+POU family	Regulatory protein gene families
+GATA transcription factor	Regulatory protein gene families
+General transcription factor	Regulatory protein gene families
+Krüppel-type zinc finger (ZNF)	Regulatory protein gene families
+MADS-box gene family	Regulatory protein gene families
+NF-kB	Regulatory protein gene families
+NOTCH2NL	Regulatory protein gene families
+Nuclear receptor	Regulatory protein gene families
+P300-CBP coactivator family	Regulatory protein gene families
+Transcription factors	Regulatory protein gene families
+SOX gene family	Regulatory protein gene families
+Immunoglobulin superfamily	Immune system proteins
+Killer-cell immunoglobulin-like receptors	Immune system proteins
+Leukocyte immunoglobulin-like receptors	Immune system proteins
+Major histocompatibility complex (MHC)	Immune system proteins
+NOD-like receptors	Immune system proteins
+Pattern recognition receptor	Immune system proteins
+Toll-like receptors	Immune system proteins
+RIG-I like receptors	Immune system proteins
+Arf family	Signal transducing proteins
+G-proteins	Signal transducing proteins
+Janus kinases	Signal transducing proteins
+MAP Kinase	Signal transducing proteins
+Non-receptor tyrosine kinase	Signal transducing proteins
+Olfactory receptor	Signal transducing proteins
+Peroxiredoxin	Signal transducing proteins
+Rab family	Signal transducing proteins
+Rap family	Signal transducing proteins
+Ras family	Signal transducing proteins
+Receptor tyrosine kinases	Signal transducing proteins
+Rho family	Signal transducing proteins
+Serine/threonine-specific protein kinase	Signal transducing proteins
+SRC kinase family	Signal transducing proteins
+Dynein	Motor proteins
+Kinesin	Motor proteins
+Myosin	Motor proteins
+ATCase/OTCase family	Transporters
+Bacterial potassium transporter	Transporters
+DHH phosphatase family	Transporters
+Expansin gene family	Transporters
+Fibroblast growth factors (FGF)	Transporters
+Fibroblast growth factor receptors (FGFR)	Transporters
+FH2 protein (formin) gene family	Transporters
+"FGD (FYVE, RhoGEF and PH domain containing) family"	Transporters
+Heat shock proteins	Transporters
+Heat shock factor	Transporters
+Ion channels	Transporters
+Membrane-spanning 4A	Transporters
+Peroxin	Transporters
+Protocadherin gene family	Transporters
+Roundabout family	Transporters
+SNARE family	Transporters
+ABC transporters	Transporters
+Antiporter	Transporters
+Aquaporins	Transporters
+Globin	Transporters
+Major facilitator superfamily	Transporters
+Neurotransmitter transporter	Transporters
+GABA transporter	Transporters
+Glutamate transporter	Transporters
+Glycine transporter	Transporters
+Monoamine transporter	Transporters
+Equilibrative nucleoside transporter family	Transporters
+Papain-like protease	Transporters
+Solute carrier family	Transporters
