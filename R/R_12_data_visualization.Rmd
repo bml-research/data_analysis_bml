@@ -413,10 +413,11 @@ A plot type that is often used from ggplot2 but not present in Excel is the viol
 Violin plots are quite similar to box plots, except that they also show the kernel probability density of the data at different values. 
 So they are a bit more informative (but also a bit harder to understand) compared to box plots.
 Like box plots, violin plots do also include a marker for the median of the data and a box indicating the interquartile range.
-Let's show the above example as a violin plot:
+Let's show the above example as a violin plot (the Antilocapridae family is excluded, because it contains only one data point):
 
 
 ```{r}
+artiod_df <- artiod_df[artiod_df$Family != "Antilocapridae", ]
 p <- ggplot(artiod_df, aes(x = `Family`, y = `Maximum longevity (yrs)`)) + 
   geom_violin() +
   labs(title="Maximum life span of Artiodactyla") +
@@ -429,34 +430,34 @@ TOT HIER GEKOMEN
 ## Line plots
 
 
-As an example, we take the same (fictive data) about a weight loss program for 3 individuals (taking 3 different diets) as used in the Excel section.
+As an example, we take the same (fictive data) about the OB/OB and DB/DB mice (compared to the wildtype) and the gain of weight in these mice during a period of time as was used in the Excel section.
 The data is as follows:
 
 
 ```{r}
 library(readxl)
-file_path <- "./files_12_data_visualization/file03_weight_loss.xlsx"
-weight_loss <- read_excel(file_path) 
-formatted_table(head(weight_loss))
+file_path <- "./files_12_data_visualization/file_03_mouse_weight_data.xlsx"
+mouse_weight <- read_excel(file_path)
+formatted_table(head(mouse_weight))
 ```
 
 Note that the first column (<S3: POSIXct>) is a date-time format.
-
+ 
 
 We first need to make the data tidy:
 
 ```{r}
-tidy_weight_loss <- weight_loss %>%
-  gather(`Diet 1`, `Diet 2`, `Diet 3`, key = "Diet", value = "Weight (kg)") 
-formatted_table(head(tidy_weight_loss))
+tidy_mouse_weight <- mouse_weight %>%
+  gather(`Wild-type`, `OB/OB`, `DB/DB`, key = "Mouse", value = "Weight (kg)") 
+formatted_table(head(tidy_mouse_weight))
 ```
 
 So now we can create a line plot:
 
 ```{r}
-p <- ggplot(data= tidy_weight_loss, aes(x = Date, y = `Weight (kg)`, group = `Diet`)) +
+p <- ggplot(data = tidy_mouse_weight, aes(x = Date, y = `Weight (kg)`, group = `Mouse`)) +
   geom_line() +
-  labs(title="Weight loss from three different diets")
+  labs(title="Weights of different genotypes of mice")
 p
 ```
 
@@ -465,21 +466,21 @@ As you can see, all lines in the group do have the same type and color.
 We can either discriminate by type/shape:
 
 ```{r}
-p <- ggplot(data= tidy_weight_loss, aes(x = Date, y = `Weight (kg)`, group = `Diet`)) +
-  geom_line(aes(linetype = `Diet`)) +
-  labs(title="Weight loss from three different diets")
+p <- ggplot(data= tidy_mouse_weight, aes(x = Date, y = `Weight (kg)`, group = `Mouse`)) +
+  geom_line(aes(linetype = `Mouse`)) +
+  labs(title="Weights of different genotypes of mice")
 p
 ```
 
 Or by color:
 
 ```{r}
-p <- ggplot(data= tidy_weight_loss, aes(x = Date, y = `Weight (kg)`, group = `Diet`)) +
-  geom_line(aes(color = `Diet`)) +
-  labs(title="Weight loss from three different diets")
+p <- ggplot(data= tidy_mouse_weight, aes(x = Date, y = `Weight (kg)`, group = `Mouse`)) +
+  geom_line(aes(color = `Mouse`)) +
+  labs(title="Weights of different genotypes of mice")
 p
 ```
-
+TOT HIER GEKOMEN!!!!!!!!!!!!!!!!!!
 
 ## XY-scatter plots
 
