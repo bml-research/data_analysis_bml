@@ -30,23 +30,24 @@ This file can be found [here](./R_14_data_visualization_solutions.Rmd)
 
 Load the [Food Emissions](https://www.kaggle.com/datasets/amandaroseknudsen/foodproductemissions?resource=download) data set from Kaggle.
 
-Create a column chart for the `Total Global Average GHG Emissions per kg` per `food product`.
+Create a column chart for the expression values without (-) stimulus for each gene belonging to the gene family `Nuclear receptor`.
 
 Annotate the axis and add a proper title.
 
-What food product creates the highest Emission value?
+Which three gene names have the highest Expression Value?
 
 ```{r}
-file_path_ex1 <- "./files_13_data_visualization_exercises/exercise01/Food_Product_Emissions.csv"
-df_ex1 <- read_csv(file_path_ex1)
+file_path_ex1 <- "./files_13_data_visualization_exercises/exercise01/output.csv"
+df_ex1 <- read_tsv(file_path_ex1)
 formatted_table(head(df_ex1))
 ```
 
 ```{r}
-barplot(df_ex1$`Total Global Average GHG Emissions per kg`, 
+nuc_rec_fam <- df_ex1[df_ex1$`Gene Family` == "MAP Kinase" & df_ex1$`Expression Value - stimulus` > 0.5, ]
+barplot(nuc_rec_fam$`Expression Value - stimulus`, 
         ylab = "Total Global Average GHG Emissions per kg", 
-        ylim = c(0, max(df_ex1$`Total Global Average GHG Emissions per kg` + 20)), 
-        names = df_ex1$`Food product`, 
+        ylim = c(0, 1), 
+        names = nuc_rec_fam$`Gene name`, 
         las = 2,
         cex.names = 0.5,
         col = "steelblue",
@@ -55,69 +56,33 @@ barplot(df_ex1$`Total Global Average GHG Emissions per kg`,
 
 Highest is Beef (Beef Herd)
 
+
+
+
 ### Exercise 2
 
-As the differences in the values are rather high, it is wise to use a log scale to display your data. Log scales have their advantages and are often used to display data that cover a wide range of values. Use a 2log scale to display your data.
-
-Example of using log:
-
-```{r}
-log2(8)
-```
-
-```{r}
-`Log2 Total Global Average GHG Emissions per kg` <- log2(df_ex1$`Total Global Average GHG Emissions per kg`)
-df_ex2 <- df_ex1 %>%
-  add_column(`Log2 Total Global Average GHG Emissions per kg`)
-formatted_table(head(df_ex2))
-```
-
-
-```{r}
-barplot(df_ex2$`Log2 Total Global Average GHG Emissions per kg`, 
-        ylab = "Log2 Total Global Average GHG Emissions per kg", 
-        ylim = c(min(df_ex2$`Log2 Total Global Average GHG Emissions per kg` - 4), max(df_ex2$`Log2 Total Global Average GHG Emissions per kg` + 4)), 
-        names = df_ex2$`Food product`, 
-        las = 2,
-        cex.names = 0.5,
-        col = "steelblue",
-        main = "Food Product Emissions")  
-```
-
-Note that this plot differs from the Excel counterpart. Here I calculated the 2log values (for example: the highest value is around 100. log2(100) = 6.6) and plotted the 2log GHG values on a linear y-scale while in the Excel counterpart, I plotted the GHG values on a 2log scaled y-axis. Both are permitted as long as you clearly indicate what is plotted on the y-axis. Note that values below 1 become negative on a log scale (log2(1) = 0 and log2(0.5) = -1).
-
-
-### Exercise 3
-
-From the previous data set, filter the data that contain oil in the name.  
-Create a clustered column chart representing the Emissions per kg from `Processing`, `Transport`, `Packaging` and `Retail`. Make sure to add proper axis titles, a title and a legend.
+From the previous data set, use again the gene expression within the MAP Kinase gene family.  
+Create a clustered column chart representing the expression values without stimulus and the expression values with stimulus. Make sure to add proper axis titles, a title and a legend.
 
 
 First we create a df with the rows of Oil products:
 ```{r}
-df_ex3 <- df_ex1[str_detect(df_ex1$`Food product`, "Oil"), ]
+df_ex3 <- df_ex1[str_detect(df_ex1$`Gene Family`, "MAP Kinase"), ]
 formatted_table(df_ex3)
 ```
-Remove the columns that we do not need:
 
-```{r}
-df_ex3$`Land Use Change` <- NULL
-df_ex3$Feed <- NULL
-df_ex3 <- df_ex3[, 1:6]
-formatted_table(df_ex3)
-```
 
 Make the df tidy:
 ```{r}
 tidy_df_ex3 <- df_ex3 %>%
-  gather(`Farm`, `Processing`, `Transport`, `Packaging`, `Retail`, key = "Emission origin", value = "Emission per kg")
+  gather(`Expression Value - stimulus`, `Expression Value + stimulus`, key = "Expression type", value = "Expression Value")
 formatted_table(head(tidy_df_ex3))
 ```
 
 
 
 ```{r}
-p <- ggplot(data = tidy_df_ex3, aes(x = `Food product`, y = `Emission per kg`, fill = `Emission origin`)) +
+p <- ggplot(data = tidy_df_ex3, aes(x = `Gene name`, y = `Expression Value`, fill = `Expression type`)) +
   geom_bar(stat = "identity", position="dodge") +
   labs(title="Food Product Emissions") +
   theme(axis.text.x = element_text(angle = 45, hjust=1))
@@ -125,13 +90,13 @@ p
 ```
 
 
-### Exercise 4
+### Exercise 3
 
-Use the same data as from exercise 3 to create a stacked column chart. Filter the data that contain oil in the name.  
-Create a stacked column chart representing the Emissions per kg from `Processing`, `Transport`, `Packaging` and `Retail`. Make sure to add proper axis titles, a title and a legend.
+Use the same data as from exercise 2 to create a stacked column chart. Filter the data that contain the MAP Kinase gene family.  
+Create a stacked column chart representing the Expression Values with and without stimulus. Make sure to add proper axis titles, a title and a legend.
 
 ```{r}
-p <- ggplot(data = tidy_df_ex3, aes(x = `Food product`, y = `Emission per kg`, fill = `Emission origin`)) +
+p <- ggplot(data = tidy_df_ex3, aes(x = `Gene name`, y = `Expression Value`, fill = `Expression type`)) +
   geom_bar(stat = "identity", position="stack") +
   labs(title="Food Product Emissions") +
   theme(axis.text.x = element_text(angle = 45, hjust=1))
@@ -140,13 +105,13 @@ p
 
 
 
-### Exercise 5
+### Exercise 4
 
-Use the same data as from exercise 3 to create a relative stacked column chart. Filter the data that contain oil in the name.  
-Create a relative stacked column chart representing the Emissions per kg from `Processing`, `Transport`, `Packaging` and `Retail`. Make sure to add proper axis titles, a title and a legend.
+Use the same data as from exercise 3 to create a relative stacked column chart. Filter the data that contain the MAP Kinase gene family.  
+Create a relative stacked column chart representing the Expression Values with and without stimulus. Make sure to add proper axis titles, a title and a legend.
 
 ```{r}
-p <- ggplot(data = tidy_df_ex3, aes(x = `Food product`, y = `Emission per kg`, fill = `Emission origin`)) +
+p <- ggplot(data = tidy_df_ex3, aes(x = `Gene name`, y = `Expression Value`, fill = `Expression type`)) +
   geom_bar(stat = "identity", position="fill") +
   labs(title="Food Product Emissions") +
   theme(axis.text.x = element_text(angle = 45, hjust=1))
@@ -154,13 +119,18 @@ p
 ```
 
 
-### Exercise 6
+### Exercise 5
 
-Use the same data as from exercise 3 to create a pie chart. Filter the data that contain oil in the name.  
-Create a pie chart representing the Emissions per kg from `Processing`, `Transport`, `Packaging` and `Retail`. Make sure to add proper axis titles, a title, data labels and a legend.
+Use the same data as from exercise 3 to create a pie chart.   
+Create a pie chart representing the total Expression Value without stimulus per Category. Make sure to add proper axis titles, a title and a legend.
+
+Which category shows the smallest fraction of expression value - stimulus.
 
 ```{r}
-p <- ggplot(tidy_df_ex3, aes(x = "", y = `Emission per kg`, fill = `Emission origin`)) +
+tidy_df_ex5 <- df_ex1 %>%
+  gather(`Expression Value - stimulus`, `Expression Value + stimulus`, key = "Expression type", value = "Expression Value")
+
+p <- ggplot(tidy_df_ex5, aes(x = "", y = `Expression Value`, fill = `Category`)) +
   geom_bar(stat="identity", width=1) +
   coord_polar("y", start=0) +
   labs(title="Food Product Emissions") +
@@ -169,35 +139,16 @@ p
 ```
 
 
-### Exercise 7
+### Exercise 6
 
-Download the [data set about](https://www.kaggle.com/datasets/kkhandekar/calories-in-food-items-per-100-grams) food calories per 100 g. 
-
-The data set contains units in the cells.  
-First clean the data set.  
-Create a box plot for `Energy per 100 g in KJ` plotted against the `Food Categories`.  
+For this exercise you will use the same data.  
+Create a box plot for `Expression value - stimulus` plotted against the `Categories`.  
 
 Which two Food Categories show the highest energy per weight?
 
-```{r}
-file_path <- "./files_13_data_visualization_exercises/exercise07/calories.csv"
-df_ex7 <- read_csv(file_path)
-formatted_table(head(df_ex7))
-```
-
-Now we need to clean it:
-```{r}
-df_ex7 <- df_ex7 %>% 
-  separate_wider_delim(Cals_per100grams, delim = " ", names = c("Cals_per100grams", "waste")) %>% 
-  separate_wider_delim(KJ_per100grams, delim = " ", names = c("KJ_per100grams", "waste2")) %>%
-  select (-c(waste, waste2)) %>% #Note that this is a negative selection. Selects all but the listed columns.
-  mutate_at(c('Cals_per100grams', 'KJ_per100grams'), as.numeric) #Creates numbers from strings
-formatted_table(head(df_ex7))
-```
-
 Create Box plot:
 ```{r}
-p <- ggplot(df_ex7, aes(x = `FoodCategory`, y = `KJ_per100grams`)) + 
+p <- ggplot(df_ex1, aes(x = `Category`, y = `Expression Value - stimulus`)) + 
   geom_boxplot() +
   labs(title="Energy per weight in different food categories") +
   theme(axis.text.x = element_text(angle = 45, hjust=1)) +
@@ -207,6 +158,30 @@ p
 ```
 
 Highest: Oils and Fats and Vegetable Oils
+
+### Exercise 7
+
+For this exercise you will use the same data.  
+Create a grouped box plot for `Expression value - stimulus` vs `Expression Value + stimulus`.  
+
+This time, you will have to use the tidy data.
+
+```{r}
+# make data tidy
+tidy_df_ex4 <- df_ex1 %>%
+  gather(`Expression Value - stimulus`, `Expression Value + stimulus`, key = "Expression type", value = "Expression Value")
+
+p <- ggplot(tidy_df_ex4, aes(x = `Category`, y = `Expression Value`, fill = `Expression type`)) + 
+  geom_boxplot() +
+  labs(title="Energy per weight in different food categories") +
+  theme(axis.text.x = element_text(angle = 45, hjust=1)) +
+  ylab("Energy Density (KJ per 100 grams)") +
+  xlab("Food Category")
+p
+```
+
+
+
 
 ### Exercise 8
 
@@ -273,16 +248,15 @@ The bubble size should be based on the calorie values.
 Which two food items would be considered most healthy food items based on the information above?  
 
 ```{r}
-file_path <- "./files_13_data_visualization_exercises/exercise09/data.csv"
-df_ex9 <- read_delim(file_path, delim=" ")
-df_ex9$...6 <- NULL
+file_path <- "./files_13_data_visualization_exercises/exercise09/data1.csv"
+df_ex9 <- read_csv(file_path)
 formatted_table(head(df_ex9))
 ```
 ```{r}
-p <- ggplot(df_ex9, aes(x = `Potassium_conc`, y = `Sodium_conc`)) + 
-  geom_point(aes(size = `Calories`), alpha = 0.5) +
+p <- ggplot(df_ex9, aes(x = `Potassium conc (mmol/L)`, y = `Sodium conc (mmol/L)`)) + 
+  geom_point(aes(size = `Body Weight (kg)`), alpha = 0.5) +
   scale_size(range = c(0.5, 12)) +
-  geom_text(aes(label=Item)) +
+  geom_text(aes(label=Person)) +
   xlab("Potassium concentration (mg/100 g)") +
   ylab("Sodium concentration (mg/100 g)")
 p
@@ -296,6 +270,11 @@ In [this dataset](./files_13_data_visualization_exercises/exercise10/meat-produc
 Create a XY-scatter plot with the total production of meat (in tonnes) plotted against time for the Asian continent.  
 
 Use Scientific notation for the mass meat production.  
+
+
+
+TOT HIER GEKOMEN (04-03-2025)
+
 
 ```{r}
 file_path <- "./files_13_data_visualization_exercises/exercise10/meat-production-tonnes.csv"
