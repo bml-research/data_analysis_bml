@@ -425,7 +425,7 @@ p <- ggplot(artiod_df, aes(x = `Family`, y = `Maximum longevity (yrs)`)) +
 p
 ```
 
-TOT HIER GEKOMEN
+
 
 ## Line plots
 
@@ -480,7 +480,7 @@ p <- ggplot(data= tidy_mouse_weight, aes(x = Date, y = `Weight (kg)`, group = `M
   labs(title="Weights of different genotypes of mice")
 p
 ```
-TOT HIER GEKOMEN!!!!!!!!!!!!!!!!!!
+
 
 ## XY-scatter plots
 
@@ -518,6 +518,19 @@ p
 
 Like Excel, ggplot2 also supports bubble charts:
 
+If you have data that is most suitable to present in a XY-grid but you have an extra dimension, bubble charts might be a good chart type.
+
+Bubble charts are a great way to display data that includes three variables. In the context of a laboratory, here is an example of a dataset that could be presented in a bubble chart:
+
+Suppose you have collected data on the protein concentration for different analysis methods. In addition, you have also measured the analysis time for each method and the analysis volume (number of assays per day).
+
+To display this data in a bubble chart, you could use the following format:
+
+X-axis: Analysis time (minutes)
+Y-axis: Protein concentration (mg/mL)
+Bubble size: Represents the number of assays per day in the laboratory.
+By using a bubble chart to display this data, you can quickly see patterns and trends among the different types of protein quantification methods, the required analysis time as well as their number of analysis per day.
+
 First we will load the same data:
 
 
@@ -532,11 +545,17 @@ formatted_table(head(bubble_data))
 And now we can create a bubble chart:
 
 ```{r}
-p <- ggplot(bubble_data, aes(x = `Sugar Content (g/serving)`, y = `Vitamin C content (mg/serving)`)) + 
-  geom_point(aes(color = Fruit, size = `Number of servings per year`), alpha = 0.5) +
+p <- ggplot(bubble_data, aes(x = `Analysis time (min)`, y = `Protein concentration (mg/ml)`)) + 
+  geom_point(aes(color = Method, size = `Number of Analyses per day`), alpha = 0.5) +
   scale_size(range = c(0.5, 12))
 p
 ```
+
+The Chart includes the following:
+
+X-axis: Analysis time (minutes).<br>
+Y-axis: Protein concentration (mg/mL).<br> 
+Bubble size: Represents the number of assays per day in the laboratory.  
 
 
 ## Other plot types and libraries
