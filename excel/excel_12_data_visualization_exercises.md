@@ -25,7 +25,8 @@ Sort the expression values from low to high (the graph should contain bars with 
 
 ### Exercise 2
 
-As the differences in the values are rather high, it is wise to use a log scale to display your data. Log scales have their advantages and are often used to display data that cover a wide range of values. Use a 2log scale to display your data.
+From the previous data set, use again the gene expression within the MAP Kinase gene family.
+Create a clustered column chart representing the expression values without stimulus and the expression values with stimulus. Make sure to add proper axis titles, a title and a legend. The gene names should be sorted.
 
 ### Exercise 3
 
