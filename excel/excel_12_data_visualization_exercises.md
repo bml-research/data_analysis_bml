@@ -39,8 +39,10 @@ Use the same data as from exercise 3 to create a relative stacked column chart. 
 
 ### Exercise 5
 
-Use the same data as from exercise 3 to create a relative stacked column chart. Filter the data that contain oil in the name.  
-Create a relative stacked column chart representing the Emissions per kg from `Processing`, `Transport`, `Packaging` and `Retail`. Make sure to add proper axis titles, a title and a legend.
+Use the same data as from exercise 3 to create a pie chart.
+Create a pie chart representing the total Expression Value without stimulus per Category. Make sure to add proper axis titles, a title and a legend.
+
+Which category shows the smallest fraction of expression value - stimulus?
 
 
 ### Exercise 6
