@@ -19,8 +19,8 @@ Or the figure below:
 ![figure](./files_13_data_visualization_solutions/exercise01/fig01.png)
 
 
-Beef (beef herd) represents the highest emission value per kg food product.
-
+There are 19 genes that pass this criteria. 
+As you can see, they are sorted lowest to highest.
 
 ### Exercise 2
 

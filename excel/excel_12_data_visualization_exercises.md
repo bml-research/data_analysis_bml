@@ -12,15 +12,16 @@
 
 ### Exercise 1
 
-Load the [Food Emissions](https://www.kaggle.com/datasets/amandaroseknudsen/foodproductemissions?resource=download) dataset from Kaggle.
+Load the [Following dataset](./files_12_data_visualization_exercises/exercise01/exercise01.csv).
 
-Create a column chart for the `Total Global Average GHG Emissions per kg` per `food product`.
+It shows RNA expression data with and without a stimulus.
+
+Create a column chart for the `MAP kinase Expression values without a stimulus with expression levels higher than 0.5.
 
 Create the column chart on a new worksheet.
 Annotate the axis and add a proper title.
 
-What food product creates the highest Emission value?
-
+Sort the expression values from low to high (the graph should contain bars with increasing height).
 
 ### Exercise 2
 
