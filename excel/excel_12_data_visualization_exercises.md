@@ -30,8 +30,8 @@ Create a clustered column chart representing the expression values without stimu
 
 ### Exercise 3
 
-From the previous dataset, filter the data that contain oil in the name.  
-Create a clustered column chart representing the Emissions per kg from `Processing`, `Transport`, `Packaging` and `Retail`. Make sure to add proper axis titles, a title and a legend.
+Use the same data as from exercise 2 to create a stacked column chart. Filter the data that contain the MAP Kinase gene family.
+Create a stacked column chart representing the Expression Values with and without stimulus. Make sure to add proper axis titles, a title and a legend.
 
 ### Exercise 4
 
