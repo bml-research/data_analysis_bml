@@ -31,12 +31,11 @@ Create a clustered column chart representing the expression values without stimu
 ### Exercise 3
 
 Use the same data as from exercise 2 to create a stacked column chart. Filter the data that contain the MAP Kinase gene family.
-Create a stacked column chart representing the Expression Values with and without stimulus. Make sure to add proper axis titles, a title and a legend.
+Create a stacked column chart representing the Expression Values with and without stimulus. Make sure to add proper axis titles, a title and a legend. The gene names should be sorted.
 
 ### Exercise 4
 
-Use the same data as from exercise 3 to create a stacked column chart. Filter the data that contain oil in the name.  
-Create a stacked column chart representing the Emissions per kg from `Processing`, `Transport`, `Packaging` and `Retail`. Make sure to add proper axis titles, a title and a legend.
+Use the same data as from exercise 3 to create a relative stacked column chart. Filter the data that contain the MAP Kinase gene family. Create a relative stacked column chart representing the Expression Values with and without stimulus. Make sure to add proper axis titles, a title and a legend. The gene names should be sorted.
 
 ### Exercise 5
 
