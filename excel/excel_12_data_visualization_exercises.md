@@ -44,13 +44,12 @@ Create a pie chart representing the total Expression Value without stimulus per 
 
 Which category shows the smallest fraction of expression value - stimulus?
 
-Which category shows the lowest median value?
-
 ### Exercise 6
 
 For this exercise you will use the same data.
 Create a box plot for Expression value - stimulus plotted against the Categories.  
 
+Which category shows the lowest median value?
 
 ### Exercise 7
 
