@@ -44,11 +44,13 @@ Create a pie chart representing the total Expression Value without stimulus per 
 
 Which category shows the smallest fraction of expression value - stimulus?
 
+Which category shows the lowest median value?
 
 ### Exercise 6
 
-Use the same data as from exercise 3 to create a pie chart. Filter the data that contain oil in the name.  
-Create a pie chart representing the Emissions per kg from `Processing`, `Transport`, `Packaging` and `Retail`. Make sure to add proper axis titles, a title, data labels and a legend.
+For this exercise you will use the same data.
+Create a box plot for Expression value - stimulus plotted against the Categories.  
+
 
 ### Exercise 7
 
