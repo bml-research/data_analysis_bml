@@ -28,33 +28,41 @@ This file can be found [here](./R_14_data_visualization_solutions.Rmd)
 
 ### Exercise 1
 
-Load the [Food Emissions](https://www.kaggle.com/datasets/amandaroseknudsen/foodproductemissions?resource=download) data set from Kaggle.
+Load the [Following dataset](./files_12_data_visualization_exercises/exercise01/expression_data.csv).
 
-Create a column chart for the expression values without (-) stimulus for each gene belonging to the gene family `Nuclear receptor`.
-
+It shows RNA expression data with and without a stimulus.
+Create a column chart for the `MAP kinase Expression values without a stimulus with expression levels higher than 0.5.
 Annotate the axis and add a proper title.
+Sort the expression values from low to high (the graph should contain bars with increasing height).
 
-Which three gene names have the highest Expression Value?
+Which three gene names have the highest Expression Value without a stimulus?
 
 ```{r}
-file_path_ex1 <- "./files_13_data_visualization_exercises/exercise01/output.csv"
+# loading data
+file_path_ex1 <- "./files_13_data_visualization_exercises/exercise01/expression_data.csv"
 df_ex1 <- read_tsv(file_path_ex1)
 formatted_table(head(df_ex1))
 ```
 
 ```{r}
+# extract relevant data: Expression value > 0.5
 nuc_rec_fam <- df_ex1[df_ex1$`Gene Family` == "MAP Kinase" & df_ex1$`Expression Value - stimulus` > 0.5, ]
-barplot(nuc_rec_fam$`Expression Value - stimulus`, 
+
+# sort on column `Expression Value - stimulus`
+nuc_new <- arrange(nuc_rec_fam, `Expression Value - stimulus`)
+
+# plot graph
+barplot(nuc_new$`Expression Value - stimulus`, 
         ylab = "Total Global Average GHG Emissions per kg", 
         ylim = c(0, 1), 
-        names = nuc_rec_fam$`Gene name`, 
+        names = nuc_new$`Gene name`, 
         las = 2,
         cex.names = 0.5,
         col = "steelblue",
-        main = "Food Product Emissions")  
+        main = "MAP kinase Expression values - stimulus > 0.5")  
 ```
 
-Highest is Beef (Beef Herd)
+TARS2, TTC37 and ARHGEF9 have the highest expression value without a stimulus.
 
 
 
@@ -65,7 +73,7 @@ From the previous data set, use again the gene expression within the MAP Kinase 
 Create a clustered column chart representing the expression values without stimulus and the expression values with stimulus. Make sure to add proper axis titles, a title and a legend.
 
 
-First we create a df with the rows of Oil products:
+First we create a data frame with the rows of MAP kinases:
 ```{r}
 df_ex3 <- df_ex1[str_detect(df_ex1$`Gene Family`, "MAP Kinase"), ]
 formatted_table(df_ex3)
@@ -84,7 +92,7 @@ formatted_table(head(tidy_df_ex3))
 ```{r}
 p <- ggplot(data = tidy_df_ex3, aes(x = `Gene name`, y = `Expression Value`, fill = `Expression type`)) +
   geom_bar(stat = "identity", position="dodge") +
-  labs(title="Food Product Emissions") +
+  labs(title="MAP kinase Expression values without and with stimulus") +
   theme(axis.text.x = element_text(angle = 45, hjust=1))
 p
 ```
@@ -98,7 +106,7 @@ Create a stacked column chart representing the Expression Values with and withou
 ```{r}
 p <- ggplot(data = tidy_df_ex3, aes(x = `Gene name`, y = `Expression Value`, fill = `Expression type`)) +
   geom_bar(stat = "identity", position="stack") +
-  labs(title="Food Product Emissions") +
+  labs(title="MAP kinase Expression values without and with stimulus") +
   theme(axis.text.x = element_text(angle = 45, hjust=1))
 p
 ```
@@ -113,7 +121,7 @@ Create a relative stacked column chart representing the Expression Values with a
 ```{r}
 p <- ggplot(data = tidy_df_ex3, aes(x = `Gene name`, y = `Expression Value`, fill = `Expression type`)) +
   geom_bar(stat = "identity", position="fill") +
-  labs(title="Food Product Emissions") +
+  labs(title="MAP kinase Expression values without and with stimulus") +
   theme(axis.text.x = element_text(angle = 45, hjust=1))
 p
 ```
@@ -127,16 +135,22 @@ Create a pie chart representing the total Expression Value without stimulus per 
 Which category shows the smallest fraction of expression value - stimulus.
 
 ```{r}
+# make the data tidy for a pie chart
 tidy_df_ex5 <- df_ex1 %>%
-  gather(`Expression Value - stimulus`, `Expression Value + stimulus`, key = "Expression type", value = "Expression Value")
+  gather(`Expression Value - stimulus`, `Expression Value + stimulus`, key = "Expression type", value = "Expression Value") %>%
+  filter(`Expression type` == "Expression Value - stimulus")
 
+# plot the (tidy) data
 p <- ggplot(tidy_df_ex5, aes(x = "", y = `Expression Value`, fill = `Category`)) +
   geom_bar(stat="identity", width=1) +
   coord_polar("y", start=0) +
-  labs(title="Food Product Emissions") +
+  labs(title="MAP kinase Expression values without stimulus") +
   theme_void() # remove background, grid, numeric labels
 p
 ```
+
+The motor proteins are the smallest fraction of expression value - stimulus.
+
 
 
 ### Exercise 6
@@ -144,25 +158,28 @@ p
 For this exercise you will use the same data.  
 Create a box plot for `Expression value - stimulus` plotted against the `Categories`.  
 
-Which two Food Categories show the highest energy per weight?
+Which category shows the lowest median value?
 
 Create Box plot:
 ```{r}
 p <- ggplot(df_ex1, aes(x = `Category`, y = `Expression Value - stimulus`)) + 
   geom_boxplot() +
-  labs(title="Energy per weight in different food categories") +
+  labs(title="Expression values - stimulus per Category") +
   theme(axis.text.x = element_text(angle = 45, hjust=1)) +
-  ylab("Energy Density (KJ per 100 grams)") +
-  xlab("Food Category")
+  ylab("Expression value - stimulus") +
+  xlab("Category")
 p
 ```
 
-Highest: Oils and Fats and Vegetable Oils
+The Signal transducing proteins have the lowest median for expression value - stimulus.
+
 
 ### Exercise 7
 
 For this exercise you will use the same data.  
 Create a grouped box plot for `Expression value - stimulus` vs `Expression Value + stimulus`.  
+
+Which category shows the lowest IQR value?
 
 This time, you will have to use the tidy data.
 
@@ -173,14 +190,14 @@ tidy_df_ex4 <- df_ex1 %>%
 
 p <- ggplot(tidy_df_ex4, aes(x = `Category`, y = `Expression Value`, fill = `Expression type`)) + 
   geom_boxplot() +
-  labs(title="Energy per weight in different food categories") +
+  labs(title="Expression values without and with stimulus per Category") +
   theme(axis.text.x = element_text(angle = 45, hjust=1)) +
-  ylab("Energy Density (KJ per 100 grams)") +
-  xlab("Food Category")
+  ylab("Expression Value") +
+  xlab("Category")
 p
 ```
 
-
+The Signal transducing proteins show the lowest IQR (lowest height of the Whisker box).
 
 
 ### Exercise 8
@@ -234,129 +251,129 @@ Chick 4 and 5 gained the highest weight (on Diet 3).
 
 ### Exercise 9
 
-Have look at the data [here](./files_13_data_visualization_exercises/exercise09/data.csv)
-It contains data about Potassium and Sodium content (in mg/100 g) as well as calories (in kcal/100 g).  
+Have look at the data [here](./files_12_data_visualization_exercises/exercise09/data.csv)
+It contains data about Potassium and Sodium concentrations (in mmol/L) as well as bodyweight (in kg) for various persons.  
 
-The World Health Organization (WHO) recommends ingestion of less than 2000 mg of sodium per day and more than 3510 mg of potassium per day, resulting in a Na-to-K ratio of ≤1.0, which is believed to be optimal for preserving cardiovascular health.
-
-In addition, high caloric food is often bad for cardiovascular health.  
-
-As you can see, only the K-to-Na ratio is calculated.   
 Create a bubble chart with the Na concentration as a function of the K concentration.  
-The bubble size should be based on the calorie values.  
+The bubble size should be based on the bodyweight.  
 
-Which two food items would be considered most healthy food items based on the information above?  
+As you can see, there is a correlation between the sodium and potassium concentration but there is one person who can be considered an outlier. What is the name of this person?  
 
 ```{r}
-file_path <- "./files_13_data_visualization_exercises/exercise09/data1.csv"
+file_path <- "./files_13_data_visualization_exercises/exercise09/data.csv"
 df_ex9 <- read_csv(file_path)
 formatted_table(head(df_ex9))
 ```
 ```{r}
+# 
+df_ex9$BW_squared <- sqrt(df_ex9$`Body Weight (kg)`)
+df_ex9
 p <- ggplot(df_ex9, aes(x = `Potassium conc (mmol/L)`, y = `Sodium conc (mmol/L)`)) + 
-  geom_point(aes(size = `Body Weight (kg)`), alpha = 0.5) +
-  scale_size(range = c(0.5, 12)) +
-  geom_text(aes(label=Person)) +
+  geom_point(aes(size = `BW_squared`), alpha = 0.5) +
+  scale_size(range = c(5, 10)) +
+  geom_text(aes(label=Person), position = position_nudge(y = 1)) +
   xlab("Potassium concentration (mg/100 g)") +
   ylab("Sodium concentration (mg/100 g)")
 p
 ```
-Spinach and Parsley are low Caloric and have a high Potassium concentration and low sodium concentration.
+Alice shows a relatively low concentration of potassium for the sodium concentration (or a relatively low sodium concentration for the potassium concentration).
+
 
 ### Exercise 10
 
-In [this dataset](./files_13_data_visualization_exercises/exercise10/meat-production-tonnes.csv) you can find World wide meat production from 1961 to 2021 expressed in tonnes. It includes cattle, poultry, sheep/mutton, goat, pig meat, and wild game (source: https://ourworldindata.org/meat-production). 
+In [this dataset](./files_13_data_visualization_exercises/exercise10/puromycin.csv), you will find data on the velocity of an enzymatic reaction were obtained by Treloar (1974). The number of counts per minute of radioactive product from the reaction was measured as a function of substrate concentration in parts per million (ppm) and from these counts the initial rate (or velocity) of the reaction was calculated (counts/min/min). The experiment was conducted once with the enzyme treated with Puromycin, and once with the enzyme untreated.
 
-Create a XY-scatter plot with the total production of meat (in tonnes) plotted against time for the Asian continent.  
+Create a XY-scatter plot with the velocity plotted against the substrate concentration. 
 
-Use Scientific notation for the mass meat production.  
+Create a XY-scatter for the experiment without puromycin and an additional XY scatter plot for both (with and without puromycin) conditions.
+
+Does puromycin act as an inhibitor or an activator for this enzyme?  
 
 
-
-TOT HIER GEKOMEN (04-03-2025)
 
 
 ```{r}
-file_path <- "./files_13_data_visualization_exercises/exercise10/meat-production-tonnes.csv"
+file_path <- "./files_13_data_visualization_exercises/exercise10/puromycin.csv"
 df_ex10 <- read_csv(file_path)
-df_ex10 <- rename(df_ex10, `Total mass (tonnes)`= `Meat, total | 00001765 || Production | 005510 || tonnes`)
+colnames(df_ex10) <- c("Substrate concentration (ppm)", "Rate (counts/min)", "State")
 formatted_table(head(df_ex10))
 ```
 
 Filter the data to be used:
 ```{r}
-df_ex10_asia <- df_ex10 %>%
-  filter(Entity == "Asia")
-formatted_table(head(df_ex10_asia))
+df_ex10_untreated <- df_ex10 %>%
+  filter(State == "untreated")
+formatted_table(head(df_ex10_untreated))
 ```
 
-Create the plot:
+Create the plot without puromycin:
 ```{r}
-p <- ggplot(data= df_ex10_asia, aes(x = Year, y = `Total mass (tonnes)`)) +
-  geom_line() +
-  labs(title="Meat production in Asia")
-p
-```
-Or without line (just the data points):
-
-```{r}
-p <- ggplot(data= df_ex10_asia, aes(x = Year, y = `Total mass (tonnes)`)) +
+p <- ggplot(data= df_ex10_untreated, aes(x = `Substrate concentration (ppm)`, y = `Rate (counts/min)`)) +
   geom_point() +
-  labs(title="Meat production in Asia")
+  labs(title="Velocity of Galactosyltransferase")
 p
 ```
+Or with and without puromycin (just the data points):
+
+```{r}
+p <- ggplot(data= df_ex10, aes(x = `Substrate concentration (ppm)`, y = `Rate (counts/min)`)) +
+  geom_point(aes(color = `State`)) +
+  labs(title="Velocity of Galactosyltransferase")
+p
+```
+
+
+Puromycin acts as an activator.
+
 
 ### Exercise 11
 
-For this exercise, we will use the data set from exercise 7 again. This time, to create a `pivot table and plot` (note that there are no real pivot tables and plots in R).
+For this exercise, we will use the dataset from an earlier exercise again. This time, to create a pivot table and plot. 
 
-Download the [data set about](https://www.kaggle.com/datasets/kkhandekar/calories-in-food-items-per-100-grams) food calories per 100 g. 
+Download the [data set](./files_12_data_visualization_exercises/exercise11/expression_data.csv). 
 
-The data set contains units in the cells.  
-First clean the data set.  
-Create a pivot plot for the **mean** `Energy per 100 g in KJ` plotted against the `Food Categories`.  
+Create a pivot plot for the **mean** `Expression Value` plotted against the `Categories` (both with and without stimulus).  
 
-Which two Food Categories show the highest mean energy per weight?
+What category shows the lowest expression values and what category shows the highest expression values?
  
 ```{r}
-file_path <- "./files_13_data_visualization_exercises/exercise11/calories.csv"
-df_ex11 <- read_csv(file_path)
-formatted_table(head(df_ex11))
-```
-Clean the data:
+# make data tidy
+#tidy_df_ex11 <- df_ex1 %>%
+#  gather(`Expression Value - stimulus`, `Expression Value + stimulus`, key = "Expression type", value = "Expression Value")
 
-```{r}
-df_ex11 <- df_ex11 %>% 
-  separate_wider_delim(Cals_per100grams, delim = " ", names = c("Cals_per100grams", "waste")) %>% 
-  separate_wider_delim(KJ_per100grams, delim = " ", names = c("KJ_per100grams", "waste2")) %>%
-  select (-c(waste, waste2)) %>% #Note that this is a negative selection. Selects all but the listed columns.
-  mutate_at(c('Cals_per100grams', 'KJ_per100grams'), as.numeric) #Creates numbers from strings
-formatted_table(head(df_ex11))
+formatted_table(head(df_ex1))
 ```
-
 
 Now group the food Categories:
 ```{r}
-df_ex11_summ <- df_ex11 %>% 
-  group_by(FoodCategory) %>% 
-  summarize("Energy density (KJ/100 g)" = round(mean(`KJ_per100grams`), 1))
-formatted_table(head(df_ex11_summ))
+df_ex1_summ <- df_ex1 %>% 
+  group_by(Category) %>% 
+  summarize("Mean Expression Value - stimulus" = round(mean(`Expression Value - stimulus`), 3), 
+            "Mean Expression Value + stimulus" = round(mean(`Expression Value + stimulus`), 3))
+formatted_table(head(df_ex1_summ))
 ```
+
+
+```{r}
+tidy_df_ex11 <- df_ex1_summ %>%
+  gather(`Mean Expression Value - stimulus`, `Mean Expression Value + stimulus`, key = "Expression type", value = "Expression Value")
+formatted_table(head(tidy_df_ex11))
+```
+
 
 And now we can create the plot:
 ```{r}
-barplot(df_ex11_summ$`Energy density (KJ/100 g)`, 
-        ylab = "Energy density (KJ/100 g)", 
-        ylim = c(0, max(df_ex11_summ$`Energy density (KJ/100 g)` + 1000)), 
-        names = df_ex11_summ$`FoodCategory`, 
-        las = 2,
-        cex.names = 0.5,
-        col = "steelblue",
-        main = "Energy Density per food catagory")  
+p <- ggplot(data = tidy_df_ex11, aes(x = `Category`, y = `Expression Value`, fill = `Expression type`)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Mean Expression Value per Category") +
+  coord_cartesian(ylim=c(0.45,0.53)) + # limits of the y-axis were adjusted to compare to the Excel exercise
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+p
 ```
 
 
-Oils & Fats as well as VegetableOils show the highest mean energy density.
+Motor proteins show the highest expression levels.  
+Signal transducing proteins the lowest expression values.
 
 ---
 
