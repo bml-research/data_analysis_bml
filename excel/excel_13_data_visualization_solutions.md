@@ -70,6 +70,7 @@ Or the figure below:
 
 ![figure](./files_13_data_visualization_solutions/exercise06/fig01.png)
 
+Signal transduction proteins shows the lowest median.  
 
 ### Exercise 7
 
