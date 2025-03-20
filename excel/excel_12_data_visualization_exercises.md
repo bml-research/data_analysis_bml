@@ -53,13 +53,10 @@ Which category shows the lowest median value?
 
 ### Exercise 7
 
-Download the [data set about](https://www.kaggle.com/datasets/kkhandekar/calories-in-food-items-per-100-grams) food calories per 100 g. 
+For this exercise you will use the same data.
+Create a box plot for Expression value - stimulus and + stimulus plotted against the Categories.  
 
-The data set contains units in the cells.  
-First clean the dataset.  
-Create a box plot for `Energy per 100 g in KJ` plotted against the `Food Categories`.  
-
-Which two Food Categories show the highest energy per weight?
+Which category shows the lowest IQR value?
 
 ### Exercise 8
 

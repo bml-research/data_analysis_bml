@@ -74,15 +74,13 @@ Signal transduction proteins shows the lowest median.
 
 ### Exercise 7
 
-Data can be cleaned in various ways. You can use (for instance) the text-to-columns feature to split on a space. But there are other strategies as well (like the `RIGHT` or `LEFT` formula).
-
 See the Excel file [here](./files_13_data_visualization_solutions/exercise07/exercise07.xlsx) for the solution.
 
 Or the figure below:
 
 ![figure](./files_13_data_visualization_solutions/exercise07/fig01.png)
 
-Olis & Fats as well as VegetableOils show the highest energy density.  
+Signal transduction proteins shows the lowest IQR (lowest height of the Whisker box).  
 
 
 ### Exercise 8
