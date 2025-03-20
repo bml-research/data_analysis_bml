@@ -51,6 +51,12 @@ Or the figure below:
 
 See the Excel file [here](./files_13_data_visualization_solutions/exercise05/exercise05.xlsx) for the solution.
 
+First we need to sum each of the different categories.
+The `UNIQUE()` function can be used to retrieve the unique categories.
+The `SUMIF()` function can be used to calculate the sum of each category for the Expression values without stimulus.
+
+Thereafter, a PIE chart can be generated.
+
 Or the figure below:
 
 ![figure](./files_13_data_visualization_solutions/exercise05/fig01.png)
