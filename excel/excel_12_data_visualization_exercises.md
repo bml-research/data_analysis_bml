@@ -90,15 +90,13 @@ Does puromycin act as an inhibitor or an activator for this enzyme?
 
 ### Exercise 11
 
-For this exercise, we will use the dataset from exercise 7 again. This time, to create a pivot table and plot.
+For this exercise, we will use the dataset from an earlier exercise again. This time, to create a pivot table and plot. 
 
-Download the [data set about](https://www.kaggle.com/datasets/kkhandekar/calories-in-food-items-per-100-grams) food calories per 100 g. 
+Download the [data set](./files_12_data_visualization_exercises/exercise11/data.csv). 
 
-The data set contains units in the cells.  
-First clean the dataset.  
-Create a pivot plot for the **mean** `Energy per 100 g in KJ` plotted against the `Food Categories`.  
+Create a pivot plot for the **mean** `Expression Value` plotted against the `Categories` (both with and without stimulus).  
 
-Which two Food Categories show the highest mean energy per weight?
+What category shows the lowest expression values and what category shows the highest expression values?
  
 
 ---

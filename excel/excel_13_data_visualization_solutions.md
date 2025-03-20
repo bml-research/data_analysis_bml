@@ -128,7 +128,8 @@ Or the figure below:
 
 ![figure](./files_13_data_visualization_solutions/exercise11/fig01.png)
 
-Oils & Fats as well as VegetableOils show the highest mean energy density.  
+Motor proteins show the highest expression levels.  
+Signal transducing proteins the lowest expression values.  
 
 ---
 
