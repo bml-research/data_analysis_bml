@@ -102,7 +102,7 @@ Or the figure below:
 
 ![figure](./files_13_data_visualization_solutions/exercise09/fig01.png)
 
-Spinach and Parsley would be conssired healthy according to the criteria (high K/Na ratio and low caloric).  
+Alice shows a relatively low concentration of potassium for the sodium concentration (or a relatively low sodium concentration for the potassium concentration).  
 
 ### Exercise 10
 

@@ -71,17 +71,12 @@ Wich two chickens on which diet generated the highest weight gains?
 ### Exercise 9
 
 Have look at the data [here](./files_12_data_visualization_exercises/exercise09/data.csv)
-It contains data about Potassium and Sodium content (in mg/100 g) as well as calories (in kcal/100 g).  
+It contains data about Potassium and Sodium concentrations (in mmol/L) as well as bodyweight (in kg) for various persons.  
 
-The World Health Organization (WHO) recommends ingestion of less than 2000 mg of sodium per day and more than 3510 mg of potassium per day, resulting in a Na-to-K ratio of ≤1.0, which is believed to be optimal for preserving cardiovascular health.
-
-In addition, high caloric food is often bad for cardiovascular health.  
-
-As you can see, only the K-to-Na ratio is calculated.   
 Create a bubble chart with the Na concentration as a function of the K concentration.  
-The bubble size should be based on the calorie values.  
+The bubble size should be based on the bodyweight.  
 
-Which two food items would be considered most healthy food items based on the information above?  
+As you can see, there is a correlation between the sodium and potassium concentration but there is one person who can be considered an outlier. What is the name of this person?   
 
 ### Exercise 10
 
