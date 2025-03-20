@@ -80,11 +80,13 @@ As you can see, there is a correlation between the sodium and potassium concentr
 
 ### Exercise 10
 
-In [this dataset](./files_12_data_visualization_exercises/exercise10/meat-production-tonnes.csv) you can find World wide meat production from 1961 to 2021 expressed in tonnes. It includes cattle, poultry, sheep/mutton, goat, pig meat, and wild game (source: https://ourworldindata.org/meat-production). 
+In [this dataset](./files_12_data_visualization_exercises/exercise10/data.csv), you will find data on the velocity of an enzymatic reaction were obtained by Treloar (1974). The number of counts per minute of radioactive product from the reaction was measured as a function of substrate concentration in parts per million (ppm) and from these counts the initial rate (or velocity) of the reaction was calculated (counts/min/min). The experiment was conducted once with the enzyme treated with Puromycin, and once with the enzyme untreated.
 
-Create a XY-scatter plot with the total production of meat (in tonnes) plotted against time for the asian continent.  
+Create a XY-scatter plot with the velocity plotted against the substrate concentration. 
 
-Use Scientific notation for the mass meat production.  
+Create a XY-scatter for the experiment without puromycin and an additional XY scatter plot for both (with and without puromycin) conditions.
+
+Does puromycin act as an inhibitor or an activator for this enzyme?
 
 ### Exercise 11
 

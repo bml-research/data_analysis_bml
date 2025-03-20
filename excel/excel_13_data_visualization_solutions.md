@@ -108,13 +108,15 @@ Alice shows a relatively low concentration of potassium for the sodium concentra
 
 See the Excel file [here](./files_13_data_visualization_solutions/exercise10/exercise10.xlsx) for the solution.
 
-Or the figure below for the line plot:
+Or the figure below for the line plot (without Puromycin):
 
 ![figure](./files_13_data_visualization_solutions/exercise10/fig01.png)
 
-Or without line (just the data points):
+Or the figure below for the line plot (with and without Puromycin):
 
 ![figure](./files_13_data_visualization_solutions/exercise10/fig02.png)
+
+Puromycin acts as an activator.
 
 ### Exercise 11
 
