@@ -61,6 +61,11 @@ This module is part of the [CureQ project](https://cureq.nl/). CureQ is a consor
 
 - [Here you can find information to install Excel, R en RStudio](./install/data_01_install.md)
 
+
+## Plotting in Excel on a Macbook
+
+- [Here you will find some information about plotting in Excel on a Macbook](./troubleshooting/excel_mac.md)
+
 ## Under construction
 
 Disclaimer:  
