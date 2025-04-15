@@ -57,7 +57,7 @@ formatted_table(head(df))
 
 ### Exercise 3
 
-[This](./files_07_data_cleaning_exercises/exercise03/Heart_Disease_Prediction_mod.csv) data set contains rows with duplicate data. Load the data and remove the duplicates from the data table.
+[This](./files_07_data_cleaning_exercises/exercise03/Heart_Disease_Prediction_mod.xlsx) data set contains rows with duplicate data. Load the data and remove the duplicates from the data table.
 
 ```{r}
 file_path <- "./files_07_data_cleaning_exercises/exercise03/Heart_Disease_Prediction_mod.xlsx"

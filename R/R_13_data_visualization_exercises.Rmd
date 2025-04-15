@@ -21,7 +21,7 @@ This file can be found [here](./R_13_data_visualization_exercises.Rmd)
 
 ### Exercise 1
 
-Load the [Following dataset](./files_12_data_visualization_exercises/exercise01/expression_data.csv).
+Load the [following dataset](./files_12_data_visualization_exercises/exercise01/expression_data.csv).
 
 It shows RNA expression data with and without a stimulus.  
 Create a column chart for the `MAP kinase Expression values` without a stimulus with expression levels higher than 0.5.  
@@ -127,7 +127,6 @@ As you can see, there is a correlation between the sodium and potassium concentr
 #Your code here
 ```
 
-### Exercise 10
 
 ### Exercise 10
 

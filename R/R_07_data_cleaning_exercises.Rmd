@@ -18,7 +18,7 @@ This file can be downloaded [here](./R_07_data_cleaning_exercises.Rmd)
 
 ### Exercise 1
 
-[This](./files_07_data_cleaning_exercises/exercise01/calories.xlsx) first data set was not loaded well in Excel. Load the Excel file as a tibble in R. Separate the columns correctly.
+[This](./files_07_data_cleaning_exercises/exercise01/Heart_Disease_Prediction.xlsx) first data set was not loaded well in Excel. Load the Excel file as a tibble in R. Separate the columns correctly.
 *Hint:* use the `separate_wider_delim` function from tidyverse. Consult the information on this function with `?separate_wider_delim`. On the bottom you will find examples you can run. Take a close look at the first example. This should give you a clue how to solve this problem.
 
 ```{r}
@@ -35,7 +35,7 @@ The data in [this](./files_07_data_cleaning_exercises/exercise02/fish_data_mod.c
 
 ### Exercise 3
 
-[This](./files_07_data_cleaning_exercises/exercise03/Heart_Disease_Prediction_mod.csv) data set contains rows with duplicate data. Load the data and remove the duplicates from the data table.
+[This](./files_07_data_cleaning_exercises/exercise03/Heart_Disease_Prediction_mod.xlsx) data set contains rows with duplicate data. Load the data and remove the duplicates from the data table.
 
 ```{r}
 #Your code here
