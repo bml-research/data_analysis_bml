@@ -28,7 +28,7 @@ This file can be found [here](./R_14_data_visualization_solutions.Rmd)
 
 ### Exercise 1
 
-Load the [Following dataset](./files_12_data_visualization_exercises/exercise01/expression_data.csv).
+Load the [Following dataset](./files_13_data_visualization_exercises/exercise01/expression_data.csv).
 
 It shows RNA expression data with and without a stimulus.  
 Create a column chart for the `MAP kinase Expression values` without a stimulus with expression levels higher than 0.5.  
@@ -278,7 +278,7 @@ Chick 4 and 5 gained the highest weight (on Diet 3).
 
 ### Exercise 9
 
-Have look at the data [here](./files_12_data_visualization_exercises/exercise09/data.csv)
+Have look at the data [here](./files_13_data_visualization_exercises/exercise09/data.csv)
 It contains data about Potassium and Sodium concentrations (in mmol/L) as well as body weight (in kg) for various persons.  
 
 Create a bubble chart with the Na concentration as a function of the K concentration.  
@@ -359,7 +359,7 @@ Thus, puromycin acts as an activator.
 
 For this exercise, we will use the data set from an earlier exercise again. This time, to create a pivot table and plot. 
 
-Download the [data set](./files_12_data_visualization_exercises/exercise11/expression_data.csv). 
+Download the [data set](./files_13_data_visualization_exercises/exercise11/expression_data.csv). 
 
 Create a pivot plot for the **mean** `Expression Value` plotted against the `Categories` (both with and without stimulus).  
 
