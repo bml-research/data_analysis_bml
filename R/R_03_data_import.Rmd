@@ -66,11 +66,11 @@ In R, readr is a package that provides a fast and friendly way to read rectangul
 Let's try it out:
 
 We can try to load the same datafile as we did for Excel.
-Here you can see the [Human Genes](https://www.kaggle.com/datasets/mohamedabdullah/human-genes?resource=download) file.'
+Here you can see the [Human Genes](https://www.kaggle.com/datasets/mohamedabdullah/human-genes?resource=download) file.
 
 So we have downloaded the csv file (it came as zip so we needed to extract the zip).
 
-It can be found [here](./files_03_data_import/file01_human_genes.csv)
+It can be found [here](./files_03_data_import/file01_human_genes.csv).
 
 >Like explained under data import in Excel, the first thing you should do is to check your csv file in a text editor.
 RStudio is capable of opening text files.
@@ -148,7 +148,7 @@ formatted_table(head(my_df))
 As you can see, the data was not read in different columns. So always check the file using a text editor.
 
 Now imagine a file without a header.
-It can be found [here](./files_03_data_import/file03_genes.csv)
+It can be found [here](./files_03_data_import/file03_genes.csv).
 
 ![](./pics_03_data_import/fig03_genes.png)
 
@@ -193,7 +193,7 @@ What if a dot is used as a decimal separator? In many countries the dot is used 
 ![](./pics_03_data_import/fig04_genes.png)
 
 
-An example of this file can be found [here](./files_03_data_import/file04_genes.csv)
+An example of this file can be found [here](./files_03_data_import/file04_genes.csv).
 
 Let's see what happens if you try to read a file with `read_csv2` that contains numbers with the comma as delimiter (separator of values) and the dot as decimal separator.
 
@@ -215,7 +215,7 @@ formatted_table(head(my_df))
 
 Often TSV-files are used. These are files where the values are separated by a tab. They can be imported using `read_tsv`.
 
-An example of this file can be found [here](./files_03_data_import/file05_genes.csv)
+An example of this file can be found [here](./files_03_data_import/file05_genes.csv).
 
 
 ![](./pics_03_data_import/fig05_genes.png)
