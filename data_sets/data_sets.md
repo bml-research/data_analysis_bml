@@ -57,7 +57,6 @@
 
 - [Heart Disease Health Indicators Dataset](https://www.kaggle.com/datasets/alexteboul/heart-disease-health-indicators-dataset)
 - [Cervical Cancer Risk Classification](https://www.kaggle.com/datasets/loveall/cervical-cancer-risk-classification)
-- [Dementia Patient Health,Prescriptions ML Dataset](https://www.kaggle.com/datasets/kaggler2412/dementia-patient-health-and-prescriptions-dataset)
 - [Predict lifespan of a comet goldfish](https://www.kaggle.com/datasets/stealthtechnologies/predict-lifespan-of-a-comet-goldfish)
 - [Predicting Heart Disease Using Clinical Variables](https://www.kaggle.com/datasets/thedevastator/predicting-heart-disease-risk-using-clinical-var)
 - [Multiple Sclerosis Disease](https://www.kaggle.com/datasets/desalegngeb/conversion-predictors-of-cis-to-multiple-sclerosis)

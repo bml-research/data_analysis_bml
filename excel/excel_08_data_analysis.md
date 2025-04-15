@@ -19,10 +19,10 @@ This means that, depending on your specific question, you can do all sorts of ca
 ## How to organize your worksheet
 
 Lets first discuss how to organize a worksheet.
-[Dementia Patient Health,Prescriptions ML Dataset](https://www.kaggle.com/datasets/kaggler2412/dementia-patient-health-and-prescriptions-dataset) was imported using the csv import function in Excel:
+[This file](./files_08_data_analysis/file01_dementia_patients_health_data.csv) was imported using the csv import function in Excel:
 
 ![dementia](./pics_08_data_analysis/fig2.png)
-*<sub>Figure 2: Dementia Patient Health,Prescriptions ML Dataset. Source: https://www.kaggle.com/datasets/kaggler2412/dementia-patient-health-and-prescriptions-dataset</sub>*
+*<sub>Figure 2: Dementia Patient Health,Prescriptions ML Dataset.</sub>*
 
 
 Imagine that you would like to calculate the heart rate per kg body weight (there is a well known correlation between heart rate and body weight). Obviously, the easiest way to do this is to add a column to the table and divide the heart rate by weight:  
@@ -249,7 +249,7 @@ The actual content of statistics is beyond the scope of this course. Attend a st
 
 Excel has multi-level sorting capabilities.
 
-Have a look at the earlier used [Dementia Patient Health,Prescriptions ML Dataset](https://www.kaggle.com/datasets/kaggler2412/dementia-patient-health-and-prescriptions-dataset) dataset:
+Have a look at the earlier used [dataset](./files_08_data_analysis/file01_dementia_patients_health_data.csv):
 
 ![sort](./pics_08_data_analysis/fig20.png)
 *<sub>Figure 20: Data to be sorted.</sub>*
@@ -295,7 +295,7 @@ And the result:
 ## Pivot tables
 
 Pivot tables come in handy to analyze data quickly and in an organized manner.
-Let's pretend that we are interested in comparing the average heart rate and the count of diabetics for each activity category (sedentary, mild and moderate activity) from the earlier used dataset [Dementia Patient Health,Prescriptions ML Dataset](https://www.kaggle.com/datasets/kaggler2412/dementia-patient-health-and-prescriptions-dataset).
+Let's pretend that we are interested in comparing the average heart rate and the count of diabetics for each activity category (sedentary, mild and moderate activity) from the earlier used [dataset](./files_08_data_analysis/file01_dementia_patients_health_data.csv).
 
 We can select the table. Than choose insert > Pivot table:
 
