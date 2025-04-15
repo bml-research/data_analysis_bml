@@ -26,7 +26,7 @@ This file can be downloaded [here](./R_08_data_cleaning_solutions.Rmd)
 
 ### Exercise 1
 
-[This](./files_07_data_cleaning_exercises/exercise01/calories.xlsx) first data set was not loaded well in Excel. Load the Excel file as a tibble in R. Separate the columns correctly.
+[This](./files_07_data_cleaning_exercises/exercise01/Heart_Disease_Prediction.xlsx) first data set was not loaded well in Excel. Load the Excel file as a tibble in R. Separate the columns correctly.
 *Hint:* use the `separate_wider_delim` function from tidyverse. Consult the information on this function with `?separate_wider_delim`. On the bottom you will find examples you can run. Take a close look at the first example. This should give you a clue how to solve this problem.
 
 ```{r}
@@ -71,7 +71,7 @@ Let's first find duplicate elements in the first column. The Index should be a u
 df$index[duplicated(df$index)]
 ```
 
-Yes, there seems to be duplicates of the rows with index numbers 8 and 10.
+Yes, there seems to be duplicates of the rows with index numbers 8 (2 extra duplicates) and 10 (5 extra duplicates).  
 NOTE: R shows the extra duplicates here (in total there are 3 rows with index 8 and 6 rows with index 10; see below).
 
 Do the rows with index numbers 8 and 10 contain the same data?
@@ -136,8 +136,8 @@ Count how many elements you have:
 
 ```{r}
 paste("total elements:", nrow(df), "x", ncol(df), "=", nrow(df) * ncol(df))
-paste("non-empty elements:", sum(!is.na(df)))
 paste("empty elements:", sum(is.na(df)))
+paste("non-empty elements:", sum(!is.na(df)))
 ```
 
 
