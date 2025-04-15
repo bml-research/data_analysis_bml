@@ -339,6 +339,34 @@ paste("sum with no `NA` values:", sum(c(5.7, 3.5, 2.7, 4.6, 7.9)))
 paste("sum with `NA` values:", sum(c(5.7, 3.5, 2.7, NA, 7.9), na.rm = TRUE))
 ```
 
+### Summarize and across
+
+The summarize_each() function is deprecated (will work, but not actively maintained anymore) in favor of the new across() function that works within summarize() and mutate().  
+
+```{r}
+formatted_table(df %>%
+  group_by(Smoking_Status) %>%
+  summarize(across(everything(), list(mean = mean, sd = sd))))
+```
+
+Or use the scoped variant of summarize, summarize_all:  
+
+```{r}
+df_summary <- df %>%
+  group_by(Smoking_Status) %>%
+  summarize_all(list(mean = mean, sd = sd))
+
+formatted_table(df_summary)
+```
+
+If you want to remove the columns that yield NA’s:  
+
+```{r}
+df_summary %>% select_if(~sum(!is.na(.)) > 0)
+```
+
+
+
 ---
 
 

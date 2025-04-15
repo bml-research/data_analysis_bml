@@ -30,12 +30,12 @@ This file can be found [here](./R_14_data_visualization_solutions.Rmd)
 
 Load the [Following dataset](./files_12_data_visualization_exercises/exercise01/expression_data.csv).
 
-It shows RNA expression data with and without a stimulus.
-Create a column chart for the `MAP kinase Expression values without a stimulus with expression levels higher than 0.5.
-Annotate the axis and add a proper title.
+It shows RNA expression data with and without a stimulus.  
+Create a column chart for the `MAP kinase Expression values without a stimulus with expression levels higher than 0.5.  
+Annotate the axis and add a proper title.  
 Sort the expression values from low to high (the graph should contain bars with increasing height).
 
-Which three gene names have the highest Expression Value without a stimulus?
+Which three gene names have the highest Expression Value without a stimulus?  
 
 ```{r}
 # loading data
@@ -53,7 +53,7 @@ nuc_new <- arrange(nuc_rec_fam, `Expression Value - stimulus`)
 
 # plot graph
 barplot(nuc_new$`Expression Value - stimulus`, 
-        ylab = "Total Global Average GHG Emissions per kg", 
+        ylab = "Relative Expression Value", 
         ylim = c(0, 1), 
         names = nuc_new$`Gene name`, 
         las = 2,
@@ -65,8 +65,6 @@ barplot(nuc_new$`Expression Value - stimulus`,
 TARS2, TTC37 and ARHGEF9 have the highest expression value without a stimulus.
 
 
-
-
 ### Exercise 2
 
 From the previous data set, use again the gene expression within the MAP Kinase gene family.  
@@ -74,6 +72,7 @@ Create a clustered column chart representing the expression values without stimu
 
 
 First we create a data frame with the rows of MAP kinases:
+
 ```{r}
 df_ex3 <- df_ex1[str_detect(df_ex1$`Gene Family`, "MAP Kinase"), ]
 formatted_table(df_ex3)
@@ -81,9 +80,10 @@ formatted_table(df_ex3)
 
 
 Make the df tidy:
+
 ```{r}
 tidy_df_ex3 <- df_ex3 %>%
-  gather(`Expression Value - stimulus`, `Expression Value + stimulus`, key = "Expression type", value = "Expression Value")
+  pivot_longer(c(`Expression Value - stimulus`, `Expression Value + stimulus`), names_to = "Expression type", values_to = "Expression Value")
 formatted_table(head(tidy_df_ex3))
 ```
 
@@ -93,7 +93,7 @@ formatted_table(head(tidy_df_ex3))
 p <- ggplot(data = tidy_df_ex3, aes(x = `Gene name`, y = `Expression Value`, fill = `Expression type`)) +
   geom_bar(stat = "identity", position="dodge") +
   labs(title="MAP kinase Expression values without and with stimulus") +
-  theme(axis.text.x = element_text(angle = 45, hjust=1))
+  theme(axis.text.x = element_text(angle = 45, hjust=1, size=6))
 p
 ```
 
@@ -107,7 +107,7 @@ Create a stacked column chart representing the Expression Values with and withou
 p <- ggplot(data = tidy_df_ex3, aes(x = `Gene name`, y = `Expression Value`, fill = `Expression type`)) +
   geom_bar(stat = "identity", position="stack") +
   labs(title="MAP kinase Expression values without and with stimulus") +
-  theme(axis.text.x = element_text(angle = 45, hjust=1))
+  theme(axis.text.x = element_text(angle = 45, hjust=1, size=6))
 p
 ```
 
@@ -122,7 +122,7 @@ Create a relative stacked column chart representing the Expression Values with a
 p <- ggplot(data = tidy_df_ex3, aes(x = `Gene name`, y = `Expression Value`, fill = `Expression type`)) +
   geom_bar(stat = "identity", position="fill") +
   labs(title="MAP kinase Expression values without and with stimulus") +
-  theme(axis.text.x = element_text(angle = 45, hjust=1))
+  theme(axis.text.x = element_text(angle = 45, hjust=1, size=6))
 p
 ```
 
@@ -134,23 +134,41 @@ Create a pie chart representing the total Expression Value without stimulus per 
 
 Which category shows the smallest fraction of expression value - stimulus.
 
+
 ```{r}
 # make the data tidy for a pie chart
 tidy_df_ex5 <- df_ex1 %>%
-  gather(`Expression Value - stimulus`, `Expression Value + stimulus`, key = "Expression type", value = "Expression Value") %>%
+  pivot_longer(c(`Expression Value - stimulus`, `Expression Value + stimulus`), names_to = "Expression type", values_to = "Expression Value") %>%
   filter(`Expression type` == "Expression Value - stimulus")
+tidy_df_ex5
+```
+Now calculate the total expression value per Category
 
-# plot the (tidy) data
-p <- ggplot(tidy_df_ex5, aes(x = "", y = `Expression Value`, fill = `Category`)) +
+```{r}
+data_pie <- tidy_df_ex5 %>%
+  group_by(Category) %>%
+  summarize(sum_expression = sum(`Expression Value`))
+formatted_table(data_pie)
+```
+Now can calculate the percentage and add to new column:
+
+```{r}
+data_pie$percentage <- data_pie$`sum_expression` / sum(data_pie$`sum_expression`) * 100
+formatted_table(head(data_pie))
+```
+
+
+```{r}
+p <- ggplot(data_pie, aes(x = "", y = `sum_expression`, fill = `Category`)) +
   geom_bar(stat="identity", width=1) +
   coord_polar("y", start=0) +
   labs(title="MAP kinase Expression values without stimulus") +
-  theme_void() # remove background, grid, numeric labels
+  theme_void() + # remove background, grid, numeric labels
+  geom_text(aes(label = paste0(round(percentage, 0), "%")), position = position_stack(vjust = 0.5), size = 3)
 p
 ```
 
 The motor proteins are the smallest fraction of expression value - stimulus.
-
 
 
 ### Exercise 6
@@ -161,6 +179,7 @@ Create a box plot for `Expression value - stimulus` plotted against the `Categor
 Which category shows the lowest median value?
 
 Create Box plot:
+
 ```{r}
 p <- ggplot(df_ex1, aes(x = `Category`, y = `Expression Value - stimulus`)) + 
   geom_boxplot() +
@@ -171,7 +190,7 @@ p <- ggplot(df_ex1, aes(x = `Category`, y = `Expression Value - stimulus`)) +
 p
 ```
 
-The Signal transducing proteins have the lowest median for expression value - stimulus.
+The `Signal transducing proteins` have the lowest median for expression value - stimulus.
 
 
 ### Exercise 7
@@ -197,7 +216,7 @@ p <- ggplot(tidy_df_ex4, aes(x = `Category`, y = `Expression Value`, fill = `Exp
 p
 ```
 
-The Signal transducing proteins show the lowest IQR (lowest height of the Whisker box).
+The `Signal transducing proteins` show the lowest IQR (lowest height of the Whisker box).
 
 
 ### Exercise 8
@@ -213,7 +232,15 @@ Which two chickens on which diet generated the highest weight gains?
 ```{r}
 file_path <- "./files_13_data_visualization_exercises/exercise08/ChickWeight.csv"
 df_ex8 <- read_tsv(file_path)
+df_ex8 <- rename(df_ex8, `Diet` = `...1`)
 formatted_table(df_ex8)
+```
+
+>If you do not have the `ggradar` module installed yet, run the following code to install the module: 
+
+```
+install.packages("remotes") 
+remotes::install_github("ricardo-bion/ggradar")  
 ```
 
 ```{r}
@@ -252,10 +279,10 @@ Chick 4 and 5 gained the highest weight (on Diet 3).
 ### Exercise 9
 
 Have look at the data [here](./files_12_data_visualization_exercises/exercise09/data.csv)
-It contains data about Potassium and Sodium concentrations (in mmol/L) as well as bodyweight (in kg) for various persons.  
+It contains data about Potassium and Sodium concentrations (in mmol/L) as well as body weight (in kg) for various persons.  
 
 Create a bubble chart with the Na concentration as a function of the K concentration.  
-The bubble size should be based on the bodyweight.  
+The bubble size should be based on the body weight.  
 
 As you can see, there is a correlation between the sodium and potassium concentration but there is one person who can be considered an outlier. What is the name of this person?  
 
@@ -264,16 +291,16 @@ file_path <- "./files_13_data_visualization_exercises/exercise09/data.csv"
 df_ex9 <- read_csv(file_path)
 formatted_table(head(df_ex9))
 ```
+
+
+
 ```{r}
-# 
-df_ex9$BW_squared <- sqrt(df_ex9$`Body Weight (kg)`)
-df_ex9
 p <- ggplot(df_ex9, aes(x = `Potassium conc (mmol/L)`, y = `Sodium conc (mmol/L)`)) + 
-  geom_point(aes(size = `BW_squared`), alpha = 0.5) +
-  scale_size(range = c(5, 10)) +
+  geom_point(aes(size = `Body Weight (kg)`), alpha = 0.5) +
   geom_text(aes(label=Person), position = position_nudge(y = 1)) +
   xlab("Potassium concentration (mg/100 g)") +
-  ylab("Sodium concentration (mg/100 g)")
+  ylab("Sodium concentration (mg/100 g)") +
+  scale_size_area(max_size=10) 
 p
 ```
 Alice shows a relatively low concentration of potassium for the sodium concentration (or a relatively low sodium concentration for the potassium concentration).
@@ -300,6 +327,7 @@ formatted_table(head(df_ex10))
 ```
 
 Filter the data to be used:
+
 ```{r}
 df_ex10_untreated <- df_ex10 %>%
   filter(State == "untreated")
@@ -307,6 +335,7 @@ formatted_table(head(df_ex10_untreated))
 ```
 
 Create the plot without puromycin:
+
 ```{r}
 p <- ggplot(data= df_ex10_untreated, aes(x = `Substrate concentration (ppm)`, y = `Rate (counts/min)`)) +
   geom_point() +
@@ -323,12 +352,12 @@ p
 ```
 
 
-Puromycin acts as an activator.
+Thus, puromycin acts as an activator.
 
 
 ### Exercise 11
 
-For this exercise, we will use the dataset from an earlier exercise again. This time, to create a pivot table and plot. 
+For this exercise, we will use the data set from an earlier exercise again. This time, to create a pivot table and plot. 
 
 Download the [data set](./files_12_data_visualization_exercises/exercise11/expression_data.csv). 
 
@@ -336,15 +365,9 @@ Create a pivot plot for the **mean** `Expression Value` plotted against the `Cat
 
 What category shows the lowest expression values and what category shows the highest expression values?
  
-```{r}
-# make data tidy
-#tidy_df_ex11 <- df_ex1 %>%
-#  gather(`Expression Value - stimulus`, `Expression Value + stimulus`, key = "Expression type", value = "Expression Value")
 
-formatted_table(head(df_ex1))
-```
+First group the food Categories:
 
-Now group the food Categories:
 ```{r}
 df_ex1_summ <- df_ex1 %>% 
   group_by(Category) %>% 
@@ -354,14 +377,17 @@ formatted_table(head(df_ex1_summ))
 ```
 
 
+make the data tidy:
+
 ```{r}
 tidy_df_ex11 <- df_ex1_summ %>%
-  gather(`Mean Expression Value - stimulus`, `Mean Expression Value + stimulus`, key = "Expression type", value = "Expression Value")
+  pivot_longer(c(`Mean Expression Value - stimulus`, `Mean Expression Value + stimulus`), names_to = "Expression type", values_to = "Expression Value")
 formatted_table(head(tidy_df_ex11))
 ```
 
 
 And now we can create the plot:
+
 ```{r}
 p <- ggplot(data = tidy_df_ex11, aes(x = `Category`, y = `Expression Value`, fill = `Expression type`)) +
   geom_bar(stat = "identity", position = "dodge") +
@@ -372,8 +398,8 @@ p
 ```
 
 
-Motor proteins show the highest expression levels.  
-Signal transducing proteins the lowest expression values.
+`Motor proteins` show the highest expression levels.  
+`Signal transducing proteins` the lowest expression values.
 
 ---
 

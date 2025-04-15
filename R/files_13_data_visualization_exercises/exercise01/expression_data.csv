@@ -3,7 +3,7 @@ NM_0009985	B3GALT6	Cyclin dependent kinases	Regulatory protein gene families	0.4
 NM_0007588	TMEM240	Cyclin dependent kinases	Regulatory protein gene families	0.295	0.272
 NM_0005919	GNB1	Kinesin	Motor proteins	0.267	0.263
 NM_0003080	SKI	Protocadherin gene family	Transporters	0.551	0.528
-NM_0006269	PRDM16	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.432	0.424
+NM_0006269	PRDM16	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.432	0.424
 NM_0005676	NPHP4	Peroxiredoxin	Signal transducing proteins	0.381	0.363
 NM_0001024	RERE	Solute carrier family	Transporters	0.294	0.304
 NM_0001639	PIK3CD	ATCase/OTCase family	Transporters	0.577	0.532
@@ -92,7 +92,7 @@ NM_0001515	FMO3	Aquaporins	Transporters	0.06	0.054
 NM_0006469	MYOC	Transcription factors	Regulatory protein gene families	0.818	0.868
 NM_0007903	DARS2	Peroxin	Transporters	0.389	0.417
 NM_0009192	SERPINC1	Kinesin	Motor proteins	0.18	0.17
-NM_0005597	NPHS2	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.361	0.384
+NM_0005597	NPHS2	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.361	0.384
 NM_0008114	LHX4	MADS-box gene family	Regulatory protein gene families	0.125	0.137
 NM_0007556	LAMC2	SRC kinase family	Signal transducing proteins	0.879	0.835
 NM_0008079	NCF2	Non-receptor tyrosine kinase	Signal transducing proteins	0.717	0.678
@@ -190,7 +190,7 @@ NM_0005406	SCN3A	Transcription factors	Regulatory protein gene families	0.687	0.
 NM_0005807	SCN2A	G-proteins	Signal transducing proteins	0.144	0.154
 NM_0002023	TTC21B	Transcription factors	Regulatory protein gene families	0.611	0.557
 NM_0009701	SCN1A	Olfactory receptor	Signal transducing proteins	0.319	0.339
-NM_0007289	SCN9A	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.127	0.133
+NM_0007289	SCN9A	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.127	0.133
 NM_0002800	ABCB11	Non-receptor tyrosine kinase	Signal transducing proteins	0.435	0.42
 NM_0002016	LRP2	Fibroblast growth factors (FGF)	Transporters	0.029	0.026
 NM_0003007	BBS5	Fibroblast growth factor receptors (FGFR)	Transporters	0.255	0.267
@@ -327,7 +327,7 @@ NM_0004729	DOK7	G-proteins	Signal transducing proteins	0.096	0.087
 NM_0007505	EVC2	Immunoglobulin superfamily	Immune system proteins	0.842	0.906
 NM_0004272	EVC	"FGD (FYVE, RhoGEF and PH domain containing) family"	Transporters	0.284	0.28
 NM_0006310	WFS1	Janus kinases	Signal transducing proteins	0.012	0.012
-NM_0005544	SLC2A9	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.052	0.051
+NM_0005544	SLC2A9	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.052	0.051
 NM_0006401	CC2D2A	Serine/threonine-specific protein kinase	Signal transducing proteins	0.819	0.775
 NM_0005678	PROM1	Neurotransmitter transporter	Transporters	0.317	0.347
 NM_0004913	WDR19	Dynein	Motor proteins	0.774	0.826
@@ -444,12 +444,12 @@ NM_0006622	PNPLA1	Transcription factors	Regulatory protein gene families	0.317	0
 NM_0002317	TREM2	Aquaporins	Transporters	0.268	0.249
 NM_0001048	GUCA1A	SNARE family	Transporters	0.72	0.739
 NM_0009206	GUCA1B	NF-kB	Regulatory protein gene families	0.238	0.247
-NM_0003008	PEX6	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.345	0.33
+NM_0003008	PEX6	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.345	0.33
 NM_0001703	PPP2R5D	Monoamine transporter	Transporters	0.506	0.478
 NM_0005798	CUL7	Immunoglobulin superfamily	Immune system proteins	0.952	1.005
 NM_0008217	POLR1C	Equilibrative nucleoside transporter family	Transporters	0.022	0.023
 NM_0005623	POLH	Killer-cell immunoglobulin-like receptors	Immune system proteins	0.813	0.791
-NM_0003757	RSPH9	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.705	0.77
+NM_0003757	RSPH9	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.705	0.77
 NM_0009547	AARS2	Hox gene family	Regulatory protein gene families	0.831	0.868
 NM_0009916	RUNX2	DLX gene family	Regulatory protein gene families	0.823	0.885
 NM_0006474	MUT	"FGD (FYVE, RhoGEF and PH domain containing) family"	Transporters	0.742	0.793
@@ -565,7 +565,7 @@ NM_0009544	EYA1	NOTCH2NL	Regulatory protein gene families	0.578	0.526
 NM_0008243	TMEM70	"FGD (FYVE, RhoGEF and PH domain containing) family"	Transporters	0.053	0.057
 NM_0002639	CA2	Myosin	Motor proteins	0.51	0.474
 NM_0004648	CNGB3	14-3-3 protein family	Regulatory protein gene families	0.899	0.875
-NM_0005477	NBN	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.783	0.729
+NM_0005477	NBN	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.783	0.729
 NM_0003664	TMEM67	MAP Kinase	Signal transducing proteins	0.756	0.721
 NM_0004665	NDUFAF6	Fibroblast growth factor receptors (FGFR)	Transporters	0.994	0.969
 NM_0004314	GDF6	Serine/threonine-specific protein kinase	Signal transducing proteins	0.036	0.034
@@ -647,7 +647,7 @@ NM_0002818	DHTKD1	Janus kinases	Signal transducing proteins	0.582	0.607
 NM_0008808	PHYH	General transcription factor	Regulatory protein gene families	0.191	0.198
 NM_0008490	DCLRE1C	Leukocyte immunoglobulin-like receptors	Immune system proteins	0.576	0.594
 NM_0008151	CUBN	Papain-like protease	Transporters	0.568	0.55
-NM_0004729	NEBL	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.755	0.702
+NM_0004729	NEBL	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.755	0.702
 NM_0007427	MYO3A	GABA transporter	Transporters	0.129	0.124
 NM_0006416	MASTL	RIG-I like receptors	Immune system proteins	0.864	0.886
 NM_0003212	RAB18	MAP Kinase	Signal transducing proteins	0.526	0.569
@@ -707,7 +707,7 @@ NM_0004645	KCNQ1	NOD-like receptors	Immune system proteins	0.977	1.006
 NM_0009855	STIM1	Solute carrier family	Transporters	0.734	0.784
 NM_0003923	HBB	Olfactory receptor	Signal transducing proteins	0.344	0.361
 NM_0001741	TPP1	Glutamate transporter	Transporters	0.825	0.777
-NM_0007560	SBF2	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.539	0.59
+NM_0007560	SBF2	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.539	0.59
 NM_0003091	ABCC8	Toll-like receptors	Immune system proteins	0.56	0.522
 NM_0001993	USH1C	FOX proteins (forkhead box proteins)	Regulatory protein gene families	0.546	0.581
 NM_0008317	HPS5	Dynein	Motor proteins	0.8	0.867
@@ -773,7 +773,7 @@ NM_0003975	IL10RA	Janus kinases	Signal transducing proteins	0.892	0.911
 NM_0009180	SCN2B	Myosin	Motor proteins	0.036	0.035
 NM_0004474	CD3G	Peroxiredoxin	Signal transducing proteins	0.645	0.683
 NM_0003659	KMT2A	Immunoglobulin superfamily	Immune system proteins	0.97	0.952
-NM_0004475	HMBS	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.263	0.271
+NM_0004475	HMBS	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.263	0.271
 NM_0004893	DPAGT1	Antiporter	Transporters	0.575	0.624
 NM_0002859	CBL	ABC transporters	Transporters	0.602	0.578
 NM_0002546	MFRP	Rap family	Signal transducing proteins	0.381	0.41
@@ -786,7 +786,7 @@ NM_0005231	KCNJ5	General transcription factor	Regulatory protein gene families	0
 NM_0006281	ACAD8	Heat shock factor	Transporters	0.059	0.06
 NM_0005292	WNK1	Killer-cell immunoglobulin-like receptors	Immune system proteins	0.605	0.623
 NM_0002777	CACNA2D4	Leukocyte immunoglobulin-like receptors	Immune system proteins	0.557	0.503
-NM_0009319	FGF23	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.886	0.823
+NM_0009319	FGF23	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.886	0.823
 NM_0007929	KCNA5	SRC kinase family	Signal transducing proteins	0.801	0.779
 NM_0007614	VWF	Antiporter	Transporters	0.896	0.936
 NM_0008931	TNFRSF1A	Membrane-spanning 4A	Transporters	0.684	0.703
@@ -854,7 +854,7 @@ NM_0003781	PDX1	Cyclins	Regulatory protein gene families	0.988	0.954
 NM_0002794	B3GALTL	General transcription factor	Regulatory protein gene families	0.787	0.855
 NM_0005894	EXOSC8	Ras family	Signal transducing proteins	0.813	0.77
 NM_0009710	COG6	Papain-like protease	Transporters	0.875	0.863
-NM_0004829	SLC25A15	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.601	0.652
+NM_0004829	SLC25A15	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.601	0.652
 NM_0009045	LACC1	Peroxin	Transporters	0.03	0.031
 NM_0007733	SUCLA2	Peroxiredoxin	Signal transducing proteins	0.654	0.706
 NM_0006824	RB1	Rap family	Signal transducing proteins	0.418	0.435
@@ -888,7 +888,7 @@ NM_0003679	SIX6	NOD-like receptors	Immune system proteins	0.954	0.884
 NM_0002379	SYNE2	Major histocompatibility complex (MHC)	Immune system proteins	0.219	0.2
 NM_0001266	SPTB	ABC transporters	Transporters	0.56	0.59
 NM_0005553	PSEN1	Fibroblast growth factor receptors (FGFR)	Transporters	0.644	0.681
-NM_0005490	VSX2	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.288	0.274
+NM_0005490	VSX2	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.288	0.274
 NM_0003029	ABCD4	Cyclin dependent kinases	Regulatory protein gene families	0.891	0.973
 NM_0004800	NPC2	Roundabout family	Transporters	0.819	0.794
 NM_0005956	ISCA2	Olfactory receptor	Signal transducing proteins	0.084	0.076
@@ -942,7 +942,7 @@ NM_0006338	NR2E3	Heat shock proteins	Transporters	0.598	0.629
 NM_0007673	HEXA	NF-kB	Regulatory protein gene families	0.888	0.92
 NM_0002767	BBS4	Peroxin	Transporters	0.062	0.059
 NM_0001076	STRA6	14-3-3 protein family	Regulatory protein gene families	0.248	0.225
-NM_0007136	MPI	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.363	0.395
+NM_0007136	MPI	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.363	0.395
 NM_0005901	ETFA	SOX gene family	Regulatory protein gene families	0.122	0.127
 NM_0001917	FAH	Roundabout family	Transporters	0.512	0.462
 NM_0004733	FANCI	Achaete-scute complex (neuroblast formation)	Regulatory protein gene families	0.263	0.276
@@ -1025,7 +1025,7 @@ NM_0009916	AIPL1	P300-CBP coactivator family	Regulatory protein gene families	0.
 NM_0008840	PITPNM3	CDK inhibitors	Regulatory protein gene families	0.115	0.108
 NM_0009399	DLG4	ABC transporters	Transporters	0.782	0.791
 NM_0009425	ACADVL	Neurotransmitter transporter	Transporters	0.811	0.825
-NM_0008959	CHRNB1	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.724	0.761
+NM_0008959	CHRNB1	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.724	0.761
 NM_0003793	MPDU1	POU family	Regulatory protein gene families	0.545	0.501
 NM_0005861	TP53	Peroxin	Transporters	0.254	0.231
 NM_0007451	WRAP53	Leukocyte immunoglobulin-like receptors	Immune system proteins	0.162	0.169
@@ -1183,7 +1183,7 @@ NM_0005561	MKKS	Pattern recognition receptor	Immune system proteins	0.673	0.664
 NM_0004428	JAG1	P300-CBP coactivator family	Regulatory protein gene families	0.026	0.027
 NM_0006981	SEC23B	14-3-3 protein family	Regulatory protein gene families	0.32	0.342
 NM_0008858	THBD	Ion channels	Transporters	0.195	0.205
-NM_0004686	VSX1	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.217	0.212
+NM_0004686	VSX1	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.217	0.212
 NM_0009316	COX4I2	Rap family	Signal transducing proteins	0.265	0.239
 NM_0002717	MYLK2	Membrane-spanning 4A	Transporters	0.613	0.637
 NM_0003106	SNTA1	SNARE family	Transporters	0.667	0.645
@@ -1192,7 +1192,7 @@ NM_0001277	JPH2	Rap family	Signal transducing proteins	0.054	0.05
 NM_0003672	HNF4A	SOX gene family	Regulatory protein gene families	0.956	1.041
 NM_0002019	ADA	Families containing homeobox domains	Regulatory protein gene families	0.535	0.543
 NM_0006355	MMP9	Equilibrative nucleoside transporter family	Transporters	0.296	0.305
-NM_0007306	CD40	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.914	0.825
+NM_0007306	CD40	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.914	0.825
 NM_0009804	SLC2A10	Cyclin dependent kinases	Regulatory protein gene families	0.217	0.204
 NM_0006505	ARFGEF2	Membrane-spanning 4A	Transporters	0.643	0.583
 NM_0001463	SALL4	14-3-3 protein family	Regulatory protein gene families	0.42	0.447
@@ -1275,7 +1275,7 @@ NM_0005773	CACNA1F	Bacterial potassium transporter	Transporters	0.334	0.353
 NM_0006729	CCDC22	Rab family	Signal transducing proteins	0.863	0.886
 NM_0005165	SHROOM4	Pattern recognition receptor	Immune system proteins	0.896	0.866
 NM_0008046	BMP15	SNARE family	Transporters	0.491	0.484
-NM_0008311	SMC1A	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.525	0.511
+NM_0008311	SMC1A	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.525	0.511
 NM_0002542	FGD1	Monoamine transporter	Transporters	0.998	0.919
 NM_0004467	ALAS2	Major histocompatibility complex (MHC)	Immune system proteins	0.161	0.174
 NM_0007489	AR	Transcription factors	Regulatory protein gene families	0.197	0.185
@@ -1318,7 +1318,7 @@ NM_0006227	F8	Achaete-scute complex (neuroblast formation)	Regulatory protein ge
 NM_0003240	AGRN	Ras family	Signal transducing proteins	0.105	0.102
 NM_0003736	ATAD3A	Myosin	Motor proteins	0.607	0.552
 NM_0004803	GABRD	Toll-like receptors	Immune system proteins	0.191	0.208
-NM_0004017	PEX10	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.199	0.208
+NM_0004017	PEX10	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.199	0.208
 NM_0004355	ESPN	Hox gene family	Regulatory protein gene families	0.946	0.875
 NM_0008077	PLEKHG5	Cyclins	Regulatory protein gene families	0.859	0.887
 NM_0003513	PARK7	NF-kB	Regulatory protein gene families	0.717	0.651
@@ -1337,7 +1337,7 @@ NM_0006560	YARS	Major facilitator superfamily	Transporters	0.867	0.82
 NM_0008023	CAP1	SRC kinase family	Signal transducing proteins	0.929	0.892
 NM_0004792	ZMPSTE24	Rho family	Signal transducing proteins	0.484	0.438
 NM_0009385	LEPRE1	Peroxiredoxin	Signal transducing proteins	0.28	0.292
-NM_0003942	SZT2	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.157	0.17
+NM_0003942	SZT2	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.157	0.17
 NM_0009711	ST3GAL3	Achaete-scute complex (neuroblast formation)	Regulatory protein gene families	0.798	0.84
 NM_0003098	PTCH2	POU family	Regulatory protein gene families	0.878	0.837
 NM_0005775	EIF2B3	Heat shock proteins	Transporters	0.261	0.278
@@ -1411,7 +1411,7 @@ NM_0001866	CTNNA3	Papain-like protease	Transporters	0.088	0.091
 NM_0008233	DNA2	Pattern recognition receptor	Immune system proteins	0.276	0.269
 NM_0003841	HK1	Rho family	Signal transducing proteins	0.279	0.271
 NM_0003923	NEUROG3	Peroxiredoxin	Signal transducing proteins	0.663	0.72
-NM_0001546	PCBD1	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.13	0.118
+NM_0001546	PCBD1	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.13	0.118
 NM_0008641	CDH23	Nuclear receptor	Regulatory protein gene families	0.824	0.871
 NM_0008017	PSAP	Receptor tyrosine kinases	Signal transducing proteins	0.418	0.452
 NM_0002286	MRPS16	ABC transporters	Transporters	0.431	0.399
@@ -1518,7 +1518,7 @@ NM_0001828	SUOX	Heat shock proteins	Transporters	0.591	0.579
 NM_0005183	RPS26	FOX proteins (forkhead box proteins)	Regulatory protein gene families	0.465	0.507
 NM_0001953	STAT2	Solute carrier family	Transporters	0.551	0.575
 NM_0004532	TSFM	"FGD (FYVE, RhoGEF and PH domain containing) family"	Transporters	0.216	0.2
-NM_0008597	TMEM5	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.02	0.019
+NM_0008597	TMEM5	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.02	0.019
 NM_0001991	TBK1	Heat shock proteins	Transporters	0.529	0.568
 NM_0006823	GNS	CDK inhibitors	Regulatory protein gene families	0.518	0.499
 NM_0005901	LEMD3	ATCase/OTCase family	Transporters	0.458	0.491
@@ -1567,7 +1567,7 @@ NM_0003132	F10	Globin	Transporters	0.981	1.029
 NM_0007857	CHD8	Antiporter	Transporters	0.068	0.072
 NM_0004744	NRL	Arf family	Signal transducing proteins	0.097	0.102
 NM_0007806	PCK2	Hox gene family	Regulatory protein gene families	0.722	0.739
-NM_0002940	AP4S1	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.557	0.521
+NM_0002940	AP4S1	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.557	0.521
 NM_0004368	NUBPL	Rab family	Signal transducing proteins	0.682	0.722
 NM_0005693	CFL2	NF-kB	Regulatory protein gene families	0.546	0.494
 NM_0002490	NFKBIA	General transcription factor	Regulatory protein gene families	0.956	0.89
@@ -1690,7 +1690,7 @@ NM_0008124	ATPAF2	Protocadherin gene family	Transporters	0.821	0.788
 NM_0002515	SLC46A1	CDK inhibitors	Regulatory protein gene families	0.814	0.772
 NM_0003573	NEK8	GABA transporter	Transporters	0.971	0.928
 NM_0007948	CRYBA1	Major facilitator superfamily	Transporters	0.43	0.41
-NM_0009592	RNF135	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.612	0.584
+NM_0009592	RNF135	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.612	0.584
 NM_0006739	GPR179	GABA transporter	Transporters	0.902	0.932
 NM_0007316	PGAP3	GABA transporter	Transporters	0.78	0.704
 NM_0003100	ERBB2	G-proteins	Signal transducing proteins	0.954	0.987
@@ -1807,7 +1807,7 @@ NM_0007414	APOB	Papain-like protease	Transporters	0.131	0.14
 NM_0008153	POMC	DHH phosphatase family	Transporters	0.444	0.454
 NM_0002106	DNMT3A	ABC transporters	Transporters	0.422	0.389
 NM_0009427	DRC1	Peroxin	Transporters	0.537	0.552
-NM_0009868	CAD	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.276	0.28
+NM_0009868	CAD	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.276	0.28
 NM_0005778	EIF2B4	Olfactory receptor	Signal transducing proteins	0.412	0.382
 NM_0003259	IFT172	RIG-I like receptors	Immune system proteins	0.858	0.914
 NM_0009865	SRD5A2	RIG-I like receptors	Immune system proteins	0.53	0.552
@@ -1884,7 +1884,7 @@ NM_0008376	PLCB4	Receptor tyrosine kinases	Signal transducing proteins	0.309	0.2
 NM_0004234	NDUFAF5	Cyclins	Regulatory protein gene families	0.166	0.172
 NM_0003166	BFSP1	Bacterial potassium transporter	Transporters	0.616	0.628
 NM_0007161	MGME1	SNARE family	Transporters	0.651	0.66
-NM_0005628	RIN2	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.807	0.866
+NM_0005628	RIN2	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.807	0.866
 NM_0001360	PYGB	Arf family	Signal transducing proteins	0.509	0.501
 NM_0001919	ASXL1	Rap family	Signal transducing proteins	0.525	0.512
 NM_0001696	DNMT3B	SRC kinase family	Signal transducing proteins	0.383	0.415
@@ -1950,7 +1950,7 @@ NM_0002047	WNT7A	Major histocompatibility complex (MHC)	Immune system proteins	0
 NM_0002251	HACL1	GATA transcription factor	Regulatory protein gene families	0.599	0.634
 NM_0006369	THRB	Serine/threonine-specific protein kinase	Signal transducing proteins	0.086	0.088
 NM_0003144	LOC101927854	Serine/threonine-specific protein kinase	Signal transducing proteins	0.072	0.074
-NM_0009777	NGLY1	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.613	0.59
+NM_0009777	NGLY1	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.613	0.59
 NM_0002562	STT3B	CDK inhibitors	Regulatory protein gene families	0.521	0.56
 NM_0007574	GLB1	Bacterial potassium transporter	Transporters	0.73	0.758
 NM_0005820	CRTAP	Receptor tyrosine kinases	Signal transducing proteins	0.244	0.22
@@ -2167,7 +2167,7 @@ NM_0009791	PAX4	DLX gene family	Regulatory protein gene families	0.23	0.237
 NM_0006619	IMPDH1	Monoamine transporter	Transporters	0.283	0.295
 NM_0008342	TNPO3	Myosin	Motor proteins	0.495	0.452
 NM_0009229	PODXL	DHH phosphatase family	Transporters	0.849	0.916
-NM_0007382	CHRM2	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.487	0.502
+NM_0007382	CHRM2	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.487	0.502
 NM_0008318	TBXAS1	Kinesin	Motor proteins	0.935	0.984
 NM_0006561	AGK	Heat shock factor	Transporters	0.297	0.279
 NM_0003605	TPK1	Fibroblast growth factor receptors (FGFR)	Transporters	0.182	0.192
@@ -2240,7 +2240,7 @@ NM_0009273	DBH	Janus kinases	Signal transducing proteins	0.543	0.52
 NM_0008225	KCNT1	ABC transporters	Transporters	0.519	0.468
 NM_0008519	LHX3	Arf family	Signal transducing proteins	0.337	0.357
 NM_0003700	NOTCH1	Dynein	Motor proteins	0.359	0.345
-NM_0006493	AGPAT2	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.001	0.001
+NM_0006493	AGPAT2	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.001	0.001
 NM_0008853	MAN1B1	Receptor tyrosine kinases	Signal transducing proteins	0.39	0.425
 NM_0002770	GRIN1	SNARE family	Transporters	0.196	0.209
 NM_0002414	TPRN	ATCase/OTCase family	Transporters	0.386	0.379
@@ -2265,7 +2265,7 @@ NM_0009405	PDK3	GABA transporter	Transporters	0.161	0.176
 NM_0002617	ARX	ABC transporters	Transporters	0.466	0.474
 NM_0008838	IL1RAPL1	Cyclins	Regulatory protein gene families	0.643	0.621
 NM_0004622	NR0B1	Heat shock proteins	Transporters	0.279	0.265
-NM_0003550	DMD	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.671	0.692
+NM_0003550	DMD	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.671	0.692
 NM_0005110	BCOR	POU family	Regulatory protein gene families	0.364	0.343
 NM_0005687	USP9X	General transcription factor	Regulatory protein gene families	0.326	0.354
 NM_0007233	CASK	GABA transporter	Transporters	0.734	0.773
@@ -2292,7 +2292,7 @@ NM_0003360	ARHGEF9	MAP Kinase	Signal transducing proteins	0.945	0.86
 NM_0003510	ZC4H2	MADS-box gene family	Regulatory protein gene families	0.064	0.066
 NM_0001924	DLG3	14-3-3 protein family	Regulatory protein gene families	0.177	0.168
 NM_0005321	MED12	SNARE family	Transporters	0.648	0.607
-NM_0004289	NLGN3	Krüppel-type zinc finger (ZNF)	Regulatory protein gene families	0.409	0.369
+NM_0004289	NLGN3	Kruppel-type zinc finger (ZNF)	Regulatory protein gene families	0.409	0.369
 NM_0005810	PHKA1	Glycine transporter	Transporters	0.258	0.269
 NM_0007551	KIAA2022	Papain-like protease	Transporters	0.258	0.241
 NM_0002113	ABCB7	Cyclin dependent kinases	Regulatory protein gene families	0.245	0.26
