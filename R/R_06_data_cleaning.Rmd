@@ -171,7 +171,7 @@ You can use a vector in the `NA =` argument in the `read_csv2` function:
 
 ```{r}
 my_path = './files_06_data_cleaning/file02_genes.csv'
-my_df <- read_csv2(my_path, na = c("/", "-"))
+my_df <- read_csv2(my_path, na = c("/", "no data"))
 formatted_table(my_df)
 ```
 
@@ -288,9 +288,9 @@ formatted_table(my_tibble)
 If you end up with a situation that you want to change all occurrences of a certain value in a tibble you can solve that as follows:
 
 ```{r}
-gene <- c("-", "ABAT", "-", "ABL1", "FMR1")
-chromosome <- c("-", 16, 10, 9, "X")
-mol_weight_kD <- c(52.2, "-", 174.2, 0.023, "-")
+gene <- c("no data", "ABAT", "no data", "ABL1", "FMR1")
+chromosome <- c("no data", 16, 10, 9, "X")
+mol_weight_kD <- c(52.2, "no data", 174.2, 0.023, "no data")
 
 my_tibble <- tibble(gene, chromosome, mol_weight_kD)
 formatted_table(my_tibble)
@@ -299,11 +299,134 @@ formatted_table(my_tibble)
 Now we change all occurrences for `-` with `NA` using the `replace` function:
 
 ```{r}
-my_tibble <- my_tibble %>% replace(. == "-", NA)
+my_tibble <- my_tibble %>% replace(. == "no data", NA)
 formatted_table(my_tibble)
 ```
 
+
+
+
 The . is used as a placeholder for every item in the tibble.
+
+
+### Making data tidy
+
+As introduces in the introduction to [data section](https://bml-research.github.io/data_analysis_bml/data/data_01_index.html), Tidyverse works best with tidy data. An explanation about Tidy data can be found [here](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html).  
+
+Now let’s take the following example:
+
+
+```{r}
+gene <- c("AAAS", "ABAT", "ABCC2", "ABL1", "FMR1")
+Chromosome <- c(12, 16, 10, 9, "X")
+mol_weight_pre_protein_kD <- c(52.2, 56.4, 174.2, 122.9, 71.1)
+mol_weight_mature_protein_kD <- c(52.2, 56.4, 124.2, 122.9, 51.6)
+
+my_tibble <- tibble(gene, Chromosome, mol_weight_pre_protein_kD, mol_weight_mature_protein_kD)
+formatted_table(my_tibble)
+```
+
+
+We can make the data frame tidy as follows:
+
+```{r}
+my_tibble_tidy <- my_tibble %>% 
+  pivot_longer(c(mol_weight_pre_protein_kD,mol_weight_mature_protein_kD), names_to = "Mol_Weight_Protein_Type", values_to = "Mol_Weight")
+formatted_table(my_tibble_tidy)
+```
+
+And we can convert the data frame to the longer format as follows:
+
+```{r}
+my_tibble_wider <- my_tibble_tidy %>% 
+  pivot_wider(names_from = "Mol_Weight_Protein_Type", values_from = "Mol_Weight")
+formatted_table(my_tibble_wider)
+```
+
+You may find the function gather and spread in some examples (on the internet or this website). This function is depricated in favor of pivot_longer and pivot_wider. See [this link](https://tidyr.tidyverse.org/reference/gather.html).
+
+
+### Transpose data
+
+You can also transpose data. Imagine we have the following data:
+
+```{r}
+record_1 <- c("AAAS", "12", "52.2")
+record_2 <- c("ABAT", "16", "56.4")
+record_3 <- c("ABCC2", "10", "174.2")
+record_4 <- c("ABL1", "9", "122.9")
+record_5 <- c("FMR1", "X", "71.1")
+
+my_tibble <- tibble(record_1, record_2, record_3, record_4, record_5)
+my_tibble
+```
+
+In the example above records (observations) are in columns but they should be in rows. The features (variables) should be in columns.
+You can easily detect this error as the columns do often not represent a single data type (in this case, numbers and text are mixed).
+
+First we create a transposed matrix using the `t` function:
+
+```{r}
+trans_matrix <- t(my_tibble)
+formatted_table(trans_matrix)
+```
+
+Convert it to a tibble:
+
+```{r}
+my_tibble_transposed <- tibble(data.frame(trans_matrix))
+formatted_table(my_tibble_transposed)
+```
+
+```{r}
+colnames(my_tibble_transposed) <- c("Gene", "Chromosome", "Mol_weight_KD")
+formatted_table(my_tibble_transposed)
+```
+
+And change the `Mol_weight_KD` data type:
+
+```{r}
+my_tibble_transposed <- my_tibble_transposed %>% mutate(Mol_weight_KD = as.numeric(Mol_weight_KD))
+formatted_table(my_tibble_transposed)
+```
+
+### Separate a column into two columns
+
+Sometimes you will find that people put units in the cells from a column:  
+
+```{r}
+gene <- c("AAAS", "ABAT", "ABCC2", "ABL1", "FMR1")
+chromosome <- c(12, 16, 10, 9, "X")
+mol_weight_kD <- c("52.2 kd", "56.4 kd", "174.2 kd", "122.9 kd", "71.1 kd")
+
+my_tibble <- tibble(gene, chromosome, mol_weight_kD)
+formatted_table(my_tibble)
+```
+
+Of course, the column will be of character type. We can solve this using the separate_wider_delim function:  
+
+```{r}
+my_tibble <- my_tibble %>% 
+  separate_wider_delim(mol_weight_kD, delim = " ", names = c("mol_weight_kD", "waste")) 
+formatted_table(my_tibble)
+```
+
+And we can throw away the column named waste:  
+
+```{r}
+my_tibble <- my_tibble %>% select(-waste)
+formatted_table(my_tibble)
+```
+
+```{r}
+my_tibble <- my_tibble %>%
+  mutate(
+    mol_weight_kD = str_trim(mol_weight_kD), # will trim any whitespace
+    mol_weight_kD = as.numeric(mol_weight_kD)
+  )
+formatted_table(my_tibble)
+```
+
 
 
 ---
