@@ -31,7 +31,7 @@ This file can be found [here](./R_14_data_visualization_solutions.Rmd)
 Load the [Following dataset](./files_12_data_visualization_exercises/exercise01/expression_data.csv).
 
 It shows RNA expression data with and without a stimulus.  
-Create a column chart for the `MAP kinase Expression values without a stimulus with expression levels higher than 0.5.  
+Create a column chart for the `MAP kinase Expression values` without a stimulus with expression levels higher than 0.5.  
 Annotate the axis and add a proper title.  
 Sort the expression values from low to high (the graph should contain bars with increasing height).
 
@@ -67,7 +67,7 @@ TARS2, TTC37 and ARHGEF9 have the highest expression value without a stimulus.
 
 ### Exercise 2
 
-From the previous data set, use again the gene expression within the MAP Kinase gene family.  
+From the previous data set, use again the gene expression within the `MAP Kinase gene family`.  
 Create a clustered column chart representing the expression values without stimulus and the expression values with stimulus. Make sure to add proper axis titles, a title and a legend.
 
 
@@ -115,7 +115,7 @@ p
 
 ### Exercise 4
 
-Use the same data as from exercise 3 to create a relative stacked column chart. Filter the data that contain the MAP Kinase gene family.  
+Use the same data as from exercise 3 to create a relative stacked column chart. Filter the data that contain the `MAP Kinase gene family`.  
 Create a relative stacked column chart representing the Expression Values with and without stimulus. Make sure to add proper axis titles, a title and a legend.
 
 ```{r}
@@ -132,7 +132,7 @@ p
 Use the same data as from exercise 3 to create a pie chart.   
 Create a pie chart representing the total Expression Value without stimulus per Category. Make sure to add proper axis titles, a title and a legend.
 
-Which category shows the smallest fraction of expression value - stimulus.
+Which category shows the smallest fraction of Expression value - stimulus.
 
 
 ```{r}
@@ -397,9 +397,9 @@ p <- ggplot(data = tidy_df_ex11, aes(x = `Category`, y = `Expression Value`, fil
 p
 ```
 
-
-`Motor proteins` show the highest expression levels.  
 `Signal transducing proteins` the lowest expression values.
+`Motor proteins` show the highest expression levels.  
+
 
 ---
 

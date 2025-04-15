@@ -30,7 +30,7 @@ This file can be downloaded [here](./R_10_data_analysis_exercises.Rmd)
 ### Exercise 1
 
 Import the [Mice Protein Expression ](https://www.kaggle.com/datasets/ruslankl/mice-protein-expression?resource=download) dataset in R. It contains data on the levels of protein expression of mice proteins in different mice.
-Perform the following calculations on this dataframe and display them as a table:  
+Perform the following calculations on this data frame and display them as a table:  
 
 - Calculate the minimum, maximum, average, median from the columns `CDK5_N` and `Tau_N`. Display the answers in a data frame.  
 

@@ -21,13 +21,14 @@ This file can be found [here](./R_13_data_visualization_exercises.Rmd)
 
 ### Exercise 1
 
-Load the [Food Emissions](https://www.kaggle.com/datasets/amandaroseknudsen/foodproductemissions?resource=download) dataset from Kaggle.
+Load the [Following dataset](./files_12_data_visualization_exercises/exercise01/expression_data.csv).
 
-Create a column chart for the `Total Global Average GHG Emissions per kg` per `food product`.
+It shows RNA expression data with and without a stimulus.  
+Create a column chart for the `MAP kinase Expression values` without a stimulus with expression levels higher than 0.5.  
+Annotate the axis and add a proper title.  
+Sort the expression values from low to high (the graph should contain bars with increasing height).
 
-Annotate the axis and add a proper title.
-
-What food product creates the highest Emission value?
+Which three gene names have the highest Expression Value without a stimulus?
 
 ```{r}
 #Your code here
@@ -37,7 +38,8 @@ What food product creates the highest Emission value?
 
 ### Exercise 2
 
-As the differences in the values are rather high, it is wise to use a log scale to display your data. Log scales have their advantages and are often used to display data that cover a wide range of values. Use a 2log scale to display your data.
+From the previous data set, use again the gene expression within the `MAP Kinase gene family`.  
+Create a clustered column chart representing the expression values without stimulus and the expression values with stimulus. Make sure to add proper axis titles, a title and a legend.
 
 ```{r}
 #Your code here
@@ -46,8 +48,8 @@ As the differences in the values are rather high, it is wise to use a log scale 
 
 ### Exercise 3
 
-From the previous data set, filter the data that contain oil in the name.  
-Create a clustered column chart representing the Emissions per kg from `Processing`, `Transport`, `Packaging` and `Retail`. Make sure to add proper axis titles, a title and a legend.
+Use the same data as from exercise 2 to create a stacked column chart. Filter the data that contain the MAP Kinase gene family.  
+Create a stacked column chart representing the Expression Values with and without stimulus. Make sure to add proper axis titles, a title and a legend.
 
 ```{r}
 #Your code here
@@ -55,8 +57,8 @@ Create a clustered column chart representing the Emissions per kg from `Processi
 
 ### Exercise 4
 
-Use the same data as from exercise 3 to create a stacked column chart. Filter the data that contain oil in the name.  
-Create a stacked column chart representing the Emissions per kg from `Processing`, `Transport`, `Packaging` and `Retail`. Make sure to add proper axis titles, a title and a legend.
+Use the same data as from exercise 3 to create a relative stacked column chart. Filter the data that contain the `MAP Kinase gene family`.  
+Create a relative stacked column chart representing the Expression Values with and without stimulus. Make sure to add proper axis titles, a title and a legend.
 
 ```{r}
 #Your code here
@@ -65,8 +67,11 @@ Create a stacked column chart representing the Emissions per kg from `Processing
 
 ### Exercise 5
 
-Use the same data as from exercise 3 to create a relative stacked column chart. Filter the data that contain oil in the name.  
-Create a relative stacked column chart representing the Emissions per kg from `Processing`, `Transport`, `Packaging` and `Retail`. Make sure to add proper axis titles, a title and a legend.
+Use the same data as from exercise 3 to create a pie chart.   
+Create a pie chart representing the total Expression Value without stimulus per Category. Make sure to add proper axis titles, a title and a legend.
+
+Which category shows the smallest fraction of Expression value - stimulus.
+
 
 ```{r}
 #Your code here
@@ -74,8 +79,10 @@ Create a relative stacked column chart representing the Emissions per kg from `P
 
 ### Exercise 6
 
-Use the same data as from exercise 3 to create a pie chart. Filter the data that contain oil in the name.  
-Create a pie chart representing the Emissions per kg from `Processing`, `Transport`, `Packaging` and `Retail`. Make sure to add proper axis titles, a title, data labels and a legend.
+For this exercise you will use the same data.  
+Create a box plot for `Expression value - stimulus` plotted against the `Categories`.  
+
+Which category shows the lowest median value?
 
 ```{r}
 #Your code here
@@ -83,13 +90,10 @@ Create a pie chart representing the Emissions per kg from `Processing`, `Transpo
 
 ### Exercise 7
 
-Download the [data set about](https://www.kaggle.com/datasets/kkhandekar/calories-in-food-items-per-100-grams) food calories per 100 g. 
+For this exercise you will use the same data.  
+Create a grouped box plot for `Expression value - stimulus` vs `Expression Value + stimulus`.  
 
-The data set contains units in the cells.  
-First clean the data set.  
-Create a box plot for `Energy per 100 g in KJ` plotted against the `Food Categories`.  
-
-Which two Food Categories show the highest energy per weight?
+Which category shows the lowest IQR value?
 
 ```{r}
 #Your code here
@@ -111,18 +115,13 @@ Which two chickens on which diet generated the highest weight gains?
 
 ### Exercise 9
 
-Have look at the data [here](./files_13_data_visualization_exercises/exercise09/data.csv)
-It contains data about Potassium and Sodium content (in mg/100 g) as well as calories (in kcal/100 g).  
+Have look at the data [here](./files_12_data_visualization_exercises/exercise09/data.csv)
+It contains data about Potassium and Sodium concentrations (in mmol/L) as well as body weight (in kg) for various persons.  
 
-The World Health Organization (WHO) recommends ingestion of less than 2000 mg of sodium per day and more than 3510 mg of potassium per day, resulting in a Na-to-K ratio of ≤1.0, which is believed to be optimal for preserving cardiovascular health.
-
-In addition, high caloric food is often bad for cardiovascular health.  
-
-As you can see, only the K-to-Na ratio is calculated.   
 Create a bubble chart with the Na concentration as a function of the K concentration.  
-The bubble size should be based on the calorie values.  
+The bubble size should be based on the body weight.  
 
-Which two food items would be considered most healthy food items based on the information above?  
+As you can see, there is a correlation between the sodium and potassium concentration but there is one person who can be considered an outlier. What is the name of this person?  
 
 ```{r}
 #Your code here
@@ -130,27 +129,30 @@ Which two food items would be considered most healthy food items based on the in
 
 ### Exercise 10
 
-In [this dataset](./files_13_data_visualization_exercises/exercise10/meat-production-tonnes.csv) you can find World wide meat production from 1961 to 2021 expressed in tonnes. It includes cattle, poultry, sheep/mutton, goat, pig meat, and wild game (source: https://ourworldindata.org/meat-production). 
+### Exercise 10
 
-Create a XY-scatter plot with the total production of meat (in tonnes) plotted against time for the Asian continent.  
+In [this dataset](./files_13_data_visualization_exercises/exercise10/puromycin.csv), you will find data on the velocity of an enzymatic reaction were obtained by Treloar (1974). The number of counts per minute of radioactive product from the reaction was measured as a function of substrate concentration in parts per million (ppm) and from these counts the initial rate (or velocity) of the reaction was calculated (counts/min/min). The experiment was conducted once with the enzyme treated with Puromycin, and once with the enzyme untreated.
 
-Use Scientific notation for the mass meat production.  
+Create a XY-scatter plot with the velocity plotted against the substrate concentration. 
 
+Create a XY-scatter for the experiment without puromycin and an additional XY scatter plot for both (with and without puromycin) conditions.
+
+Does puromycin act as an inhibitor or an activator for this enzyme?  
+  
 ```{r}
 #Your code here
 ```
 
 ### Exercise 11
 
-For this exercise, we will use the data set from exercise 7 again. This time, to create a `pivot table and plot` (note that there are no real pivot tables and plots in R).
+For this exercise, we will use the data set from an earlier exercise again. This time, to create a pivot table and plot. 
 
-Download the [data set about](https://www.kaggle.com/datasets/kkhandekar/calories-in-food-items-per-100-grams) food calories per 100 g. 
+Download the [data set](./files_12_data_visualization_exercises/exercise11/expression_data.csv). 
 
-The data set contains units in the cells.  
-First clean the data set.  
-Create a pivot plot for the **mean** `Energy per 100 g in KJ` plotted against the `Food Categories`.  
+Create a pivot plot for the **mean** `Expression Value` plotted against the `Categories` (both with and without stimulus).  
 
-Which two Food Categories show the highest mean energy per weight?
+What category shows the lowest expression values and what category shows the highest expression values?
+ 
  
 ```{r}
 #Your code here
