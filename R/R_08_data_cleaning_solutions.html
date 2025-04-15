@@ -597,7 +597,7 @@ formatted_table &lt;- function(df){
 <p>This file can be downloaded <a href="./R_08_data_cleaning_solutions.Rmd">here</a></p>
 <div id="exercise-1" class="section level3">
 <h3>Exercise 1</h3>
-<p><a href="./files_07_data_cleaning_exercises/exercise01/calories.xlsx">This</a>
+<p><a href="./files_07_data_cleaning_exercises/exercise01/Heart_Disease_Prediction.xlsx">This</a>
 first data set was not loaded well in Excel. Load the Excel file as a
 tibble in R. Separate the columns correctly. <em>Hint:</em> use the
 <code>separate_wider_delim</code> function from tidyverse. Consult the
@@ -1111,7 +1111,7 @@ FALSE
 </div>
 <div id="exercise-3" class="section level3">
 <h3>Exercise 3</h3>
-<p><a href="./files_07_data_cleaning_exercises/exercise03/Heart_Disease_Prediction_mod.csv">This</a>
+<p><a href="./files_07_data_cleaning_exercises/exercise03/Heart_Disease_Prediction_mod.xlsx">This</a>
 data set contains rows with duplicate data. Load the data and remove the
 duplicates from the data table.</p>
 <pre class="r"><code>file_path &lt;- &quot;./files_07_data_cleaning_exercises/exercise03/Heart_Disease_Prediction_mod.xlsx&quot;
@@ -1415,9 +1415,10 @@ should be a unique number, so duplicates should be easily found in this
 column:</p>
 <pre class="r"><code>df$index[duplicated(df$index)]</code></pre>
 <pre><code>## [1] 10  8 10  8 10 10 10</code></pre>
-<p>Yes, there seems to be duplicates of the rows with index numbers 8
-and 10. NOTE: R shows the extra duplicates here (in total there are 3
-rows with index 8 and 6 rows with index 10; see below).</p>
+<p>Yes, there seems to be duplicates of the rows with index numbers 8 (2
+extra duplicates) and 10 (5 extra duplicates).<br />
+NOTE: R shows the extra duplicates here (in total there are 3 rows with
+index 8 and 6 rows with index 10; see below).</p>
 <p>Do the rows with index numbers 8 and 10 contain the same data?</p>
 <pre class="r"><code>formatted_table(df[df$index == 8, ])</code></pre>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
@@ -2404,10 +2405,10 @@ replaces empty fields with <code>NA</code>.</p>
 </ul>
 <pre class="r"><code>paste(&quot;total elements:&quot;, nrow(df), &quot;x&quot;, ncol(df), &quot;=&quot;, nrow(df) * ncol(df))</code></pre>
 <pre><code>## [1] &quot;total elements: 55 x 9 = 495&quot;</code></pre>
-<pre class="r"><code>paste(&quot;non-empty elements:&quot;, sum(!is.na(df)))</code></pre>
-<pre><code>## [1] &quot;non-empty elements: 433&quot;</code></pre>
 <pre class="r"><code>paste(&quot;empty elements:&quot;, sum(is.na(df)))</code></pre>
 <pre><code>## [1] &quot;empty elements: 62&quot;</code></pre>
+<pre class="r"><code>paste(&quot;non-empty elements:&quot;, sum(!is.na(df)))</code></pre>
+<pre><code>## [1] &quot;non-empty elements: 433&quot;</code></pre>
 </div>
 <div id="exercise-5" class="section level3">
 <h3>Exercise 5</h3>
