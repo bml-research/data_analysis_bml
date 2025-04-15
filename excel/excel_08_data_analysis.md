@@ -114,6 +114,16 @@ So to summarize:
 
 This is the standard behavior of Excel but some functions in Excel are array functions. And they behave a bit different.
 
+## Named ranges
+
+When you separate the analysis from the data, selecting ranges will be quite cumbersome. Either you need to click another worksheet first and then create the selection or you need to type a lot (the name of the worksheet plus the range).
+
+>Note that you can easily create a selection of a whole column by clicking the first cell. Then hit `Ctrl` + `Shift` + `Downarrow`. 
+
+Instead of typing or clicking a lot you can assign variable names to selections and store them in memory. See [this link](https://support.microsoft.com/en-us/office/create-a-named-range-from-selected-cells-in-an-excel-worksheet-fd8905ed-1130-4cca-9bb0-ad02b7e594fd). Once you assigned a variable name for a range, you can simply type the (short) variable name instead of clicking a lot (or typing a lot). On the `Formulas` tab, you can click the Name Manager to get an overview of all the assigned selections and also rename them.
+
+>When you import csv files using Power Query, Excel will automatically assign a selection name for the whole table. You can rename this selection under Formulas > Name Manager.
+
 ## Array formulas
 
 Excel now has the capability of array formulas. A single array formula can perform multiple calculations at once.
