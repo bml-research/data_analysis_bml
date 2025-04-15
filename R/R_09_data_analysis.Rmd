@@ -42,7 +42,7 @@ At last, we will do some basic calculations. Note that plotting data will be the
 ## Loading a dataset
 
 As an example data set, we will be using the same data set as used in the Excel section:
-namely, [Dementia Patient Health,Prescriptions ML Dataset ](https://www.kaggle.com/datasets/kaggler2412/dementia-patient-health-and-prescriptions-dataset)
+namely, the Dementia Patient Health,Prescriptions ML Dataset.
 
 ```{r}
 file_path <- "./files_09_data_analysis/file01_dementia_patients_health_data.csv"
