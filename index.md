@@ -3,7 +3,7 @@
 
 # Data Analysis BML
 
-## Course Data Analysis and Visualisation
+## Course Data Analysis and Visualization
 
 ---
 
@@ -27,8 +27,7 @@ In conclusion, data analysis and visualization are critical tools in the modern 
 
 In this module, you will learn to distinguish and analyze different types of data. You will also learn to visualize data in an attractive way for reports. The focus will be on using the spreadsheet program Microsoft Excel and the programming language R (using the Tidyverse framework). The assignments can also be completed with Python, but there will be no explanation of Python on this website.
 
-R and Python are currently the two most used programming languages in the field. R is used to gain some familiarity with the possibilities of data analysis with R, but not to teach you all the ins and outs of programming. The assignments that are offered can be completed with Excel, R, or Python. You can choose which software you want to use to complete the assignment.
-
+R and Python are currently the two most used programming languages in the field. R is used to gain some familiarity with the possibilities of data analysis with R, but not to teach you all the ins and outs of programming. The assignments that are offered should be completed with Excel and R. 
 This module will conclude with an assignment that you will complete independently. 
 
 ## CureQ
@@ -37,9 +36,10 @@ This module is part of the [CureQ project](https://cureq.nl/). CureQ is a consor
 
 ## Learning Outcomes
 
-- The student analyzes different types of data in Excel or R using various functions;
-- The student visualizes different types of data in Excel or R using various plot types;
-- The student connects the correct conclusions to the analyses and visualizations.
+- You can explain the fundamental concepts of data, including data types, data structures, and the importance of data quality, and you can apply these concepts in the context of both Excel and R.  
+- You can import data from various sources (such as CSV, TXT, Excel files) into both Excel and R, and you are able to select the appropriate methods and functions for different data formats and structures. You can clean and prepare data for analysis in both Excel and R by applying techniques for identifying and handling missing values, outliers, inconsistencies, and duplicates.  
+- You can apply and interpret various data analysis functions in both Excel and R, including determining minimum and maximum values, calculating percentiles, selecting specific data based on criteria, applying conditional formatting to visually identify patterns, and sorting data to gain insights.  
+- You can create effective data visualizations in both Excel and R (such as bar charts, line charts, pie charts, and box plots) to communicate patterns, trends, and relationships in data, and you can customize the visualizations for a clear and purpose-driven presentation. 
 
 ## Contents
 
