@@ -18,6 +18,8 @@ Let's start with loading the tidyverse library:
 library(tidyverse)
 ```
 
+Create a function to create better tibble output for HTML:
+
 ```{r}
 library(kableExtra)
 formatted_table <- function(df){
@@ -26,7 +28,7 @@ formatted_table <- function(df){
 }
 ```
 
-Whether you use Excel, R or Python, data cleaning will often be required for the data.
+Whether you use Excel or R, data cleaning will often be required for the data.
 So here are some examples of data cleaning:
 
 ## Remove rows with missing values
@@ -116,7 +118,7 @@ chromosome <- c(12, 16, 10, 9, "X")
 mol_weight_kD <- c(52.2, 56.4, "174.2", 122.9, 71.1)
 
 my_tibble <- tibble(gene, chromosome, mol_weight_kD)
-my_tibble
+formatted_table(my_tibble)
 ```
 
 As a result of a single string value the whole column mol_weight_kD is coerced to characters instead of doubles (stored numbers as decimals). You can spot this quite easily, since the numbers are now outlined on the left of the column (numbers are outlined on the right of the column). Compare with the previous table to see the difference.
@@ -124,16 +126,16 @@ You can change the type of data in the column using the `mutate` function:
 
 ```{r}
 my_tibble <- my_tibble %>% mutate(mol_weight_kD = as.numeric(mol_weight_kD))
-my_tibble
+formatted_table(my_tibble)
 ```
 
 NOTE: you cannot apply the same strategy to the column chromosome (you cannot convert 'X' to a number):
 
 ```{r}
 my_tibble <- my_tibble %>% mutate(chromosome = as.numeric(chromosome))
-my_tibble
+formatted_table(my_tibble)
 ```
-The numbers in column chromosome have been converted to the data type 'double'. However, as a result the field(s) with non-numeric types of data are removed from the column ('X' has been replaced by `NA`).
+The numbers in column chromosome have been converted to the data type `double`. However, as a result the field(s) with non-numeric types of data are removed from the column ('X' has been replaced by `NA`).
 
 
 ## Deal with missing data from csv files
@@ -159,7 +161,7 @@ formatted_table(my_df)
 ```
 All data that has the value / will has been replaced with `NA`.
 
-If multiple types of "empty" data are present in your dataset:
+If multiple types of "empty" data are present in your data set:
 
 ```{r}
 my_path = './files_06_data_cleaning/file02_genes.csv'
@@ -196,7 +198,7 @@ Like for csv files, we can specify the missing values:
 
 ```{r}
 my_path = './files_06_data_cleaning/file03_genes.xlsx'
-my_df <- read_excel(my_path, na=  c("/", "-"))
+my_df <- read_excel(my_path, na=  c("/", "no data"))
 formatted_table(my_df)
 ```
 
@@ -275,7 +277,7 @@ formatted_table(my_tibble)
 
 ### Replacing data in a whole column:
 
-There seems to be a mistake in the data All fields in the column chromosome containing the value 14 should be replaced by the value 12. If we want to make these changes in the column chromosome, we can do that as follows:
+There seems to be a mistake in the data. All fields in the column chromosome containing the value 14 should be replaced by the value 12. If we want to make these changes in the column chromosome, we can do that as follows:
 
 ```{r}
 my_tibble <- my_tibble %>% mutate(chromosome = str_replace(chromosome, "14", "12"))
@@ -296,7 +298,7 @@ my_tibble <- tibble(gene, chromosome, mol_weight_kD)
 formatted_table(my_tibble)
 ```
 
-Now we change all occurrences for `-` with `NA` using the `replace` function:
+Now we change all occurrences for `no data` with `NA` using the `replace` function:
 
 ```{r}
 my_tibble <- my_tibble %>% replace(. == "no data", NA)
@@ -306,7 +308,7 @@ formatted_table(my_tibble)
 
 
 
-The . is used as a placeholder for every item in the tibble.
+In the example above, the `.` (dot) is used as a placeholder for every item in the tibble.
 
 
 ### Making data tidy
@@ -335,7 +337,7 @@ my_tibble_tidy <- my_tibble %>%
 formatted_table(my_tibble_tidy)
 ```
 
-And we can convert the data frame to the longer format as follows:
+And we can convert the data frame to the wider format as follows:
 
 ```{r}
 my_tibble_wider <- my_tibble_tidy %>% 
@@ -343,7 +345,7 @@ my_tibble_wider <- my_tibble_tidy %>%
 formatted_table(my_tibble_wider)
 ```
 
-You may find the function gather and spread in some examples (on the internet or this website). This function is depricated in favor of pivot_longer and pivot_wider. See [this link](https://tidyr.tidyverse.org/reference/gather.html).
+>You may find the function gather and spread in some examples (on the internet or this website). This function is deprecated in favor of pivot_longer and pivot_wider. See [this link](https://tidyr.tidyverse.org/reference/gather.html).
 
 
 ### Transpose data
@@ -358,7 +360,7 @@ record_4 <- c("ABL1", "9", "122.9")
 record_5 <- c("FMR1", "X", "71.1")
 
 my_tibble <- tibble(record_1, record_2, record_3, record_4, record_5)
-my_tibble
+formatted_table(my_tibble)
 ```
 
 In the example above records (observations) are in columns but they should be in rows. The features (variables) should be in columns.
@@ -377,6 +379,8 @@ Convert it to a tibble:
 my_tibble_transposed <- tibble(data.frame(trans_matrix))
 formatted_table(my_tibble_transposed)
 ```
+
+And then add the column names:
 
 ```{r}
 colnames(my_tibble_transposed) <- c("Gene", "Chromosome", "Mol_weight_KD")
@@ -403,7 +407,7 @@ my_tibble <- tibble(gene, chromosome, mol_weight_kD)
 formatted_table(my_tibble)
 ```
 
-Of course, the column will be of character type. We can solve this using the separate_wider_delim function:  
+Of course, the column will be of character type. We can solve this using the `separate_wider_delim` function:  
 
 ```{r}
 my_tibble <- my_tibble %>% 
@@ -417,6 +421,8 @@ And we can throw away the column named waste:
 my_tibble <- my_tibble %>% select(-waste)
 formatted_table(my_tibble)
 ```
+
+And trim any remaining white space:
 
 ```{r}
 my_tibble <- my_tibble %>%
