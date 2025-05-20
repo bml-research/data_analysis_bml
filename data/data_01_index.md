@@ -114,7 +114,7 @@ Scientist often organize data in a table such as:
 |DNAJB4            |11080            |1            |337                           |
 
 
-The text "Gene Name", "Gene ID", "Chromosome #" and "Protein length" are all found on the first line of the table. This is the table header. All of the remaining lines are rows. `Rows` are also called `records`, `observations` or trials which corresponds to the statistical unit of the dataset. Since the table above is about human genes, each row represents a different gene. 
+The text "Gene Name", "Gene ID", "Chromosome #" and "Protein length" are all found on the first line of the table. This is the table header. All of the remaining lines are rows. `Rows` are also called `records`, `observations` or `trials` which corresponds to the statistical unit of the dataset. Since the table above is about human genes, each row represents a different gene. 
 
 Columns:
 
@@ -209,17 +209,17 @@ In data science, several data types can be distinguished.
 
 You can find four data types in Microsoft Excel.
 
-- Number data. Numbers like whole numbers, decimal numbers, dates, percentages and times.
-- Text data. Characters such as alphabetic, numeric, and special symbols are included in this type of data. The main distinction between text and number data is that while text cannot be calculated on, numerical data can.
-- Logical data. These are just the booleans TRUE and FALSE.
-- Error data. Excel uses several error data types such as #NAME?, #DIV/0, #REF!, #NUM!, #N/A, #VALUE!. For example, #DIV/0 will arise if you try dividing a number by zero. #N/A represents an empty value if data is missing during a data import action.
+- **Numeric data**. Numbers like whole numbers, decimal numbers, dates, percentages and times.
+- **Text data (character data)**. Characters such as alphabetic, numeric, and special symbols are included in this type of data. The main distinction between text and numeric data is that while text cannot be calculated on, numerical data can.
+- **Logical data (boolean)**. These are just the booleans TRUE and FALSE.
+- **Error data**. Excel uses several error data types such as #NAME?, #DIV/0, #REF!, #NUM!, #N/A, #VALUE!. For example, #DIV/0 will arise if you try dividing a number by zero. #N/A represents an empty value if data is missing during a data import action.
 
 #### R
 
-In R, there are 6 basic data types. Some of them explained below (rest is beyond the scope of this course.)
-- logical. The Boolean values True and False.  
-- numeric. All numbers, whole and decimal.  
-- character. Text strings like "a" and "hello".
+In R, there are 6 basic data types. Some of them explained below (rest is beyond the scope of this course).
+- **Logical**. The Boolean values True and False.  
+- **Numeric**. All numbers, whole and decimal.  
+- **Character**. Text strings like "a" and "hello".
 
 
 The Excel and R section contain more about the particular data types. 
