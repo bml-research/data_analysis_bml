@@ -19,15 +19,15 @@ Though not as powerful as R or Python, Excel is a user friendly tool for data an
 ## Data visualization charts in Excel
 
 Excel offers a wide variety of chart types, which can be customized to suit your data and presentation needs. Some of the most commonly used chart types in Excel include:
-- Column charts: Used to compare values across different categories or to show changes over time.
-- Line charts: Used to show trends over time or to compare trends between multiple data sets.
-- Pie charts: Used to show how different categories contribute to a whole.
-- Bar charts: Similar to column charts, but with horizontal bars instead of vertical columns.
-- Scatter charts: Used to show the relationship between two variables.
-- Area charts: Similar to line charts, but with the area between the line and the x-axis filled in.
-- Radar charts: Used to compare multiple data sets across different categories.
-- Surface charts: Used to show trends in three-dimensional data.
-- Bubble charts: Similar to scatter charts, but with bubbles of different sizes to represent the data points.
+- **Column charts**: Used to compare values across different categories or to show changes over time.
+- **Line charts**: Used to show trends over time or to compare trends between multiple data sets.
+- **Pie charts**: Used to show how different categories contribute to a whole.
+- **Bar charts**: Similar to column charts, but with horizontal bars instead of vertical columns.
+- **Scatter charts**: Used to show the relationship between two variables.
+- **Area charts**: Similar to line charts, but with the area between the line and the x-axis filled in.
+- **Radar charts**: Used to compare multiple data sets across different categories.
+- **Surface charts**: Used to show trends in three-dimensional data.
+- **Bubble charts**: Similar to scatter charts, but with bubbles of different sizes to represent the data points.
 
 These are just a few of the chart types available in Excel. With its robust set of charting features, Excel offers a wide range of options for visualizing your data and communicating your insights to others.
 
@@ -35,11 +35,11 @@ These are just a few of the chart types available in Excel. With its robust set 
 ## What makes a good chart?
 
 A good chart is one that effectively communicates your data in a clear and concise manner. Here are some key characteristics of a good chart:
-- Accuracy: The data in the chart should be accurate and clearly labeled. Any sources of error or uncertainty should be clearly indicated.
-- Clarity: The chart should be easy to read and understand. The axes and labels should be clearly labeled (with units), and any legends or annotations should be concise and to the point.
-- Simplicity: The chart should be simple and straightforward, avoiding unnecessary clutter or complexity (such as colored bars when they are not informative). The message of the chart should be clear and easily - understandable at a glance.
-- Relevance: The chart should be relevant to the audience and the purpose of the presentation. It should highlight the key insights or trends in the data, and should be designed with the audience's needs and interests in mind.
-- Aesthetics: The chart should be visually appealing and professional-looking, with clear, readable fonts and colors that complement the data being presented.
+- **Accuracy**: The data in the chart should be accurate and clearly labeled. Any sources of error or uncertainty should be clearly indicated.
+- **Clarity**: The chart should be easy to read and understand. The axes and labels should be clearly labeled (with units), and any legends or annotations should be concise and to the point.
+- **Simplicity**: The chart should be simple and straightforward, avoiding unnecessary clutter or complexity (such as colored bars when they are not informative). The message of the chart should be clear and easily - understandable at a glance.
+- **Relevance**: The chart should be relevant to the audience and the purpose of the presentation. It should highlight the key insights or trends in the data, and should be designed with the audience's needs and interests in mind.
+- **Aesthetics**: The chart should be visually appealing and professional-looking, with clear, readable fonts and colors that complement the data being presented.
 
 By focusing on these key characteristics, you can create charts that effectively communicate your data and insights, and help you to make better-informed decisions based on your data.
 
@@ -194,7 +194,7 @@ Let's have a look at the following dataset:
 ![Box plot data](./pics_11_data_visualization/fig14.png)
 *<sub>Figure 14: Data about life span in different animal species.</sub>*
 
-And compare the maximum life span between different orders in mammals.
+And now we can compare the maximum life span between different orders in mammals.
 
 First we filter our data for mammals.
 For the categories, we will use order (such as afrosoricida that is an order of placental mammals. Members of this order are called afrosoricids, and include golden moles, otter shrews, and tenrecs). 
@@ -310,9 +310,10 @@ Suppose you have collected data on the protein concentration for different analy
 
 To display this data in a bubble chart, you could use the following format:
 
-X-axis: Analysis time (minutes)
-Y-axis: Protein concentration (mg/mL)
-Bubble size: Represents the number of assays per day in the laboratory.
+- X-axis: Analysis time (minutes)
+- Y-axis: Protein concentration (mg/mL)
+- Bubble size: Represents the number of assays per day in the laboratory.  
+
 By using a bubble chart to display this data, you can quickly see patterns and trends among the different types of protein quantification methods, the required analysis time as well as their number of analysis per day.
 
 ![Protein quantification methods](./pics_11_data_visualization/fig26.png)
@@ -325,9 +326,9 @@ Below is a bubble chart of this dataset:
 
 The Chart includes the following:
 
-X-axis: Analysis time (minutes)
-Y-axis: Protein concentration (mg/mL)
-Bubble size: Represents the number of assays per day in the laboratory.
+- X-axis: Analysis time (minutes)
+- Y-axis: Protein concentration (mg/mL)
+- Bubble size: Represents the number of assays per day in the laboratory.
 
 An extra dimension could be included by using colors. For example you could add categorical data (ordinal data in this case) such as sensitivity to chemical interferences like sugars and detergents, which Lowry and Bradford are very susceptible to (in red), but the other methods are less so (in green).
 
@@ -343,17 +344,17 @@ Here is a recap from the dataset used:.
 ![Dementia dataset](./pics_11_data_visualization/fig28.png)
 *<sub>Figure 28: Dementia Patient Health,Prescriptions ML Dataset.</sub>*
 
-The corresponding pivot table was as follows:
+Suppose we want to investigate if there are differences in the average heart rate between activities (mild, moderate, sedentary). The corresponding pivot table is as follows:
 
 ![Dementia dataset pivot table](./pics_11_data_visualization/fig29.png)
-*<sub>Figure 29: Pivot table showing the average heart rate and diabetic status for different Physical Activity categories.</sub>*
+*<sub>Figure 29: Pivot table showing the average heart rate for different Physical Activity categories.</sub>*
 
 So first we choose pivot chart from the ribbon (insert>PivotChart) and select the data source (all the data) as well as the sheet for the output data:
 
 ![Pivot chart](./pics_11_data_visualization/fig30.png)
 *<sub>Figure 30: Data source and the output sheet selected.</sub>*
 
-Next, we select the correct fields and the calculations on the data (we use `count` for the diabetic and `average` for the heart rate in this example).
+Next, we select the correct fields and the calculations on the data (we use `average` for the heart rate in this example).
 
 ![Pivot chart](./pics_11_data_visualization/fig31.png)
 *<sub>Figure 31: Select the correct fields and calculation types.</sub>*
@@ -361,20 +362,26 @@ Next, we select the correct fields and the calculations on the data (we use `cou
 This results in the following chart. 
 
 ![Pivot chart](./pics_11_data_visualization/fig32.png)
-*<sub>Figure 32: Pivot chart. Counts for diabetics and Average of Heart rate from different Physical activity categories.</sub>*
+*<sub>Figure 32: Pivot chart. Average of Heart rate from different Physical activity categories.</sub>*
 
 Note that you can dynamically select or unselect specific categories. We can for example deselect `Moderate Activity`:
 
 ![Pivot chart](./pics_11_data_visualization/fig33.png)
-*<sub>Figure 33: Pivot chart. Counts for diabetics and Average of Heart rate from different Physical activity categories. Moderate Activity deselected.</sub>*
+*<sub>Figure 33: Pivot chart. Average of Heart rate from different Physical activity categories. Moderate Activity deselected.</sub>*
 
 
 The result of the pivot chart (Moderate Activity deselected):
 
 ![Pivot chart](./pics_11_data_visualization/fig34.png)
-*<sub>Figure 34: Pivot chart. Counts for diabetics and Average of Heart rate from different Physical activity categories. Moderate Activity deselected.</sub>*
+*<sub>Figure 34: Pivot chart. Average of Heart rate from different Physical activity categories. Moderate Activity deselected.</sub>*
 
 >Note that the y-axis does not contain proper labels with quantities and units. While this is OK for investigative analysis, publication quality charts should always have proper y-axis labels with quantities and units specified.
+
+So we select moderate activity again and add a proper graph title and axis labels:
+
+![Pivot chart](./pics_11_data_visualization/fig35.png)
+*<sub>Figure 35: Pivot chart. Average of Heart rate from different Physical activity categories. Chart title and axis labels added.</sub>*
+
 
 ---
 
