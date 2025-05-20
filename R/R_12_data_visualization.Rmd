@@ -9,7 +9,7 @@ This file can be found [here](./R_12_data_visualization.Rmd).
 
 # R: Data Visualization
 
-## Data analysis methods
+## Data visualization methods
 
 Here we will focus on data visualization.
 
@@ -19,17 +19,22 @@ Here we will focus on data visualization.
 
 Base R plotting and ggplot2 are two popular plotting systems in R, but they have some key differences in terms of syntax, functionality, and philosophy.
 
-**Syntax:**
-*Base R plotting:* The base R plotting system uses a procedural approach where plots are built step-by-step using functions like `plot()`, `lines()`, `points()`, etc. The syntax involves specifying the data and then adding elements to the plot using different functions.
-ggplot2: ggplot2 follows a declarative approach inspired by the grammar of graphics. It uses the `ggplot()` function to initialize a plot object and then adds layers of graphical elements using the + operator. The syntax is more concise and uses a grammar that includes mappings, aesthetics, and geometries.
+**Syntax:**  
+*Base R plotting:*  
+The base R plotting system uses a procedural approach where plots are built step-by-step using functions like `plot()`, `lines()`, `points()`, etc. The syntax involves specifying the data and then adding elements to the plot using different functions.
+ggplot2: ggplot2 follows a declarative approach inspired by the grammar of graphics. It uses the `ggplot()` function to initialize a plot object and then adds layers of graphical elements using the + operator. The syntax is more concise and uses a grammar that includes mappings, aesthetics, and geometries.  
 
-**Functionality:**
-*Base R plotting:* Base R offers a wide range of plotting functions with basic functionality to create various types of plots. It provides flexibility to customize plots by directly modifying plot parameters, such as axes, labels, colors, etc. However, it requires more manual adjustments to achieve complex or customized plots.
-ggplot2: ggplot2 is a plotting system that offers a rich set of high-level plotting functions. It provides a layered approach, allowing users to easily add and modify plot elements. ggplot2 has a consistent API, making it easier to create complex plots with less code. It also includes built-in support for facets, themes, and statistical transformations.
+**Functionality**:  
+*Base R plotting*:  
+Base R offers a wide range of plotting functions with basic functionality to create various types of plots. It provides flexibility to customize plots by directly modifying plot parameters, such as axes, labels, colors, etc. However, it requires more manual adjustments to achieve complex or customized plots.
+*ggplot2*:  
+ggplot2 is a plotting system that offers a rich set of high-level plotting functions. It provides a layered approach, allowing users to easily add and modify plot elements. ggplot2 has a consistent API, making it easier to create complex plots with less code. It also includes built-in support for facets, themes, and statistical transformations.
 
-**Philosophy:**
-*Base R plotting:* The base R plotting system has been part of R since its early versions and follows a traditional approach. It focuses on providing a set of core plotting functions and allows users to have fine-grained control over plot details. It can be useful for users who prefer a more low-level and flexible plotting system.
-ggplot2: ggplot2, developed by Hadley Wickham, introduces a different philosophy where the emphasis is on the grammar of graphics. It aims to provide a coherent and consistent framework for creating plots by combining independent graphical components. ggplot2 promotes the idea of "layering" to create complex plots and encourages a more structured and reproducible workflow.
+**Philosophy**:  
+*Base R plotting*:  
+The base R plotting system has been part of R since its early versions and follows a traditional approach. It focuses on providing a set of core plotting functions and allows users to have fine-grained control over plot details. It can be useful for users who prefer a more low-level and flexible plotting system.
+*ggplot2*:  
+ggplot2, developed by Hadley Wickham, introduces a different philosophy where the emphasis is on the grammar of graphics. It aims to provide a coherent and consistent framework for creating plots by combining independent graphical components. ggplot2 promotes the idea of "layering" to create complex plots and encourages a more structured and reproducible workflow.
 Overall, ggplot2 provides a more elegant and expressive way to create publication-quality plots, particularly for exploratory data analysis and data visualization tasks. It simplifies the process of creating complex plots and offers more options for customization compared to the base R plotting system.
 
 
@@ -37,21 +42,21 @@ Overall, ggplot2 provides a more elegant and expressive way to create publicatio
 
 The grammar of ggplot2 is based on the Grammar of Graphics, a framework for creating visualizations. It revolves around the idea that every plot can be broken down into a set of fundamental components. Here are the main components of ggplot2:
 
-1. Data: The first step in creating a plot with ggplot2 is to specify the data set you want to visualize. This is typically done by passing a data frame to the `ggplot()` function.
+1. **Data**: The first step in creating a plot with ggplot2 is to specify the data set you want to visualize. This is typically done by passing a data frame to the `ggplot()` function.
 
-2. Aesthetic mappings: Aesthetics define how variables in the data set are mapped to visual properties of the plot, such as position, size, color, or shape. You define aesthetics using the `aes()` function and associate variables in your data set with specific plot elements.
+2. **Aesthetic mappings**: Aesthetics define how variables in the data set are mapped to visual properties of the plot, such as position, size, color, or shape. You define aesthetics using the `aes()` function and associate variables in your data set with specific plot elements.
 
-3. Geometric objects (geoms): Geoms are the visual representations of data points on a plot, such as points, lines, bars, or polygons. Geoms are added to the plot using the `geom_*()` functions, where * represents the type of geometric object you want to use (*e.g.* bars, line, etc.).
+3. **Geometric objects (geoms)**: Geoms are the visual representations of data points on a plot, such as points, lines, bars, or polygons. Geoms are added to the plot using the `geom_*()` functions, where * represents the type of geometric object you want to use (*e.g.* bars, line, etc.).
 
-4. Scales: Scales control how data values are mapped to visual properties. For example, you can use scales to adjust the range and labels of axes, apply transformations, or set color palettes. ggplot2 provides various scale functions like `scale_x_continuous()`, `scale_color_manual()`, etc.
+4. **Scales**: Scales control how data values are mapped to visual properties. For example, you can use scales to adjust the range and labels of axes, apply transformations, or set color palettes. ggplot2 provides various scale functions like `scale_x_continuous()`, `scale_color_manual()`, etc.
 
-5. Facets: Faceting allows you to create multiple small plots, each showing a subset of the data based on one or more categorical variables. Facets are added using the `facet_*()` functions, such as `facet_grid()` or `facet_wrap()`.
+5. **Facets**: Faceting allows you to create multiple small plots, each showing a subset of the data based on one or more categorical variables. Facets are added using the `facet_*()` functions, such as `facet_grid()` or `facet_wrap()`.
 
-6. Statistical transformations: ggplot2 provides a range of statistical transformations that summarize data before plotting. These transformations can be used to compute summaries like means, medians, or counts. Statistical transformations are applied using the `stat_*()` functions, such as `stat_summary()` or `stat_smooth()`.
+6. **Statistical transformations**: ggplot2 provides a range of statistical transformations that summarize data before plotting. These transformations can be used to compute summaries like means, medians, or counts. Statistical transformations are applied using the `stat_*()` functions, such as `stat_summary()` or `stat_smooth()`.
 
-7. Coordinates: The coordinate system defines the space in which the plot is created. The default coordinate system in ggplot2 is Cartesian (x-y), but there are other coordinate systems available, such as polar coordinates. Coordinate systems are modified using the `coord_*()` functions.
+7. **Coordinates**: The coordinate system defines the space in which the plot is created. The default coordinate system in ggplot2 is Cartesian (x-y), but there are other coordinate systems available, such as polar coordinates. Coordinate systems are modified using the `coord_*()` functions.
 
-8. Themes: Themes control the overall appearance of the plot, including the background, gridlines, fonts, and margins. ggplot2 provides several built-in themes, but you can also customize the appearance by modifying theme elements with the `theme()` function.
+8. **Themes**: Themes control the overall appearance of the plot, including the background, gridlines, fonts, and margins. ggplot2 provides several built-in themes, but you can also customize the appearance by modifying theme elements with the `theme()` function.
 
 These are the core components of the ggplot2 grammar. By combining and modifying these components, you can create a wide variety of visualizations. Understanding and manipulating each component allows you to tailor your plots to effectively communicate your data.
 
@@ -68,6 +73,8 @@ Let's start with loading the tidyverse library:
 ```{r}
 library(tidyverse)
 ```
+
+Function for better printing of tibbles in HTML:  
 
 ```{r}
 library(kableExtra)
@@ -105,23 +112,33 @@ summ_data <- feline_df %>%
   arrange(`Common name`) %>%
   select(Family, `Common name`, `Birth weight (g)`, `Adult weight (g)`)
 
-# Unfortunatly, this results in a data frame with only characters. The next line is to convert the last three columns to numbers
-summ_data[, 3:4] <- lapply(summ_data[, 3:4], function(x) as.numeric(as.character(x)))
-summ_data <- na.omit(summ_data)
-formatted_table(head(summ_data))
 
+# Unfortunatly, this results in a data frame with only characters. The next lines are used to convert the last two columns to numbers
+
+summ_data <- summ_data  %>% 
+  mutate(`Birth weight (g)` = as.numeric(`Birth weight (g)`)) %>% 
+  mutate(`Adult weight (g)` = as.numeric(`Adult weight (g)`))
+formatted_table(summ_data)
+
+```
+To drop the `NA` values we will use the `drop_na` function:
+
+```{r}
+summ_data <- summ_data %>%
+  drop_na()
+formatted_table(summ_data)
 ```
 
 Only the Felidae family is selected and sorted on the common name.
 
 ## Bar Chart base R
 
-Like the example in Excel, first a column chart will be created with the same data. The example below will show you the code to make a column chart in base R. To disregard `NA` values, the `na.rm` argument is set to `TRUE`:
+Like the example in Excel, first a column chart will be created with the same data. The example below will show you the code to make a column chart in base R:
 
 ```{r}
 barplot(summ_data$`Birth weight (g)`, 
         ylab = "Birth weight (g)", 
-        ylim = c(0, max(summ_data$`Birth weight (g)` + 10)), 
+        ylim = c(0, max(summ_data$`Birth weight (g)` + 100)), 
         names = summ_data$`Common name`, 
         las = 2,
         cex.names = 0.5,
@@ -267,7 +284,7 @@ big_cats <- c("Lion", "Tiger", "Jaguar", "Cougar", "Leopard", "Cheetah", "Snow l
 df_big_cats <- df %>% filter(`Common name`%in% big_cats)
 formatted_table(df_big_cats)
 ```
-
+And then we can create the Pie chart:
 
 ```{r}
 p <- ggplot(df_big_cats, aes(x = "", y = `Adult weight (g)`, fill = `Common name`)) +
@@ -278,7 +295,7 @@ p <- ggplot(df_big_cats, aes(x = "", y = `Adult weight (g)`, fill = `Common name
 p
 ```
 
-Again, it is clear that the adult lion;s weight contributes the most to the total weight of all cat species.
+Again, it is clear that the adult lion's weight contributes the most to the total weight of all cat species.
 Adding labels with % in the Pie is a bit of a hassle and beyond the scope of this course (as we want to use ggplot2 as much as possible out-of-the-box).
 Nevertheless, you can find multiple blog posts related to this topic on the internet.
 The same holds for pie of pie charts. This chart type is not supported out of the box in ggplot2 though it can be accomplished with (quite a lot) of effort.
@@ -342,8 +359,10 @@ And now we can build the radar plot.
 We first need to install a ggplot2 extension:
 
 Run the following code to install the module:
-`install.packages("remotes")`
-`remotes::install_github("ricardo-bion/ggradar")`
+```
+install.packages("remotes")
+remotes::install_github("ricardo-bion/ggradar")
+```
 
 Now load the module:
 
@@ -459,7 +478,7 @@ p
 ## Line plots
 
 
-As an example, we take the same (fictive data) about the OB/OB and DB/DB mice (compared to the wildtype) and the gain of weight in these mice during a period of time as was used in the Excel section.
+As an example, we take the same (fictive data) about the OB/OB and DB/DB mice (compared to the wild type) and the gain of weight in these mice during a period of time as was used in the Excel section.
 The data is as follows:
 
 
@@ -477,14 +496,14 @@ We first need to make the data tidy:
 
 ```{r}
 tidy_mouse_weight <- mouse_weight %>%
-  pivot_longer(c(`Wild-type`, `OB/OB`, `DB/DB`), names_to = "Mouse strain", values_to = "Weight (kg)") 
+  pivot_longer(c(`Wild-type`, `OB/OB`, `DB/DB`), names_to = "Mouse strain", values_to = "Weight (g)") 
 formatted_table(head(tidy_mouse_weight))
 ```
 
 So now we can create a line plot:
 
 ```{r}
-p <- ggplot(data = tidy_mouse_weight, aes(x = Date, y = `Weight (kg)`, group = `Mouse strain`)) +
+p <- ggplot(data = tidy_mouse_weight, aes(x = Date, y = `Weight (g)`, group = `Mouse strain`)) +
   geom_line() +
   labs(title="Weights of different genotypes of mice")
 p
@@ -495,7 +514,7 @@ As you can see, all lines in the group do have the same type and color.
 We can either discriminate by type/shape:
 
 ```{r}
-p <- ggplot(data= tidy_mouse_weight, aes(x = Date, y = `Weight (kg)`, group = `Mouse strain`)) +
+p <- ggplot(data= tidy_mouse_weight, aes(x = Date, y = `Weight (g)`, group = `Mouse strain`)) +
   geom_line(aes(linetype = `Mouse strain`)) +
   labs(title="Weights of different genotypes of mice")
 p
@@ -504,7 +523,7 @@ p
 Or by color:
 
 ```{r}
-p <- ggplot(data= tidy_mouse_weight, aes(x = Date, y = `Weight (kg)`, group = `Mouse strain`)) +
+p <- ggplot(data= tidy_mouse_weight, aes(x = Date, y = `Weight (g)`, group = `Mouse strain`)) +
   geom_line(aes(color = `Mouse strain`)) +
   labs(title="Weights of different genotypes of mice")
 p
@@ -513,10 +532,10 @@ p
 
 ## XY-scatter plots
 
-As mentioned in the Excel section, XY-scatterplots differ from line plots.
+As mentioned in the Excel section, XY-scatter plots differ from line plots.
 In XY-scatter plots, the data on the x-axis are separated according to their value instead as being used as labels.
 
-XY-scatter plots are often used to demonstrate a correlation. As for the Excel section, we will use the ChickWeight dataset from R to create a scatter plot using ggplot2.
+XY-scatter plots are often used to demonstrate a correlation. As for the Excel section, we will use the ChickWeight data set from R to create a scatter plot using ggplot2.
 First we take only the data from Diet 1:
 
 ```{r}
@@ -549,18 +568,19 @@ Like Excel, ggplot2 also supports bubble charts:
 
 If you have data that is most suitable to present in a XY-grid but you have an extra dimension, bubble charts might be a good chart type.
 
-Bubble charts are a great way to display data that includes three variables. In the context of a laboratory, here is an example of a dataset that could be presented in a bubble chart:
+Bubble charts are a great way to display data that includes three variables. In the context of a laboratory, here is an example of a data set that could be presented in a bubble chart:
 
 Suppose you have collected data on the protein concentration for different analysis methods. In addition, you have also measured the analysis time for each method and the analysis volume (number of assays per day).
 
 To display this data in a bubble chart, you could use the following format:
 
-X-axis: Analysis time (minutes)
-Y-axis: Protein concentration (mg/mL)
-Bubble size: Represents the number of assays per day in the laboratory.
-By using a bubble chart to display this data, you can quickly see patterns and trends among the different types of protein quantification methods, the required analysis time as well as their number of analysis per day.
+X-axis: Analysis time (minutes)  
+Y-axis: Protein concentration (mg/mL)  
+Bubble size: Represents the number of assays per day in the laboratory.  
 
-First we will load the same data:
+By using a bubble chart to display this data, you can quickly see patterns and trends among the different types of protein quantification methods, the required analysis time as well as their number of analysis per day.  
+
+First we will load the same data:  
 
 
 ```{r}
@@ -571,7 +591,7 @@ formatted_table(head(bubble_data))
 ```
 
 
-And now we can create a bubble chart:
+And now we can create a bubble chart:  
 
 ```{r}
 p <- ggplot(bubble_data, aes(x = `Analysis time (min)`, y = `Protein concentration (mg/ml)`)) + 
@@ -580,18 +600,18 @@ p <- ggplot(bubble_data, aes(x = `Analysis time (min)`, y = `Protein concentrati
 p
 ```
 
-The Chart includes the following:
+The Chart includes the following:  
 
-X-axis: Analysis time (minutes).<br>
-Y-axis: Protein concentration (mg/mL).<br> 
+X-axis: Analysis time (minutes).  
+Y-axis: Protein concentration (mg/mL).  
 Bubble size: Represents the number of assays per day in the laboratory.  
 
 
 ## Other plot types and libraries
 
 ggplot2 offers many more plot types. Way beyond the capabilities of Excel.
-For an example gallery of supported plot types in ggplot2 see [this link](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html). 
-In addition, other packages exist for even more plotting capabilities in R.
+For an example gallery of supported plot types in ggplot2 see [this link](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html).  
+In addition, other packages exist for even more plotting capabilities in R.  
 
 
 >This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
