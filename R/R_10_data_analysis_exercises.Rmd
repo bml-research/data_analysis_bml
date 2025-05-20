@@ -49,29 +49,33 @@ Index, filter and sort your data frame to answer the following questions:
 1. Which mouse has the highest expression of the Tau protein?  
 2. What is the relative expression value of this protein in this particular mouse?  
 3. Which mouse has the lowest expression of the pAKT protein?  
-4. How many empty cells (`NA`) are in the BAD column? Use the `summary` function to find the amount of empty cells.
-5. Which mouse of the Ts65Dn genotype group has the highest Tau expression (use multi-sorting)? 
+4. How many empty cells (`NA`) are in the BAD column? Use the `summary` function to find the amount of empty cells.  
+5. Which mouse of the Ts65Dn genotype group has the highest Tau expression (use multi-sorting)?  
 6. Which mouse of the Ts65Dn genotype, and saline treatment group has the highest Tau expression (use multi-sorting)?  
 
 Mouse with the highest expression of the protein `Tau_N`:
+
 ```{r}
 #Your code here
 ```
 
 
 The relative expression value for this protein in this particular mouse:
+
 ```{r}
 #Your code here
 ```
 
 
 Mouse with the lowest expression of the pAKT protein:  
+
 ```{r}
 #Your code here
 ```
 
 
-Amount of empty cells (`NA`) in the BAD column:
+Amount of empty cells (`NA`) in the BAD column:  
+
 ```{r}
 #Your code here
 ```
@@ -83,7 +87,8 @@ Mouse of the Ts65Dn genotype group with the highest Tau expression:
 ```
 
 
-Mouse of the Ts65Dn genotype, and saline treatment group with the highest Tau expression (use multi-sorting):
+Mouse of the Ts65Dn genotype, and saline treatment group with the highest Tau expression (use multi-sorting):  
+
 ```{r}
 #Your code here
 ```
@@ -92,23 +97,26 @@ Mouse of the Ts65Dn genotype, and saline treatment group with the highest Tau ex
 ### Exercise 3
 
 1. An relative expression level > 0.5 would be considered a high expression level. How many mice do have a high expression level for DYRK1A?  
-2. Apply this calculation for all proteins. For which protein do you observe a count of 218? Hint: you can calculate the mean and the sum for multiple columns at once with the `colMeans` and `colSums` functions.
-3. The average pELK expression is higher than pERK. But how many mice do have higher expression levels for pELK than 0.75 AND higher expression levels for pERK than 0.25?
+2. Apply this calculation for all proteins. For which protein do you observe a count of 218? Hint: you can calculate the mean and the sum for multiple columns at once with the `colMeans` and `colSums` functions.  
+3. The average pELK expression is higher than pERK. But how many mice do have higher expression levels for pELK than 0.75 AND higher expression levels for pERK than 0.25?  
 
 
 High expression level:
+
 ```{r}
 #Your code here
 ```
 
 
 High expression levels for all proteins:
+
 ```{r}
 #Your code here
 ```
 
 
 Higher expression levels for pELK than 0.75 AND higher expression levels for pERK than 0.25:
+
 ```{r}
 #Your code here
 ```
@@ -118,28 +126,32 @@ Higher expression levels for pELK than 0.75 AND higher expression levels for pER
 
 > Note that this exercise differs a bit from the Excel counterpart. We do not use conditional formatting but selection of rows instead.  
 
-1. Select rows with a relative expression value higher than 2.3 for the pCASP9 protein. Which treatment is mostly found for these selected proteins ?  
+1. Select rows with a relative expression value higher than 2.3 for the pCASP9 protein. Which treatment is mostly found for these selected proteins?  
 2. Select rows with duplicate MouseIDs. Are there any duplicate MouseIDs?  
-3. Select the following columns: MouseID, APP_N, NR1_N, pCREB_N, S6_N, and Genotype. 
+3. Select the following columns: MouseID, APP_N, NR1_N, pCREB_N, S6_N, and Genotype.  
 4. Select everything but the columns with relative expression measurements. Hint: the column names of the column with relative expression values all have something in common.  
 
 Select rows with a relative expression value higher than 2.3 for the pCASP9 protein:  
+
 ```{r}
 #Your code here
 ```
 
 Select rows with duplicate MouseIDs. Are there any duplicate MouseIDs?  
+
 ```{r}
 #Your code here
 ```
 
 
 Select the following columns: MouseID, APP_N, NR1_N, pCREB_N, S6_N, and Genotype: 
+
 ```{r}
 #Your code here
 ```
 
-Select everything but the columns with relative expression measurements:
+Select everything but the columns with relative expression measurements:  
+
 ```{r}
 #Your code here
 ```
@@ -150,11 +162,11 @@ Select everything but the columns with relative expression measurements:
 > Note that this exercise differs a bit from the Excel counterpart. We do not use a pivot table but the results will be similar.  
 
 Group the genotypes of the mice.  
-Calculate the standard deviation, average and the median of the relative expression of the following genes:
-- PKCA
-- RRP1
-- BRAF
-- JNK
+Calculate the standard deviation, average and the median of the relative expression of the following genes:  
+- PKCA  
+- RRP1  
+- BRAF  
+- JNK  
 
 Round the values to 3 decimals.  
 
