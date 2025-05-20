@@ -70,7 +70,7 @@ Or the figure below:
 
 ![figure](./files_13_data_visualization_solutions/exercise06/fig01.png)
 
-Signal transduction proteins shows the lowest median.  
+Signal transduction proteins shows the lowest median value.  
 
 ### Exercise 7
 
@@ -80,7 +80,7 @@ Or the figure below:
 
 ![figure](./files_13_data_visualization_solutions/exercise07/fig01.png)
 
-Signal transduction proteins shows the lowest IQR (lowest height of the Whisker box).  
+Signal transduction proteins shows the lowest IQR value (lowest height of the Whisker box).  
 
 
 ### Exercise 8
@@ -116,11 +116,11 @@ Or the figure below for the line plot (with and without Puromycin):
 
 ![figure](./files_13_data_visualization_solutions/exercise10/fig02.png)
 
-Puromycin acts as an activator.
+Puromycin acts as an activator. The measured values of the treated condition are higher than those of the untreated condition.
 
 ### Exercise 11
 
-Data can be cleaned in various ways. You can use (for instance) the text-to-columns feature to split on a space. But there are other strategies as well (like the `RIGHT` or `LEFT` formula).
+Data can be cleaned in various ways. You can use (for instance) the `Text to Columns` feature to split on a space. But there are other strategies as well (like the `RIGHT` or `LEFT` formula).
 
 See the Excel file [here](./files_13_data_visualization_solutions/exercise11/exercise11.xlsx) for the solution.
 
