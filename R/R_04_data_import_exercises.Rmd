@@ -15,12 +15,12 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 library(tidyverse)
 ```
 
-This file can be downloaded [here](./R_04_data_import_exercises.Rmd)
+This file can be downloaded [here](./R_04_data_import_exercises.Rmd).
 
 
 ### Exercise 1
 
-First, check the following files in your text editor. 
+First, check the following files in your text editor (NotePad for Windows users, TextEdit for Apple users). 
 
 - [file 1](./files_04_data_import_exercises/exercise01/fish_data_1.csv)  
 - [file 2](./files_04_data_import_exercises/exercise01/fish_data_2.csv)  
