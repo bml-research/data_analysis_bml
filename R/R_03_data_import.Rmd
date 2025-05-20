@@ -92,8 +92,8 @@ formatted_table(head(my_df))
 
 
 >Important note for MS Windows users:
-R is not able to understand normal windows paths correctly because the "\" has a special meaning as escape character.
-Just replace the "\" with "/" for file paths.
+R is not able to understand normal windows paths correctly because the backslash has a special meaning as an escape character.
+Just replace the backslash with a forward slash for file paths.
 This is the common way for Unix systems but also works for R code on Windows systems.
 
 
@@ -113,7 +113,7 @@ formatted_table(head(my_df))
 
 So in principle, you could also directly load data from Kaggle.
 However, since authentication is needed for this, it is slightly more complicated.
-You need to connect using the API and unzip the zip file.
+You need to connect using the API and unzip the zip file via R code.
 Of course, you are welcome to do this but it is beyond the scope of this course.
 
 
@@ -145,7 +145,7 @@ my_df <- read_csv(file_path) #note that read_csv was used instead of read_csv2
 formatted_table(head(my_df))
 ```
 
-As you can see, the data was not read in different columns. So always check the file using a text editor.
+As you can see, the data was not read in separate columns. So always check the file using a text editor.
 
 Now imagine a file without a header.
 It can be found [here](./files_03_data_import/file03_genes.csv).
@@ -163,14 +163,14 @@ formatted_table(head(my_df))
 
 
 As you can see, the first row is read as header.
-We can find more information about the read_csv2 function using the following code:
+We can find more information about the `read_csv2` function using the following code:
 
 ```{r}
 ?read_csv2
 ```
 
 The information will be found within the help pane.
-Reading the information on read_csv2 learns us that the default setting for headers is TRUE and that R will read (by default) the first row as a header. We can ommit this problem by setting the col_names parameter to FALSE:
+Reading the information on read_csv2 learns us that the default setting for headers is TRUE and that R will read (by default) the first row as a header. We can omit this problem by setting the col_names parameter to FALSE:
 
 ```{r}
 file_path <- "./files_03_data_import/file03_genes.csv"
@@ -213,7 +213,7 @@ formatted_table(head(my_df))
 
 
 
-Often TSV-files are used. These are files where the values are separated by a tab. They can be imported using `read_tsv`.
+Often TSV-files are used. These are files where the values are separated by a tab. They can be imported using the `read_tsv` function.  
 
 An example of this file can be found [here](./files_03_data_import/file05_genes.csv).
 
@@ -287,11 +287,11 @@ formatted_table(head(my_df))
 ## Reading Excel files
 
 Although csv files and tsv files are often used in data science, Microsoft Excel is arguably the most used software package to analyze data.  
-But also a lot of data is directly stored as Excel file. Think about data downloaded from the web.  
+But also a lot of data is directly stored in Excel files. Think about data downloaded from the web.  
 Very often, data can be downloaded as Excel file instead of csv or tsv file.  
 Instead of converting data from Excel to csv or tsv file, R can handle Excel files directly.
 
-It also gives you the opportunity to first do some analysis in Excel and continue in R, for example if the dataset appears to be to big to be handled by Excel.
+It also gives you the opportunity to first do some analysis in Excel and continue in R, for example if the data set appears to be to big to be handled by Excel.
 
 The `readxl` package is the most used package for reading and writing Excel files.
 It comes with tidyverse so there is no need to install it.
