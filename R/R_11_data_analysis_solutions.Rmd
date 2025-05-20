@@ -10,10 +10,13 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 
 ## Data Analysis Exercises
 
+Import Tidyverse:
 
 ```{r}
 library(tidyverse)
 ```
+
+Function to improve printing of tibble as HTML:
 
 ```{r}
 library(kableExtra)
@@ -23,7 +26,7 @@ formatted_table <- function(df){
 }
 ```
 
-This file can be downloaded [here](./R_10_data_analysis_exercises.Rmd)
+This file can be downloaded [here](./R_11_data_analysis_solutions.Rmd)
 
 > In order to compare the analysis in R with Excel, the exercises where kept as similar as possible. 
 
@@ -66,59 +69,91 @@ Index, filter and sort your data frame to answer the following questions:
 1. Which mouse has the highest expression of the Tau protein?  
 2. What is the relative expression value of this protein in this particular mouse?  
 3. Which mouse has the lowest expression of the pAKT protein?  
-4. How many empty cells (`NA`) are in the BAD column? Use the `summary` function to find the amount of empty cells.
-5. Which mouse of the Ts65Dn genotype group has the highest Tau expression (use multi-sorting)? 
+4. How many empty cells (`NA`) are in the BAD column? Use the `summary` function to find the amount of empty cells.  
+5. Which mouse of the Ts65Dn genotype group has the highest Tau expression (use multi-sorting)?  
 6. Which mouse of the Ts65Dn genotype, and saline treatment group has the highest Tau expression (use multi-sorting)?  
 
-Mouse with the highest expression of the protein `Tau_N`:
+Mouse with the highest expression of the protein `Tau_N`:  
 ```{r}
 formatted_table(filter(df, `Tau_N` == max(df$Tau_N)))
 ```
 
 
 The relative expression value for this protein in this particular mouse.
-First, we need to find in which row the maximum value for the highest expression of the Tau protein is stored. You can use the `match` function for this:
+First, we need to find in which row the maximum value for the highest expression of the Tau protein is stored. First we calculate the max value for this column:  
 ```{r}
-match(max(df$Tau_N), df$Tau_N)
+max(df$Tau_N)
+```
+Then we create a logical factor to match the highest number.  
+
+```{r}
+head(df$Tau_N == max(df$Tau_N)) # Somewhere the value will be TRUE
 ```
 
-Then we can search in the dataframe, because we know the row number and which column we have to look:
+
+Then we can search in the data frame for the row that matches the logical.  
+
 ```{r}
-df$Tau_N[match(max(df$Tau_N), df$Tau_N)]
+df[df$Tau_N == max(df$Tau_N), ]
 ```
 
 Mouse with the lowest expression of the pAKT protein. There are NA values in this column, so will have to use the `na.rm =` argument in the calculation:
+
 ```{r}
 min(df$pAKT_N) # check there are NA values in this column
 
 formatted_table(filter(df, `pAKT_N` == min(df$pAKT_N, na.rm = TRUE))) # this will remove all NA values and then show the mouse with minimal value for pAKT
 ```
 
-Amount of empty cells (`NA`) in the BAD column:
+Amount of empty cells (`NA`) in the BAD column:  
 ```{r}
 summary(df$BAD_N)
 ```
 The amount of empty cells is in the last column.
 
-Mouse of the Ts65Dn genotype group with the highest Tau expression:
+Or:
+
+```{r}
+sum(is.na(df$BAD_N))
+```
+
+
+Mouse of the Ts65Dn genotype group with the highest Tau expression:  
 ```{r}
 formatted_table(head(arrange(df, desc(Genotype), desc(Tau_N))))
 ```
 
+Or to filter for the row:
 
-Mouse of the Ts65Dn genotype, and saline treatment group with the highest Tau expression (use multi-sorting):
+```{r}
+df %>% filter(Genotype == "Ts65Dn") %>%
+  filter(Tau_N == max(Tau_N, na.rm = T))
+
+```
+
+
+Mouse of the Ts65Dn genotype, and saline treatment group with the highest Tau expression (use multi-sorting):  
+
 ```{r}
 formatted_table(head(arrange(df, desc(Genotype), desc(Treatment), desc(Tau_N))))
+```
+Or to filter for the row:  
+
+```{r}
+df %>% filter(Genotype == "Ts65Dn") %>%
+  filter(Treatment == "Saline") %>%
+  filter(Tau_N == max(Tau_N, na.rm = T))
 ```
 
 
 ### Exercise 3
 
 1. An relative expression level > 0.5 would be considered a high expression level. How many mice do have a high expression level for DYRK1A?  
-2. Apply this calculation for all proteins. For which protein do you observe a count of 218? Hint: you can calculate the mean and the sum for multiple columns at once with the `colMeans` and `colSums` functions.
+2. Apply this calculation for all proteins. For which protein do you observe a count of 218? Hint: you can calculate the mean and the sum for multiple columns at once with the `colMeans` and `colSums` functions.  
 3. The average pELK expression is higher than pERK. But how many mice do have higher expression levels for pELK than 0.75 AND higher expression levels for pERK than 0.25?  
 
-You can use the `sum` function to count how many times the value for DYRK1A is higher than 0.5. However, there are NA values in this column, so you will have to use the `na.rm =` argument in the `sum` function.
+You can use the `sum` function to count how many times the value for DYRK1A is higher than 0.5. However, there are NA values in this column, so you will have to use the `na.rm =` argument in the `sum` function.  
+
 ```{r}
 summary(df$DYRK1A_N) # to check whether there NA values in this column
 print("Yes, there are 3 NA values in this column!")
@@ -147,12 +182,13 @@ sum(df$pELK_N > 0.75 & df$pERK_N > 0.25, na.rm = T)
 
 > Note that this exercise differs a bit from the Excel counterpart. We do not use conditional formatting but selection of rows instead.  
 
-1. Select rows with a relative expression value higher than 2.3 for the pCASP9 protein. Which treatment is mostly found for these selected proteins ?  
+1. Select rows with a relative expression value higher than 2.3 for the pCASP9 protein. Which treatment is mostly found for these selected proteins?  
 2. Select rows with duplicate MouseIDs. Are there any duplicate MouseIDs?  
-3. Select the following columns: MouseID, APP_N, NR1_N, pCREB_N, S6_N, and Genotype. 
-4. Select everything but the columns with relative expression measurements. Hint: the column names of the column with relative expression values all have something in common.  
+3. Select the following columns: MouseID, APP_N, NR1_N, pCREB_N, S6_N, and Genotype.  
+4. Select everything but the columns with relative expression measurements. Hint: the column names of the column with relative expression values all have something in common.   
 
 Select rows with a relative expression value higher than 2.3 for the pCASP9 protein:  
+
 ```{r}
 formatted_table(filter(df, pCASP9_N > 2.3))
 ```
@@ -187,10 +223,10 @@ formatted_table(head(select(df, -ends_with("_N"))))
 
 Group the genotypes of the mice.  
 Calculate the standard deviation, average and the median of the relative expression of the following genes:
-- PKCA
-- RRP1
-- BRAF
-- JNK
+- PKCA  
+- RRP1  
+- BRAF  
+- JNK  
 
 Round the values to 3 decimals.  
 
