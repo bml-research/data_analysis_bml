@@ -20,13 +20,13 @@ Rename this worksheet `data`.
 Create a new worksheet and name it `analysis`.  
 Then perform the following calculations on a new worksheet and display them as a table:  
 
-- Calculate the minimum, maximum, average, median from all the columns (proteins). Display the answers in a table.  
+- Calculate the *minimum*, *maximum*, *average* and the *median* from all the columns (proteins). Display the answers in a table.  
 
-> Although there are different classes of mice in the dataset (there are 38 control mice and 34 trisomic mice (Down syndrome)), you do not need to take care of this (yet).
+> Although there are different classes of mice in the dataset (there are 38 control mice and 34 trisomic mice (mice with Down syndrome)), you do not need to take care of this (yet).
 
 ### Exercise 2
 
-Use filter and sort to answer the following questions:  
+Use `filter` and `sort` to answer the following questions:  
 1. Which mouse has the highest expression of Tau?  
 2. What is the relative expression value in this mouse?  
 3. Which mouse has the lowest expression of pAKT?  
