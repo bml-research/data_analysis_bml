@@ -594,10 +594,11 @@ formatted_table &lt;- function(df){
   kbl(df) %&gt;%
   kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;responsive&quot;))
 }</code></pre>
-<p>This file can be downloaded <a href="./R_05_data_import_solutions.Rmd">here</a></p>
+<p>This file can be downloaded <a href="./R_05_data_import_solutions.Rmd">here</a>.</p>
 <div id="exercise-1" class="section level3">
 <h3>Exercise 1</h3>
-<p>First, check the following files in your text editor.</p>
+<p>First, check the following files in your text editor (NotePad for
+Windows users, TextEdit for Apple users).</p>
 <ul>
 <li><a href="./files_04_data_import_exercises/exercise01/fish_data_1.csv">file
 1</a><br />
@@ -617,8 +618,9 @@ function to import the data correctly (for example: do you need the
 <code>locale =</code> argument?). Last, load the datasets in R using the
 csv, csv2, or tsv import functionality and check if the data is imported
 correctly.</p>
-<p>File 1: The field separator used is a comma (,). Therefore use the
-<code>read_csv</code> function.</p>
+<p><strong>File 1</strong>:<br />
+The field separator used is a comma (,). Therefore use the
+<code>read_csv()</code> function.</p>
 <pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise01/fish_data_1.csv&quot;
 df &lt;- read_csv(file_path)
 formatted_table(head(df)) </code></pre>
@@ -810,8 +812,9 @@ FALSE
 </tr>
 </tbody>
 </table>
-<p>File 2: The field separator used is a semi-colon (;). Therefore use
-the <code>read_csv2</code> function.</p>
+<p><strong>File 2</strong>:<br />
+The field separator used is a semi-colon (;). Therefore use the
+<code>read_csv2()</code> function.</p>
 <pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise01/fish_data_2.csv&quot;
 df &lt;- read_csv2(file_path, locale = locale(decimal_mark = &quot;.&quot;))
 formatted_table(head(df))</code></pre>
@@ -1003,9 +1006,10 @@ FALSE
 </tr>
 </tbody>
 </table>
-<p>File 3: The field separator used is a pipe symbol (|). Therefore use
-the <code>read_delim</code> function with a <code>delim =</code>
-argument set to the correct delimiter.</p>
+<p><strong>File 3</strong>:<br />
+The field separator used is a pipe symbol (|). Therefore use the
+<code>read_delim()</code> function with a <code>delim =</code> argument
+set to the correct delimiter.</p>
 <pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise01/fish_data_3.csv&quot;
 df &lt;- read_delim(file_path, delim=&quot;|&quot;)
 formatted_table(head(df))</code></pre>
@@ -1197,8 +1201,9 @@ FALSE
 </tr>
 </tbody>
 </table>
-<p>File 4: The field separator used is a tab and the decimal separator
-is a comma. Therefore use the <code>read_tsv</code> function with a
+<p><strong>File 4</strong>:<br />
+The field separator used is a tab and the decimal separator is a comma.
+Therefore use the <code>read_tsv()</code> function with a
 <code>locale =</code> argument set to the correct decimal separator.</p>
 <pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise01/fish_data_4.csv&quot;
 df &lt;- read_tsv(file_path, locale = locale(decimal_mark = &quot;,&quot;))
@@ -1395,7 +1400,7 @@ FALSE
 <div id="exercise-2" class="section level3">
 <h3>Exercise 2</h3>
 <p>Download the <a href="https://www.kaggle.com/datasets/alexteboul/heart-disease-health-indicators-dataset">Heart
-Disease Health Indicators</a> dataset to your computer. Unzip the file
+Disease Health Indicators</a> data set to your computer. Unzip the file
 and import the csv data in R.</p>
 <pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise02/heart_disease_health_indicators_BRFSS2015.csv&quot;
 df &lt;- read_csv(file_path)
@@ -1634,7 +1639,7 @@ Fruits
 <div id="exercise-3" class="section level3">
 <h3>Exercise 3</h3>
 <p>Download the <a href="https://www.kaggle.com/datasets/tonibois/properties-of-atc-accepted-medicines">Properties
-of ATC-accepted medicines</a> dataset to your computer. Unzip the file
+of ATC-accepted medicines</a> data set to your computer. Unzip the file
 and import the csv data in R.</p>
 <pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise03/KEGG_DRUG_ATC_PROPERTIES_PED_FP.csv&quot;
 df &lt;- read_csv(file_path)
@@ -1789,8 +1794,8 @@ SENSORY ORGANS
 <div id="exercise-4" class="section level3">
 <h3>Exercise 4</h3>
 <p>Download the <a href="https://www.kaggle.com/datasets/boltcutters/food-allergens-and-allergies">Food
-allergens and allergies</a> dataset to your computer. Unzip the file and
-import the csv data in R.</p>
+allergens and allergies</a> data set to your computer. Unzip the file
+and import the csv data in R.</p>
 <pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise04/FoodData.csv&quot;
 df &lt;- read_csv(file_path)
 formatted_table(head(df))</code></pre>
@@ -1923,9 +1928,9 @@ Oral Allergy Syndrome
 <div id="exercise-5" class="section level3">
 <h3>Exercise 5</h3>
 <p>Download the <a href="https://www.kaggle.com/datasets/ouzkoca/patients">Patients</a>
-dataset to your computer. Unzip the file and import the csv data in R.
+data set to your computer. Unzip the file and import the csv data in R.
 NOTE: this file contains the semi-colon as field separator, so you have
-to use the <code>read_csv2</code> function to read the data
+to use the <code>read_csv2()</code> function to read the data
 correctly.</p>
 <pre class="r"><code>file_path &lt;- &quot;./files_04_data_import_exercises/exercise05/22.11.2021.csv&quot;
 df &lt;- read_csv2(file_path)
@@ -2328,8 +2333,8 @@ NA
 location &lt;- c(&quot;21571..25392&quot;, &quot;25401..26228&quot;, &quot;26253..26480&quot;, &quot;27210..27395&quot;, &quot;27402..27767&quot;) 
 weight &lt;- c(14.3, 23.9, 161.1, 35.9, 24.6)
 date_submission &lt;- c(&quot;29-FEB-2020&quot;, &quot;29-FEB-2020&quot;, &quot;29-FEB-2020&quot;, &quot;29-FEB-2020&quot;, &quot;29-FEB-2020&quot;)
-source &lt;- c(&quot;Published&quot;, &quot;Unpublished&quot;, &quot;Unpublished&quot;, &quot;Submitted&quot;, &quot;Unpublished&quot;)
-my_tibble &lt;- tibble(protein_name, location, weight, date_submission, source)
+ref_source &lt;- c(&quot;Published&quot;, &quot;Unpublished&quot;, &quot;Unpublished&quot;, &quot;Submitted&quot;, &quot;Unpublished&quot;)
+my_tibble &lt;- tibble(protein_name, location, weight, date_submission, ref_source)
 write_csv(my_tibble, &quot;./files_05_data_import_solutions/exercise06/virus_genome.csv&quot;)</code></pre>
 <p>To prove that the data was written to a csv file:</p>
 <pre class="r"><code>file_path &lt;- &quot;././files_05_data_import_solutions/exercise06/virus_genome.csv&quot;
@@ -2351,7 +2356,7 @@ weight
 date_submission
 </th>
 <th style="text-align:left;">
-source
+ref_source
 </th>
 </tr>
 </thead>
@@ -2473,7 +2478,7 @@ weight
 date_submission
 </th>
 <th style="text-align:left;">
-source
+ref_source
 </th>
 </tr>
 </thead>
