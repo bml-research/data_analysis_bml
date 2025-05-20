@@ -37,7 +37,7 @@ And then we can type the appropriate formula:
 ![formula](./pics_08_data_analysis/fig4.png)
 *<sub>Figure 4: Adding the formula</sub>*
 
-Note that the IF function was used to prevent a division by zero error.
+Note that the `IF` function was used to prevent a division by zero error (`#DIV/0!`).
 
 ```
 =IF([@Weight]=0,0,[@HeartRate]/[@Weight])
@@ -45,7 +45,7 @@ Note that the IF function was used to prevent a division by zero error.
 
 If the denominator is zero, the result will be 0. In this way, a division by zero error will be prevented. Although a 0 is not to be expected here, it is always a good idea to prevent such errors from occurring.
 
-Now we will calculate averages of some whole columns (such ast the average heart rate, the average weight etc.). You might be tempted to put the output below the table. However, it is better to get the output of calculations on whole columns on another sheet (name it analysis).
+Now we will calculate averages of some whole columns (such ast the average heart rate, the average weight etc.). You might be tempted to put the output below the table. However, it is better to get the output of calculations on whole columns on another sheet (name the new sheet "analysis").
 First of all, there might be new future data records and you can perform calculations on whole columns (not restricted to a block of rows).
 In addition, all the values from the column-based analysis can be linked to a variable.
 
@@ -65,11 +65,11 @@ The `TRANSPOSE` function is an array formula which means that it can perform mul
 
 ## The anatomy of a function
 
-Excel has a lot of functions ready to use like the `SUM` function, the `AVERAGE` function and the `COUNTIF` function. You can even [create your own function in Excel](https://support.microsoft.com/en-us/office/create-custom-functions-in-excel-2f06c10b-3622-40d6-a1b2-b6748ae8231f) (which is beyond the scope of this course). If you frequently need to create your own function, you are probably better of with R or Python. But what is an function?
+Excel has a lot of functions ready to use like the `SUM` function, the `AVERAGE` function and the `COUNTIF` function. You can even [create your own function in Excel](https://support.microsoft.com/en-us/office/create-custom-functions-in-excel-2f06c10b-3622-40d6-a1b2-b6748ae8231f) (which is beyond the scope of this course). If you frequently need to create your own function, you are probably better off with R or Python. But what is a function?
 
 >In Microsoft Excel, a function is a built-in formula that is designed to perform a specific calculation. Functions can help you perform a wide range of calculations, from simple arithmetic operations such as addition, subtraction, and multiplication to more complex calculations such as statistical analysis and data manipulation.  
 
-Excel functions are identified by their names, which typically begin with the equal sign (=) followed by the function name and any required arguments. For example, the SUM function adds up a range of numbers and is written as:
+Excel functions are identified by their names, which begin with the equal sign (=) followed by the function name and any required arguments. For example, the `SUM` function adds up a range of numbers and is written as:
 
 ```
 =SUM(A1:A10) 
@@ -77,7 +77,7 @@ Excel functions are identified by their names, which typically begin with the eq
 
 where A1:A10 is the range of cells to be added.
 
-Other functions require multiple arguments. For example, the COUNTIF function requires 2 arguments. An example notation for the COUNTIF function is written as:
+Other functions require multiple arguments. For example, the `COUNTIF` function requires 2 arguments. An example notation for the `COUNTIF` function is written as:
 
 ```
 =COUNTIF(A1:A10;">10")
@@ -98,6 +98,7 @@ The COUNTIFS function counts cells in a range based on one or more true or false
 ```
 =COUNTIFS(criteria_range1, criteria1, [criteria_range2, criteria2], ...)
 ```
+Note that some functions have arguments between brackets (`[]`). These arguments are optional.
 
 ![countifs](./pics_08_data_analysis/fig7.png)
 *<sub>Figure 7: Excel provides suggestions for the arguments.</sub>*
@@ -120,9 +121,9 @@ When you separate the analysis from the data, selecting ranges will be quite cum
 
 >Note that you can easily create a selection of a whole column by clicking the first cell. Then hit `Ctrl` + `Shift` + `Downarrow`. 
 
-Instead of typing or clicking a lot you can assign variable names to selections and store them in memory. See [this link](https://support.microsoft.com/en-us/office/create-a-named-range-from-selected-cells-in-an-excel-worksheet-fd8905ed-1130-4cca-9bb0-ad02b7e594fd). Once you assigned a variable name for a range, you can simply type the (short) variable name instead of clicking a lot (or typing a lot). On the `Formulas` tab, you can click the Name Manager to get an overview of all the assigned selections and also rename them.
+Instead of typing or clicking a lot you can assign variable names to selections and store them in memory. See [this link](https://support.microsoft.com/en-us/office/create-a-named-range-from-selected-cells-in-an-excel-worksheet-fd8905ed-1130-4cca-9bb0-ad02b7e594fd). Once you assigned a variable name for a range, you can simply type the (short) variable name instead of clicking a lot (or typing a lot). On the `Formulas` tab, you can click the `Name Manager` to get an overview of all the assigned selections and also rename them.
 
->When you import csv files using Power Query, Excel will automatically assign a selection name for the whole table. You can rename this selection under Formulas > Name Manager.
+>When you import csv files using Power Query, Excel will automatically assign a selection name for the whole table. You can rename this selection under `Formulas > Name Manager`.
 
 ## Array formulas
 
@@ -133,10 +134,10 @@ Let's have a look at an example:
 ![array](./pics_08_data_analysis/fig9.png)
 *<sub>Figure 9: Small dataset to perform a calculation.</sub>*
 
-What we would like to calculate is the total weight from all the fish in all of the fish tanks. We can of course first calculate the total weight per tank and calculate the sum but using array formulas we can do it all at once:
+What we would like to calculate is the total weight from all the fish in all of the fish tanks. Of course we can first calculate the total weight per tank and calculate the sum, but by using array formulas, we can do it all at once:
 
 ```
-=sum(C2:C5*D2:D5)
+=SUM(C2:C5*D2:D5)
 ```
 
 ![array](./pics_08_data_analysis/fig10.png)
@@ -144,7 +145,7 @@ What we would like to calculate is the total weight from all the fish in all of 
 
 As you can see, the answer is directly calculated. If you are not interested in the total weight of the fish within the individual fish tanks but just the total weight of all the fish (in all the tanks) this will save you adding an extra column. You can put the calculation directly on an analysis tab.
 
-There is just one detail left out. Although the formula works, it is advised to press the keyboard shortcut CTRL + SHIFT + ENTER to complete the array formula. As a result, Microsoft Excel surrounds the formula with curly braces, which is an indication of an array formula so that people know that we are dealing with an array formula.
+There is just one detail left out. Although the formula works, it is advised to press the keyboard shortcut CTRL + SHIFT + ENTER to complete the array formula. As a result, Microsoft Excel surrounds the formula with curly braces (`{}`), which is an indication of an array formula, so that people know that we are dealing with an array formula.
 
 ![array](./pics_08_data_analysis/fig11.png)
 *<sub>Figure 11: Curly braces are a visual indication for an array formula.</sub>*
@@ -170,12 +171,12 @@ Or the example that we have seen before:
 
 ## Nesting functions
 
-It is possible to nest functions. Although this is allowed in some cases, be aware that this becomes very complex easily.
+It is possible to nest functions (use a function as an argument in a function). Although this is allowed in some cases, be aware that this becomes very complex easily.
 
 Example:
 
 ```
-=IF(AVERAGE(A1:A3)>5.5;SUM(B1:B3);"Insufficient")
+=IF(AVERAGE(B2:B5)<100;SUM(B2:B5);"Too many fish")
 ```
 
 ![array](./pics_08_data_analysis/fig14.png)
@@ -199,28 +200,28 @@ Here is a small selection of some useful functions:
 
 ### IF
 
-The IF function is one of the most popular functions in Excel, and it allows you to make logical comparisons between a value and what you expect.
+The `IF` function is one of the most popular functions in Excel, and it allows you to make logical comparisons between a value and what you expect.
 
 ![if](./pics_08_data_analysis/fig16.png)
 *<sub>Figure 16: The IF function.</sub>*
 
 ### COUNTIF
 
-COUNTIF can be used to count the number of cells that meet a criterion; for example, to count the number of times a high caloric beverage appears in a list.
+`COUNTIF` can be used to count the number of cells that meet a criterion; for example, to count the number of overweight fish that appears in a list.
 
 ![countif](./pics_08_data_analysis/fig17.png)
 *<sub>Figure 17: The COUNTIF function.</sub>*
 
-There is also a COUNTIFS function for multiple arrays and conditions.
+There is also a `COUNTIFS` function for multiple arrays and conditions.
 
 ### XLOOKUP
 
-The XLOOKUP function searches a range or an array, and then returns the item corresponding to the first match it finds. 
+The `XLOOKUP` function searches a range or an array, and then returns the item corresponding to the first match it finds. 
 
 ![xlookup](./pics_08_data_analysis/fig18.png)
 *<sub>Figure 18: The XLOOKUP function.</sub>*
 
-So the XLOOKUP function checks the position of a lookup key and returns the corresponding value.
+So the `XLOOKUP` function checks the position of a lookup key and returns the corresponding value.
 
 These are just some examples. Use the online resources or the recommended Excel book to find more useful functions.
 
@@ -228,20 +229,20 @@ These are just some examples. Use the online resources or the recommended Excel 
 ## Statistics
 
 Excel has many functions for statistics like `STDEV.P`, `T.TEST`, `F.TEST` and `CHISQ.DIST.RT`. 
-A comprehensive list can be found [here](https://support.microsoft.com/en-us/office/statistical-functions-reference-624dac86-a375-4435-bc25-76d659719ffd)
+A comprehensive list can be found [here](https://support.microsoft.com/en-us/office/statistical-functions-reference-624dac86-a375-4435-bc25-76d659719ffd).
 
 In addition, Excel has a a [statistics analysis pack](https://support.microsoft.com/en-gb/office/load-the-analysis-toolpak-in-excel-6a63e598-cd6d-42e3-9317-6b40ba1a66b4) available as plugin.
 
 
-Here is an example of a diet intervention. Because the same subjects are measured twice, a paired T-test was used. The is a one-tailed test as we are looking for a weight reduction (alpha = 0.05)
+Here is an example of a diet intervention. Because the same subjects are measured twice, a paired T-test was used. This is a one-tailed test as we are looking for a weight reduction (alpha = 0.05).
 
 ![t-test](./pics_08_data_analysis/fig19.png)
 *<sub>Figure 19: A paired T-test in Excel.</sub>*
 
-The result is significant so H1 is true. The diet resulted in a significant weight reduction (alpha = 0.05)
+The result is significant so H1 (hypothesis 1) is true. The diet resulted in a significant weight reduction (alpha = 0.05).
 Note that the result is static. If we change the values, we need do redo the test.
 
-Statics in Excel is limited. For example, non-parametric tests like the Mann–Whitney U test are not included in Excel. If you need to do more complex statistics, use R or Python instead.
+Statistics in Excel is limited. For example, non-parametric tests like the Mann–Whitney U test are not included in Excel. If you need to do more complex statistics, use R or Python instead.
 
 The actual content of statistics is beyond the scope of this course. Attend a statistics course of you need more background on this subject.
 
@@ -297,7 +298,7 @@ And the result:
 Pivot tables come in handy to analyze data quickly and in an organized manner.
 Let's pretend that we are interested in comparing the average heart rate and the count of diabetics for each activity category (sedentary, mild and moderate activity) from the earlier used [dataset](./files_08_data_analysis/file01_dementia_patients_health_data.csv).
 
-We can select the table. Than choose insert > Pivot table:
+We can select the table. Than choose `Insert > Pivot table`:
 
 ![pivot table](./pics_08_data_analysis/fig27.png)
 *<sub>Figure 27: Pivot table.</sub>*
