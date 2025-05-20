@@ -5,7 +5,7 @@
 
 
 # Excel: Data Analysis
-
+ 
 
 ![impression](./pics_08_data_analysis/fig1.png)
 *<sub>Figure 1: Data loaded and ready to be analyzed. Source: https://www.kaggle.com/datasets/zusmani/mygenome</sub>*
