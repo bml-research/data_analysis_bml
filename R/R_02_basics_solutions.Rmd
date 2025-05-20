@@ -61,7 +61,7 @@ vec3 <- seq(1, 10, 2)
 vec3
 ```
 
-9. create a vector from vector `a` repeated 10 times. Assign to `vec4`
+9. Create a vector from vector `a` repeated 10 times. Assign to `vec4`
 
 ```{r}
 vec4 <- rep("a", 10)
@@ -92,7 +92,7 @@ letters
 LETTERS
 ```
 
-14. assign all letters of the alphabet to `vec5`.
+14. Assign all letters of the alphabet to `vec5`.
 
 ```{r}
 vec5 <- letters
@@ -136,7 +136,7 @@ fac1 <- factor(c("G", "V", "O", "V", "G"), levels = c("O", "V", "G"), order = T)
 fac1               
 ```
 
-21. Print all elements larger than "V" from fac1.
+21. Print all elements larger than "V" from `fac1`.
 
 ```{r}
 fac1 > "V"
@@ -149,10 +149,10 @@ vec6 <- c(1, 2, 3)
 vec6 + 1
 ```
 
-23. Create vector een, 2, 3. Assign to `vec7`. What class is this vector?
+23. Create vector one, 2, 3. Assign to `vec7`. What class is this vector?
 
 ```{r}
-vec7 <- c("een", 2, 3)
+vec7 <- c("one", 2, 3)
 class(vec7)
 
 ```
@@ -248,7 +248,7 @@ iris
 ```
 
 
-38. Print the Petal Length bij index.
+38. Print the Petal Length by index.
 
 ```{r}
 iris[3]

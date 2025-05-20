@@ -89,7 +89,7 @@ This file can be downloaded [here](./R_02_basics_exercises.Rmd)
 #<YOUR CODE HERE>
 ```
 
-14. assign all letters of the alphabet to `vec5`.
+14. Assign all letters of the alphabet to `vec5`.
 
 ```{r}
 #<YOUR CODE HERE>
@@ -131,7 +131,7 @@ This file can be downloaded [here](./R_02_basics_exercises.Rmd)
 #<YOUR CODE HERE>
 ```
 
-21. Print all elements larger than "V" from fac1.
+21. Print all elements larger than "V" from `fac1`.
 
 ```{r}
 #<YOUR CODE HERE>
@@ -143,7 +143,7 @@ This file can be downloaded [here](./R_02_basics_exercises.Rmd)
 #<YOUR CODE HERE>
 ```
 
-23. Create vector een, 2, 3. Assign to `vec7`. What class is this vector?
+23. Create vector one, 2, 3. Assign to `vec7`. What class is this vector?
 
 ```{r}
 #<YOUR CODE HERE>
@@ -234,7 +234,7 @@ This file can be downloaded [here](./R_02_basics_exercises.Rmd)
 ```
 
 
-38. Print the Petal Length bij index.
+38. Print the Petal Length by index.
 
 ```{r}
 #<YOUR CODE HERE>
