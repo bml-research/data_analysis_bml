@@ -12,7 +12,7 @@ This file can be downloaded [here](./R_09_data_analysis.Rmd).
 
 ## Data analysis methods
 
-Let's start with loading the tidyverse library:
+Let's start with loading the `Tidyverse` library:
 
 ```{r}
 library(tidyverse)
@@ -28,21 +28,22 @@ formatted_table <- function(df){
 ```
 
 Here we will focus on data transformation and analysis.
-We will filter rows with filter(), arrange rows with arrange() and select columns with select().
-In addition, we will make grouped summaries using summarize().
+We will filter rows with `filter()`, arrange rows with `arrange()` and select columns with `select()`.
+In addition, we will make grouped summaries using `summarize()`.
 At last, we will do some basic calculations. Note that plotting data will be the subject of the next section.
 
 >Note: R is like a swiss army knife. Extremely powerfull but also very eloborate.
 >It is impossible to cover all analysis functions of R.
 >So this is not a complete guide for data analysis. Instead, this course will focus on some common tasks.
->You can always elaborate your analysis by exploring the tidyverse documentation. Or even use the base R documentation if the specific task you want to perform some custom tasks.
->See: [tidyverse documentation](https://style.tidyverse.org/documentation.html)
+>You can always elaborate your analysis by exploring the Tidyverse documentation. Or even use the base R documentation if the specific task you want to perform some custom tasks.  
+>See: [tidyverse documentation](https://style.tidyverse.org/documentation.html)  
 >See: [base R documentation](https://cran.r-project.org/manuals.html)
 
+  
 ## Loading a dataset
 
 As an example data set, we will be using the same data set as used in the Excel section:
-namely, the Dementia Patient Health,Prescriptions ML Dataset.
+namely, the `Dementia Patient Health,Prescriptions ML Dataset`.
 
 ```{r}
 file_path <- "./files_09_data_analysis/file01_dementia_patients_health_data.csv"
@@ -50,9 +51,9 @@ df <- read_csv(file_path)
 formatted_table(head(df))
 ```
 
-As you can see above, the data is loaded well. Also note that the columns are of the correct data type (e.g. dbl for the Calories column).
+As you can see above, the data is loaded well. Also note that the columns are of the correct data type (e.g. *numeric* for the `HeartRate` and `Weight` columns and *character* for `Prescription` and `Gender`).
 
-
+  
 ## Select rows by index
 
 You can select rows by index using the following notation:
@@ -72,7 +73,7 @@ You can also select a column based on an index:
 formatted_table(head(df[, 8])) #select eighth column
 ```
 
-The head function was used to truncate the output.
+The `head()` function was used to truncate the output.
 
 ## Select column by name
 
@@ -82,9 +83,9 @@ You can also select a column by name:
 head(df$Prescription) #select column Prescription
 ```
 
-Note that this action returns a vector instead of a dataframe.
+Note that this action returns a vector instead of a data frame.
 
-
+  
 ## Select item by index
 
 You can also select a specific item by index:
@@ -95,44 +96,49 @@ formatted_table(df[2, 8]) #select second row and eighth column
 
 Now we have the value of the second row and the eighth column.
 
+  
 ## Filter rows
 
 One of the most frequent tasks that you will be doing on data frames is filtering rows.
-Here is how that works:
+Here is how that works in R:  
 
-Filter rows on measured oxygen level in blood considered as normal:
-
-```{r}
-formatted_table(head(filter(df, BloodOxygenLevel > 95)))
-```
-
-Current smoker and normal blood oxygen levels:
-
-```{r}
-formatted_table(head(filter(df, Smoking_Status == "Current Smoker" & BloodOxygenLevel > 95)))
-```
-
-NOT a current smoker and normal blood oxygen levels:
-
-```{r}
-formatted_table(head(filter(df, !Smoking_Status == "Current Smoker" & BloodOxygenLevel > 95)))
-```
-
-Normal blood oxygen levels or very low blood oxygen levels:
-
-```{r}
-formatted_table(head(filter(df, BloodOxygenLevel < 92 | BloodOxygenLevel > 95)))
-```
-
-All patients of age 65:
+Filter rows on all patients of age 65:
 
 ```{r}
 formatted_table(head(filter(df, Age == 65)))
 ```
 
+Measured oxygen level in blood considered as normal (>95):
+
+```{r}
+formatted_table(head(filter(df, BloodOxygenLevel > 95)))
+```
+
+To add a second condition, the `&` operator is used:  
+Current smoker (condition 1) AND normal blood oxygen levels (condition 2):
+
+```{r}
+formatted_table(head(filter(df, Smoking_Status == "Current Smoker" & BloodOxygenLevel > 95)))
+```
+
+The `!` operator can be used to exclude (negate) a specific condition:  
+NOT a current smoker AND normal blood oxygen levels:
+
+```{r}
+formatted_table(head(filter(df, !Smoking_Status == "Current Smoker" & BloodOxygenLevel > 95)))
+```
+
+The `|` operator can be used to meet either one of the conditions:
+Normal blood oxygen levels OR very low blood oxygen levels:
+
+```{r}
+formatted_table(head(filter(df, BloodOxygenLevel < 92 | BloodOxygenLevel > 95)))
+```
+
+
 ## Arranging rows
 
-You can use arrange() instead of filter if you want to sort your rows in a data frame instead of filtering it:
+You can use `arrange()` instead of `filter()` if you want to sort your rows in a data frame instead of filtering it:
 
 Arrange on blood oxygen levels **ascending** (from low to high values):
 
@@ -161,7 +167,7 @@ Here is an example of sorting on age first and then sorting on blood oxygen leve
 formatted_table(head(arrange(df, Age, BloodOxygenLevel)))
 ```
 
-Here is an example of sorting on age first and then sorting on blood oxygen levels from high to low: 
+Here is an example of sorting on age first and then sorting on **descending** blood oxygen levels (from high to low): 
 
 ```{r}
 formatted_table(head(arrange(df, Age, desc(BloodOxygenLevel))))
@@ -170,11 +176,11 @@ formatted_table(head(arrange(df, Age, desc(BloodOxygenLevel))))
 
 >Note: Missing values will always be sorted at the end.
 
-
+  
 ## Select columns with select
 
-You have learned that Variables in data sets should be arranged in columns. Often data sets contain a lot of variables (columns). Most likely, you are not interested in all of them.
-With the `select` function, you can select the variables that you are interested in:
+You have learned that variables in data sets should be arranged in columns. Often data sets contain a lot of variables (columns). Most likely, you are not interested in all of them.
+With the `select()` function, you can select the variables that you are interested in:
 
 ```{r}
 formatted_table(head(select(df, Age, Smoking_Status, BloodOxygenLevel, HeartRate)))
@@ -186,16 +192,18 @@ Or select all columns except the blood oxygen levels:
 formatted_table(head(select(df, -BloodOxygenLevel)))
 ```
 
-Or select besides the age, all columns with "Level" in the name:
+Or select besides the age, all column names that end with "Level":
 
 ```{r}
 formatted_table(head(select(df, Age, ends_with("Level"))))
 ```
 
+Yes, there is also a function `starts_With()` to select columns that start with certain characters.  
+
 
 ## Summary data
 
-You can use the base R `summary` function to get summary information on a data frame:
+You can use the base R `summary()` function to get summary information on a data frame:
 
 ```{r}
 summary(df)
@@ -207,13 +215,13 @@ As this output can be quit overwhelming you may select for the data that you are
 summary(df$BloodOxygenLevel)
 ```
 
-But the Tidyverse library also contains a `summarize` function:
+But the Tidyverse library also contains a `summarize()` function:
 
 ```{r}
 formatted_table(summarize(df, BloodOxygenLevel = mean(BloodOxygenLevel)))
 ```
 
-You can combine this with the `group_by` function for powerful analysis:
+You can combine this with the `group_by()` function for powerful analysis:
 
 ```{r}
 by_smoking_status <- group_by(df, Smoking_Status)
@@ -238,10 +246,11 @@ Likewise, you can extend this by providing the standard deviation:
 by_smoking_status <- group_by(df, Smoking_Status)
 formatted_table(summarize(by_smoking_status, average_BOL = mean(BloodOxygenLevel), sd_BOL = sd(BloodOxygenLevel), average_BT = mean(BodyTemperature), sd_BT = sd(BodyTemperature)))
 ```
-
+  
+  
 ## Round values
 
-In R you can round functions using the round() function:
+In R you can round decimals using the `round()` function:
 
 ```{r}
 round(2.40, digits = 1)
@@ -252,13 +261,14 @@ round(2.5) #defaults to 0 digits
 
 >Note that for rounding off a 5, the IEC 60559 standard (see also ‘IEEE 754’) is expected to be used, ‘go to the even digit’. Therefore round(0.5) is 0 and round(-1.5) is -2.
 
-So if you like your values to be rounded in the example above, just wrap it in the round function:
+So if you like your values to be rounded in the example above, just wrap it in the `round()` function:
 
 ```{r}
 by_smoking_status <- group_by(df, Smoking_Status)
 formatted_table(summarize(by_smoking_status, average_BOL = round(mean(BloodOxygenLevel), digits = 1), sd_BOL = round(sd(BloodOxygenLevel), digits = 2), average_BT = round(mean(BodyTemperature), digits = 1), sd_BT = round(sd(BodyTemperature), digits = 2)))
 ```
-
+  
+  
 ## Statistics
 
 R is build for statistics so you can do all kind of sophisticated statistics in R.
@@ -278,7 +288,7 @@ paste("standard error of the mean:", round(sd(df$BloodOxygenLevel)/sqrt(length(d
 
 ## Summarize each
 
-Using Tidyverse, you can also apply some of the above statistics more conveniently using the `summarize_each` function:
+Using Tidyverse, you can also apply some of the above statistics more conveniently using the `summarize_each()` function:
 
 ```{r}
 by_smoking_status <- group_by(df, Smoking_Status)
@@ -311,13 +321,13 @@ group the data frame by the items in the column `Smoking_Status` and then,
 summarize each `Smoking_Status` item for `mean`, `sd` and `se` and then,
 select all columns except `Prescription`.
 
-In this case, we can also remove all character type columns at once (and then do the calculations) with the `select_if` function.
+In this case, we can also remove all character type columns at once (and then do the calculations) with the `select_if()` function.
 
 ```{r}
 by_smoking_status <- select_if(group_by(df, Smoking_Status), is.numeric)
 formatted_table(summarize_each(by_smoking_status, funs(mean, sd, se=sd(.)/sqrt(n()))))
 ```
-This way, the only character type column that is preserved is the Smoking_Status column.
+This way, the only character type column that is preserved is the `Smoking_Status` column.
 Note: there are still fields with `NA` in this overview. These are caused by missing values in the original dataset. If you try to calculate the mean value of a set of numbers, including `NA`, the result will be `NA`:
 
 ```{r}
@@ -341,7 +351,7 @@ paste("sum with `NA` values:", sum(c(5.7, 3.5, 2.7, NA, 7.9), na.rm = TRUE))
 
 ### Summarize and across
 
-The summarize_each() function is deprecated (will work, but not actively maintained anymore) in favor of the new across() function that works within summarize() and mutate().  
+The `summarize_each()` function is deprecated (will work, but not actively maintained anymore) in favor of the new `across()` function that works within `summarize()` and `mutate()`.  
 
 ```{r}
 formatted_table(df %>%
@@ -349,7 +359,7 @@ formatted_table(df %>%
   summarize(across(everything(), list(mean = mean, sd = sd))))
 ```
 
-Or use the scoped variant of summarize, summarize_all:  
+Or use the scoped variant of summarize, `summarize_all()`:  
 
 ```{r}
 df_summary <- df %>%
@@ -359,10 +369,11 @@ df_summary <- df %>%
 formatted_table(df_summary)
 ```
 
-If you want to remove the columns that yield NA’s:  
+If you want to remove the columns that yield `NA’s`:  
 
 ```{r}
-df_summary %>% select_if(~sum(!is.na(.)) > 0)
+df_summary <- df_summary %>% select_if(~sum(!is.na(.)) > 0)
+formatted_table(df_summary)
 ```
 
 

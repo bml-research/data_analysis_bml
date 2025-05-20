@@ -589,7 +589,7 @@ display: none;
 <h1>R: Data Analysis</h1>
 <div id="data-analysis-methods" class="section level2">
 <h2>Data analysis methods</h2>
-<p>Let’s start with loading the tidyverse library:</p>
+<p>Let’s start with loading the <code>Tidyverse</code> library:</p>
 <pre class="r"><code>library(tidyverse)</code></pre>
 <pre class="r"><code>library(kableExtra)
 formatted_table &lt;- function(df){
@@ -597,27 +597,30 @@ formatted_table &lt;- function(df){
   kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;responsive&quot;))
 }</code></pre>
 <p>Here we will focus on data transformation and analysis. We will
-filter rows with filter(), arrange rows with arrange() and select
-columns with select(). In addition, we will make grouped summaries using
-summarize(). At last, we will do some basic calculations. Note that
-plotting data will be the subject of the next section.</p>
+filter rows with <code>filter()</code>, arrange rows with
+<code>arrange()</code> and select columns with <code>select()</code>. In
+addition, we will make grouped summaries using <code>summarize()</code>.
+At last, we will do some basic calculations. Note that plotting data
+will be the subject of the next section.</p>
 <blockquote>
 <p>Note: R is like a swiss army knife. Extremely powerfull but also very
 eloborate. It is impossible to cover all analysis functions of R. So
 this is not a complete guide for data analysis. Instead, this course
 will focus on some common tasks. You can always elaborate your analysis
-by exploring the tidyverse documentation. Or even use the base R
+by exploring the Tidyverse documentation. Or even use the base R
 documentation if the specific task you want to perform some custom
-tasks. See: <a href="https://style.tidyverse.org/documentation.html">tidyverse
-documentation</a> See: <a href="https://cran.r-project.org/manuals.html">base R
+tasks.<br />
+See: <a href="https://style.tidyverse.org/documentation.html">tidyverse
+documentation</a><br />
+See: <a href="https://cran.r-project.org/manuals.html">base R
 documentation</a></p>
 </blockquote>
 </div>
 <div id="loading-a-dataset" class="section level2">
 <h2>Loading a dataset</h2>
 <p>As an example data set, we will be using the same data set as used in
-the Excel section: namely, the Dementia Patient Health,Prescriptions ML
-Dataset.</p>
+the Excel section: namely, the
+<code>Dementia Patient Health,Prescriptions ML Dataset</code>.</p>
 <pre class="r"><code>file_path &lt;- &quot;./files_09_data_analysis/file01_dementia_patients_health_data.csv&quot;
 df &lt;- read_csv(file_path)
 formatted_table(head(df))</code></pre>
@@ -1146,8 +1149,10 @@ Diabetes
 </tbody>
 </table>
 <p>As you can see above, the data is loaded well. Also note that the
-columns are of the correct data type (e.g. dbl for the Calories
-column).</p>
+columns are of the correct data type (e.g. <em>numeric</em> for the
+<code>HeartRate</code> and <code>Weight</code> columns and
+<em>character</em> for <code>Prescription</code> and
+<code>Gender</code>).</p>
 </div>
 <div id="select-rows-by-index" class="section level2">
 <h2>Select rows by index</h2>
@@ -1355,7 +1360,7 @@ Rivastigmine
 </tr>
 </tbody>
 </table>
-<p>The head function was used to truncate the output.</p>
+<p>The <code>head()</code> function was used to truncate the output.</p>
 </div>
 <div id="select-column-by-name" class="section level2">
 <h2>Select column by name</h2>
@@ -1363,7 +1368,7 @@ Rivastigmine
 <pre class="r"><code>head(df$Prescription) #select column Prescription</code></pre>
 <pre><code>## [1] NA             &quot;Galantamine&quot;  NA             &quot;Donepezil&quot;    &quot;Memantine&quot;   
 ## [6] &quot;Rivastigmine&quot;</code></pre>
-<p>Note that this action returns a vector instead of a dataframe.</p>
+<p>Note that this action returns a vector instead of a data frame.</p>
 </div>
 <div id="select-item-by-index" class="section level2">
 <h2>Select item by index</h2>
@@ -1390,2113 +1395,8 @@ Galantamine
 <div id="filter-rows" class="section level2">
 <h2>Filter rows</h2>
 <p>One of the most frequent tasks that you will be doing on data frames
-is filtering rows. Here is how that works:</p>
-<p>Filter rows on measured oxygen level in blood considered as
-normal:</p>
-<pre class="r"><code>formatted_table(head(filter(df, BloodOxygenLevel &gt; 95)))</code></pre>
-<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:right;">
-Diabetic
-</th>
-<th style="text-align:right;">
-AlcoholLevel
-</th>
-<th style="text-align:right;">
-HeartRate
-</th>
-<th style="text-align:right;">
-BloodOxygenLevel
-</th>
-<th style="text-align:right;">
-BodyTemperature
-</th>
-<th style="text-align:right;">
-Weight
-</th>
-<th style="text-align:right;">
-MRI_Delay
-</th>
-<th style="text-align:left;">
-Prescription
-</th>
-<th style="text-align:right;">
-Dosage in mg
-</th>
-<th style="text-align:right;">
-Age
-</th>
-<th style="text-align:left;">
-Education_Level
-</th>
-<th style="text-align:left;">
-Dominant_Hand
-</th>
-<th style="text-align:left;">
-Gender
-</th>
-<th style="text-align:left;">
-Family_History
-</th>
-<th style="text-align:left;">
-Smoking_Status
-</th>
-<th style="text-align:left;">
-APOE_ε4
-</th>
-<th style="text-align:left;">
-Physical_Activity
-</th>
-<th style="text-align:left;">
-Depression_Status
-</th>
-<th style="text-align:right;">
-Cognitive_Test_Scores
-</th>
-<th style="text-align:left;">
-Medication_History
-</th>
-<th style="text-align:left;">
-Nutrition_Diet
-</th>
-<th style="text-align:left;">
-Sleep_Quality
-</th>
-<th style="text-align:left;">
-Chronic_Health_Conditions
-</th>
-<th style="text-align:right;">
-Dementia
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.0849736
-</td>
-<td style="text-align:right;">
-98
-</td>
-<td style="text-align:right;">
-96.23074
-</td>
-<td style="text-align:right;">
-36.22485
-</td>
-<td style="text-align:right;">
-57.56398
-</td>
-<td style="text-align:right;">
-36.42103
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-60
-</td>
-<td style="text-align:left;">
-Primary School
-</td>
-<td style="text-align:left;">
-Left
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Current Smoker
-</td>
-<td style="text-align:left;">
-Negative
-</td>
-<td style="text-align:left;">
-Sedentary
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Low-Carb Diet
-</td>
-<td style="text-align:left;">
-Poor
-</td>
-<td style="text-align:left;">
-Diabetes
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.1507473
-</td>
-<td style="text-align:right;">
-67
-</td>
-<td style="text-align:right;">
-97.50899
-</td>
-<td style="text-align:right;">
-36.06212
-</td>
-<td style="text-align:right;">
-67.70503
-</td>
-<td style="text-align:right;">
-27.81060
-</td>
-<td style="text-align:left;">
-Memantine
-</td>
-<td style="text-align:right;">
-20
-</td>
-<td style="text-align:right;">
-77
-</td>
-<td style="text-align:left;">
-Secondary School
-</td>
-<td style="text-align:left;">
-Right
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Never Smoked
-</td>
-<td style="text-align:left;">
-Positive
-</td>
-<td style="text-align:left;">
-Mild Activity
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Low-Carb Diet
-</td>
-<td style="text-align:left;">
-Good
-</td>
-<td style="text-align:left;">
-Diabetes
-</td>
-<td style="text-align:right;">
-1
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.0161938
-</td>
-<td style="text-align:right;">
-90
-</td>
-<td style="text-align:right;">
-96.42336
-</td>
-<td style="text-align:right;">
-37.02463
-</td>
-<td style="text-align:right;">
-83.97655
-</td>
-<td style="text-align:right;">
-11.35061
-</td>
-<td style="text-align:left;">
-Donepezil
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-87
-</td>
-<td style="text-align:left;">
-Primary School
-</td>
-<td style="text-align:left;">
-Right
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Never Smoked
-</td>
-<td style="text-align:left;">
-Positive
-</td>
-<td style="text-align:left;">
-Mild Activity
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Mediterranean Diet
-</td>
-<td style="text-align:left;">
-Poor
-</td>
-<td style="text-align:left;">
-Diabetes
-</td>
-<td style="text-align:right;">
-1
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0.0157542
-</td>
-<td style="text-align:right;">
-69
-</td>
-<td style="text-align:right;">
-99.85949
-</td>
-<td style="text-align:right;">
-36.95526
-</td>
-<td style="text-align:right;">
-53.72508
-</td>
-<td style="text-align:right;">
-36.62969
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-66
-</td>
-<td style="text-align:left;">
-Secondary School
-</td>
-<td style="text-align:left;">
-Right
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Former Smoker
-</td>
-<td style="text-align:left;">
-Positive
-</td>
-<td style="text-align:left;">
-Mild Activity
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Mediterranean Diet
-</td>
-<td style="text-align:left;">
-Poor
-</td>
-<td style="text-align:left;">
-None
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0.0826712
-</td>
-<td style="text-align:right;">
-93
-</td>
-<td style="text-align:right;">
-96.76003
-</td>
-<td style="text-align:right;">
-36.51048
-</td>
-<td style="text-align:right;">
-77.50146
-</td>
-<td style="text-align:right;">
-34.23731
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-69
-</td>
-<td style="text-align:left;">
-Primary School
-</td>
-<td style="text-align:left;">
-Right
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Former Smoker
-</td>
-<td style="text-align:left;">
-Positive
-</td>
-<td style="text-align:left;">
-Mild Activity
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Balanced Diet
-</td>
-<td style="text-align:left;">
-Good
-</td>
-<td style="text-align:left;">
-Hypertension
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.0280772
-</td>
-<td style="text-align:right;">
-93
-</td>
-<td style="text-align:right;">
-98.88930
-</td>
-<td style="text-align:right;">
-36.62580
-</td>
-<td style="text-align:right;">
-56.72634
-</td>
-<td style="text-align:right;">
-52.64004
-</td>
-<td style="text-align:left;">
-Rivastigmine
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-76
-</td>
-<td style="text-align:left;">
-Secondary School
-</td>
-<td style="text-align:left;">
-Right
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Former Smoker
-</td>
-<td style="text-align:left;">
-Negative
-</td>
-<td style="text-align:left;">
-Moderate Activity
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Low-Carb Diet
-</td>
-<td style="text-align:left;">
-Poor
-</td>
-<td style="text-align:left;">
-Diabetes
-</td>
-<td style="text-align:right;">
-1
-</td>
-</tr>
-</tbody>
-</table>
-<p>Current smoker and normal blood oxygen levels:</p>
-<pre class="r"><code>formatted_table(head(filter(df, Smoking_Status == &quot;Current Smoker&quot; &amp; BloodOxygenLevel &gt; 95)))</code></pre>
-<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:right;">
-Diabetic
-</th>
-<th style="text-align:right;">
-AlcoholLevel
-</th>
-<th style="text-align:right;">
-HeartRate
-</th>
-<th style="text-align:right;">
-BloodOxygenLevel
-</th>
-<th style="text-align:right;">
-BodyTemperature
-</th>
-<th style="text-align:right;">
-Weight
-</th>
-<th style="text-align:right;">
-MRI_Delay
-</th>
-<th style="text-align:left;">
-Prescription
-</th>
-<th style="text-align:right;">
-Dosage in mg
-</th>
-<th style="text-align:right;">
-Age
-</th>
-<th style="text-align:left;">
-Education_Level
-</th>
-<th style="text-align:left;">
-Dominant_Hand
-</th>
-<th style="text-align:left;">
-Gender
-</th>
-<th style="text-align:left;">
-Family_History
-</th>
-<th style="text-align:left;">
-Smoking_Status
-</th>
-<th style="text-align:left;">
-APOE_ε4
-</th>
-<th style="text-align:left;">
-Physical_Activity
-</th>
-<th style="text-align:left;">
-Depression_Status
-</th>
-<th style="text-align:right;">
-Cognitive_Test_Scores
-</th>
-<th style="text-align:left;">
-Medication_History
-</th>
-<th style="text-align:left;">
-Nutrition_Diet
-</th>
-<th style="text-align:left;">
-Sleep_Quality
-</th>
-<th style="text-align:left;">
-Chronic_Health_Conditions
-</th>
-<th style="text-align:right;">
-Dementia
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.0849736
-</td>
-<td style="text-align:right;">
-98
-</td>
-<td style="text-align:right;">
-96.23074
-</td>
-<td style="text-align:right;">
-36.22485
-</td>
-<td style="text-align:right;">
-57.56398
-</td>
-<td style="text-align:right;">
-36.42103
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-60
-</td>
-<td style="text-align:left;">
-Primary School
-</td>
-<td style="text-align:left;">
-Left
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Current Smoker
-</td>
-<td style="text-align:left;">
-Negative
-</td>
-<td style="text-align:left;">
-Sedentary
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Low-Carb Diet
-</td>
-<td style="text-align:left;">
-Poor
-</td>
-<td style="text-align:left;">
-Diabetes
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0.1659716
-</td>
-<td style="text-align:right;">
-84
-</td>
-<td style="text-align:right;">
-97.20612
-</td>
-<td style="text-align:right;">
-36.01245
-</td>
-<td style="text-align:right;">
-72.61512
-</td>
-<td style="text-align:right;">
-32.55944
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-87
-</td>
-<td style="text-align:left;">
-Secondary School
-</td>
-<td style="text-align:left;">
-Left
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Current Smoker
-</td>
-<td style="text-align:left;">
-Negative
-</td>
-<td style="text-align:left;">
-Mild Activity
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Balanced Diet
-</td>
-<td style="text-align:left;">
-Good
-</td>
-<td style="text-align:left;">
-None
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.0385586
-</td>
-<td style="text-align:right;">
-93
-</td>
-<td style="text-align:right;">
-95.69586
-</td>
-<td style="text-align:right;">
-36.31134
-</td>
-<td style="text-align:right;">
-77.04856
-</td>
-<td style="text-align:right;">
-49.58918
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-83
-</td>
-<td style="text-align:left;">
-Primary School
-</td>
-<td style="text-align:left;">
-Right
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Current Smoker
-</td>
-<td style="text-align:left;">
-Negative
-</td>
-<td style="text-align:left;">
-Mild Activity
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Balanced Diet
-</td>
-<td style="text-align:left;">
-Good
-</td>
-<td style="text-align:left;">
-Diabetes
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.0271501
-</td>
-<td style="text-align:right;">
-87
-</td>
-<td style="text-align:right;">
-95.70534
-</td>
-<td style="text-align:right;">
-36.95713
-</td>
-<td style="text-align:right;">
-91.42437
-</td>
-<td style="text-align:right;">
-38.93053
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-75
-</td>
-<td style="text-align:left;">
-Primary School
-</td>
-<td style="text-align:left;">
-Left
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Current Smoker
-</td>
-<td style="text-align:left;">
-Positive
-</td>
-<td style="text-align:left;">
-Sedentary
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Low-Carb Diet
-</td>
-<td style="text-align:left;">
-Poor
-</td>
-<td style="text-align:left;">
-Diabetes
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0.1759582
-</td>
-<td style="text-align:right;">
-87
-</td>
-<td style="text-align:right;">
-98.09701
-</td>
-<td style="text-align:right;">
-37.06736
-</td>
-<td style="text-align:right;">
-83.12899
-</td>
-<td style="text-align:right;">
-26.25142
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-89
-</td>
-<td style="text-align:left;">
-Primary School
-</td>
-<td style="text-align:left;">
-Right
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Current Smoker
-</td>
-<td style="text-align:left;">
-Positive
-</td>
-<td style="text-align:left;">
-Moderate Activity
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Balanced Diet
-</td>
-<td style="text-align:left;">
-Good
-</td>
-<td style="text-align:left;">
-Heart Disease
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0.1326665
-</td>
-<td style="text-align:right;">
-96
-</td>
-<td style="text-align:right;">
-99.08544
-</td>
-<td style="text-align:right;">
-37.35210
-</td>
-<td style="text-align:right;">
-57.75965
-</td>
-<td style="text-align:right;">
-43.13915
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-81
-</td>
-<td style="text-align:left;">
-Diploma/Degree
-</td>
-<td style="text-align:left;">
-Right
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Current Smoker
-</td>
-<td style="text-align:left;">
-Negative
-</td>
-<td style="text-align:left;">
-Mild Activity
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Balanced Diet
-</td>
-<td style="text-align:left;">
-Good
-</td>
-<td style="text-align:left;">
-Hypertension
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-</tbody>
-</table>
-<p>NOT a current smoker and normal blood oxygen levels:</p>
-<pre class="r"><code>formatted_table(head(filter(df, !Smoking_Status == &quot;Current Smoker&quot; &amp; BloodOxygenLevel &gt; 95)))</code></pre>
-<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:right;">
-Diabetic
-</th>
-<th style="text-align:right;">
-AlcoholLevel
-</th>
-<th style="text-align:right;">
-HeartRate
-</th>
-<th style="text-align:right;">
-BloodOxygenLevel
-</th>
-<th style="text-align:right;">
-BodyTemperature
-</th>
-<th style="text-align:right;">
-Weight
-</th>
-<th style="text-align:right;">
-MRI_Delay
-</th>
-<th style="text-align:left;">
-Prescription
-</th>
-<th style="text-align:right;">
-Dosage in mg
-</th>
-<th style="text-align:right;">
-Age
-</th>
-<th style="text-align:left;">
-Education_Level
-</th>
-<th style="text-align:left;">
-Dominant_Hand
-</th>
-<th style="text-align:left;">
-Gender
-</th>
-<th style="text-align:left;">
-Family_History
-</th>
-<th style="text-align:left;">
-Smoking_Status
-</th>
-<th style="text-align:left;">
-APOE_ε4
-</th>
-<th style="text-align:left;">
-Physical_Activity
-</th>
-<th style="text-align:left;">
-Depression_Status
-</th>
-<th style="text-align:right;">
-Cognitive_Test_Scores
-</th>
-<th style="text-align:left;">
-Medication_History
-</th>
-<th style="text-align:left;">
-Nutrition_Diet
-</th>
-<th style="text-align:left;">
-Sleep_Quality
-</th>
-<th style="text-align:left;">
-Chronic_Health_Conditions
-</th>
-<th style="text-align:right;">
-Dementia
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.1507473
-</td>
-<td style="text-align:right;">
-67
-</td>
-<td style="text-align:right;">
-97.50899
-</td>
-<td style="text-align:right;">
-36.06212
-</td>
-<td style="text-align:right;">
-67.70503
-</td>
-<td style="text-align:right;">
-27.81060
-</td>
-<td style="text-align:left;">
-Memantine
-</td>
-<td style="text-align:right;">
-20
-</td>
-<td style="text-align:right;">
-77
-</td>
-<td style="text-align:left;">
-Secondary School
-</td>
-<td style="text-align:left;">
-Right
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Never Smoked
-</td>
-<td style="text-align:left;">
-Positive
-</td>
-<td style="text-align:left;">
-Mild Activity
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Low-Carb Diet
-</td>
-<td style="text-align:left;">
-Good
-</td>
-<td style="text-align:left;">
-Diabetes
-</td>
-<td style="text-align:right;">
-1
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.0161938
-</td>
-<td style="text-align:right;">
-90
-</td>
-<td style="text-align:right;">
-96.42336
-</td>
-<td style="text-align:right;">
-37.02463
-</td>
-<td style="text-align:right;">
-83.97655
-</td>
-<td style="text-align:right;">
-11.35061
-</td>
-<td style="text-align:left;">
-Donepezil
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-87
-</td>
-<td style="text-align:left;">
-Primary School
-</td>
-<td style="text-align:left;">
-Right
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Never Smoked
-</td>
-<td style="text-align:left;">
-Positive
-</td>
-<td style="text-align:left;">
-Mild Activity
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Mediterranean Diet
-</td>
-<td style="text-align:left;">
-Poor
-</td>
-<td style="text-align:left;">
-Diabetes
-</td>
-<td style="text-align:right;">
-1
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0.0157542
-</td>
-<td style="text-align:right;">
-69
-</td>
-<td style="text-align:right;">
-99.85949
-</td>
-<td style="text-align:right;">
-36.95526
-</td>
-<td style="text-align:right;">
-53.72508
-</td>
-<td style="text-align:right;">
-36.62969
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-66
-</td>
-<td style="text-align:left;">
-Secondary School
-</td>
-<td style="text-align:left;">
-Right
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Former Smoker
-</td>
-<td style="text-align:left;">
-Positive
-</td>
-<td style="text-align:left;">
-Mild Activity
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Mediterranean Diet
-</td>
-<td style="text-align:left;">
-Poor
-</td>
-<td style="text-align:left;">
-None
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0.0826712
-</td>
-<td style="text-align:right;">
-93
-</td>
-<td style="text-align:right;">
-96.76003
-</td>
-<td style="text-align:right;">
-36.51048
-</td>
-<td style="text-align:right;">
-77.50146
-</td>
-<td style="text-align:right;">
-34.23731
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-69
-</td>
-<td style="text-align:left;">
-Primary School
-</td>
-<td style="text-align:left;">
-Right
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Former Smoker
-</td>
-<td style="text-align:left;">
-Positive
-</td>
-<td style="text-align:left;">
-Mild Activity
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Balanced Diet
-</td>
-<td style="text-align:left;">
-Good
-</td>
-<td style="text-align:left;">
-Hypertension
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.0280772
-</td>
-<td style="text-align:right;">
-93
-</td>
-<td style="text-align:right;">
-98.88930
-</td>
-<td style="text-align:right;">
-36.62580
-</td>
-<td style="text-align:right;">
-56.72634
-</td>
-<td style="text-align:right;">
-52.64004
-</td>
-<td style="text-align:left;">
-Rivastigmine
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-76
-</td>
-<td style="text-align:left;">
-Secondary School
-</td>
-<td style="text-align:left;">
-Right
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Former Smoker
-</td>
-<td style="text-align:left;">
-Negative
-</td>
-<td style="text-align:left;">
-Moderate Activity
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Low-Carb Diet
-</td>
-<td style="text-align:left;">
-Poor
-</td>
-<td style="text-align:left;">
-Diabetes
-</td>
-<td style="text-align:right;">
-1
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.0880516
-</td>
-<td style="text-align:right;">
-91
-</td>
-<td style="text-align:right;">
-97.40051
-</td>
-<td style="text-align:right;">
-37.36268
-</td>
-<td style="text-align:right;">
-58.80969
-</td>
-<td style="text-align:right;">
-56.10713
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-64
-</td>
-<td style="text-align:left;">
-Primary School
-</td>
-<td style="text-align:left;">
-Right
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Former Smoker
-</td>
-<td style="text-align:left;">
-Negative
-</td>
-<td style="text-align:left;">
-Sedentary
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Low-Carb Diet
-</td>
-<td style="text-align:left;">
-Good
-</td>
-<td style="text-align:left;">
-Diabetes
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-</tbody>
-</table>
-<p>Normal blood oxygen levels or very low blood oxygen levels:</p>
-<pre class="r"><code>formatted_table(head(filter(df, BloodOxygenLevel &lt; 92 | BloodOxygenLevel &gt; 95)))</code></pre>
-<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:right;">
-Diabetic
-</th>
-<th style="text-align:right;">
-AlcoholLevel
-</th>
-<th style="text-align:right;">
-HeartRate
-</th>
-<th style="text-align:right;">
-BloodOxygenLevel
-</th>
-<th style="text-align:right;">
-BodyTemperature
-</th>
-<th style="text-align:right;">
-Weight
-</th>
-<th style="text-align:right;">
-MRI_Delay
-</th>
-<th style="text-align:left;">
-Prescription
-</th>
-<th style="text-align:right;">
-Dosage in mg
-</th>
-<th style="text-align:right;">
-Age
-</th>
-<th style="text-align:left;">
-Education_Level
-</th>
-<th style="text-align:left;">
-Dominant_Hand
-</th>
-<th style="text-align:left;">
-Gender
-</th>
-<th style="text-align:left;">
-Family_History
-</th>
-<th style="text-align:left;">
-Smoking_Status
-</th>
-<th style="text-align:left;">
-APOE_ε4
-</th>
-<th style="text-align:left;">
-Physical_Activity
-</th>
-<th style="text-align:left;">
-Depression_Status
-</th>
-<th style="text-align:right;">
-Cognitive_Test_Scores
-</th>
-<th style="text-align:left;">
-Medication_History
-</th>
-<th style="text-align:left;">
-Nutrition_Diet
-</th>
-<th style="text-align:left;">
-Sleep_Quality
-</th>
-<th style="text-align:left;">
-Chronic_Health_Conditions
-</th>
-<th style="text-align:right;">
-Dementia
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.0849736
-</td>
-<td style="text-align:right;">
-98
-</td>
-<td style="text-align:right;">
-96.23074
-</td>
-<td style="text-align:right;">
-36.22485
-</td>
-<td style="text-align:right;">
-57.56398
-</td>
-<td style="text-align:right;">
-36.42103
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-60
-</td>
-<td style="text-align:left;">
-Primary School
-</td>
-<td style="text-align:left;">
-Left
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Current Smoker
-</td>
-<td style="text-align:left;">
-Negative
-</td>
-<td style="text-align:left;">
-Sedentary
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Low-Carb Diet
-</td>
-<td style="text-align:left;">
-Poor
-</td>
-<td style="text-align:left;">
-Diabetes
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.1507473
-</td>
-<td style="text-align:right;">
-67
-</td>
-<td style="text-align:right;">
-97.50899
-</td>
-<td style="text-align:right;">
-36.06212
-</td>
-<td style="text-align:right;">
-67.70503
-</td>
-<td style="text-align:right;">
-27.81060
-</td>
-<td style="text-align:left;">
-Memantine
-</td>
-<td style="text-align:right;">
-20
-</td>
-<td style="text-align:right;">
-77
-</td>
-<td style="text-align:left;">
-Secondary School
-</td>
-<td style="text-align:left;">
-Right
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Never Smoked
-</td>
-<td style="text-align:left;">
-Positive
-</td>
-<td style="text-align:left;">
-Mild Activity
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Low-Carb Diet
-</td>
-<td style="text-align:left;">
-Good
-</td>
-<td style="text-align:left;">
-Diabetes
-</td>
-<td style="text-align:right;">
-1
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.0161938
-</td>
-<td style="text-align:right;">
-90
-</td>
-<td style="text-align:right;">
-96.42336
-</td>
-<td style="text-align:right;">
-37.02463
-</td>
-<td style="text-align:right;">
-83.97655
-</td>
-<td style="text-align:right;">
-11.35061
-</td>
-<td style="text-align:left;">
-Donepezil
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-87
-</td>
-<td style="text-align:left;">
-Primary School
-</td>
-<td style="text-align:left;">
-Right
-</td>
-<td style="text-align:left;">
-Male
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Never Smoked
-</td>
-<td style="text-align:left;">
-Positive
-</td>
-<td style="text-align:left;">
-Mild Activity
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Mediterranean Diet
-</td>
-<td style="text-align:left;">
-Poor
-</td>
-<td style="text-align:left;">
-Diabetes
-</td>
-<td style="text-align:right;">
-1
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0.0157542
-</td>
-<td style="text-align:right;">
-69
-</td>
-<td style="text-align:right;">
-99.85949
-</td>
-<td style="text-align:right;">
-36.95526
-</td>
-<td style="text-align:right;">
-53.72508
-</td>
-<td style="text-align:right;">
-36.62969
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-66
-</td>
-<td style="text-align:left;">
-Secondary School
-</td>
-<td style="text-align:left;">
-Right
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Former Smoker
-</td>
-<td style="text-align:left;">
-Positive
-</td>
-<td style="text-align:left;">
-Mild Activity
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Mediterranean Diet
-</td>
-<td style="text-align:left;">
-Poor
-</td>
-<td style="text-align:left;">
-None
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.0973395
-</td>
-<td style="text-align:right;">
-64
-</td>
-<td style="text-align:right;">
-90.31907
-</td>
-<td style="text-align:right;">
-36.39629
-</td>
-<td style="text-align:right;">
-58.36670
-</td>
-<td style="text-align:right;">
-49.17576
-</td>
-<td style="text-align:left;">
-Rivastigmine
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-87
-</td>
-<td style="text-align:left;">
-Diploma/Degree
-</td>
-<td style="text-align:left;">
-Left
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Former Smoker
-</td>
-<td style="text-align:left;">
-Positive
-</td>
-<td style="text-align:left;">
-Sedentary
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Balanced Diet
-</td>
-<td style="text-align:left;">
-Good
-</td>
-<td style="text-align:left;">
-Diabetes
-</td>
-<td style="text-align:right;">
-1
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0.0674856
-</td>
-<td style="text-align:right;">
-97
-</td>
-<td style="text-align:right;">
-91.97409
-</td>
-<td style="text-align:right;">
-37.11506
-</td>
-<td style="text-align:right;">
-81.58276
-</td>
-<td style="text-align:right;">
-22.28137
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-73
-</td>
-<td style="text-align:left;">
-Secondary School
-</td>
-<td style="text-align:left;">
-Left
-</td>
-<td style="text-align:left;">
-Female
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Never Smoked
-</td>
-<td style="text-align:left;">
-Positive
-</td>
-<td style="text-align:left;">
-Mild Activity
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;">
-Mediterranean Diet
-</td>
-<td style="text-align:left;">
-Good
-</td>
-<td style="text-align:left;">
-Heart Disease
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-</tbody>
-</table>
-<p>All patients of age 65:</p>
+is filtering rows. Here is how that works in R:</p>
+<p>Filter rows on all patients of age 65:</p>
 <pre class="r"><code>formatted_table(head(filter(df, Age == 65)))</code></pre>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
@@ -4022,11 +1922,2123 @@ Diabetes
 </tr>
 </tbody>
 </table>
+<p>Measured oxygen level in blood considered as normal (&gt;95):</p>
+<pre class="r"><code>formatted_table(head(filter(df, BloodOxygenLevel &gt; 95)))</code></pre>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+Diabetic
+</th>
+<th style="text-align:right;">
+AlcoholLevel
+</th>
+<th style="text-align:right;">
+HeartRate
+</th>
+<th style="text-align:right;">
+BloodOxygenLevel
+</th>
+<th style="text-align:right;">
+BodyTemperature
+</th>
+<th style="text-align:right;">
+Weight
+</th>
+<th style="text-align:right;">
+MRI_Delay
+</th>
+<th style="text-align:left;">
+Prescription
+</th>
+<th style="text-align:right;">
+Dosage in mg
+</th>
+<th style="text-align:right;">
+Age
+</th>
+<th style="text-align:left;">
+Education_Level
+</th>
+<th style="text-align:left;">
+Dominant_Hand
+</th>
+<th style="text-align:left;">
+Gender
+</th>
+<th style="text-align:left;">
+Family_History
+</th>
+<th style="text-align:left;">
+Smoking_Status
+</th>
+<th style="text-align:left;">
+APOE_ε4
+</th>
+<th style="text-align:left;">
+Physical_Activity
+</th>
+<th style="text-align:left;">
+Depression_Status
+</th>
+<th style="text-align:right;">
+Cognitive_Test_Scores
+</th>
+<th style="text-align:left;">
+Medication_History
+</th>
+<th style="text-align:left;">
+Nutrition_Diet
+</th>
+<th style="text-align:left;">
+Sleep_Quality
+</th>
+<th style="text-align:left;">
+Chronic_Health_Conditions
+</th>
+<th style="text-align:right;">
+Dementia
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0849736
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:right;">
+96.23074
+</td>
+<td style="text-align:right;">
+36.22485
+</td>
+<td style="text-align:right;">
+57.56398
+</td>
+<td style="text-align:right;">
+36.42103
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:left;">
+Primary School
+</td>
+<td style="text-align:left;">
+Left
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Current Smoker
+</td>
+<td style="text-align:left;">
+Negative
+</td>
+<td style="text-align:left;">
+Sedentary
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Low-Carb Diet
+</td>
+<td style="text-align:left;">
+Poor
+</td>
+<td style="text-align:left;">
+Diabetes
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.1507473
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:right;">
+97.50899
+</td>
+<td style="text-align:right;">
+36.06212
+</td>
+<td style="text-align:right;">
+67.70503
+</td>
+<td style="text-align:right;">
+27.81060
+</td>
+<td style="text-align:left;">
+Memantine
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:left;">
+Secondary School
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Never Smoked
+</td>
+<td style="text-align:left;">
+Positive
+</td>
+<td style="text-align:left;">
+Mild Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Low-Carb Diet
+</td>
+<td style="text-align:left;">
+Good
+</td>
+<td style="text-align:left;">
+Diabetes
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0161938
+</td>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:right;">
+96.42336
+</td>
+<td style="text-align:right;">
+37.02463
+</td>
+<td style="text-align:right;">
+83.97655
+</td>
+<td style="text-align:right;">
+11.35061
+</td>
+<td style="text-align:left;">
+Donepezil
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:left;">
+Primary School
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Never Smoked
+</td>
+<td style="text-align:left;">
+Positive
+</td>
+<td style="text-align:left;">
+Mild Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Mediterranean Diet
+</td>
+<td style="text-align:left;">
+Poor
+</td>
+<td style="text-align:left;">
+Diabetes
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.0157542
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:right;">
+99.85949
+</td>
+<td style="text-align:right;">
+36.95526
+</td>
+<td style="text-align:right;">
+53.72508
+</td>
+<td style="text-align:right;">
+36.62969
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:left;">
+Secondary School
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Former Smoker
+</td>
+<td style="text-align:left;">
+Positive
+</td>
+<td style="text-align:left;">
+Mild Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Mediterranean Diet
+</td>
+<td style="text-align:left;">
+Poor
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.0826712
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+96.76003
+</td>
+<td style="text-align:right;">
+36.51048
+</td>
+<td style="text-align:right;">
+77.50146
+</td>
+<td style="text-align:right;">
+34.23731
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:left;">
+Primary School
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Former Smoker
+</td>
+<td style="text-align:left;">
+Positive
+</td>
+<td style="text-align:left;">
+Mild Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Balanced Diet
+</td>
+<td style="text-align:left;">
+Good
+</td>
+<td style="text-align:left;">
+Hypertension
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0280772
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+98.88930
+</td>
+<td style="text-align:right;">
+36.62580
+</td>
+<td style="text-align:right;">
+56.72634
+</td>
+<td style="text-align:right;">
+52.64004
+</td>
+<td style="text-align:left;">
+Rivastigmine
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:left;">
+Secondary School
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Former Smoker
+</td>
+<td style="text-align:left;">
+Negative
+</td>
+<td style="text-align:left;">
+Moderate Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Low-Carb Diet
+</td>
+<td style="text-align:left;">
+Poor
+</td>
+<td style="text-align:left;">
+Diabetes
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+</tbody>
+</table>
+<p>To add a second condition, the <code>&amp;</code> operator is
+used:<br />
+Current smoker (condition 1) AND normal blood oxygen levels (condition
+2):</p>
+<pre class="r"><code>formatted_table(head(filter(df, Smoking_Status == &quot;Current Smoker&quot; &amp; BloodOxygenLevel &gt; 95)))</code></pre>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+Diabetic
+</th>
+<th style="text-align:right;">
+AlcoholLevel
+</th>
+<th style="text-align:right;">
+HeartRate
+</th>
+<th style="text-align:right;">
+BloodOxygenLevel
+</th>
+<th style="text-align:right;">
+BodyTemperature
+</th>
+<th style="text-align:right;">
+Weight
+</th>
+<th style="text-align:right;">
+MRI_Delay
+</th>
+<th style="text-align:left;">
+Prescription
+</th>
+<th style="text-align:right;">
+Dosage in mg
+</th>
+<th style="text-align:right;">
+Age
+</th>
+<th style="text-align:left;">
+Education_Level
+</th>
+<th style="text-align:left;">
+Dominant_Hand
+</th>
+<th style="text-align:left;">
+Gender
+</th>
+<th style="text-align:left;">
+Family_History
+</th>
+<th style="text-align:left;">
+Smoking_Status
+</th>
+<th style="text-align:left;">
+APOE_ε4
+</th>
+<th style="text-align:left;">
+Physical_Activity
+</th>
+<th style="text-align:left;">
+Depression_Status
+</th>
+<th style="text-align:right;">
+Cognitive_Test_Scores
+</th>
+<th style="text-align:left;">
+Medication_History
+</th>
+<th style="text-align:left;">
+Nutrition_Diet
+</th>
+<th style="text-align:left;">
+Sleep_Quality
+</th>
+<th style="text-align:left;">
+Chronic_Health_Conditions
+</th>
+<th style="text-align:right;">
+Dementia
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0849736
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:right;">
+96.23074
+</td>
+<td style="text-align:right;">
+36.22485
+</td>
+<td style="text-align:right;">
+57.56398
+</td>
+<td style="text-align:right;">
+36.42103
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:left;">
+Primary School
+</td>
+<td style="text-align:left;">
+Left
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Current Smoker
+</td>
+<td style="text-align:left;">
+Negative
+</td>
+<td style="text-align:left;">
+Sedentary
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Low-Carb Diet
+</td>
+<td style="text-align:left;">
+Poor
+</td>
+<td style="text-align:left;">
+Diabetes
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.1659716
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:right;">
+97.20612
+</td>
+<td style="text-align:right;">
+36.01245
+</td>
+<td style="text-align:right;">
+72.61512
+</td>
+<td style="text-align:right;">
+32.55944
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:left;">
+Secondary School
+</td>
+<td style="text-align:left;">
+Left
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Current Smoker
+</td>
+<td style="text-align:left;">
+Negative
+</td>
+<td style="text-align:left;">
+Mild Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Balanced Diet
+</td>
+<td style="text-align:left;">
+Good
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0385586
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+95.69586
+</td>
+<td style="text-align:right;">
+36.31134
+</td>
+<td style="text-align:right;">
+77.04856
+</td>
+<td style="text-align:right;">
+49.58918
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+83
+</td>
+<td style="text-align:left;">
+Primary School
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Current Smoker
+</td>
+<td style="text-align:left;">
+Negative
+</td>
+<td style="text-align:left;">
+Mild Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Balanced Diet
+</td>
+<td style="text-align:left;">
+Good
+</td>
+<td style="text-align:left;">
+Diabetes
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0271501
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:right;">
+95.70534
+</td>
+<td style="text-align:right;">
+36.95713
+</td>
+<td style="text-align:right;">
+91.42437
+</td>
+<td style="text-align:right;">
+38.93053
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:left;">
+Primary School
+</td>
+<td style="text-align:left;">
+Left
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Current Smoker
+</td>
+<td style="text-align:left;">
+Positive
+</td>
+<td style="text-align:left;">
+Sedentary
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Low-Carb Diet
+</td>
+<td style="text-align:left;">
+Poor
+</td>
+<td style="text-align:left;">
+Diabetes
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.1759582
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:right;">
+98.09701
+</td>
+<td style="text-align:right;">
+37.06736
+</td>
+<td style="text-align:right;">
+83.12899
+</td>
+<td style="text-align:right;">
+26.25142
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:left;">
+Primary School
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Current Smoker
+</td>
+<td style="text-align:left;">
+Positive
+</td>
+<td style="text-align:left;">
+Moderate Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Balanced Diet
+</td>
+<td style="text-align:left;">
+Good
+</td>
+<td style="text-align:left;">
+Heart Disease
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.1326665
+</td>
+<td style="text-align:right;">
+96
+</td>
+<td style="text-align:right;">
+99.08544
+</td>
+<td style="text-align:right;">
+37.35210
+</td>
+<td style="text-align:right;">
+57.75965
+</td>
+<td style="text-align:right;">
+43.13915
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:left;">
+Diploma/Degree
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Current Smoker
+</td>
+<td style="text-align:left;">
+Negative
+</td>
+<td style="text-align:left;">
+Mild Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Balanced Diet
+</td>
+<td style="text-align:left;">
+Good
+</td>
+<td style="text-align:left;">
+Hypertension
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>!</code> operator can be used to exclude (negate) a
+specific condition:<br />
+NOT a current smoker AND normal blood oxygen levels:</p>
+<pre class="r"><code>formatted_table(head(filter(df, !Smoking_Status == &quot;Current Smoker&quot; &amp; BloodOxygenLevel &gt; 95)))</code></pre>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+Diabetic
+</th>
+<th style="text-align:right;">
+AlcoholLevel
+</th>
+<th style="text-align:right;">
+HeartRate
+</th>
+<th style="text-align:right;">
+BloodOxygenLevel
+</th>
+<th style="text-align:right;">
+BodyTemperature
+</th>
+<th style="text-align:right;">
+Weight
+</th>
+<th style="text-align:right;">
+MRI_Delay
+</th>
+<th style="text-align:left;">
+Prescription
+</th>
+<th style="text-align:right;">
+Dosage in mg
+</th>
+<th style="text-align:right;">
+Age
+</th>
+<th style="text-align:left;">
+Education_Level
+</th>
+<th style="text-align:left;">
+Dominant_Hand
+</th>
+<th style="text-align:left;">
+Gender
+</th>
+<th style="text-align:left;">
+Family_History
+</th>
+<th style="text-align:left;">
+Smoking_Status
+</th>
+<th style="text-align:left;">
+APOE_ε4
+</th>
+<th style="text-align:left;">
+Physical_Activity
+</th>
+<th style="text-align:left;">
+Depression_Status
+</th>
+<th style="text-align:right;">
+Cognitive_Test_Scores
+</th>
+<th style="text-align:left;">
+Medication_History
+</th>
+<th style="text-align:left;">
+Nutrition_Diet
+</th>
+<th style="text-align:left;">
+Sleep_Quality
+</th>
+<th style="text-align:left;">
+Chronic_Health_Conditions
+</th>
+<th style="text-align:right;">
+Dementia
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.1507473
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:right;">
+97.50899
+</td>
+<td style="text-align:right;">
+36.06212
+</td>
+<td style="text-align:right;">
+67.70503
+</td>
+<td style="text-align:right;">
+27.81060
+</td>
+<td style="text-align:left;">
+Memantine
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:left;">
+Secondary School
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Never Smoked
+</td>
+<td style="text-align:left;">
+Positive
+</td>
+<td style="text-align:left;">
+Mild Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Low-Carb Diet
+</td>
+<td style="text-align:left;">
+Good
+</td>
+<td style="text-align:left;">
+Diabetes
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0161938
+</td>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:right;">
+96.42336
+</td>
+<td style="text-align:right;">
+37.02463
+</td>
+<td style="text-align:right;">
+83.97655
+</td>
+<td style="text-align:right;">
+11.35061
+</td>
+<td style="text-align:left;">
+Donepezil
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:left;">
+Primary School
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Never Smoked
+</td>
+<td style="text-align:left;">
+Positive
+</td>
+<td style="text-align:left;">
+Mild Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Mediterranean Diet
+</td>
+<td style="text-align:left;">
+Poor
+</td>
+<td style="text-align:left;">
+Diabetes
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.0157542
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:right;">
+99.85949
+</td>
+<td style="text-align:right;">
+36.95526
+</td>
+<td style="text-align:right;">
+53.72508
+</td>
+<td style="text-align:right;">
+36.62969
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:left;">
+Secondary School
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Former Smoker
+</td>
+<td style="text-align:left;">
+Positive
+</td>
+<td style="text-align:left;">
+Mild Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Mediterranean Diet
+</td>
+<td style="text-align:left;">
+Poor
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.0826712
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+96.76003
+</td>
+<td style="text-align:right;">
+36.51048
+</td>
+<td style="text-align:right;">
+77.50146
+</td>
+<td style="text-align:right;">
+34.23731
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:left;">
+Primary School
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Former Smoker
+</td>
+<td style="text-align:left;">
+Positive
+</td>
+<td style="text-align:left;">
+Mild Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Balanced Diet
+</td>
+<td style="text-align:left;">
+Good
+</td>
+<td style="text-align:left;">
+Hypertension
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0280772
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+98.88930
+</td>
+<td style="text-align:right;">
+36.62580
+</td>
+<td style="text-align:right;">
+56.72634
+</td>
+<td style="text-align:right;">
+52.64004
+</td>
+<td style="text-align:left;">
+Rivastigmine
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:left;">
+Secondary School
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Former Smoker
+</td>
+<td style="text-align:left;">
+Negative
+</td>
+<td style="text-align:left;">
+Moderate Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Low-Carb Diet
+</td>
+<td style="text-align:left;">
+Poor
+</td>
+<td style="text-align:left;">
+Diabetes
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0880516
+</td>
+<td style="text-align:right;">
+91
+</td>
+<td style="text-align:right;">
+97.40051
+</td>
+<td style="text-align:right;">
+37.36268
+</td>
+<td style="text-align:right;">
+58.80969
+</td>
+<td style="text-align:right;">
+56.10713
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:left;">
+Primary School
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Former Smoker
+</td>
+<td style="text-align:left;">
+Negative
+</td>
+<td style="text-align:left;">
+Sedentary
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Low-Carb Diet
+</td>
+<td style="text-align:left;">
+Good
+</td>
+<td style="text-align:left;">
+Diabetes
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>|</code> operator can be used to meet either one of the
+conditions: Normal blood oxygen levels OR very low blood oxygen
+levels:</p>
+<pre class="r"><code>formatted_table(head(filter(df, BloodOxygenLevel &lt; 92 | BloodOxygenLevel &gt; 95)))</code></pre>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+Diabetic
+</th>
+<th style="text-align:right;">
+AlcoholLevel
+</th>
+<th style="text-align:right;">
+HeartRate
+</th>
+<th style="text-align:right;">
+BloodOxygenLevel
+</th>
+<th style="text-align:right;">
+BodyTemperature
+</th>
+<th style="text-align:right;">
+Weight
+</th>
+<th style="text-align:right;">
+MRI_Delay
+</th>
+<th style="text-align:left;">
+Prescription
+</th>
+<th style="text-align:right;">
+Dosage in mg
+</th>
+<th style="text-align:right;">
+Age
+</th>
+<th style="text-align:left;">
+Education_Level
+</th>
+<th style="text-align:left;">
+Dominant_Hand
+</th>
+<th style="text-align:left;">
+Gender
+</th>
+<th style="text-align:left;">
+Family_History
+</th>
+<th style="text-align:left;">
+Smoking_Status
+</th>
+<th style="text-align:left;">
+APOE_ε4
+</th>
+<th style="text-align:left;">
+Physical_Activity
+</th>
+<th style="text-align:left;">
+Depression_Status
+</th>
+<th style="text-align:right;">
+Cognitive_Test_Scores
+</th>
+<th style="text-align:left;">
+Medication_History
+</th>
+<th style="text-align:left;">
+Nutrition_Diet
+</th>
+<th style="text-align:left;">
+Sleep_Quality
+</th>
+<th style="text-align:left;">
+Chronic_Health_Conditions
+</th>
+<th style="text-align:right;">
+Dementia
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0849736
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:right;">
+96.23074
+</td>
+<td style="text-align:right;">
+36.22485
+</td>
+<td style="text-align:right;">
+57.56398
+</td>
+<td style="text-align:right;">
+36.42103
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:left;">
+Primary School
+</td>
+<td style="text-align:left;">
+Left
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Current Smoker
+</td>
+<td style="text-align:left;">
+Negative
+</td>
+<td style="text-align:left;">
+Sedentary
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Low-Carb Diet
+</td>
+<td style="text-align:left;">
+Poor
+</td>
+<td style="text-align:left;">
+Diabetes
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.1507473
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:right;">
+97.50899
+</td>
+<td style="text-align:right;">
+36.06212
+</td>
+<td style="text-align:right;">
+67.70503
+</td>
+<td style="text-align:right;">
+27.81060
+</td>
+<td style="text-align:left;">
+Memantine
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:left;">
+Secondary School
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Never Smoked
+</td>
+<td style="text-align:left;">
+Positive
+</td>
+<td style="text-align:left;">
+Mild Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Low-Carb Diet
+</td>
+<td style="text-align:left;">
+Good
+</td>
+<td style="text-align:left;">
+Diabetes
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0161938
+</td>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:right;">
+96.42336
+</td>
+<td style="text-align:right;">
+37.02463
+</td>
+<td style="text-align:right;">
+83.97655
+</td>
+<td style="text-align:right;">
+11.35061
+</td>
+<td style="text-align:left;">
+Donepezil
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:left;">
+Primary School
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Never Smoked
+</td>
+<td style="text-align:left;">
+Positive
+</td>
+<td style="text-align:left;">
+Mild Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Mediterranean Diet
+</td>
+<td style="text-align:left;">
+Poor
+</td>
+<td style="text-align:left;">
+Diabetes
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.0157542
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:right;">
+99.85949
+</td>
+<td style="text-align:right;">
+36.95526
+</td>
+<td style="text-align:right;">
+53.72508
+</td>
+<td style="text-align:right;">
+36.62969
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:left;">
+Secondary School
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Former Smoker
+</td>
+<td style="text-align:left;">
+Positive
+</td>
+<td style="text-align:left;">
+Mild Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Mediterranean Diet
+</td>
+<td style="text-align:left;">
+Poor
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.0973395
+</td>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:right;">
+90.31907
+</td>
+<td style="text-align:right;">
+36.39629
+</td>
+<td style="text-align:right;">
+58.36670
+</td>
+<td style="text-align:right;">
+49.17576
+</td>
+<td style="text-align:left;">
+Rivastigmine
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:left;">
+Diploma/Degree
+</td>
+<td style="text-align:left;">
+Left
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Former Smoker
+</td>
+<td style="text-align:left;">
+Positive
+</td>
+<td style="text-align:left;">
+Sedentary
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Balanced Diet
+</td>
+<td style="text-align:left;">
+Good
+</td>
+<td style="text-align:left;">
+Diabetes
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.0674856
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:right;">
+91.97409
+</td>
+<td style="text-align:right;">
+37.11506
+</td>
+<td style="text-align:right;">
+81.58276
+</td>
+<td style="text-align:right;">
+22.28137
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+73
+</td>
+<td style="text-align:left;">
+Secondary School
+</td>
+<td style="text-align:left;">
+Left
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Never Smoked
+</td>
+<td style="text-align:left;">
+Positive
+</td>
+<td style="text-align:left;">
+Mild Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Mediterranean Diet
+</td>
+<td style="text-align:left;">
+Good
+</td>
+<td style="text-align:left;">
+Heart Disease
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="arranging-rows" class="section level2">
 <h2>Arranging rows</h2>
-<p>You can use arrange() instead of filter if you want to sort your rows
-in a data frame instead of filtering it:</p>
+<p>You can use <code>arrange()</code> instead of <code>filter()</code>
+if you want to sort your rows in a data frame instead of filtering
+it:</p>
 <p>Arrange on blood oxygen levels <strong>ascending</strong> (from low
 to high values):</p>
 <pre class="r"><code>formatted_table(head(arrange(df, BloodOxygenLevel)))</code></pre>
@@ -5765,8 +5777,8 @@ Diabetes
 </tr>
 </tbody>
 </table>
-<p>Here is an example of sorting on age first and then sorting on blood
-oxygen levels from high to low:</p>
+<p>Here is an example of sorting on age first and then sorting on
+<strong>descending</strong> blood oxygen levels (from high to low):</p>
 <pre class="r"><code>formatted_table(head(arrange(df, Age, desc(BloodOxygenLevel))))</code></pre>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
@@ -6298,11 +6310,11 @@ Diabetes
 </div>
 <div id="select-columns-with-select" class="section level2">
 <h2>Select columns with select</h2>
-<p>You have learned that Variables in data sets should be arranged in
+<p>You have learned that variables in data sets should be arranged in
 columns. Often data sets contain a lot of variables (columns). Most
 likely, you are not interested in all of them. With the
-<code>select</code> function, you can select the variables that you are
-interested in:</p>
+<code>select()</code> function, you can select the variables that you
+are interested in:</p>
 <pre class="r"><code>formatted_table(head(select(df, Age, Smoking_Status, BloodOxygenLevel, HeartRate)))</code></pre>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
@@ -6913,7 +6925,8 @@ Diabetes
 </tr>
 </tbody>
 </table>
-<p>Or select besides the age, all columns with “Level” in the name:</p>
+<p>Or select besides the age, all column names that end with
+“Level”:</p>
 <pre class="r"><code>formatted_table(head(select(df, Age, ends_with(&quot;Level&quot;))))</code></pre>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
@@ -7019,10 +7032,12 @@ No School
 </tr>
 </tbody>
 </table>
+<p>Yes, there is also a function <code>starts_With()</code> to select
+columns that start with certain characters.</p>
 </div>
 <div id="summary-data" class="section level2">
 <h2>Summary data</h2>
-<p>You can use the base R <code>summary</code> function to get summary
+<p>You can use the base R <code>summary()</code> function to get summary
 information on a data frame:</p>
 <pre class="r"><code>summary(df)</code></pre>
 <pre><code>##     Diabetic      AlcoholLevel         HeartRate      BloodOxygenLevel
@@ -7086,7 +7101,7 @@ that you are interested in (for example blood oxygen levels):</p>
 <pre class="r"><code>summary(df$BloodOxygenLevel)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   90.01   92.88   95.39   95.23   97.79  100.00</code></pre>
-<p>But the Tidyverse library also contains a <code>summarize</code>
+<p>But the Tidyverse library also contains a <code>summarize()</code>
 function:</p>
 <pre class="r"><code>formatted_table(summarize(df, BloodOxygenLevel = mean(BloodOxygenLevel)))</code></pre>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
@@ -7105,7 +7120,7 @@ BloodOxygenLevel
 </tr>
 </tbody>
 </table>
-<p>You can combine this with the <code>group_by</code> function for
+<p>You can combine this with the <code>group_by()</code> function for
 powerful analysis:</p>
 <pre class="r"><code>by_smoking_status &lt;- group_by(df, Smoking_Status)
 formatted_table(summarize(by_smoking_status, Average_BloodOxygenLevel = mean(BloodOxygenLevel)))</code></pre>
@@ -7286,7 +7301,8 @@ Never Smoked
 </div>
 <div id="round-values" class="section level2">
 <h2>Round values</h2>
-<p>In R you can round functions using the round() function:</p>
+<p>In R you can round decimals using the <code>round()</code>
+function:</p>
 <pre class="r"><code>round(2.40, digits = 1)</code></pre>
 <pre><code>## [1] 2.4</code></pre>
 <pre class="r"><code>round(2.45, digits = 1)</code></pre>
@@ -7301,7 +7317,7 @@ Never Smoked
 round(0.5) is 0 and round(-1.5) is -2.</p>
 </blockquote>
 <p>So if you like your values to be rounded in the example above, just
-wrap it in the round function:</p>
+wrap it in the <code>round()</code> function:</p>
 <pre class="r"><code>by_smoking_status &lt;- group_by(df, Smoking_Status)
 formatted_table(summarize(by_smoking_status, average_BOL = round(mean(BloodOxygenLevel), digits = 1), sd_BOL = round(sd(BloodOxygenLevel), digits = 2), average_BT = round(mean(BodyTemperature), digits = 1), sd_BT = round(sd(BodyTemperature), digits = 2)))</code></pre>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
@@ -7405,7 +7421,7 @@ BloodOxygenLevel column):</p>
 <div id="summarize-each" class="section level2">
 <h2>Summarize each</h2>
 <p>Using Tidyverse, you can also apply some of the above statistics more
-conveniently using the <code>summarize_each</code> function:</p>
+conveniently using the <code>summarize_each()</code> function:</p>
 <pre class="r"><code>by_smoking_status &lt;- group_by(df, Smoking_Status)
 formatted_table(summarize_each(by_smoking_status, funs(mean, sd, se=sd(.)/sqrt(n()))))</code></pre>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
@@ -9971,7 +9987,7 @@ the column <code>Smoking_Status</code> and then, summarize each
 and <code>se</code> and then, select all columns except
 <code>Prescription</code>.</p>
 <p>In this case, we can also remove all character type columns at once
-(and then do the calculations) with the <code>select_if</code>
+(and then do the calculations) with the <code>select_if()</code>
 function.</p>
 <pre class="r"><code>by_smoking_status &lt;- select_if(group_by(df, Smoking_Status), is.numeric)
 formatted_table(summarize_each(by_smoking_status, funs(mean, sd, se=sd(.)/sqrt(n()))))</code></pre>
@@ -10398,10 +10414,11 @@ NA
 </tbody>
 </table>
 <p>This way, the only character type column that is preserved is the
-Smoking_Status column. Note: there are still fields with <code>NA</code>
-in this overview. These are caused by missing values in the original
-dataset. If you try to calculate the mean value of a set of numbers,
-including <code>NA</code>, the result will be <code>NA</code>:</p>
+<code>Smoking_Status</code> column. Note: there are still fields with
+<code>NA</code> in this overview. These are caused by missing values in
+the original dataset. If you try to calculate the mean value of a set of
+numbers, including <code>NA</code>, the result will be
+<code>NA</code>:</p>
 <pre class="r"><code>paste(&quot;mean with no `NA` values:&quot;, mean(c(5.7, 3.5, 2.7, 4.6, 7.9)))</code></pre>
 <pre><code>## [1] &quot;mean with no `NA` values: 4.88&quot;</code></pre>
 <pre class="r"><code>paste(&quot;mean with `NA` values:&quot;, mean(c(5.7, 3.5, 2.7, NA, 7.9)))</code></pre>
@@ -10433,9 +10450,10 @@ mean/sd/sum is calculated.</p>
 <pre><code>## [1] &quot;sum with `NA` values: 19.8&quot;</code></pre>
 <div id="summarize-and-across" class="section level3">
 <h3>Summarize and across</h3>
-<p>The summarize_each() function is deprecated (will work, but not
-actively maintained anymore) in favor of the new across() function that
-works within summarize() and mutate().</p>
+<p>The <code>summarize_each()</code> function is deprecated (will work,
+but not actively maintained anymore) in favor of the new
+<code>across()</code> function that works within
+<code>summarize()</code> and <code>mutate()</code>.</p>
 <pre class="r"><code>formatted_table(df %&gt;%
   group_by(Smoking_Status) %&gt;%
   summarize(across(everything(), list(mean = mean, sd = sd))))</code></pre>
@@ -11017,7 +11035,8 @@ NA
 </tr>
 </tbody>
 </table>
-<p>Or use the scoped variant of summarize, summarize_all:</p>
+<p>Or use the scoped variant of summarize,
+<code>summarize_all()</code>:</p>
 <pre class="r"><code>df_summary &lt;- df %&gt;%
   group_by(Smoking_Status) %&gt;%
   summarize_all(list(mean = mean, sd = sd))
@@ -11601,20 +11620,275 @@ NA
 </tr>
 </tbody>
 </table>
-<p>If you want to remove the columns that yield NA’s:</p>
-<pre class="r"><code>df_summary %&gt;% select_if(~sum(!is.na(.)) &gt; 0)</code></pre>
-<pre><code>## # A tibble: 3 × 21
-##   Smoking_Status Diabetic_mean AlcoholLevel_mean HeartRate_mean
-##   &lt;chr&gt;                  &lt;dbl&gt;             &lt;dbl&gt;          &lt;dbl&gt;
-## 1 Current Smoker         0.533            0.100            81.0
-## 2 Former Smoker          0.496            0.0964           78.9
-## 3 Never Smoked           0.527            0.100            79.6
-## # ℹ 17 more variables: BloodOxygenLevel_mean &lt;dbl&gt;, BodyTemperature_mean &lt;dbl&gt;,
-## #   Weight_mean &lt;dbl&gt;, MRI_Delay_mean &lt;dbl&gt;, Age_mean &lt;dbl&gt;,
-## #   Cognitive_Test_Scores_mean &lt;dbl&gt;, Dementia_mean &lt;dbl&gt;, Diabetic_sd &lt;dbl&gt;,
-## #   AlcoholLevel_sd &lt;dbl&gt;, HeartRate_sd &lt;dbl&gt;, BloodOxygenLevel_sd &lt;dbl&gt;,
-## #   BodyTemperature_sd &lt;dbl&gt;, Weight_sd &lt;dbl&gt;, MRI_Delay_sd &lt;dbl&gt;,
-## #   Age_sd &lt;dbl&gt;, Cognitive_Test_Scores_sd &lt;dbl&gt;, Dementia_sd &lt;dbl&gt;</code></pre>
+<p>If you want to remove the columns that yield <code>NA’s</code>:</p>
+<pre class="r"><code>df_summary &lt;- df_summary %&gt;% select_if(~sum(!is.na(.)) &gt; 0)
+formatted_table(df_summary)</code></pre>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Smoking_Status
+</th>
+<th style="text-align:right;">
+Diabetic_mean
+</th>
+<th style="text-align:right;">
+AlcoholLevel_mean
+</th>
+<th style="text-align:right;">
+HeartRate_mean
+</th>
+<th style="text-align:right;">
+BloodOxygenLevel_mean
+</th>
+<th style="text-align:right;">
+BodyTemperature_mean
+</th>
+<th style="text-align:right;">
+Weight_mean
+</th>
+<th style="text-align:right;">
+MRI_Delay_mean
+</th>
+<th style="text-align:right;">
+Age_mean
+</th>
+<th style="text-align:right;">
+Cognitive_Test_Scores_mean
+</th>
+<th style="text-align:right;">
+Dementia_mean
+</th>
+<th style="text-align:right;">
+Diabetic_sd
+</th>
+<th style="text-align:right;">
+AlcoholLevel_sd
+</th>
+<th style="text-align:right;">
+HeartRate_sd
+</th>
+<th style="text-align:right;">
+BloodOxygenLevel_sd
+</th>
+<th style="text-align:right;">
+BodyTemperature_sd
+</th>
+<th style="text-align:right;">
+Weight_sd
+</th>
+<th style="text-align:right;">
+MRI_Delay_sd
+</th>
+<th style="text-align:right;">
+Age_sd
+</th>
+<th style="text-align:right;">
+Cognitive_Test_Scores_sd
+</th>
+<th style="text-align:right;">
+Dementia_sd
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Current Smoker
+</td>
+<td style="text-align:right;">
+0.5333333
+</td>
+<td style="text-align:right;">
+0.1002539
+</td>
+<td style="text-align:right;">
+80.95556
+</td>
+<td style="text-align:right;">
+95.80224
+</td>
+<td style="text-align:right;">
+36.74515
+</td>
+<td style="text-align:right;">
+75.77560
+</td>
+<td style="text-align:right;">
+28.45576
+</td>
+<td style="text-align:right;">
+75.50000
+</td>
+<td style="text-align:right;">
+8.922222
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+<td style="text-align:right;">
+0.5016826
+</td>
+<td style="text-align:right;">
+0.0602318
+</td>
+<td style="text-align:right;">
+12.44937
+</td>
+<td style="text-align:right;">
+2.946324
+</td>
+<td style="text-align:right;">
+0.4338459
+</td>
+<td style="text-align:right;">
+13.58834
+</td>
+<td style="text-align:right;">
+17.32292
+</td>
+<td style="text-align:right;">
+8.047960
+</td>
+<td style="text-align:right;">
+0.8104344
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Former Smoker
+</td>
+<td style="text-align:right;">
+0.4956332
+</td>
+<td style="text-align:right;">
+0.0963685
+</td>
+<td style="text-align:right;">
+78.88865
+</td>
+<td style="text-align:right;">
+95.11622
+</td>
+<td style="text-align:right;">
+36.77285
+</td>
+<td style="text-align:right;">
+73.96654
+</td>
+<td style="text-align:right;">
+30.30279
+</td>
+<td style="text-align:right;">
+74.88428
+</td>
+<td style="text-align:right;">
+6.041485
+</td>
+<td style="text-align:right;">
+0.5502183
+</td>
+<td style="text-align:right;">
+0.5005277
+</td>
+<td style="text-align:right;">
+0.0574986
+</td>
+<td style="text-align:right;">
+11.81211
+</td>
+<td style="text-align:right;">
+2.956668
+</td>
+<td style="text-align:right;">
+0.4367836
+</td>
+<td style="text-align:right;">
+14.31802
+</td>
+<td style="text-align:right;">
+16.78815
+</td>
+<td style="text-align:right;">
+9.134884
+</td>
+<td style="text-align:right;">
+3.2368947
+</td>
+<td style="text-align:right;">
+0.4980157
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Never Smoked
+</td>
+<td style="text-align:right;">
+0.5265487
+</td>
+<td style="text-align:right;">
+0.1001543
+</td>
+<td style="text-align:right;">
+79.57080
+</td>
+<td style="text-align:right;">
+95.22261
+</td>
+<td style="text-align:right;">
+36.75328
+</td>
+<td style="text-align:right;">
+74.39125
+</td>
+<td style="text-align:right;">
+30.22980
+</td>
+<td style="text-align:right;">
+74.81416
+</td>
+<td style="text-align:right;">
+6.223451
+</td>
+<td style="text-align:right;">
+0.5154867
+</td>
+<td style="text-align:right;">
+0.4998479
+</td>
+<td style="text-align:right;">
+0.0596861
+</td>
+<td style="text-align:right;">
+12.32764
+</td>
+<td style="text-align:right;">
+2.890827
+</td>
+<td style="text-align:right;">
+0.4267329
+</td>
+<td style="text-align:right;">
+14.78750
+</td>
+<td style="text-align:right;">
+16.86450
+</td>
+<td style="text-align:right;">
+9.263618
+</td>
+<td style="text-align:right;">
+3.1986802
+</td>
+<td style="text-align:right;">
+0.5003139
+</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <blockquote>
 <p>This web page is distributed under the terms of the Creative Commons
