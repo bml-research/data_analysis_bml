@@ -199,7 +199,8 @@ formatted_table(my_tibble)
 ```
 
   
-This also shows the power of R over Excel: several repetitive actions can be collected in a function so you can perform the same action on a different dataset, while in Excel you will have to do all the actions by hand with each new dataset.
+This also shows the power of R over Excel: several repetitive actions can be collected in a function so you can perform the same action on a different data set, while in Excel you will have to do all the actions by hand with each new data set.
+
 ---
 
 
