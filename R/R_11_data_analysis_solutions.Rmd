@@ -126,9 +126,9 @@ formatted_table(head(arrange(df, desc(Genotype), desc(Tau_N))))
 Or to filter for the row:
 
 ```{r}
-df %>% filter(Genotype == "Ts65Dn") %>%
+my_answer <- df %>% filter(Genotype == "Ts65Dn") %>%
   filter(Tau_N == max(Tau_N, na.rm = T))
-
+formatted_table(my_answer)
 ```
 
 
@@ -140,9 +140,10 @@ formatted_table(head(arrange(df, desc(Genotype), desc(Treatment), desc(Tau_N))))
 Or to filter for the row:  
 
 ```{r}
-df %>% filter(Genotype == "Ts65Dn") %>%
+my_answer <- df %>% filter(Genotype == "Ts65Dn") %>%
   filter(Treatment == "Saline") %>%
   filter(Tau_N == max(Tau_N, na.rm = T))
+formatted_table(my_answer)
 ```
 
 
@@ -192,7 +193,7 @@ Select rows with a relative expression value higher than 2.3 for the pCASP9 prot
 ```{r}
 formatted_table(filter(df, pCASP9_N > 2.3))
 ```
-It seams that in this selection of mice most are treated with Saline.
+It seems that in this selection of mice most are treated with Saline.
 
 Select rows with duplicate MouseIDs. Are there any duplicate MouseIDs?  
 

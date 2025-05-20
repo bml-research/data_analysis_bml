@@ -5236,19 +5236,511 @@ t-SC-s
 </tbody>
 </table>
 <p>Or to filter for the row:</p>
-<pre class="r"><code>df %&gt;% filter(Genotype == &quot;Ts65Dn&quot;) %&gt;%
-  filter(Tau_N == max(Tau_N, na.rm = T))</code></pre>
-<pre><code>## # A tibble: 1 × 82
-##   MouseID DYRK1A_N ITSN1_N BDNF_N NR1_N NR2A_N pAKT_N pBRAF_N pCAMKII_N pCREB_N
-##   &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-## 1 293_15     0.210   0.462  0.294  2.10   2.61  0.287   0.206      3.36   0.244
-## # ℹ 72 more variables: pELK_N &lt;dbl&gt;, pERK_N &lt;dbl&gt;, pJNK_N &lt;dbl&gt;, PKCA_N &lt;dbl&gt;,
-## #   pMEK_N &lt;dbl&gt;, pNR1_N &lt;dbl&gt;, pNR2A_N &lt;dbl&gt;, pNR2B_N &lt;dbl&gt;, pPKCAB_N &lt;dbl&gt;,
-## #   pRSK_N &lt;dbl&gt;, AKT_N &lt;dbl&gt;, BRAF_N &lt;dbl&gt;, CAMKII_N &lt;dbl&gt;, CREB_N &lt;dbl&gt;,
-## #   ELK_N &lt;dbl&gt;, ERK_N &lt;dbl&gt;, GSK3B_N &lt;dbl&gt;, JNK_N &lt;dbl&gt;, MEK_N &lt;dbl&gt;,
-## #   TRKA_N &lt;dbl&gt;, RSK_N &lt;dbl&gt;, APP_N &lt;dbl&gt;, Bcatenin_N &lt;dbl&gt;, SOD1_N &lt;dbl&gt;,
-## #   MTOR_N &lt;dbl&gt;, P38_N &lt;dbl&gt;, pMTOR_N &lt;dbl&gt;, DSCR1_N &lt;dbl&gt;, AMPKA_N &lt;dbl&gt;,
-## #   NR2B_N &lt;dbl&gt;, pNUMB_N &lt;dbl&gt;, RAPTOR_N &lt;dbl&gt;, TIAM1_N &lt;dbl&gt;, …</code></pre>
+<pre class="r"><code>my_answer &lt;- df %&gt;% filter(Genotype == &quot;Ts65Dn&quot;) %&gt;%
+  filter(Tau_N == max(Tau_N, na.rm = T))
+formatted_table(my_answer)</code></pre>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+MouseID
+</th>
+<th style="text-align:right;">
+DYRK1A_N
+</th>
+<th style="text-align:right;">
+ITSN1_N
+</th>
+<th style="text-align:right;">
+BDNF_N
+</th>
+<th style="text-align:right;">
+NR1_N
+</th>
+<th style="text-align:right;">
+NR2A_N
+</th>
+<th style="text-align:right;">
+pAKT_N
+</th>
+<th style="text-align:right;">
+pBRAF_N
+</th>
+<th style="text-align:right;">
+pCAMKII_N
+</th>
+<th style="text-align:right;">
+pCREB_N
+</th>
+<th style="text-align:right;">
+pELK_N
+</th>
+<th style="text-align:right;">
+pERK_N
+</th>
+<th style="text-align:right;">
+pJNK_N
+</th>
+<th style="text-align:right;">
+PKCA_N
+</th>
+<th style="text-align:right;">
+pMEK_N
+</th>
+<th style="text-align:right;">
+pNR1_N
+</th>
+<th style="text-align:right;">
+pNR2A_N
+</th>
+<th style="text-align:right;">
+pNR2B_N
+</th>
+<th style="text-align:right;">
+pPKCAB_N
+</th>
+<th style="text-align:right;">
+pRSK_N
+</th>
+<th style="text-align:right;">
+AKT_N
+</th>
+<th style="text-align:right;">
+BRAF_N
+</th>
+<th style="text-align:right;">
+CAMKII_N
+</th>
+<th style="text-align:right;">
+CREB_N
+</th>
+<th style="text-align:right;">
+ELK_N
+</th>
+<th style="text-align:right;">
+ERK_N
+</th>
+<th style="text-align:right;">
+GSK3B_N
+</th>
+<th style="text-align:right;">
+JNK_N
+</th>
+<th style="text-align:right;">
+MEK_N
+</th>
+<th style="text-align:right;">
+TRKA_N
+</th>
+<th style="text-align:right;">
+RSK_N
+</th>
+<th style="text-align:right;">
+APP_N
+</th>
+<th style="text-align:right;">
+Bcatenin_N
+</th>
+<th style="text-align:right;">
+SOD1_N
+</th>
+<th style="text-align:right;">
+MTOR_N
+</th>
+<th style="text-align:right;">
+P38_N
+</th>
+<th style="text-align:right;">
+pMTOR_N
+</th>
+<th style="text-align:right;">
+DSCR1_N
+</th>
+<th style="text-align:right;">
+AMPKA_N
+</th>
+<th style="text-align:right;">
+NR2B_N
+</th>
+<th style="text-align:right;">
+pNUMB_N
+</th>
+<th style="text-align:right;">
+RAPTOR_N
+</th>
+<th style="text-align:right;">
+TIAM1_N
+</th>
+<th style="text-align:right;">
+pP70S6_N
+</th>
+<th style="text-align:right;">
+NUMB_N
+</th>
+<th style="text-align:right;">
+P70S6_N
+</th>
+<th style="text-align:right;">
+pGSK3B_N
+</th>
+<th style="text-align:right;">
+pPKCG_N
+</th>
+<th style="text-align:right;">
+CDK5_N
+</th>
+<th style="text-align:right;">
+S6_N
+</th>
+<th style="text-align:right;">
+ADARB1_N
+</th>
+<th style="text-align:right;">
+AcetylH3K9_N
+</th>
+<th style="text-align:right;">
+RRP1_N
+</th>
+<th style="text-align:right;">
+BAX_N
+</th>
+<th style="text-align:right;">
+ARC_N
+</th>
+<th style="text-align:right;">
+ERBB4_N
+</th>
+<th style="text-align:right;">
+nNOS_N
+</th>
+<th style="text-align:right;">
+Tau_N
+</th>
+<th style="text-align:right;">
+GFAP_N
+</th>
+<th style="text-align:right;">
+GluR3_N
+</th>
+<th style="text-align:right;">
+GluR4_N
+</th>
+<th style="text-align:right;">
+IL1B_N
+</th>
+<th style="text-align:right;">
+P3525_N
+</th>
+<th style="text-align:right;">
+pCASP9_N
+</th>
+<th style="text-align:right;">
+PSD95_N
+</th>
+<th style="text-align:right;">
+SNCA_N
+</th>
+<th style="text-align:right;">
+Ubiquitin_N
+</th>
+<th style="text-align:right;">
+pGSK3B_Tyr216_N
+</th>
+<th style="text-align:right;">
+SHH_N
+</th>
+<th style="text-align:right;">
+BAD_N
+</th>
+<th style="text-align:right;">
+BCL2_N
+</th>
+<th style="text-align:right;">
+pS6_N
+</th>
+<th style="text-align:right;">
+pCFOS_N
+</th>
+<th style="text-align:right;">
+SYP_N
+</th>
+<th style="text-align:right;">
+H3AcK18_N
+</th>
+<th style="text-align:right;">
+EGR1_N
+</th>
+<th style="text-align:right;">
+H3MeK4_N
+</th>
+<th style="text-align:right;">
+CaNA_N
+</th>
+<th style="text-align:left;">
+Genotype
+</th>
+<th style="text-align:left;">
+Treatment
+</th>
+<th style="text-align:left;">
+Behavior
+</th>
+<th style="text-align:left;">
+class
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+293_15
+</td>
+<td style="text-align:right;">
+0.2095214
+</td>
+<td style="text-align:right;">
+0.461939
+</td>
+<td style="text-align:right;">
+0.2940739
+</td>
+<td style="text-align:right;">
+2.100917
+</td>
+<td style="text-align:right;">
+2.607736
+</td>
+<td style="text-align:right;">
+0.2873791
+</td>
+<td style="text-align:right;">
+0.206298
+</td>
+<td style="text-align:right;">
+3.364741
+</td>
+<td style="text-align:right;">
+0.244483
+</td>
+<td style="text-align:right;">
+1.191917
+</td>
+<td style="text-align:right;">
+0.2303496
+</td>
+<td style="text-align:right;">
+0.3431689
+</td>
+<td style="text-align:right;">
+0.2757253
+</td>
+<td style="text-align:right;">
+0.3032482
+</td>
+<td style="text-align:right;">
+0.782792
+</td>
+<td style="text-align:right;">
+0.7354327
+</td>
+<td style="text-align:right;">
+1.429209
+</td>
+<td style="text-align:right;">
+1.015125
+</td>
+<td style="text-align:right;">
+0.4986363
+</td>
+<td style="text-align:right;">
+0.6640218
+</td>
+<td style="text-align:right;">
+0.298785
+</td>
+<td style="text-align:right;">
+0.4125961
+</td>
+<td style="text-align:right;">
+0.2077858
+</td>
+<td style="text-align:right;">
+0.9707414
+</td>
+<td style="text-align:right;">
+2.005703
+</td>
+<td style="text-align:right;">
+0.918671
+</td>
+<td style="text-align:right;">
+0.2303496
+</td>
+<td style="text-align:right;">
+0.2670469
+</td>
+<td style="text-align:right;">
+0.6335234
+</td>
+<td style="text-align:right;">
+0.2097694
+</td>
+<td style="text-align:right;">
+0.3520952
+</td>
+<td style="text-align:right;">
+1.799157
+</td>
+<td style="text-align:right;">
+1.029259
+</td>
+<td style="text-align:right;">
+0.4160674
+</td>
+<td style="text-align:right;">
+0.3568063
+</td>
+<td style="text-align:right;">
+0.7706422
+</td>
+<td style="text-align:right;">
+0.6241012
+</td>
+<td style="text-align:right;">
+0.3245723
+</td>
+<td style="text-align:right;">
+0.5643442
+</td>
+<td style="text-align:right;">
+0.3047359
+</td>
+<td style="text-align:right;">
+0.3223407
+</td>
+<td style="text-align:right;">
+0.3788743
+</td>
+<td style="text-align:right;">
+0.3927597
+</td>
+<td style="text-align:right;">
+0.1849418
+</td>
+<td style="text-align:right;">
+0.891288
+</td>
+<td style="text-align:right;">
+0.1781825
+</td>
+<td style="text-align:right;">
+1.625986
+</td>
+<td style="text-align:right;">
+0.2472775
+</td>
+<td style="text-align:right;">
+0.5383027
+</td>
+<td style="text-align:right;">
+1.105145
+</td>
+<td style="text-align:right;">
+0.9179497
+</td>
+<td style="text-align:right;">
+0.2114157
+</td>
+<td style="text-align:right;">
+0.1697334
+</td>
+<td style="text-align:right;">
+0.1378145
+</td>
+<td style="text-align:right;">
+0.1937664
+</td>
+<td style="text-align:right;">
+0.1856928
+</td>
+<td style="text-align:right;">
+0.5137063
+</td>
+<td style="text-align:right;">
+0.1314307
+</td>
+<td style="text-align:right;">
+0.1802478
+</td>
+<td style="text-align:right;">
+0.1030792
+</td>
+<td style="text-align:right;">
+0.6845663
+</td>
+<td style="text-align:right;">
+0.3133684
+</td>
+<td style="text-align:right;">
+1.793842
+</td>
+<td style="text-align:right;">
+2.458881
+</td>
+<td style="text-align:right;">
+0.1749906
+</td>
+<td style="text-align:right;">
+1.44386
+</td>
+<td style="text-align:right;">
+0.8561772
+</td>
+<td style="text-align:right;">
+0.2069095
+</td>
+<td style="text-align:right;">
+0.1684191
+</td>
+<td style="text-align:right;">
+0.1378145
+</td>
+<td style="text-align:right;">
+0.1378145
+</td>
+<td style="text-align:right;">
+0.1182876
+</td>
+<td style="text-align:right;">
+0.4990612
+</td>
+<td style="text-align:right;">
+0.4355989
+</td>
+<td style="text-align:right;">
+0.2005257
+</td>
+<td style="text-align:right;">
+0.3332707
+</td>
+<td style="text-align:right;">
+1.282952
+</td>
+<td style="text-align:left;">
+Ts65Dn
+</td>
+<td style="text-align:left;">
+Memantine
+</td>
+<td style="text-align:left;">
+S/C
+</td>
+<td style="text-align:left;">
+t-SC-m
+</td>
+</tr>
+</tbody>
+</table>
 <p>Mouse of the Ts65Dn genotype, and saline treatment group with the
 highest Tau expression (use multi-sorting):</p>
 <pre class="r"><code>formatted_table(head(arrange(df, desc(Genotype), desc(Treatment), desc(Tau_N))))</code></pre>
@@ -6995,20 +7487,512 @@ t-SC-s
 </tbody>
 </table>
 <p>Or to filter for the row:</p>
-<pre class="r"><code>df %&gt;% filter(Genotype == &quot;Ts65Dn&quot;) %&gt;%
+<pre class="r"><code>my_answer &lt;- df %&gt;% filter(Genotype == &quot;Ts65Dn&quot;) %&gt;%
   filter(Treatment == &quot;Saline&quot;) %&gt;%
-  filter(Tau_N == max(Tau_N, na.rm = T))</code></pre>
-<pre><code>## # A tibble: 1 × 82
-##   MouseID  DYRK1A_N ITSN1_N BDNF_N NR1_N NR2A_N pAKT_N pBRAF_N pCAMKII_N pCREB_N
-##   &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-## 1 J3295_14    0.221   0.413  0.244  1.88   2.38  0.209   0.174      2.09   0.192
-## # ℹ 72 more variables: pELK_N &lt;dbl&gt;, pERK_N &lt;dbl&gt;, pJNK_N &lt;dbl&gt;, PKCA_N &lt;dbl&gt;,
-## #   pMEK_N &lt;dbl&gt;, pNR1_N &lt;dbl&gt;, pNR2A_N &lt;dbl&gt;, pNR2B_N &lt;dbl&gt;, pPKCAB_N &lt;dbl&gt;,
-## #   pRSK_N &lt;dbl&gt;, AKT_N &lt;dbl&gt;, BRAF_N &lt;dbl&gt;, CAMKII_N &lt;dbl&gt;, CREB_N &lt;dbl&gt;,
-## #   ELK_N &lt;dbl&gt;, ERK_N &lt;dbl&gt;, GSK3B_N &lt;dbl&gt;, JNK_N &lt;dbl&gt;, MEK_N &lt;dbl&gt;,
-## #   TRKA_N &lt;dbl&gt;, RSK_N &lt;dbl&gt;, APP_N &lt;dbl&gt;, Bcatenin_N &lt;dbl&gt;, SOD1_N &lt;dbl&gt;,
-## #   MTOR_N &lt;dbl&gt;, P38_N &lt;dbl&gt;, pMTOR_N &lt;dbl&gt;, DSCR1_N &lt;dbl&gt;, AMPKA_N &lt;dbl&gt;,
-## #   NR2B_N &lt;dbl&gt;, pNUMB_N &lt;dbl&gt;, RAPTOR_N &lt;dbl&gt;, TIAM1_N &lt;dbl&gt;, …</code></pre>
+  filter(Tau_N == max(Tau_N, na.rm = T))
+formatted_table(my_answer)</code></pre>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+MouseID
+</th>
+<th style="text-align:right;">
+DYRK1A_N
+</th>
+<th style="text-align:right;">
+ITSN1_N
+</th>
+<th style="text-align:right;">
+BDNF_N
+</th>
+<th style="text-align:right;">
+NR1_N
+</th>
+<th style="text-align:right;">
+NR2A_N
+</th>
+<th style="text-align:right;">
+pAKT_N
+</th>
+<th style="text-align:right;">
+pBRAF_N
+</th>
+<th style="text-align:right;">
+pCAMKII_N
+</th>
+<th style="text-align:right;">
+pCREB_N
+</th>
+<th style="text-align:right;">
+pELK_N
+</th>
+<th style="text-align:right;">
+pERK_N
+</th>
+<th style="text-align:right;">
+pJNK_N
+</th>
+<th style="text-align:right;">
+PKCA_N
+</th>
+<th style="text-align:right;">
+pMEK_N
+</th>
+<th style="text-align:right;">
+pNR1_N
+</th>
+<th style="text-align:right;">
+pNR2A_N
+</th>
+<th style="text-align:right;">
+pNR2B_N
+</th>
+<th style="text-align:right;">
+pPKCAB_N
+</th>
+<th style="text-align:right;">
+pRSK_N
+</th>
+<th style="text-align:right;">
+AKT_N
+</th>
+<th style="text-align:right;">
+BRAF_N
+</th>
+<th style="text-align:right;">
+CAMKII_N
+</th>
+<th style="text-align:right;">
+CREB_N
+</th>
+<th style="text-align:right;">
+ELK_N
+</th>
+<th style="text-align:right;">
+ERK_N
+</th>
+<th style="text-align:right;">
+GSK3B_N
+</th>
+<th style="text-align:right;">
+JNK_N
+</th>
+<th style="text-align:right;">
+MEK_N
+</th>
+<th style="text-align:right;">
+TRKA_N
+</th>
+<th style="text-align:right;">
+RSK_N
+</th>
+<th style="text-align:right;">
+APP_N
+</th>
+<th style="text-align:right;">
+Bcatenin_N
+</th>
+<th style="text-align:right;">
+SOD1_N
+</th>
+<th style="text-align:right;">
+MTOR_N
+</th>
+<th style="text-align:right;">
+P38_N
+</th>
+<th style="text-align:right;">
+pMTOR_N
+</th>
+<th style="text-align:right;">
+DSCR1_N
+</th>
+<th style="text-align:right;">
+AMPKA_N
+</th>
+<th style="text-align:right;">
+NR2B_N
+</th>
+<th style="text-align:right;">
+pNUMB_N
+</th>
+<th style="text-align:right;">
+RAPTOR_N
+</th>
+<th style="text-align:right;">
+TIAM1_N
+</th>
+<th style="text-align:right;">
+pP70S6_N
+</th>
+<th style="text-align:right;">
+NUMB_N
+</th>
+<th style="text-align:right;">
+P70S6_N
+</th>
+<th style="text-align:right;">
+pGSK3B_N
+</th>
+<th style="text-align:right;">
+pPKCG_N
+</th>
+<th style="text-align:right;">
+CDK5_N
+</th>
+<th style="text-align:right;">
+S6_N
+</th>
+<th style="text-align:right;">
+ADARB1_N
+</th>
+<th style="text-align:right;">
+AcetylH3K9_N
+</th>
+<th style="text-align:right;">
+RRP1_N
+</th>
+<th style="text-align:right;">
+BAX_N
+</th>
+<th style="text-align:right;">
+ARC_N
+</th>
+<th style="text-align:right;">
+ERBB4_N
+</th>
+<th style="text-align:right;">
+nNOS_N
+</th>
+<th style="text-align:right;">
+Tau_N
+</th>
+<th style="text-align:right;">
+GFAP_N
+</th>
+<th style="text-align:right;">
+GluR3_N
+</th>
+<th style="text-align:right;">
+GluR4_N
+</th>
+<th style="text-align:right;">
+IL1B_N
+</th>
+<th style="text-align:right;">
+P3525_N
+</th>
+<th style="text-align:right;">
+pCASP9_N
+</th>
+<th style="text-align:right;">
+PSD95_N
+</th>
+<th style="text-align:right;">
+SNCA_N
+</th>
+<th style="text-align:right;">
+Ubiquitin_N
+</th>
+<th style="text-align:right;">
+pGSK3B_Tyr216_N
+</th>
+<th style="text-align:right;">
+SHH_N
+</th>
+<th style="text-align:right;">
+BAD_N
+</th>
+<th style="text-align:right;">
+BCL2_N
+</th>
+<th style="text-align:right;">
+pS6_N
+</th>
+<th style="text-align:right;">
+pCFOS_N
+</th>
+<th style="text-align:right;">
+SYP_N
+</th>
+<th style="text-align:right;">
+H3AcK18_N
+</th>
+<th style="text-align:right;">
+EGR1_N
+</th>
+<th style="text-align:right;">
+H3MeK4_N
+</th>
+<th style="text-align:right;">
+CaNA_N
+</th>
+<th style="text-align:left;">
+Genotype
+</th>
+<th style="text-align:left;">
+Treatment
+</th>
+<th style="text-align:left;">
+Behavior
+</th>
+<th style="text-align:left;">
+class
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+J3295_14
+</td>
+<td style="text-align:right;">
+0.2212424
+</td>
+<td style="text-align:right;">
+0.4128944
+</td>
+<td style="text-align:right;">
+0.2439741
+</td>
+<td style="text-align:right;">
+1.876347
+</td>
+<td style="text-align:right;">
+2.384088
+</td>
+<td style="text-align:right;">
+0.2088967
+</td>
+<td style="text-align:right;">
+0.1736234
+</td>
+<td style="text-align:right;">
+2.086028
+</td>
+<td style="text-align:right;">
+0.1920439
+</td>
+<td style="text-align:right;">
+0.9225946
+</td>
+<td style="text-align:right;">
+0.2306486
+</td>
+<td style="text-align:right;">
+0.2631785
+</td>
+<td style="text-align:right;">
+0.2243778
+</td>
+<td style="text-align:right;">
+0.2774838
+</td>
+<td style="text-align:right;">
+0.665099
+</td>
+<td style="text-align:right;">
+0.4795219
+</td>
+<td style="text-align:right;">
+1.077014
+</td>
+<td style="text-align:right;">
+1.11503
+</td>
+<td style="text-align:right;">
+0.4346463
+</td>
+<td style="text-align:right;">
+0.5647658
+</td>
+<td style="text-align:right;">
+0.2567117
+</td>
+<td style="text-align:right;">
+0.3131491
+</td>
+<td style="text-align:right;">
+0.1722516
+</td>
+<td style="text-align:right;">
+0.781893
+</td>
+<td style="text-align:right;">
+1.558887
+</td>
+<td style="text-align:right;">
+0.8728199
+</td>
+<td style="text-align:right;">
+0.2380952
+</td>
+<td style="text-align:right;">
+0.2704292
+</td>
+<td style="text-align:right;">
+0.585146
+</td>
+<td style="text-align:right;">
+0.1634333
+</td>
+<td style="text-align:right;">
+0.3411719
+</td>
+<td style="text-align:right;">
+1.571821
+</td>
+<td style="text-align:right;">
+0.6984127
+</td>
+<td style="text-align:right;">
+0.356457
+</td>
+<td style="text-align:right;">
+0.308446
+</td>
+<td style="text-align:right;">
+0.5457574
+</td>
+<td style="text-align:right;">
+0.4805017
+</td>
+<td style="text-align:right;">
+0.2580835
+</td>
+<td style="text-align:right;">
+0.4266118
+</td>
+<td style="text-align:right;">
+0.2584754
+</td>
+<td style="text-align:right;">
+0.2159514
+</td>
+<td style="text-align:right;">
+0.3015873
+</td>
+<td style="text-align:right;">
+0.4904958
+</td>
+<td style="text-align:right;">
+0.1975667
+</td>
+<td style="text-align:right;">
+0.7848193
+</td>
+<td style="text-align:right;">
+0.1754131
+</td>
+<td style="text-align:right;">
+2.659706
+</td>
+<td style="text-align:right;">
+0.3410205
+</td>
+<td style="text-align:right;">
+0.6426366
+</td>
+<td style="text-align:right;">
+0.783185
+</td>
+<td style="text-align:right;">
+0.5382241
+</td>
+<td style="text-align:right;">
+0.2120937
+</td>
+<td style="text-align:right;">
+0.1614309
+</td>
+<td style="text-align:right;">
+0.1252951
+</td>
+<td style="text-align:right;">
+0.1725077
+</td>
+<td style="text-align:right;">
+0.1937534
+</td>
+<td style="text-align:right;">
+0.4142001
+</td>
+<td style="text-align:right;">
+0.1492646
+</td>
+<td style="text-align:right;">
+0.204467
+</td>
+<td style="text-align:right;">
+0.1245687
+</td>
+<td style="text-align:right;">
+0.6217541
+</td>
+<td style="text-align:right;">
+0.3522789
+</td>
+<td style="text-align:right;">
+1.49882
+</td>
+<td style="text-align:right;">
+2.609769
+</td>
+<td style="text-align:right;">
+0.1850372
+</td>
+<td style="text-align:right;">
+1.301071
+</td>
+<td style="text-align:right;">
+0.9892864
+</td>
+<td style="text-align:right;">
+0.3067006
+</td>
+<td style="text-align:right;">
+0.2222626
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.1252951
+</td>
+<td style="text-align:right;">
+0.1962956
+</td>
+<td style="text-align:right;">
+0.3976757
+</td>
+<td style="text-align:right;">
+0.3359361
+</td>
+<td style="text-align:right;">
+0.2513165
+</td>
+<td style="text-align:right;">
+0.3653532
+</td>
+<td style="text-align:right;">
+1.404031
+</td>
+<td style="text-align:left;">
+Ts65Dn
+</td>
+<td style="text-align:left;">
+Saline
+</td>
+<td style="text-align:left;">
+S/C
+</td>
+<td style="text-align:left;">
+t-SC-s
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="exercise-3" class="section level3">
 <h3>Exercise 3</h3>
@@ -9098,7 +10082,7 @@ c-CS-s
 </tr>
 </tbody>
 </table>
-<p>It seams that in this selection of mice most are treated with
+<p>It seems that in this selection of mice most are treated with
 Saline.</p>
 <p>Select rows with duplicate MouseIDs. Are there any duplicate
 MouseIDs?</p>
