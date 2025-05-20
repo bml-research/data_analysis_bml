@@ -33,7 +33,7 @@ As you can see from this file, decimal separator is a dot.
 
 ![import](./files_04_import_solutions/exercise03/fig1.png)
 
->Make sure that you properly import the file with the correct decimal separator selected. You can do this by setting the Regional Setting correctly to English (United States). !
+>Make sure that you properly import the file with the correct decimal separator selected. You can do this by setting the Regional Setting correctly to English (United States).  
 
 ### Exercise 4
 
@@ -61,7 +61,7 @@ Note that this file uses the dot as a decimal separator. In addition, some cells
 ![import](./files_04_import_solutions/exercise05/fig1.png)
 
 
-The solution can be found [here](./files_04_import_solutions/exercise05/CHEMBL1989.xlsx)
+The solution can be found [here](./files_04_import_solutions/exercise05/CHEMBL1989.xlsx).
 
 
 ### Exercise 6
