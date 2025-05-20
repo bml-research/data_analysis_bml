@@ -12,7 +12,7 @@
 
 ### Exercise 1
 
-[This](./files_06_data_cleaning_exercises/exercise01/Heart_Disease_Prediction.xlsx) first dataset was not loaded well. Use the text to column feature to correct it.
+[This](./files_06_data_cleaning_exercises/exercise01/Heart_Disease_Prediction.xlsx) first dataset was not loaded well. Use the `Text to Columns` feature to correct it.
 Source: [Predicting Heart Disease Using Clinical Variables](https://www.kaggle.com/datasets/thedevastator/predicting-heart-disease-risk-using-clinical-var)
 
 ### Exercise 2
@@ -25,11 +25,11 @@ Source: [Predicting Heart Disease Using Clinical Variables](https://www.kaggle.c
 
 ### Exercise 4
 
-Load the [Beta-Lactamase](https://www.kaggle.com/datasets/thedataprof/betalactamase) dataset in Excel using the csv import tool. This dataset contains several csv files. Just use the first (CHEMBL1989.csv). 
+Load the [Beta-Lactamase](https://www.kaggle.com/datasets/thedataprof/betalactamase) dataset in Excel using the `csv import` tool. This dataset contains several csv files. Just use the first (CHEMBL1989.csv). 
 
 This dataset contains empty data cells.
 
-Make the empty cells more explicit in Excel by converting them to #N/A.  
+Make the empty cells more explicit in Excel by converting them to `#N/A`.  
 Count how many cells you have:
 - in total
 - with missing data
