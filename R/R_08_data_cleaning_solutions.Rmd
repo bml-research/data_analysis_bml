@@ -10,9 +10,13 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 
 ## Data Cleaning Solutions
 
+Loading Tidyverse:
+
 ```{r}
 library(tidyverse)
 ```
+
+Function to improve printing tibble to HTML:
 
 ```{r}
 library(kableExtra)
@@ -51,7 +55,7 @@ df <- df %>%
   separate_wider_delim(average_weight, delim = " ", names = c("average_weight", "weight_unit")) %>%
   separate_wider_delim(life_span, delim = " ", names = c("life_span", "time_unit")) %>%
   select (-c(length_unit, weight_unit, time_unit)) %>% #Note that this is a negative selection. Selects all but the listed columns.
-  mutate_at(c('average_length', 'average_weight', 'life_span'), as.numeric) #Creates numbers from strings
+  mutate_at(c('average_length', 'average_weight', 'life_span'), as.numeric) #Creates numbers from strings. mutate_at acts on multiple columns
 formatted_table(head(df))
 ```
 
