@@ -49,13 +49,13 @@ Median:
 >213  
 5. Which mouse of the Ts65Dn genotype group has the highest Tau expression (use multi-sort to practice)? (use multi-sort or filters)?  
 >293_15  
-6. Which mouse of the Ts65Dn genotype, and saline treatment group has the highest Tau expression (se multi-sort or filters)?  
+6. Which mouse of the Ts65Dn genotype, and saline treatment group has the highest Tau expression (Hint: use multi-sort or filters)?  
 >J3295_14
 
 
 ### Exercise 3
 
-1. high expression DYRK1A: 255  
+1. High expression DYRK1A: 255  
 
  ```
  =COUNTIF(Data!B:B,">0.5")
@@ -76,7 +76,7 @@ Median:
 ### Exercise 4
 
 1. Use conditional formatting to indicate a very high expression levels for rows with a relative expression value higher than 2.3 for the pCASP9 protein. Which treatment is mostly found for these selected proteins?  
->It seams that in this selection of mice most are treated with Saline.
+>It seems that in this selection of mice most are treated with Saline.
 2. Use conditional formatting to check for duplicate mouse IDs. Use red markup for these. Are there any duplicate mouse IDs?   
 >No
 3. Use conditional formatting to indicate the top 10% expression levels for ITSN1. What is the lowest value included?  
