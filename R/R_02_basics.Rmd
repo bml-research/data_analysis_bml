@@ -13,32 +13,33 @@ This file can be downloaded [here](./R_02_basics.Rmd)
 ## Basics of R
 
 Before we start with importing data, some basics of R will be explained. Remember that we will try to avoid basic programming and focus on the use of the functions and tools provided by the Tidyverse library.
-
+  
 
 ## RStudio
 
 Before you can start doing data analysis, you need to install both R and RStudio.
-Have a look at [this website](https://rstudio-education.github.io/hopr/starting.html) how to do that.
+Have a look at [this website](https://rstudio-education.github.io/hopr/starting.html) how to do this.
 
 
-We will work mostly with R-Markdown document.
-This webpage that you are reading is currently in HTML but was written in RMarkdown in RStudio.
+We will work mostly with R-Markdown documents.
+This webpage that you are reading is currently in HTML but was written as a RMarkdown document in RStudio.
 
 Have a look at the screenshot below:
 
 ![](./pics_02_basics/fig01.png)
 
 The RStudio user interface has 4 primary panes:
-From top left to bottom left in clockwise direction these are: 
-- Source pane.  
-- Console pane.  
-- Environment pane, containing the Environment, History, Connections, Build, VCS , and Tutorial tabs.  
-- Output pane, containing the Files, Plots, Packages, Help, Viewer, and Presentation tabs.  
+From top left to bottom left in clockwise direction these are:  
+- *Source pane*.  
+- *Console pane*.  
+- *Environment pane*, containing the Environment, History, Connections, Build, VCS , and Tutorial tabs.  
+- *Output pane*, containing the Files, Plots, Packages, Help, Viewer, and Presentation tabs.  
 
+Note that these panes might be at a different location on your screen and that you can set the panes to your preference.
 RMarkdown is very convenient because you can mix the markdown markup language with R code.
 
 There is very comprehensive documentation about R Markdown. See [this webpage](https://rmarkdown.rstudio.com/).
-
+  
 
 ### Some very basics of R
 
@@ -51,7 +52,9 @@ x <- 42
 print(x)
 ```
 
-The very basic data structure of R is the vector.
+In this example, the number *42* is stored in the variable *x*.  
+
+It is possible to store more than one number in a variable. The very basic data structure of R is the vector, which can contain multiple numbers.
 
 It may contain whole numbers:
 
@@ -67,7 +70,7 @@ my_dec <- c(0.1, 0.2, 0.3, 0.4)
 print(my_dec)
 ```
 
-Or text:
+But also text:
 
 ```{r}
 my_txt <- c("Hello", "World")
@@ -81,14 +84,14 @@ my_bools <- c(TRUE, FALSE)
 print(my_bools)
 ```
 
-With a shorthand:
+You can write these Boolean values also with a shorthand:
 
 ```{r}
 my_bools <- c(T, F)
 print(my_bools)
 ```
 
-But what we will use is the data frame. See it as a bunch of column stitched together:
+But what we will use is the data frame. See it as a bunch of columns stitched together:
 
 ```{r}
 my_df <- data.frame(my_nums, my_dec)
@@ -98,12 +101,13 @@ print(my_df)
 Both the `c` and `data.frame` are functions in R.
 You can call them using `function.name()` and pass data to it as arguments.
 
-So in the above code the vectors assigned to the variable names my_nums and my_dec are transferred as arguments in the data.frame function. This function returns a data frame object that is assigned to the my_df variable name.
+So in the above code the vectors assigned to the variable names `my_nums` and `my_dec` are transferred as arguments in the `data.frame()` function. 
+This function returns a data frame object that is assigned to the `my_df` variable name.
 
-
+  
 ## Installing libraries
 
-You can install the tidyverse library using:
+You can install the Tidyverse library using:
 
 ```
 install.packages("tidyverse")
@@ -114,7 +118,7 @@ If you encounter problems with dependencies try:
 ```
 install.packages("tidyverse", dependencies = TRUE)
 ```
-
+  
 ## Loading packages:
 
 You can load a package as follows:
@@ -123,10 +127,10 @@ You can load a package as follows:
 library(tidyverse)
 ```
 
-
+  
 ## Make a tibble
 
-Now we can make a fancy type of data frame from the tidyverse library:
+Now we can make a fancy type of data frame from the `Tidyverse` library:
 
 
 ```{r}
@@ -134,15 +138,15 @@ my_tibble <- tibble(my_df)
 my_tibble
 ```
 
-Tibbles do have some advantageous over base R data frames such as:
-- Tibbles only print the first 10 rows and all the columns that fit on a screen.
+Tibbles do have some advantageous over base R data frames such as:  
+- Tibbles only print the first 10 rows and all the columns that fit on a screen.  
 - Each column displays its data type.
 
->As we are using the tidyverse library during this course, we will use the tidyverse main data type: The Tibble.
-
+>As we are using the Tidyverse library during this course, we will use the Tidyverse main data type: The Tibble.
+  
 ## Pimping tibbles
 
-Tibbles look nice in markdown documents but look very basic in html documents.
+Tibbles look nice in RMarkdown documents but look very basic in html documents.
 To create nice looking tibbles, we can use the `kableExtra` library:
 
 See for documentation [this](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html) page.
@@ -168,7 +172,7 @@ kbl(my_tibble) %>%
   kable_material_dark()
 ```
 
-But I prefer the Twitter Bootstrap theme with striped rows that light up when you hover over it at that scales nicely on small screens like phones (you will get a horizontal slider when horizontal space is limited):
+But I prefer the Twitter Bootstrap theme with striped rows that light up when you hover over it and that scales nicely on small screens like phones (you will get a horizontal slider when horizontal space is limited):
 
 ```{r}
 kbl(my_tibble) %>%
@@ -194,6 +198,7 @@ Now you can print the formatted table by calling the function and passing the ti
 formatted_table(my_tibble)
 ```
 
+  
 This also shows the power of R over Excel: several repetitive actions can be collected in a function so you can perform the same action on a different dataset, while in Excel you will have to do all the actions by hand with each new dataset.
 ---
 
