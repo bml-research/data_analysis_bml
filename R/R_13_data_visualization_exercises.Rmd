@@ -15,7 +15,7 @@ library("tidyverse")
 ```
 
 
-This file can be found [here](./R_13_data_visualization_exercises.Rmd)
+This file can be found [here](./R_13_data_visualization_exercises.Rmd).
 
 > The exercises will be similar to the exercises in Excel in order to compare the results.
 
@@ -23,12 +23,12 @@ This file can be found [here](./R_13_data_visualization_exercises.Rmd)
 
 Load the [following dataset](./files_13_data_visualization_exercises/exercise01/expression_data.csv).
 
-It shows RNA expression data with and without a stimulus.  
-Create a column chart for the `MAP kinase Expression values` without a stimulus with expression levels higher than 0.5.  
+The data frame shows RNA expression data with and without a stimulus.  
+Create a column chart for the `MAP kinase Expression values` without a stimulus with expression levels **higher** than 0.5.  
 Annotate the axis and add a proper title.  
-Sort the expression values from low to high (the graph should contain bars with increasing height).
+Sort the expression values from *low to high* (the graph should contain bars with increasing height).
 
-Which three gene names have the highest Expression Value without a stimulus?
+Which three gene names have the highest Expression Value *without* a stimulus?
 
 ```{r}
 #Your code here
@@ -39,7 +39,7 @@ Which three gene names have the highest Expression Value without a stimulus?
 ### Exercise 2
 
 From the previous data set, use again the gene expression within the `MAP Kinase gene family`.  
-Create a clustered column chart representing the expression values without stimulus and the expression values with stimulus. Make sure to add proper axis titles, a title and a legend.
+Create a **clustered column chart** representing the expression values without stimulus and the expression values with stimulus. Make sure to add proper axis titles, a title and a legend.
 
 ```{r}
 #Your code here
@@ -48,8 +48,8 @@ Create a clustered column chart representing the expression values without stimu
 
 ### Exercise 3
 
-Use the same data as from exercise 2 to create a stacked column chart. Filter the data that contain the MAP Kinase gene family.  
-Create a stacked column chart representing the Expression Values with and without stimulus. Make sure to add proper axis titles, a title and a legend.
+Use the same data as from exercise 2 to create a **stacked column chart**. Filter the data that contain the `MAP Kinase gene family`.  
+Create a **stacked column chart** representing the Expression Values with and without stimulus. Make sure to add proper axis titles, a title and a legend.
 
 ```{r}
 #Your code here
@@ -57,8 +57,8 @@ Create a stacked column chart representing the Expression Values with and withou
 
 ### Exercise 4
 
-Use the same data as from exercise 3 to create a relative stacked column chart. Filter the data that contain the `MAP Kinase gene family`.  
-Create a relative stacked column chart representing the Expression Values with and without stimulus. Make sure to add proper axis titles, a title and a legend.
+Use the same data as from exercise 3 to create a **relative stacked column chart**. Filter the data that contain the `MAP Kinase gene family`.  
+Create a **relative stacked column chart** representing the Expression Values with and without stimulus. Make sure to add proper axis titles, a title and a legend.
 
 ```{r}
 #Your code here
@@ -67,10 +67,10 @@ Create a relative stacked column chart representing the Expression Values with a
 
 ### Exercise 5
 
-Use the same data as from exercise 3 to create a pie chart.   
-Create a pie chart representing the total Expression Value without stimulus per Category. Make sure to add proper axis titles, a title and a legend.
+Use the same data as from exercise 3 to create a **pie chart**.   
+Create a **pie chart** representing the total Expression Value without stimulus per Category. Make sure to add proper axis titles, a title and a legend.
 
-Which category shows the smallest fraction of Expression value - stimulus.
+Which category shows the smallest fraction of Expression Value *without* stimulus?
 
 
 ```{r}
@@ -80,9 +80,9 @@ Which category shows the smallest fraction of Expression value - stimulus.
 ### Exercise 6
 
 For this exercise you will use the same data.  
-Create a box plot for `Expression value - stimulus` plotted against the `Categories`.  
+Create a **box plot** for Expression value without stimulus plotted against the `Categories`.  
 
-Which category shows the lowest median value?
+Which category shows the *lowest* median value?
 
 ```{r}
 #Your code here
@@ -91,9 +91,9 @@ Which category shows the lowest median value?
 ### Exercise 7
 
 For this exercise you will use the same data.  
-Create a grouped box plot for `Expression value - stimulus` vs `Expression Value + stimulus`.  
+Create a **grouped box plot** for `Expression value without stimulus` vs `Expression Value with stimulus`.  
 
-Which category shows the lowest IQR value?
+Which category shows the *lowest* IQR value?
 
 ```{r}
 #Your code here
@@ -103,7 +103,7 @@ Which category shows the lowest IQR value?
 
 In [this dataset](./files_13_data_visualization_exercises/exercise08/ChickWeight.csv) you can find Chick Weight data. It shows the weight (in grams) on day 42 for various chickens that were fed with various diets during 42 days.
 
-Create a radar chart for the various diets on day 42.  
+Create a **radar chart** for the various diets on day 42.  
 Calculate the average weight per diet.
 
 Two Chickens on a certain diet clearly gained the most weight.  
@@ -118,7 +118,7 @@ Which two chickens on which diet generated the highest weight gains?
 Have look at the data [here](./files_13_data_visualization_exercises/exercise09/data.csv)
 It contains data about Potassium and Sodium concentrations (in mmol/L) as well as body weight (in kg) for various persons.  
 
-Create a bubble chart with the Na concentration as a function of the K concentration.  
+Create a **bubble chart** with the Na concentration as a function of the K concentration.  
 The bubble size should be based on the body weight.  
 
 As you can see, there is a correlation between the sodium and potassium concentration but there is one person who can be considered an outlier. What is the name of this person?  
@@ -130,11 +130,11 @@ As you can see, there is a correlation between the sodium and potassium concentr
 
 ### Exercise 10
 
-In [this dataset](./files_13_data_visualization_exercises/exercise10/puromycin.csv), you will find data on the velocity of an enzymatic reaction were obtained by Treloar (1974). The number of counts per minute of radioactive product from the reaction was measured as a function of substrate concentration in parts per million (ppm) and from these counts the initial rate (or velocity) of the reaction was calculated (counts/min/min). The experiment was conducted once with the enzyme treated with Puromycin, and once with the enzyme untreated.
+In [this dataset](./files_13_data_visualization_exercises/exercise10/puromycin.csv), you will find data on the velocity of an enzymatic reaction were obtained by Treloar (1974). The number of counts per minute of radioactive product from the reaction was measured as a function of substrate concentration in parts per million (ppm) and from these counts the initial rate (or velocity) of the reaction was calculated (counts/min). The experiment was conducted once with the enzyme treated with Puromycin, and once with the enzyme untreated.
 
-Create a XY-scatter plot with the velocity plotted against the substrate concentration. 
+Create a **XY-scatter plot** with the velocity plotted against the substrate concentration. 
 
-Create a XY-scatter for the experiment without puromycin and an additional XY scatter plot for both (with and without puromycin) conditions.
+Create a **XY-scatter plot** for the experiment without puromycin and an additional **XY scatter plot** for both (with and without puromycin) conditions.
 
 Does puromycin act as an inhibitor or an activator for this enzyme?  
   
@@ -144,13 +144,13 @@ Does puromycin act as an inhibitor or an activator for this enzyme?
 
 ### Exercise 11
 
-For this exercise, we will use the data set from an earlier exercise again. This time, to create a pivot table and plot. 
+For this exercise, we will use the data set from an earlier exercise again. This time, create a **pivot table** and **pivot plot**. 
 
 Download the [data set](./files_13_data_visualization_exercises/exercise11/expression_data.csv). 
 
-Create a pivot plot for the **mean** `Expression Value` plotted against the `Categories` (both with and without stimulus).  
+Create a **pivot plot** for the *mean* `Expression Value` plotted against the `Categories` (both with and without stimulus).  
 
-What category shows the lowest expression values and what category shows the highest expression values?
+What category shows the *lowest* expression values and what category shows the *highest* expression values?  
  
  
 ```{r}
