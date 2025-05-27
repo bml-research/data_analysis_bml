@@ -66,11 +66,6 @@ This module is part of the [CureQ project](https://cureq.nl/). CureQ is a consor
 
 - [Here you will find some information about plotting in Excel on a Macbook](./troubleshooting/excel_mac.md)
 
-## Under construction
-
-Disclaimer:  
-This website is still under construction and may contain errors.  
-
 
 ---
 
