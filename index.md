@@ -53,7 +53,7 @@ This module is part of the [CureQ project](https://cureq.nl/). CureQ is a consor
 - [Data sets](./data_sets/data_sets.md)
 
 
-## Link to example exercise
+## Link to example portfolio
 
 - [Here you can find an example of the final assignment with an example portfolio](./portfolio_example/01_example_portfolio.md)
 
