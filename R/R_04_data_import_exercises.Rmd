@@ -132,6 +132,11 @@ Use code to open the Excel file from exercise 7.
 ```
 
 
+### Exercise 8
+
+The zip file in this [link](./files_04_data_import_exercises/exercise09/read_data_empty.zip) contains 25 small exercises to load data as a tibble in R.  
+Unpack the zip file and open the Rmd file for instructions.  
+
 ---
 
 
