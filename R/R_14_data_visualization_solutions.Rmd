@@ -22,7 +22,7 @@ formatted_table <- function(df){
 }
 ```
 
-This file can be found [here](./R_14_data_visualization_solutions.Rmd)
+This file can be found [here](./R_14_data_visualization_solutions.Rmd).
 
 > The exercises will be similar to the exercises in Excel in order to compare the results.
 
@@ -30,12 +30,12 @@ This file can be found [here](./R_14_data_visualization_solutions.Rmd)
 
 Load the [Following dataset](./files_13_data_visualization_exercises/exercise01/expression_data.csv).
 
-It shows RNA expression data with and without a stimulus.  
-Create a column chart for the `MAP kinase Expression values` without a stimulus with expression levels higher than 0.5.  
+The data frame shows RNA expression data with and without a stimulus.  
+Create a column chart for the `MAP kinase Expression values` without a stimulus with expression levels **higher** than 0.5.  
 Annotate the axis and add a proper title.  
-Sort the expression values from low to high (the graph should contain bars with increasing height).
+Sort the expression values from *low to high* (the graph should contain bars with increasing height).
 
-Which three gene names have the highest Expression Value without a stimulus?  
+Which three gene names have the highest Expression Value *without* a stimulus?  
 
 ```{r}
 # loading data
@@ -62,13 +62,13 @@ barplot(nuc_new$`Expression Value - stimulus`,
         main = "MAP kinase Expression values - stimulus > 0.5")  
 ```
 
-TARS2, TTC37 and ARHGEF9 have the highest expression value without a stimulus.
+TARS2, TTC37 and ARHGEF9 have the highest expression value *without* a stimulus.
 
 
 ### Exercise 2
 
 From the previous data set, use again the gene expression within the `MAP Kinase gene family`.  
-Create a clustered column chart representing the expression values without stimulus and the expression values with stimulus. Make sure to add proper axis titles, a title and a legend.
+Create a **clustered column chart** representing the expression values without stimulus and the expression values with stimulus. Make sure to add proper axis titles, a title and a legend.
 
 
 First we create a data frame with the rows of MAP kinases:
@@ -79,7 +79,7 @@ formatted_table(df_ex3)
 ```
 
 
-Make the df tidy:
+Make the data frame tidy:
 
 ```{r}
 tidy_df_ex3 <- df_ex3 %>%
@@ -100,8 +100,8 @@ p
 
 ### Exercise 3
 
-Use the same data as from exercise 2 to create a stacked column chart. Filter the data that contain the MAP Kinase gene family.  
-Create a stacked column chart representing the Expression Values with and without stimulus. Make sure to add proper axis titles, a title and a legend.
+Use the same data as from exercise 2 to create a **stacked column chart**. Filter the data that contain the `MAP Kinase gene family`.  
+Create a **stacked column chart** representing the Expression Values with and without stimulus. Make sure to add proper axis titles, a title and a legend.
 
 ```{r}
 p <- ggplot(data = tidy_df_ex3, aes(x = `Gene name`, y = `Expression Value`, fill = `Expression type`)) +
@@ -115,8 +115,8 @@ p
 
 ### Exercise 4
 
-Use the same data as from exercise 3 to create a relative stacked column chart. Filter the data that contain the `MAP Kinase gene family`.  
-Create a relative stacked column chart representing the Expression Values with and without stimulus. Make sure to add proper axis titles, a title and a legend.
+Use the same data as from exercise 3 to create a **relative stacked column chart**. Filter the data that contain the `MAP Kinase gene family`.  
+Create a **relative stacked column chart** representing the Expression Values with and without stimulus. Make sure to add proper axis titles, a title and a legend.
 
 ```{r}
 p <- ggplot(data = tidy_df_ex3, aes(x = `Gene name`, y = `Expression Value`, fill = `Expression type`)) +
@@ -129,10 +129,10 @@ p
 
 ### Exercise 5
 
-Use the same data as from exercise 3 to create a pie chart.   
-Create a pie chart representing the total Expression Value without stimulus per Category. Make sure to add proper axis titles, a title and a legend.
+Use the same data as from exercise 3 to create a **pie chart**.   
+Create a **pie chart** representing the total Expression Value without stimulus per Category. Make sure to add proper axis titles, a title and a legend.
 
-Which category shows the smallest fraction of Expression value - stimulus.
+Which category shows the smallest fraction of Expression Value *without* stimulus?
 
 
 ```{r}
@@ -142,6 +142,7 @@ tidy_df_ex5 <- df_ex1 %>%
   filter(`Expression type` == "Expression Value - stimulus")
 tidy_df_ex5
 ```
+
 Now calculate the total expression value per Category
 
 ```{r}
@@ -150,7 +151,8 @@ data_pie <- tidy_df_ex5 %>%
   summarize(sum_expression = sum(`Expression Value`))
 formatted_table(data_pie)
 ```
-Now can calculate the percentage and add to new column:
+
+Now calculate the percentage and add to new column:
 
 ```{r}
 data_pie$percentage <- data_pie$`sum_expression` / sum(data_pie$`sum_expression`) * 100
@@ -168,15 +170,15 @@ p <- ggplot(data_pie, aes(x = "", y = `sum_expression`, fill = `Category`)) +
 p
 ```
 
-The motor proteins are the smallest fraction of expression value - stimulus.
+The `motor proteins` are the smallest fraction of expression value *without* stimulus.
 
 
 ### Exercise 6
 
 For this exercise you will use the same data.  
-Create a box plot for `Expression value - stimulus` plotted against the `Categories`.  
+Create a **box plot** for Expression value without stimulus plotted against the `Categories`.  
 
-Which category shows the lowest median value?
+Which category shows the *lowest* median value?
 
 Create Box plot:
 
@@ -190,15 +192,15 @@ p <- ggplot(df_ex1, aes(x = `Category`, y = `Expression Value - stimulus`)) +
 p
 ```
 
-The `Signal transducing proteins` have the lowest median for expression value - stimulus.
+The `Signal transducing proteins` have the *lowest* median for Expression Value without stimulus.
 
 
 ### Exercise 7
 
 For this exercise you will use the same data.  
-Create a grouped box plot for `Expression value - stimulus` vs `Expression Value + stimulus`.  
+Create a **grouped box plot** for `Expression value without stimulus` vs `Expression Value with stimulus`.  
 
-Which category shows the lowest IQR value?
+Which category shows the *lowest* IQR value?
 
 This time, you will have to use the tidy data.
 
@@ -216,14 +218,14 @@ p <- ggplot(tidy_df_ex4, aes(x = `Category`, y = `Expression Value`, fill = `Exp
 p
 ```
 
-The `Signal transducing proteins` show the lowest IQR (lowest height of the Whisker box).
+The `Signal transducing proteins` show the *lowest* IQR (lowest height of the Whisker box).
 
 
 ### Exercise 8
 
 In [this dataset](./files_13_data_visualization_exercises/exercise08/ChickWeight.csv) you can find Chick Weight data. It shows the weight (in grams) on day 42 for various chickens that were fed with various diets during 42 days.
 
-Create a radar chart for the various diets on day 42.  
+Create a **radar chart** for the various diets on day 42.  
 Calculate the average weight per diet.
 
 Two Chickens on a certain diet clearly gained the most weight.  
@@ -274,14 +276,16 @@ p <- ggradar(df_ex8_mod,  legend.text.size = 8, values.radar = c("0", "200", "40
   theme(plot.title = element_text(size = 14, ))
 p
 ```
+
 Chick 4 and 5 gained the highest weight (on Diet 3).
+
 
 ### Exercise 9
 
 Have look at the data [here](./files_13_data_visualization_exercises/exercise09/data.csv)
 It contains data about Potassium and Sodium concentrations (in mmol/L) as well as body weight (in kg) for various persons.  
 
-Create a bubble chart with the Na concentration as a function of the K concentration.  
+Create a **bubble chart** with the Na concentration as a function of the K concentration.  
 The bubble size should be based on the body weight.  
 
 As you can see, there is a correlation between the sodium and potassium concentration but there is one person who can be considered an outlier. What is the name of this person?  
@@ -303,20 +307,19 @@ p <- ggplot(df_ex9, aes(x = `Potassium conc (mmol/L)`, y = `Sodium conc (mmol/L)
   scale_size_area(max_size=10) 
 p
 ```
+
 Alice shows a relatively low concentration of potassium for the sodium concentration (or a relatively low sodium concentration for the potassium concentration).
 
 
 ### Exercise 10
 
-In [this dataset](./files_13_data_visualization_exercises/exercise10/puromycin.csv), you will find data on the velocity of an enzymatic reaction were obtained by Treloar (1974). The number of counts per minute of radioactive product from the reaction was measured as a function of substrate concentration in parts per million (ppm) and from these counts the initial rate (or velocity) of the reaction was calculated (counts/min/min). The experiment was conducted once with the enzyme treated with Puromycin, and once with the enzyme untreated.
+In [this dataset](./files_13_data_visualization_exercises/exercise10/puromycin.csv), you will find data on the velocity of an enzymatic reaction were obtained by Treloar (1974). The number of counts per minute of radioactive product from the reaction was measured as a function of substrate concentration in parts per million (ppm) and from these counts the initial rate (or velocity) of the reaction was calculated (counts/min). The experiment was conducted once with the enzyme treated with Puromycin, and once with the enzyme untreated.
 
-Create a XY-scatter plot with the velocity plotted against the substrate concentration. 
+Create a **XY-scatter plot** with the velocity plotted against the substrate concentration. 
 
-Create a XY-scatter for the experiment without puromycin and an additional XY scatter plot for both (with and without puromycin) conditions.
+Create a **XY-scatter plot** for the experiment without puromycin and an additional **XY scatter plot** for both (with and without puromycin) conditions.
 
 Does puromycin act as an inhibitor or an activator for this enzyme?  
-
-
 
 
 ```{r}
@@ -342,6 +345,7 @@ p <- ggplot(data= df_ex10_untreated, aes(x = `Substrate concentration (ppm)`, y 
   labs(title="Velocity of Galactosyltransferase")
 p
 ```
+
 Or with and without puromycin (just the data points):
 
 ```{r}
@@ -352,18 +356,18 @@ p
 ```
 
 
-Thus, puromycin acts as an activator.
+Puromycin acts as an activator. The measured values of the treated condition are higher than those of the untreated condition.
 
 
 ### Exercise 11
 
-For this exercise, we will use the data set from an earlier exercise again. This time, to create a pivot table and plot. 
+For this exercise, we will use the data set from an earlier exercise again. This time, create a **pivot table** and **pivot plot**. 
 
 Download the [data set](./files_13_data_visualization_exercises/exercise11/expression_data.csv). 
 
-Create a pivot plot for the **mean** `Expression Value` plotted against the `Categories` (both with and without stimulus).  
+Create a **pivot plot** for the *mean* `Expression Value` plotted against the `Categories` (both with and without stimulus).  
 
-What category shows the lowest expression values and what category shows the highest expression values?
+What category shows the *lowest* expression values and what category shows the *highest* expression values?  
  
 
 First group the food Categories:
@@ -377,7 +381,7 @@ formatted_table(head(df_ex1_summ))
 ```
 
 
-make the data tidy:
+Make the data tidy:
 
 ```{r}
 tidy_df_ex11 <- df_ex1_summ %>%
@@ -397,8 +401,8 @@ p <- ggplot(data = tidy_df_ex11, aes(x = `Category`, y = `Expression Value`, fil
 p
 ```
 
-`Signal transducing proteins` the lowest expression values.
-`Motor proteins` show the highest expression levels.  
+`Signal transducing proteins` the *lowest* expression values.
+`Motor proteins` show the *highest* expression levels.  
 
 
 ---
