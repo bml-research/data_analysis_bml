@@ -175,7 +175,7 @@ formatted_table(head(my_data))
 ```
 
 
-### Exercise 8
+### Exercise 9
 
 
 Download the zip file in [this link](./files_05_data_import_solutions/exercise09/read_data_solutions.zip) for the solutions.  
