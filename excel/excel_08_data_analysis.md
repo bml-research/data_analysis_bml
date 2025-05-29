@@ -225,29 +225,9 @@ So the `XLOOKUP` function checks the position of a lookup key and returns the co
 
 These are just some examples. Use the online resources or the recommended Excel book to find more useful functions.
 
-
-## Statistics
-
-Excel has many functions for statistics like `STDEV.P`, `T.TEST`, `F.TEST` and `CHISQ.DIST.RT`. 
-A comprehensive list can be found [here](https://support.microsoft.com/en-us/office/statistical-functions-reference-624dac86-a375-4435-bc25-76d659719ffd).
-
-In addition, Excel has a a [statistics analysis pack](https://support.microsoft.com/en-gb/office/load-the-analysis-toolpak-in-excel-6a63e598-cd6d-42e3-9317-6b40ba1a66b4) available as plugin.
-
-
-Here is an example of a diet intervention. Because the same subjects are measured twice, a paired T-test was used. This is a one-tailed test as we are looking for a weight reduction (alpha = 0.05).
-
-![t-test](./pics_08_data_analysis/fig19.png)
-*<sub>Figure 19: A paired T-test in Excel.</sub>*
-
-The result is significant so H1 (hypothesis 1) is true. The diet resulted in a significant weight reduction (alpha = 0.05).
-Note that the result is static. If we change the values, we need do redo the test.
-
-Statistics in Excel is limited. For example, non-parametric tests like the Mann–Whitney U test are not included in Excel. If you need to do more complex statistics, use R or Python instead.
-
-The actual content of statistics is beyond the scope of this course. Attend a statistics course of you need more background on this subject.
-
 ## List of functions
 
+This course will familiarize you with using Excel functions. While this [link](https://support.microsoft.com/en-us/office/excel-functions-alphabetical-b3944572-255d-4efb-bb96-c6d90033e188) provides a comprehensive list of all Excel functions, the functions listed below are mandatory for this course and you must master them. Learning these core functions will make it easier to understand and use others. Practice these essential functions with small datasets to build your skills. Since, this is not a statistics oriented course, many statistical functions are omitted (e.g. T.TEST).
 
 | **Function**   | **Explanation**                                                                                                                                                                 |
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -292,7 +272,7 @@ The actual content of statistics is beyond the scope of this course. Attend a st
 | POWER          | Returns the result of a number raised to a power                                                                                                                                |
 | RANDBETWEEN    | Returns a random number between the numbers you specify                                                                                                                         |
 | RANK           | Returns the rank of a number in a list of numbers                                                                                                                               |
-| RIGHT,         | Returns the rightmost characters from a text value                                                                                                                              |
+| RIGHT          | Returns the rightmost characters from a text value                                                                                                                              |
 | ROUND          | Rounds a number to a specified number of digits                                                                                                                                 |
 | ROUNDDOWN      | Rounds a number down, toward zero                                                                                                                                               |
 | ROUNDUP        | Rounds a number up, away from zero                                                                                                                                              |
@@ -315,6 +295,28 @@ The actual content of statistics is beyond the scope of this course. Attend a st
 | UPPER          | Converts text to uppercase                                                                                                                                                      |
 | VALUE          | Converts a text argument to a number                                                                                                                                            |
 | XLOOKUP        | Searches a range or an array, and returns an item corresponding to the first match it finds. If a match doesn't exist, then XLOOKUP can return the closest (approximate) match. |
+
+
+## Statistics
+
+Excel has many functions for statistics like `STDEV.P`, `T.TEST`, `F.TEST` and `CHISQ.DIST.RT`. 
+A comprehensive list can be found [here](https://support.microsoft.com/en-us/office/statistical-functions-reference-624dac86-a375-4435-bc25-76d659719ffd).
+
+In addition, Excel has a a [statistics analysis pack](https://support.microsoft.com/en-gb/office/load-the-analysis-toolpak-in-excel-6a63e598-cd6d-42e3-9317-6b40ba1a66b4) available as plugin.
+
+
+Here is an example of a diet intervention. Because the same subjects are measured twice, a paired T-test was used. This is a one-tailed test as we are looking for a weight reduction (alpha = 0.05).
+
+![t-test](./pics_08_data_analysis/fig19.png)
+*<sub>Figure 19: A paired T-test in Excel.</sub>*
+
+The result is significant so H1 (hypothesis 1) is true. The diet resulted in a significant weight reduction (alpha = 0.05).
+Note that the result is static. If we change the values, we need do redo the test.
+
+Statistics in Excel is limited. For example, non-parametric tests like the Mann–Whitney U test are not included in Excel. If you need to do more complex statistics, use R or Python instead.
+
+The actual content of statistics is beyond the scope of this course. Attend a statistics course of you need more background on this subject.
+
 
 ## Sorting of data and filtering of data
 
