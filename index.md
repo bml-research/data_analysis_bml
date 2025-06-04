@@ -55,7 +55,7 @@ This module is part of the [CureQ project](https://cureq.nl/). CureQ is a consor
 
 ## Link to example portfolio
 
-- [Here you can find an example of the final assignment with an example portfolio](./portfolio_example/01_example_portfolio.md)
+- [Here you can find instructions for the final assignment with an example portfolio](./portfolio_example/01_example_portfolio.md)
 
 ## Installation of MS Excel, R en RStudio 
 
