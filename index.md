@@ -66,6 +66,10 @@ This module is part of the [CureQ project](https://cureq.nl/). CureQ is a consor
 
 - [Here you will find some information about plotting in Excel on a Macbook](./troubleshooting/excel_mac.md)
 
+## Outline for teachers
+
+- [Here you will find a short outline for teachers](./outline_teachers/outline_teachers.md)
+
 
 ---
 
