@@ -34,7 +34,7 @@ Once you're confident that all components are complete and polished, zip your fo
 
 ### Review and Feedback:
 
-Your instructor will evaluate your portfolio using the assessment form detailed in your study guide. Make sure you're familiar with this form beforehand to understand the grading criteria.
+Your instructor will evaluate your portfolio using the assessment shown below. Make sure you're familiar with this form beforehand to understand the grading criteria.
 Following the review, you'll have a brief 15-minute CGI (Communication, Discussion, Insight) session with your instructor. This is your opportunity to discuss your work, answer any questions, and gain deeper insights into your performance.
 Finally, you'll receive your motivated assessment and detailed feedback on your portfolio.
 
@@ -65,6 +65,7 @@ Good luck!
 
 - [Checklist](./01_checklist/checklist_data_analysis_portfolio.xlsx)
 - [Example portfolio](./02_example_portfolio/example_portfolio.zip)
+- [grading form](./03_grading_form/grading_form_bml_dav.xlsx)
 
 
 >This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
