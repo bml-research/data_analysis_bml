@@ -716,6 +716,7 @@ formatted_table &lt;- function(df){
 the Excel section: namely, <a href="https://genomics.senescence.info/species/index.html">The AnAge
 Database of Animal Ageing and Longevity</a>. We will work with the Adult
 and Birth weights and need to convert them to numbers.</p>
+<p>The csv file used in the examples below can also be downloaded <a href="./files_12_data_visualization/file01_anage_data.csv">here</a>.</p>
 <pre class="r"><code>file_path &lt;- &quot;./files_12_data_visualization/file01_anage_data.csv&quot;
 df &lt;- read.csv2(file_path, check.names = F)
 df &lt;- df %&gt;% mutate(`Adult weight (g)` = as.numeric(`Adult weight (g)`)) %&gt;% 

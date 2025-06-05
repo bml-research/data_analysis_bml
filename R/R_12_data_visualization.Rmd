@@ -91,6 +91,8 @@ As an example dataset, we will be using the same dataset as used in the Excel se
 namely, [The AnAge Database of Animal Ageing and Longevity](https://genomics.senescence.info/species/index.html).
 We will work with the Adult and Birth weights and need to convert them to numbers.
 
+The csv file used in the examples below can also be downloaded [here](./files_12_data_visualization/file01_anage_data.csv).  
+
 ```{r}
 file_path <- "./files_12_data_visualization/file01_anage_data.csv"
 df <- read.csv2(file_path, check.names = F)
