@@ -5,7 +5,7 @@
 
 ---
 
-# Outline for teachers
+# Schedule and Outline for Students and Teachers
 
 ## Aim of the course
 
