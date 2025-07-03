@@ -77,5 +77,3 @@ This module is part of the [CureQ project](https://cureq.nl/). CureQ is a consor
 >For some textual parts, AI (GPT) was used. The output was verified in all cases and modified where needed.  
 >This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.  
 >Creative Commons License: CC BY-SA 4.0.
-
-test
