@@ -71,6 +71,8 @@ This module is part of the [CureQ project](https://cureq.nl/). CureQ is a consor
 - [Here you will find a short schedule and outline for teachers and students](./outline_teachers/outline_teachers.md)
 
 
+$x = \frac{a}{b}$
+
 ---
 
 >Some text on this web page is copied, adapted and modified from Wikipedia.org  
