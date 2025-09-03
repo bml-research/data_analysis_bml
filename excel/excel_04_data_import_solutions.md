@@ -79,6 +79,18 @@ You can rename the column headers to: Location, Protein Name, Protein Sequence e
 
 >As you might have observed, this is a very large dataset (one of the csv files is almost 1 GB in size). Excel has a lot of trouble in rendering the data in real-time. You are probably way better off doing analysis of such large datasets in R or Python. The solution is not included as the file size is to large to include on the website.  
 
+### Exercise 7
+
+Use PowerQuery to load the csv files.  
+Data tab > `From Text/CSV`.  
+Here you can select the delimiter (tab, comma, custom).
+Click `Transform Data` for more import options.  
+You can click remove Rows to remove top rows.  
+`Replace Values` can be used to replace text to indicate missing values.  
+You can manually enter Column names.  
+You can click `Use First Rows as Headers` to use the first row as a header.   
+Decimal separator can be changed by changing the regional settings under `File` > `Options and Settings` > `Query Options` > `Regional Settings`.  
+
 
 ---
 

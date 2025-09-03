@@ -59,6 +59,7 @@ Check for the following:
 - Are there missing data? Replace to NA.
 - Are column names present? If not, add them during loading in PowerQuery. You can take the column names from another file in the series.
 
+Load the files using PowerQuery and do not modify the csv files from within a text editor!
 
 ---
 
