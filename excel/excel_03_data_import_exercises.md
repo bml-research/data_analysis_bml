@@ -47,6 +47,17 @@ Load the [SARS-CoV-2 Genetics](https://www.kaggle.com/datasets/rtwillett/sarscov
 >You can try to load more data from the [datasets web page](https://bml-research.github.io/data_analysis_bml/data_sets/data_sets.html).
 >Alternatively, you can search for more datasets on [Kaggle](https://www.kaggle.com/), [KDnuggets](https://www.kdnuggets.com/) or other dataset repositories. 
 
+### Exercise 7
+
+The zip file in [this link](./files_03_data_import_exercises/exercise07_files.zip) contains 25 small exercises to load data in Excel.  
+Unpack the zip file and import the files using PowerQuery.  
+Hint: first inspect the file using a text editor.  
+Check for the following:
+- What column delimiter is used?
+- Are there top rows to be removed?
+- What decimal separator is used?  
+- Are there missing data? Replace to NA.
+- Are column names present? If not, add them during loading in PowerQuery. You can take the column names from another file in the series.
 
 
 ---
