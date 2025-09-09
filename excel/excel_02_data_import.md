@@ -128,8 +128,7 @@ You need to specify the file type (UTF-8). But even then it will not load well:
 *<sub>Figure 9: a difficult file to load in Excel</sub>*
 
 
-However, using the "Transform Data" feature, you can easily separate the columns using "Split Column (by delimiter)" on the `@` symbol.
-Than, click "Use First Row as Headers" and click " Close & Load".
+However, after clicking "From txt/csv" and selecting the csv file, you can specify the delimiter by choosing "--Custom--" and then enter the `@` symbol. Then click "Transform Data", click "Use First Row as Headers" and click " Close & Load".  
 
 |![Data loaded](./pics_02_data_import/10.png)
 *<sub>Figure 10: a difficult file loaded in Excel</sub>*
