@@ -13,7 +13,7 @@
 ### Exercise 1
 
 Download the [this dataset](https://www.kaggle.com/datasets/anoopjohny/comprehensive-drug-information-dataset).
-Open it with a text editor (or Excel).  
+Open it with a text editor (Notepad or TextEdit on a Mac).  
 
 Describe for the following columns what kind of data it holds. Also describe the scale.  
 
