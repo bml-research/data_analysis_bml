@@ -12,7 +12,7 @@
 
 ### Exercise 1
 
-Load the following datasets in Excel using the csv import functionality. First have a look at them in your text editor.  
+Load the following datasets in Excel using the csv import functionality (Power Query). First have a look at them in your text editor.  
 Then load in Excel.  
 
 - [file 1](./files_03_data_import_exercises/fish_data_1.csv)  
@@ -24,24 +24,24 @@ Report the field separator.
 
 ### Exercise 2
 
-Load the [Heart Disease Health Indicators Dataset](https://www.kaggle.com/datasets/alexteboul/heart-disease-health-indicators-dataset) dataset in Excel using the csv import tool. 
+Load the [Heart Disease Health Indicators Dataset](https://www.kaggle.com/datasets/alexteboul/heart-disease-health-indicators-dataset) dataset in Excel using the csv import tool (Power Query). 
 
 ### Exercise 3
 
-Load the [Properties of ATC accepted medicines](https://www.kaggle.com/datasets/tonibois/properties-of-atc-accepted-medicines) dataset in Excel using the csv import tool.
+Load the [Properties of ATC accepted medicines](https://www.kaggle.com/datasets/tonibois/properties-of-atc-accepted-medicines) dataset in Excel using the csv import tool (Power Query).
 
 ### Exercise 4
 
-Load the [food-allergens-and-allergies](https://www.kaggle.com/datasets/boltcutters/food-allergens-and-allergies) dataset in Excel using the csv import tool.
+Load the [food-allergens-and-allergies](https://www.kaggle.com/datasets/boltcutters/food-allergens-and-allergies) dataset in Excel using the csv import tool (Power Query).
 
 ### Exercise 5
 
-Load the [Beta-Lactamase](https://www.kaggle.com/datasets/thedataprof/betalactamase) dataset in Excel using the csv import tool. This dataset contains several csv files. Just use the first (CHEMBL1989.csv)
+Load the [Beta-Lactamase](https://www.kaggle.com/datasets/thedataprof/betalactamase) dataset in Excel using the csv import tool (Power Query). This dataset contains several csv files. Just use the first (CHEMBL1989.csv)
 
 ### Exercise 6
 
 Load the [SARS-CoV-2 Genetics](https://www.kaggle.com/datasets/rtwillett/sarscov2-genetics)
- dataset in Excel using the csv import tool.
+ dataset in Excel using the csv import tool (Power Query).
  There are two separate csv files. Load both in the same Excel file (albeit at different worksheets).  
 
 >You can try to load more data from the [datasets web page](https://bml-research.github.io/data_analysis_bml/data_sets/data_sets.html).
@@ -50,7 +50,7 @@ Load the [SARS-CoV-2 Genetics](https://www.kaggle.com/datasets/rtwillett/sarscov
 ### Exercise 7
 
 The zip file in [this link](./files_03_data_import_exercises/exercise07_files.zip) contains 25 small exercises to load data in Excel.  
-Unpack the zip file and import the files using PowerQuery.  
+Unpack the zip file and import the files using Power Query.  
 Hint: first inspect the file using a text editor.  
 Check for the following:
 - What column delimiter is used?
