@@ -81,9 +81,9 @@ To import a CSV file into Microsoft Excel, follow these steps:
 - In the Get & Transform Data group, click on the "From Text/CSV" button.
 - In the Import Data dialog box that appears, navigate to the location of the CSV file that you want to import and select it.
 - Click the "Import" button.
-- In the Text Import Wizard that appears, select the "Delimited" option and click the "Next" button.
-- On the next page of the wizard, select the "Comma" option as the delimiter and click the "Next" button.
-- On the final page of the wizard, you can specify how you want Excel to handle the data in the CSV file. You can specify the data type for each - column, whether the first row of the CSV file contains column headings, and other options. Once you have made your selections, click the "Finish" button to import the data into Excel.
+- In the Text Import Wizard that appears, select the correct "Delimiter".
+- Click on "Transform Data".
+- Here you can specify how you want Excel to handle the data in the CSV file. You can specify the data type for each column, whether the first row of the CSV file contains column headings, and other options. Once you have made your selections, click the "Close & Load" button to import the data into Excel.
 - The imported data will be displayed in a new worksheet in the current workbook. You can then use the data as you would any other data in Excel, such as sorting, filtering, and performing calculations on it.
 
 Here are some screenshots of the import process:
@@ -96,8 +96,6 @@ Here are some screenshots of the import process:
 *<sub>Figure 5: Loaded csv file in Excel</sub>*
 
 As you can see from above, the data is loaded in a Table with filters to sort rows. 
-
->Note that the file is still a csv file. To save Excel features such a tables and plots, you should save in the `xlsx` format.
 
 
 ### Import TSV and other text file in Excel with Power Query
