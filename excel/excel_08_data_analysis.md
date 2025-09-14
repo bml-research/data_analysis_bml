@@ -389,12 +389,12 @@ Pivot tables are handy to quickly analyze data but they are limited. For example
 However, you can use a plugin, Power Pivot, to accomplish this.  
 In order to accomplish this, follow the following steps:
 
-**Add Data to the Data Model:**  
+### Add Data to the Data Model:
 
 When creating the pivot table, check the box for "Add this data to the Data Model" in the Create PivotTable dialog box. 
 If the pivot table already exists, you can add the data to the Data Model by right-clicking the pivot table, selecting "PivotTable Options," and then checking the "Data Model" option under the Data tab.  
 
-*Enable Power Pivot (if not already enabled):*  
+### Enable Power Pivot (if not already enabled):  
 
 Go to File > Options > Add-ins.  
 In the Manage dropdown, select COM Add-ins and click Go.  
@@ -404,7 +404,7 @@ A new Power Pivot tab will appear in the Excel ribbon.
 ![pivot table](./pics_08_data_analysis/fig29.png)
 *<sub>Figure 29: Power Pivot tab added to the ribbon.</sub>*
 
-**Create a New Measure:**  
+### Create a New Measure:
 
 Click on the Power Pivot tab.  
 Click on Measures and select New Measure.  
@@ -416,7 +416,7 @@ Click OK.
 ![pivot table](./pics_08_data_analysis/fig30.png)
 *<sub>Figure 30: New measure created.</sub>*
 
-**Add the Measure to the Pivot Table:**  
+### Add the Measure to the Pivot Table:  
 
 Your new measure will appear in the PivotTable Fields list.  
 Drag the new median measure to the Values area of your pivot table.  
