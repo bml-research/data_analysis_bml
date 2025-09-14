@@ -450,7 +450,7 @@ And next we can calculate the median with a "custom" `MEDIANIF` function using n
 Now all that is left is calculating the grand total:  
 
 ![pivot table mimic](./pics_08_data_analysis/fig35.png)
-*<sub>Figure 35: Using a nested MEDIAN and IF function to calculate the median values.</sub>* 
+*<sub>Figure 35: Creating a pivot table-like structure using regular functions in Excel.</sub>* 
 
 >Note again that formatting as a table is not possible as it would yield a `#SPILL!` error.  
 
