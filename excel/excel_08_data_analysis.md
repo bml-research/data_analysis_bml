@@ -383,7 +383,7 @@ And than select the categorie `Physical_Activity` as well as the columns `Diabet
 As you can see, there is no clear correlation between a sedentary life style, mild activity and moderate activity and the number of diabetics in this dataset (though there is convincing evidence in the literature, so physical exercise is highly recommended).    
 
 
-## Advanced Pivot tables
+## Power Pivot
 
 Pivot tables are handy to quickly analyze data but they are limited. For example, you can not calculate the median heart rate using the standard Pivot Table.  
 However, you can use a plugin, Power Pivot, to accomplish this.  
