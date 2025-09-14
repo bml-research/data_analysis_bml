@@ -390,20 +390,15 @@ However, you can use a plugin, Power Pivot, to accomplish this.
 In order to accomplish this, follow the following steps:
 
 1. Add Data to the Data Model:
-
 When creating the pivot table, check the box for "Add this data to the Data Model" in the Create PivotTable dialog box. 
 If the pivot table already exists, you can add the data to the Data Model by right-clicking the pivot table, selecting "PivotTable Options," and then checking the "Data Model" option under the Data tab.  
-
 2. Enable Power Pivot (if not already enabled):
 Go to File > Options > Add-ins.  
-
 In the Manage dropdown, select COM Add-ins and click Go.  
 Check the box next to Power Pivot for Excel and click OK.  
 A new Power Pivot tab will appear in the Excel ribbon.  
-
 ![pivot table](./pics_08_data_analysis/fig29.png)
 *<sub>Figure 29: Power Pivot tab added to the ribbon.</sub>*
-
 3. Create a New Measure:
 Click on the Power Pivot tab.  
 Click on Measures and select New Measure.  
@@ -411,14 +406,11 @@ In the Measure window:
 Give the measure a descriptive name (e.g., "Median Heart Rate").  
 In the Formula box, type =MEDIAN([YourColumnName]), replacing [YourColumnName] with the actual name of the column you want to find the median for (in this case `HeartRate`). 
 Click OK. 
-
 ![pivot table](./pics_08_data_analysis/fig30.png)
 *<sub>Figure 30: New measure created.</sub>*
-
 4. Add the Measure to the Pivot Table:  
 Your new measure will appear in the PivotTable Fields list.  
 Drag the new median measure to the Values area of your pivot table.  
-
 ![pivot table](./pics_08_data_analysis/fig31.png)
 *<sub>Figure 31: The resulting Power Pivot table.</sub>*
 
