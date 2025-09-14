@@ -426,7 +426,7 @@ Drag the new median measure to the Values area of your pivot table.
 
 ## Mimic Pivot tables
 
-Note that you can also mimic a pivot like structure using the regular functions in Excel.  
+Note that you can also mimic a pivot like structure using regular functions in Excel.  
 For example, you could get more or less the same results als follows:  
 First extract the unique values of the `Physical_Activity` column:  
 
