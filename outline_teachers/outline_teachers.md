@@ -84,7 +84,8 @@ Details on installation can be found [here](https://bml-research.github.io/data_
 - Demonstrate the filtering and sorting of data including multi-level sort.
 - Demonstrate conditional formatting.
 - Demonstrate Pivot Tables (can use the example of the website).
-- Also demonstrate the limitations. For example: sum and average are possible but median is not possible.
+- Also demonstrate the limitations. For example: sum and average are possible but median is not possible using standard Pivot Tables.
+- Demonstrate that Median values can be calculated with `Power Pivot`.
 - Demonstrate that the same as a pivot table can be achieved using `UNIQUE` together with `AVERAGEIF`. In line with this, you can also combine `UNIQUE` with a custom "MEDIANIF" `MEDIAN(IF(ARGS))`. 
 
 
