@@ -368,14 +368,14 @@ And the result:
 ## Pivot tables
 
 Pivot tables come in handy to analyze data quickly and in an organized manner.
-Let's pretend that we are interested in comparing the average heart rate and the count of diabetics for each activity category (sedentary, mild and moderate activity) from the earlier used [dataset](./files_08_data_analysis/file01_dementia_patients_health_data.csv).
+Let's pretend that we are interested in comparing the average heart rate and the sum of diabetics for each activity category (sedentary, mild and moderate activity) from the earlier used [dataset](./files_08_data_analysis/file01_dementia_patients_health_data.csv).
 
 We can select the table. Than choose `Insert > Pivot table`:
 
 ![pivot table](./pics_08_data_analysis/fig27.png)
 *<sub>Figure 27: Pivot table.</sub>*
 
-And than select the categorie `Physical_Activity` as well as the columns `Diabetic` and `HeartRate`. We also change `SUM` in `AVERAGE` and `Count`.
+And than select the category `Physical_Activity` as well as the columns `Diabetic` and `HeartRate`. We also add `AVERAGE` to `SUM`.
 
 ![pivot table](./pics_08_data_analysis/fig28.png)
 *<sub>Figure 28: Pivot table showing the average heart rate and diabetic status for different Physical Activity categories.</sub>*
@@ -411,16 +411,46 @@ In the Measure window:
 Give the measure a descriptive name (e.g., "Median Heart Rate").  
 In the Formula box, type =MEDIAN([YourColumnName]), replacing [YourColumnName] with the actual name of the column you want to find the median for (in this case `HeartRate`). 
 Click OK. 
+
+![pivot table](./pics_08_data_analysis/fig30.png)
+*<sub>Figure 30: New measure created.</sub>*
+
 4. Add the Measure to the Pivot Table:  
 Your new measure will appear in the PivotTable Fields list.  
 Drag the new median measure to the Values area of your pivot table.  
 
-![pivot table](./pics_08_data_analysis/fig30.png)
-*<sub>Figure 30: Power Pivot tab added to the ribbon.</sub>*
+![pivot table](./pics_08_data_analysis/fig31.png)
+*<sub>Figure 31: The resulting Power Pivot table.</sub>*
+
+## Mimic Pivot tables
+
+Note that you can also mimic a pivot like structure using the regular functions in Excel.  
+For example, you could get more or less the same results als follows:  
+First extract the unique values of the `Physical_Activity` column:  
+
+![pivot table mimic](./pics_08_data_analysis/fig32.png)
+*<sub>Figure 32: Unique output of the Physical_activity column.</sub>*
+
+>Note that you can not create a table from the output of an array function that outputs in multiple cells. This will create the `#SPILL!` error. This is because a table will be blocking the output range. and if this happens, Excel will return a #SPILL! error indicating that there is a blockage.
+
+Next we can use `SUMIF` to calculate the values:  
 
 
+![pivot table mimic](./pics_08_data_analysis/fig33.png)
+*<sub>Figure 33: Using SUMIF function to calculate the sum with diabetes for each Physical Activity category.</sub>* 
 
 
+And next we can calculate the median with a "custom" `MEDIANIF` function using nesting of the `MEDIAN` and `IF` functions:  
+
+![pivot table mimic](./pics_08_data_analysis/fig34.png)
+*<sub>Figure 34: Using a nested MEDIAN and IF function to calculate the median values.</sub>* 
+
+Now all that is left is calculating the grand total:  
+
+![pivot table mimic](./pics_08_data_analysis/fig35.png)
+*<sub>Figure 35: Using a nested MEDIAN and IF function to calculate the median values.</sub>* 
+
+>Note again that formatting as a table is not possible as it would yield a `#SPILL!` error.  
 
 
 ---
