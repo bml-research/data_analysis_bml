@@ -112,7 +112,7 @@ Details on installation can be found [here](https://bml-research.github.io/data_
 - Demonstrate the very basics of R. [See the exercises](https://bml-research.github.io/data_analysis_bml/R/R_02_basics_exercises.html). This can be used during the lesson. See also the [solutions](https://bml-research.github.io/data_analysis_bml/R/R_02_basics_solutions.html).
 - Cover the following:
     - variable assignment.
-    - build in functions such as `len`, `class`, `sum`, `mean`, `median`, `sd`, `rep`, `seq`, `paste`, `paste0`, `toupper`.
+    - build in functions such as `length`, `class`, `sum`, `mean`, `median`, `sd`, `rep`, `seq`, `paste`, `paste0`, `toupper`.
     - build in variables such as `letters` and `LETTERS`.
     - Indexing of vectors.
     - Factor (ordered and unordered).
