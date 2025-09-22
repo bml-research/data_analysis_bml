@@ -363,10 +363,12 @@ In the [data analysis](./excel_08_data_analysis.md) section, we have seen the us
 
 We will use the example from the data analysis section to create a pivot chart.
 
-Here is a recap from the dataset used:.
+Here is a recap from the dataset used:
 
 ![Dementia dataset](./pics_11_data_visualization/fig28.png)
 *<sub>Figure 28: Dementia Patient Health,Prescriptions ML Dataset.</sub>*
+
+You can download the data [here](./files_08_data_analysis/file01_dementia_patients_health_data.csv).
 
 Suppose we want to investigate if there are differences in the average heart rate between activities (mild, moderate, sedentary). The corresponding pivot table is as follows:
 
