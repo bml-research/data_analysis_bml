@@ -131,6 +131,8 @@ We could calculate this but Excel provides a plot type that takes this work out 
 ![Relative Stacked column chart](./pics_11_data_visualization/fig08.png)
 *<sub>Figure 8: Relative stacked column chart representing the relative animal weight at birth and the adult weight for different cat species. logarithmic scale.</sub>*
 
+>You will see that the axis labels are initially positioned at the top of the chart. You can change this by right clicking a y-axis label, then click `Format Axis...` > `Labels` and select `Low` from the dropdown under `Label Position`.
+
 Like the relative stacked column chart, the pie chart is another chart type that is suitable for such a representation.
 
 ## Pie Chart
