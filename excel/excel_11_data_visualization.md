@@ -144,7 +144,11 @@ Pie charts are effective for conveying information quickly and intuitively, as t
 However, pie charts may not be the best choice for all types of data. For example, they can become difficult to read when there are too many categories or when the differences between the sizes of the slices are small. In these cases, a bar chart or other visualization (Pie of Pie) may be more appropriate.
 
 We take our previous example as an example to create a pie chart.
-The problem is that there are too many categories. Therefore, we will narrow down the number of rows by focussing on big cats. According to [Wikipedia](https://en.wikipedia.org/wiki/Big_cat) The term "big cat" is typically used to refer to any of the five living members of the genus Panthera, namely the tiger, lion, jaguar, leopard, and snow leopard, as well as the non-pantherine cheetah and cougar. So we select these species first and then create the Pie Chart:
+The problem is that there are too many categories. Therefore, we will narrow down the number of rows by focussing on big cats. According to [Wikipedia](https://en.wikipedia.org/wiki/Big_cat) The term "big cat" is typically used to refer to any of the five living members of the genus Panthera, namely the tiger, lion, jaguar, leopard, and snow leopard, as well as the non-pantherine cheetah and cougar. 
+
+Big cats' food intake is relative to their body mass. Thus, the knowledge of big cats' food intake relative to their body mass is a fundamental principle used by zoos and wildlife sanctuaries to plan and manage their animals' diets. However, in reality, it's a bit more complex than just a simple percentage. but for the sake of the exercise, we will plot the relative body mass of the big cats to make an estimation of their relative food intake. This can be visualized in a Pie chart.
+
+So we select these species first and then create the Pie Chart:
 
 ![Pie chart](./pics_11_data_visualization/fig09.png)
 *<sub>Figure 9: Pie chart representing the relative weight of big cats in grams</sub>*
