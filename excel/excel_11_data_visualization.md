@@ -332,6 +332,8 @@ By using a bubble chart to display this data, you can quickly see patterns and t
 ![Protein quantification methods](./pics_11_data_visualization/fig26.png)
 *<sub>Figure 26: data set suitable to display in a bubble chart. Note that these are fictive data.</sub>*
 
+The data can be downloaded [here](./files_11_data_visualization/file06_bubble_chart.csv).
+
 Below is a bubble chart of this dataset:
 
 ![Protein quantification methods](./pics_11_data_visualization/fig27.png)

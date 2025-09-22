@@ -1,0 +1,6 @@
+Protein quantification method,Analysis time (min),Protein Concentration (mg/mL),Number of analysis per day
+Lowry,120,40,60
+Bradford,120,65,60
+BCA,90,75,30
+UV/VIS,10,50,400
+Kjedal,15,85,800
