@@ -302,6 +302,8 @@ As you can see from the above chart, the data on the x-axis are now separated ac
 
 To show the use of an XY-scatter plot to visualize a correlation, the [ChickWeight dataset](https://github.com/selva86/datasets/blob/master/ChickWeight.csv) from R was used. The weight column represents the body weight of chickens (g). The time column represents the number of days since birth when the measurement was made.
 
+You can download the csv file [here](./files_11_data_visualization/file05_chickweight.csv).
+
 ![Chicken Weight](./pics_11_data_visualization/fig24.png)
 *<sub>Figure 24: Chicken weight data set. Dataset was filtered for Diet 1</sub>*
 
