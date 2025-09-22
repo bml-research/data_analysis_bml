@@ -207,8 +207,8 @@ Let's have a look at the following dataset:
 
 And now we can compare the maximum life span between different orders in mammals.
 
-First we filter our data for mammals.
-For the categories, we will use order (such as afrosoricida that is an order of placental mammals. Members of this order are called afrosoricids, and include golden moles, otter shrews, and tenrecs). 
+First we filter our data for mammals (filter for Class Mammalia).
+For the categories, we will use all the rows for the column order (such as afrosoricida that is an order of placental mammals. Members of this order are called afrosoricids, and include golden moles, otter shrews, and tenrecs). 
 
 The questions that can be asked are:
 - What is the median value per category? 
