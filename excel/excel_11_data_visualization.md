@@ -153,11 +153,11 @@ So we select these species first and then create the Pie Chart:
 ![Pie chart](./pics_11_data_visualization/fig09.png)
 *<sub>Figure 9: Pie chart representing the relative weight of big cats in grams</sub>*
 
-Or with the data labels and percentages shown connected to the pie slices (choose: chart design > chart elements > Data labels > Outside End):
+Or with the data labels as percentages shown connected to the pie slices (choose: chart design > chart elements > Data labels > Outside End):
 
 
 ![Pie chart](./pics_11_data_visualization/fig10.png)
-*<sub>Figure 10: Pie chart representing the relative weight of big cats in grams. Data labels and percentages are connected to the pie slices.</sub>*
+*<sub>Figure 10: Pie chart representing the relative weight of big cats in grams. Data labels as percentages are connected to the pie slices.</sub>*
 
 
 ## Pie of Pie
@@ -167,7 +167,7 @@ Pie of Pie charts can become handy if the individual slices become small and the
 Here is an example of a Pie of Pie chart with all the Feline species:
 
 ![Pie of Pie chart](./pics_11_data_visualization/fig11.png)
-*<sub>Figure 11: Pie of Pie chart representing the relative weight of big cats in grams Data labels and percentages are connected to the pie slices.</sub>*
+*<sub>Figure 11: Pie of Pie chart representing the relative weight of cats in %. Data labels and percentages are connected to the pie slices.</sub>*
 
 As you can see, the second Pie is created from the smallest Pie slices from the first Pie chart. This creates less clutter when the individual slices become to small. 
 
