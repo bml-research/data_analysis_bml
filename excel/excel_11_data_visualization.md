@@ -347,6 +347,13 @@ The Chart includes the following:
 - Y-axis: Protein concentration (mg/mL)
 - Bubble size: Represents the number of assays per day in the laboratory.
 
+The chart was tweaked as follows:
+- x-axis bounds were set for 0 as minimum
+- data labels were added: Bubble Size to show the number of analysis per day.
+- data labels were added: Value From Cells, protein quantification methods selected
+- Label Position was changed: `Above` selected.
+
+
 An extra dimension could be included by using colors. For example you could add categorical data (ordinal data in this case) such as sensitivity to chemical interferences like sugars and detergents, which Lowry and Bradford are very susceptible to (in red), but the other methods are less so (in green).
 
 
