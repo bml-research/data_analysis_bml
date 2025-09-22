@@ -380,7 +380,7 @@ So first we choose pivot chart from the ribbon (insert>PivotChart) and select th
 ![Pivot chart](./pics_11_data_visualization/fig30.png)
 *<sub>Figure 30: Data source and the output sheet selected.</sub>*
 
-Next, we select the correct fields and the calculations on the data (we use `average` for the heart rate in this example).
+Next, we select the correct fields (`Physical_Activity` and `HeartRate`) and the calculations on the data (we use `average` for the heart rate in this example).
 
 ![Pivot chart](./pics_11_data_visualization/fig31.png)
 *<sub>Figure 31: Select the correct fields and calculation types.</sub>*
