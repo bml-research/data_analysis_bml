@@ -409,6 +409,8 @@ So we select moderate activity again and add a proper graph title and axis label
 *<sub>Figure 35: Pivot chart. Average of Heart rate from different Physical activity categories. Chart title and axis labels added.</sub>*
 
 
+>You can also plot the median heart rate using Power Pivot. Follow the steps from the [Data Analysis](./excel_08_data_analysis.md) section describing Power Pivot.
+
 ---
 
 
