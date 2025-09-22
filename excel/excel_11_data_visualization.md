@@ -116,6 +116,7 @@ The problem with this chart is that the birth weights are barely visible. To imp
 ![Column chart](./pics_11_data_visualization/fig06.png)
 *<sub>Figure 6: Clustered column chart representing the animal weight at birth and the adult weight for different cat species. logarithmic scale.</sub>*
 
+>Note: if the order of birth weight and adult weight are swapped in your case, you can change the order by right clicking your chart, click `Select Data...` and use the arrows to change the order of the data series.
 
 You could use a stacked column chart to have it all in one overview:
 
