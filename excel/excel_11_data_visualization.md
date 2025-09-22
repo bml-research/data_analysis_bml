@@ -70,7 +70,9 @@ To select the relevant data, we first filter the Order for Carnivora and the Fam
 
 >Note that as all Felidae are also carnivora, this is not strictly necessary.
 
-In addition, the data was filtered for Data quality (acceptable or better).
+In addition, the data was filtered for Data quality (acceptable and high).
+
+>Note: for some species no data is available for the maximum longevity (e.g. Kodkod, Marbeld Cat and Spanish Lynx). If you filter for data quality acceptable and high, these blanks will be filtered out.
 
 Next, the data was alphabetically sorted for the common names.
 
