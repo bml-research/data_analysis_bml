@@ -206,6 +206,7 @@ This also shows the power of R over Excel: several repetitive actions can be col
 
 Go to the [exercises](https://bml-research.github.io/data_analysis_bml/R/R_02_basics_exercises.html) to get yourself familiar with the basics of R. This exercise consists of many small exercises that will guide you step-by-step through all the basics. It is essential that you practice a bit with base R before continuing with tidyverse.  
 
+You can find the solutions [here](https://bml-research.github.io/data_analysis_bml/R/R_02_basics_solutions.html).
 
 ---
 
