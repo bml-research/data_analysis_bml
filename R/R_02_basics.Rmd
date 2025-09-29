@@ -201,6 +201,12 @@ formatted_table(my_tibble)
   
 This also shows the power of R over Excel: several repetitive actions can be collected in a function so you can perform the same action on a different data set, while in Excel you will have to do all the actions by hand with each new data set.
 
+
+## Learn the basics by doing
+
+Go to the [exercises](https://bml-research.github.io/data_analysis_bml/R/R_02_basics_exercises.html) to get yourself familiar with the basics of R. This exercise consists of many small exercises that will guide you step-by-step through all the basics. It is essential that you practice a bit with base R before continuing with tidyverse.  
+
+
 ---
 
 
