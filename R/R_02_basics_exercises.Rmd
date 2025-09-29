@@ -209,7 +209,7 @@ This file can be downloaded [here](./R_02_basics_exercises.Rmd)
 #<YOUR CODE HERE>
 ```
 
-34. Print `col3.
+34. Print `col3`.
 
 ```{r}
 #<YOUR CODE HERE>
