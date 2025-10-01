@@ -159,7 +159,7 @@ The `file.path()` function takes multiple path components as arguments and conca
 | **Manually using `/`** | Good practice. Works on all OSes. | **Medium** ✅ |
 | **Using `file.path()`** | Best practice. R handles the OS-specific separator. | **High** ✅ |
 
->An even better approach is to use the `here` package. This package helps to build file paths in a reproducible way, independent of the current working directory and the OS. this approach is recommended for larger projects but beyond the scope of this course.
+>An even better approach is to use the `here` package. This package helps to build file paths in a reproducible way, independent of the current working directory and the OS. This approach is recommended for larger projects but beyond the scope of this course.
 
 ## Working directory
 
@@ -181,7 +181,6 @@ The two basic functions for interacting with the working directory are:
     setwd("path/to/your/folder")
 ```
   
-* **Note on paths**: Use forward slashes (`/`) for paths, as R interprets them consistently across operating systems. Windows paths with backslashes (`\`) need to be escaped (e.g., `C:\\Users\\...`) or converted to forward slashes.
 
 
 ## Recommended Behavior and Best Practices
