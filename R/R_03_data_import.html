@@ -1132,13 +1132,6 @@ ATP binding cassette subfamily A member 4
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p>Important note for MS Windows users: R is not able to understand
-normal windows paths correctly because the backslash has a special
-meaning as an escape character. Just replace the backslash with a
-forward slash for file paths. This is the common way for Unix systems
-but also works for R code on Windows systems.</p>
-</blockquote>
 <p>The <code>read_csv</code> function reads comma-delimited files. The
 <code>read_csv2</code> function reads semi-colon separated files (used
 in countries where the comma (,) is the decimal separator like in the
@@ -1520,6 +1513,84 @@ X
 names. We can add them as follows:</p>
 <pre class="r"><code>my_col_names &lt;- c(&quot;gene&quot;, &quot;chromosome&quot;, &quot;mol_weight_kD&quot;)
 names(my_df) &lt;- my_col_names
+formatted_table(head(my_df))</code></pre>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+gene
+</th>
+<th style="text-align:left;">
+chromosome
+</th>
+<th style="text-align:right;">
+mol_weight_kD
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+AAAS
+</td>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:right;">
+52.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ABAT
+</td>
+<td style="text-align:left;">
+16
+</td>
+<td style="text-align:right;">
+56.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ABCC2
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:right;">
+174.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ABL1
+</td>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:right;">
+122.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FMR1
+</td>
+<td style="text-align:left;">
+X
+</td>
+<td style="text-align:right;">
+71.1
+</td>
+</tr>
+</tbody>
+</table>
+<p>We can also directly add them using the <code>col_names</code>
+argument of the <code>read_csv2</code> function:</p>
+<pre class="r"><code>my_col_names &lt;- c(&quot;gene&quot;, &quot;chromosome&quot;, &quot;mol_weight_kD&quot;)
+file_path &lt;- &quot;./files_03_data_import/file03_genes.csv&quot;
+my_df &lt;- read_csv2(file_path, col_names = my_col_names) 
 formatted_table(head(my_df))</code></pre>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>

@@ -222,14 +222,6 @@ my_df <- read_csv(file_path)
 formatted_table(head(my_df))
 ```
 
-
->Important note for MS Windows users:
-R is not able to understand normal windows paths correctly because the backslash has a special meaning as an escape character.
-Just replace the backslash with a forward slash for file paths.
-This is the common way for Unix systems but also works for R code on Windows systems.
-
-
-
 The `read_csv` function reads comma-delimited files. The `read_csv2` function reads semi-colon separated files (used in countries where the comma (,) is the decimal separator like in the Netherlands). The `read_tsv` function reads tab-delimited files. The `read_delim` function reads files with any delimiter.  
 You may have noticed that the data frame returned is actually a tibble.  
 The `head` function shows only the first 6 rows (by default) in order not to overwhelm the user with data.
@@ -318,6 +310,17 @@ my_col_names <- c("gene", "chromosome", "mol_weight_kD")
 names(my_df) <- my_col_names
 formatted_table(head(my_df))
 ```
+
+
+We can also directly add them using the `col_names` argument of the `read_csv2` function:
+
+```{r}
+my_col_names <- c("gene", "chromosome", "mol_weight_kD")
+file_path <- "./files_03_data_import/file03_genes.csv"
+my_df <- read_csv2(file_path, col_names = my_col_names) 
+formatted_table(head(my_df))
+```
+
 
 What if a dot is used as a decimal separator? In many countries the dot is used as the decimal separator, so there is a chance you will encounter files using the dot as the decimal separator.
 
