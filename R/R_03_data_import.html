@@ -695,7 +695,6 @@ file paths.</p>
 <p>A <strong>file path</strong> is a string of characters that specifies
 the unique location of a file or directory in a computer’s file
 system.</p>
-<hr />
 <div id="absolute-vs.-relative-paths" class="section level3">
 <h3>Absolute vs. Relative Paths</h3>
 <p>The two main types of file paths are absolute and relative.</p>
@@ -733,7 +732,6 @@ a project folder, the entire folder can be moved or unzipped anywhere on
 a different system, and the file references will remain valid. Absolute
 paths, in contrast, would break because the root, drive letter, or user
 name likely changes on a new machine.</p>
-<hr />
 </div>
 </div>
 <div id="operating-system-differences" class="section level3">
@@ -773,7 +771,6 @@ e.g., <code>C:</code> or <code>D:</code>.</td>
 </tr>
 </tbody>
 </table>
-<hr />
 </div>
 </div>
 <div id="example-my_data.csv" class="section level2">
@@ -829,7 +826,6 @@ way, but only if you follow <strong>best practices</strong>. File paths
 are not <em>inherently</em> agnostic because the underlying operating
 systems (Windows, Linux, macOS) use different conventions.</p>
 <p>Here’s a breakdown of the problem and the recommended R solution:</p>
-<hr />
 </div>
 </div>
 <div id="the-core-problem-path-separators" class="section level2">
@@ -865,7 +861,6 @@ character:</p>
 <p>If you hardcode a Windows-style path (e.g.,
 <code>&quot;C:\\data\\file.csv&quot;</code>) into your script, it will fail on
 Linux or macOS.</p>
-<hr />
 </div>
 <div id="the-r-solution-use-forward-slashes" class="section level2">
 <h2>The R Solution: Use Forward Slashes</h2>
@@ -878,7 +873,6 @@ separator in your R code, even on Windows.</strong></li>
 forward slash to the backslash on Windows when interacting with the file
 system, making the forward slash an effective <strong>OS-agnostic
 separator</strong>.</p>
-<hr />
 </div>
 <div id="the-recommended-function-file.path" class="section level2">
 <h2>The Recommended Function: <code>file.path()</code></h2>
@@ -967,19 +961,22 @@ are:</p>
 <ul>
 <li><strong><code>getwd()</code></strong>: <strong>G</strong>ets the
 current <strong>W</strong>orking <strong>D</strong>irectory. It returns
-a character string with the absolute file path of the current directory.
-<code>r     getwd()</code></li>
+a character string with the absolute file path of the current
+directory.</li>
+</ul>
+<pre><code>    getwd()</code></pre>
+<ul>
 <li><strong><code>setwd(dir)</code></strong>: <strong>S</strong>ets the
 current <strong>W</strong>orking <strong>D</strong>irectory to the path
-specified by the character string <code>dir</code>.
-<code>r     setwd(&quot;path/to/your/folder&quot;)</code>
+specified by the character string <code>dir</code>.</li>
+</ul>
+<pre><code>    setwd(&quot;path/to/your/folder&quot;)</code></pre>
 <ul>
 <li><strong>Note on paths</strong>: Use forward slashes (<code>/</code>)
 for paths, as R interprets them consistently across operating systems.
 Windows paths with backslashes (<code>\</code>) need to be escaped
 (e.g., <code>C:\\Users\\...</code>) or converted to forward
 slashes.</li>
-</ul></li>
 </ul>
 </div>
 <div id="recommended-behavior-and-best-practices" class="section level2">
