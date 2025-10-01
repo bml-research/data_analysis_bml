@@ -54,11 +54,143 @@ formatted_table(head(my_tibble))
 
 As you can see, this resembles a bit an Excel worksheet.
 Later, you will learn what you can do with a tibble.
+Fortunately, you do not need to type data in R.  
+You can load it using the readr package from Tidyverse.  
+But before you start with loading data, first a bit of information about file paths.
+
+## File paths
+
+A **file path** is a string of characters that specifies the unique location of a file or directory in a computer's file system.
+
+---
+
+### Absolute vs. Relative Paths
+
+The two main types of file paths are absolute and relative.
+
+#### Absolute Path
+* An **absolute path** (or full path) specifies the **complete location** of a file or directory, starting from the **root** directory of the file system.
+* It's a fixed reference; it points to the same location regardless of the **current working directory** (CWD).
+
+#### Relative Path
+* A **relative path** specifies the location of a file or directory **in relation to the current working directory** (CWD).
+* It uses special notations to navigate:
+    * **`.`** (a single dot) refers to the **current directory**.
+    * **`..`** (a double dot) refers to the **parent directory** (one level up).
+
+#### Portability and Transfer
+**Relative paths are generally easier to transfer between systems** (e.g., in a **ZIP file** or a software project). Since a relative path is defined only by its structure within a project folder, the entire folder can be moved or unzipped anywhere on a different system, and the file references will remain valid. Absolute paths, in contrast, would break because the root, drive letter, or user name likely changes on a new machine.
+
+---
+
+### Operating System Differences
+
+The structure of file paths differs between Windows and Unix-like systems (like macOS and Linux):
+
+| Feature | Unix-like Systems (macOS, Linux) | Windows |
+| :--- | :--- | :--- |
+| **Root Designation** | **`/`** (A single forward slash) | A **drive letter** followed by a colon, e.g., `C:` or `D:`. |
+| **Path Separator** | **`/`** (Forward slash) | **`\`** (Backslash) |
+| **Case Sensitivity** | Typically **Case-sensitive** | Generally **Case-insensitive** |
+
+---
+
+## Example: `my_data.csv`
+
+Assume your current working directory is a script folder, and the file `my_data.csv` is in a sibling folder named `data`.
+
+| Path Type | Unix-like (macOS/Linux) | Windows |
+| :--- | :--- | :--- |
+| **Current Working Directory (CWD)** | `/home/user/project/scripts` | `C:\Users\User\Project\Scripts` |
+| **Absolute Path to `my_data.csv`** | `/home/user/project/data/my_data.csv` | `C:\Users\User\Project\Data\my_data.csv` |
+| **Relative Path to `my_data.csv`** | `../data/my_data.csv` | `..\Data\my_data.csv` |
+| **Relative Path Explanation** | Go up one level (`..`) to `/home/user/project`, then down into `data`. | Go up one level (`..`) to `C:\Users\User\Project`, then down into `Data`. |
+
+
+### File paths in R for different Operating Systems
+
+R is designed to handle file paths in an **OS-agnostic** way, but only if you follow **best practices**. File paths are not *inherently* agnostic because the underlying operating systems (Windows, Linux, macOS) use different conventions.
+
+Here’s a breakdown of the problem and the recommended R solution:
+
+---
+
+## The Core Problem: Path Separators
+
+The main difference between OS file paths is the separator character:
+
+| Operating System | Path Separator | Example Path |
+| :--- | :--- | :--- |
+| **Unix-like** (Linux, macOS) | **Forward Slash (`/`)** | `/home/user/data/file.csv` |
+| **Windows** | **Backslash (`\`)** | `C:\Users\user\data\file.csv` |
+
+If you hardcode a Windows-style path (e.g., `"C:\\data\\file.csv"`) into your script, it will fail on Linux or macOS.
+
+---
+
+## The R Solution: Use Forward Slashes
+
+The most important best practice for OS-agnostic paths in R is:
+
+* **Always use the forward slash (`/`) as the path separator in your R code, even on Windows.**
+
+R's internal functions are smart enough to automatically convert the forward slash to the backslash on Windows when interacting with the file system, making the forward slash an effective **OS-agnostic separator**.
+
+---
+
+## The Recommended Function: `file.path()`
+
+To build truly robust and portable paths, you should use the base R function **`file.path()`**.
+
+The `file.path()` function takes multiple path components as arguments and concatenates them using the separator appropriate for the operating system it's running on, without you having to worry about which separator to use.
+
+| Code | Output on Linux/macOS | Output on Windows |
+| :--- | :--- | :--- |
+| `file.path("data", "raw", "file.csv")` | `"data/raw/file.csv"` | `"data\\raw\\file.csv"` |
+
+## Summary for paths
+
+| Practice | Description | Portability |
+| :--- | :--- | :--- |
+| **Hardcoding `\` or `\\`** | Bad practice. Breaks on non-Windows OSes. | **Low** ❌ |
+| **Manually using `/`** | Good practice. Works on all OSes. | **Medium** ✅ |
+| **Using `file.path()`** | Best practice. R handles the OS-specific separator. | **High** ✅ |
+
+>An even better approach is to use the `here` package. This package helps to build file paths in a reproducible way, independent of the current working directory and the OS. this approach is recommended for larger projects but beyond the scope of this course.
+
+## Working directory
+
+The **working directory** in R is a specific folder on your computer that R uses as the default location for reading and writing files. When you use a file name in a function like `read_csv("data.csv")`, R assumes that file is located within the current working directory.
+
+## getwd() and setwd()
+
+The two basic functions for interacting with the working directory are:
+
+  * **`getwd()`**: **G**ets the current **W**orking **D**irectory. It returns a character string with the absolute file path of the current directory.
+    ```r
+    getwd()
+    ```
+  * **`setwd(dir)`**: **S**ets the current **W**orking **D**irectory to the path specified by the character string `dir`.
+    ```r
+    setwd("path/to/your/folder")
+    ```
+      * **Note on paths**: Use forward slashes (`/`) for paths, as R interprets them consistently across operating systems. Windows paths with backslashes (`\`) need to be escaped (e.g., `C:\\Users\\...`) or converted to forward slashes.
+
+
+## Recommended Behavior and Best Practices
+
+While `setwd()` is simple, it is generally **discouraged** in R scripts because it heavily compromises the **reproducibility** and **portability** of your code as it returns the absolute file path. However, you can use it in the console to set your working directory in your R session.
+
+| Function/Practice | Rationale/Best Practice |
+| :--- | :--- |
+| **`setwd()`** | **Avoid using it in scripts**, especially with *absolute paths* (e.g., `C:/Users/MyName/...`). An absolute path will not work on someone else's computer. Use setwd() it in the console instead. |
+| **Relative Paths** | **Always use relative paths** for file references (e.g., `data/raw_data.csv`). A relative path is a path *relative to the working directory*. This works seamlessly with zipped folders. |
+
 
 ## The readr package
 
 
-Fortunately, you do not need to type data in R.
+As mentioned above, fortunately, you do not need to type data in R.
 You can load it using the readr package.
 
 In R, readr is a package that provides a fast and friendly way to read rectangular data (like csv or fixed-width format) into R. It provides a set of functions to simplify reading data from files. The main functions should read most common R data file types without needing any parameters except the file name. Other functions provide simple ways of handling file paths and extensions, and automatically detecting file format and structure.
