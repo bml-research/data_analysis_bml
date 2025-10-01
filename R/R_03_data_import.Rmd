@@ -189,7 +189,7 @@ While `setwd()` is simple, it is generally **discouraged** in R scripts because 
 
 | Function/Practice | Rationale/Best Practice |
 | :--- | :--- |
-| **`setwd()`** | **Avoid using it in scripts**, especially with *absolute paths* (e.g., `C:/Users/MyName/...`). An absolute path will not work on someone else's computer. Use setwd() it in the console instead. |
+| **`setwd()`** | **Avoid using it in scripts**, especially with *absolute paths* (e.g., `C:/Users/MyName/...`). An absolute path will not work on someone else's computer. Use setwd() in the console instead. |
 | **Relative Paths** | **Always use relative paths** for file references (e.g., `data/raw_data.csv`). A relative path is a path *relative to the working directory*. This works seamlessly with zipped folders. |
 
 
