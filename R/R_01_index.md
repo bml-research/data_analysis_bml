@@ -1,7 +1,11 @@
 {% include head.html %}
 ![Hanze](../hanze/hanze.png)
 
+---
+
 [Go back to the main page](../index.md)
+
+---
 
 
 # R
@@ -85,6 +89,10 @@ Overall, the Tidyverse packages provide a more user-friendly, consistent, and ef
 
 > The goal of this course is to get you started using R for data analysis. We will not cover all the ins and outs of R programming. Instead, we will minimize the use of basic computer programming. Instead, pre-made R functions will be used as much as possible.
 
+
+---
+
+[Go back to the main page](../index.md)
 
 ---
 

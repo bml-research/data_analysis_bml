@@ -1,7 +1,11 @@
 {% include head.html %}
 ![Hanze](../hanze/hanze.png)
 
+---
+
 [Go back to the main page](../index.md)
+
+---
 
 
 # Excel
@@ -62,6 +66,10 @@ Complexity of analysis: Excel is a good choice for simple data analysis tasks, s
 Automation: If you need to perform the same analysis repeatedly, or if you need to automate the analysis of a large number of datasets, Python or R may be a better choice, as they allow you to write scripts that can be run automatically.  
 
 Ultimately, the choice between Excel, Python, and R will depend on your specific needs and the resources you have available. It may be useful to use a combination of these tools, depending on the requirements of your project.  
+
+---
+
+[Go back to the main page](../index.md)
 
 ---
 

@@ -1,8 +1,11 @@
 {% include head.html %}
 ![Hanze](../hanze/hanze.png)
 
+---
+
 [Go back to the main page](../index.md)
 
+---
 
 # Data
 
@@ -233,6 +236,10 @@ In R, there are 6 basic data types. Some of them explained below (rest is beyond
 
 
 The Excel and R section contain more about the particular data types. 
+
+---
+
+[Go back to the main page](../index.md)
 
 ---
 
