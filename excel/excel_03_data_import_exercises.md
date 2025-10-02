@@ -1,8 +1,12 @@
 {% include head.html %}
 ![Hanze](../hanze/hanze.png)
 
-[Go back to the main page](../index.md)
+---
 
+[Go back to the main page](../index.md)
+[Go back to the Excel overview page](../excel/excel_01_index.md)
+
+---
 
 # Excel Data Import
 
@@ -60,6 +64,11 @@ Check for the following:
 - Are column names present? If not, add them during loading in PowerQuery. You can take the column names from another file in the series.
 
 Load the files using PowerQuery and do not modify the csv files from within a text editor!
+
+---
+
+[Go back to the main page](../index.md)
+[Go back to the Excel overview page](../excel/excel_01_index.md)
 
 ---
 

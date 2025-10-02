@@ -1,7 +1,12 @@
 {% include head.html %}
 ![Hanze](../hanze/hanze.png)
 
+---
+
 [Go back to the main page](../index.md)
+[Go back to the Excel overview page](../excel/excel_01_index.md)
+
+---
 
 
 # Excel Data Cleaning
@@ -62,6 +67,11 @@ You can find the solution [here](./files_07_data_cleaning_solutions/exercise04/C
 |Number of non empty fields |442            |
 |Number of empty fields     |62             |
 
+
+---
+
+[Go back to the main page](../index.md)
+[Go back to the Excel overview page](../excel/excel_01_index.md)
 
 ---
 

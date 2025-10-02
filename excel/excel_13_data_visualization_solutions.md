@@ -1,7 +1,12 @@
 {% include head.html %}
 ![Hanze](../hanze/hanze.png)
 
+---
+
 [Go back to the main page](../index.md)
+[Go back to the Excel overview page](../excel/excel_01_index.md)
+
+---
 
 
 # Excel Data Visualization
@@ -130,6 +135,11 @@ Or the figure below:
 
 Motor proteins show the highest expression levels.  
 Signal transducing proteins the lowest expression values.  
+
+---
+
+[Go back to the main page](../index.md)
+[Go back to the Excel overview page](../excel/excel_01_index.md)
 
 ---
 

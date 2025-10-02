@@ -1,7 +1,12 @@
 {% include head.html %}
 ![Hanze](../hanze/hanze.png)
 
+---
+
 [Go back to the main page](../index.md)
+[Go back to the Excel overview page](../excel/excel_01_index.md)
+
+---
 
 
 # Excel: Data Analysis
@@ -454,6 +459,11 @@ Now all that is left is calculating the grand total:
 
 >Note again that formatting as a table is not possible as it would yield a `#SPILL!` error.  
 
+
+---
+
+[Go back to the main page](../index.md)
+[Go back to the Excel overview page](../excel/excel_01_index.md)
 
 ---
 

@@ -1,7 +1,12 @@
 {% include head.html %}
 ![Hanze](../hanze/hanze.png)
 
+---
+
 [Go back to the main page](../index.md)
+[Go back to the Excel overview page](../excel/excel_01_index.md)
+
+---
 
 
 # Excel: Data Cleaning
@@ -177,6 +182,11 @@ In the above example, `<>` is a shorthand for the `NOT` operator. So the formula
 
 >Like many things in real life, datasets are often imperfect. Very often, data points will be missing. This is just reality and there is not much that you can do about the fact that you will encounter missing data. What is important though, is how you deal with missing data. Make it explicit that data is missing in your analysis and deal with it in a transparent way.
 
+
+---
+
+[Go back to the main page](../index.md)
+[Go back to the Excel overview page](../excel/excel_01_index.md)
 
 ---
 

@@ -1,7 +1,12 @@
 {% include head.html %}
 ![Hanze](../hanze/hanze.png)
 
+---
+
 [Go back to the main page](../index.md)
+[Go back to the Excel overview page](../excel/excel_01_index.md)
+
+---
 
 
 # Excel: Data Import
@@ -190,6 +195,10 @@ After formatting the dataset in a table you can start your analysis (preferentia
 
 If you feel lucky, you can directly open een csv file in Excel. Only do this if you are pretty aware of the organization of the particular Excel file. It can save a lot of time if you are working with a lot of similar excel files.  
 
+---
+
+[Go back to the main page](../index.md)
+[Go back to the Excel overview page](../excel/excel_01_index.md)
 
 ---
 

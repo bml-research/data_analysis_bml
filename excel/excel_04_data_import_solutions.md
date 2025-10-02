@@ -1,7 +1,12 @@
 {% include head.html %}
 ![Hanze](../hanze/hanze.png)
 
+---
+
 [Go back to the main page](../index.md)
+[Go back to the Excel overview page](../excel/excel_01_index.md)
+
+---
 
 
 # Excel Data Import
@@ -91,6 +96,11 @@ You can manually enter Column names.
 You can click `Use First Rows as Headers` to use the first row as a header.   
 Decimal separator can be changed by changing the regional settings under `File` > `Options and Settings` > `Query Options` > `Regional Settings`.  
 
+
+---
+
+[Go back to the main page](../index.md)
+[Go back to the Excel overview page](../excel/excel_01_index.md)
 
 ---
 

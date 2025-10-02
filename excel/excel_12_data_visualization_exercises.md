@@ -1,7 +1,12 @@
 {% include head.html %}
 ![Hanze](../hanze/hanze.png)
 
+---
+
 [Go back to the main page](../index.md)
+[Go back to the Excel overview page](../excel/excel_01_index.md)
+
+---
 
 
 # Excel Data Visualization
@@ -98,6 +103,11 @@ Create a pivot plot for the **mean** `Expression Value` plotted against the `Cat
 
 What category shows the lowest expression values and what category shows the highest expression values?  
  
+
+---
+
+[Go back to the main page](../index.md)
+[Go back to the Excel overview page](../excel/excel_01_index.md)
 
 ---
 

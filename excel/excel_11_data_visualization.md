@@ -1,7 +1,12 @@
 {% include head.html %}
 ![Hanze](../hanze/hanze.png)
 
+---
+
 [Go back to the main page](../index.md)
+[Go back to the Excel overview page](../excel/excel_01_index.md)
+
+---
 
 
 # Excel: Data Visualization
@@ -413,6 +418,11 @@ You can also plot the median heart rate using Power Pivot. Follow the steps from
 
 ![Pivot chart](./pics_11_data_visualization/fig36.png)
 *<sub>Figure 36: Power Pivot chart. Median of Heart rate from different Physical activity categories. Chart title and axis labels added.</sub>*
+
+---
+
+[Go back to the main page](../index.md)
+[Go back to the Excel overview page](../excel/excel_01_index.md)
 
 ---
 
