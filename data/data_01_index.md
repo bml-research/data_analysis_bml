@@ -8,6 +8,16 @@
 
 ## Index page
 
+--- 
+
+## Exercises and Solutions:
+
+
+- [Exercises](./data_02_exercises.md)
+- [Solutions](./data_03_solutions.md)
+
+
+
 ---
 
 ![Pic](./impression/impression.png)
@@ -225,13 +235,6 @@ In R, there are 6 basic data types. Some of them explained below (rest is beyond
 The Excel and R section contain more about the particular data types. 
 
 ---
-
-
-### Exercises and Solutions:
-
-
-- [Exercises](./data_02_exercises.md)
-- [Solutions](./data_03_solutions.md)
 
 
 >This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
