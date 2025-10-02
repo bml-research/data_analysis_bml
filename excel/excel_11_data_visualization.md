@@ -3,8 +3,8 @@
 
 ---
 
-[Go back to the main page](../index.md)
-[Go back to the Excel overview page](../excel/excel_01_index.md)
+[Go back to the main page](../index.md)  
+[Go back to the Excel overview page](../excel/excel_01_index.md)  
 
 ---
 
@@ -421,8 +421,8 @@ You can also plot the median heart rate using Power Pivot. Follow the steps from
 
 ---
 
-[Go back to the main page](../index.md)
-[Go back to the Excel overview page](../excel/excel_01_index.md)
+[Go back to the main page](../index.md)  
+[Go back to the Excel overview page](../excel/excel_01_index.md)  
 
 ---
 

@@ -3,8 +3,8 @@
 
 ---
 
-[Go back to the main page](../index.md)
-[Go back to the Excel overview page](../excel/excel_01_index.md)
+[Go back to the main page](../index.md)  
+[Go back to the Excel overview page](../excel/excel_01_index.md)  
 
 ---
 
@@ -197,8 +197,8 @@ If you feel lucky, you can directly open een csv file in Excel. Only do this if 
 
 ---
 
-[Go back to the main page](../index.md)
-[Go back to the Excel overview page](../excel/excel_01_index.md)
+[Go back to the main page](../index.md)  
+[Go back to the Excel overview page](../excel/excel_01_index.md)  
 
 ---
 

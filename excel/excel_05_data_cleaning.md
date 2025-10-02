@@ -3,8 +3,8 @@
 
 ---
 
-[Go back to the main page](../index.md)
-[Go back to the Excel overview page](../excel/excel_01_index.md)
+[Go back to the main page](../index.md)  
+[Go back to the Excel overview page](../excel/excel_01_index.md)  
 
 ---
 
@@ -185,8 +185,8 @@ In the above example, `<>` is a shorthand for the `NOT` operator. So the formula
 
 ---
 
-[Go back to the main page](../index.md)
-[Go back to the Excel overview page](../excel/excel_01_index.md)
+[Go back to the main page](../index.md)  
+[Go back to the Excel overview page](../excel/excel_01_index.md)  
 
 ---
 

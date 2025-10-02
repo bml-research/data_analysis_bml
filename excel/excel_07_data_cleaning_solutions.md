@@ -3,8 +3,8 @@
 
 ---
 
-[Go back to the main page](../index.md)
-[Go back to the Excel overview page](../excel/excel_01_index.md)
+[Go back to the main page](../index.md)  
+[Go back to the Excel overview page](../excel/excel_01_index.md)  
 
 ---
 
@@ -70,8 +70,8 @@ You can find the solution [here](./files_07_data_cleaning_solutions/exercise04/C
 
 ---
 
-[Go back to the main page](../index.md)
-[Go back to the Excel overview page](../excel/excel_01_index.md)
+[Go back to the main page](../index.md)  
+[Go back to the Excel overview page](../excel/excel_01_index.md)  
 
 ---
 

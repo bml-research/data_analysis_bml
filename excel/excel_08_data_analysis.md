@@ -3,8 +3,8 @@
 
 ---
 
-[Go back to the main page](../index.md)
-[Go back to the Excel overview page](../excel/excel_01_index.md)
+[Go back to the main page](../index.md)  
+[Go back to the Excel overview page](../excel/excel_01_index.md)  
 
 ---
 
@@ -462,8 +462,8 @@ Now all that is left is calculating the grand total:
 
 ---
 
-[Go back to the main page](../index.md)
-[Go back to the Excel overview page](../excel/excel_01_index.md)
+[Go back to the main page](../index.md)  
+[Go back to the Excel overview page](../excel/excel_01_index.md)  
 
 ---
 
