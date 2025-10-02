@@ -13,7 +13,7 @@ output:
 ---
 
 [Go back to the main page](../index.html)  
-[Go back to the R overview page](../R/R_01_index.md)  
+[Go back to the R overview page](../R/R_01_index.html)  
 
 ---
 
@@ -155,7 +155,7 @@ Unpack the zip file and open the Rmd file for instructions.
 ---
 
 [Go back to the main page](../index.html)  
-[Go back to the R overview page](../R/R_01_index.md)  
+[Go back to the R overview page](../R/R_01_index.html)  
 <a href="#top">⬆️ Back to Top</a>  
 
 ---
