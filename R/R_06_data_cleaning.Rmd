@@ -151,6 +151,9 @@ The numbers in column chromosome have been converted to the data type `double`. 
 ## Deal with missing data from csv files
 
 How to deal with missing data from csv files?
+
+Download the example [here](./files_06_data_cleaning/file01_genes.csv).  
+
 Obviously, you can not make up data.
 The best thing to do is to "mark" missing data with `NA`. 
 
@@ -172,6 +175,8 @@ formatted_table(my_df)
 All data that has the value / will has been replaced with `NA`.
 
 If multiple types of "empty" data are present in your data set:
+
+Download example [here](/files_06_data_cleaning/file02_genes.csv).  
 
 ```{r}
 my_path = './files_06_data_cleaning/file02_genes.csv'
@@ -197,6 +202,8 @@ Like csv files, Excel files can have missing data too:
 
 Now if we load the data the following will happen:
 
+Download example [here](./files_06_data_cleaning/file03_genes.xlsx).  
+
 ```{r}
 library(readxl)
 my_path = './files_06_data_cleaning/file03_genes.xlsx'
@@ -219,6 +226,8 @@ What if cells are left blank?
 <br>
 
 If we load the data:
+
+Download example [here](./files_06_data_cleaning/file04_genes.xlsx).  
 
 ```{r}
 my_path = './files_06_data_cleaning/file04_genes.xlsx'

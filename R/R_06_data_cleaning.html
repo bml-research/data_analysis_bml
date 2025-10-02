@@ -256,8 +256,9 @@ border: 0;
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -268,7 +269,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -1154,9 +1155,10 @@ types of data are removed from the column (‘X’ has been replaced by
 </div>
 <div id="deal-with-missing-data-from-csv-files" class="section level2">
 <h2>Deal with missing data from csv files</h2>
-<p>How to deal with missing data from csv files? Obviously, you can not
-make up data. The best thing to do is to “mark” missing data with
-<code>NA</code>.</p>
+<p>How to deal with missing data from csv files?</p>
+<p>Download the example <a href="./files_06_data_cleaning/file01_genes.csv">here</a>.</p>
+<p>Obviously, you can not make up data. The best thing to do is to
+“mark” missing data with <code>NA</code>.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>my_path <span class="ot">=</span> <span class="st">&#39;./files_06_data_cleaning/file01_genes.csv&#39;</span></span>
 <span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(my_path)</span>
 <span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_df)</span></code></pre></div>
@@ -1315,6 +1317,7 @@ X
 <p>All data that has the value / will has been replaced with
 <code>NA</code>.</p>
 <p>If multiple types of “empty” data are present in your data set:</p>
+<p>Download example <a href="/files_06_data_cleaning/file02_genes.csv">here</a>.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>my_path <span class="ot">=</span> <span class="st">&#39;./files_06_data_cleaning/file02_genes.csv&#39;</span></span>
 <span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(my_path)</span>
 <span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_df)</span></code></pre></div>
@@ -1478,6 +1481,7 @@ missing data.</em></div>
 </div>
 <p><br></p>
 <p>Now if we load the data the following will happen:</p>
+<p>Download example <a href="./files_06_data_cleaning/file03_genes.xlsx">here</a>.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>my_path <span class="ot">=</span> <span class="st">&#39;./files_06_data_cleaning/file03_genes.xlsx&#39;</span></span>
 <span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(my_path)</span>
@@ -1638,6 +1642,7 @@ empty cells.</em></div>
 </div>
 <p><br></p>
 <p>If we load the data:</p>
+<p>Download example <a href="./files_06_data_cleaning/file04_genes.xlsx">here</a>.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>my_path <span class="ot">=</span> <span class="st">&#39;./files_06_data_cleaning/file04_genes.xlsx&#39;</span></span>
 <span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(my_path)</span>
 <span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_df)</span></code></pre></div>
