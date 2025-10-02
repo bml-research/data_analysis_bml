@@ -5,6 +5,11 @@
 
 ## Course Data Analysis and Visualization
 
+![Pic](./impression/impression.jpg)
+*<sub>Source: https://www.deviantart.com/gabimedia/art/3D-Illustration-of-human-brain-nerve-4-977052356, Created using AI tools. Creative Commons Attribution-Noncommercial-No Derivative Works 3.0 License</sub>*
+
+---
+
 ## Contents
 
 - [Introduction data](./data/data_01_index.md)
@@ -37,8 +42,7 @@
 
 ---
 
-![Pic](./impression/impression.jpg)
-*<sub>Source: https://www.deviantart.com/gabimedia/art/3D-Illustration-of-human-brain-nerve-4-977052356, Created using AI tools. Creative Commons Attribution-Noncommercial-No Derivative Works 3.0 License</sub>*
+
 
 ## Introduction
 
