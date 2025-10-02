@@ -101,6 +101,7 @@ Decimal separator can be changed by changing the regional settings under `File` 
 
 [Go back to the main page](../index.md)  
 [Go back to the Excel overview page](../excel/excel_01_index.md)  
+<a href="#top">⬆️ Back to Top</a>  
 
 ---
 

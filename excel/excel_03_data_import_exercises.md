@@ -69,6 +69,7 @@ Load the files using PowerQuery and do not modify the csv files from within a te
 
 [Go back to the main page](../index.md)  
 [Go back to the Excel overview page](../excel/excel_01_index.md)  
+<a href="#top">⬆️ Back to Top</a>  
 
 ---
 

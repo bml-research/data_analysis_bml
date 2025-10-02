@@ -101,6 +101,7 @@ Here we have a tidy data table. Spread the data set to make it wider and untidy.
 
 [Go back to the main page](../index.md)  
 [Go back to the Data overview page](../data/data_01_index.md)  
+<a href="#top">⬆️ Back to Top</a>
 
 ---
 
