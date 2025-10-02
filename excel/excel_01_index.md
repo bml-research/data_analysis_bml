@@ -8,6 +8,9 @@
 
 ## Index page
 
+![Pic](./impression/excel.png)
+*<sub>Source: own work</sub>*
+
 ---
 
 ## Topics:
@@ -33,8 +36,6 @@
 
 ---
 
-![Pic](./impression/excel.png)
-*<sub>Source: own work</sub>*
 
 ## Introduction
 
