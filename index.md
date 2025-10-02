@@ -75,6 +75,9 @@ This module is part of the [CureQ project](https://cureq.nl/). CureQ is a consor
 - You can apply and interpret various data analysis functions in both Excel and R, including determining minimum and maximum values, calculating percentiles, selecting specific data based on criteria, applying conditional formatting to visually identify patterns, and sorting data to gain insights.  
 - You can create effective data visualizations in both Excel and R (such as bar charts, line charts, pie charts, and box plots) to communicate patterns, trends, and relationships in data, and you can customize the visualizations for a clear and purpose-driven presentation. 
 
+---
+
+<a href="#top">⬆️ Back to Top</a>
 
 ---
 
