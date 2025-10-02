@@ -8,6 +8,9 @@
 
 ## Index page
 
+![Pic](./impression/r.png)
+*<sub>Source: own work</sub>*
+
 ---
 
 ## Topics:
@@ -36,8 +39,6 @@
 
 ---
 
-![Pic](./impression/r.png)
-*<sub>Source: own work</sub>*
 
 ## Introduction
 
