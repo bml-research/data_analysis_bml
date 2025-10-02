@@ -10,7 +10,12 @@ output:
 
 ![](../hanze/hanze.png)
 
-[Go back to the main page](../index.html)
+---
+
+[Go back to the main page](../index.html)  
+[Go back to the R overview page](../R/R_01_index.md)  
+
+---
 
 ```{r setup, include=FALSE} 
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
@@ -411,6 +416,12 @@ This file can be downloaded [here](./R_02_basics_exercises.Rmd)
 ```
 
 The end...
+
+---
+
+[Go back to the main page](../index.html)  
+[Go back to the R overview page](../R/R_01_index.md)  
+<a href="#top">⬆️ Back to Top</a>  
 
 ---
 

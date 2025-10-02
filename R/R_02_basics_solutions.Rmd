@@ -10,7 +10,12 @@ output:
 
 ![](../hanze/hanze.png)
 
-[Go back to the main page](../index.html)
+---
+
+[Go back to the main page](../index.html)  
+[Go back to the R overview page](../R/R_01_index.md)  
+
+---
 
 ```{r setup, include=FALSE} 
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
@@ -431,6 +436,12 @@ lines(c(1, 2, 3), c(5, 5.5, 6), col="red")
 ```
 
 The end...
+
+---
+
+[Go back to the main page](../index.html)  
+[Go back to the R overview page](../R/R_01_index.md)  
+<a href="#top">⬆️ Back to Top</a>  
 
 ---
 

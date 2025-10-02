@@ -10,7 +10,12 @@ output:
 
 ![](../hanze/hanze.png)
 
-[Go back to the main page](../index.html)
+---
+
+[Go back to the main page](../index.html)  
+[Go back to the R overview page](../R/R_01_index.md)  
+
+---
 
 ```{r setup, include=FALSE} 
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
@@ -165,6 +170,12 @@ df <- read_csv2(file_path)
 df <- df %>% replace(. == "-", NA)
 formatted_table(head(df, c(6, 5)))
 ```
+
+---
+
+[Go back to the main page](../index.html)  
+[Go back to the R overview page](../R/R_01_index.md)  
+<a href="#top">⬆️ Back to Top</a>  
 
 ---
 

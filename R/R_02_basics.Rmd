@@ -9,8 +9,13 @@ output:
 ---
 
 ![](../hanze/hanze.png)
+---
 
-[Go back to the main page](../index.html)
+[Go back to the main page](../index.html)  
+[Go back to the R overview page](../R/R_01_index.md)  
+
+---
+
 
 ```{r setup, include=FALSE} 
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
@@ -220,6 +225,11 @@ You can find the solutions [here](https://bml-research.github.io/data_analysis_b
 
 ---
 
+[Go back to the main page](../index.html)  
+[Go back to the R overview page](../R/R_01_index.md)  
+<a href="#top">⬆️ Back to Top</a>  
+
+---
 
 >This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
 >Creative Commons License: CC BY-SA 4.0.
