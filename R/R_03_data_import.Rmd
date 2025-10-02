@@ -228,7 +228,24 @@ my_df <- read_csv(file_path)
 formatted_table(head(my_df))
 ```
 
-The `read_csv` function reads comma-delimited files. The `read_csv2` function reads semi-colon separated files (used in countries where the comma (,) is the decimal separator like in the Netherlands). The `read_tsv` function reads tab-delimited files. The `read_delim` function reads files with any delimiter.  
+The `read_csv` function reads comma-delimited files. The `read_csv2` function reads semi-colon separated files (used in countries where the comma (,) is the decimal separator like in the Netherlands). The `read_tsv` function reads tab-delimited files. The `read_delim` function reads files with any delimiter. They also use different decimal seperators.
+
+A summary can be found in the following table:
+
+---
+
+
+| Function | `read_csv` type | `delim` (Delimiter) | `dec` (Decimal Mark) |
+| :--- | :--- | :--- | :--- |
+| **`read_csv`** | CSV (Comma Separated) | `","` | `"."` (Period) |
+| **`read_csv2`** | CSV2 (Semicolon Separated) | `";"` | `","` (Comma) |
+| **`read_tsv`** | TSV (Tab Separated) | `"\t"` (Tab) | `"."` (Period) |
+| **`read_delim`** | Generic Delimited | **(Must be specified)** | `"."` (Period) |
+
+---
+
+
+
 You may have noticed that the data frame returned is actually a tibble.  
 The `head` function shows only the first 6 rows (by default) in order not to overwhelm the user with data.
 
