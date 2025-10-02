@@ -456,7 +456,7 @@ Instead of converting data from Excel to csv or tsv file, R can handle Excel fil
 
 It also gives you the opportunity to first do some analysis in Excel and continue in R, for example if the data set appears to be to big to be handled by Excel.
 
-The `readxl` package is the most used package for reading and writing Excel files.
+The `readxl` package is the most used package for reading Excel files.
 It comes with tidyverse so there is no need to install it.
 If somehow you do not have it, you can install it with the following command:
 
@@ -482,7 +482,7 @@ formatted_table(head(my_df))
 
 ## Write to Excel
 
-Like reading Excel, you can also write it.
+Like reading Excel files, you can also write Excel files.
 But you will need to install another package:
 
 ```
