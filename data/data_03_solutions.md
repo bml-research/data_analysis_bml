@@ -1,7 +1,12 @@
 {% include head.html %}
 ![Hanze](../hanze/hanze.png)
 
+---
+
 [Go back to the main page](../index.md)
+[Go back to the Data overview page](../data/data_01_index.md)
+
+---
 
 
 # Data
@@ -81,6 +86,11 @@ The data table spread out (wider):
 |HEK293         |2   |5.4E04                |7.8E04                   |
 |A549           |1   |1.2E04                |1.4E04                   |
 |A549           |2   |2.5E04                |5.2E04                   |
+
+---
+
+[Go back to the main page](../index.md)
+[Go back to the Data overview page](../data/data_01_index.md)
 
 ---
 

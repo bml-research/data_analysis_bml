@@ -1,7 +1,12 @@
 {% include head.html %}
 ![Hanze](../hanze/hanze.png)
 
+---
+
 [Go back to the main page](../index.md)
+[Go back to the Data overview page](../data/data_01_index.md)
+
+---
 
 
 # Data
@@ -91,6 +96,11 @@ Here we have a tidy data table. Spread the data set to make it wider and untidy.
 |A549           |2   |RPMI               |5.2E04          |
 
 
+
+---
+
+[Go back to the main page](../index.md)
+[Go back to the Data overview page](../data/data_01_index.md)
 
 ---
 
