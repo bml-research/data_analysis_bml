@@ -6,6 +6,9 @@
 
 # Data
 
+![Pic](./impression/impression.png)
+*<sub>Source: https://commons.wikimedia.org/wiki/File:US_Food_Consumption_Over_Time.svg</sub>*
+
 ## Index page
 
 --- 
@@ -17,11 +20,8 @@
 - [Solutions](./data_03_solutions.md)
 
 
-
 ---
 
-![Pic](./impression/impression.png)
-*<sub>Source: https://commons.wikimedia.org/wiki/File:US_Food_Consumption_Over_Time.svg</sub>*
 
 ## Introduction
 
