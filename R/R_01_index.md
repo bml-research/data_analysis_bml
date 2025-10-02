@@ -92,7 +92,8 @@ Overall, the Tidyverse packages provide a more user-friendly, consistent, and ef
 
 ---
 
-[Go back to the main page](../index.md)
+[Go back to the main page](../index.md)  
+<a href="#top">⬆️ Back to Top</a>  
 
 ---
 
