@@ -22,7 +22,16 @@ output:
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
 ```
 
-This file can be downloaded [here](./R_06_data_cleaning.Rmd)
+This Rmd file can be downloaded [here](./R_06_data_cleaning.Rmd)  
+
+Files used on this page:  
+- [file01_genes.csv](./files_06_data_cleaning/file01_genes.csv)  
+- [file02_genes.csv](./files_06_data_cleaning/file02_genes.csv)  
+- [file03_genes.xlsx](./files_06_data_cleaning/file03_genes.xlsx)  
+- [file04_genes.xlsx](./files_06_data_cleaning/file04_genes.xlsx) 
+
+
+
 
 # R: Data Cleaning
 
