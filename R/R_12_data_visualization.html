@@ -384,7 +384,12 @@ code span.ot { color: #007020; }
 <p><a href="../index.html">Go back to the main page</a><br />
 <a href="../R/R_01_index.html">Go back to the R overview page</a></p>
 <hr />
-<p>This file can be found <a href="./R_12_data_visualization.Rmd">here</a>.</p>
+<p>This Rmd file can be found <a href="./R_12_data_visualization.Rmd">here</a>.</p>
+<p>Files used on this page:<br />
+- <a href="./files_12_data_visualization/file01_anage_data.csv">file01_anage_data.csv</a><br />
+- <a href="./files_12_data_visualization/file02_radar_data.csv">file02_radar_data.csv</a><br />
+- <a href="./files_12_data_visualization/file_03_mouse_weight_data.xlsx">file_03_mouse_weight_data.xlsx</a><br />
+- <a href="./files_12_data_visualization/file04_bubble_chart.xlsx">file04_bubble_chart.xlsx</a></p>
 <div id="r-data-visualization" class="section level1">
 <h1>R: Data Visualization</h1>
 <div id="data-visualization-methods" class="section level2">
@@ -4150,7 +4155,7 @@ only one data point):</p>
 <p>As an example, we take the same (fictive data) about the OB/OB and
 DB/DB mice (compared to the wild type) and the gain of weight in these
 mice during a period of time as was used in the Excel section. The data
-is as follows:</p>
+is as follows and can be downloaded <a href="./files_12_data_visualization/file_03_mouse_weight_data.xlsx">here</a>:</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a>file_path <span class="ot">&lt;-</span> <span class="st">&quot;./files_12_data_visualization/file_03_mouse_weight_data.xlsx&quot;</span></span>
 <span id="cb39-3"><a href="#cb39-3" tabindex="-1"></a>mouse_weight <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(file_path)</span>
