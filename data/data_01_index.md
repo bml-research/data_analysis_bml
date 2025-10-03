@@ -239,7 +239,7 @@ The Excel and R section contain more about the particular data types.
 
 ---
 
-[Go back to the main page](../index.md)
+[Go back to the main page](../index.md)  
 <a href="#top">⬆️ Back to Top</a>
 
 ---

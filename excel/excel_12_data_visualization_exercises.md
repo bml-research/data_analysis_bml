@@ -108,6 +108,7 @@ What category shows the lowest expression values and what category shows the hig
 
 [Go back to the main page](../index.md)  
 [Go back to the Excel overview page](../excel/excel_01_index.md)  
+<a href="#top">⬆️ Back to Top</a>  
 
 ---
 
