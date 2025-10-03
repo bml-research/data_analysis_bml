@@ -21,7 +21,12 @@ output:
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
 ```
 
-This file can be downloaded [here](./R_09_data_analysis.Rmd).
+This Rmd file can be downloaded [here](./R_09_data_analysis.Rmd).  
+
+Files used on this page:  
+- [file01_dementia_patients_health_data.csv](./files_09_data_analysis/file01_dementia_patients_health_data.csv)  
+
+
 
 # R: Data Analysis
 
