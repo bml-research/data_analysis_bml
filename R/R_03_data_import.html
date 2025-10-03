@@ -256,8 +256,9 @@ border: 0;
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -268,7 +269,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -383,7 +384,27 @@ code span.ot { color: #007020; }
 <p><a href="../index.html">Go back to the main page</a><br />
 <a href="../R/R_01_index.html">Go back to the R overview page</a></p>
 <hr />
-<p>This file can be downloaded <a href="./R_03_data_import.Rmd">here</a></p>
+<p>This Rmd file can be downloaded <a href="./R_03_data_import.Rmd">here</a></p>
+<p>Files used on this page:</p>
+<ul>
+<li><a href="./files_03_data_import/file01_human_genes.csv">file01_human_genes.csv</a><br />
+</li>
+<li><a href="./files_03_data_import/file02_genes.csv">file02_genes.csv</a><br />
+</li>
+<li><a href="./files_03_data_import/file03_genes.csv">file03_genes.csv</a><br />
+</li>
+<li><a href="./files_03_data_import/file04_genes.csv">file04_genes.csv</a><br />
+</li>
+<li><a href="./files_03_data_import/file05_genes.csv">file05_genes.csv</a><br />
+</li>
+<li><a href="./files_03_data_import/file06_genes.csv">file06_genes.csv</a><br />
+</li>
+<li><a href="./files_03_data_import/file07_genes_tibble.csv">file07_genes_tibble.csv</a><br />
+</li>
+<li><a href="./files_03_data_import/file08_human_genes.xlsx">file08_human_genes.xlsx</a><br />
+</li>
+<li><a href="./files_03_data_import/file09_genes_tibble.xlsx">file09_genes_tibble.xlsx</a></li>
+</ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>formatted_table <span class="ot">&lt;-</span> <span class="cf">function</span>(df){</span>
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>  <span class="fu">kbl</span>(df) <span class="sc">%&gt;%</span></span>
@@ -550,26 +571,26 @@ systems (like macOS and Linux):</p>
 <col width="33%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th align="left">Feature</th>
 <th align="left">Unix-like Systems (macOS, Linux)</th>
 <th align="left">Windows</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="left"><strong>Root Designation</strong></td>
 <td align="left"><strong><code>/</code></strong> (A single forward
 slash)</td>
 <td align="left">A <strong>drive letter</strong> followed by a colon,
 e.g., <code>C:</code> or <code>D:</code>.</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left"><strong>Path Separator</strong></td>
 <td align="left"><strong><code>/</code></strong> (Forward slash)</td>
 <td align="left"><strong><code>\</code></strong> (Backslash)</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left"><strong>Case Sensitivity</strong></td>
 <td align="left">Typically <strong>Case-sensitive</strong></td>
 <td align="left">Generally <strong>Case-insensitive</strong></td>
@@ -590,31 +611,31 @@ file <code>my_data.csv</code> is in a sibling folder named
 <col width="33%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th align="left">Path Type</th>
 <th align="left">Unix-like (macOS/Linux)</th>
 <th align="left">Windows</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="left"><strong>Current Working Directory (CWD)</strong></td>
 <td align="left"><code>/home/user/project/scripts</code></td>
 <td align="left"><code>C:\Users\User\Project\Scripts</code></td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left"><strong>Absolute Path to
 <code>my_data.csv</code></strong></td>
 <td align="left"><code>/home/user/project/data/my_data.csv</code></td>
 <td align="left"><code>C:\Users\User\Project\Data\my_data.csv</code></td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left"><strong>Relative Path to
 <code>my_data.csv</code></strong></td>
 <td align="left"><code>../data/my_data.csv</code></td>
 <td align="left"><code>..\Data\my_data.csv</code></td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left"><strong>Relative Path Explanation</strong></td>
 <td align="left">Go up one level (<code>..</code>) to
 <code>/home/user/project</code>, then down into <code>data</code>.</td>
@@ -644,19 +665,19 @@ character:</p>
 <col width="33%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th align="left">Operating System</th>
 <th align="left">Path Separator</th>
 <th align="left">Example Path</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="left"><strong>Unix-like</strong> (Linux, macOS)</td>
 <td align="left"><strong>Forward Slash (<code>/</code>)</strong></td>
 <td align="left"><code>/home/user/data/file.csv</code></td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left"><strong>Windows</strong></td>
 <td align="left"><strong>Backslash (<code>\</code>)</strong></td>
 <td align="left"><code>C:\Users\user\data\file.csv</code></td>
@@ -694,14 +715,14 @@ which separator to use.</p>
 <col width="33%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th align="left">Code</th>
 <th align="left">Output on Linux/macOS</th>
 <th align="left">Output on Windows</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="left"><code>file.path(&quot;data&quot;, &quot;raw&quot;, &quot;file.csv&quot;)</code></td>
 <td align="left"><code>&quot;data/raw/file.csv&quot;</code></td>
 <td align="left"><code>&quot;data\\raw\\file.csv&quot;</code></td>
@@ -718,25 +739,25 @@ which separator to use.</p>
 <col width="33%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th align="left">Practice</th>
 <th align="left">Description</th>
 <th align="left">Portability</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="left"><strong>Hardcoding <code>\</code> or
 <code>\\</code></strong></td>
 <td align="left">Bad practice. Breaks on non-Windows OSes.</td>
 <td align="left"><strong>Low</strong> ❌</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left"><strong>Manually using <code>/</code></strong></td>
 <td align="left">Good practice. Works on all OSes.</td>
 <td align="left"><strong>Medium</strong> ✅</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left"><strong>Using <code>file.path()</code></strong></td>
 <td align="left">Best practice. R handles the OS-specific
 separator.</td>
@@ -790,20 +811,20 @@ in the console to set your working directory in your R session.</p>
 <col width="50%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th align="left">Function/Practice</th>
 <th align="left">Rationale/Best Practice</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="left"><strong><code>setwd()</code></strong></td>
 <td align="left"><strong>Avoid using it in scripts</strong>, especially
 with <em>absolute paths</em> (e.g., <code>C:/Users/MyName/...</code>).
 An absolute path will not work on someone else’s computer. Use setwd()
 in the console instead.</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left"><strong>Relative Paths</strong></td>
 <td align="left"><strong>Always use relative paths</strong> for file
 references (e.g., <code>data/raw_data.csv</code>). A relative path is a
@@ -943,7 +964,7 @@ delimiter. They also use different decimal seperators.</p>
 <col width="25%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th align="left">Function</th>
 <th align="left"><code>read_csv</code> type</th>
 <th align="left"><code>delim</code> (Delimiter)</th>
@@ -951,25 +972,25 @@ delimiter. They also use different decimal seperators.</p>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="left"><strong><code>read_csv</code></strong></td>
 <td align="left">CSV (Comma Separated)</td>
 <td align="left"><code>&quot;,&quot;</code></td>
 <td align="left"><code>&quot;.&quot;</code> (Period)</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left"><strong><code>read_csv2</code></strong></td>
 <td align="left">CSV2 (Semicolon Separated)</td>
 <td align="left"><code>&quot;;&quot;</code></td>
 <td align="left"><code>&quot;,&quot;</code> (Comma)</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left"><strong><code>read_tsv</code></strong></td>
 <td align="left">TSV (Tab Separated)</td>
 <td align="left"><code>&quot;\t&quot;</code> (Tab)</td>
 <td align="left"><code>&quot;.&quot;</code> (Period)</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left"><strong><code>read_delim</code></strong></td>
 <td align="left">Generic Delimited</td>
 <td align="left"><strong>(Must be specified)</strong></td>
