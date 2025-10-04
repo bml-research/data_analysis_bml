@@ -335,41 +335,45 @@ rest_data <- read.csv2(file_path, check.names = F)
 formatted_table(rest_data)
 ```
 
-But before we can create a radar plot we need to transpose the data frame.
-The category items will be the variables (or features) and hence, need to be in columns.
-The different samples will be the records (or observations) and need to be organized in rows.
-
-In order to transpose the tibble, we will first make the data tidy:
-
-```{r}
-rest_data_long <- rest_data %>% pivot_longer(cols= -1)
-formatted_table(rest_data_long)
-```
-
-And then we can now transpose:
+But before we can create a radar plot we need to transpose the data frame.  
+The category items will be the variables (or features) and hence, need to be in columns.  
+The different samples will be the records (or observations) and need to be organized in rows.  
+You can find an example in the data cleaning section.  
 
 ```{r}
-rest_data_trans <- rest_data_long %>%
-  pivot_wider(names_from = `Row Labels`,values_from = value)
-formatted_table(rest_data_trans)
+trans_matrix <- t(rest_data)
+formatted_table((trans_matrix))
 ```
 
-The only thing that is needed is to rename the `name` column:
+Convert it to a tibble:
 
 ```{r}
-rest_data_trans <- rest_data_trans %>% rename("Sample" = `name`)
-formatted_table(rest_data_trans)
+trans_tibble <- tibble(data.frame(trans_matrix))
+formatted_table((trans_tibble))
 ```
+
+And then do some cleaning:
+
+```{r}
+colnames(trans_tibble) <- trans_tibble[1, ] # first row will be column names
+trans_tibble <- trans_tibble[-1, ] # delete first row 
+trans_tibble <- trans_tibble %>%
+  mutate(across(everything(), as.numeric)) %>% # make all columns numeric
+  mutate(Sample = c("Sample 1", "Sample 2", "Sample 3"), .before=1)
+formatted_table(trans_tibble)
+```
+
+
 The last thing we need to do is to scale the data to numbers ranging from 0-1:
 
 ```{r}
-rest_data_scaled <- rest_data_trans[, -1]/1000 
+rest_data_scaled <- trans_tibble[, -1]/1000 
 formatted_table(rest_data_scaled)
 ```
 Get the first column:
 
 ```{r}
-first_col <- rest_data_trans[, 1]
+first_col <- trans_tibble[, 1]
 formatted_table(first_col)
 ```
 And combine the two tibbles:
