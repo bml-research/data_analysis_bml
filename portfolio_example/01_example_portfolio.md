@@ -1,8 +1,19 @@
 {% include head.html %}
 ![Hanze](../hanze/hanze.png)
 
+---
+
 [Go back to the main page](../index.md)
 
+---
+
+## Links
+
+- [Checklist](./01_checklist/checklist_data_analysis_portfolio.xlsx)
+- [Example portfolio Excel](./02_example_portfolio/example_portfolio_excel.zip)
+- [Example portfolio R](./02_example_portfolio/example_porfolio_R.zip)
+
+---
 
 # Example Portfolio
 
@@ -61,11 +72,15 @@ Think about:
 Good luck!
 
 
-## Links
 
-- [Checklist](./01_checklist/checklist_data_analysis_portfolio.xlsx)
-- [Example portfolio Excel](./02_example_portfolio/example_portfolio_excel.zip)
-- [Example portfolio R](./02_example_portfolio/example_porfolio_R.zip)
+
+
+---
+
+[Go back to the main page](../index.md)  
+<a href="#top">⬆️ Back to Top</a>  
+
+---
 
 
 >This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
