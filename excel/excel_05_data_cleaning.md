@@ -131,6 +131,8 @@ Here you can see it in action:
 
 ## Dealing with missing data
 
+### Finding missing data
+
 Often, data analysts are dealing with missing data in datasets. Data fields may be simply empty, contain a dash (`-`) or may contain an `#N/A` error. There are various approaches one can take when dealing with missing data. For example, you can throw out all the data for any sample missing one or more data elements. However, be aware that missing data might not be randomly distributed. 
 
 The approaches that can be taken are:
@@ -156,27 +158,46 @@ Or check if they are equal to #N/A using the `ISNA` function:
 *<sub>Figure 19: Validate if cell equals #N/A.</sub>*
 
 
-This is a bit cumbersome and error prone. You can work with third party add-ons, use VBA script or just use R or Python instead. Both R and Python do have powerful functions to deal with missing data.
+In addition to counting missing data as #N/A in the FullName column, we can also identify the item in the shortName column using `XLOOKUP`:
+
+![xlookup](./pics_05_data_cleaning/fig20.png)
+*<sub>Figure 20: Identify the gene with an #N/A error using XLOOKUP.</sub>*
+
+As we can not directly search for an `#N/A` we needed to use the expression:
+
+```
+=XLOOKUP(TRUE, ISNA(lookup_array), return_array)
+```
+
+In addition, `XLOOKUP` can only find the first instance of an `#N/A` value.
+Therefore, it is better to use the `FILTER` function to filter for rows with an `#N/A`:
+
+![xlookup](./pics_05_data_cleaning/fig21.png)
+*<sub>Figure 21: Identify rows with an #N/A error using FILTER.</sub>*
+
+Note that the `FILTER` function is an array function and returns it's results across multiple cells.
+
+### Working with #N/A
 
 In any case, it is best to convert cells with "empty" values (whether it is truly blank, contains a dash or any other character to mark empty) to #N/A. #N/A is the error value of Excel that means "no value is available." To avoid accidentally including empty cells in your calculations, enter #N/A in the cells where you are missing information. (A formula that references a cell that contains #N/A will return the #N/A error value). Read more about #N/A [here](https://support.microsoft.com/en-gb/office/na-function-5469c2d1-a90c-4fb5-9bbc-64bd9bb6b47c#:~:text=Returns%20the%20error%20value%20%23N,empty%20cells%20in%20your%20calculations.).
 
 Use simply find and replace to insert #N/A in "empty" cells.
 
 
-![dealing with na](./pics_05_data_cleaning/fig20.png)
-*<sub>Figure 20: The `SUM` function still works, ignoring missing data.</sub>*
+![dealing with na](./pics_05_data_cleaning/fig22.png)
+*<sub>Figure 22: The `SUM` function still works, ignoring missing data.</sub>*
 
 As you can see, the `SUM` function still works. This might look appealing at first sight, but it also can cause a lot of troubles when you deal with larger datasets. It masks missing data!
 
 So convert to #N/A:
 
-![dealing with na](./pics_05_data_cleaning/fig21.png)
-*<sub>Figure 21: The `SUM` function does not work when #N/A is included.</sub>*
+![dealing with na](./pics_05_data_cleaning/fig23.png)
+*<sub>Figure 23: The `SUM` function does not work when #N/A is included.</sub>*
 
 As a result, the `SUM` function does not work. It does notify you that there are missing data. Now you can deal with the #N/A using the `SUMIF` function:
 
-![dealing with na](./pics_05_data_cleaning/fig22.png)
-*<sub>Figure 22: The `SUMIF` function does work when #N/A is included.</sub>*
+![dealing with na](./pics_05_data_cleaning/fig24.png)
+*<sub>Figure 24: The `SUMIF` function does work when #N/A is included.</sub>*
 
 In the above example, `<>` is a shorthand for the `NOT` operator. So the formula reads as: Only sum cells that are not equal to `#N/A` and ignore the `#N/A's`. This is a strategy that is very similar to what is used in R and Python. Your are dealing with missing data in an explicit way instead of implicit.
 
