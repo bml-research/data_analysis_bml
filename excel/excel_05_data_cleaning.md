@@ -8,6 +8,8 @@
 
 ---
 
+Files used on this page:  
+- [file01_KEGG_DRUG_ATC_PROPERTIES_PED_FP.csv](./files_05_data_cleaning/file01_KEGG_DRUG_ATC_PROPERTIES_PED_FP.csv)  
 
 # Excel: Data Cleaning
 
@@ -23,6 +25,8 @@ Excel lags behind Python and R in capabilities of data reorganization and cleani
 ## Text to column feature
 
 If your csv data import fails, you can manually parse your text to various columns. Take a look at the following example ([source](https://www.kaggle.com/datasets/tonibois/properties-of-atc-accepted-medicines)):
+
+Or [here](./files_05_data_cleaning/file01_KEGG_DRUG_ATC_PROPERTIES_PED_FP.csv) as csv file.  
 
 ![food](./pics_05_data_cleaning/fig1.png)
 *<sub>Figure 1: All data in a single column</sub>*
