@@ -8,6 +8,10 @@
 
 ---
 
+Files used on this page:  
+- [file01_humangenes.csv](./files_02_data_import/file01_humangenes.csv)  
+- [file02_fish_data.csv](./files_02_data_import/file02_fish_data.csv)  
+
 
 # Excel: Data Import
 
@@ -42,6 +46,8 @@ However, I do recommend [Visual Studio Code](https://code.visualstudio.com/) as 
 Open your text file and check how the data are organized.
 
 Here you can see the [Human Genes](https://www.kaggle.com/datasets/mohamedabdullah/human-genes) file.
+
+Or [here](./files_02_data_import/file01_humangenes.csv) directly as csv file.  
 
 ![Human Genes](./pics_02_data_import/01.png)  
 *<sub>Figure 1: a csv file in Visual Studio Code</sub>*
@@ -141,7 +147,9 @@ However, after clicking "From txt/csv" and selecting the csv file, you can speci
 ### Power Query and decimal separators
 
 As mentioned above, alway check if the decimal separator is set correctly.
-As an example we will have a look at [this dataset](https://www.kaggle.com/datasets/stealthtechnologies/predict-lifespan-of-a-comet-goldfish) about predicter variables in order to predict lifespan in Goldfish.
+As an example we will have a look at [this dataset](https://www.kaggle.com/datasets/stealthtechnologies/predict-lifespan-of-a-comet-goldfish) about predictor variables in order to predict lifespan in Goldfish.
+
+You can also download the csv file [here](./files_02_data_import/file02_fish_data.csv).  
 
 The data contains the period (.) as a decimal separator:
 
