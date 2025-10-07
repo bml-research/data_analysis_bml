@@ -250,6 +250,7 @@ The weight of these items is not equal. The weights of the corresponding items a
 |Data Analysis     |3     |15                 |
 |Data Visualization|4     |20                 |
 
+You can find the complete rubric on Brightspace.  
 
 The grade for Excel and R will be calculated as follows:
 
