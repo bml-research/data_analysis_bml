@@ -105,14 +105,15 @@ You Can use as many datasets as required to meet all the requirements for the ch
 
 ### The Checklist
 
-You can download the **checklist** (see link above) from this page. Go through each item on this list meticulously. Note a 1 (one) if the corresponding item is present and a 0 (zero) if not. For every row, not only check it off but also clearly justify within your portfolio how you've addressed that requirement. At the end of each analysis, write a  dedicated section to justify the checked items and show a screenshot. This demonstration of compliance is essential for assessing your portfolio. 
+You can download the **checklist** (see link above) from this page. Go through each item on this list meticulously. Note a 1 (one) if the corresponding item is present and a 0 (zero) if not. For every row, not only check it off but also clearly justify within your portfolio how you've addressed that requirement. At the end of each analysis, write a  dedicated section to justify the checked items and show a screenshot. This demonstration of compliance is essential for assessing your portfolio by your instructor. 
 
 An example:  
 
-The first analysis is about the calories in various food products and can be found under within the subfolder `analysis_1_calories_food`. The last paragraph is about the checklist. Put a screenshot of the checklist and also clearly describe what items are missing:
+The first analysis is about the calories in various food products and can be found within the subfolder `analysis_1_calories_food`. The last paragraph is about the checklist. Put a screenshot of the checklist and also clearly describe what items are missing:
 
 ![cheklist](./04_pics/fig01.png)
 
+>Keep in mind that data loading and cleaning needs to be described for each analysis as datasets may vary in quality.
 
 As you can see, the clustered bar plot and the XY-scatterplot are not included in the first analysis. The main reason for this is that the dataset was not suitable for this type of analysis. Therefore a second analysis was performed. The analysis can be found within the subfolder `analysis_2_zomato_stock_price`. Note that the name of the subfolder starts with `analysis_2`. This way, the folder will show as a second item in a file explorer. The last paragraph concerns the checklist again. 
 
