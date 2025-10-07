@@ -19,7 +19,7 @@
 
 ## The Portfolio Assignment
 
-This document outlines the requirements and expectations for your portfolio, designed to showcase your data analysis skills. Think of this as a structured project where you'll apply what you've learned to a real-world dataset. The provided example portfolio aims for a 7.5-8.0 level, but you can certainly aim higher!
+This document outlines the requirements and expectations for your portfolio, designed to showcase your data analysis skills. Think of this as a structured project where you'll apply what you've learned to a real-world dataset. The provided example portfolio aims for a 7.5 level, but you can certainly aim higher!
 
 ## Your Workflow: Step-by-Step
 
@@ -27,9 +27,11 @@ Follow these steps to complete your portfolio effectively:
 
 ### Dataset Selection:
 
-Search for datasets, for example Kaggle (kaggle.com), and explore the vast collection of datasets. Choose one that genuinely interests you and allows for meaningful analysis relevant to topics covered. In particular, consider datasets from the field of Life Sciences but data sets from other fields are also allowed.  
+Search for datasets, for example [Kaggle](https://www.kaggle.com/), and explore the vast collection of datasets. Choose one that genuinely interests you and allows for meaningful analysis relevant to topics covered. In particular, consider datasets from the field of Life Sciences but data sets from other fields are also allowed.  
 
 Crucially, once you've selected your dataset, provide its direct link in the Excel file your instructor will provide. This step is vital to prevent duplicate datasets from being used by different students.
+
+>In order to fulfill all the requirements, you may need to use multiple datasets (see below). 
 
 ### Structure of the Portfolio:
 
