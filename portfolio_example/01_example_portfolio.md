@@ -113,11 +113,12 @@ The first analysis is about the calories in various food products and can be fou
 
 ![cheklist](./04_pics/fig01.png)
 
->Keep in mind that data loading and cleaning needs to be described for each analysis as datasets may vary in quality.
 
 As you can see, the clustered bar plot and the XY-scatterplot are not included in the first analysis. The main reason for this is that the dataset was not suitable for this type of analysis. Therefore a second analysis was performed. The analysis can be found within the subfolder `analysis_2_zomato_stock_price`. Note that the name of the subfolder starts with `analysis_2`. This way, the folder will show as a second item in a file explorer. The last paragraph concerns the checklist again. 
 
 ![cheklist](./04_pics/fig02.png)
+
+>Keep in mind that data loading and cleaning needs to be described for each analysis as datasets may vary in quality.
 
 Note that the checklist is check marked cumulative. This means that the previous checklist is used as a starting point to check the last two items (Clustered barplot and XY-scatterplot). This works well only if the analysis folders are also named in a logical manner:  
 - `analysis_1_calories_food`  
