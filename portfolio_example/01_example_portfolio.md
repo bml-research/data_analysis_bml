@@ -41,7 +41,7 @@ Keep the following in mind:
 
 - Create a separate folder for the Excel analysis and the R analysis.  
 - For each, adhere to the directory hierarchy showed below.  
-- Create a zip file for both project folders.  
+- Create a separate zip file for the Excel and the R analysis.  
 - Upload both zip files separately in Brightspace.  
 
 
@@ -98,7 +98,9 @@ Likewise, the zip file for R has the following directory structure:
 
 ```
 
-You Can use as many datasets as required to meet all the requirements for the checklist (see below). Number your analysis like the example above. If you need to modify your dataset, make sure that you rename it `filename_modified.csv`. This clearly indicates that you made modifications to the source file. These modifications should be explained and justified in the corresponding analysis text.
+> Tip: Have a look at the example portfolio zip files to understand the directory hierarchy.   
+
+You Can use as many datasets as required to meet all the requirements for the checklist (see below). Number your analysis like the example above. If you need to modify your dataset (for example to deliberately duplicate a row to demonstrate data cleaning), make sure that you rename it `filename_modified.csv`. This clearly indicates that you made modifications to the source file. These modifications should be explained and justified in the corresponding analysis text.
 
 
 ### The Checklist
