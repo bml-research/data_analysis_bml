@@ -101,7 +101,7 @@ You Can use as many datasets as required to meet all the requirements for the ch
 
 ### The Checklist
 
-You'll receive a **checklist** (see link above) from your instructor. Go through each item on this list meticulously. For every point, not only check it off but also clearly justify within your portfolio how you've addressed that requirement. At the end of each analysis, write a  dedicated section to justify the checked items and show a screenshot. This demonstration of compliance is essential for your grade.  
+You can download the **checklist** (see link above) from this page. Go through each item on this list meticulously. Note a 1 (one) if the corresponding item is present and a 0 (zero) if not. For every row, not only check it off but also clearly justify within your portfolio how you've addressed that requirement. At the end of each analysis, write a  dedicated section to justify the checked items and show a screenshot. This demonstration of compliance is essential for assessing your portfolio. 
 
 An example:  
 
@@ -179,6 +179,30 @@ Example in Rmd:
 
 Some use of generative AI is permitted but do not rely to heavily on it. It is allowed for debugging little mistakes in your code and correcting and rephrasing small paragraphs. What is not allowed is to use LLM to do entire analysis and create Rmd files from prompts. The resulting code often has a typical "signature" and if teachers suspect that entire blocks of codes or large parts of the text is AI generated, a CGI (involving two teachers) may follow (see below).
 
+### Stronger Narratives and Interpretations
+
+Don't just show plots; tell a story with your data. Clearly articulate what each visualization reveals, connect findings across different analyses, and draw insightful conclusions that directly address potential research questions or hypotheses.
+Robust Justification: Consistently explain why you made certain decisions (e.g., why you chose a particular method for handling missing data, why a specific plot type was best suited for a certain variable).
+By putting in the extra effort and thoughtful consideration, you can significantly enhance your portfolio and demonstrate a deeper understanding of data analysis principles. 
+
+### What if your dataset does not support specific skills?
+
+Imagine that your dataset is already clean and does not require any cleaning. In that case show what you would have done if missing data was present. Also show how you would handle duplicate rows etc. You can modify your raw data (see above, make sure you rename your file) and show how you would handle missing data and duplicate rows and missing column headers et cetera.
+
+### Beyond the Basics
+
+The example portfolio is a solid foundation, aiming for a 7.5-8.0. To achieve an even higher score, consider these enhancements:
+
+- **Go Beyond Basic Analysis**: Don't just present descriptive statistics. Dive deeper with more advanced analytical techniques (for example, include statistical tests, basic predictive modeling such as linear regression) if applicable).
+- **Expand Your Visualizations**: While standard plots (histograms, bar charts, scatter plots) are necessary, incorporating additional, more complex plot types can significantly boost your score. 
+
+Think about:
+- Radar charts for comparing multiple quantitative variables of a few items.
+- Bubble charts to visualize three dimensions of data in a two-dimensional plot.
+- Heatmaps for complex correlation matrices or categorical relationships.
+- Or by creatively utilizing other advanced or less common plot types from the extensive libraries offered by tools like Excel and R's ggplot2.
+
+
 ### Submission
 
 Once you're confident that all components are complete and polished, zip your folders (as two separate zip files) and upload and share your zipped portfolio via BrightSpace using the corresponding Excel and R links.  
@@ -187,28 +211,16 @@ Once you're confident that all components are complete and polished, zip your fo
 
 ### Review and Feedback:
 
-Your instructor will evaluate your portfolio using the assessment shown below. Make sure you're familiar with this form beforehand to understand the grading criteria.
-Following the review, you'll have a brief 15-minute CGI (Communication, Discussion, Insight) session with your instructor. This is your opportunity to discuss your work, answer any questions, and gain deeper insights into your performance.
-Finally, you'll receive your motivated assessment and detailed feedback on your portfolio.
+Your instructor will first evaluate if all the requirements are met based on your portfolio and the checklist. If this is the case, your instructor will evaluate your portfolio using the rubric shown below. Make sure you're familiar with this form beforehand to understand the grading criteria. Finally, you'll receive your graded rubric via Brightspace. If your instructor suspects the work submitted relies too heavily on AI assistance (beyond code corrections, paragraph edits and rephrasing), it could lead to an investigation for CGI (Communication, Discussion, insight interview). Two instructors will be involved in the CGI.
 
-### Stronger Narratives and Interpretations
+### CGI
 
-Don't just show plots; tell a story with your data. Clearly articulate what each visualization reveals, connect findings across different analyses, and draw insightful conclusions that directly address potential research questions or hypotheses.
-Robust Justification: Consistently explain why you made certain decisions (e.g., why you chose a particular method for handling missing data, why a specific plot type was best suited for a certain variable).
-By putting in the extra effort and thoughtful consideration, you can significantly enhance your portfolio and demonstrate a deeper understanding of data analysis principles. 
+As described above, if your instructor suspects that your work too heavily relies on the use of AI, you will have a brief 15-minute CGI (Communication, Discussion, Insight) session with your instructor and a second instructor. If it turns out that you are not able to explain the process of your analysis and code, the portfolio will not be evaluated any further.
 
-### Elevating Your Grade: Beyond the Basics
 
-The example portfolio is a solid foundation, aiming for a 7.5-8.0. To achieve an even higher score, consider these enhancements:
 
-- **Go Beyond Basic Analysis**: Don't just present descriptive statistics. Dive deeper with more advanced analytical techniques (for example, include statistical tests, basic predictive modeling such as linear regression) if applicable)
-- **Expand Your Visualizations**: While standard plots (histograms, bar charts, scatter plots) are necessary, incorporating additional, more complex plot types can significantly boost your score. 
 
-Think about:
-- Radar charts for comparing multiple quantitative variables of a few items.
-- Bubble charts to visualize three dimensions of data in a two-dimensional plot.
-- Heatmaps for complex correlation matrices or categorical relationships.
-- Or by creatively utilizing other advanced or less common plot types from the extensive libraries offered by tools like Excel and R's ggplot2.
+
 
 
 Good luck!
