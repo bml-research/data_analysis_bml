@@ -117,13 +117,13 @@ As you can see, the clustered bar plot and the XY-scatterplot are not included i
 Note that the checklist is check marked cumulative. This means that the previous checklist is used as a starting point to check the last two items (Clustered barplot and XY-scatterplot). This works well only if the analysis folders are also named in a logical manner:  
 - `analysis_1_calories_food`  
 - `analysis_2_zomato_stock_price`  
-If you organize your work in a similar logical way, your teacher will be able to easily determine if all the requirements are met before grading your portfolio.
+If you organize your work in a similar logical way, your instructor will be able to easily determine if all the requirements are met before grading your portfolio.
 
 >If you do not adhere to these guidelines, your portfolio will not be graded!  
 
 ### Relative filepaths
 
-Use relative filepaths in your project folders for the analysis in R. The primary reason to use relative filepaths is to ensure portability of your project. Also, use OS-agnostics filepaths so that your analysis can be run on Windows, Mac and Linux computers (all these different OSes are used by your teachers and definitely later in your research team).  
+Use relative filepaths in your project folders for the analysis in R. The primary reason to use relative filepaths is to ensure portability of your project. Also, use OS-agnostics filepaths so that your analysis can be run on Windows, Mac and Linux computers (all these different OSes are used by your instructors and definitely later in your research team).  
 
 Example:  
 
@@ -177,7 +177,7 @@ Example in Rmd:
 
 ### Use of LLM (large language models/generative AI)
 
-Some use of generative AI is permitted but do not rely to heavily on it. It is allowed for debugging little mistakes in your code and correcting and rephrasing small paragraphs. What is not allowed is to use LLM to do entire analysis and create Rmd files from prompts. The resulting code often has a typical "signature" and if teachers suspect that entire blocks of codes or large parts of the text is AI generated, a CGI (involving two teachers) may follow (see below).
+Some use of generative AI is permitted but do not rely to heavily on it. It is allowed for debugging little mistakes in your code and correcting and rephrasing small paragraphs. What is not allowed is to use LLM to do entire analysis and create Rmd files from prompts. The resulting code often has a typical "signature" and if instructors suspect that entire blocks of codes or large parts of the text is AI generated, a CGI (involving two instructors) may follow (see below).
 
 ### Stronger Narratives and Interpretations
 
@@ -218,15 +218,43 @@ Your instructor will first evaluate if all the requirements are met based on you
 As described above, if your instructor suspects that your work too heavily relies on the use of AI, you will have a brief 15-minute CGI (Communication, Discussion, Insight) session with your instructor and a second instructor. If it turns out that you are not able to explain the process of your analysis and code, the portfolio will not be evaluated any further.
 
 
+### Rubric (grading scheme)
+
+The Rubric is organized as follows:
+
+|0 points|2 points    |3 points|4 points|5 points|
+|:-------|:-----------|:-------|:-------|:-------|
+|not done|unsatisfied |satisfied for basic analysis|good analysis and proper conclusions and description|analysis beyond the basics and excellent descriptions|
+
+The items that are scored (both and Excel and R) are:
+
+- Data Import
+- Data Cleaning
+- Data Analysis
+- Data Visualization
+
+The weight of these items is not equal. The weights of the corresponding items and the scaled points can be found in the table below:
+
+|Item              |Weight|Scaled Points (max)|
+|:-----------------|:-----|:------------------|
+|Data Import       |2     |10                 |
+|Data Cleaning     |1     |5                  |
+|Data Analysis     |3     |15                 |
+|Data Visualization|4     |20                 |
 
 
+The grade for Excel and R will be calculated as follows:
+
+$Grade = \frac{aquired \ points}{total \ points} \cdot 10$  
+
+You will receive a grade for Excel and a grade for R.
+The Excel part counts for 40% and the R for 60%.  
+So your end grade will be:  
+
+$End \ grade = 0.4 \cdot Excel \ grade + 0.6 \cdot R \ grade$
 
 
-
-Good luck!
-
-
-
+Good luck! 🍀
 
 
 ---
