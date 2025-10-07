@@ -254,13 +254,13 @@ You can find the complete rubric on Brightspace.
 
 The grade for Excel and R will be calculated as follows:
 
-$Grade = \frac{aquired \ points}{total \ points} \cdot 10$  
+$$\text{Grade} = \max\left(1,\frac{\text{aquired points}}{\text{total points}} \cdot 10 \right)$$  
 
 You will receive a grade for Excel and a grade for R.
 The Excel part counts for 40% and the R for 60%.  
 So your end grade will be:  
 
-$End \ grade = 0.4 \cdot Excel \ grade + 0.6 \cdot R \ grade$
+$$\text{End grade} = 0.4 \cdot \text{Excel grade} + 0.6 \cdot \text{R grade}$$
 
 
 Good luck! 🍀
