@@ -121,8 +121,11 @@ As you can see, the clustered bar plot and the XY-scatterplot are not included i
 >Keep in mind that data loading and cleaning needs to be described for each analysis as datasets may vary in quality.
 
 Note that the checklist is check marked cumulative. This means that the previous checklist is used as a starting point to check the last two items (Clustered barplot and XY-scatterplot). This works well only if the analysis folders are also named in a logical manner:  
+
 - `analysis_1_calories_food`  
 - `analysis_2_zomato_stock_price`  
+
+
 If you organize your work in a similar logical way, your instructor will be able to easily determine if all the requirements are met before grading your portfolio.
 
 >If you do not adhere to these guidelines, your portfolio will not be graded!  
@@ -148,7 +151,8 @@ Right (relative path for Windows and Unix system like Mac OS or Linux):
 ../data/nutrients_csvfile.csv
 ```
 
-Also make your path OS agnostic:  
+**Also make your path OS agnostic.**  
+
 Wrong (will break on Unix system like Mac OS or Linux):
 ```
 ..\data\nutrients_csvfile.csv
@@ -197,16 +201,14 @@ Imagine that your dataset is already clean and does not require any cleaning. In
 
 ### Beyond the Basics
 
-The example portfolio is a solid foundation, aiming for a 7.5-8.0. To achieve an even higher score, consider these enhancements:
+The example portfolio is a solid foundation, aiming for a 7.5. To achieve an even higher score, consider these enhancements:
 
-- **Go Beyond Basic Analysis**: Don't just present descriptive statistics. Dive deeper with more advanced analytical techniques (for example, include statistical tests, basic predictive modeling such as linear regression) if applicable).
-- **Expand Your Visualizations**: While standard plots (histograms, bar charts, scatter plots) are necessary, incorporating additional, more complex plot types can significantly boost your score. 
-
-Think about:
-- Radar charts for comparing multiple quantitative variables of a few items.
-- Bubble charts to visualize three dimensions of data in a two-dimensional plot.
-- Heatmaps for complex correlation matrices or categorical relationships.
-- Or by creatively utilizing other advanced or less common plot types from the extensive libraries offered by tools like Excel and R's ggplot2.
+- **Go Beyond Basic Analysis**: Don't just present descriptive statistics. Dive deeper with more advanced analytical techniques (for example, include statistical tests, basic predictive modeling such as linear regression) if applicable.
+- **Expand Your Visualizations**: While standard plots (histograms, bar charts, scatter plots) are necessary, incorporating additional, more complex plot types can significantly boost your score. Think about:
+    - Radar charts for comparing multiple quantitative variables of a few items.
+    - Bubble charts to visualize three dimensions of data in a two-dimensional plot.
+    - Heatmaps for complex correlation matrices or categorical relationships.
+    - Or by creatively utilizing other advanced or less common plot types from the extensive libraries offered by tools like Excel and R's ggplot2.
 
 
 ### Submission
