@@ -219,7 +219,7 @@ Once you're confident that all components are complete and polished, zip your fo
 
 ### Review and Feedback:
 
-Your instructor will first evaluate if all the requirements are met based on your portfolio and the checklist. If this is the case, your instructor will evaluate your portfolio using the rubric shown below. Make sure you're familiar with this form beforehand to understand the grading criteria. Finally, you'll receive your graded rubric via Brightspace. If your instructor suspects the work submitted relies too heavily on AI assistance (beyond code corrections, paragraph edits and rephrasing), it could lead to an investigation for CGI (Communication, Discussion, insight interview). Two instructors will be involved in the CGI.
+Your instructor will first evaluate if all the requirements are met based on your portfolio and the checklist. If this is the case, your instructor will evaluate your portfolio using the rubric shown below. Make sure you're familiar with this form beforehand to understand the grading criteria. Finally, you'll receive your graded rubric via Brightspace. If your instructor suspects the work submitted relies too heavily on AI assistance (beyond code corrections, paragraph edits and rephrasing), it could lead to an investigation via CGI (Communication, Discussion, insight interview). Two instructors will be involved in the CGI.
 
 ### CGI
 
@@ -230,9 +230,9 @@ As described above, if your instructor suspects that your work too heavily relie
 
 The Rubric is organized as follows:
 
-|0 points|2 points    |3 points|4 points|5 points|
-|:-------|:-----------|:-------|:-------|:-------|
-|not done|unsatisfied |satisfied for basic analysis|good analysis and proper conclusions and description|analysis beyond the basics and excellent descriptions|
+|0 points |2 points    |3 points|4 points|5 points|
+|:--------|:-----------|:-------|:-------|:-------|
+|Not done |Unsatisfied |Satisfied for basic analysis|Good analysis and proper conclusions and description|analysis beyond the basics and excellent descriptions|
 
 The items that are scored (both and Excel and R) are:
 
