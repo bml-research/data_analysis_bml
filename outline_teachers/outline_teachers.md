@@ -176,7 +176,12 @@ Details on installation can be found [here](https://bml-research.github.io/data_
     - Summarize data using Tidyverse for multiple columns at once (`summarize_each`).
     - The new way to do this in Tidyverse using `across`.
 
-### Lesson 13: Data Visualization in R
+
+### Lessen 13: Data Analysis in R
+
+This lesson can serve as a remedial or catch-up session. It's intended to finalize any outstanding points and address any remaining knowledge gaps. This lesson can also be used to further explain (or elaborate on) the portfolio assignment.
+
+### Lesson 14: Data Visualization in R
 
 - Demonstrate the use of a base R barplot and a barplot using `ggplot2`.
 - Explain the grammar of `ggplot2` (using the layers).
@@ -187,7 +192,7 @@ Details on installation can be found [here](https://bml-research.github.io/data_
 - Create a percent stacked bar plot.
 - Switch order of groups (use an unordered factor).
 
-### Lesson 14: Data Visualization in R
+### Lesson 15: Data Visualization in R
 
 - Create a Pie Chart.
 - Create a Box Plot.
@@ -196,6 +201,11 @@ Details on installation can be found [here](https://bml-research.github.io/data_
 - Create a XY-scatter plot.
 - Create a Bubble Chart.
 - Explain the [Portfolio Exercise](https://bml-research.github.io/data_analysis_bml/portfolio_example/01_example_portfolio.html).
+
+
+### Lesson 16: Data Visualization in R
+
+This lesson can serve as a remedial or catch-up session for data visualization. It's intended to finalize any outstanding points and address any remaining knowledge gaps. This lesson can also be used as a tutor to help students with the portfolio assignment.
 
 
 ---
