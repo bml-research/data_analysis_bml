@@ -255,9 +255,6 @@ If you do not like the Cayman theme you can choose some others like:
 | **`leonids`**               | White body, black banner; small-caps title; subtle typography.                  |
 | **`tactile`**               | Beige background, warm tone, retro “notebook” feel.                             |
 | **`hpstr`**                 | Modern, dark header, sans-serif fonts, slightly higher contrast.                |
-| **`trestles`**              | Muted grey theme with strong section headings; modern academic look.            |
-| **`lumen`**                 | Light Bootstrap-inspired theme with white cards and subtle shadows.             |
-
 
 
 ### Submission
