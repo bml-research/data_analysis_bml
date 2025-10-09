@@ -229,7 +229,7 @@ output: "2025-04-10"
     highlight: github
 ```
 
->Note that the YAML front matter code block should start end end with 3 backticks.
+>Note that the YAML front matter code block should start and end with 3 backticks.
 
 #### What each line means
 
