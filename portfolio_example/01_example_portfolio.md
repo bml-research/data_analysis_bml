@@ -50,52 +50,55 @@ Keep the following in mind:
 Let's take a look at the Example Excel portfolio. The directory hierarchy is as follows:
 
 ```
-├── example_portfolio_excel.zip/
-│   ├── example_portfolio_excel/
-│   │   ├── analysis_1_calories_food/
-│   │   │   ├── checklist_data_analysis_portfolio.xlsx
-│   │   │   ├── analysis/
-│   │   │   │   ├── calories_food.docx
-│   │   │   │   ├── calories_food.xlsx
-│   │   │   ├── data/
-│   │   │   │   ├── nutrients_csvfile.csv
-│   │   │   │   ├── nutrients_csvfile_modified.csv
-│   │   │   │   ├── source.txt
-│   │   ├── analysis_2_zomato_stock_price/
-│   │   │   ├── checklist_data_analysis_portfolio.xlsx
-│   │   │   ├── analysis/
-│   │   │   │   ├── zomato_stock_price_analysis.docx
-│   │   │   │   ├── zomato_stock_price_analysis.xlsx
-│   │   │   ├── data/
-│   │   │   │   ├── zomato.csv
+example_portfolio_excel/
+├── analysis_1_calories_food/
+│   ├── checklist_data_analysis_portfolio.xlsx    ← workflow checklist
+│   ├── data/
+│   │   ├── nutrients_csvfile.csv                 ← raw dataset
+│   │   ├── nutrients_csvfile_modified.csv        ← cleaned dataset
+│   │   └── source.txt                            ← notes / provenance
+│   └── analysis/
+│       ├── calories_food.xlsx                    ← main Excel analysis (formulas, charts)
+│       └── calories_food.docx                    ← report/documentation of findings
+│
+├── analysis_2_zomato_stock_price/
+│   ├── checklist_data_analysis_portfolio.xlsx
+│   ├── data/
+│   │   └── zomato.csv                            ← stock data
+│   └── analysis/
+│       ├── zomato_stock_price_analysis.xlsx      ← Excel analysis
+│       └── zomato_stock_price_analysis.docx      ← report
 ```
 
 Likewise, the zip file for R has the following directory structure:
 
 ```
-├── example_portfolio_R.zip/
-│   ├── example_porfolio_R/
-│   │   ├── analysis_1_calories_food/
-│   │   │   ├── checklist_data_analysis_portfolio.xlsx
-│   │   │   ├── analysis/
-│   │   │   │   ├── Calories_food.Rmd
-│   │   │   │   ├── pics/
-│   │   │   │   │   ├── fig01.png
-│   │   │   │   │   ├── fig02.png
-│   │   │   ├── data/
-│   │   │   │   ├── nutrients_csvfile.csv
-│   │   │   │   ├── nutrients_csvfile_modified.csv
-│   │   │   │   ├── source.txt
-│   │   ├── analysis_2_zomato_stock_price/
-│   │   │   ├── checklist_data_analysis_portfolio.xlsx
-│   │   │   ├── analysis/
-│   │   │   │   ├── zomato_stock_price_analysis.Rmd
-│   │   │   │   ├── pics/
-│   │   │   │   │   ├── fig01.png
-│   │   │   │   │   ├── fig02.png
-│   │   │   ├── data/
-│   │   │   │   ├── zomato.csv
-
+example_porfolio_R/
+├── analysis_1_calories_food/
+│   ├── checklist_data_analysis_portfolio.xlsx   ← project checklist
+│   ├── data/
+│   │   ├── nutrients_csvfile.csv                ← raw dataset
+│   │   ├── nutrients_csvfile_modified.csv       ← cleaned dataset
+│   │   └── source.txt                           ← data source notes
+│   └── analysis/
+│       ├── Calories_food.Rmd                    ← R Markdown analysis script
+│       ├── Calories_food.html                   ← rendered report
+│       ├── .Rhistory                            ← R command history
+│       └── pics/
+│           ├── fig01.png
+│           └── fig02.png                        ← plots/visuals used in report
+│
+├── analysis_2_zomato_stock_price/
+│   ├── checklist_data_analysis_portfolio.xlsx
+│   ├── data/
+│   │   └── zomato.csv                           ← stock price dataset
+│   └── analysis/
+│       ├── zomato_stock_price_analysis.Rmd      ← R Markdown analysis script
+│       ├── zomato_stock_price_analysis.html     ← rendered report
+│       ├── .Rhistory
+│       └── pics/
+│           ├── fig01.png
+│           └── fig02.png
 ```
 
 > Tip: Have a look at the example portfolio zip files to understand the directory hierarchy.   
@@ -209,6 +212,52 @@ The example portfolio is a solid foundation, aiming for a 7.5. To achieve an eve
     - Bubble charts to visualize three dimensions of data in a two-dimensional plot.
     - Heatmaps for complex correlation matrices or categorical relationships.
     - Or by creatively utilizing other advanced or less common plot types from the extensive libraries offered by tools like Excel and R's ggplot2.
+
+
+### Make it beautiful
+
+You can make your R Markdown report in HTML more beautiful by changing the standard YAML front matter at the top of an R Markdown (.Rmd) file. It declares metadata and tells R Markdown how to render the document. Here’s a quick breakdown and a few small tips.
+Example YAML front matter:
+
+```
+title: "Calories Food" 
+author: "Jane Doe" 
+date: "2025-04-10" 
+output: prettydoc::html_pretty: 
+theme: cayman 
+highlight: github
+```
+
+#### What each line means
+
+- title: "Calories Food" — the visible title of the report.
+- author: "Jane Doe" — the author shown in the rendered document.
+- date: "2025-04-10" — the date printed on the document (ISO format).
+- output: — starts the output format specification (what kind of file to produce).
+- prettydoc::html_pretty: — use the prettydoc package’s html_pretty HTML format instead of the default rmarkdown::html_document.
+- theme: cayman — the visual theme used by html_pretty (a prebuilt CSS look named “cayman”).
+- highlight: github — the code block syntax highlighting style (uses highlight.js style named “github”).
+
+### What this does in practice
+
+When you knit the .Rmd (e.g., click Knit in RStudio R Markdown will create an HTML file styled by prettydoc with the Cayman theme and GitHub-like code highlighting. If prettydoc isn’t installed, the render will fail until you install it.
+
+```
+install.packages("prettydoc")
+```
+
+If you do not like the Cayman theme you can choose some others like:  
+
+| Theme name                  | Visual style summary                                                            |
+| --------------------------- | ------------------------------------------------------------------------------- |
+| **`cayman`**                | Clean, minimal GitHub-Pages look with blue header. *(default)*                  |
+| **`architect`**             | Crisp white layout, bold black title bar; inspired by “Architect” Jekyll theme. |
+| **`leonids`**               | White body, black banner; small-caps title; subtle typography.                  |
+| **`tactile`**               | Beige background, warm tone, retro “notebook” feel.                             |
+| **`hpstr`**                 | Modern, dark header, sans-serif fonts, slightly higher contrast.                |
+| **`trestles`**              | Muted grey theme with strong section headings; modern academic look.            |
+| **`lumen`**                 | Light Bootstrap-inspired theme with white cards and subtle shadows.             |
+
 
 
 ### Submission

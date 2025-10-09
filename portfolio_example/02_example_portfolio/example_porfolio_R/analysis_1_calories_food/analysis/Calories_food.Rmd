@@ -1,9 +1,11 @@
 ---
 title: "Calories Food"
-output:
-  word_document: default
-  html_document: default
+author: "Jane Doe"
 date: "2025-04-10"
+output: 
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
 ---
 
 # Analysis of calories in various food products
