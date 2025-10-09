@@ -220,13 +220,16 @@ You can make your R Markdown report in HTML more beautiful by changing the stand
 Example YAML front matter:
 
 ```
-title: "Calories Food" 
-author: "Jane Doe" 
-date: "2025-04-10" 
-output: prettydoc::html_pretty: 
-theme: cayman 
-highlight: github
+title: "Calories Food"
+author: "Jane Doe"
+date: 
+output: "2025-04-10"
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
 ```
+
+>Note that the YAML front matter code block should start end end with 3 backticks.
 
 #### What each line means
 
