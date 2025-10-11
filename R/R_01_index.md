@@ -33,6 +33,8 @@
 - [Data Analysis](./R_10_data_analysis_exercises.html)
 - [Data Visualization](./R_13_data_visualization_exercises.html)
 
+- [Additional exercises](./R_01_index_add.md)
+
 ## Solutions
 
 - [Basics](./R_02_basics_solutions.html)
