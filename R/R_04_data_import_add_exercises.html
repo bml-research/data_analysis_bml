@@ -209,7 +209,7 @@ Visual Studio Code to look at the files.<br />
 <div id="read-data-from-local-files-stored-on-your-computer" class="section level2">
 <h2>Read data from local files stored on your computer</h2>
 <p>Download the files <a href="./files_04_data_import_exercises/add_exercises/honey.csv">honey.csv</a>,
-<a href="./files_04_data_import_exercises/add_exercises/amylase.txt">amylase.txt</a>
+<a href="./files_04_data_import_exercises/add_exercises/amylase.tsv">amylase.tsv</a>
 and <a href="./files_04_data_import_exercises/add_exercises/prot_pred.csv">prot_pred.csv</a>
 and move them to the same folder as this RMarkdown file. Determine what
 is the separator in these files using Visual Studio Code (or a text
@@ -233,7 +233,7 @@ the <code>read_csv2()</code> function.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Read the prot_sep.csv file with the correct function. Overwrite the data frame in df2.</span></span></code></pre></div>
 <p>The function to read ‘tab’-separated data is the
 <code>read_tsv()</code> function.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># Read the amylase.txt file with the correct function. Save the data frame in df3.</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># Read the amylase.tsv file with the correct function. Save the data frame in df3.</span></span></code></pre></div>
 <p>At a first glance, the tibble looks fine. However, if you move to the
 12<sup>th</sup> column (<strong>Beeptime_last_beep</strong>), you see
 that the type of data is ‘<em>character</em>’, while this should be

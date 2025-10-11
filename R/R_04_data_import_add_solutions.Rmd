@@ -74,7 +74,7 @@ This can be a common text editor, such as Notepad, but for this course we will u
 
 ## Read data from local files stored on your computer
 
-Download the files [honey.csv](./files_04_data_import_exercises/add_exercises/honey.csv), [amylase.txt](./files_04_data_import_exercises/add_exercises/amylase.txt) and [prot_pred.csv](./files_04_data_import_exercises/add_exercises/prot_pred.csv) and move them to the same folder as this RMarkdown file.
+Download the files [honey.csv](./files_04_data_import_exercises/add_exercises/honey.csv), [amylase.tsv](./files_04_data_import_exercises/add_exercises/amylase.tsv) and [prot_pred.csv](./files_04_data_import_exercises/add_exercises/prot_pred.csv) and move them to the same folder as this RMarkdown file.
 Determine what is the separator in these files using Visual Studio Code (or a text editor).
 
 Next, we will try to read the files into RStudio and see what we need to import the data correctly. If you have saved the files in a different folder, you will have to adjust the `file_path` accordingly (which can be tricky).
@@ -110,8 +110,8 @@ formatted_table(head(df2))
 The function to read 'tab'-separated data is the `read_tsv()` function.
 
 ```{r}
-# Read the amylase.txt file with the correct function. Save the data frame in df3.
-df3 <- read_tsv("./amylase.txt")
+# Read the amylase.tsv file with the correct function. Save the data frame in df3.
+df3 <- read_tsv("./amylase.tsv")
 formatted_table(head(df3))
 ```
 
@@ -122,7 +122,7 @@ The function needs an extra argument to tell the function that the comma is the 
 
 ```{r}
 # Set the decimal separator to a comma using the `locale = ` argument. Save the data frame in df4.
-df4 <- read_tsv("./amylase.txt", locale = locale(decimal_mark = ","))
+df4 <- read_tsv("./amylase.tsv", locale = locale(decimal_mark = ","))
 formatted_table(head(df4))
 ```
 

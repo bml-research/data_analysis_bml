@@ -72,7 +72,7 @@ This can be a common text editor, such as Notepad, but for this course we will u
 
 ## Read data from local files stored on your computer
 
-Download the files [honey.csv](./files_04_data_import_exercises/add_exercises/honey.csv), [amylase.txt](./files_04_data_import_exercises/add_exercises/amylase.txt) and [prot_pred.csv](./files_04_data_import_exercises/add_exercises/prot_pred.csv) and move them to the same folder as this RMarkdown file.
+Download the files [honey.csv](./files_04_data_import_exercises/add_exercises/honey.csv), [amylase.tsv](./files_04_data_import_exercises/add_exercises/amylase.tsv) and [prot_pred.csv](./files_04_data_import_exercises/add_exercises/prot_pred.csv) and move them to the same folder as this RMarkdown file.
 Determine what is the separator in these files using Visual Studio Code (or a text editor).
 
 Next, we will try to read the files into RStudio and see what we need to import the data correctly. If you have saved the files in a different folder, you will have to adjust the `file_path` accordingly (which can be tricky).
@@ -103,7 +103,7 @@ The function to read 'semi-colon'-separated data is the `read_csv2()` function.
 The function to read 'tab'-separated data is the `read_tsv()` function.
 
 ```{r}
-# Read the amylase.txt file with the correct function. Save the data frame in df3.
+# Read the amylase.tsv file with the correct function. Save the data frame in df3.
 
 ```
 

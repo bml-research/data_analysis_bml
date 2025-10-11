@@ -546,7 +546,7 @@ Visual Studio Code to look at the files.<br />
 <div id="read-data-from-local-files-stored-on-your-computer" class="section level2">
 <h2>Read data from local files stored on your computer</h2>
 <p>Download the files <a href="./files_04_data_import_exercises/add_exercises/honey.csv">honey.csv</a>,
-<a href="./files_04_data_import_exercises/add_exercises/amylase.txt">amylase.txt</a>
+<a href="./files_04_data_import_exercises/add_exercises/amylase.tsv">amylase.tsv</a>
 and <a href="./files_04_data_import_exercises/add_exercises/prot_pred.csv">prot_pred.csv</a>
 and move them to the same folder as this RMarkdown file. Determine what
 is the separator in these files using Visual Studio Code (or a text
@@ -1365,8 +1365,8 @@ NA
 </table>
 <p>The function to read ‘tab’-separated data is the
 <code>read_tsv()</code> function.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># Read the amylase.txt file with the correct function. Save the data frame in df3.</span></span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;./amylase.txt&quot;</span>)</span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># Read the amylase.tsv file with the correct function. Save the data frame in df3.</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;./amylase.tsv&quot;</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="fu">formatted_table</span>(<span class="fu">head</span>(df3))</span></code></pre></div>
 <table class="table table-striped table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
@@ -2299,7 +2299,7 @@ file, the value is read as a character. The function needs an extra
 argument to tell the function that the comma is the decimal
 separator.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># Set the decimal separator to a comma using the `locale = ` argument. Save the data frame in df4.</span></span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;./amylase.txt&quot;</span>, <span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">decimal_mark =</span> <span class="st">&quot;,&quot;</span>))</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;./amylase.tsv&quot;</span>, <span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">decimal_mark =</span> <span class="st">&quot;,&quot;</span>))</span>
 <span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="fu">formatted_table</span>(<span class="fu">head</span>(df4))</span></code></pre></div>
 <table class="table table-striped table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
