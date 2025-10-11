@@ -1,0 +1,414 @@
+---
+title: 'Lesson 7: R Basics (additional excercises)'
+author: "Mark Sibbald, Jurre Hageman"
+date: "2025-10-11"
+output: 
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+![](../hanze/hanze.png)
+
+---
+
+[Go back to the main page](../index.html)  
+[Go back to the R overview page](../R/R_01_index.html)  
+
+---
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+\
+This file can be downloaded [here](./R_02_basics_add_exercises.Rmd).
+\
+
+
+# Lesson 7: R Basics
+\
+
+## R as calculator
+
+You can use R as a basic calculator. Type in the console a couple of calculations to get used to the console as well as R Markdown. Simple calculations and lines of code are usually used in the console, while larger pieces or blocks of code are written in the source and saved in files for later use.
+
+```{r}
+# type some calculations and run the code with the green arrow on the right
+# Nine plus four
+
+# Ten minus eight
+
+# Seven times six
+
+# Five to the power eight
+
+# A different way to write and calculate five to the power eight
+
+```
+
+For more complicated calculations you need functions. Functions that are used very often are preprogrammed in R and you just have to call that function. A function needs arguments. You can use the `Help` screen on the right bottom side to find information on the functions that are used in R. You can also type `?function_name` in the console.
+
+Let's stay with the calculations and try to calculate the square root of a number. It is possible to use to the power 0.5, but you can also use the function `sqrt()`.
+
+```{r}
+# Calculate for four random numbers the square root for numbers using to the power 0.5
+
+# For the same numbers use the function `sqrt()`
+
+```
+
+\
+
+## Variables
+
+It is useful to store data in variables, otherwise you will have to type the same number (or word/code) again. You can store number(s), word(s), text, functions, data frames, etc. in a variable. In programming languages we usually try to avoid capital letters (unless it is necessary) and spaces are forbidden. Let's try to start storing data in variables. For storing data in variables, the arrow (`<-`) is used. The equality sign (`=`) can also be used, but the arrow is more commonly used when writing code.
+
+```{r}
+# Store the number 100 in a variable called `var1`.
+
+```
+
+On the right side of the screen (Environment) you can see that the number 100 is stored in the variable var1. You can call the value of the variable in the console and/or use it calculations.
+
+```{r}
+# Add the number 50 to the variable var1.
+
+# Multiply var1 with 10.
+
+# Take the square root of var1.
+
+# Take the square root of the number 144. Use var1 in your calculation.
+
+```
+
+Of course it is also possible to store other types of data in variables. The types of data have been explained before, but we will limit our lessons to numbers, characters and factors. Text is used to explain the code and then it is written behind a '\#' (as you have seen in the examples above). But you can also store text/words in variables to use them later.
+
+```{r}
+# Store the word 'hello" in the variable var2 and the word 'world' in the variable var3.
+
+```
+
+Adding words together to make a sentence is not possible to do like it is possible with numbers. To place words together, the `paste()` or the `paste0()` function is used.
+
+```{r}
+# Paste the variables var2 and var3 together using the `paste()` function. Store it in the variable var4.
+
+# Paste the variables var2 and var3 together using the `paste0()` function. Store it in the variable var5.
+
+# What is the difference?
+
+```
+
+The opposite of paste is the function `strsplit()` and can sometimes be useful to separate words into letters (for example a DNA sequence into its single nucleotides, or protein sequence into amino acids).
+
+```{r}
+# Convert the following protein sequences into the single amino acids. When you use the split argument "", the sequence will be split after each character.
+var6 <- "MSFGRTYHGHHGVAAMKLMNPPLYWQQRTASDDETYNMCGGFLLKILYTQSS"
+var7 <- "Met-Ala-Ala-His-Pro-Leu-Pro-Gln-Asp-Asn-Ala-Val-Lys-Lys-Tyr-Ser-Pro-Ile"
+
+```
+
+Some useful variables are ready and available in R. For example, the letters of the alphabet are stored in the variable `letters`. You can use this variable to extract letters and use them in functions. Just type *letters* in the console and see what is stored in this variable. You see that these are the small letters of the alphabet. You can transform these letters to the capital letters.
+
+```{r}
+# Store the letters of the alphabet into the variable var8.
+
+# Use the function `toupper()` to transform the letters to the capital letters and store this in the variable var9.
+
+```
+
+This is just a workaround, because R has also the capital letters already stored them in the variable `LETTERS`.\
+
+## Vectors and data types
+
+Before we go to the last type of data (factors) we will discuss vectors first. A vector is a collection of types of data that can be only one type of data, but also different types of data. The most basic factor is created with the `c()` function.
+
+```{r}
+# Create a vector with the numbers 1, 3, 6, 15 and 19 and store it in the variable var10.
+
+```
+
+You can do many operations on variables. For example, determine the length of the vector (the amount of elements in the vector) with the `length()` function. Or you can add a certain amount to all the elements of a vector.
+
+```{r}
+# Determine how many elements are in the vector stored in var10 using the `length()` function.
+
+# Add 6 to all the elements of the vector stored in var10.
+
+# Multiply with 10 all the elements of the vector stored in var10.
+
+# Take the square root of all the elements stored in var10.
+
+# Calculate the average (mean) of the numbers stored in var10.
+
+# Calculate the median of the numbers stored in var10.
+
+# Calculate the standard deviation (sd) of the numbers stored in var10.
+
+```
+
+It is possible to use conditional operators on vectors to search certain values. These conditional operators are `==` (equal to), `>=` (bigger than), `<=` (smaller than), and `!=` (not equal to).
+
+```{r}
+# Check if the elements in var10 are:
+## bigger than 6
+
+## bigger or equal to 6
+
+## smaller than 10
+
+## equal to 15
+
+## not equal to 1
+
+```
+
+The last data type that we will use in this lesson is the factor. The factor is not a number but can be ordered. For example, for a test the letters "O", "V", "G" are used to grade the test. These are factors and are ordered, because "O" < "V" < "G".
+
+Check the Help menu what the `factor()` function does and what arguments it takes. A vector of data can be created with the `c()` function. The argument `levels` will be the unique levels that are present in all the factors, and the argument `ordered` will be set to TRUE if the order in the argument `levels` is indeed true.
+
+```{r}
+# Store the factors "V", "V", "G", "O", "V", "G", "O", "O" and "V" in the variable var11. 
+
+# Check which values in the factor are smaller than "G".
+
+# Check which type of data is stored in var10 and var11 with the `class()` function.
+
+```
+
+The `seq()` and the `rep()` functions can also be useful to create vectors. The `rep()` function is used to add repeats of elements to a vector and `seq()` is used for repetition with regular intervals. For example: take only the odd or even numbers, or take every 3rd element from a certain vector.
+
+```{r}
+# Take the odd numbers from 1-20 and store them in a new variable, var12
+
+# Take the even numbers from var12 and store them in a new variable, var13
+
+# Create a vector with four times the letter "a" and store them in the variable var14.
+
+# Create a vector with four times the letter "a" and "b" (end result: "a" "b" "a" "b" ...). 
+
+# Create a vector with four times the letter "a" and then four times the letter "b".
+# Store this vector in the variable var16 (end result: "a" "a" "a" ... "b" "b" "b" ...).
+
+# Which type of data is stored in var15?
+
+```
+
+Last thing about data types: it is possible to store different types of data in a vector, but the elements are then converted to one type of data. Letters cannot be converted to numbers, so a combination of numbers and letters (characters) is converted to characters for all the elements in the vector.
+
+```{r}
+# Create a vector with the elements 1, 2, 3 and "a" and store the vector in the variable var17. Which type are the elements in the vector?
+
+```
+
+Vectors are the place where elements can be stored and used when necessary. But what if you want to use only a selection of the elements? Then you need to know where the elements are in the vector and you need to know how to extract the element(s). This is called indexing. You can use indexing on vectors, but (as we will see) also on data frames. To extract elements from a vector, the square brackets `[]` are used.
+
+```{r}
+# Extract the first element from variable LETTERS (stored in var9).
+
+# Extract the last element from variable LETTERS (stored in var9).
+
+# Extract the letters "D", "N" and "A" from var9.
+
+# Paste these letters together to "DNA" and store it in var18.
+
+```
+
+\
+
+## Dataframes & Tidyverse
+
+Data frames can be constructed from vectors of equal length. The vectors are the columns and the elements the variables in the data frame, while the rows are the observations of the data frame. When you have vectors that you want to collect in a data frame, you can use the `data.frame()` function.
+
+```{r}
+# Create two vectors with the numbers 1:20 in vec1 and the numbers 21:40 in vec2. Combine these vectors to a data frome, df1.
+
+```
+
+Data frames created in basic R are 'basic'. It is possible to use a more 'pimped' version of the data frame using the `tidyverse` library. You can load this library by typing `library(tidyverse)` in the console. Many other useful functions in this library will be used during this course. Make sure that you load this library every time before we start the lesson. To make the data frames a bit more presentable in the HTML-format, we use during the course you will also need the library `kableExtra`.
+
+```{r}
+# Load the libraries `tidyverse` and `kableExtra`.
+library(tidyverse)
+library(kableExtra)
+```
+
+We use the tibble as a more informative data frame during this course. Make a tibble of `df1` and make it more presentable it with `KableExtra`. The function `kable_styling()` will let you make up your tibble the way you like.
+
+```{r}
+formatted_table <- function(df) {
+  kbl(df) %>%
+  kable_styling(bootstrap_options = c("striped", "hoover", "responsive"))
+}
+
+# Create a tibble from df1 and store it in tib1.
+
+# Format the table with the function `formatted_table()` that has been defined above.
+# The only argument for this function will be the tibble.
+
+```
+
+You can give the column headers the name you want to give with the `names()` function. The argument needed is a vector with the names of the columns. Selecting elements, rows and columns can be done using indexing, like indexing with vectors. The difference is that there are now two dimensions, instead of one. The square brackets `[]` are still used, but now you have to indicate the rows and columns, separated by a comma.
+
+```{r}
+# Give the data frame tib1 new names for the headers of the data frame: "Variable1" and "Variable2".
+
+# Select the element in row 3 and column 1.
+
+# Select the element in row 1 and column 2.
+
+# Select column 2.
+
+# Select row 4.
+
+```
+
+Let's add a new column with newly acquired data to this data frame. There are different ways to do this, but the most basic method is the following:
+
+```{r}
+# Add a third column that contains the values 11-15 and has the header Variable3.
+
+```
+
+Note that you cannot add a new column this way if the elements in the new vector does not have the same length as the amount of rows in the data frame. You can even do some calculations if the data frame consists of numbers only.
+
+```{r}
+# Add 1 to every element of df1.
+
+# Multiply all the elements of df1 by 6.
+
+# Create a second data frame df2 that consists of three columns and 5 rows. Take random numbers for each element. Now add df1 to df2.
+
+```
+
+R can access a couple of standard data frames that can be used for exercises to practice your skills in R. One of these data frames is the `Iris` data frame. We will use the function `head()` to show only the first 10 rows of the data frame.
+
+```{r}
+# Load the data frame `Iris` and save it in the variable df3.
+
+# Show the third column of the data frame.
+
+# Show the eleventh row of the data frame.
+
+# Show the element in the second column and sixth row.
+
+# Show the fifth column by using the column name.
+
+# Show the fifty second element of this particular column.
+
+# Show the maximum sepal width.
+
+# Show the row that contains the maxim sepal width.
+
+# Show the mean petal length.
+
+# Show the summary of this data frame using the `summary` function.
+
+# Show the summary of the petal width.
+
+# Show the rows of the setosa species.
+
+# Order the data frame ascending on the sepal length.
+
+# Order the data frame descending on the sepal width.
+
+```
+
+\
+
+## Plotting
+
+Last part of this lesson is plotting. Data frames often contain data that might have a correlation between variables. To plot a graph we use the basic `plot()` function. However, when we move to other plot functions later on. The most basic plot needs x-values and y-values, which can be extracted from a data frame.
+
+```{r}
+# Create a plot from the vectors with numbers 1-10 (x-values) and numbers 11-20 (y-values).
+
+```
+
+You see the plot is very, very basic, but this is just a start. Let's use the `iris` data frame to get some more interesting plots and let's try to adjust the plot to our liking (axis titles, graph title, maybe add some color to it...). Check Help for the `plot()` function. Search for `base::plot`. Let's have a look on the different kind plots we can use with this data frame. The first basic plot is the XY-scatterplot.
+
+```{r}
+# Create an XY-scatterplot with the petal width on the x-axis and the petal length on the y-axis.
+
+# Add labels for the x- and y-axes. Width and length is in mm.
+# Add a main title to the graph.
+# Make the lines blue.
+
+```
+
+It is also possible to use the formula notation `y ~ x` to plot the same data.
+
+```{r}
+# Plot the same data using the formula notation.
+
+```
+
+You can add a trendline to the plot as well.
+
+```{r}
+# Add a trendline with `abline()`.
+
+```
+
+You can also add other variables to the plot, as long as the x-values are the same variable.
+
+```{r}
+# Create a plot with the sepal length and the petal length (y-values) are plotted against the sepal width.
+
+```
+
+Let's try to make a histogram of the sepal width.
+
+```{r}
+# Create a histogram of the sepal width with the `hist()` function.
+
+```
+
+The function takes the most convenient steps to divide the different widths into the classes. You are able to adjust this by using the argument `breaks =`. This arguments needs a lower and upper limit and the division between the breaks (you have used the function `seq()` to achieve this before). Add some better titles to the graph and axes while you are on it.
+
+```{r}
+# Create a histogram that shows the sepal widths between 2.0 and 5.0 with steps of 0.5.
+
+```
+
+With the boxplot you can add series and compare them to each other. The range of measurements are shown as well as the variability of the measurements.
+
+```{r}
+# Create a boxplot of the petal width en sepal width. Use the argument `names =` for the variables.
+
+```
+
+The barplot is also frequently used to visualize data. The basic barplot contains the values on the y-axis and the categories on the x-axis. Let's plot the average of the (numeric) variables in a barplot.
+
+```{r}
+# Create a barplot of the averages of the sepal width, sepal length, petal width and petal length.
+
+```
+
+\
+
+# Learning outcomes
+
+This lesson you have learned to:\
+- *use base R to get to know how R and RStudio works,*\
+- *create variables to store data,*\
+- *create data frames from vectors,*\
+- *access data in vectors and data frames,*\
+- *plot data with base R.*\
+\
+\
+
+<center>--- The end ---</center>
+\
+\
+
+---
+
+[Go back to the main page](../index.html)  
+[Go back to the R overview page](../R/R_01_index.html)  
+<a href="#top">⬆️ Back to Top</a>  
+
+---
+
+>This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
+>Creative Commons License: CC BY-SA 4.0.
