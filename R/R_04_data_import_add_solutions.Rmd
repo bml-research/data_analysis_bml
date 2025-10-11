@@ -1,0 +1,278 @@
+---
+title: 'Lesson 8: Data import'
+author: "Mark Sibbald, Jurre Hageman"
+date: "2025-09-23"
+output: 
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+![](../hanze/hanze.png)
+
+---
+
+[Go back to the main page](../index.html)  
+[Go back to the R overview page](../R/R_01_index.html)  
+
+---
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+\
+This file can be downloaded [here](./R_04_data_import_add_exercises.Rmd).
+\
+
+
+# Lesson 8: Import data
+
+Run the code in the block below before you start the rest of the code blocks in this lesson.
+Firstly, the library of `Tidyverse` is loaded to use code to import data in an easy way.
+Secondly, the library `kableExtra` is loaded to transform the tibbles that we use to a more presentable table.
+You will only have to pass the data frame as an argument in the function `formatted table` later on.
+
+```{r}
+# RUN THIS CODE 
+library(tidyverse)
+library(kableExtra)
+formatted_table <- function(df) {
+  kbl(df) %>%
+  kable_styling(bootstrap_options = c("striped", "hoover", "responsive"))
+}
+```
+
+As shown in the previous lesson it is quite easy to create data frames (transform them to tibbles).
+Just as a reminder to create a tibble use the following vectors:
+
+```{r}
+# Create a data frame (tibble) with the following vectors
+protein <- c("AmyE", "AtpE", "BdbD", "SipS", "SunA", "YdgA")
+AAs <- c(123, 342, 612, 441, 47, 510)
+signal_peptide <- c("Yes", "No", "No", "No", "Yes", "No")
+cleavage_site <- c(31, NA, NA, NA, 22, NA)
+
+my_tibble <- tibble(protein, AAs, signal_peptide, cleavage_site)
+formatted_table(my_tibble)
+```
+
+With `str()` you can check the properties of your tibble.
+This is useful to check (for example) if the data in a specific column has been imported correctly (e.g. numbers).
+
+```{r}
+# Check properties of `my_tibble`.
+str(my_tibble)
+```
+
+This looks a bit like a short Excel sheet.
+You will (probably) not create data frames yourselves, but use data frames from websites to extract and analyse data.
+It is nearly impossible to type all that data in R (especially when there are millions of rows of data), but you need to import/read the data into RStudio.
+There are several functions that you van use from the readr package.
+It is advisable to use a text editor to check which separator is used to separate the data.
+This can be a common text editor, such as Notepad, but for this course we will use Visual Studio Code to look at the files.
+\
+
+## Read data from local files stored on your computer
+
+Download the files [honey.csv](./files_04_data_import_exercises/add_exercises/honey.csv), [amylase.txt](./files_04_data_import_exercises/add_exercises/amylase.txt) and [prot_pred.csv](./files_04_data_import_exercises/add_exercises/prot_pred.csv) and move them to the same folder as this RMarkdown file.
+Determine what is the separator in these files using Visual Studio Code (or a text editor).
+
+Next, we will try to read the files into RStudio and see what we need to import the data correctly. If you have saved the files in a different folder, you will have to adjust the `file_path` accordingly (which can be tricky).
+
+```{r}
+# Read the csv file with comma-separated data. Save the data frame in df1.
+# Check the properties with `str()`.
+df1 <- read_csv("./honey.csv")
+formatted_table(head(df1))
+str(df1)
+```
+
+In the console you can already see a couple of properties of the data frame: the delimiter is the comma, it contains 3 columns which are character-type and 14 columns that are numeric.
+
+Try to open the 'prot_pred.csv' file with `read_csv()`.
+
+```{r}
+# Read the csv file with semi-colon-separated data with `read_csv()`. Save the data frame in df2.
+df2 <- read_csv("./prot_pred.csv")
+formatted_table(head(df2))
+df2
+```
+
+You see that this is not a correct data frame; the data is not separated correctly, because this files has the semi-colon as the separator of data.
+The function to read 'semi-colon'-separated data is the `read_csv2()` function.
+
+```{r}
+# Read the prot_sep.csv file with the correct function. Overwrite the data frame in df2.
+df2 <- read_csv2("./prot_pred.csv")
+formatted_table(head(df2))
+```
+
+The function to read 'tab'-separated data is the `read_tsv()` function.
+
+```{r}
+# Read the amylase.txt file with the correct function. Save the data frame in df3.
+df3 <- read_tsv("./amylase.txt")
+formatted_table(head(df3))
+```
+
+At a first glance, the tibble looks fine.
+However, if you move to the 12^th^ column (**Beeptime_last_beep**), you see that the type of data is '*character*', while this should be '*numeric*'.
+Because the decimal separator is a comma in this file, the value is read as a character.
+The function needs an extra argument to tell the function that the comma is the decimal separator.
+
+```{r}
+# Set the decimal separator to a comma using the `locale = ` argument. Save the data frame in df4.
+df4 <- read_tsv("./amylase.txt", locale = locale(decimal_mark = ","))
+formatted_table(head(df4))
+```
+
+Check again the column '**Beeptime_last_beep**' and see that the comma is replaced by a dot and that type of the data in this column is now numeric (outline is to the right).
+\
+
+## Read data from a website
+
+It is also possible to read the data directly from the website if there is an address to the file with the data.
+Try to read the 'prot_pred' data directly from the internet.
+
+```{r}
+# Read the data directly from the web.
+# The address of the data is "https://tinyurl.com/bdfc3cnx". Store this address in my_url1.
+# You can store the address in a variable and use this variable to import the data. Save the data frame in df5.
+my_url1 <- "https://tinyurl.com/bdfc3cnx"
+df5 <- read_csv2(my_url1)
+formatted_table(head(df5))
+```
+
+Load the following dataset.
+What is wrong with the output?
+
+```{r}
+# Load the dataset that is stored at "https://tinyurl.com/ydbte7fp". Store this address in my_url2.
+# Save the data frame in df6.
+my_url2 <- "https://tinyurl.com/ydbte7fp"
+df6 <- read_csv(my_url2)
+formatted_table(head(df6))
+```
+
+You see that this dataset does not have any headers and automatically the first row is used as the header.
+If you check the help function for `read_csv()` you will see that the default setting for headers (col_names) is set to `TRUE`.
+Load again the same dataset and adjust the argument for headers, so that the first row is not read as a header.
+
+```{r}
+# Load the dataset that is stored at "https://tinyurl.com/ydbte7fp". Save the data frame in df7.
+df7 <- read_csv(my_url2, col_names = F)
+formatted_table(head(df7))
+```
+
+You see that the tibble now has headers (X1-X17).
+If you want to change the names of the headers you can use the function `names()` which contains a vector with the names of the headers.
+A vector with the headers is given in the next block of code.
+Change the names of the headers of the last data frame.
+
+```{r}
+# Give the correct headers to the data frame df7. The names of the headers are stored in `head_names`.
+head_names <- c("state", "numcol", "yieldpercol", "totalprod", "stocks", "priceperlb", "prodvalue", "year", "StateName", "Region", "FIPS", "nCLOTHIANIDIN", "nIMIDACLOPRID", "nTHIAMETHOXAM", "nACETAMIPRID", "nTHIACLOPRID", "nAllNeonic")
+names(df7) <- head_names
+formatted_table(head(df7))
+```
+
+Now try to read the following file and see what is wrong when you use `read_csv()` to read the file.
+
+```{r}
+# Read the data stored at "https://tinyurl.com/mpev7ua6". Save this address in my_url3.
+# Save the data frame in df8.
+my_url3 <- "https://tinyurl.com/mpev7ua6"
+df8 <- read_csv(my_url3)
+formatted_table(head(df8))
+```
+
+You see that there is a comment in the first line and the data is separated with an asterisk (*).
+You cannot use `read_csv()`, `read_csv2()`, or `read_tsv()` to read this file.
+These functions have preset delimiters: comma, semi-colon and tab, respectively.
+There is a function that will read files where you have to indicate the delimiter: `read_delim()`.
+Load the previous data with this function.
+First, use help on this function and try to figure out how to set the delimiter and remove the comment.
+
+```{r}
+# Read the file and use the delimiter and comment arguments to read the data properly.
+# Save the data frame in df9.
+df9 <- read_delim(my_url3, delim = "*", comment = "@")
+formatted_table(head(df9))
+```
+\
+
+## Write data to a file on your computer
+
+Of course it is also possible to write data to a new file (maybe you made some changes to a dataset and you want to save it to work on later).
+Check with a text editor if the data is separated with the delimiter that you expect for the function that you have used to write the data.
+
+```{r}
+# Use the `write` functions that are derived from the `read` functions to create a
+# - comma-separated file
+# - semi-colon-separated file
+# - tab-separated file
+# - where $ is the delimiter
+# from the first tibble that has been created (my_tibble). Make sure they have unique file names.
+write_csv(my_tibble, "./my_tibble_comma.csv")
+write_csv2(my_tibble, "./my_tibble_semi_colon.csv")
+write_tsv(my_tibble, "./my_tibble_tab.tsv")
+write_delim(my_tibble, "./my_tibble_delim.csv", delim = "$")
+```
+\
+
+## Read and write data from and to an Excel file
+
+It is also possible to read and write Excel files in R.
+The package to read/write Excel files comes with the `readxl` and `openxlsx` libraries.
+You can install the `readxl` and `openxlsx` packages if for some reason it has not been installed yet.
+
+```{r}
+# RUN THIS CODE before you move on to the next block of code.
+# install.packages("readxl")
+# install.packages("openxlsx")
+library(readxl)
+library(openxlsx)
+```
+
+Try to read the data in the Excel file [amylase.xlsx](./files_04_data_import_exercises/add_exercises/amylase.xlsx) in R using the `read_excel()` function.
+
+```{r}
+# Read the Excel file. Save the data frame in df10.
+df10 <- read_excel("./amylase.xlsx")
+formatted_table(head(df10))
+```
+
+Try to write the data frame `my_tibble` to an Excel file using the `write.xlsx()` function.
+
+```{r}
+# Write `my_tibble` to an Excel file.
+write.xlsx(my_tibble, "./my_tibble.xlsx")
+```
+
+\
+
+# Learning outcomes
+
+This lesson you have learned to:\
+- *read and write files that have a comma as the delimiter with the `read_csv()` and `write_csv()` functions,*\
+- *read and write files that have a semi-colon as the delimiter with the `read_csv2()` and `write_csv2()`functions,*\
+- *read and write files that have a tab as the delimiter with the `read_tsv()` and `write_tsv()` functions,*\
+- *read and write files that have a semi-colon as the delimiter with the `read_delim()` and `write_delim()` functions,*\
+- *read and write Excel files with the `read_xlsx()` and `write.xlsx()` functions.*\
+\
+\
+
+<center>--- The end ---</center>
+\
+\
+
+---
+
+[Go back to the main page](../index.html)  
+[Go back to the R overview page](../R/R_01_index.html)  
+<a href="#top">⬆️ Back to Top</a>  
+
+---
+
+>This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
+>Creative Commons License: CC BY-SA 4.0.
