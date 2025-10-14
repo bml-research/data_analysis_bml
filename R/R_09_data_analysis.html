@@ -1207,11 +1207,123 @@ Galantamine
 </table>
 <p>Now we have the value of the second row and the eighth column.</p>
 </div>
+<div id="analysis-with-tidyverse-functions" class="section level2">
+<h2>Analysis with Tidyverse functions</h2>
+<p>The previous examples where all examples of base R. We will now focus
+on some commonly used Tidyverse functions for the analysis and plotting
+(next lessons).</p>
+<p>Herewith a table with some commonly used Tidyverse functions and the
+applications:</p>
+<table>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr>
+<th align="left">Package</th>
+<th align="left">Function</th>
+<th align="left">Primary Purpose</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong><code>dplyr</code></strong></td>
+<td align="left"><code>filter()</code></td>
+<td align="left">Subset rows</td>
+<td align="left">Selects a subset of rows based on column values that
+meet specified logical conditions.</td>
+</tr>
+<tr>
+<td align="left"><strong><code>dplyr</code></strong></td>
+<td align="left"><code>slice()</code></td>
+<td align="left">Subset rows by position</td>
+<td align="left">Selects rows by their integer position in the data
+frame. Also includes helpers like <code>slice_head()</code>,
+<code>slice_tail()</code>, <code>slice_min()</code>,
+<code>slice_max()</code>, and <code>slice_sample()</code>.</td>
+</tr>
+<tr>
+<td align="left"><strong><code>dplyr</code></strong></td>
+<td align="left"><code>select()</code></td>
+<td align="left">Subset columns</td>
+<td align="left">Selects, drops, or reorders columns by their
+names.</td>
+</tr>
+<tr>
+<td align="left"><strong><code>dplyr</code></strong></td>
+<td align="left"><code>mutate()</code></td>
+<td align="left">Add/Modify columns</td>
+<td align="left">Adds new columns or modifies existing ones based on a
+formula.</td>
+</tr>
+<tr>
+<td align="left"><strong><code>dplyr</code></strong></td>
+<td align="left"><code>arrange()</code></td>
+<td align="left">Reorder rows</td>
+<td align="left">Sorts rows by the values of specified column(s) in
+ascending or descending order.</td>
+</tr>
+<tr>
+<td align="left"><strong><code>dplyr</code></strong></td>
+<td align="left"><code>group_by()</code></td>
+<td align="left">Group data</td>
+<td align="left">Creates grouped data that subsequent functions (like
+<code>summarize()</code>) operate on for each group.</td>
+</tr>
+<tr>
+<td align="left"><strong><code>dplyr</code></strong></td>
+<td align="left"><code>summarize()</code></td>
+<td align="left">Summarize data</td>
+<td align="left">Reduces multiple values down to a single summary
+statistic (e.g., mean, count, standard deviation).</td>
+</tr>
+<tr>
+<td align="left"><strong><code>dplyr</code></strong></td>
+<td align="left"><code>inner_join()</code></td>
+<td align="left">Combine data</td>
+<td align="left">Joins two data frames by matching keys, keeping only
+rows that have matches in <em>both</em> tables.</td>
+</tr>
+<tr>
+<td align="left"><strong><code>tidyr</code></strong></td>
+<td align="left"><code>pivot_longer()</code></td>
+<td align="left">Reshape data</td>
+<td align="left">Lengthens data, increasing the number of rows and
+decreasing the number of columns.</td>
+</tr>
+<tr>
+<td align="left"><strong><code>tidyr</code></strong></td>
+<td align="left"><code>pivot_wider()</code></td>
+<td align="left">Reshape data</td>
+<td align="left">Widens data, decreasing the number of rows and
+increasing the number of columns.</td>
+</tr>
+<tr>
+<td align="left"><strong><code>ggplot2</code></strong></td>
+<td align="left"><code>ggplot()</code></td>
+<td align="left">Create visualizations</td>
+<td align="left">Initializes a ggplot object, defining the data and
+aesthetic mappings.</td>
+</tr>
+<tr>
+<td align="left"><strong>Base R</strong></td>
+<td align="left"><code>%&gt;%</code> (pipe)</td>
+<td align="left">Chaining operations</td>
+<td align="left">Feeds the result of one function directly into the
+first argument of the next function.</td>
+</tr>
+</tbody>
+</table>
+<p>Some examples will follow below.</p>
+</div>
 <div id="slicing-with-slice" class="section level2">
 <h2>Slicing with slice</h2>
-<p>The previous examples where all examples of base R. Tidyverse uses
-the <code>slice</code> function (and variants) to slice your
-tibbles.<br />
+<p>Tidyverse uses the <code>slice</code> function (and variants) to
+slice your tibbles.<br />
 Some examples:</p>
 <p>Slice the first row:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">formatted_table</span>(<span class="fu">slice</span>(df, <span class="dv">1</span>))</span></code></pre></div>

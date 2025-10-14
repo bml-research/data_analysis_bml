@@ -127,9 +127,34 @@ formatted_table(df[2, 8]) #select second row and eighth column
 
 Now we have the value of the second row and the eighth column.
 
+## Analysis with Tidyverse functions
+
+The previous examples where all examples of base R. We will now focus on some commonly used Tidyverse functions for the analysis and plotting (next lessons).
+
+Herewith a table with some commonly used Tidyverse functions and the applications:  
+
+| Package | Function | Primary Purpose | Description |
+| :--- | :--- | :--- | :--- |
+| **`dplyr`** | `filter()` | Subset rows | Selects a subset of rows based on column values that meet specified logical conditions. |
+| **`dplyr`** | `slice()` | Subset rows by position | Selects rows by their integer position in the data frame. Also includes helpers like `slice_head()`, `slice_tail()`, `slice_min()`, `slice_max()`, and `slice_sample()`. |
+| **`dplyr`** | `select()` | Subset columns | Selects, drops, or reorders columns by their names. |
+| **`dplyr`** | `mutate()` | Add/Modify columns | Adds new columns or modifies existing ones based on a formula. |
+| **`dplyr`** | `arrange()` | Reorder rows | Sorts rows by the values of specified column(s) in ascending or descending order. |
+| **`dplyr`** | `group_by()` | Group data | Creates grouped data that subsequent functions (like `summarize()`) operate on for each group. |
+| **`dplyr`** | `summarize()` | Summarize data | Reduces multiple values down to a single summary statistic (e.g., mean, count, standard deviation). |
+| **`dplyr`** | `inner_join()` | Combine data | Joins two data frames by matching keys, keeping only rows that have matches in *both* tables. |
+| **`tidyr`** | `pivot_longer()` | Reshape data | Lengthens data, increasing the number of rows and decreasing the number of columns. |
+| **`tidyr`** | `pivot_wider()` | Reshape data | Widens data, decreasing the number of rows and increasing the number of columns. |
+| **`ggplot2`**| `ggplot()` | Create visualizations | Initializes a ggplot object, defining the data and aesthetic mappings. |
+| **Base R** | `%>%` (pipe) | Chaining operations | Feeds the result of one function directly into the first argument of the next function. |
+
+
+Some examples will follow below.  
+
+
 ## Slicing with slice
 
-The previous examples where all examples of base R. Tidyverse uses the `slice` function (and variants) to slice your tibbles.  
+Tidyverse uses the `slice` function (and variants) to slice your tibbles.  
 Some examples:  
 
 Slice the first row:
