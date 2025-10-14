@@ -38,12 +38,23 @@ Let's start with loading the `Tidyverse` library:
 library(tidyverse)
 ```
 
+>The following function is used to print tibbles in a proper way for the web. You can skip the use of this function to print tibbles to your screen in R Markdown documents.
+
 
 ```{r}
+library(knitr)
 library(kableExtra)
-formatted_table <- function(df){
-  kbl(df) %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "responsive"))
+library(pillar)
+
+formatted_table <- function(df) {
+  col_types <- sapply(df, pillar::type_sum)
+  new_col_names <- paste0(names(df), "<br>", "<span style='font-weight: normal;'>", col_types, "</span>")
+  kbl(df, 
+      col.names = new_col_names, 
+      escape = FALSE, # This is crucial to allow the <br> tag to work
+      format = "html" # Ensure HTML format, although often auto-detected
+      ) %>%
+    kable_styling(bootstrap_options = c("striped", "hover", "responsive"))
 }
 ```
 
@@ -116,7 +127,53 @@ formatted_table(df[2, 8]) #select second row and eighth column
 
 Now we have the value of the second row and the eighth column.
 
-  
+## Slicing with slice
+
+The previous examples where all examples of base R. Tidyverse uses the `slice` function (and variants) to slice your tibbles.  
+Some examples:  
+
+Slice the first row:
+
+```{r}
+formatted_table(slice(df, 1))
+```
+
+Or the second to fifth row:  
+
+```{r}
+formatted_table(slice(df, 2:5))
+```
+
+
+You can use `slice_head` to get the upper `n` rows:   
+
+```{r}
+formatted_table(slice_head(df, n=5))
+```
+
+Or `slice_tail` to get the last `n` rows:  
+
+```{r}
+formatted_table(slice_tail(df, n=5))
+```
+
+
+Using `slice_max` you can get the row with a max value (for example the max Alcohol level):  
+
+```{r}
+formatted_table(slice_max(df, order_by = AlcoholLevel, n=1))
+```
+
+
+Note that this is the same as the following in base R (but easier to read):  
+
+```{r}
+formatted_table(df[df$AlcoholLevel == max(df$AlcoholLevel), ])
+```
+
+
+There is also a `slice_min` function.  
+
 ## Filter rows
 
 One of the most frequent tasks that you will be doing on data frames is filtering rows.
