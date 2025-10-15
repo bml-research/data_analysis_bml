@@ -22,7 +22,7 @@ output:
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
 ```
 \
-This file can be downloaded [here](./R_11_data_analysis_add_exercises.Rmd).
+This file can be downloaded [here](./R_10_data_analysis_add_exercises.Rmd).
 \
 
 ## Lesson 11-13: Data analysis
