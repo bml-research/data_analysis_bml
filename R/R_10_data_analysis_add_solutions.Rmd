@@ -1,0 +1,398 @@
+---
+title: 'Lesson 11-13: Data analysis'
+author: "Mark Sibbald, Jurre Hageman"
+date: "2025-10-15"
+output: 
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+
+![](../hanze/hanze.png)
+
+---
+
+[Go back to the main page](../index.html)  
+[Go back to the R overview page](../R/R_01_index.html)  
+
+---
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+\
+This file can be downloaded [here](./R_11_data_analysis_add_solutions.Rmd).
+\
+
+## Lesson 11-13: Data analysis
+
+Once the data is read/loaded and cleaned up nicely, it is time start analyzing and presenting the data. In these two lessons, we will look at the analyzing part. We will look at how to sort, filter and re-arranging the data presented in the data frame (or tibble) and then it is time to look at properties of specific variables and do some commonly used calculations on data.
+
+First, let's load a data set that we can work with which has been cleaned up already. Of course we start with the make up of the tibbles we create during this part of the lessons, like we did before in previous lessons using the `tidyverse` and `kableExtra` libraries.
+
+```{r}
+library(tidyverse)
+library(kableExtra)
+library(knitr)
+library(pillar)
+formatted_table <- function(df) {
+  col_types <- sapply(df, pillar::type_sum)
+  new_col_names <- paste0(names(df), "<br>", "<span style='font-weight: normal;'>", col_types, "</span>")
+  kbl(df, col.names = new_col_names, escape = F, format = "html") %>%
+    kable_styling(bootstrap_options = c("striped", "hoover", "responsive"))
+}
+```
+
+Download the file [chronic_kidney_disease.csv](./files_10_data_analysis_exercises/add_exercises/chronic_kidney_disease.csv) and check in a text editor what is the delimiter in the file. Read the file into R.
+
+```{r}
+# Read the data on chronic kidney disease.
+kidney_data <- read_csv("./files_10_data_analysis_exercises/add_exercises/chronic_kidney_disease.csv")
+# Replace any missing data with NA values. 
+# Hint: check which columns are of character type, but contains numbers.
+tibble1 <- tibble(kidney_data) %>%
+  replace(.== "?", NA) %>%
+  mutate(`White blood cell count (cells/µl)` = as.numeric(`White blood cell count (cells/µl)`)) %>%
+  mutate(`Red blood cell count (millions/µl)` = as.numeric(`Red blood cell count (millions/µl)`))
+
+formatted_table(head(tibble1))
+```
+\
+
+## Select in data frames using base R
+
+Let's start by selecting specific data from the data frame. If we use numbers, we use the square brackets to indicate the index numbers (rows and column) of the data frame. For columns it is also possible to use the column name and then the $-sign is used.
+
+```{r}
+# Select the value from the 6th row and the 2nd column.
+tibble1[6, 2]
+# Select the 123th row.
+tibble1[123, ]
+# Select the 3rd column using the column number.
+tibble1[, 3]
+# Select the 3rd column using the column name.
+tibble1$`Blood pressure (mm/Hg)`
+```
+Notice the difference between selecting a column using the index number of the column and using the name of the column. The first command returns a tibble, the second command returns a vector. 
+
+\
+
+## Slicing specific columns using Tidyverse
+
+With `tidyverse` you can take slices (selected rows) from the data frame with the `slice()` function.
+```{r}
+# Select the first row of tibble1.
+formatted_table(slice(tibble1, 1))
+# Select the rows 32 to 36 of tibble1
+formatted_table(slice(tibble1, 32:36))
+```
+
+With `slice_head()` and `slice_tail()` you can get the top or bottom rows, respectively.
+```{r}
+# Get the top 4 rows of tibbel1.
+formatted_table(slice_head(tibble1, n = 4))
+# Get the bottom 4 rows of tibble1.
+formatted_table(slice_tail(tibble1, n = 4))
+```
+
+With `slice_max()` and `slice_min()` it is possible to get the row with the maximum or minimum value, respectively, for a specific column.
+```{r}
+# Get the row with the maximum and mininum values for Hemoglobin levels.
+formatted_table(slice_max(tibble1, order_by = `Hemoglobine (mg)`, n = 1))
+formatted_table(slice_min(tibble1, order_by = `Hemoglobine (mg)`, n = 3))
+```
+
+`n` will give the top (or bottom) `n` rows. If there are two rows with the same maximum (or minimum) values, R will give both rows back (even if you set `n = 1`).
+
+\
+
+## Filter and sort in R
+
+Like in Excel, it is possible to filter and sort on the data in the data frame.
+
+```{r}
+# Select data that only contains the data for patients that have a blood pressure that is higher than 70 (mm/Hg). Assign the data to 'tibble2'.
+tibble2 <- filter(tibble1, `Blood pressure (mm/Hg)` > 70)
+formatted_table(head(tibble2))
+# Select data that contains the same condition as above (Blood pressure > 70) AND age of the patient < 50 years. Use the '&' operator to combine conditions. Store the data in 'tibble3'.
+tibble3 <- filter(tibble1, `Blood pressure (mm/Hg)` > 70 &
+                    `Age (years)` < 50)
+formatted_table(head(tibble3))
+# Select data that contains either of the conditions mentioned: Blood pressure > 70 mm/Hg OR the age < 50 years. Use the '|' operator to choose between either of the conditions. Store the data in tibble 4.
+tibble4 <- filter(tibble1, `Blood pressure (mm/Hg)` > 70 |
+                    `Age (years)` < 50)
+formatted_table(head(tibble4))
+```
+
+
+We have seen the negate operator ! already before to exclude certain data.
+
+```{r}
+# Select data of patients that have a blood pressure higher than 70 mm/Hg AND leave out the data of patients which appetite has been scored as "poor". Store the data in 'tibble5'.
+tibble5 <- filter(tibble1, `Blood pressure (mm/Hg)` > 70 & Appetite != "poor")
+formatted_table(head(tibble5))
+```
+
+Sorting on a specific column uses the `arrange()` function. If you do not specify, the indicated column is sorted ascending.
+```{r}
+# Sort on creatine levels with the lowest value on top. Store the new tibble in tibble6.
+tibble6 <- arrange(tibble1, `[Creatine] (mg/dl)`)
+formatted_table(head(tibble6))
+# Sort on creatine levels with the lowest value on top. Store the new tibble in tibble7.
+tibble7 <- arrange(tibble1, desc(`[Creatine] (mg/dl)`))
+formatted_table(head(tibble7))
+
+```
+You can easily check if the lowest or highest value is on top using the `min()` and `max()` functions and check in the table.
+```{r}
+# Check the minimum of [Creatine] in tibble 6.
+# Check the maximum of [Creatine] in tibble 7.
+min(tibble6$`[Creatine] (mg/dl)`, na.rm = T)
+formatted_table(tibble6[1, ])
+max(tibble7$`[Creatine] (mg/dl)`, na.rm = T)
+formatted_table(tibble7[1, ])
+```
+
+Sorting on multiple levels is very simple. Just add another argument on which column to sort. You can even first sort from high to low and then from low to high.
+```{r}
+# Sort on Blood pressure and then on creatine level, both from low to high.
+tibble8 <- arrange(tibble1, `Blood pressure (mm/Hg)`, `[Creatine] (mg/dl)`)
+formatted_table(head(tibble8))
+# Sort on Blood pressure from low to high and then on creatine level from high to low.
+tibble9 <- arrange(tibble1, `Blood pressure (mm/Hg)`, desc(`[Creatine] (mg/dl)`))
+formatted_table(head(tibble9))
+```
+
+If you want only some of the columns that you want to work on, you can select these columns.
+```{r}
+# Select the columns for patient_id, Blood pressure, sodium an potassium levels.
+tibble10 <- select(tibble1, patient_id, `Blood pressure (mm/Hg)`, 
+                   `[Na] (mEq/L)`, `[K] (mEq/L)`)
+formatted_table(head(tibble10))
+```
+
+If you want to leave out columns, use the '-' sign to indicate which columns should not be present.
+```{r}
+# Leave out the columns for Age, Albumine and Sugar.
+tibble11 <- select(tibble1, -`Age (years)`, -Albumine, -Sugar)
+formatted_table(head(tibble11))
+```
+
+If column names have similar column names it is sometimes possible to select on part of these similar names with the functions `starts_with()` or `ends_with()`.
+```{r}
+# Select the columns that end with '(mg/dl)'.
+# Select the columns that start with 'Pus'.
+tibble12 <- select(tibble1, patient_id, ends_with("(mg/dl)"))
+formatted_table(head(tibble12))
+tibble13 <- select(tibble1, patient_id, starts_with("Pus"))
+formatted_table(head(tibble13))
+```
+
+Because there is so much data to analyze, it might be helpful to look at a summary of all the data that is present in the data frame.
+```{r}
+# Give a summary of the data in the complete data frame.
+summary(tibble1)
+# Give a summary of the Blood pressure data.
+summary(tibble1$`Blood pressure (mm/Hg)`)
+```
+
+The summary contains the most used statistics used (such as the mean, minimum and maximum values) for the columns that contain numeric data.
+\
+\
+
+## Rounding numbers
+You see in the previous tables that calculations are not rounded to 2 or 3 decimals. If you want to round to a specific amount of decimals, you can use the `round()` function.
+NOTE: rounding is according to the IEC 60559 standard. This will round the decimal to the 'even number'.
+```{r}
+# Compare the following rounding numbers:
+round(0.5)
+round(1.5)
+round(2.5)
+round(3.5)
+```
+If you want to round to a certain amount of decimals, use the argument `digits = `.
+```{r}
+# Round a random number to different a different amount of decimals.
+round(2.83456785, digits = 2)
+round(2.83455775, digits = 4)
+round(2.83445775, digits = 4)
+```
+\
+
+
+## Statistics
+
+R is designed for statistic analysis. This is of course not the scope of this course, but we will discuss the main statistical analyses that are used in the lab.
+
+We have encountered a couple of the statistical calculations already.
+```{r}
+# Calculate the average of the 'White blood cell count (cells/µl)'. Round the average to 2 decimals.
+# Present it nicely in a sentence.
+WBC <- round(mean(tibble1$`White blood cell count (cells/µl)`, na.rm = T), digits = 2)
+paste("The average White Bloodcell Count is:", WBC, "cells/µl")
+```
+
+```{r}
+# What are the minimum and maximum amounts of Hemoglobine? Present without decimals.
+# Present it nicely in a sentence.
+hemo_min <- round(min(tibble1$`Hemoglobine (mg)`, na.rm = T))
+hemo_max <- round(max(tibble1$`Hemoglobine (mg)`, na.rm = T))
+paste("The minimum amount of hemoglobin is:", hemo_min, "mg")
+paste("The maximum amount of hemoglobin is:", hemo_max, "mg")
+```
+
+
+```{r}
+# What is the median of the age of the patients? Present without decimals.
+# Present it nicely in a sentence.
+median_pat <- round(median(tibble1$`Age (years)`, na.rm = T))
+paste("The median age of the patients is:", median_pat, "years")
+```
+
+
+```{r}
+# Present the quantiles for 25%, 50% and 75% of the glucose levels. Round to two decimals.
+round(quantile(tibble1$`[Glucose] (mg/dl)`, c(0.25, 0.50, 0.75), na.rm = T), digits = 2)
+```
+
+```{r}
+# Calculate the average, the standard deviation and the standard error of the mean for the Creatine levels. Round all to one decimal.
+# Present them in a sentence.
+mean_crea <- round(mean(tibble1$`[Creatine] (mg/dl)`, na.rm = T), digits = 1)
+sd_crea <- round(sd(tibble1$`[Creatine] (mg/dl)`, na.rm = T), digits = 1)
+se_crea <- round(sd(tibble1$`[Creatine] (mg/dl)`, 
+                    na.rm = T)/sqrt(length(tibble1$`[Creatine] (mg/dl)`)), 
+                 digits = 3)
+paste("The average Creatine level is:", mean_crea, "mg/dl")
+paste("The standard deviation of the Creatine level is:", sd_crea)
+paste("The standard error of the mean for the Creatine levels is:", se_crea)
+```
+\
+
+## Summary of data
+With tidyverse it is possible to make this presentable in a tibble and then combine it with `group_by()` to calculate and show these statistics by category.
+```{r}
+# Summarize the Blood pressure and present it in a tibble.
+bp1 <- summarize(tibble1, `Blood pressure (mm/Hg)` = mean(`Blood pressure (mm/Hg)`, 
+                                                         na.rm = T))
+formatted_table(bp1)
+# Calculate the average Blood pressure for the categories 'ckd' (chronic kidney disease) and 'notcdk' (not chronic kidney disease).
+by_class <- group_by(tibble1, Classification)
+bp2 <- summarize(by_class, `Blood pressure (mm/Hg)` = mean(`Blood pressure (mm/Hg)`, 
+                                                         na.rm = T))
+formatted_table(bp2)
+# Add other variables to which you can calculate the mean.
+bp3 <- summarize(by_class, `Blood pressure (mm/Hg)` = mean(`Blood pressure (mm/Hg)`, 
+                                                         na.rm = T), 
+                 `Age (years)` = mean(`Age (years)`, na.rm = T), 
+                 `[Glucose] (mg/dl)` = mean(`[Glucose] (mg/dl)`, na.rm = T))
+formatted_table(bp3)
+# And add the standard deviation to make the data complete.
+bp4 <- summarize(by_class, mean_bp = mean(`Blood pressure (mm/Hg)`, na.rm = T),
+                 sd_bp = sd(`Blood pressure (mm/Hg)`, na.rm = T),
+                 mean_age = mean(`Age (years)`, na.rm = T),
+                 sd_age = sd(`Age (years)`, na.rm = T),
+                 mean_glucose = mean(`[Glucose] (mg/dl)`, na.rm = T), 
+                 sd_glucose = sd(`[Glucose] (mg/dl)`, na.rm = T))
+formatted_table(bp4)
+```
+
+Using `summarize_each()` is easier to determine for the (selected) results for blood pressure, age and glucose concentrations and present them in a orderly manner. However, there are many NA values in this data set. Remember, that calculations with NA values is not possible.
+
+```{r}
+paste("Mean with NA values:", mean(c(6.5, 3.5, 1.3, NA, 7.8)))
+paste("Mean without NA values:", mean(c(6.5, 3.5, 1.3, 4.5, 7.8)))
+# Resolve with the `na.rm = ` argument.
+paste("Mean with NA values removed:", mean(c(6.5, 3.5, 1.3, NA, 7.8), na.rm = T))
+
+paste("Sum with NA values:", sum(c(6.5, 3.5, 1.3, NA, 7.8)))
+paste("Sum without NA values:", sum(c(6.5, 3.5, 1.3, 4.5, 7.8)))
+# Resolve with the `na.rm = ` argument.
+paste("Sum with NA values removed:", sum(c(6.5, 3.5, 1.3, NA, 7.8), na.rm = T))
+
+
+```
+
+
+For using `summarize_each()`, droppping the NA values will let us do the calculations.
+```{r}
+# First drop all NA values to be able to do calculations.
+# Then use the `summarize_each()` to do the calculations for all columns.
+bp5 <- drop_na(by_class)
+bp5_stats <- summarize_each(bp5, funs(mean, sd, se = sd(.)/sqrt(n())))
+formatted_table(bp5_stats)
+```
+This is an example of a function that is still available, but will not be updated anymore, because there is a new function available that does the same, but is evolved to a better function. Using `across()` will put the mean and sd next to each other (which might be more convenient for your analyses).
+
+```{r}
+# Do the same as for `summarize_each()` with the new `across()` function.
+bp6_stats <- bp5 %>%
+  summarise(across(everything(), list(mean = mean, sd = sd)))
+formatted_table(bp6_stats)
+```
+
+Some of the columns contain characters, so calculations are not possible for these columns. You can drop these columns using `select()`.
+```{r}
+# Drop the columns for the mean for 'Red blood cells_mean' and the standard deviation ('Red blood cells_sd').
+bp7_stats <- summarize_each(bp5, funs(mean, sd, se = sd(.)/sqrt(n()))) %>%
+  select(c(-`Red blood cells_mean`,-`Red blood cells_sd`))
+formatted_table(bp7_stats)
+
+# Or simplify using 'forward-chaining'.
+bp8_stats <- bp5 %>%
+  summarise_each(funs(mean, sd, se = sd(.)/sqrt(n()))) %>%
+  select(c(-`Red blood cells_mean`,-`Red blood cells_sd`))
+formatted_table(bp8_stats)
+```
+
+Removing columns with character type data is also possible.
+```{r}
+# Remove columns with character type.
+bp9_stats <- select_if(drop_na(group_by(tibble1, Classification)), is.numeric)
+formatted_table(summarise_each(bp9_stats, funs(mean, sd, se = sd(.)/sqrt(n()))))
+
+bp10_stats <- bp5 %>%
+  select_if(is.numeric) %>%
+  summarise_each(funs(mean, sd, se = sd(.)/sqrt(n())))
+formatted_table(bp10_stats)
+```
+
+
+Note: `summarize_all()` and `summarize_each()` give the same results.
+```{r}
+# Use `summarize_each()` and `summarize_all()` on the same data and compare the results.
+df_summ_all <- tibble1 %>%
+  group_by(Classification) %>%
+  summarize_all(list(mean = mean, sd = sd))
+formatted_table(df_summ_all)
+
+by_heart <- group_by(tibble1, Classification)
+formatted_table(summarize_each(by_heart, funs(mean, sd)))
+```
+\
+
+# Learning outcomes
+
+This lesson you have learned to:\
+- *select rows and columns with base R and tidyverse,*\
+- *filter and sort data in data frames,*\
+- *round numbers and do statistical analysis on data,*\
+- *summarize statistical analyses on data frames.*\
+\
+\
+
+<center>--- The end ---</center>
+\
+\
+
+---
+
+[Go back to the main page](../index.html)  
+[Go back to the R overview page](../R/R_01_index.html)  
+<a href="#top">⬆️ Back to Top</a>  
+
+---
+
+>This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
+>Creative Commons License: CC BY-SA 4.0.
