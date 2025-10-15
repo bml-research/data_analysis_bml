@@ -23,15 +23,15 @@ The following links contain additional exercises for each topic in the course. T
 - [Basics](./R_02_basics_add_exercises.html)
 - [Data Import](./R_04_data_import_add_exercises.html)
 - [Data Cleaning](./R_07_data_cleaning_add_exercises.html)
-- [Data Analysis](./R_10_data_analysis_add_exercises.html)
+- Data Analysis (not available yet)
 - Data Visualization (not available yet)
 
 ## Solutions
 
 - [Basics](./R_02_basics_add_solutions.html)
 - [Data Import](./R_04_data_import_add_solutions.html)
-- [Data Cleaning](./R_08_data_cleaning_add_solutions.html)
-- [Data Analysis](./R_11_data_analysis_add_solutions.html)
+- [Data Cleaning](./R_07_data_cleaning_add_solutions.html)
+- Data Analysis (not available yet)
 - Data Visualization (not available yet)
 
 ---

@@ -1,0 +1,470 @@
+---
+title: 'Lesson 9 & 10: Data cleaning'
+author: "Mark Sibbald, Jurre Hageman"
+date: "2025-10-15"
+output: 
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+![](../hanze/hanze.png)
+
+---
+
+[Go back to the main page](../index.html)  
+[Go back to the R overview page](../R/R_01_index.html)  
+
+---
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+\
+This file can be downloaded [here](./R_07_data_cleaning_add_solutions.Rmd).
+\
+
+
+# Lesson 9 & 10: Data cleaning
+
+## Clean up rows and columns
+
+Previous lesson we have seen how to import and export data into RStudio. When using data from the internet, there is data that is written and sorted well and there is not much cleaning to do. However, many data is written to csv files in an untidy manner and sometimes difficult to work with. In this lesson, you will learn how to use the imported data and clean up data that might mess with your analyses.
+
+First, let's start with the libraries that we need to present our tibbles nicely and clean up the data in a 'tidy' way.
+
+```{r}
+# RUN THIS CODE
+library(tidyverse)
+library(kableExtra)
+library(knitr)
+library(pillar)
+formatted_table <- function(df) {
+  col_types <- sapply(df, pillar::type_sum)
+  new_col_names <- paste0(names(df), "<br>", "<span style='font-weight: normal;'>", col_types, "</span>")
+  kbl(df, col.names = new_col_names, escape = F, format = "html") %>%
+    kable_styling(bootstrap_options = c("striped", "hoover", "responsive"))
+}
+```
+
+Let's create a data frame that contains missing dating (`NA` values).
+
+```{r}
+# Create a data frame (tibble) with the following vectors and store them in my_tibble1.
+protein <- c("AmyE", "AtpE", "BdbD", "SipS", "SunA", "YdgA")
+AAs <- c(123, 342, 612, 441, 61, 510)
+signal_peptide <- c("Yes", "No", "No", "No", "Yes", "Yes")
+cleavage_site <- c(31, NA, NA, NA, 22, 27)
+
+my_tibble1 <- tibble(protein, AAs, signal_peptide, cleavage_site)
+formatted_table(my_tibble1)
+```
+
+You cannot do calculations on columns that have `NA` values.
+
+```{r}
+# Calculate the mean value of the cleavage site.
+mean(my_tibble1$cleavage_site)
+```
+
+You can leave out all the observations that has `NA` values (missing data) with the `drop_na()` function, but you can also do (some) calculations with the extra argument `na.rm =` in the function.
+
+```{r}
+# Calculate the mean of the protein length using the extra argument 'na.rm = '.
+mean(my_tibble1$cleavage_site, na.rm = T)
+# Drop the NA values from the tibble (store in a new variable my_tibble2) and calculate again the mean value of the protein length.
+my_tibble2 <- drop_na(my_tibble1)
+formatted_table(my_tibble2)
+mean(my_tibble2$cleavage_site)
+```
+
+What if there is a name of a header that you would like to change (for example: to make it more clear what is in that particular column)?
+
+```{r}
+# Create a data frame (tibble) with the following vectors
+protein <- c("AmyE", "AtpE", "BdbD", "SipS", "SunA", "YdgA")
+AAs <- c(123, 342, 612, 441, 61, 510)
+xyz <- c("Yes", "No", "No", "No", "Yes", "Yes")
+cleavage_site <- c(31, NA, NA, NA, 22, 27)
+
+my_tibble3 <- tibble(protein, AAs, xyz, cleavage_site)
+formatted_table(my_tibble3)
+```
+
+`xyz` should be changed to a header that makes it clear that there is a signal peptide present or not for the proteins in the tibble. Here is how to change the name of this particular column.
+
+```{r}
+# Change the name of column 'xyz' to 'signal_peptide'.
+my_tibble4 <- rename(my_tibble3, signal_peptide = xyz)
+formatted_table(my_tibble4)
+```
+
+Or how about the order of the columns is not how you would like to read the tibble or present it to your colleagues?
+
+```{r}
+# Create a data frame (tibble) with the following vectors
+protein <- c("AmyE", "AtpE", "BdbD", "SipS", "SunA", "YdgA")
+signal_peptide <- c("Yes", "No", "No", "No", "Yes", "Yes")
+cleavage_site <- c(31, NA, NA, NA, 22, 27)
+AAs <- c(123, 342, 612, 441, 61, 510)
+
+my_tibble5 <- tibble(protein, signal_peptide, cleavage_site, AAs)
+formatted_table(my_tibble5)
+```
+
+You want to have the length of the proteins (AAs) as the second column. Here is how to do this:
+
+```{r}
+# Change the order of columns
+my_tibble6 <- select(my_tibble5, protein, AAs, signal_peptide, cleavage_site)
+formatted_table(my_tibble6)
+```
+
+What if all the aforementioned problems arise in the same data frame? You can solve the issues one-by-one in your code:
+
+```{r}
+# Create a data frame (tibble) with the following vectors.
+protein <- c("AmyE", "AtpE", "BdbD", "SipS", "SunA", "YdgA")
+xyz <- c("Yes", "No", "No", "No", "Yes", "Yes")
+cleavage_site <- c(31, NA, NA, NA, 22, 27)
+AAs <- c(123, 342, 612, 441, 61, 510)
+
+# Solve all the issues with code
+# First make the tibble.
+my_tibble7 <- tibble(protein, xyz, cleavage_site, AAs)
+formatted_table(my_tibble7)
+# Drop the rows with NA values.
+my_tibble8 <- drop_na(my_tibble7)
+formatted_table(my_tibble8)
+# Change the name of column `xyz`.
+my_tibble9 <- rename(my_tibble8, signal_peptide = xyz)
+formatted_table(my_tibble9)
+# Change the order of the columns.
+my_tibble10 <- select(my_tibble9, protein, AAs, signal_peptide, cleavage_site)
+formatted_table(my_tibble10)
+```
+
+Or, you can use a more convenient way to write code when multiple actions are needed on the same data frame. `Tidyverse` makes it possible to do this and preventing overwriting the same variable every time you want to use a function on a data frame. This is called 'forward-chaining' and we use the `%>%` symbol to chain functions on the same data frame.
+
+```{r}
+# Create a data frame (tibble) with the following vectors.
+protein <- c("AmyE", "AtpE", "BdbD", "SipS", "SunA", "YdgA")
+xyz <- c("Yes", "No", "No", "No", "Yes", "Yes")
+cleavage_site <- c(31, NA, NA, NA, 22, 27)
+AAs <- c(123, 342, 612, 441, 61, 510)
+my_tibble11 <- tibble(protein, xyz, AAs, cleavage_site)
+formatted_table(my_tibble11)
+
+# Do all the necessary actions on the tibble at once.
+my_tibble12 <- my_tibble11 %>% drop_na() %>%
+  rename(signal_peptide = xyz) %>%
+  select(protein, AAs, signal_peptide, cleavage_site)
+formatted_table(my_tibble12)
+```
+
+This is more convenient to write code without thinking to much about variable names or how to read the code. If you have to do many actions (e.g. >10), it might be helpful to break up the code in smaller blocks to keep the code readable. From now on we will use this 'forward-chaining' for making changes in the data frame.
+\
+\
+
+## Missing Data
+
+Often the data that is available contains missing data. You can leave this as missing data, but if you start working on your data frame, errors are prone to happen. It is useful to replace missing data with `NA`.
+
+Download the files [prot_pred_md1.csv](./files_07_data_cleaning_exercises/add_exercises/prot_pred_md1.csv), [prot_pred_md2.csv](./files_07_data_cleaning_exercises/add_exercises/prot_pred_md2.csv) and [prot_pred_md3.csv](./files_07_data_cleaning_exercises/add_exercises/prot_pred_md3.csv) and save these files in the same folder where you have saved the RMarkdown-file for this lesson. Check the file with a text editor and decide which of the functions you need to read this file.
+
+```{r}
+# Read the file 'prot_pred_md1.csv' with missing data and store it in my_tibble13.
+my_tibble13 <- read.csv2("./files_07_data_cleaning_exercises/add_exercises/prot_pred_md1.csv")
+formatted_table(my_tibble13)
+```
+
+You see that there is a (forward) slash where data is missing. You can also see that the character type of the second column is not numeric anymore (the numbers are outlined to the left; compare to the column with the cleavage site). Calculations on the numbers in this column are therefore not possible.
+
+```{r}
+# Calculate the mean of the protein length (AAs).
+mean(my_tibble13$cleavage_site)
+```
+
+You can remove all rows that contain the missing data, but it is more convenient to read the data and indicate from the start which characters are indications of missing data. The argument in the read-function that is needed to indicate missing data is `na =`. It expects a vector with characters that are read as missing data and replaced with `NA`.
+
+```{r}
+# Read the file again and indicate which character should be read as 'NA'.
+my_tibble14 <- read_csv2("./files_07_data_cleaning_exercises/add_exercises/prot_pred_md1.csv", na = "/")
+formatted_table(my_tibble14)
+```
+
+The forward slash is replaced with NA and you can do calculations on the column again.
+
+```{r}
+# Calculate the mean of the cleavage site.
+mean(my_tibble14$cleavage_site, na.rm = T)
+```
+
+If there are different characters (or words) used to indicate missing data, you need to create a vector with these characters (or words) for the argument `na =`.
+
+```{r}
+# Read the file 'prot_pred_md2.csv'. Save the data in my_tibble15.
+my_tibble15 <- read_csv2("./files_07_data_cleaning_exercises/add_exercises/prot_pred_md2.csv")
+formatted_table(my_tibble15)
+
+# Indicate which character should be read as 'NA'.
+my_tibble15 <- read_csv2("./files_07_data_cleaning_exercises/add_exercises/prot_pred_md2.csv", na = c("/", "no data"))
+formatted_table(my_tibble15)
+# Calculate the mean of the cleavage site.
+mean(my_tibble15$cleavage_site, na.rm = T)
+```
+
+What if the missing data is just a blank?
+
+```{r}
+# Read the file 'prot_pred_md3.csv' and store the data in my_tibble16.csv.
+my_tibble16 <- read_csv2("./files_07_data_cleaning_exercises/add_exercises/prot_pred_md3.csv")
+formatted_table(my_tibble16)
+```
+
+You see that the `read_csv2()` function deals with blanks automatically. The same is true for the other functions to read files, including Excel files. Download the files [prot_pred_md1.xlsx](./files_07_data_cleaning_exercises/add_exercises/prot_pred_md1.xlsx), [prot_pred_md2.xlsx](./files_07_data_cleaning_exercises/add_exercises/prot_pred_md2.xlsx) and [prot_pred_md3.xlsx](./files_07_data_cleaning_exercises/add_exercises/prot_pred_md3.xlsx) and read these files with `read_xlsx()`.
+
+```{r}
+# Read the Excel files again (do not forget to load the libraries for reading Excel files) and indicate which character should be read as 'NA'.
+library(readxl)
+my_tibble17 <- read_excel("./files_07_data_cleaning_exercises/add_exercises/prot_pred_md1.xlsx", na = "/")
+my_tibble18 <- read_excel("./files_07_data_cleaning_exercises/add_exercises/prot_pred_md2.xlsx", na = c("/", "no data"))
+my_tibble19 <- read_excel("./files_07_data_cleaning_exercises/add_exercises/prot_pred_md3.xlsx")
+formatted_table(my_tibble17)
+formatted_table(my_tibble18)
+formatted_table(my_tibble19)
+```
+\
+
+## Add and replace data
+
+Let's look at a data set that contains erronous data.
+
+```{r}
+# Create a data frame (tibble) with the following vectors
+protein <- c("AmyE", "AtpE", "BdbD", "SipS", "SunA", "YdgA")
+AAs <- c(NA, 342, 612, 441, 0.0034, 510)
+signal_peptide <- c("Yes", "No", "No", "No", "Yes", "Yes")
+cleavage_site <- c(31, NA, NA, NA, 22, 27)
+
+my_tibble20 <- tibble(protein, AAs, signal_peptide, cleavage_site)
+formatted_table(my_tibble20)
+```
+
+Clearly, the data for the length of SunA is not correct. Let's replace this value with the correct one (the length of SunA is 61 amino acids).
+
+```{r}
+# Replace the NA value for the length of the signal peptide (61) for SunA.
+my_tibble20[5, 2] <- 61
+formatted_table(my_tibble20)
+```
+
+If you have new data for the variables (a new observation), you can add this information to the data frame. For example, you found data for a different protein ZstF.
+
+```{r}
+# Add the data for the new protein: length of ZstF is 367 amino acids, it contains a signal peptide.
+my_tibble21 <- my_tibble20 %>%
+  add_row(protein = "ZstF", AAs = 367, signal_peptide = "Yes")
+formatted_table(my_tibble21)
+```
+
+Since it was not known at which position the signal peptide was cleaved off, there was no data available. If you leave it out, the 'empty' place in the data frame will be filled with NAs. As soon as you have determined the position of the cleavage site you can replace it as was shown before.
+
+```{r}
+# Change the missing cleavage position of ZstF by the value 38.
+my_tibble21[7, 4] <- 38
+formatted_table(my_tibble21)
+```
+
+Let's try two actions with one line of code using forward chaining. You figured out that the data for the protein SipS is not correct and want to delete it from the data frame AND you found new information on the protein RsoP and want to add it to the data frame. The new data for the RsoP protein: 
+- protein length = 812 amino acids, 
+- it does contain a signal peptide, 
+- the cleavage site is determined at position 41. 
+\
+Keep the table alphabetical on protein name. You can use the `.before = ` or `.after = ` argument to insert the data at a specific row.
+
+```{r}
+# First, delete the row for SipS with `filter()` and using the negate character '!'.  
+# Second, add information on the protein RsoP.
+my_tibble22 <- my_tibble21 %>%
+  filter(!protein == "SipS") %>%
+  add_row(protein = "RsoP", AAs = 812, signal_peptide = "Yes", cleavage_site = 41, .before = 4)
+formatted_table(my_tibble22)
+```
+
+
+New data suggests that all the protein have signal peptides. This means that all values "No" in the column signal peptide have to be replaced with "Yes".
+
+```{r}
+# Change all values from "No" to "Yes" in the column 'signal peptide'.
+my_tibble23 <- my_tibble22 %>%
+  mutate(signal_peptide = str_replace(signal_peptide, "No", "Yes"))
+formatted_table(my_tibble23)
+```
+
+Let's change all missing data in the complete data frame to NA values.
+```{r}
+# start a new data frame with several missing data and store it in my_tibble24.
+protein <- c("AmyE", "AtpE", "BdbD", "SipS", "SunA", "YdgA", "Zstf")
+AAs <- c("no data", 342, 612, 441, 61, 510, 367)
+signal_peptide <- c("Yes", "No", "No", "No", "Yes", "Yes", "Yes")
+cleavage_site <- c(31, "no data", "no data", 41, 22, 27, 38)
+
+my_tibble24 <- tibble(protein, AAs, signal_peptide, cleavage_site)
+formatted_table(my_tibble24)
+
+# Replace missing data with NA all at once and store it in my_tibble25.
+my_tibble25 <- my_tibble24 %>%
+  replace(. == "no data", NA)
+formatted_table(my_tibble25)
+```
+
+
+The values in the columns for protein length and cleavage site are still character type. Let's change it to numeric.
+
+```{r}
+# Change the columns with numbers to numeric and store it in my_tibble26.
+my_tibble26 <- my_tibble25 %>%
+  mutate(AAs = as.numeric(AAs)) %>%
+  mutate(cleavage_site = as.numeric(cleavage_site))
+formatted_table(my_tibble26)
+```
+\
+
+## Making data tidy
+
+Let's create a new data frame from new data.
+
+```{r}
+# Create a data frame (tibble) with the following vectors and store it in my_tibble27.
+protein <- c("AmyE", "AtpE", "BdbD", "SipS", "SunA", "YdgA")
+AAs <- c(123, 342, 612, 441, 61, 510)
+signal_peptide <- c("Yes", "No", "No", "Yes", "Yes", "Yes")
+cleavage_site <- c(31, NA, NA, 41, 22, 27)
+gene_length_isoform1 <- 3 * AAs + 3
+gene_length_isoform2 <- c(291, 999, 1515, 312, NA, 1191)
+gene_length_isoform3 <- c(NA, 339, 1545, NA, NA, 813)
+
+my_tibble27 <- tibble(protein, AAs, signal_peptide, cleavage_site, gene_length_isoform1, 
+                      gene_length_isoform2, gene_length_isoform3)
+formatted_table(my_tibble27)
+
+```
+
+We can present this data in a tidy way using the `pivot_longer()` function.
+
+```{r}
+# Make the data tidy with `pivot_longer()`.
+my_tibble28 <- my_tibble27 %>%
+  pivot_longer(c(gene_length_isoform1, gene_length_isoform2, gene_length_isoform3), 
+               names_to = "isoform", values_to = "gene_length")
+formatted_table(my_tibble28)
+```
+
+And of course it is possible to reverse this action with the function `pivot_wider()`.
+
+```{r}
+# Make the data untidy with `pivot_wider()`.
+my_tibble29 <- my_tibble28 %>%
+  pivot_wider(names_from = "isoform", values_from = "gene_length")
+formatted_table(my_tibble29)
+```
+
+Sometimes you will find that the observations are arranged in the columns and the variables in the rows of a data frame. The easiest way to make the data tidy is to transpose the data (change columns to row and vice versa).
+
+```{r}
+# Create a data frame (tibble) with the following vectors:
+measurement1 <- c("AmyE", 123, "Yes", 31)
+measurement2 <- c("AtpE", 342, "No", NA)
+measurement3 <- c("BdbD", 612, "No", NA)
+measurement4 <- c("SipS", 441, "Yes", 41)
+measurement5 <- c("SunA", 61, "Yes", 22)
+measurement6 <- c("YdgA", 520, "Yes", 27)
+
+my_tibble30 <- tibble(measurement1, measurement2, measurement3, measurement4, measurement5,
+                      measurement6)
+formatted_table(my_tibble30)
+```
+
+You can see that this is not the way to represent the data in the correct way. In the columns there are different data types (text is mixed with numbers). Transposing the data is quite easy, but after that the data frame should be transformed to a tibble and column names should be added. And then at the end, numbers should be transformed to the numeric type.
+
+```{r}
+# Transpose the data.
+transpose_data <- t(my_tibble30)
+transpose_data
+# Transform the matrix to a tibble.
+my_tibble31 <- tibble(data.frame(transpose_data))
+formatted_table(my_tibble31)
+# Add column names.
+colnames(my_tibble31) <- c("Protein", "AAs", "signal_peptide", "cleavage_site")
+formatted_table(my_tibble31)
+# Make sure that the numbers in the tibble are transformed to numeric data type.
+my_tibble32 <- my_tibble31 %>%
+  mutate(AAs = as.numeric(AAs)) %>%
+  mutate(cleavage_site = as.numeric(cleavage_site))
+formatted_table(my_tibble32)
+```
+\
+
+## Split columns
+
+In same data sets you will find that the units are also indicated in all the values for each observation. Of course it is important to know what the unit of a value is, but doing calculations on these data is impossible, because the values are of the character type.
+
+```{r}
+# Create a data frame (tibble) with the following vectors
+protein <- c("AmyE", "AtpE", "BdbD", "SipS", "SunA", "YdgA")
+AAs <- c(123, 342, 612, 441, 61, 510)
+signal_peptide <- c("Yes", "No", "No", "Yes", "Yes", "Yes")
+cleavage_site <- c(31, NA, NA, 41, 22, 27)
+gene_length <- paste(3 * AAs + 3, "bp")
+
+my_tibble33 <- tibble(protein, AAs, signal_peptide, cleavage_site, gene_length)
+formatted_table(my_tibble33)
+```
+
+The solution is to separate the value and unit in separate cells with the `separate_wider_delim()` function. The separator in this case is the space between the length and the unit (bp).
+
+```{r}
+# Separate the column with gene length into the length and the unit.
+my_tibble34 <- my_tibble33 %>%
+  separate_wider_delim(gene_length, " ", names = c("gene_length", "dump"))
+formatted_table(my_tibble34)
+```
+
+Now drop the column 'dump' and change the data in the column 'gene_length' to numeric.
+
+```{r}
+# Drop the column 'dump' with `select()` and change the data type in the column 'gene_length' to numeric.
+my_tibble35 <- my_tibble34 %>%
+  select(-dump) %>%
+  mutate(gene_length = as.numeric(gene_length))
+formatted_table(my_tibble35)
+```
+
+\
+
+# Learning outcomes
+
+This lesson you have learned to:\
+- *remove and add row/columns to a data frame,*\
+- *change data in a data frame,*\
+- *deal with missing data and `NA` values in a data frame,*\
+- *transpose a data frame and make it tidy,*\
+- *split columns in a data frame.*\
+\
+\
+
+<center>--- The end ---</center>
+\
+\
+
+---
+
+[Go back to the main page](../index.html)  
+[Go back to the R overview page](../R/R_01_index.html)  
+<a href="#top">⬆️ Back to Top</a>  
+
+---
+
+>This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
+>Creative Commons License: CC BY-SA 4.0.
