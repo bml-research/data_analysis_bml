@@ -12,9 +12,9 @@
 
 <meta name="author" content="Mark Sibbald, Jurre Hageman" />
 
-<meta name="date" content="2025-09-23" />
+<meta name="date" content="2025-10-15" />
 
-<title>Lesson 8: Data import</title>
+<title>Lesson 11-13: Data analysis</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -149,9 +149,9 @@ code span.ot { color: #007020; }
 
 <header>
 <div class="inner">
-<h1 class="title toc-ignore">Lesson 8: Data import</h1>
+<h1 class="title toc-ignore">Lesson 11-13: Data analysis</h1>
 <h3 class="author">Mark Sibbald, Jurre Hageman</h3>
-<h3 class="date">2025-09-23</h3>
+<h3 class="date">2025-10-15</h3>
 </div>
 </header>
 
@@ -160,190 +160,244 @@ code span.ot { color: #007020; }
 <div id="content-wrapper">
   <div class="inner clearfix">
     <section id="main-content">
-<p><img src="../hanze/hanze.png" /></p>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYwAAAB/CAMAAADLlgV7AAAA2FBMVEX////ufwAAAADufQDteACjo6PuewDtdwC0tLQEBAQ5OTnFxcXY2Nj09PTS0tLi4uJqamqampqKioozMzNFRUX//Pbw8PA/Pz/tcwDwjza2trYuLi7Dw8P75czuggCqqqp0dHT+9u797+KTk5P51LT628DypF5PT097e3sgICAWFhZra2vxmEf86tnviSP1t4L3x57ynlJWVlZgYGDzqGf2wJP1tX775NIjIyPwixH1s3XwkT33yKfzqmXynkvwkCLvhB73xJryoWP0rXf51Lrxl0763MjymT27hafoAAAPX0lEQVR4nO1d+0OqPhvXhsOTWWliWIlhaDcFLc3jpbJzOvn//0cvoMLGLoxL9X2Tz2/KBmMftueyZ89yuTjQm8bCen5pmNO8jWljOBsvOnqsW2VIAN14epVVWZIgBDYcMgCAEEqyCleWkTHyZehYU1WGLgMU2JzIqvZkfHcrdwHGX8gmAmFEhqOMj0+FPtY2TAAULD40q/3dLf6xmIwkCbjzkGQzslyajVXDNJf2H7bsoFFi89GdfHerfyQ6PRXaA0KCy5enRaeveBeUfvN9/LIEVEKg2ut8Y6N/Jjor2aZCAo1xU6GX6L/PGnmJFCdQnWd0pIl216YiLy2tfkg5owckgg6gDkPqZRCGMgbQ6dMBY0xg6FumBInRIT+J1M0Qik5j/bHDN7HyijEn6ZDM5ue2ciegWN68IwsbDjYdwckKZIMjMdo9CdFUbT1V0fX2pNP56Ld1ntNjYRJ0ZIMjId41dMIB5t8/PVOTZBuqrJl/rAmTEGWcD85VQBp/Zdt/GqzA5w1cv+D2h23sydMR06rrDwO1YV5Q6mQgoYxINTUIm5CewRIGC3RcAbmbOUdiQ0fEBQ9QZlp17a5Hp2RmfsP4aDcI/ZRJhzRiyY7Bxq8oWZkuFR9tU5gLhw6TNTgmzn0yRSoRonHhyA6WGaEP5czESAQ9IhfORNRjyWcrcxQmgdKLyoUNqGVz0WegK6ZHEWxkK0npw4rFhSPGM0sibRhyPC5sNnrf3fafhn548AcTUubwSBfixh4JoGXxa2niKabAyIZG+mjGFhgu4L/vfoEfBGUaX2A4ANNsnkoNs0STlE1GPtNu00JfTcaFLcEjkNHkR/Bc17bYP+SVO/bLXYg//L+PYQJNak1GQ9wn2FGH3Ot7Pkq8cid+uaLww//76CQdGHk4E3+YBCSuC/GXIBn7P5OMRjLp7XjShWMHDRmEWOy7TYaReGBIT6LPGqgO8dyhsdtk8AcGfzuGC2iKSozxmnfu0NhpMpgSA7g7MPLa0oaWB4zdGM4kJbqiYW0fJX2wC+00GXRVyiYi33hedJpt56tX9Hb/Y/yypAX/56WB2IOUrmfmwy672C6T0aYMDCABc9ahmA7992cTBviQLLEH6Q0kZJRjJO4yGeOg8Q0gNMecxbvJExr9D0S5mEzREcgJ+dxlMrRgKGe+GxZJoHR62+EBRHcMGPh4AnOmzN9hMpr4LAWWYltVJ13g9C7U3sUeM5YDskZijr0dJuMJE99AfDm7P3ICbsWKI6J7C7bNvsNkBLRV2BX3hfdF99/3TdIpzPZm7S4ZzaAuBTeRyrYy60JPHhVoAJryzJyndpeMMdFPQJovOtafhqZBWQbadD4aJNu0+hQUFxsyWFrY7pJBW+EDkrzdHeO4QWwzfBg/aLC9YizoQpYjPU0yjg7OWoXKVaVVPDgSb3P5qNSqXF21Do/K4pWEYLenYLemdHBQJy8qYj5CKA1jruQNqFOUSzkroiQtMg4qx7U7v8xd7b5I6YHcwRZbtg6q/p3PL0tBPuoHIqA1qHRT85tzfk+8XEc0DgGCOJte9CF9inIhM/xTqZBRL1zvkbi7JHqp7F08dn8fPAbqnJzhFVqU+5Igm1s4DZY5DdyZFBksADn6NklD492eZYSnQUbrltVLDwE6fDIunZ9XlCrX2AwXj4yLfVqpa6wxK/H1VqBGHBv6jL83EP6h10tORj34dWNoYWUxMsqMimg74pBRvmGVu0JK8VYpCDby/M4PwFiGEM3yiCQm44j6FfqoYP2EkFGmTW0ukC84BhlHxAzl48GTSXqkNT41wu4XYgMyhQyGBE9KRv08rKfQuRolgz2g7vwK0ck44JasbdmIFkconrdCsZhKFEou3X5JSsZDeFchWpVPxk2BU8OfTiKTwefCZmNTzogSuyY+TRlk0goKICPWCiGDGzeFjH2UjAr+qo9V28goVPGP/pJGxslGD769rBRblWoNq+H3blQy6r/Q/6+rrWKxcow3cV1wEYUMUQEuMEM5kFleMKTx1/fHTNwjNgRCRh19zYdDb0YuF5E4qz3feCjv4Tgvbq8dYV3mTW2HVSqubqmlczlUDlWPvNYgrd+oFFaE4DVVTLVtj6DITYHMXJPCviQxIGSgcw2uN+WqtM4KkHGD2nionvsY8t7YgEFUBKQ9NVRFLl8i5d1p81nczFCFFrr1GRDac8OzIZORgcwuhMTx37/qdwp2oyu8wj1yif/iJfQux/7/deq/LiqBSy+Cmi2QTZFNlI7cFrqjxFs2SUQG0rdV4s5+zzzQKmCyJNiVe1zf1hHa6BpywTcwyKGFGB+OcFwJdR2UgciwaAuOirCEYInIuOD2nqeAnXp/oWScE35BRO7zlIkyqk3fohf8fyk+R18fdIZGOBkAyupQRHI3u7QoHiq3Gt9eSUSGP/avKbf2+vaE0l2EjLFx5l/kRbpjuhrqjfQlBs2XWcIqrSAjVNDxnDvp5uVXi5nJCIXRkAXFD1C7ITdMRsbJ6Rr75CyFaDZUMn6TTl3ERjgjLnqoom3BRtA++UAUvnZufwfPr6/TaV5WVVVGYP/Spo2htTDEVpXaFuA4Z3EqpJBhkUsqwLnw9EkqGfeUGiLPwBQpjDNf5hSoNYvedUTO6O1+v7lFO9KOMGXxqgpvWoYiGfI+jwx/0qCSQbvLXfgzDtGW4OqY/0DqAkfuyK8o9gZcdEaykIW3HhbyUITnTyMD0SWpZNA67CT0GZiFHVBfPV2aVA3W8AU/1/MTDsUYQVFJ4c5QzORUOBK6QxgoVX4jnUYlg6a87oc9o4y6iINKgzeuatS6qOQnlQdx9N9WssCBGggV2kLw1ukGJNQvCleX18G1pvTIQO1C4vv3n9cq0NDyfSU0fUMASudtpKlkdmcuFVPBSPVcemSULyo3AW9f+mRgK4PBGxztieMx9/Ya8aCk5uDvqyyLWhQbJiBsRFkkTIOMegH1I34eGUX0psSkivlIQlDLGTKUpeEgNPJDUdrG+O/wVVaj8eAOCtDl7IyhIDkZh8fky34KGZgiRRoiF3vi2F8Hh9jGXWPMtCg61qjb0JwjyIL7MoQGhWSOowb5JCXjiLm65IvwdMioo6LoiryO2O8CZGw3ygBJ7g0Y81X7fdbQYjKxfI42KFwkJOOQfFEXd9cX/rSRChllVCJdUipHGRm2vuUvu0IJjDosR0W7Y/VM4MYZChLhjInneEcpJiOD5OL8+v6qWDqso3N4KmSgKxIPlLqRZMYjHt0JoMybU/TJ+9PQHiMSmhidwYOkza2PuKldEpGBL3LeXldLSIhmumSgitQJLVYR+TD2Dw5DYD98hCuotrSdcRculPZkMRvOTQ06MmR9jqUH9yhLSWt0xx9J0rokIgNV+2tngS5KlQxUIPyiL3b49z6lXg9gQG7okwQ85np/8jGwZt1//3rzxhbzf93Z2JgkTq+ThAxUsyd9c2mSgcV8sNrpFTjnvcgWxPYMV3rMI5gFig/xSlwkIQOZOij+hRTJqKPOFaYDwPNsMYZOAFQ3H5R6glv1PgNJyPDdCzSJmiIZqPpMUWo38BdWhfyAL3Svhk3HtyXPTkAG0rO0taD0yEBjZy/ZTfRXOm4YJcpbOD8IoeHTMfymRM7pkEHrWV/mJiQDDZSjKrUb+ItLDB/64/5mYdKV8JwcbBCOviXXXQIyfPl9S9M1fcMgGRmoMUdXarc4pVX34eu+l+5vTqZIAPPWN+SBTIWMO0rPIoE3ichAVbYQyezPU79pQ8OXPOs35W6XASGn9Iyf3zqTfsqEJSAD6W7KuhTiPtz3/oxOBhblHiKY+SvsiM93/UdIrkggcQ9ofVNVqJnz4WzwkdzA2CAdmUFG6mAxHN6/0clAFanQJUbkocTyEeK52caDvoa4myDgnZs0MaVNWA/QGi+zxUc/sbmRRLVFPtpHfF4IbEry/49KBqpIVSg1cKAxiZe4eLlAVly2/zH1KWSu4uw81kfbMB2XEylvzp8HiShJQgb69d8W/Jc/qgQWXr3gg6hkoIHVvytMXG0fgMbx3CEtOkAdN54erodvCwCQNzgGmOG43jieX65mxiQeI0nIwDem3D1ULkql0sUVuT3s9NC+4NSISEaduBMDXpOwEXn3WLBbdFG8xDaWIeJkFL6azR8czSmZZsGhBCxXVid6doVEjkKBbUse3KDYiGQIL2t7H3s5dFfbPvI8mn+KQgcnQac+pG9Hc+YtYD6/RyMkERlRYgBc792nk4G7sSjAo0rFjr2SGhx1yWLGdzpDBC5HhriulWxxibfL6xe+A/iLyMjVubtvT3FFQzDhM4Qcm4OeOQclxLSYC4k4Ei67Vsj33eCkjs/4X0UGviYYQHALDctbSPSpzEmy3abklMJr24SsFgIzVtKABNbKs6PnoyrMF5KRK7EyNpD+zInodnDJZFvbykgN3fntLMg+hbmDkaZys/8jghG3vcr3xDvv7V25s0EZjab67f7DJ8N/SEQyguYgbV/zL2pMp/DePshLnD0QiYF2dt/ws9j70Y8VruPHj5isBEOW67hZcVf1nCMoUa5GWa54t6G5/FqBZyDFuSCalMudBfb8PzI+NV04lByonMypfW7iFp+OZMnExFA/K1SPrx8uK61AkqJy4bFWO60WE4Z9x8Jhq3LzeF2rPVSL9D0CLt7EUyXIL2w5rIicJS6aCHd3EeFgOMg7X4mRAw8BEM5iv7OYRMgiAgFnnjFCQg8BjBFkuGsYR2CDezRMn3+MtfhRG7uMKMdPA5mz3UIZcgQHnH/dG/0fox0pERg3SZ7FVM4inVq2y4h26rHMm24WDMEBpDhpJ3cSUcSGPfk/c27VpOfEE9l5nGGNUaRzLCXO6TA5fUW5F+88mQwBKFGEeAgbOTJ3J1xlFkYE6Hy1NBobbwHBASOccpkh5zjCU2Sjg7mqYCM7GDkiorLBk+LYzTIuYqA9j8YG1x2ueIvjGRexoPMMaAobfB/sZnEc9jIuYkEZiSfKyYfaDq7jUB5msjsuxlHYACEHWPZNiZ02NUM4+GctBNmA/FVtXSjHYQYm+ivRRHcOG/lv2uO0K1AsocTNa0Dx0/0yxMJkLi45YC8T0J8LZSye4Itv/GVIAe2RcA7CzDn++ZgMBekIU6kypIHOUCwvZLag+iWYjKDQQTFZqMGXQH+bCmR1ziIFvwqdvyB0uuJFU2VIF4Y1VWV2rkIAVZi5Zr8QujFeSW4iz21qvG0CNlVajaOlyM2QBvSmMZh1V6+mls9rprnqzt6MZsZDUvwPwxxYwyCzQ4EAAAAASUVORK5CYII=" /></p>
 <hr />
 <p><a href="../index.html">Go back to the main page</a><br />
 <a href="../R/R_01_index.html">Go back to the R overview page</a></p>
 <hr />
 <p><br />
-This file can be downloaded <a href="./R_04_data_import_add_exercises.Rmd">here</a>.<br />
+This file can be downloaded <a href="./R_10_data_analysis_add_exercises.Rmd">here</a>.<br />
 </p>
-<div id="lesson-8-import-data" class="section level1">
-<h1>Lesson 8: Import data</h1>
-<p>Run the code in the block below before you start the rest of the code
-blocks in this lesson. Firstly, the library of <code>Tidyverse</code> is
-loaded to use code to import data in an easy way. Secondly, the library
-<code>kableExtra</code> is loaded to transform the tibbles that we use
-to a more presentable table. You will only have to pass the data frame
-as an argument in the function <code>formatted table</code> later
-on.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># RUN THIS CODE </span></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>formatted_table <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>  <span class="fu">kbl</span>(df) <span class="sc">%&gt;%</span></span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hoover&quot;</span>, <span class="st">&quot;responsive&quot;</span>))</span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>}</span></code></pre></div>
-<p>As shown in the previous lesson it is quite easy to create data
-frames (transform them to tibbles). Just as a reminder to create a
-tibble use the following vectors:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># Create a data frame (tibble) with the following vectors</span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>protein <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AmyE&quot;</span>, <span class="st">&quot;AtpE&quot;</span>, <span class="st">&quot;BdbD&quot;</span>, <span class="st">&quot;SipS&quot;</span>, <span class="st">&quot;SunA&quot;</span>, <span class="st">&quot;YdgA&quot;</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>AAs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">123</span>, <span class="dv">342</span>, <span class="dv">612</span>, <span class="dv">441</span>, <span class="dv">47</span>, <span class="dv">510</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>signal_peptide <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>cleavage_site <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">31</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">22</span>, <span class="cn">NA</span>)</span></code></pre></div>
-<p>With <code>str()</code> you can check the properties of your tibble.
-This is useful to check (for example) if the data in a specific column
-has been imported correctly (e.g. numbers).</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># Check properties of `my_tibble`.</span></span></code></pre></div>
-<p>This looks a bit like a short Excel sheet. You will (probably) not
-create data frames yourselves, but use data frames from websites to
-extract and analyse data. It is nearly impossible to type all that data
-in R (especially when there are millions of rows of data), but you need
-to import/read the data into RStudio. There are several functions that
-you van use from the readr package. It is advisable to use a text editor
-to check which separator is used to separate the data. This can be a
-common text editor, such as Notepad, but for this course we will use
-Visual Studio Code to look at the files.<br />
-</p>
-<div id="read-data-from-local-files-stored-on-your-computer" class="section level2">
-<h2>Read data from local files stored on your computer</h2>
-<p>Download the files <a href="./files_04_data_import_exercises/add_exercises/honey.csv">honey.csv</a>,
-<a href="./files_04_data_import_exercises/add_exercises/amylase.tsv">amylase.tsv</a>
-and <a href="./files_04_data_import_exercises/add_exercises/prot_pred.csv">prot_pred.csv</a>
-and move them to the same folder as this RMarkdown file. Determine what
-is the separator in these files using Visual Studio Code (or a text
-editor).</p>
-<p>Next, we will try to read the files into RStudio and see what we need
-to import the data correctly. If you have saved the files in a different
-folder, you will have to adjust the <code>file_path</code> accordingly
-(which can be tricky).</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Read the csv file with comma-separated data. Save the data frame in df1.</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="co"># Check the properties with `str()`.</span></span></code></pre></div>
-<p>In the console you can already see a couple of properties of the data
-frame: the delimiter is the comma, it contains 3 columns which are
-character-type and 14 columns that are numeric.</p>
-<p>Try to open the ‘prot_pred.csv’ file with
-<code>read_csv()</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co"># Read the csv file with semi-colon-separated data with `read_csv()`. Save the data frame in df2.</span></span></code></pre></div>
-<p>You see that this is not a correct data frame; the data is not
-separated correctly, because this files has the semi-colon as the
-separator of data. The function to read ‘semi-colon’-separated data is
-the <code>read_csv2()</code> function.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Read the prot_sep.csv file with the correct function. Overwrite the data frame in df2.</span></span></code></pre></div>
-<p>The function to read ‘tab’-separated data is the
-<code>read_tsv()</code> function.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># Read the amylase.tsv file with the correct function. Save the data frame in df3.</span></span></code></pre></div>
-<p>At a first glance, the tibble looks fine. However, if you move to the
-12<sup>th</sup> column (<strong>Beeptime_last_beep</strong>), you see
-that the type of data is ‘<em>character</em>’, while this should be
-‘<em>numeric</em>’. Because the decimal separator is a comma in this
-file, the value is read as a character. The function needs an extra
-argument to tell the function that the comma is the decimal
-separator.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># Set the decimal separator to a comma using the `locale = ` argument. Save the data frame in df4.</span></span></code></pre></div>
-<p>Check again the column ‘<strong>Beeptime_last_beep</strong>’ and see
-that the comma is replaced by a dot and that type of the data in this
-column is now numeric (outline is to the right).<br />
-</p>
-</div>
-<div id="read-data-from-a-website" class="section level2">
-<h2>Read data from a website</h2>
-<p>It is also possible to read the data directly from the website if
-there is an address to the file with the data. Try to read the
-‘prot_pred’ data directly from the internet.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># Read the data directly from the web.</span></span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co"># The address of the data is &quot;https://tinyurl.com/bdfc3cnx&quot;. Store this address in my_url1.</span></span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co"># You can store the address in a variable and use this variable to import the data. Save the data frame in df5.</span></span></code></pre></div>
-<p>Load the following dataset. What is wrong with the output?</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># Load the dataset that is stored at &quot;https://tinyurl.com/ydbte7fp&quot;. Store this address in my_url2.</span></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co"># Save the data frame in df6.</span></span></code></pre></div>
-<p>You see that this dataset does not have any headers and automatically
-the first row is used as the header. If you check the help function for
-<code>read_csv()</code> you will see that the default setting for
-headers (col_names) is set to <code>TRUE</code>. Load again the same
-dataset and adjust the argument for headers, so that the first row is
-not read as a header.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># Load the dataset that is stored at &quot;https://tinyurl.com/ydbte7fp&quot;. Save the data frame in df7.</span></span></code></pre></div>
-<p>You see that the tibble now has headers (X1-X17). If you want to
-change the names of the headers you can use the function
-<code>names()</code> which contains a vector with the names of the
-headers. A vector with the headers is given in the next block of code.
-Change the names of the headers of the last data frame.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># Give the correct headers to the data frame df7. The names of the headers are stored in `head_names`.</span></span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>head_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;state&quot;</span>, <span class="st">&quot;numcol&quot;</span>, <span class="st">&quot;yieldpercol&quot;</span>, <span class="st">&quot;totalprod&quot;</span>, <span class="st">&quot;stocks&quot;</span>, <span class="st">&quot;priceperlb&quot;</span>, <span class="st">&quot;prodvalue&quot;</span>, <span class="st">&quot;year&quot;</span>, <span class="st">&quot;StateName&quot;</span>, <span class="st">&quot;Region&quot;</span>, <span class="st">&quot;FIPS&quot;</span>, <span class="st">&quot;nCLOTHIANIDIN&quot;</span>, <span class="st">&quot;nIMIDACLOPRID&quot;</span>, <span class="st">&quot;nTHIAMETHOXAM&quot;</span>, <span class="st">&quot;nACETAMIPRID&quot;</span>, <span class="st">&quot;nTHIACLOPRID&quot;</span>, <span class="st">&quot;nAllNeonic&quot;</span>)</span></code></pre></div>
-<p>Now try to read the following file and see what is wrong when you use
-<code>read_csv()</code> to read the file.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># Read the data stored at &quot;https://tinyurl.com/mpev7ua6&quot;. Save this address in my_url3.</span></span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="co"># Save the data frame in df8.</span></span></code></pre></div>
-<p>You see that there is a comment in the first line and the data is
-separated with an asterisk (*). You cannot use <code>read_csv()</code>,
-<code>read_csv2()</code>, or <code>read_tsv()</code> to read this file.
-These functions have preset delimiters: comma, semi-colon and tab,
-respectively. There is a function that will read files where you have to
-indicate the delimiter: <code>read_delim()</code>. Load the previous
-data with this function. First, use help on this function and try to
-figure out how to set the delimiter and remove the comment.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># Read the file and use the delimiter and comment arguments to read the data properly.</span></span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="co"># Save the data frame in df9.</span></span></code></pre></div>
+<div id="lesson-11-13-data-analysis" class="section level2">
+<h2>Lesson 11-13: Data analysis</h2>
+<p>Once the data is read/loaded and cleaned up nicely, it is time start
+analyzing and presenting the data. In these two lessons, we will look at
+the analyzing part. We will look at how to sort, filter and re-arranging
+the data presented in the data frame (or tibble) and then it is time to
+look at properties of specific variables and do some commonly used
+calculations on data.</p>
+<p>First, let’s load a data set that we can work with which has been
+cleaned up already. Of course we start with the make up of the tibbles
+we create during this part of the lessons, like we did before in
+previous lessons using the <code>tidyverse</code> and
+<code>kableExtra</code> libraries.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="fu">library</span>(pillar)</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>formatted_table <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">sapply</span>(df, pillar<span class="sc">::</span>type_sum)</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>  new_col_names <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">names</span>(df), <span class="st">&quot;&lt;br&gt;&quot;</span>, <span class="st">&quot;&lt;span style=&#39;font-weight: normal;&#39;&gt;&quot;</span>, col_types, <span class="st">&quot;&lt;/span&gt;&quot;</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>  <span class="fu">kbl</span>(df, <span class="at">col.names =</span> new_col_names, <span class="at">escape =</span> F, <span class="at">format =</span> <span class="st">&quot;html&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>    <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hoover&quot;</span>, <span class="st">&quot;responsive&quot;</span>))</span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>}</span></code></pre></div>
+<p>Download the file <a href="./files_10_data_analysis_exercises/add_exercises/chronic_kidney_disease.csv">chronic_kidney_disease.csv</a>
+and check in a text editor what is the delimiter in the file. Read the
+file into R.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># Read the data on chronic kidney disease.</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="co"># Replace any missing data with NA values. </span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co"># Hint: check which columns are of character type, but contains numbers.</span></span></code></pre></div>
 <p><br />
 </p>
 </div>
-<div id="write-data-to-a-file-on-your-computer" class="section level2">
-<h2>Write data to a file on your computer</h2>
-<p>Of course it is also possible to write data to a new file (maybe you
-made some changes to a dataset and you want to save it to work on
-later). Check with a text editor if the data is separated with the
-delimiter that you expect for the function that you have used to write
-the data.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># Use the `write` functions that are derived from the `read` functions to create a</span></span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="co"># - comma-separated file</span></span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="co"># - semi-colon-separated file</span></span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="co"># - tab-separated file</span></span>
-<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="co"># - where $ is the delimiter</span></span>
-<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="co"># from the first tibble that has been created (my_tibble). Make sure they have unique file names.</span></span></code></pre></div>
+<div id="select-in-data-frames-using-base-r" class="section level2">
+<h2>Select in data frames using base R</h2>
+<p>Let’s start by selecting specific data from the data frame. If we use
+numbers, we use the square brackets to indicate the index numbers (rows
+and column) of the data frame. For columns it is also possible to use
+the column name and then the $-sign is used.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># Select the value from the 6th row and the 2nd column.</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="co"># Select the 123th row.</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co"># Select the 3rd column using the column number.</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co"># Select the 3rd column using the column name.</span></span></code></pre></div>
+<p>Notice the difference between selecting a column using the index
+number of the column and using the name of the column. The first command
+returns a tibble, the second command returns a vector.</p>
 <p><br />
 </p>
 </div>
-<div id="read-and-write-data-from-and-to-an-excel-file" class="section level2">
-<h2>Read and write data from and to an Excel file</h2>
-<p>It is also possible to read and write Excel files in R. The package
-to read/write Excel files comes with the <code>readxl</code> and
-<code>openxlsx</code> libraries. You can install the <code>readxl</code>
-and <code>openxlsx</code> packages if for some reason it has not been
-installed yet.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># RUN THIS CODE before you move on to the next block of code.</span></span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="co"># install.packages(&quot;readxl&quot;)</span></span>
-<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="co"># install.packages(&quot;openxlsx&quot;)</span></span>
-<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span></code></pre></div>
-<p>Try to read the data in the Excel file <a href="./files_04_data_import_exercises/add_exercises/amylase.xlsx">amylase.xlsx</a>
-in R using the <code>read_excel()</code> function.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># Read the Excel file. Save the data frame in df10.</span></span></code></pre></div>
-<p>Try to write the data frame <code>my_tibble</code> to an Excel file
-using the <code>write.xlsx()</code> function.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># Write `my_tibble` to an Excel file.</span></span></code></pre></div>
+<div id="slicing-specific-columns-using-tidyverse" class="section level2">
+<h2>Slicing specific columns using Tidyverse</h2>
+<p>With <code>tidyverse</code> you can take slices (selected rows) from
+the data frame with the <code>slice()</code> function.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Select the first row of tibble1.</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co"># Select the rows 32 to 36 of tibble1</span></span></code></pre></div>
+<p>With <code>slice_head()</code> and <code>slice_tail()</code> you can
+get the top or bottom rows, respectively.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co"># Get the top 4 rows of tibbel1.</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co"># Get the bottom 4 rows of tibble1.</span></span></code></pre></div>
+<p>With <code>slice_max()</code> and <code>slice_min()</code> it is
+possible to get the row with the maximum or minimum value, respectively,
+for a specific column.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Get the row with the maximum and mininum values for Hemoglobin levels.</span></span></code></pre></div>
+<p><code>n</code> will give the top (or bottom) <code>n</code> rows. If
+there are two rows with the same maximum (or minimum) values, R will
+give both rows back (even if you set <code>n = 1</code>).</p>
 <p><br />
 </p>
 </div>
+<div id="filter-and-sort-in-r" class="section level2">
+<h2>Filter and sort in R</h2>
+<p>Like in Excel, it is possible to filter and sort on the data in the
+data frame.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># Select data that only contains the data for patients that have a blood pressure that is higher than 70 (mm/Hg). Assign the data to &#39;tibble2&#39;.</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co"># Select data that contains the same condition as above (Blood pressure &gt; 70) AND age of the patient &lt; 50 years. Use the &#39;&amp;&#39; operator to combine conditions. Store the data in &#39;tibble3&#39;.</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co"># Select data that contains either of the conditions mentioned: Blood pressure &gt; 70 mm/Hg OR the age &lt; 50 years. Use the &#39;|&#39; operator to choose between either of the conditions. Store the data in tibble 4.</span></span></code></pre></div>
+<p>We have seen the negate operator ! already before to exclude certain
+data.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># Select data of patients that have a blood pressure higher than 70 mm/Hg AND leave out the data of patients which appetite has been scored as &quot;poor&quot;. Store the data in &#39;tibble5&#39;.</span></span></code></pre></div>
+<p>Sorting on a specific column uses the <code>arrange()</code>
+function. If you do not specify, the indicated column is sorted
+ascending.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># Sort on creatine levels with the lowest value on top. Store the new tibble in tibble6.</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co"># Sort on creatine levels with the lowest value on top. Store the new tibble in tibble7.</span></span></code></pre></div>
+<p>You can easily check if the lowest or highest value is on top using
+the <code>min()</code> and <code>max()</code> functions and check in the
+table.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># Check the minimum of [Creatine] in tibble 6.</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co"># Check the maximum of [Creatine] in tibble 7.</span></span></code></pre></div>
+<p>Sorting on multiple levels is very simple. Just add another argument
+on which column to sort. You can even first sort from high to low and
+then from low to high.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># Sort on Blood pressure and then on creatine level, both from low to high.</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="co"># Sort on Blood pressure from low to high and then on creatine level from high to low.</span></span></code></pre></div>
+<p>If you want only some of the columns that you want to work on, you
+can select these columns.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># Select the columns for patient_id, Blood pressure, sodium an potassium levels.</span></span></code></pre></div>
+<p>If you want to leave out columns, use the ‘-’ sign to indicate which
+columns should not be present.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># Leave out the columns for Age, Albumine and Sugar.</span></span></code></pre></div>
+<p>If column names have similar column names it is sometimes possible to
+select on part of these similar names with the functions
+<code>starts_with()</code> or <code>ends_with()</code>.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># Select the columns that end with &#39;(mg/dl)&#39;.</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co"># Select the columns that start with &#39;Pus&#39;.</span></span></code></pre></div>
+<p>Because there is so much data to analyze, it might be helpful to look
+at a summary of all the data that is present in the data frame.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># Give a summary of the data in the complete data frame.</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="co"># Give a summary of the Blood pressure data.</span></span></code></pre></div>
+<p>The summary contains the most used statistics used (such as the mean,
+minimum and maximum values) for the columns that contain numeric
+data.<br />
+<br />
+</p>
+</div>
+<div id="rounding-numbers" class="section level2">
+<h2>Rounding numbers</h2>
+<p>You see in the previous tables that calculations are not rounded to 2
+or 3 decimals. If you want to round to a specific amount of decimals,
+you can use the <code>round()</code> function. NOTE: rounding is
+according to the IEC 60559 standard. This will round the decimal to the
+‘even number’.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># Compare the following rounding numbers:</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">0.5</span>)</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">1.5</span>)</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">2.5</span>)</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">3.5</span>)</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<p>If you want to round to a certain amount of decimals, use the
+argument <code>digits =</code>.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="co"># Round a random number to different a different amount of decimals.</span></span></code></pre></div>
+<p><br />
+</p>
+</div>
+<div id="statistics" class="section level2">
+<h2>Statistics</h2>
+<p>R is designed for statistic analysis. This is of course not the scope
+of this course, but we will discuss the main statistical analyses that
+are used in the lab.</p>
+<p>We have encountered a couple of the statistical calculations
+already.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="co"># Calculate the average of the &#39;White blood cell count (cells/µl)&#39;. Round the average to 2 decimals.</span></span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a><span class="co"># Present it nicely in a sentence.</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="co"># What are the minimum and maximum amounts of Hemoglobine? Present without decimals.</span></span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a><span class="co"># Present it nicely in a sentence.</span></span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="co"># What is the median of the age of the patients? Present without decimals.</span></span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="co"># Present it nicely in a sentence.</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="co"># Present the quantiles for 25%, 50% and 75% of the glucose levels. Round to two decimals.</span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="co"># Calculate the average, the standard deviation and the standard error of the mean for the Creatine levels. Round all to one decimal.</span></span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a><span class="co"># Present them in a sentence.</span></span></code></pre></div>
+<p><br />
+</p>
+</div>
+<div id="summary-of-data" class="section level2">
+<h2>Summary of data</h2>
+<p>With tidyverse it is possible to make this presentable in a tibble
+and then combine it with <code>group_by()</code> to calculate and show
+these statistics by category.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="co"># Summarize the Blood pressure and present it in a tibble.</span></span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a><span class="co"># Calculate the average Blood pressure for the categories &#39;ckd&#39; (chronic kidney disease) and &#39;notcdk&#39; (not chronic kidney disease).</span></span>
+<span id="cb30-4"><a href="#cb30-4" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" tabindex="-1"></a><span class="co"># Add other variables to which you can calculate the mean.</span></span>
+<span id="cb30-6"><a href="#cb30-6" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" tabindex="-1"></a><span class="co"># And add the standard deviation to make the data complete.</span></span></code></pre></div>
+<p>Using <code>summarize_each()</code> is easier to determine for the
+(selected) results for blood pressure, age and glucose concentrations
+and present them in a orderly manner. However, there are many NA values
+in this data set. Remember, that calculations with NA values is not
+possible.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;Mean with NA values:&quot;</span>, <span class="fu">mean</span>(<span class="fu">c</span>(<span class="fl">6.5</span>, <span class="fl">3.5</span>, <span class="fl">1.3</span>, <span class="cn">NA</span>, <span class="fl">7.8</span>)))</span></code></pre></div>
+<pre><code>## [1] &quot;Mean with NA values: NA&quot;</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;Mean without NA values:&quot;</span>, <span class="fu">mean</span>(<span class="fu">c</span>(<span class="fl">6.5</span>, <span class="fl">3.5</span>, <span class="fl">1.3</span>, <span class="fl">4.5</span>, <span class="fl">7.8</span>)))</span></code></pre></div>
+<pre><code>## [1] &quot;Mean without NA values: 4.72&quot;</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="co"># Resolve with the `na.rm = ` argument.</span></span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;Mean with NA values removed:&quot;</span>, <span class="fu">mean</span>(<span class="fu">c</span>(<span class="fl">6.5</span>, <span class="fl">3.5</span>, <span class="fl">1.3</span>, <span class="cn">NA</span>, <span class="fl">7.8</span>), <span class="at">na.rm =</span> T))</span></code></pre></div>
+<pre><code>## [1] &quot;Mean with NA values removed: 4.775&quot;</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;Sum with NA values:&quot;</span>, <span class="fu">sum</span>(<span class="fu">c</span>(<span class="fl">6.5</span>, <span class="fl">3.5</span>, <span class="fl">1.3</span>, <span class="cn">NA</span>, <span class="fl">7.8</span>)))</span></code></pre></div>
+<pre><code>## [1] &quot;Sum with NA values: NA&quot;</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;Sum without NA values:&quot;</span>, <span class="fu">sum</span>(<span class="fu">c</span>(<span class="fl">6.5</span>, <span class="fl">3.5</span>, <span class="fl">1.3</span>, <span class="fl">4.5</span>, <span class="fl">7.8</span>)))</span></code></pre></div>
+<pre><code>## [1] &quot;Sum without NA values: 23.6&quot;</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a><span class="co"># Resolve with the `na.rm = ` argument.</span></span>
+<span id="cb41-2"><a href="#cb41-2" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;Sum with NA values removed:&quot;</span>, <span class="fu">sum</span>(<span class="fu">c</span>(<span class="fl">6.5</span>, <span class="fl">3.5</span>, <span class="fl">1.3</span>, <span class="cn">NA</span>, <span class="fl">7.8</span>), <span class="at">na.rm =</span> T))</span></code></pre></div>
+<pre><code>## [1] &quot;Sum with NA values removed: 19.1&quot;</code></pre>
+<p>For using <code>summarize_each()</code>, droppping the NA values will
+let us do the calculations.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a><span class="co"># First drop all NA values to be able to do calculations.</span></span>
+<span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" tabindex="-1"></a><span class="co"># Then use the `summarize_each()` to do the calculations for all columns.</span></span></code></pre></div>
+<p>This is an example of a function that is still available, but will
+not be updated anymore, because there is a new function available that
+does the same, but is evolved to a better function. Using
+<code>across()</code> will put the mean and sd next to each other (which
+might be more convenient for your analyses).</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a><span class="co"># Do the same as for `summarize_each()` with the new `across()` function.</span></span></code></pre></div>
+<p>Some of the columns contain characters, so calculations are not
+possible for these columns. You can drop these columns using
+<code>select()</code>.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="co"># Drop the columns for the mean for &#39;Red blood cells_mean&#39; and the standard deviation (&#39;Red blood cells_sd&#39;).</span></span>
+<span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" tabindex="-1"></a><span class="co"># Or simplify using &#39;forward-chaining&#39;.</span></span></code></pre></div>
+<p>Removing columns with character type data is also possible.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a><span class="co"># Remove columns with character type.</span></span></code></pre></div>
+<p>Note: <code>summarize_all()</code> and <code>summarize_each()</code>
+give the same results.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a><span class="co"># Use `summarize_each()` and `summarize_all()` on the same data and compare the results.</span></span></code></pre></div>
+<p><br />
+</p>
 </div>
 <div id="learning-outcomes" class="section level1">
 <h1>Learning outcomes</h1>
 <p>This lesson you have learned to:<br />
-- <em>read and write files that have a comma as the delimiter with the
-<code>read_csv()</code> and <code>write_csv()</code>
-functions,</em><br />
-- <em>read and write files that have a semi-colon as the delimiter with
-the <code>read_csv2()</code> and
-<code>write_csv2()</code>functions,</em><br />
-- <em>read and write files that have a tab as the delimiter with the
-<code>read_tsv()</code> and <code>write_tsv()</code>
-functions,</em><br />
-- <em>read and write files that have a semi-colon as the delimiter with
-the <code>read_delim()</code> and <code>write_delim()</code>
-functions,</em><br />
-- <em>read and write Excel files with the <code>read_xlsx()</code> and
-<code>write.xlsx()</code> functions.</em><br />
+- <em>select rows and columns with base R and tidyverse,</em><br />
+- <em>filter and sort data in data frames,</em><br />
+- <em>round numbers and do statistical analysis on data,</em><br />
+- <em>summarize statistical analyses on data frames.</em><br />
 <br />
 <br />
 </p>

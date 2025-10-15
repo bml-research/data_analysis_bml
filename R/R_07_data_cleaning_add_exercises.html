@@ -12,9 +12,9 @@
 
 <meta name="author" content="Mark Sibbald, Jurre Hageman" />
 
-<meta name="date" content="2025-09-23" />
+<meta name="date" content="2025-10-15" />
 
-<title>Lesson 8: Data import</title>
+<title>Lesson 9 &amp; 10: Data cleaning</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -149,9 +149,9 @@ code span.ot { color: #007020; }
 
 <header>
 <div class="inner">
-<h1 class="title toc-ignore">Lesson 8: Data import</h1>
+<h1 class="title toc-ignore">Lesson 9 &amp; 10: Data cleaning</h1>
 <h3 class="author">Mark Sibbald, Jurre Hageman</h3>
-<h3 class="date">2025-09-23</h3>
+<h3 class="date">2025-10-15</h3>
 </div>
 </header>
 
@@ -160,169 +160,278 @@ code span.ot { color: #007020; }
 <div id="content-wrapper">
   <div class="inner clearfix">
     <section id="main-content">
-<p><img src="../hanze/hanze.png" /></p>
+<p><img src="data:image/png;base64,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" /></p>
 <hr />
 <p><a href="../index.html">Go back to the main page</a><br />
 <a href="../R/R_01_index.html">Go back to the R overview page</a></p>
 <hr />
 <p><br />
-This file can be downloaded <a href="./R_04_data_import_add_exercises.Rmd">here</a>.<br />
+This file can be downloaded <a href="./R_07_data_cleaning_add_exercises.Rmd">here</a>.<br />
 </p>
-<div id="lesson-8-import-data" class="section level1">
-<h1>Lesson 8: Import data</h1>
-<p>Run the code in the block below before you start the rest of the code
-blocks in this lesson. Firstly, the library of <code>Tidyverse</code> is
-loaded to use code to import data in an easy way. Secondly, the library
-<code>kableExtra</code> is loaded to transform the tibbles that we use
-to a more presentable table. You will only have to pass the data frame
-as an argument in the function <code>formatted table</code> later
-on.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># RUN THIS CODE </span></span>
+<div id="lesson-9-10-data-cleaning" class="section level1">
+<h1>Lesson 9 &amp; 10: Data cleaning</h1>
+<div id="clean-up-rows-and-columns" class="section level2">
+<h2>Clean up rows and columns</h2>
+<p>Previous lesson we have seen how to import and export data into
+RStudio. When using data from the internet, there is data that is
+written and sorted well and there is not much cleaning to do. However,
+many data is written to csv files in an untidy manner and sometimes
+difficult to work with. In this lesson, you will learn how to use the
+imported data and clean up data that might mess with your analyses.</p>
+<p>First, let’s start with the libraries that we need to present our
+tibbles nicely and clean up the data in a ‘tidy’ way.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># RUN THIS CODE</span></span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>formatted_table <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>  <span class="fu">kbl</span>(df) <span class="sc">%&gt;%</span></span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hoover&quot;</span>, <span class="st">&quot;responsive&quot;</span>))</span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>}</span></code></pre></div>
-<p>As shown in the previous lesson it is quite easy to create data
-frames (transform them to tibbles). Just as a reminder to create a
-tibble use the following vectors:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># Create a data frame (tibble) with the following vectors</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="fu">library</span>(pillar)</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>formatted_table <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">sapply</span>(df, pillar<span class="sc">::</span>type_sum)</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>  new_col_names <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">names</span>(df), <span class="st">&quot;&lt;br&gt;&quot;</span>, <span class="st">&quot;&lt;span style=&#39;font-weight: normal;&#39;&gt;&quot;</span>, col_types, <span class="st">&quot;&lt;/span&gt;&quot;</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>  <span class="fu">kbl</span>(df, <span class="at">col.names =</span> new_col_names, <span class="at">escape =</span> F, <span class="at">format =</span> <span class="st">&quot;html&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>    <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hoover&quot;</span>, <span class="st">&quot;responsive&quot;</span>))</span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>}</span></code></pre></div>
+<p>Let’s create a data frame that contains missing dating
+(<code>NA</code> values).</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># Create a data frame (tibble) with the following vectors and store them in my_tibble1.</span></span>
 <span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>protein <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AmyE&quot;</span>, <span class="st">&quot;AtpE&quot;</span>, <span class="st">&quot;BdbD&quot;</span>, <span class="st">&quot;SipS&quot;</span>, <span class="st">&quot;SunA&quot;</span>, <span class="st">&quot;YdgA&quot;</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>AAs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">123</span>, <span class="dv">342</span>, <span class="dv">612</span>, <span class="dv">441</span>, <span class="dv">47</span>, <span class="dv">510</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>signal_peptide <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>cleavage_site <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">31</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">22</span>, <span class="cn">NA</span>)</span></code></pre></div>
-<p>With <code>str()</code> you can check the properties of your tibble.
-This is useful to check (for example) if the data in a specific column
-has been imported correctly (e.g. numbers).</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># Check properties of `my_tibble`.</span></span></code></pre></div>
-<p>This looks a bit like a short Excel sheet. You will (probably) not
-create data frames yourselves, but use data frames from websites to
-extract and analyse data. It is nearly impossible to type all that data
-in R (especially when there are millions of rows of data), but you need
-to import/read the data into RStudio. There are several functions that
-you van use from the readr package. It is advisable to use a text editor
-to check which separator is used to separate the data. This can be a
-common text editor, such as Notepad, but for this course we will use
-Visual Studio Code to look at the files.<br />
-</p>
-<div id="read-data-from-local-files-stored-on-your-computer" class="section level2">
-<h2>Read data from local files stored on your computer</h2>
-<p>Download the files <a href="./files_04_data_import_exercises/add_exercises/honey.csv">honey.csv</a>,
-<a href="./files_04_data_import_exercises/add_exercises/amylase.tsv">amylase.tsv</a>
-and <a href="./files_04_data_import_exercises/add_exercises/prot_pred.csv">prot_pred.csv</a>
-and move them to the same folder as this RMarkdown file. Determine what
-is the separator in these files using Visual Studio Code (or a text
-editor).</p>
-<p>Next, we will try to read the files into RStudio and see what we need
-to import the data correctly. If you have saved the files in a different
-folder, you will have to adjust the <code>file_path</code> accordingly
-(which can be tricky).</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Read the csv file with comma-separated data. Save the data frame in df1.</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="co"># Check the properties with `str()`.</span></span></code></pre></div>
-<p>In the console you can already see a couple of properties of the data
-frame: the delimiter is the comma, it contains 3 columns which are
-character-type and 14 columns that are numeric.</p>
-<p>Try to open the ‘prot_pred.csv’ file with
-<code>read_csv()</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co"># Read the csv file with semi-colon-separated data with `read_csv()`. Save the data frame in df2.</span></span></code></pre></div>
-<p>You see that this is not a correct data frame; the data is not
-separated correctly, because this files has the semi-colon as the
-separator of data. The function to read ‘semi-colon’-separated data is
-the <code>read_csv2()</code> function.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Read the prot_sep.csv file with the correct function. Overwrite the data frame in df2.</span></span></code></pre></div>
-<p>The function to read ‘tab’-separated data is the
-<code>read_tsv()</code> function.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># Read the amylase.tsv file with the correct function. Save the data frame in df3.</span></span></code></pre></div>
-<p>At a first glance, the tibble looks fine. However, if you move to the
-12<sup>th</sup> column (<strong>Beeptime_last_beep</strong>), you see
-that the type of data is ‘<em>character</em>’, while this should be
-‘<em>numeric</em>’. Because the decimal separator is a comma in this
-file, the value is read as a character. The function needs an extra
-argument to tell the function that the comma is the decimal
-separator.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># Set the decimal separator to a comma using the `locale = ` argument. Save the data frame in df4.</span></span></code></pre></div>
-<p>Check again the column ‘<strong>Beeptime_last_beep</strong>’ and see
-that the comma is replaced by a dot and that type of the data in this
-column is now numeric (outline is to the right).<br />
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>AAs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">123</span>, <span class="dv">342</span>, <span class="dv">612</span>, <span class="dv">441</span>, <span class="dv">61</span>, <span class="dv">510</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>signal_peptide <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Yes&quot;</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>cleavage_site <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">31</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">22</span>, <span class="dv">27</span>)</span></code></pre></div>
+<p>You cannot do calculations on columns that have <code>NA</code>
+values.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># Calculate the mean value of the cleavage site.</span></span></code></pre></div>
+<p>You can leave out all the observations that has <code>NA</code>
+values (missing data) with the <code>drop_na()</code> function, but you
+can also do (some) calculations with the extra argument
+<code>na.rm =</code> in the function.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Calculate the mean of the protein length using the extra argument &#39;na.rm = &#39;.</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co"># Drop the NA values from the tibble (store in a new variable my_tibble2) and calculate again the mean value of the protein length.</span></span></code></pre></div>
+<p>What if there is a name of a header that you would like to change
+(for example: to make it more clear what is in that particular
+column)?</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co"># Create a data frame (tibble) with the following vectors</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>protein <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AmyE&quot;</span>, <span class="st">&quot;AtpE&quot;</span>, <span class="st">&quot;BdbD&quot;</span>, <span class="st">&quot;SipS&quot;</span>, <span class="st">&quot;SunA&quot;</span>, <span class="st">&quot;YdgA&quot;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>AAs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">123</span>, <span class="dv">342</span>, <span class="dv">612</span>, <span class="dv">441</span>, <span class="dv">61</span>, <span class="dv">510</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>xyz <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Yes&quot;</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>cleavage_site <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">31</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">22</span>, <span class="dv">27</span>)</span></code></pre></div>
+<p><code>xyz</code> should be changed to a header that makes it clear
+that there is a signal peptide present or not for the proteins in the
+tibble. Here is how to change the name of this particular column.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Change the name of column &#39;xyz&#39; to &#39;signal_peptide&#39;.</span></span></code></pre></div>
+<p>Or how about the order of the columns is not how you would like to
+read the tibble or present it to your colleagues?</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># Create a data frame (tibble) with the following vectors</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>protein <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AmyE&quot;</span>, <span class="st">&quot;AtpE&quot;</span>, <span class="st">&quot;BdbD&quot;</span>, <span class="st">&quot;SipS&quot;</span>, <span class="st">&quot;SunA&quot;</span>, <span class="st">&quot;YdgA&quot;</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>signal_peptide <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Yes&quot;</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>cleavage_site <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">31</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">22</span>, <span class="dv">27</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>AAs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">123</span>, <span class="dv">342</span>, <span class="dv">612</span>, <span class="dv">441</span>, <span class="dv">61</span>, <span class="dv">510</span>)</span></code></pre></div>
+<p>You want to have the length of the proteins (AAs) as the second
+column. Here is how to do this:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># Change the order of columns</span></span></code></pre></div>
+<p>What if all the aforementioned problems arise in the same data frame?
+You can solve the issues one-by-one in your code:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># Create a data frame (tibble) with the following vectors.</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>protein <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AmyE&quot;</span>, <span class="st">&quot;AtpE&quot;</span>, <span class="st">&quot;BdbD&quot;</span>, <span class="st">&quot;SipS&quot;</span>, <span class="st">&quot;SunA&quot;</span>, <span class="st">&quot;YdgA&quot;</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>xyz <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Yes&quot;</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>cleavage_site <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">31</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">22</span>, <span class="dv">27</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>AAs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">123</span>, <span class="dv">342</span>, <span class="dv">612</span>, <span class="dv">441</span>, <span class="dv">61</span>, <span class="dv">510</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="co"># Solve all the issues with code</span></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="co"># First make the tibble.</span></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="co"># Drop the rows with NA values.</span></span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="co"># Change the name of column `xyz`.</span></span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a><span class="co"># Change the order of the columns.</span></span></code></pre></div>
+<p>Or, you can use a more convenient way to write code when multiple
+actions are needed on the same data frame. <code>Tidyverse</code> makes
+it possible to do this and preventing overwriting the same variable
+every time you want to use a function on a data frame. This is called
+‘forward-chaining’ and we use the <code>%&gt;%</code> symbol to chain
+functions on the same data frame.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># Create a data frame (tibble) with the following vectors.</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>protein <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AmyE&quot;</span>, <span class="st">&quot;AtpE&quot;</span>, <span class="st">&quot;BdbD&quot;</span>, <span class="st">&quot;SipS&quot;</span>, <span class="st">&quot;SunA&quot;</span>, <span class="st">&quot;YdgA&quot;</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>xyz <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Yes&quot;</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>cleavage_site <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">31</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">22</span>, <span class="dv">27</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>AAs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">123</span>, <span class="dv">342</span>, <span class="dv">612</span>, <span class="dv">441</span>, <span class="dv">61</span>, <span class="dv">510</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="co"># Do all the necessary actions on the tibble at once.</span></span></code></pre></div>
+<p>This is more convenient to write code without thinking to much about
+variable names or how to read the code. If you have to do many actions
+(e.g. &gt;10), it might be helpful to break up the code in smaller
+blocks to keep the code readable. From now on we will use this
+‘forward-chaining’ for making changes in the data frame.<br />
+<br />
 </p>
 </div>
-<div id="read-data-from-a-website" class="section level2">
-<h2>Read data from a website</h2>
-<p>It is also possible to read the data directly from the website if
-there is an address to the file with the data. Try to read the
-‘prot_pred’ data directly from the internet.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># Read the data directly from the web.</span></span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co"># The address of the data is &quot;https://tinyurl.com/bdfc3cnx&quot;. Store this address in my_url1.</span></span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co"># You can store the address in a variable and use this variable to import the data. Save the data frame in df5.</span></span></code></pre></div>
-<p>Load the following dataset. What is wrong with the output?</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># Load the dataset that is stored at &quot;https://tinyurl.com/ydbte7fp&quot;. Store this address in my_url2.</span></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co"># Save the data frame in df6.</span></span></code></pre></div>
-<p>You see that this dataset does not have any headers and automatically
-the first row is used as the header. If you check the help function for
-<code>read_csv()</code> you will see that the default setting for
-headers (col_names) is set to <code>TRUE</code>. Load again the same
-dataset and adjust the argument for headers, so that the first row is
-not read as a header.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># Load the dataset that is stored at &quot;https://tinyurl.com/ydbte7fp&quot;. Save the data frame in df7.</span></span></code></pre></div>
-<p>You see that the tibble now has headers (X1-X17). If you want to
-change the names of the headers you can use the function
-<code>names()</code> which contains a vector with the names of the
-headers. A vector with the headers is given in the next block of code.
-Change the names of the headers of the last data frame.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># Give the correct headers to the data frame df7. The names of the headers are stored in `head_names`.</span></span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>head_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;state&quot;</span>, <span class="st">&quot;numcol&quot;</span>, <span class="st">&quot;yieldpercol&quot;</span>, <span class="st">&quot;totalprod&quot;</span>, <span class="st">&quot;stocks&quot;</span>, <span class="st">&quot;priceperlb&quot;</span>, <span class="st">&quot;prodvalue&quot;</span>, <span class="st">&quot;year&quot;</span>, <span class="st">&quot;StateName&quot;</span>, <span class="st">&quot;Region&quot;</span>, <span class="st">&quot;FIPS&quot;</span>, <span class="st">&quot;nCLOTHIANIDIN&quot;</span>, <span class="st">&quot;nIMIDACLOPRID&quot;</span>, <span class="st">&quot;nTHIAMETHOXAM&quot;</span>, <span class="st">&quot;nACETAMIPRID&quot;</span>, <span class="st">&quot;nTHIACLOPRID&quot;</span>, <span class="st">&quot;nAllNeonic&quot;</span>)</span></code></pre></div>
-<p>Now try to read the following file and see what is wrong when you use
-<code>read_csv()</code> to read the file.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># Read the data stored at &quot;https://tinyurl.com/mpev7ua6&quot;. Save this address in my_url3.</span></span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="co"># Save the data frame in df8.</span></span></code></pre></div>
-<p>You see that there is a comment in the first line and the data is
-separated with an asterisk (*). You cannot use <code>read_csv()</code>,
-<code>read_csv2()</code>, or <code>read_tsv()</code> to read this file.
-These functions have preset delimiters: comma, semi-colon and tab,
-respectively. There is a function that will read files where you have to
-indicate the delimiter: <code>read_delim()</code>. Load the previous
-data with this function. First, use help on this function and try to
-figure out how to set the delimiter and remove the comment.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># Read the file and use the delimiter and comment arguments to read the data properly.</span></span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="co"># Save the data frame in df9.</span></span></code></pre></div>
+<div id="missing-data" class="section level2">
+<h2>Missing Data</h2>
+<p>Often the data that is available contains missing data. You can leave
+this as missing data, but if you start working on your data frame,
+errors are prone to happen. It is useful to replace missing data with
+<code>NA</code>.</p>
+<p>Download the files <a href="./files_07_data_cleaning_exercises/add_exercises/prot_pred_md1.csv">prot_pred_md1.csv</a>,
+<a href="./files_07_data_cleaning_exercises/add_exercises/prot_pred_md2.csv">prot_pred_md2.csv</a>
+and <a href="./files_07_data_cleaning_exercises/add_exercises/prot_pred_md3.csv">prot_pred_md3.csv</a>
+and save these files in the same folder where you have saved the
+RMarkdown-file for this lesson. Check the file with a text editor and
+decide which of the functions you need to read this file.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># Read the file &#39;prot_pred_md1.csv&#39; with missing data and store it in my_tibble13.</span></span></code></pre></div>
+<p>You see that there is a (forward) slash where data is missing. You
+can also see that the character type of the second column is not numeric
+anymore (the numbers are outlined to the left; compare to the column
+with the cleavage site). Calculations on the numbers in this column are
+therefore not possible.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># Calculate the mean of the protein length (AAs).</span></span></code></pre></div>
+<p>You can remove all rows that contain the missing data, but it is more
+convenient to read the data and indicate from the start which characters
+are indications of missing data. The argument in the read-function that
+is needed to indicate missing data is <code>na =</code>. It expects a
+vector with characters that are read as missing data and replaced with
+<code>NA</code>.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># Read the file again and indicate which character should be read as &#39;NA&#39;.</span></span></code></pre></div>
+<p>The forward slash is replaced with NA and you can do calculations on
+the column again.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># Calculate the mean of the cleavage site.</span></span></code></pre></div>
+<p>If there are different characters (or words) used to indicate missing
+data, you need to create a vector with these characters (or words) for
+the argument <code>na =</code>.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># Read the file &#39;prot_pred_md2.csv&#39;. Save the data in my_tibble15.</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="co"># Indicate which character should be read as &#39;NA&#39;.</span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="co"># Calculate the mean of the cleavage site.</span></span></code></pre></div>
+<p>What if the missing data is just a blank?</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># Read the file &#39;prot_pred_md3.csv&#39; and store the data in my_tibble16.csv.</span></span></code></pre></div>
+<p>You see that the <code>read_csv2()</code> function deals with blanks
+automatically. The same is true for the other functions to read files,
+including Excel files. Download the files <a href="./files_07_data_cleaning_exercises/add_exercises/prot_pred_md1.xlsx">prot_pred_md1.xlsx</a>,
+<a href="./files_07_data_cleaning_exercises/add_exercises/prot_pred_md2.xlsx">prot_pred_md2.xlsx</a>
+and <a href="./files_07_data_cleaning_exercises/add_exercises/prot_pred_md3.xlsx">prot_pred_md3.xlsx</a>
+and read these files with <code>read_xlsx()</code>.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># Read the Excel files again (do not forget to load the libraries for reading Excel files) and indicate which character should be read as &#39;NA&#39;.</span></span></code></pre></div>
 <p><br />
 </p>
 </div>
-<div id="write-data-to-a-file-on-your-computer" class="section level2">
-<h2>Write data to a file on your computer</h2>
-<p>Of course it is also possible to write data to a new file (maybe you
-made some changes to a dataset and you want to save it to work on
-later). Check with a text editor if the data is separated with the
-delimiter that you expect for the function that you have used to write
-the data.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># Use the `write` functions that are derived from the `read` functions to create a</span></span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="co"># - comma-separated file</span></span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="co"># - semi-colon-separated file</span></span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="co"># - tab-separated file</span></span>
-<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="co"># - where $ is the delimiter</span></span>
-<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="co"># from the first tibble that has been created (my_tibble). Make sure they have unique file names.</span></span></code></pre></div>
+<div id="add-and-replace-data" class="section level2">
+<h2>Add and replace data</h2>
+<p>Let’s look at a data set that contains erronous data.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># Create a data frame (tibble) with the following vectors</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>protein <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AmyE&quot;</span>, <span class="st">&quot;AtpE&quot;</span>, <span class="st">&quot;BdbD&quot;</span>, <span class="st">&quot;SipS&quot;</span>, <span class="st">&quot;SunA&quot;</span>, <span class="st">&quot;YdgA&quot;</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>AAs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="dv">342</span>, <span class="dv">612</span>, <span class="dv">441</span>, <span class="fl">0.0034</span>, <span class="dv">510</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a>signal_peptide <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Yes&quot;</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a>cleavage_site <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">31</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">22</span>, <span class="dv">27</span>)</span></code></pre></div>
+<p>Clearly, the data for the length of SunA is not correct. Let’s
+replace this value with the correct one (the length of SunA is 61 amino
+acids).</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># Replace the NA value for the length of the signal peptide (61) for SunA.</span></span></code></pre></div>
+<p>If you have new data for the variables (a new observation), you can
+add this information to the data frame. For example, you found data for
+a different protein ZstF.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co"># Add the data for the new protein: length of ZstF is 367 amino acids, it contains a signal peptide.</span></span></code></pre></div>
+<p>Since it was not known at which position the signal peptide was
+cleaved off, there was no data available. If you leave it out, the
+‘empty’ place in the data frame will be filled with NAs. As soon as you
+have determined the position of the cleavage site you can replace it as
+was shown before.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="co"># Change the missing cleavage position of ZstF by the value 38.</span></span></code></pre></div>
+<p>Let’s try two actions with one line of code using forward chaining.
+You figured out that the data for the protein SipS is not correct and
+want to delete it from the data frame AND you found new information on
+the protein RsoP and want to add it to the data frame. The new data for
+the RsoP protein: - protein length = 812 amino acids, - it does contain
+a signal peptide, - the cleavage site is determined at position
+41.<br />
+Keep the table alphabetical on protein name. You can use the
+<code>.before =</code> or <code>.after =</code> argument to insert the
+data at a specific row.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="co"># First, delete the row for SipS with `filter()` and using the negate character &#39;!&#39;.  </span></span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a><span class="co"># Second, add information on the protein RsoP.</span></span></code></pre></div>
+<p>New data suggests that all the protein have signal peptides. This
+means that all values “No” in the column signal peptide have to be
+replaced with “Yes”.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="co"># Change all values from &quot;No&quot; to &quot;Yes&quot; in the column &#39;signal peptide&#39;.</span></span></code></pre></div>
+<p>Let’s change all missing data in the complete data frame to NA
+values.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="co"># start a new data frame with several missing data and store it in my_tibble24.</span></span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>protein <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AmyE&quot;</span>, <span class="st">&quot;AtpE&quot;</span>, <span class="st">&quot;BdbD&quot;</span>, <span class="st">&quot;SipS&quot;</span>, <span class="st">&quot;SunA&quot;</span>, <span class="st">&quot;YdgA&quot;</span>, <span class="st">&quot;Zstf&quot;</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>AAs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;no data&quot;</span>, <span class="dv">342</span>, <span class="dv">612</span>, <span class="dv">441</span>, <span class="dv">61</span>, <span class="dv">510</span>, <span class="dv">367</span>)</span>
+<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a>signal_peptide <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Yes&quot;</span>)</span>
+<span id="cb24-5"><a href="#cb24-5" tabindex="-1"></a>cleavage_site <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">31</span>, <span class="st">&quot;no data&quot;</span>, <span class="st">&quot;no data&quot;</span>, <span class="dv">41</span>, <span class="dv">22</span>, <span class="dv">27</span>, <span class="dv">38</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" tabindex="-1"></a><span class="co"># Replace missing data with NA all at once and store it in my_tibble25.</span></span></code></pre></div>
+<p>The values in the columns for protein length and cleavage site are
+still character type. Let’s change it to numeric.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="co"># Change the columns with numbers to numeric and store it in my_tibble26.</span></span></code></pre></div>
 <p><br />
 </p>
 </div>
-<div id="read-and-write-data-from-and-to-an-excel-file" class="section level2">
-<h2>Read and write data from and to an Excel file</h2>
-<p>It is also possible to read and write Excel files in R. The package
-to read/write Excel files comes with the <code>readxl</code> and
-<code>openxlsx</code> libraries. You can install the <code>readxl</code>
-and <code>openxlsx</code> packages if for some reason it has not been
-installed yet.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># RUN THIS CODE before you move on to the next block of code.</span></span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="co"># install.packages(&quot;readxl&quot;)</span></span>
-<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="co"># install.packages(&quot;openxlsx&quot;)</span></span>
-<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span></code></pre></div>
-<p>Try to read the data in the Excel file <a href="./files_04_data_import_exercises/add_exercises/amylase.xlsx">amylase.xlsx</a>
-in R using the <code>read_excel()</code> function.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># Read the Excel file. Save the data frame in df10.</span></span></code></pre></div>
-<p>Try to write the data frame <code>my_tibble</code> to an Excel file
-using the <code>write.xlsx()</code> function.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># Write `my_tibble` to an Excel file.</span></span></code></pre></div>
+<div id="making-data-tidy" class="section level2">
+<h2>Making data tidy</h2>
+<p>Let’s create a new data frame from new data.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="co"># Create a data frame (tibble) with the following vectors and store it in my_tibble27.</span></span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>protein <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AmyE&quot;</span>, <span class="st">&quot;AtpE&quot;</span>, <span class="st">&quot;BdbD&quot;</span>, <span class="st">&quot;SipS&quot;</span>, <span class="st">&quot;SunA&quot;</span>, <span class="st">&quot;YdgA&quot;</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a>AAs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">123</span>, <span class="dv">342</span>, <span class="dv">612</span>, <span class="dv">441</span>, <span class="dv">61</span>, <span class="dv">510</span>)</span>
+<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a>signal_peptide <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Yes&quot;</span>)</span>
+<span id="cb26-5"><a href="#cb26-5" tabindex="-1"></a>cleavage_site <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">31</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">41</span>, <span class="dv">22</span>, <span class="dv">27</span>)</span>
+<span id="cb26-6"><a href="#cb26-6" tabindex="-1"></a>gene_length_isoform1 <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> AAs <span class="sc">+</span> <span class="dv">3</span></span>
+<span id="cb26-7"><a href="#cb26-7" tabindex="-1"></a>gene_length_isoform2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">291</span>, <span class="dv">999</span>, <span class="dv">1515</span>, <span class="dv">312</span>, <span class="cn">NA</span>, <span class="dv">1191</span>)</span>
+<span id="cb26-8"><a href="#cb26-8" tabindex="-1"></a>gene_length_isoform3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="dv">339</span>, <span class="dv">1545</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">813</span>)</span></code></pre></div>
+<p>We can present this data in a tidy way using the
+<code>pivot_longer()</code> function.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="co"># Make the data tidy with `pivot_longer()`.</span></span></code></pre></div>
+<p>And of course it is possible to reverse this action with the function
+<code>pivot_wider()</code>.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="co"># Make the data untidy with `pivot_wider()`.</span></span></code></pre></div>
+<p>Sometimes you will find that the observations are arranged in the
+columns and the variables in the rows of a data frame. The easiest way
+to make the data tidy is to transpose the data (change columns to row
+and vice versa).</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="co"># Create a data frame (tibble) with the following vectors:</span></span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>measurement1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AmyE&quot;</span>, <span class="dv">123</span>, <span class="st">&quot;Yes&quot;</span>, <span class="dv">31</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a>measurement2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AtpE&quot;</span>, <span class="dv">342</span>, <span class="st">&quot;No&quot;</span>, <span class="cn">NA</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a>measurement3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;BdbD&quot;</span>, <span class="dv">612</span>, <span class="st">&quot;No&quot;</span>, <span class="cn">NA</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" tabindex="-1"></a>measurement4 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;SipS&quot;</span>, <span class="dv">441</span>, <span class="st">&quot;Yes&quot;</span>, <span class="dv">41</span>)</span>
+<span id="cb29-6"><a href="#cb29-6" tabindex="-1"></a>measurement5 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;SunA&quot;</span>, <span class="dv">61</span>, <span class="st">&quot;Yes&quot;</span>, <span class="dv">22</span>)</span>
+<span id="cb29-7"><a href="#cb29-7" tabindex="-1"></a>measurement6 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;YdgA&quot;</span>, <span class="dv">520</span>, <span class="st">&quot;Yes&quot;</span>, <span class="dv">27</span>)</span></code></pre></div>
+<p>You can see that this is not the way to represent the data in the
+correct way. In the columns there are different data types (text is
+mixed with numbers). Transposing the data is quite easy, but after that
+the data frame should be transformed to a tibble and column names should
+be added. And then at the end, numbers should be transformed to the
+numeric type.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="co"># Transpose the data.</span></span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a><span class="co"># Transform the matrix to a tibble.</span></span>
+<span id="cb30-4"><a href="#cb30-4" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" tabindex="-1"></a><span class="co"># Add column names.</span></span>
+<span id="cb30-6"><a href="#cb30-6" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" tabindex="-1"></a><span class="co"># Make sure that the numbers in the tibble are transformed to numeric data type.</span></span></code></pre></div>
+<p><br />
+</p>
+</div>
+<div id="split-columns" class="section level2">
+<h2>Split columns</h2>
+<p>In same data sets you will find that the units are also indicated in
+all the values for each observation. Of course it is important to know
+what the unit of a value is, but doing calculations on these data is
+impossible, because the values are of the character type.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="co"># Create a data frame (tibble) with the following vectors</span></span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>protein <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AmyE&quot;</span>, <span class="st">&quot;AtpE&quot;</span>, <span class="st">&quot;BdbD&quot;</span>, <span class="st">&quot;SipS&quot;</span>, <span class="st">&quot;SunA&quot;</span>, <span class="st">&quot;YdgA&quot;</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a>AAs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">123</span>, <span class="dv">342</span>, <span class="dv">612</span>, <span class="dv">441</span>, <span class="dv">61</span>, <span class="dv">510</span>)</span>
+<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a>signal_peptide <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Yes&quot;</span>)</span>
+<span id="cb31-5"><a href="#cb31-5" tabindex="-1"></a>cleavage_site <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">31</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">41</span>, <span class="dv">22</span>, <span class="dv">27</span>)</span>
+<span id="cb31-6"><a href="#cb31-6" tabindex="-1"></a>gene_length <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="dv">3</span> <span class="sc">*</span> AAs <span class="sc">+</span> <span class="dv">3</span>, <span class="st">&quot;bp&quot;</span>)</span></code></pre></div>
+<p>The solution is to separate the value and unit in separate cells with
+the <code>separate_wider_delim()</code> function. The separator in this
+case is the space between the length and the unit (bp).</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="co"># Separate the column with gene length into the length and the unit.</span></span></code></pre></div>
+<p>Now drop the column ‘dump’ and change the data in the column
+‘gene_length’ to numeric.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="co"># Drop the column &#39;dump&#39; with `select()` and change the data type in the column &#39;gene_length&#39; to numeric.</span></span></code></pre></div>
 <p><br />
 </p>
 </div>
@@ -330,20 +439,12 @@ using the <code>write.xlsx()</code> function.</p>
 <div id="learning-outcomes" class="section level1">
 <h1>Learning outcomes</h1>
 <p>This lesson you have learned to:<br />
-- <em>read and write files that have a comma as the delimiter with the
-<code>read_csv()</code> and <code>write_csv()</code>
-functions,</em><br />
-- <em>read and write files that have a semi-colon as the delimiter with
-the <code>read_csv2()</code> and
-<code>write_csv2()</code>functions,</em><br />
-- <em>read and write files that have a tab as the delimiter with the
-<code>read_tsv()</code> and <code>write_tsv()</code>
-functions,</em><br />
-- <em>read and write files that have a semi-colon as the delimiter with
-the <code>read_delim()</code> and <code>write_delim()</code>
-functions,</em><br />
-- <em>read and write Excel files with the <code>read_xlsx()</code> and
-<code>write.xlsx()</code> functions.</em><br />
+- <em>remove and add row/columns to a data frame,</em><br />
+- <em>change data in a data frame,</em><br />
+- <em>deal with missing data and <code>NA</code> values in a data
+frame,</em><br />
+- <em>transpose a data frame and make it tidy,</em><br />
+- <em>split columns in a data frame.</em><br />
 <br />
 <br />
 </p>
