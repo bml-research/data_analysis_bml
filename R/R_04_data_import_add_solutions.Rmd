@@ -21,7 +21,7 @@ output:
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
 ```
 \
-This file can be downloaded [here](./R_04_data_import_add_exercises.Rmd).
+This file can be downloaded [here](./R_04_data_import_add_solutions.Rmd).
 \
 
 
