@@ -23,59 +23,356 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 
 This Rmd file can be downloaded [here](./R_00_tidy_overview.Rmd)
 
-
->The following function is used to print tibbles in a proper way for the web. You can skip the use of this function to print tibbles to your screen in R Markdown documents.
-
-
-```{r}
-library(knitr)
-library(kableExtra)
-library(pillar)
-
-formatted_table <- function(df) {
-  col_types <- sapply(df, pillar::type_sum)
-  new_col_names <- paste0(names(df), "<br>", "<span style='font-weight: normal;'>", col_types, "</span>")
-  kbl(df, 
-      col.names = new_col_names, 
-      escape = FALSE, # This is crucial to allow the <br> tag to work
-      format = "html" # Ensure HTML format, although often auto-detected
-      ) %>%
-    kable_styling(bootstrap_options = c("striped", "hover", "responsive"))
-}
-```
-
-# R: Tidyverse overview
-
-
-Loading the tidyverse library:
-
 ```{r}
 library(tidyverse)
 ```
 
 
-## Common Tidyverse functions 
+# 📘 Tidyverse Overview
 
-Herewith a table with some commonly used Tidyverse functions and the applications:  
+💡 *This page provides a structured overview of core tidyverse functions.  
+Click a category to expand and jump to detailed examples.*
 
-| Package | Function | Primary Purpose | Description |
-| :--- | :--- | :--- | :--- |
-| **`dplyr`** | `filter()` | Subset rows | Selects a subset of rows based on column values that meet specified logical conditions. |
-| **`dplyr`** | `slice()` | Subset rows by position | Selects rows by their integer position in the data frame. Also includes helpers like `slice_head()`, `slice_tail()`, `slice_min()`, `slice_max()`, and `slice_sample()`. |
-| **`dplyr`** | `select()` | Subset columns | Selects, drops, or reorders columns by their names. |
-| **`dplyr`** | `mutate()` | Add/Modify columns | Adds new columns or modifies existing ones based on a formula. |
-| **`dplyr`** | `arrange()` | Reorder rows | Sorts rows by the values of specified column(s) in ascending or descending order. |
-| **`dplyr`** | `group_by()` | Group data | Creates grouped data that subsequent functions (like `summarize()`) operate on for each group. |
-| **`dplyr`** | `summarize()` | Summarize data | Reduces multiple values down to a single summary statistic (e.g., mean, count, standard deviation). |
-| **`dplyr`** | `inner_join()` | Combine data | Joins two data frames by matching keys, keeping only rows that have matches in *both* tables. |
-| **`tidyr`** | `pivot_longer()` | Reshape data | Lengthens data, increasing the number of rows and decreasing the number of columns. |
-| **`tidyr`** | `pivot_wider()` | Reshape data | Widens data, decreasing the number of rows and increasing the number of columns. |
-| **`ggplot2`**| `ggplot()` | Create visualizations | Initializes a ggplot object, defining the data and aesthetic mappings. |
-| **Base R** | `%>%` (pipe) | Chaining operations | Feeds the result of one function directly into the first argument of the next function. |
+---
 
+## Summary Table (Collapsible)
+
+<details>
+<summary><strong>🧩 Row Operations</strong> — `filter()`, `slice()`, `arrange()`</summary>
+
+Select, subset, or reorder rows.  
+➡️ [See Row Actions ↓](#row-operations)
+</details>
+
+<details>
+<summary><strong>📊 Column Operations</strong> — `select()`, `rename()`, `mutate()`</summary>
+
+Choose, rename, or transform columns.  
+➡️ [See Column Actions ↓](#column-operations)
+</details>
+
+<details>
+<summary><strong>🧮 Grouping & Aggregation</strong> — `group_by()`, `summarize()`</summary>
+
+Split data into groups and compute summaries.  
+➡️ [See Group Actions ↓](#grouping)
+</details>
+
+<details>
+<summary><strong>🔗 Joins & Binding</strong> — `left_join()`, `inner_join()`, `bind_rows()`</summary>
+
+Combine multiple data frames.  
+➡️ [See Join Actions ↓](#joins)
+</details>
+
+<details>
+<summary><strong>🔄 Reshaping Data</strong> — `pivot_longer()`, `pivot_wider()`</summary>
+
+Restructure data between long and wide formats.  
+➡️ [See Reshaping ↓](#reshaping)
+</details>
+
+<details>
+<summary><strong>📈 Visualization</strong> — `ggplot()`, `geom_*()`</summary>
+
+Create and customize plots.  
+➡️ [See Visualization ↓](#visualization)
+</details>
+
+<details>
+<summary><strong>🧰 Utilities</strong> — `glimpse()`, `pull()`, `count()`</summary>
+
+Inspect or extract data quickly.  
+➡️ [See Utilities ↓](#utilities)
+</details>
+
+---
+
+## Row Operations {#row-operations}
+
+[⬆️ Back to Summary](#tidyverse-overview)
+
+- `filter()` – subset rows based on conditions  
+- `slice()` – select rows by position  
+- `arrange()` – reorder rows by variables  
+
+---
+
+## Column Operations {#column-operations}
+
+[⬆️ Back to Summary](#tidyverse-overview)
+
+- `select()` – choose columns  
+- `rename()` – rename columns  
+- `mutate()` – add or modify columns  
+
+---
+
+## Grouping & Aggregation {#grouping}
+
+[⬆️ Back to Summary](#tidyverse-overview)
+
+- `group_by()` – group data  
+- `summarize()` – compute summaries per group  
+
+---
+
+## Joins & Binding {#joins}
+
+[⬆️ Back to Summary](#tidyverse-overview)
+
+- `left_join()`, `inner_join()`, `full_join()` – merge tables by key  
+- `bind_rows()`, `bind_cols()` – stack or combine tables  
+
+---
+
+## Reshaping Data {#reshaping}
+
+[⬆️ Back to Summary](#tidyverse-overview)
+
+- `pivot_longer()` – convert wide → long  
+- `pivot_wider()` – convert long → wide  
+
+---
+
+## Visualization {#visualization}
+
+[⬆️ Back to Summary](#tidyverse-overview)
+
+- `ggplot()` – base for plots  
+- `geom_*()` – plot layers (points, lines, bars, etc.)  
+
+---
+
+## Utilities {#utilities}
+
+[⬆️ Back to Summary](#tidyverse-overview)
+
+- `glimpse()` – quick view of data  
+- `pull()` – extract a column as a vector  
+- `count()` – count occurrences of values  
+
+
+---
 
 ## Tidyverse Functions for Data Frame (Tibble) Manipulations
 
+---
+
+## 🧩 Actions on Rows {#row-operations}
+
+[⬆️ Back to Summary](#tidyverse-overview)
+
+💡 *This section lists core row operations in the tidyverse.*
+
+<details>
+<summary><strong>filter()</strong> – Subset rows based on conditions</summary>
+
+```{r}
+# Keep only rows where mpg > 20
+mtcars %>% filter(mpg > 20)
+```
+
+Selects rows that meet logical conditions. Supports multiple conditions with `&` (and) or `|` (or).  
+</details>
+
+<details>
+<summary><strong>slice()</strong> – Select rows by position</summary>
+
+```{r}
+# Keep the first 5 rows
+mtcars %>% slice(1:5)
+```
+
+Select rows by numeric positions or helpers like `slice_head()` or `slice_tail()`.  
+</details>
+
+<details>
+<summary><strong>arrange()</strong> – Reorder rows by variable(s)</summary>
+
+```{r}
+# Sort by mpg descending
+mtcars %>% arrange(desc(mpg))
+```
+
+Orders rows by one or more columns. Use `desc()` for descending order.  
+</details>
+
+<details>
+<summary><strong>distinct()</strong> – Keep unique rows</summary>
+
+```{r}
+# Keep unique values of cyl
+mtcars %>% distinct(cyl)
+```
+
+Removes duplicate rows based on one or more columns.  
+</details>
+
+<details>
+<summary><strong>slice_sample()</strong> – Random sample of rows</summary>
+
+```{r}
+# Randomly sample 3 rows
+mtcars %>% slice_sample(n = 3)
+```
+
+Randomly selects rows; can sample fractionally with `prop`.  
+</details>
+
+<details>
+<summary><strong>slice_min()/slice_max()</strong> – Top or bottom rows by value</summary>
+
+```{r}
+# 3 rows with lowest mpg
+mtcars %>% slice_min(mpg, n = 3)
+```
+
+Select rows with minimum or maximum values of a variable.  
+</details>
+
+---
+
+## 📊 Actions on Columns {#column-operations}
+
+[⬆️ Back to Summary](#tidyverse-overview)
+
+💡 *This section lists core column operations in the tidyverse.*
+
+<details>
+<summary><strong>select()</strong> – Choose specific columns</summary>
+
+```r
+# Select columns mpg and cyl
+mtcars %>% select(mpg, cyl)
+```
+
+Keeps only the specified columns. Can use helper functions like `starts_with()`, `ends_with()`, or `contains()`.  
+</details>
+
+<details>
+<summary><strong>rename()</strong> – Rename columns</summary>
+
+```r
+# Rename mpg to miles_per_gallon
+mtcars %>% rename(miles_per_gallon = mpg)
+```
+
+Changes column names without altering the data.  
+</details>
+
+<details>
+<summary><strong>mutate()</strong> – Add or modify columns</summary>
+
+```r
+# Add a new column hp_per_wt
+mtcars %>% mutate(hp_per_wt = hp / wt)
+```
+
+Creates new columns or modifies existing ones using expressions.  
+</details>
+
+<details>
+<summary><strong>transmute()</strong> – Create new columns and drop others</summary>
+
+```r
+# Keep only hp_per_wt column
+mtcars %>% transmute(hp_per_wt = hp / wt)
+```
+
+Generates new columns and drops all others in the output.  
+</details>
+
+<details>
+<summary><strong>relocate()</strong> – Move columns to new positions</summary>
+
+```r
+# Move hp column to the first position
+mtcars %>% relocate(hp, .before = 1)
+```
+
+Reorders columns without changing data.  
+</details>
+
+<details>
+<summary><strong>across()</strong> – Apply functions to multiple columns</summary>
+
+```r
+# Convert all numeric columns to log scale
+mtcars %>% mutate(across(where(is.numeric), log))
+```
+
+Applies a function across selected columns, often used inside `mutate()` or `summarize()`.  
+</details>
+
+---
+
+## 🧮 Actions on Groups {#grouping}
+
+[⬆️ Back to Summary](#tidyverse-overview)
+
+💡 *This section lists core grouping operations in the tidyverse.*
+
+<details>
+<summary><strong>group_by()</strong> – Group data by one or more variables</summary>
+
+```r
+# Group by cyl
+mtcars %>% group_by(cyl)
+```
+
+Creates groups in the data for subsequent summarization or manipulation.  
+</details>
+
+<details>
+<summary><strong>ungroup()</strong> – Remove grouping</summary>
+
+```r
+# Remove grouping
+mtcars %>% group_by(cyl) %>% ungroup()
+```
+
+Removes existing groups, returning data to normal ungrouped structure.  
+</details>
+
+<details>
+<summary><strong>summarize()</strong> – Compute summary statistics by group</summary>
+
+```r
+# Average mpg by cyl
+mtcars %>% group_by(cyl) %>% summarize(avg_mpg = mean(mpg))
+```
+
+Aggregates data within each group to produce summary statistics. Often combined with `group_by()`.  
+</details>
+
+<details>
+<summary><strong>mutate() with groups</strong> – Add or modify columns within groups</summary>
+
+```r
+# Compute rank of mpg within each cyl group
+mtcars %>% group_by(cyl) %>% mutate(rank_mpg = rank(mpg))
+```
+
+Performs column transformations separately within each group.  
+</details>
+
+<details>
+<summary><strong>filter() with groups</strong> – Subset rows within groups</summary>
+
+```r
+# Keep top 2 mpg rows within each cyl group
+mtcars %>% group_by(cyl) %>% slice_max(mpg, n = 2)
+```
+
+Allows row selection within each group, keeping group-wise logic intact.  
+</details>
+
+---
+
+### Backup (under construction)
+
+---
 
 ## 1. Actions on Rows
 
@@ -97,6 +394,8 @@ Herewith a table with some commonly used Tidyverse functions and the application
 | `arrange(col1, col2)` | Sort by `col1`, then by `col2` within each `col1` group |
 | `arrange(desc(col))` | Sort the data frame by decreasing values of `col` |
 
+[↑ Back to Summary](#📘-tidyverse-overview-summary)
+
 ---
 
 ## 2. Actions on Columns
@@ -117,6 +416,9 @@ Herewith a table with some commonly used Tidyverse functions and the application
 | `pull(df, colnr)` | Get the values of column number `colnr` (counting from left) as a vector |
 | `pull(df, -colnr)` | Get the values of column number `colnr` (counting from right) as a vector |
 
+
+[↑ Back to Summary](#📘-tidyverse-overview-summary)
+
 ---
 
 ## 3. Actions with Groups
@@ -129,7 +431,7 @@ Herewith a table with some commonly used Tidyverse functions and the application
 | *(Function options)* | `mean()`, `median()`, `sd()`, `IQR()`, each with optional `na.rm = TRUE` |
 | `ungroup(df)` | Combine all sub-tibbles back into one tibble |
 
-
+[↑ Back to Summary](#📘-tidyverse-overview-summary)
 
 ---
 

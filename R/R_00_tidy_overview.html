@@ -32,9 +32,8 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -45,7 +44,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -161,140 +160,389 @@ code span.ot { color: #007020; }
 <a href="../R/R_01_index.html">Go back to the R overview page</a></p>
 <hr />
 <p>This Rmd file can be downloaded <a href="./R_00_tidy_overview.Rmd">here</a></p>
-<blockquote>
-<p>The following function is used to print tibbles in a proper way for
-the web. You can skip the use of this function to print tibbles to your
-screen in R Markdown documents.</p>
-</blockquote>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">library</span>(pillar)</span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>formatted_table <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">sapply</span>(df, pillar<span class="sc">::</span>type_sum)</span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>  new_col_names <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">names</span>(df), <span class="st">&quot;&lt;br&gt;&quot;</span>, <span class="st">&quot;&lt;span style=&#39;font-weight: normal;&#39;&gt;&quot;</span>, col_types, <span class="st">&quot;&lt;/span&gt;&quot;</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>  <span class="fu">kbl</span>(df, </span>
-<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>      <span class="at">col.names =</span> new_col_names, </span>
-<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>      <span class="at">escape =</span> <span class="cn">FALSE</span>, <span class="co"># This is crucial to allow the &lt;br&gt; tag to work</span></span>
-<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>      <span class="at">format =</span> <span class="st">&quot;html&quot;</span> <span class="co"># Ensure HTML format, although often auto-detected</span></span>
-<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span></span>
-<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a>    <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;responsive&quot;</span>))</span>
-<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a>}</span></code></pre></div>
-<div id="r-tidyverse-overview" class="section level1">
-<h1>R: Tidyverse overview</h1>
-<p>Loading the tidyverse library:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
-<div id="common-tidyverse-functions" class="section level2">
-<h2>Common Tidyverse functions</h2>
-<p>Herewith a table with some commonly used Tidyverse functions and the
-applications:</p>
-<table>
-<colgroup>
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Package</th>
-<th align="left">Function</th>
-<th align="left">Primary Purpose</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><strong><code>dplyr</code></strong></td>
-<td align="left"><code>filter()</code></td>
-<td align="left">Subset rows</td>
-<td align="left">Selects a subset of rows based on column values that
-meet specified logical conditions.</td>
-</tr>
-<tr class="even">
-<td align="left"><strong><code>dplyr</code></strong></td>
-<td align="left"><code>slice()</code></td>
-<td align="left">Subset rows by position</td>
-<td align="left">Selects rows by their integer position in the data
-frame. Also includes helpers like <code>slice_head()</code>,
-<code>slice_tail()</code>, <code>slice_min()</code>,
-<code>slice_max()</code>, and <code>slice_sample()</code>.</td>
-</tr>
-<tr class="odd">
-<td align="left"><strong><code>dplyr</code></strong></td>
-<td align="left"><code>select()</code></td>
-<td align="left">Subset columns</td>
-<td align="left">Selects, drops, or reorders columns by their
-names.</td>
-</tr>
-<tr class="even">
-<td align="left"><strong><code>dplyr</code></strong></td>
-<td align="left"><code>mutate()</code></td>
-<td align="left">Add/Modify columns</td>
-<td align="left">Adds new columns or modifies existing ones based on a
-formula.</td>
-</tr>
-<tr class="odd">
-<td align="left"><strong><code>dplyr</code></strong></td>
-<td align="left"><code>arrange()</code></td>
-<td align="left">Reorder rows</td>
-<td align="left">Sorts rows by the values of specified column(s) in
-ascending or descending order.</td>
-</tr>
-<tr class="even">
-<td align="left"><strong><code>dplyr</code></strong></td>
-<td align="left"><code>group_by()</code></td>
-<td align="left">Group data</td>
-<td align="left">Creates grouped data that subsequent functions (like
-<code>summarize()</code>) operate on for each group.</td>
-</tr>
-<tr class="odd">
-<td align="left"><strong><code>dplyr</code></strong></td>
-<td align="left"><code>summarize()</code></td>
-<td align="left">Summarize data</td>
-<td align="left">Reduces multiple values down to a single summary
-statistic (e.g., mean, count, standard deviation).</td>
-</tr>
-<tr class="even">
-<td align="left"><strong><code>dplyr</code></strong></td>
-<td align="left"><code>inner_join()</code></td>
-<td align="left">Combine data</td>
-<td align="left">Joins two data frames by matching keys, keeping only
-rows that have matches in <em>both</em> tables.</td>
-</tr>
-<tr class="odd">
-<td align="left"><strong><code>tidyr</code></strong></td>
-<td align="left"><code>pivot_longer()</code></td>
-<td align="left">Reshape data</td>
-<td align="left">Lengthens data, increasing the number of rows and
-decreasing the number of columns.</td>
-</tr>
-<tr class="even">
-<td align="left"><strong><code>tidyr</code></strong></td>
-<td align="left"><code>pivot_wider()</code></td>
-<td align="left">Reshape data</td>
-<td align="left">Widens data, decreasing the number of rows and
-increasing the number of columns.</td>
-</tr>
-<tr class="odd">
-<td align="left"><strong><code>ggplot2</code></strong></td>
-<td align="left"><code>ggplot()</code></td>
-<td align="left">Create visualizations</td>
-<td align="left">Initializes a ggplot object, defining the data and
-aesthetic mappings.</td>
-</tr>
-<tr class="even">
-<td align="left"><strong>Base R</strong></td>
-<td align="left"><code>%&gt;%</code> (pipe)</td>
-<td align="left">Chaining operations</td>
-<td align="left">Feeds the result of one function directly into the
-first argument of the next function.</td>
-</tr>
-</tbody>
-</table>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div id="tidyverse-overview" class="section level1">
+<h1>📘 Tidyverse Overview</h1>
+<p>💡 <em>This page provides a structured overview of core tidyverse
+functions.<br />
+Click a category to expand and jump to detailed examples.</em></p>
+<hr />
+<div id="summary-table-collapsible" class="section level2">
+<h2>Summary Table (Collapsible)</h2>
+<details>
+<summary>
+<strong>🧩 Row Operations</strong> — <code>filter()</code>,
+<code>slice()</code>, <code>arrange()</code>
+</summary>
+Select, subset, or reorder rows.<br />
+➡️ <a href="#row-operations">See Row Actions ↓</a>
+</details>
+<details>
+<summary>
+<strong>📊 Column Operations</strong> — <code>select()</code>,
+<code>rename()</code>, <code>mutate()</code>
+</summary>
+Choose, rename, or transform columns.<br />
+➡️ <a href="#column-operations">See Column Actions ↓</a>
+</details>
+<details>
+<summary>
+<strong>🧮 Grouping &amp; Aggregation</strong> —
+<code>group_by()</code>, <code>summarize()</code>
+</summary>
+Split data into groups and compute summaries.<br />
+➡️ <a href="#grouping">See Group Actions ↓</a>
+</details>
+<details>
+<summary>
+<strong>🔗 Joins &amp; Binding</strong> — <code>left_join()</code>,
+<code>inner_join()</code>, <code>bind_rows()</code>
+</summary>
+Combine multiple data frames.<br />
+➡️ <a href="#joins">See Join Actions ↓</a>
+</details>
+<details>
+<summary>
+<strong>🔄 Reshaping Data</strong> — <code>pivot_longer()</code>,
+<code>pivot_wider()</code>
+</summary>
+Restructure data between long and wide formats.<br />
+➡️ <a href="#reshaping">See Reshaping ↓</a>
+</details>
+<details>
+<summary>
+<strong>📈 Visualization</strong> — <code>ggplot()</code>,
+<code>geom_*()</code>
+</summary>
+Create and customize plots.<br />
+➡️ <a href="#visualization">See Visualization ↓</a>
+</details>
+<details>
+<summary>
+<strong>🧰 Utilities</strong> — <code>glimpse()</code>,
+<code>pull()</code>, <code>count()</code>
+</summary>
+Inspect or extract data quickly.<br />
+➡️ <a href="#utilities">See Utilities ↓</a>
+</details>
+<hr />
+</div>
+<div id="row-operations" class="section level2">
+<h2>Row Operations</h2>
+<p><a href="#tidyverse-overview">⬆️ Back to Summary</a></p>
+<ul>
+<li><code>filter()</code> – subset rows based on conditions<br />
+</li>
+<li><code>slice()</code> – select rows by position<br />
+</li>
+<li><code>arrange()</code> – reorder rows by variables</li>
+</ul>
+<hr />
+</div>
+<div id="column-operations" class="section level2">
+<h2>Column Operations</h2>
+<p><a href="#tidyverse-overview">⬆️ Back to Summary</a></p>
+<ul>
+<li><code>select()</code> – choose columns<br />
+</li>
+<li><code>rename()</code> – rename columns<br />
+</li>
+<li><code>mutate()</code> – add or modify columns</li>
+</ul>
+<hr />
+</div>
+<div id="grouping" class="section level2">
+<h2>Grouping &amp; Aggregation</h2>
+<p><a href="#tidyverse-overview">⬆️ Back to Summary</a></p>
+<ul>
+<li><code>group_by()</code> – group data<br />
+</li>
+<li><code>summarize()</code> – compute summaries per group</li>
+</ul>
+<hr />
+</div>
+<div id="joins" class="section level2">
+<h2>Joins &amp; Binding</h2>
+<p><a href="#tidyverse-overview">⬆️ Back to Summary</a></p>
+<ul>
+<li><code>left_join()</code>, <code>inner_join()</code>,
+<code>full_join()</code> – merge tables by key<br />
+</li>
+<li><code>bind_rows()</code>, <code>bind_cols()</code> – stack or
+combine tables</li>
+</ul>
+<hr />
+</div>
+<div id="reshaping" class="section level2">
+<h2>Reshaping Data</h2>
+<p><a href="#tidyverse-overview">⬆️ Back to Summary</a></p>
+<ul>
+<li><code>pivot_longer()</code> – convert wide → long<br />
+</li>
+<li><code>pivot_wider()</code> – convert long → wide</li>
+</ul>
+<hr />
+</div>
+<div id="visualization" class="section level2">
+<h2>Visualization</h2>
+<p><a href="#tidyverse-overview">⬆️ Back to Summary</a></p>
+<ul>
+<li><code>ggplot()</code> – base for plots<br />
+</li>
+<li><code>geom_*()</code> – plot layers (points, lines, bars, etc.)</li>
+</ul>
+<hr />
+</div>
+<div id="utilities" class="section level2">
+<h2>Utilities</h2>
+<p><a href="#tidyverse-overview">⬆️ Back to Summary</a></p>
+<ul>
+<li><code>glimpse()</code> – quick view of data<br />
+</li>
+<li><code>pull()</code> – extract a column as a vector<br />
+</li>
+<li><code>count()</code> – count occurrences of values</li>
+</ul>
+<hr />
 </div>
 <div id="tidyverse-functions-for-data-frame-tibble-manipulations" class="section level2">
 <h2>Tidyverse Functions for Data Frame (Tibble) Manipulations</h2>
+<hr />
+</div>
+<div id="row-operations" class="section level2">
+<h2>🧩 Actions on Rows</h2>
+<p><a href="#tidyverse-overview">⬆️ Back to Summary</a></p>
+<p>💡 <em>This section lists core row operations in the
+tidyverse.</em></p>
+<details>
+<summary>
+<strong>filter()</strong> – Subset rows based on conditions
+</summary>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># Keep only rows where mpg &gt; 20</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(mpg <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code></pre></div>
+<pre><code>##                 mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4      21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710     22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+## Merc 240D      24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+## Merc 230       22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+## Fiat 128       32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+## Honda Civic    30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+## Toyota Corolla 33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+## Toyota Corona  21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+## Fiat X1-9      27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+## Porsche 914-2  26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+## Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+## Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
+Selects rows that meet logical conditions. Supports multiple conditions
+with <code>&amp;</code> (and) or <code>|</code> (or).
+</details>
+<details>
+<summary>
+<strong>slice()</strong> – Select rows by position
+</summary>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Keep the first 5 rows</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code></pre></div>
+<pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</code></pre>
+Select rows by numeric positions or helpers like
+<code>slice_head()</code> or <code>slice_tail()</code>.
+</details>
+<details>
+<summary>
+<strong>arrange()</strong> – Reorder rows by variable(s)
+</summary>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Sort by mpg descending</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(mpg))</span></code></pre></div>
+<pre><code>##                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+## Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+## Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+## Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+## Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+## Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+## Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+## Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+## Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+## Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+## Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+## Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+## Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
+## Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+## Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+## Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+## Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+## Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+## Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+## Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+## Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+## Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+## Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+## Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+## Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+## AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+## Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+## Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+## Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+## Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+## Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+## Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4</code></pre>
+Orders rows by one or more columns. Use <code>desc()</code> for
+descending order.
+</details>
+<details>
+<summary>
+<strong>distinct()</strong> – Keep unique rows
+</summary>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># Keep unique values of cyl</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(cyl)</span></code></pre></div>
+<pre><code>##                   cyl
+## Mazda RX4           6
+## Datsun 710          4
+## Hornet Sportabout   8</code></pre>
+Removes duplicate rows based on one or more columns.
+</details>
+<details>
+<summary>
+<strong>slice_sample()</strong> – Random sample of rows
+</summary>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># Randomly sample 3 rows</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##                mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+## AMC Javelin   15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+## Toyota Corona 21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+## Merc 450SLC   15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3</code></pre>
+Randomly selects rows; can sample fractionally with <code>prop</code>.
+</details>
+<details>
+<summary>
+<strong>slice_min()/slice_max()</strong> – Top or bottom rows by value
+</summary>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># 3 rows with lowest mpg</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">slice_min</span>(mpg, <span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##                      mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Cadillac Fleetwood  10.4   8  472 205 2.93 5.250 17.98  0  0    3    4
+## Lincoln Continental 10.4   8  460 215 3.00 5.424 17.82  0  0    3    4
+## Camaro Z28          13.3   8  350 245 3.73 3.840 15.41  0  0    3    4</code></pre>
+Select rows with minimum or maximum values of a variable.
+</details>
+<hr />
+</div>
+<div id="column-operations" class="section level2">
+<h2>📊 Actions on Columns</h2>
+<p><a href="#tidyverse-overview">⬆️ Back to Summary</a></p>
+<p>💡 <em>This section lists core column operations in the
+tidyverse.</em></p>
+<details>
+<summary>
+<strong>select()</strong> – Choose specific columns
+</summary>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># Select columns mpg and cyl</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(mpg, cyl)</span></code></pre></div>
+Keeps only the specified columns. Can use helper functions like
+<code>starts_with()</code>, <code>ends_with()</code>, or
+<code>contains()</code>.
+</details>
+<details>
+<summary>
+<strong>rename()</strong> – Rename columns
+</summary>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># Rename mpg to miles_per_gallon</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">miles_per_gallon =</span> mpg)</span></code></pre></div>
+Changes column names without altering the data.
+</details>
+<details>
+<summary>
+<strong>mutate()</strong> – Add or modify columns
+</summary>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># Add a new column hp_per_wt</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">hp_per_wt =</span> hp <span class="sc">/</span> wt)</span></code></pre></div>
+Creates new columns or modifies existing ones using expressions.
+</details>
+<details>
+<summary>
+<strong>transmute()</strong> – Create new columns and drop others
+</summary>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># Keep only hp_per_wt column</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">transmute</span>(<span class="at">hp_per_wt =</span> hp <span class="sc">/</span> wt)</span></code></pre></div>
+Generates new columns and drops all others in the output.
+</details>
+<details>
+<summary>
+<strong>relocate()</strong> – Move columns to new positions
+</summary>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># Move hp column to the first position</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">relocate</span>(hp, <span class="at">.before =</span> <span class="dv">1</span>)</span></code></pre></div>
+Reorders columns without changing data.
+</details>
+<details>
+<summary>
+<strong>across()</strong> – Apply functions to multiple columns
+</summary>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># Convert all numeric columns to log scale</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), log))</span></code></pre></div>
+Applies a function across selected columns, often used inside
+<code>mutate()</code> or <code>summarize()</code>.
+</details>
+<hr />
+</div>
+<div id="grouping" class="section level2">
+<h2>🧮 Actions on Groups</h2>
+<p><a href="#tidyverse-overview">⬆️ Back to Summary</a></p>
+<p>💡 <em>This section lists core grouping operations in the
+tidyverse.</em></p>
+<details>
+<summary>
+<strong>group_by()</strong> – Group data by one or more variables
+</summary>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co"># Group by cyl</span></span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(cyl)</span></code></pre></div>
+Creates groups in the data for subsequent summarization or manipulation.
+</details>
+<details>
+<summary>
+<strong>ungroup()</strong> – Remove grouping
+</summary>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="co"># Remove grouping</span></span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> <span class="fu">ungroup</span>()</span></code></pre></div>
+Removes existing groups, returning data to normal ungrouped structure.
+</details>
+<details>
+<summary>
+<strong>summarize()</strong> – Compute summary statistics by group
+</summary>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="co"># Average mpg by cyl</span></span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">avg_mpg =</span> <span class="fu">mean</span>(mpg))</span></code></pre></div>
+Aggregates data within each group to produce summary statistics. Often
+combined with <code>group_by()</code>.
+</details>
+<details>
+<summary>
+<strong>mutate() with groups</strong> – Add or modify columns within
+groups
+</summary>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="co"># Compute rank of mpg within each cyl group</span></span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">rank_mpg =</span> <span class="fu">rank</span>(mpg))</span></code></pre></div>
+Performs column transformations separately within each group.
+</details>
+<details>
+<summary>
+<strong>filter() with groups</strong> – Subset rows within groups
+</summary>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="co"># Keep top 2 mpg rows within each cyl group</span></span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span> <span class="fu">slice_max</span>(mpg, <span class="at">n =</span> <span class="dv">2</span>)</span></code></pre></div>
+Allows row selection within each group, keeping group-wise logic intact.
+</details>
+<hr />
+<div id="backup-under-construction" class="section level3">
+<h3>Backup (under construction)</h3>
+<hr />
+</div>
 </div>
 <div id="actions-on-rows" class="section level2">
 <h2>1. Actions on Rows</h2>
@@ -304,84 +552,86 @@ first argument of the next function.</td>
 <col width="56%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>Function</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td><code>drop_na(df, col)</code></td>
 <td>Drop all rows for which <code>col</code> shows an NA value</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>drop_na(df, col1, col2, …)</code></td>
 <td>Drop all rows for which <code>col1</code> and/or <code>col2</code>
 show NA values</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>drop_na(df)</code> or
 <code>drop_na(df, everything())</code></td>
 <td>Drop all rows where any column has an NA value</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>slice(df, rownr)</code></td>
 <td>Pick all data from row number <code>rownr</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>slice(df, c(nr1, nr2, …))</code></td>
 <td>Pick all data from row numbers <code>nr1</code>, <code>nr2</code>,
 etc.</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>slice_head(df, n = n, prop = prop)</code></td>
 <td>Pick the first <code>n</code> rows (or fraction <code>prop</code>)
 of the data frame</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>slice_tail(df, n = n, prop = prop)</code></td>
 <td>Pick the last <code>n</code> rows (or fraction <code>prop</code>) of
 the data frame</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>slice_min(df, col)</code></td>
 <td>Pick the row with the smallest value of <code>col</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>slice_max(df, col)</code></td>
 <td>Pick the row with the largest value of <code>col</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>slice_sample(df, n = n, prop = prop)</code></td>
 <td>Pick <code>n</code> random rows (or fraction <code>prop</code>) of
 the data frame</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>filter(df, col &gt; value)</code></td>
 <td>Filter rows for which <code>col</code> has data greater than
 <code>value</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td><em>(Other filter options)</em></td>
 <td><code>col &gt;</code>, <code>&gt;=</code>, <code>&lt;</code>,
 <code>&lt;=</code>, <code>==</code>, <code>!=</code>,
 <code>!(condition)</code>, or <code>between(col, a, b)</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>arrange(df, col)</code></td>
 <td>Sort the data frame by increasing values of <code>col</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>arrange(col1, col2)</code></td>
 <td>Sort by <code>col1</code>, then by <code>col2</code> within each
 <code>col1</code> group</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>arrange(desc(col))</code></td>
 <td>Sort the data frame by decreasing values of <code>col</code></td>
 </tr>
 </tbody>
 </table>
+<p><a href="#id_%F0%9F%93%98-tidyverse-overview-summary">↑ Back to
+Summary</a></p>
 <hr />
 </div>
 <div id="actions-on-columns" class="section level2">
@@ -392,68 +642,70 @@ the data frame</td>
 <col width="56%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>Function</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td><code>select(df, col1, col2, …)</code></td>
 <td>Select only columns <code>col1</code>, <code>col2</code>, etc.</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>select(df, -col1)</code></td>
 <td>Select all columns except <code>col1</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>select(df, col1:col3)</code></td>
 <td>Select columns from <code>col1</code> through <code>col3</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>select(df, starts_with(&quot;string&quot;))</code></td>
 <td>Select columns whose names start with <code>&quot;string&quot;</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>select(df, ends_with(&quot;string&quot;))</code></td>
 <td>Select columns whose names end with <code>&quot;string&quot;</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>select(df, contains(&quot;string&quot;))</code></td>
 <td>Select columns whose names contain <code>&quot;string&quot;</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>select(df, where(is.character))</code></td>
 <td>Select only character columns</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>select(df, where(is.numeric))</code></td>
 <td>Select only numeric columns</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>select(df, everything())</code></td>
 <td>Select all columns</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>select(df, newname1 = col1, newname2 = col2, …)</code></td>
 <td>Select and rename columns</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>pull(df, col)</code></td>
 <td>Get the values of a column as a vector</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>pull(df, colnr)</code></td>
 <td>Get the values of column number <code>colnr</code> (counting from
 left) as a vector</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>pull(df, -colnr)</code></td>
 <td>Get the values of column number <code>colnr</code> (counting from
 right) as a vector</td>
 </tr>
 </tbody>
 </table>
+<p><a href="#id_%F0%9F%93%98-tidyverse-overview-summary">↑ Back to
+Summary</a></p>
 <hr />
 </div>
 <div id="actions-with-groups" class="section level2">
@@ -464,36 +716,38 @@ right) as a vector</td>
 <col width="56%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>Function</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td><code>group_by(df, col)</code></td>
 <td>Create grouped tibbles based on levels of <code>col</code></td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>group_by(df, col1, col2)</code></td>
 <td>Create nested grouped tibbles based on levels of <code>col1</code>
 and <code>col2</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>summarize(df, newname1 = funct1(col1), newname2 = funct2(col2), …)</code></td>
 <td>Make a summary table applying functions to grouped columns</td>
 </tr>
-<tr class="even">
+<tr>
 <td><em>(Function options)</em></td>
 <td><code>mean()</code>, <code>median()</code>, <code>sd()</code>,
 <code>IQR()</code>, each with optional <code>na.rm = TRUE</code></td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>ungroup(df)</code></td>
 <td>Combine all sub-tibbles back into one tibble</td>
 </tr>
 </tbody>
 </table>
+<p><a href="#id_%F0%9F%93%98-tidyverse-overview-summary">↑ Back to
+Summary</a></p>
 <hr />
 <p><a href="../index.html">Go back to the main page</a><br />
 <a href="../R/R_01_index.html">Go back to the R overview page</a><br />
