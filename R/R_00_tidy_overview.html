@@ -227,87 +227,9 @@ Inspect or extract data quickly.<br />
 </details>
 <hr />
 </div>
-<div id="row-operations" class="section level2">
-<h2>Row Operations</h2>
-<p><a href="#tidyverse-overview">⬆️ Back to Summary</a></p>
-<ul>
-<li><code>filter()</code> – subset rows based on conditions<br />
-</li>
-<li><code>slice()</code> – select rows by position<br />
-</li>
-<li><code>arrange()</code> – reorder rows by variables</li>
-</ul>
-<hr />
 </div>
-<div id="column-operations" class="section level2">
-<h2>Column Operations</h2>
-<p><a href="#tidyverse-overview">⬆️ Back to Summary</a></p>
-<ul>
-<li><code>select()</code> – choose columns<br />
-</li>
-<li><code>rename()</code> – rename columns<br />
-</li>
-<li><code>mutate()</code> – add or modify columns</li>
-</ul>
-<hr />
-</div>
-<div id="grouping" class="section level2">
-<h2>Grouping &amp; Aggregation</h2>
-<p><a href="#tidyverse-overview">⬆️ Back to Summary</a></p>
-<ul>
-<li><code>group_by()</code> – group data<br />
-</li>
-<li><code>summarize()</code> – compute summaries per group</li>
-</ul>
-<hr />
-</div>
-<div id="joins" class="section level2">
-<h2>Joins &amp; Binding</h2>
-<p><a href="#tidyverse-overview">⬆️ Back to Summary</a></p>
-<ul>
-<li><code>left_join()</code>, <code>inner_join()</code>,
-<code>full_join()</code> – merge tables by key<br />
-</li>
-<li><code>bind_rows()</code>, <code>bind_cols()</code> – stack or
-combine tables</li>
-</ul>
-<hr />
-</div>
-<div id="reshaping" class="section level2">
-<h2>Reshaping Data</h2>
-<p><a href="#tidyverse-overview">⬆️ Back to Summary</a></p>
-<ul>
-<li><code>pivot_longer()</code> – convert wide → long<br />
-</li>
-<li><code>pivot_wider()</code> – convert long → wide</li>
-</ul>
-<hr />
-</div>
-<div id="visualization" class="section level2">
-<h2>Visualization</h2>
-<p><a href="#tidyverse-overview">⬆️ Back to Summary</a></p>
-<ul>
-<li><code>ggplot()</code> – base for plots<br />
-</li>
-<li><code>geom_*()</code> – plot layers (points, lines, bars, etc.)</li>
-</ul>
-<hr />
-</div>
-<div id="utilities" class="section level2">
-<h2>Utilities</h2>
-<p><a href="#tidyverse-overview">⬆️ Back to Summary</a></p>
-<ul>
-<li><code>glimpse()</code> – quick view of data<br />
-</li>
-<li><code>pull()</code> – extract a column as a vector<br />
-</li>
-<li><code>count()</code> – count occurrences of values</li>
-</ul>
-<hr />
-</div>
-</div>
-<div id="examples-of-function-specific-actions" class="section level1">
-<h1>Examples of Function-Specific Actions</h1>
+<div id="function-specific-actions-with-examples" class="section level1">
+<h1>Function-Specific Actions with Examples</h1>
 <hr />
 <div id="row-operations" class="section level2">
 <h2>🧩 Actions on Rows</h2>
@@ -413,10 +335,10 @@ Removes duplicate rows based on one or more columns.
 </summary>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># Randomly sample 3 rows</span></span>
 <span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div>
-<pre><code>##                mpg cyl  disp  hp drat    wt  qsec vs am gear carb
-## Merc 230      22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
-## Mazda RX4 Wag 21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
-## Merc 240D     24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2</code></pre>
+<pre><code>##                   mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+## Maserati Bora    15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+## Pontiac Firebird 19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+## Merc 450SL       17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3</code></pre>
 Randomly selects rows; can sample fractionally with <code>prop</code>.
 </details>
 <details>
