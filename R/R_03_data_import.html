@@ -405,11 +405,25 @@ code span.ot { color: #007020; }
 </li>
 <li><a href="./files_03_data_import/file09_genes_tibble.xlsx">file09_genes_tibble.xlsx</a></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>formatted_table <span class="ot">&lt;-</span> <span class="cf">function</span>(df){</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>  <span class="fu">kbl</span>(df) <span class="sc">%&gt;%</span></span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;responsive&quot;</span>))</span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>}</span></code></pre></div>
+<blockquote>
+<p>The following function is used to print tibbles in a proper way for
+the web. You can skip the use of this function to print tibbles to your
+screen in R Markdown documents.</p>
+</blockquote>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">library</span>(pillar)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>formatted_table <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">sapply</span>(df, pillar<span class="sc">::</span>type_sum)</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>  new_col_names <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">names</span>(df), <span class="st">&quot;&lt;br&gt;&quot;</span>, <span class="st">&quot;&lt;span style=&#39;font-weight: normal;&#39;&gt;&quot;</span>, col_types, <span class="st">&quot;&lt;/span&gt;&quot;</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>  <span class="fu">kbl</span>(df, </span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>      <span class="at">col.names =</span> new_col_names, </span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>      <span class="at">escape =</span> <span class="cn">FALSE</span>, <span class="co"># This is crucial to allow the &lt;br&gt; tag to work</span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>      <span class="at">format =</span> <span class="st">&quot;html&quot;</span> <span class="co"># Ensure HTML format, although often auto-detected</span></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a>    <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;responsive&quot;</span>))</span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a>}</span></code></pre></div>
 <div id="r-data-import" class="section level1">
 <h1>R: Data Import</h1>
 <div id="introduction" class="section level2">
@@ -441,13 +455,13 @@ a tiblle directly from 3 vectors:</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -869,13 +883,13 @@ contains headers. The function to open the file is the
 <thead>
 <tr>
 <th style="text-align:right;">
-id
+id<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-shortName
+shortName<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-FullName
+FullName<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -1012,13 +1026,13 @@ above is stored on e web server, we can also load it using the URL:</p>
 <thead>
 <tr>
 <th style="text-align:right;">
-id
+id<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-shortName
+shortName<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-FullName
+FullName<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -1110,13 +1124,13 @@ a semicolon. - the decimal separator is a <code>,</code> Thus, the
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1186,7 +1200,7 @@ X
 <thead>
 <tr>
 <th style="text-align:left;">
-gene;chromosome;mol_weight_kD
+gene;chromosome;mol_weight_kD<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -1230,13 +1244,13 @@ check the file using a text editor.</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-AAAS
+AAAS<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-12
+12<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-52,2
+52,2<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1302,13 +1316,13 @@ can omit this problem by setting the col_names parameter to FALSE:</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-X1
+X1<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-X2
+X2<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-X3
+X3<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1379,13 +1393,13 @@ names. We can add them as follows:</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1457,13 +1471,13 @@ argument of the <code>read_csv2</code> function:</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1540,7 +1554,7 @@ encounter files using the dot as the decimal separator.</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-gene,chromosome,mol_weight_kD
+gene,chromosome,mol_weight_kD<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -1582,13 +1596,13 @@ this.</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1666,13 +1680,13 @@ problem using the argument <code>locale =</code> in the
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1745,7 +1759,7 @@ tweaking…</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-<span class="citation">@THIS</span> IS A COMMENT
+<span class="citation">@THIS</span> IS A COMMENT<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -1796,13 +1810,13 @@ as decimal separator by default (as we have seen for the
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1906,13 +1920,13 @@ example:</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -2006,13 +2020,13 @@ can find an example of an Excel file.</p>
 <thead>
 <tr>
 <th style="text-align:right;">
-id
+id<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-shortName
+shortName<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-FullName
+FullName<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>

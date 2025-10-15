@@ -396,12 +396,25 @@ code span.ot { color: #007020; }
 <h2>Data cleaning methods</h2>
 <p>Let’s start with loading the tidyverse library:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
-<p>Create a function to create better tibble output for HTML:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>formatted_table <span class="ot">&lt;-</span> <span class="cf">function</span>(df){</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  <span class="fu">kbl</span>(df) <span class="sc">%&gt;%</span></span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;responsive&quot;</span>))</span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>}</span></code></pre></div>
+<blockquote>
+<p>The following function is used to print tibbles in a proper way for
+the web. You can skip the use of this function to print tibbles to your
+screen in R Markdown documents.</p>
+</blockquote>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="fu">library</span>(pillar)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>formatted_table <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">sapply</span>(df, pillar<span class="sc">::</span>type_sum)</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>  new_col_names <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">names</span>(df), <span class="st">&quot;&lt;br&gt;&quot;</span>, <span class="st">&quot;&lt;span style=&#39;font-weight: normal;&#39;&gt;&quot;</span>, col_types, <span class="st">&quot;&lt;/span&gt;&quot;</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>  <span class="fu">kbl</span>(df, </span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>      <span class="at">col.names =</span> new_col_names, </span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>      <span class="at">escape =</span> <span class="cn">FALSE</span>, <span class="co"># This is crucial to allow the &lt;br&gt; tag to work</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>      <span class="at">format =</span> <span class="st">&quot;html&quot;</span> <span class="co"># Ensure HTML format, although often auto-detected</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a>    <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;responsive&quot;</span>))</span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a>}</span></code></pre></div>
 <p>Whether you use Excel or R, data cleaning will often be required for
 the data. So here are some examples of data cleaning:</p>
 </div>
@@ -418,13 +431,13 @@ the data. So here are some examples of data cleaning:</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -494,13 +507,13 @@ Here is how to drop these missing (NA) values:</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -550,13 +563,13 @@ same variable each time (this is called forward chaining):</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -611,13 +624,13 @@ X
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-x
+x<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -687,13 +700,13 @@ rename column x to type:</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -772,13 +785,13 @@ preferred:</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -848,13 +861,13 @@ want to reorder columns. This is how to do that:</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -931,13 +944,13 @@ consistent:</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -1012,13 +1025,13 @@ function:</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1088,13 +1101,13 @@ X
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-chromosome
+chromosome<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1174,13 +1187,13 @@ types of data are removed from the column (‘X’ has been replaced by
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -1254,13 +1267,13 @@ correct that:</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1333,13 +1346,13 @@ X
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -1410,13 +1423,13 @@ X
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1498,13 +1511,13 @@ missing data.</em></div>
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -1574,13 +1587,13 @@ X
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1658,13 +1671,13 @@ empty cells.</em></div>
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1742,13 +1755,13 @@ automatically.</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1819,13 +1832,13 @@ with 122.9.</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1896,13 +1909,13 @@ X
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1991,13 +2004,13 @@ replace an entire row by first deleting a row:</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -2068,13 +2081,13 @@ filter for all but PNOC in the column gene</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -2160,13 +2173,13 @@ that as follows:</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -2255,13 +2268,13 @@ follows:</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -2331,13 +2344,13 @@ no data
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -2419,16 +2432,16 @@ Tidy data can be found <a href="https://cran.r-project.org/web/packages/tidyr/vi
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Chromosome
+Chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_pre_protein_kD
+mol_weight_pre_protein_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-mol_weight_mature_protein_kD
+mol_weight_mature_protein_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -2513,16 +2526,16 @@ X
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Chromosome
+Chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Mol_Weight_Protein_Type
+Mol_Weight_Protein_Type<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-Mol_Weight
+Mol_Weight<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -2677,16 +2690,16 @@ mol_weight_mature_protein_kD
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Chromosome
+Chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_pre_protein_kD
+mol_weight_pre_protein_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-mol_weight_mature_protein_kD
+mol_weight_mature_protein_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -2785,19 +2798,19 @@ link</a>.</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-record_1
+record_1<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-record_2
+record_2<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-record_3
+record_3<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-record_4
+record_4<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-record_5
+record_5<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -2864,6 +2877,22 @@ function:</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a>trans_matrix <span class="ot">&lt;-</span> <span class="fu">t</span>(my_tibble)</span>
 <span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a><span class="fu">formatted_table</span>(trans_matrix)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+<br><span style="font-weight: normal;">chr</span>
+</th>
+<th style="text-align:left;">
+<br><span style="font-weight: normal;">chr</span>
+</th>
+<th style="text-align:left;">
+<br><span style="font-weight: normal;">chr</span>
+</th>
+<th style="text-align:left;">
+<br><span style="font-weight: normal;">chr</span>
+</th>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
@@ -2944,13 +2973,13 @@ X
 <thead>
 <tr>
 <th style="text-align:left;">
-X1
+X1<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-X2
+X2<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-X3
+X3<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -3019,13 +3048,13 @@ X
 <thead>
 <tr>
 <th style="text-align:left;">
-Gene
+Gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Chromosome
+Chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Mol_weight_KD
+Mol_weight_KD<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -3094,13 +3123,13 @@ X
 <thead>
 <tr>
 <th style="text-align:left;">
-Gene
+Gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Chromosome
+Chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-Mol_weight_KD
+Mol_weight_KD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -3177,13 +3206,13 @@ column:</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -3254,16 +3283,16 @@ using the <code>separate_wider_delim</code> function:</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-waste
+waste<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -3347,13 +3376,13 @@ kd
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -3426,13 +3455,13 @@ X
 <thead>
 <tr>
 <th style="text-align:left;">
-gene
+gene<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-chromosome
+chromosome<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-mol_weight_kD
+mol_weight_kD<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
