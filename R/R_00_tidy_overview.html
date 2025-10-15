@@ -305,10 +305,10 @@ combine tables</li>
 </ul>
 <hr />
 </div>
-<div id="tidyverse-functions-for-data-frame-tibble-manipulations" class="section level2">
-<h2>Tidyverse Functions for Data Frame (Tibble) Manipulations</h2>
-<hr />
 </div>
+<div id="examples-of-function-specific-actions" class="section level1">
+<h1>Examples of Function-Specific Actions</h1>
+<hr />
 <div id="row-operations" class="section level2">
 <h2>🧩 Actions on Rows</h2>
 <p><a href="#tidyverse-overview">⬆️ Back to Summary</a></p>
@@ -414,9 +414,9 @@ Removes duplicate rows based on one or more columns.
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># Randomly sample 3 rows</span></span>
 <span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>##                mpg cyl  disp  hp drat    wt  qsec vs am gear carb
-## AMC Javelin   15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
-## Toyota Corona 21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
-## Merc 450SLC   15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3</code></pre>
+## Merc 230      22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+## Mazda RX4 Wag 21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+## Merc 240D     24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2</code></pre>
 Randomly selects rows; can sample fractionally with <code>prop</code>.
 </details>
 <details>
@@ -539,10 +539,10 @@ Performs column transformations separately within each group.
 Allows row selection within each group, keeping group-wise logic intact.
 </details>
 <hr />
-<div id="backup-under-construction" class="section level3">
-<h3>Backup (under construction)</h3>
-<hr />
 </div>
+<div id="backup-under-construction" class="section level2">
+<h2>Backup (under construction)</h2>
+<hr />
 </div>
 <div id="actions-on-rows" class="section level2">
 <h2>1. Actions on Rows</h2>
@@ -630,8 +630,6 @@ the data frame</td>
 </tr>
 </tbody>
 </table>
-<p><a href="#id_%F0%9F%93%98-tidyverse-overview-summary">↑ Back to
-Summary</a></p>
 <hr />
 </div>
 <div id="actions-on-columns" class="section level2">
@@ -704,8 +702,6 @@ right) as a vector</td>
 </tr>
 </tbody>
 </table>
-<p><a href="#id_%F0%9F%93%98-tidyverse-overview-summary">↑ Back to
-Summary</a></p>
 <hr />
 </div>
 <div id="actions-with-groups" class="section level2">
@@ -746,8 +742,6 @@ and <code>col2</code></td>
 </tr>
 </tbody>
 </table>
-<p><a href="#id_%F0%9F%93%98-tidyverse-overview-summary">↑ Back to
-Summary</a></p>
 <hr />
 <p><a href="../index.html">Go back to the main page</a><br />
 <a href="../R/R_01_index.html">Go back to the R overview page</a><br />

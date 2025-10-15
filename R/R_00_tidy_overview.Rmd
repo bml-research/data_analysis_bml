@@ -155,7 +155,7 @@ Inspect or extract data quickly.
 
 ---
 
-## Tidyverse Functions for Data Frame (Tibble) Manipulations
+# Examples of Function-Specific Actions
 
 ---
 
@@ -370,7 +370,7 @@ Allows row selection within each group, keeping group-wise logic intact.
 
 ---
 
-### Backup (under construction)
+## Backup (under construction)
 
 ---
 
@@ -394,7 +394,6 @@ Allows row selection within each group, keeping group-wise logic intact.
 | `arrange(col1, col2)` | Sort by `col1`, then by `col2` within each `col1` group |
 | `arrange(desc(col))` | Sort the data frame by decreasing values of `col` |
 
-[↑ Back to Summary](#📘-tidyverse-overview-summary)
 
 ---
 
@@ -417,7 +416,6 @@ Allows row selection within each group, keeping group-wise logic intact.
 | `pull(df, -colnr)` | Get the values of column number `colnr` (counting from right) as a vector |
 
 
-[↑ Back to Summary](#📘-tidyverse-overview-summary)
 
 ---
 
@@ -431,7 +429,7 @@ Allows row selection within each group, keeping group-wise logic intact.
 | *(Function options)* | `mean()`, `median()`, `sd()`, `IQR()`, each with optional `na.rm = TRUE` |
 | `ungroup(df)` | Combine all sub-tibbles back into one tibble |
 
-[↑ Back to Summary](#📘-tidyverse-overview-summary)
+
 
 ---
 
