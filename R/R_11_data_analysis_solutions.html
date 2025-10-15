@@ -390,12 +390,25 @@ code span.ot { color: #007020; }
 <h2>Data Analysis Exercises</h2>
 <p>Import Tidyverse:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
-<p>Function to improve printing of tibble as HTML:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>formatted_table <span class="ot">&lt;-</span> <span class="cf">function</span>(df){</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  <span class="fu">kbl</span>(df) <span class="sc">%&gt;%</span></span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;responsive&quot;</span>))</span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>}</span></code></pre></div>
+<blockquote>
+<p>The following function is used to print tibbles in a proper way for
+the web. You can skip the use of this function to print tibbles to your
+screen in R Markdown documents.</p>
+</blockquote>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="fu">library</span>(pillar)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>formatted_table <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">sapply</span>(df, pillar<span class="sc">::</span>type_sum)</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>  new_col_names <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">names</span>(df), <span class="st">&quot;&lt;br&gt;&quot;</span>, <span class="st">&quot;&lt;span style=&#39;font-weight: normal;&#39;&gt;&quot;</span>, col_types, <span class="st">&quot;&lt;/span&gt;&quot;</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>  <span class="fu">kbl</span>(df, </span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>      <span class="at">col.names =</span> new_col_names, </span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>      <span class="at">escape =</span> <span class="cn">FALSE</span>, <span class="co"># This is crucial to allow the &lt;br&gt; tag to work</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>      <span class="at">format =</span> <span class="st">&quot;html&quot;</span> <span class="co"># Ensure HTML format, although often auto-detected</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a>    <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;responsive&quot;</span>))</span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a>}</span></code></pre></div>
 <p>This file can be downloaded <a href="./R_11_data_analysis_solutions.Rmd">here</a></p>
 <blockquote>
 <p>In order to compare the analysis in R with Excel, the exercises where
@@ -420,250 +433,250 @@ data frame.</li>
 <thead>
 <tr>
 <th style="text-align:left;">
-MouseID
+MouseID<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-DYRK1A_N
+DYRK1A_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ITSN1_N
+ITSN1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BDNF_N
+BDNF_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NR1_N
+NR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NR2A_N
+NR2A_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pAKT_N
+pAKT_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pBRAF_N
+pBRAF_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCAMKII_N
+pCAMKII_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCREB_N
+pCREB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pELK_N
+pELK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pERK_N
+pERK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pJNK_N
+pJNK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-PKCA_N
+PKCA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pMEK_N
+pMEK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNR1_N
+pNR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNR2A_N
+pNR2A_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNR2B_N
+pNR2B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pPKCAB_N
+pPKCAB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pRSK_N
+pRSK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AKT_N
+AKT_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BRAF_N
+BRAF_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CAMKII_N
+CAMKII_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CREB_N
+CREB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ELK_N
+ELK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ERK_N
+ERK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GSK3B_N
+GSK3B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-JNK_N
+JNK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-MEK_N
+MEK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-TRKA_N
+TRKA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-RSK_N
+RSK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-APP_N
+APP_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Bcatenin_N
+Bcatenin_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SOD1_N
+SOD1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-MTOR_N
+MTOR_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-P38_N
+P38_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pMTOR_N
+pMTOR_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-DSCR1_N
+DSCR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AMPKA_N
+AMPKA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NR2B_N
+NR2B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNUMB_N
+pNUMB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-RAPTOR_N
+RAPTOR_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-TIAM1_N
+TIAM1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pP70S6_N
+pP70S6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NUMB_N
+NUMB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-P70S6_N
+P70S6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pGSK3B_N
+pGSK3B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pPKCG_N
+pPKCG_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CDK5_N
+CDK5_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-S6_N
+S6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ADARB1_N
+ADARB1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AcetylH3K9_N
+AcetylH3K9_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-RRP1_N
+RRP1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BAX_N
+BAX_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ARC_N
+ARC_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ERBB4_N
+ERBB4_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-nNOS_N
+nNOS_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Tau_N
+Tau_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GFAP_N
+GFAP_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GluR3_N
+GluR3_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GluR4_N
+GluR4_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-IL1B_N
+IL1B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-P3525_N
+P3525_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCASP9_N
+pCASP9_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-PSD95_N
+PSD95_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SNCA_N
+SNCA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Ubiquitin_N
+Ubiquitin_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pGSK3B_Tyr216_N
+pGSK3B_Tyr216_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SHH_N
+SHH_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BAD_N
+BAD_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BCL2_N
+BCL2_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pS6_N
+pS6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCFOS_N
+pCFOS_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SYP_N
+SYP_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-H3AcK18_N
+H3AcK18_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-EGR1_N
+EGR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-H3MeK4_N
+H3MeK4_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CaNA_N
+CaNA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-Genotype
+Genotype<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Treatment
+Treatment<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Behavior
+Behavior<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-class
+class<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -2180,13 +2193,13 @@ two proteins:</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-measure
+measure<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-CDK5_N
+CDK5_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Tau_N
+Tau_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -2259,250 +2272,250 @@ the highest Tau expression (use multi-sorting)?</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-MouseID
+MouseID<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-DYRK1A_N
+DYRK1A_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ITSN1_N
+ITSN1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BDNF_N
+BDNF_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NR1_N
+NR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NR2A_N
+NR2A_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pAKT_N
+pAKT_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pBRAF_N
+pBRAF_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCAMKII_N
+pCAMKII_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCREB_N
+pCREB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pELK_N
+pELK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pERK_N
+pERK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pJNK_N
+pJNK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-PKCA_N
+PKCA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pMEK_N
+pMEK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNR1_N
+pNR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNR2A_N
+pNR2A_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNR2B_N
+pNR2B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pPKCAB_N
+pPKCAB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pRSK_N
+pRSK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AKT_N
+AKT_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BRAF_N
+BRAF_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CAMKII_N
+CAMKII_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CREB_N
+CREB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ELK_N
+ELK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ERK_N
+ERK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GSK3B_N
+GSK3B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-JNK_N
+JNK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-MEK_N
+MEK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-TRKA_N
+TRKA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-RSK_N
+RSK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-APP_N
+APP_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Bcatenin_N
+Bcatenin_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SOD1_N
+SOD1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-MTOR_N
+MTOR_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-P38_N
+P38_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pMTOR_N
+pMTOR_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-DSCR1_N
+DSCR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AMPKA_N
+AMPKA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NR2B_N
+NR2B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNUMB_N
+pNUMB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-RAPTOR_N
+RAPTOR_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-TIAM1_N
+TIAM1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pP70S6_N
+pP70S6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NUMB_N
+NUMB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-P70S6_N
+P70S6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pGSK3B_N
+pGSK3B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pPKCG_N
+pPKCG_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CDK5_N
+CDK5_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-S6_N
+S6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ADARB1_N
+ADARB1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AcetylH3K9_N
+AcetylH3K9_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-RRP1_N
+RRP1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BAX_N
+BAX_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ARC_N
+ARC_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ERBB4_N
+ERBB4_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-nNOS_N
+nNOS_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Tau_N
+Tau_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GFAP_N
+GFAP_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GluR3_N
+GluR3_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GluR4_N
+GluR4_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-IL1B_N
+IL1B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-P3525_N
+P3525_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCASP9_N
+pCASP9_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-PSD95_N
+PSD95_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SNCA_N
+SNCA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Ubiquitin_N
+Ubiquitin_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pGSK3B_Tyr216_N
+pGSK3B_Tyr216_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SHH_N
+SHH_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BAD_N
+BAD_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BCL2_N
+BCL2_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pS6_N
+pS6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCFOS_N
+pCFOS_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SYP_N
+SYP_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-H3AcK18_N
+H3AcK18_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-EGR1_N
+EGR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-H3MeK4_N
+H3MeK4_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CaNA_N
+CaNA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-Genotype
+Genotype<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Treatment
+Treatment<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Behavior
+Behavior<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-class
+class<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -2790,250 +2803,250 @@ argument in the calculation:</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-MouseID
+MouseID<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-DYRK1A_N
+DYRK1A_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ITSN1_N
+ITSN1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BDNF_N
+BDNF_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NR1_N
+NR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NR2A_N
+NR2A_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pAKT_N
+pAKT_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pBRAF_N
+pBRAF_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCAMKII_N
+pCAMKII_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCREB_N
+pCREB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pELK_N
+pELK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pERK_N
+pERK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pJNK_N
+pJNK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-PKCA_N
+PKCA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pMEK_N
+pMEK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNR1_N
+pNR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNR2A_N
+pNR2A_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNR2B_N
+pNR2B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pPKCAB_N
+pPKCAB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pRSK_N
+pRSK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AKT_N
+AKT_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BRAF_N
+BRAF_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CAMKII_N
+CAMKII_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CREB_N
+CREB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ELK_N
+ELK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ERK_N
+ERK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GSK3B_N
+GSK3B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-JNK_N
+JNK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-MEK_N
+MEK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-TRKA_N
+TRKA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-RSK_N
+RSK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-APP_N
+APP_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Bcatenin_N
+Bcatenin_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SOD1_N
+SOD1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-MTOR_N
+MTOR_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-P38_N
+P38_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pMTOR_N
+pMTOR_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-DSCR1_N
+DSCR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AMPKA_N
+AMPKA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NR2B_N
+NR2B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNUMB_N
+pNUMB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-RAPTOR_N
+RAPTOR_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-TIAM1_N
+TIAM1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pP70S6_N
+pP70S6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NUMB_N
+NUMB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-P70S6_N
+P70S6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pGSK3B_N
+pGSK3B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pPKCG_N
+pPKCG_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CDK5_N
+CDK5_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-S6_N
+S6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ADARB1_N
+ADARB1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AcetylH3K9_N
+AcetylH3K9_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-RRP1_N
+RRP1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BAX_N
+BAX_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ARC_N
+ARC_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ERBB4_N
+ERBB4_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-nNOS_N
+nNOS_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Tau_N
+Tau_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GFAP_N
+GFAP_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GluR3_N
+GluR3_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GluR4_N
+GluR4_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-IL1B_N
+IL1B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-P3525_N
+P3525_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCASP9_N
+pCASP9_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-PSD95_N
+PSD95_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SNCA_N
+SNCA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Ubiquitin_N
+Ubiquitin_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pGSK3B_Tyr216_N
+pGSK3B_Tyr216_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SHH_N
+SHH_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BAD_N
+BAD_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BCL2_N
+BCL2_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pS6_N
+pS6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCFOS_N
+pCFOS_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SYP_N
+SYP_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-H3AcK18_N
+H3AcK18_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-EGR1_N
+EGR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-H3MeK4_N
+H3MeK4_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CaNA_N
+CaNA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-Genotype
+Genotype<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Treatment
+Treatment<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Behavior
+Behavior<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-class
+class<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -3303,250 +3316,250 @@ expression:</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-MouseID
+MouseID<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-DYRK1A_N
+DYRK1A_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ITSN1_N
+ITSN1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BDNF_N
+BDNF_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NR1_N
+NR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NR2A_N
+NR2A_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pAKT_N
+pAKT_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pBRAF_N
+pBRAF_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCAMKII_N
+pCAMKII_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCREB_N
+pCREB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pELK_N
+pELK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pERK_N
+pERK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pJNK_N
+pJNK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-PKCA_N
+PKCA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pMEK_N
+pMEK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNR1_N
+pNR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNR2A_N
+pNR2A_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNR2B_N
+pNR2B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pPKCAB_N
+pPKCAB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pRSK_N
+pRSK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AKT_N
+AKT_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BRAF_N
+BRAF_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CAMKII_N
+CAMKII_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CREB_N
+CREB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ELK_N
+ELK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ERK_N
+ERK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GSK3B_N
+GSK3B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-JNK_N
+JNK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-MEK_N
+MEK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-TRKA_N
+TRKA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-RSK_N
+RSK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-APP_N
+APP_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Bcatenin_N
+Bcatenin_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SOD1_N
+SOD1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-MTOR_N
+MTOR_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-P38_N
+P38_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pMTOR_N
+pMTOR_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-DSCR1_N
+DSCR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AMPKA_N
+AMPKA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NR2B_N
+NR2B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNUMB_N
+pNUMB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-RAPTOR_N
+RAPTOR_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-TIAM1_N
+TIAM1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pP70S6_N
+pP70S6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NUMB_N
+NUMB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-P70S6_N
+P70S6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pGSK3B_N
+pGSK3B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pPKCG_N
+pPKCG_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CDK5_N
+CDK5_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-S6_N
+S6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ADARB1_N
+ADARB1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AcetylH3K9_N
+AcetylH3K9_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-RRP1_N
+RRP1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BAX_N
+BAX_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ARC_N
+ARC_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ERBB4_N
+ERBB4_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-nNOS_N
+nNOS_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Tau_N
+Tau_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GFAP_N
+GFAP_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GluR3_N
+GluR3_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GluR4_N
+GluR4_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-IL1B_N
+IL1B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-P3525_N
+P3525_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCASP9_N
+pCASP9_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-PSD95_N
+PSD95_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SNCA_N
+SNCA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Ubiquitin_N
+Ubiquitin_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pGSK3B_Tyr216_N
+pGSK3B_Tyr216_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SHH_N
+SHH_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BAD_N
+BAD_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BCL2_N
+BCL2_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pS6_N
+pS6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCFOS_N
+pCFOS_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SYP_N
+SYP_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-H3AcK18_N
+H3AcK18_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-EGR1_N
+EGR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-H3MeK4_N
+H3MeK4_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CaNA_N
+CaNA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-Genotype
+Genotype<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Treatment
+Treatment<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Behavior
+Behavior<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-class
+class<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -5049,250 +5062,250 @@ t-SC-s
 <thead>
 <tr>
 <th style="text-align:left;">
-MouseID
+MouseID<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-DYRK1A_N
+DYRK1A_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ITSN1_N
+ITSN1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BDNF_N
+BDNF_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NR1_N
+NR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NR2A_N
+NR2A_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pAKT_N
+pAKT_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pBRAF_N
+pBRAF_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCAMKII_N
+pCAMKII_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCREB_N
+pCREB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pELK_N
+pELK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pERK_N
+pERK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pJNK_N
+pJNK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-PKCA_N
+PKCA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pMEK_N
+pMEK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNR1_N
+pNR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNR2A_N
+pNR2A_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNR2B_N
+pNR2B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pPKCAB_N
+pPKCAB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pRSK_N
+pRSK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AKT_N
+AKT_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BRAF_N
+BRAF_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CAMKII_N
+CAMKII_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CREB_N
+CREB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ELK_N
+ELK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ERK_N
+ERK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GSK3B_N
+GSK3B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-JNK_N
+JNK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-MEK_N
+MEK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-TRKA_N
+TRKA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-RSK_N
+RSK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-APP_N
+APP_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Bcatenin_N
+Bcatenin_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SOD1_N
+SOD1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-MTOR_N
+MTOR_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-P38_N
+P38_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pMTOR_N
+pMTOR_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-DSCR1_N
+DSCR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AMPKA_N
+AMPKA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NR2B_N
+NR2B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNUMB_N
+pNUMB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-RAPTOR_N
+RAPTOR_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-TIAM1_N
+TIAM1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pP70S6_N
+pP70S6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NUMB_N
+NUMB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-P70S6_N
+P70S6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pGSK3B_N
+pGSK3B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pPKCG_N
+pPKCG_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CDK5_N
+CDK5_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-S6_N
+S6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ADARB1_N
+ADARB1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AcetylH3K9_N
+AcetylH3K9_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-RRP1_N
+RRP1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BAX_N
+BAX_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ARC_N
+ARC_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ERBB4_N
+ERBB4_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-nNOS_N
+nNOS_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Tau_N
+Tau_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GFAP_N
+GFAP_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GluR3_N
+GluR3_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GluR4_N
+GluR4_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-IL1B_N
+IL1B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-P3525_N
+P3525_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCASP9_N
+pCASP9_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-PSD95_N
+PSD95_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SNCA_N
+SNCA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Ubiquitin_N
+Ubiquitin_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pGSK3B_Tyr216_N
+pGSK3B_Tyr216_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SHH_N
+SHH_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BAD_N
+BAD_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BCL2_N
+BCL2_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pS6_N
+pS6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCFOS_N
+pCFOS_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SYP_N
+SYP_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-H3AcK18_N
+H3AcK18_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-EGR1_N
+EGR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-H3MeK4_N
+H3MeK4_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CaNA_N
+CaNA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-Genotype
+Genotype<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Treatment
+Treatment<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Behavior
+Behavior<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-class
+class<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -5554,250 +5567,250 @@ highest Tau expression (use multi-sorting):</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-MouseID
+MouseID<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-DYRK1A_N
+DYRK1A_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ITSN1_N
+ITSN1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BDNF_N
+BDNF_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NR1_N
+NR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NR2A_N
+NR2A_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pAKT_N
+pAKT_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pBRAF_N
+pBRAF_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCAMKII_N
+pCAMKII_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCREB_N
+pCREB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pELK_N
+pELK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pERK_N
+pERK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pJNK_N
+pJNK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-PKCA_N
+PKCA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pMEK_N
+pMEK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNR1_N
+pNR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNR2A_N
+pNR2A_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNR2B_N
+pNR2B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pPKCAB_N
+pPKCAB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pRSK_N
+pRSK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AKT_N
+AKT_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BRAF_N
+BRAF_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CAMKII_N
+CAMKII_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CREB_N
+CREB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ELK_N
+ELK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ERK_N
+ERK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GSK3B_N
+GSK3B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-JNK_N
+JNK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-MEK_N
+MEK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-TRKA_N
+TRKA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-RSK_N
+RSK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-APP_N
+APP_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Bcatenin_N
+Bcatenin_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SOD1_N
+SOD1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-MTOR_N
+MTOR_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-P38_N
+P38_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pMTOR_N
+pMTOR_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-DSCR1_N
+DSCR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AMPKA_N
+AMPKA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NR2B_N
+NR2B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNUMB_N
+pNUMB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-RAPTOR_N
+RAPTOR_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-TIAM1_N
+TIAM1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pP70S6_N
+pP70S6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NUMB_N
+NUMB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-P70S6_N
+P70S6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pGSK3B_N
+pGSK3B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pPKCG_N
+pPKCG_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CDK5_N
+CDK5_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-S6_N
+S6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ADARB1_N
+ADARB1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AcetylH3K9_N
+AcetylH3K9_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-RRP1_N
+RRP1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BAX_N
+BAX_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ARC_N
+ARC_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ERBB4_N
+ERBB4_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-nNOS_N
+nNOS_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Tau_N
+Tau_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GFAP_N
+GFAP_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GluR3_N
+GluR3_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GluR4_N
+GluR4_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-IL1B_N
+IL1B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-P3525_N
+P3525_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCASP9_N
+pCASP9_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-PSD95_N
+PSD95_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SNCA_N
+SNCA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Ubiquitin_N
+Ubiquitin_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pGSK3B_Tyr216_N
+pGSK3B_Tyr216_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SHH_N
+SHH_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BAD_N
+BAD_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BCL2_N
+BCL2_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pS6_N
+pS6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCFOS_N
+pCFOS_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SYP_N
+SYP_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-H3AcK18_N
+H3AcK18_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-EGR1_N
+EGR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-H3MeK4_N
+H3MeK4_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CaNA_N
+CaNA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-Genotype
+Genotype<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Treatment
+Treatment<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Behavior
+Behavior<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-class
+class<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -7301,250 +7314,250 @@ t-SC-s
 <thead>
 <tr>
 <th style="text-align:left;">
-MouseID
+MouseID<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-DYRK1A_N
+DYRK1A_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ITSN1_N
+ITSN1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BDNF_N
+BDNF_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NR1_N
+NR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NR2A_N
+NR2A_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pAKT_N
+pAKT_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pBRAF_N
+pBRAF_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCAMKII_N
+pCAMKII_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCREB_N
+pCREB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pELK_N
+pELK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pERK_N
+pERK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pJNK_N
+pJNK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-PKCA_N
+PKCA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pMEK_N
+pMEK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNR1_N
+pNR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNR2A_N
+pNR2A_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNR2B_N
+pNR2B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pPKCAB_N
+pPKCAB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pRSK_N
+pRSK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AKT_N
+AKT_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BRAF_N
+BRAF_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CAMKII_N
+CAMKII_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CREB_N
+CREB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ELK_N
+ELK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ERK_N
+ERK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GSK3B_N
+GSK3B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-JNK_N
+JNK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-MEK_N
+MEK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-TRKA_N
+TRKA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-RSK_N
+RSK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-APP_N
+APP_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Bcatenin_N
+Bcatenin_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SOD1_N
+SOD1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-MTOR_N
+MTOR_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-P38_N
+P38_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pMTOR_N
+pMTOR_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-DSCR1_N
+DSCR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AMPKA_N
+AMPKA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NR2B_N
+NR2B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNUMB_N
+pNUMB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-RAPTOR_N
+RAPTOR_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-TIAM1_N
+TIAM1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pP70S6_N
+pP70S6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NUMB_N
+NUMB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-P70S6_N
+P70S6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pGSK3B_N
+pGSK3B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pPKCG_N
+pPKCG_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CDK5_N
+CDK5_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-S6_N
+S6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ADARB1_N
+ADARB1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AcetylH3K9_N
+AcetylH3K9_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-RRP1_N
+RRP1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BAX_N
+BAX_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ARC_N
+ARC_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ERBB4_N
+ERBB4_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-nNOS_N
+nNOS_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Tau_N
+Tau_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GFAP_N
+GFAP_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GluR3_N
+GluR3_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GluR4_N
+GluR4_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-IL1B_N
+IL1B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-P3525_N
+P3525_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCASP9_N
+pCASP9_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-PSD95_N
+PSD95_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SNCA_N
+SNCA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Ubiquitin_N
+Ubiquitin_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pGSK3B_Tyr216_N
+pGSK3B_Tyr216_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SHH_N
+SHH_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BAD_N
+BAD_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BCL2_N
+BCL2_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pS6_N
+pS6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCFOS_N
+pCFOS_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SYP_N
+SYP_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-H3AcK18_N
+H3AcK18_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-EGR1_N
+EGR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-H3MeK4_N
+H3MeK4_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CaNA_N
+CaNA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-Genotype
+Genotype<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Treatment
+Treatment<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Behavior
+Behavior<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-class
+class<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -7902,250 +7915,250 @@ pCASP9 protein:</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-MouseID
+MouseID<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-DYRK1A_N
+DYRK1A_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ITSN1_N
+ITSN1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BDNF_N
+BDNF_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NR1_N
+NR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NR2A_N
+NR2A_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pAKT_N
+pAKT_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pBRAF_N
+pBRAF_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCAMKII_N
+pCAMKII_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCREB_N
+pCREB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pELK_N
+pELK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pERK_N
+pERK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pJNK_N
+pJNK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-PKCA_N
+PKCA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pMEK_N
+pMEK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNR1_N
+pNR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNR2A_N
+pNR2A_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNR2B_N
+pNR2B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pPKCAB_N
+pPKCAB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pRSK_N
+pRSK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AKT_N
+AKT_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BRAF_N
+BRAF_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CAMKII_N
+CAMKII_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CREB_N
+CREB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ELK_N
+ELK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ERK_N
+ERK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GSK3B_N
+GSK3B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-JNK_N
+JNK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-MEK_N
+MEK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-TRKA_N
+TRKA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-RSK_N
+RSK_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-APP_N
+APP_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Bcatenin_N
+Bcatenin_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SOD1_N
+SOD1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-MTOR_N
+MTOR_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-P38_N
+P38_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pMTOR_N
+pMTOR_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-DSCR1_N
+DSCR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AMPKA_N
+AMPKA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NR2B_N
+NR2B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pNUMB_N
+pNUMB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-RAPTOR_N
+RAPTOR_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-TIAM1_N
+TIAM1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pP70S6_N
+pP70S6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NUMB_N
+NUMB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-P70S6_N
+P70S6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pGSK3B_N
+pGSK3B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pPKCG_N
+pPKCG_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CDK5_N
+CDK5_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-S6_N
+S6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ADARB1_N
+ADARB1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AcetylH3K9_N
+AcetylH3K9_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-RRP1_N
+RRP1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BAX_N
+BAX_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ARC_N
+ARC_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ERBB4_N
+ERBB4_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-nNOS_N
+nNOS_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Tau_N
+Tau_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GFAP_N
+GFAP_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GluR3_N
+GluR3_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-GluR4_N
+GluR4_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-IL1B_N
+IL1B_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-P3525_N
+P3525_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCASP9_N
+pCASP9_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-PSD95_N
+PSD95_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SNCA_N
+SNCA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Ubiquitin_N
+Ubiquitin_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pGSK3B_Tyr216_N
+pGSK3B_Tyr216_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SHH_N
+SHH_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BAD_N
+BAD_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BCL2_N
+BCL2_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pS6_N
+pS6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCFOS_N
+pCFOS_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SYP_N
+SYP_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-H3AcK18_N
+H3AcK18_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-EGR1_N
+EGR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-H3MeK4_N
+H3MeK4_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CaNA_N
+CaNA_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-Genotype
+Genotype<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Treatment
+Treatment<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Behavior
+Behavior<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-class
+class<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -9912,22 +9925,22 @@ and Genotype.</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-MouseID
+MouseID<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-APP_N
+APP_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-NR1_N
+NR1_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-pCREB_N
+pCREB_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-S6_N
+S6_N<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-Genotype
+Genotype<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -10061,19 +10074,19 @@ measurements.</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-MouseID
+MouseID<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Genotype
+Genotype<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Treatment
+Treatment<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Behavior
+Behavior<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-class
+class<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -10232,43 +10245,43 @@ to calculate the standard deviation for the other three proteins:</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-Genotype
+Genotype<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-St.Dev PKCA
+St.Dev PKCA<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Mean PKCA
+Mean PKCA<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Median PKCA
+Median PKCA<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SD.Dev RRP1
+SD.Dev RRP1<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Mean RRP1
+Mean RRP1<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Median RRP1
+Median RRP1<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SD.Dev BRAF
+SD.Dev BRAF<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Mean BRAF
+Mean BRAF<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Median BRAF
+Median BRAF<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-SD.Dev JNK
+SD.Dev JNK<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Mean JNK
+Mean JNK<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Median JNK
+Median JNK<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>

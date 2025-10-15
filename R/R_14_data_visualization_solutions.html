@@ -390,11 +390,25 @@ Solutions</h1>
 <div id="data-visualization" class="section level2">
 <h2>Data Visualization</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>formatted_table <span class="ot">&lt;-</span> <span class="cf">function</span>(df){</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  <span class="fu">kbl</span>(df) <span class="sc">%&gt;%</span></span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;responsive&quot;</span>))</span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>}</span></code></pre></div>
+<blockquote>
+<p>The following function is used to print tibbles in a proper way for
+the web. You can skip the use of this function to print tibbles to your
+screen in R Markdown documents.</p>
+</blockquote>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="fu">library</span>(pillar)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>formatted_table <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">sapply</span>(df, pillar<span class="sc">::</span>type_sum)</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>  new_col_names <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">names</span>(df), <span class="st">&quot;&lt;br&gt;&quot;</span>, <span class="st">&quot;&lt;span style=&#39;font-weight: normal;&#39;&gt;&quot;</span>, col_types, <span class="st">&quot;&lt;/span&gt;&quot;</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>  <span class="fu">kbl</span>(df, </span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>      <span class="at">col.names =</span> new_col_names, </span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>      <span class="at">escape =</span> <span class="cn">FALSE</span>, <span class="co"># This is crucial to allow the &lt;br&gt; tag to work</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>      <span class="at">format =</span> <span class="st">&quot;html&quot;</span> <span class="co"># Ensure HTML format, although often auto-detected</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a>    <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;responsive&quot;</span>))</span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a>}</span></code></pre></div>
 <p>This file can be found <a href="./R_14_data_visualization_solutions.Rmd">here</a>.</p>
 <blockquote>
 <p>The exercises will be similar to the exercises in Excel in order to
@@ -422,22 +436,22 @@ contain bars with increasing height).</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-NM number
+NM number<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Gene name
+Gene name<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Gene Family
+Gene Family<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Category
+Category<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-Expression Value - stimulus
+Expression Value - stimulus<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Expression Value + stimulus
+Expression Value + stimulus<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -597,22 +611,22 @@ stimulus. Make sure to add proper axis titles, a title and a legend.</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-NM number
+NM number<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Gene name
+Gene name<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Gene Family
+Gene Family<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Category
+Category<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-Expression Value - stimulus
+Expression Value - stimulus<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Expression Value + stimulus
+Expression Value + stimulus<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1367,22 +1381,22 @@ Signal transducing proteins
 <thead>
 <tr>
 <th style="text-align:left;">
-NM number
+NM number<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Gene name
+Gene name<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Gene Family
+Gene Family<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Category
+Category<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Expression type
+Expression type<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-Expression Value
+Expression Value<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1584,10 +1598,10 @@ titles, a title and a legend.</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-Category
+Category<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-sum_expression
+sum_expression<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1641,13 +1655,13 @@ Transporters
 <thead>
 <tr>
 <th style="text-align:left;">
-Category
+Category<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-sum_expression
+sum_expression<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-percentage
+percentage<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1780,34 +1794,34 @@ Which two chickens on which diet generated the highest weight gains?</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-Diet
+Diet<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-Chick 1
+Chick 1<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chick 2
+Chick 2<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chick 3
+Chick 3<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chick 4
+Chick 4<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chick 5
+Chick 5<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chick 6
+Chick 6<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chick 7
+Chick 7<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chick 8
+Chick 8<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chick 9
+Chick 9<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1956,31 +1970,31 @@ remotes::install_github(&quot;ricardo-bion/ggradar&quot;)  </code></pre>
 <thead>
 <tr>
 <th style="text-align:right;">
-Chick 1
+Chick 1<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chick 2
+Chick 2<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chick 3
+Chick 3<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chick 4
+Chick 4<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chick 5
+Chick 5<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chick 6
+Chick 6<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chick 7
+Chick 7<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chick 8
+Chick 8<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chick 9
+Chick 9<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -2110,7 +2124,7 @@ Chick 9
 <thead>
 <tr>
 <th style="text-align:left;">
-Diet
+Diet<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -2144,34 +2158,34 @@ Diet 4
 <thead>
 <tr>
 <th style="text-align:left;">
-Diet
+Diet<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-Chick 1
+Chick 1<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chick 2
+Chick 2<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chick 3
+Chick 3<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chick 4
+Chick 4<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chick 5
+Chick 5<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chick 6
+Chick 6<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chick 7
+Chick 7<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chick 8
+Chick 8<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chick 9
+Chick 9<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -2332,16 +2346,16 @@ outlier. What is the name of this person?</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-Person
+Person<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-Potassium conc (mmol/L)
+Potassium conc (mmol/L)<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Sodium conc (mmol/L)
+Sodium conc (mmol/L)<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Body Weight (kg)
+Body Weight (kg)<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -2469,13 +2483,13 @@ enzyme?</p>
 <thead>
 <tr>
 <th style="text-align:right;">
-Substrate concentration (ppm)
+Substrate concentration (ppm)<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Rate (counts/min)
+Rate (counts/min)<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-State
+State<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -2556,13 +2570,13 @@ treated
 <thead>
 <tr>
 <th style="text-align:right;">
-Substrate concentration (ppm)
+Substrate concentration (ppm)<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Rate (counts/min)
+Rate (counts/min)<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-State
+State<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -2672,13 +2686,13 @@ category shows the <em>highest</em> expression values?</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-Category
+Category<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-Mean Expression Value - stimulus
+Mean Expression Value - stimulus<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Mean Expression Value + stimulus
+Mean Expression Value + stimulus<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -2748,13 +2762,13 @@ Transporters
 <thead>
 <tr>
 <th style="text-align:left;">
-Category
+Category<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Expression type
+Expression type<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-Expression Value
+Expression Value<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
