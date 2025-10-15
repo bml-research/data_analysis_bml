@@ -390,12 +390,25 @@ code span.ot { color: #007020; }
 <h2>Data Cleaning Solutions</h2>
 <p>Loading Tidyverse:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
-<p>Function to improve printing tibble to HTML:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>formatted_table <span class="ot">&lt;-</span> <span class="cf">function</span>(df){</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  <span class="fu">kbl</span>(df) <span class="sc">%&gt;%</span></span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;responsive&quot;</span>))</span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>}</span></code></pre></div>
+<blockquote>
+<p>The following function is used to print tibbles in a proper way for
+the web. You can skip the use of this function to print tibbles to your
+screen in R Markdown documents.</p>
+</blockquote>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="fu">library</span>(pillar)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>formatted_table <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">sapply</span>(df, pillar<span class="sc">::</span>type_sum)</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>  new_col_names <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">names</span>(df), <span class="st">&quot;&lt;br&gt;&quot;</span>, <span class="st">&quot;&lt;span style=&#39;font-weight: normal;&#39;&gt;&quot;</span>, col_types, <span class="st">&quot;&lt;/span&gt;&quot;</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>  <span class="fu">kbl</span>(df, </span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>      <span class="at">col.names =</span> new_col_names, </span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>      <span class="at">escape =</span> <span class="cn">FALSE</span>, <span class="co"># This is crucial to allow the &lt;br&gt; tag to work</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>      <span class="at">format =</span> <span class="st">&quot;html&quot;</span> <span class="co"># Ensure HTML format, although often auto-detected</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a>    <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;responsive&quot;</span>))</span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a>}</span></code></pre></div>
 <p>This file can be downloaded <a href="./R_08_data_cleaning_solutions.Rmd">here</a></p>
 <div id="exercise-1" class="section level3">
 <h3>Exercise 1</h3>
@@ -417,43 +430,43 @@ problem.</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-index
+index<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Age
+Age<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Sex
+Sex<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Chest pain type
+Chest pain type<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-BP
+BP<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Cholesterol
+Cholesterol<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-FBS over 120
+FBS over 120<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-EKG results
+EKG results<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Max HR
+Max HR<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Exercise angina
+Exercise angina<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-ST depression
+ST depression<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Slope of ST
+Slope of ST<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Number of vessels fluro
+Number of vessels fluro<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -726,28 +739,28 @@ units in order to make calculations possible.</p>
 <thead>
 <tr>
 <th style="text-align:right;">
-id
+id<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-average_length
+average_length<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-average_weight
+average_weight<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-habitat
+habitat<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-ph_of_water
+ph_of_water<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-color
+color<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Gender
+Gender<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-life_span
+life_span<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -923,43 +936,43 @@ duplicates from the data table.</p>
 <thead>
 <tr>
 <th style="text-align:right;">
-index
+index<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Age
+Age<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Sex
+Sex<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chest pain type
+Chest pain type<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BP
+BP<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Cholesterol
+Cholesterol<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-FBS over 120
+FBS over 120<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-EKG results
+EKG results<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Max HR
+Max HR<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Exercise angina
+Exercise angina<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ST depression
+ST depression<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Slope of ST
+Slope of ST<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Number of vessels fluro
+Number of vessels fluro<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1227,49 +1240,49 @@ index 8 and 6 rows with index 10; see below).</p>
 <thead>
 <tr>
 <th style="text-align:right;">
-index
+index<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Age
+Age<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Sex
+Sex<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chest pain type
+Chest pain type<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BP
+BP<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Cholesterol
+Cholesterol<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-FBS over 120
+FBS over 120<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-EKG results
+EKG results<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Max HR
+Max HR<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Exercise angina
+Exercise angina<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ST depression
+ST depression<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Slope of ST
+Slope of ST<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Number of vessels fluro
+Number of vessels fluro<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Thallium
+Thallium<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-Heart Disease
+Heart Disease<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -1422,49 +1435,49 @@ Presence
 <thead>
 <tr>
 <th style="text-align:right;">
-index
+index<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Age
+Age<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Sex
+Sex<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chest pain type
+Chest pain type<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BP
+BP<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Cholesterol
+Cholesterol<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-FBS over 120
+FBS over 120<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-EKG results
+EKG results<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Max HR
+Max HR<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Exercise angina
+Exercise angina<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ST depression
+ST depression<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Slope of ST
+Slope of ST<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Number of vessels fluro
+Number of vessels fluro<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Thallium
+Thallium<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-Heart Disease
+Heart Disease<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -1765,43 +1778,43 @@ rows:</p>
 <thead>
 <tr>
 <th style="text-align:right;">
-index
+index<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Age
+Age<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Sex
+Sex<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Chest pain type
+Chest pain type<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BP
+BP<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Cholesterol
+Cholesterol<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-FBS over 120
+FBS over 120<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-EKG results
+EKG results<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Max HR
+Max HR<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Exercise angina
+Exercise angina<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ST depression
+ST depression<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Slope of ST
+Slope of ST<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Number of vessels fluro
+Number of vessels fluro<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -2076,19 +2089,19 @@ by converting them to <code>NA</code>.</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-molecule_chembl_id
+molecule_chembl_id<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-canonical_smiles
+canonical_smiles<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-standard_relation
+standard_relation<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-standard_value
+standard_value<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-standard_units
+standard_units<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -2228,19 +2241,19 @@ used for missing data and replace this character with
 <thead>
 <tr>
 <th style="text-align:left;">
-molecule_chembl_id
+molecule_chembl_id<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-canonical_smiles
+canonical_smiles<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-standard_relation
+standard_relation<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-standard_value
+standard_value<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-standard_units
+standard_units<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>

@@ -31,13 +31,23 @@ Loading Tidyverse:
 library(tidyverse)
 ```
 
-Function to improve printing tibble to HTML:
+>The following function is used to print tibbles in a proper way for the web. You can skip the use of this function to print tibbles to your screen in R Markdown documents.
+
 
 ```{r}
+library(knitr)
 library(kableExtra)
-formatted_table <- function(df){
-  kbl(df) %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "responsive"))
+library(pillar)
+
+formatted_table <- function(df) {
+  col_types <- sapply(df, pillar::type_sum)
+  new_col_names <- paste0(names(df), "<br>", "<span style='font-weight: normal;'>", col_types, "</span>")
+  kbl(df, 
+      col.names = new_col_names, 
+      escape = FALSE, # This is crucial to allow the <br> tag to work
+      format = "html" # Ensure HTML format, although often auto-detected
+      ) %>%
+    kable_styling(bootstrap_options = c("striped", "hover", "responsive"))
 }
 ```
 

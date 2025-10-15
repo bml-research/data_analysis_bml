@@ -389,11 +389,25 @@ code span.ot { color: #007020; }
 <div id="data-import-solutions" class="section level2">
 <h2>Data Import Solutions</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>formatted_table <span class="ot">&lt;-</span> <span class="cf">function</span>(df){</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  <span class="fu">kbl</span>(df) <span class="sc">%&gt;%</span></span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;responsive&quot;</span>))</span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>}</span></code></pre></div>
+<blockquote>
+<p>The following function is used to print tibbles in a proper way for
+the web. You can skip the use of this function to print tibbles to your
+screen in R Markdown documents.</p>
+</blockquote>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="fu">library</span>(pillar)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>formatted_table <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">sapply</span>(df, pillar<span class="sc">::</span>type_sum)</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>  new_col_names <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">names</span>(df), <span class="st">&quot;&lt;br&gt;&quot;</span>, <span class="st">&quot;&lt;span style=&#39;font-weight: normal;&#39;&gt;&quot;</span>, col_types, <span class="st">&quot;&lt;/span&gt;&quot;</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>  <span class="fu">kbl</span>(df, </span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>      <span class="at">col.names =</span> new_col_names, </span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>      <span class="at">escape =</span> <span class="cn">FALSE</span>, <span class="co"># This is crucial to allow the &lt;br&gt; tag to work</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>      <span class="at">format =</span> <span class="st">&quot;html&quot;</span> <span class="co"># Ensure HTML format, although often auto-detected</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a>    <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;responsive&quot;</span>))</span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a>}</span></code></pre></div>
 <p>This file can be downloaded <a href="./R_05_data_import_solutions.Rmd">here</a>.</p>
 <div id="exercise-1" class="section level3">
 <h3>Exercise 1</h3>
@@ -428,28 +442,28 @@ The field separator used is a comma (,). Therefore use the
 <thead>
 <tr>
 <th style="text-align:right;">
-id
+id<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-average_length(inches))
+average_length(inches))<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-average_weight(inches))
+average_weight(inches))<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-habitat
+habitat<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-ph_of_water
+ph_of_water<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-color
+color<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Gender
+Gender<br><span style="font-weight: normal;">lgl</span>
 </th>
 <th style="text-align:right;">
-life_span
+life_span<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -622,28 +636,28 @@ The field separator used is a semi-colon (;). Therefore use the
 <thead>
 <tr>
 <th style="text-align:right;">
-id
+id<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-average_length(inches))
+average_length(inches))<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-average_weight(inches))
+average_weight(inches))<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-habitat
+habitat<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-ph_of_water
+ph_of_water<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-color
+color<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Gender
+Gender<br><span style="font-weight: normal;">lgl</span>
 </th>
 <th style="text-align:right;">
-life_span
+life_span<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -817,28 +831,28 @@ set to the correct delimiter.</p>
 <thead>
 <tr>
 <th style="text-align:right;">
-id
+id<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-average_length(inches))
+average_length(inches))<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-average_weight(inches))
+average_weight(inches))<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-habitat
+habitat<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-ph_of_water
+ph_of_water<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-color
+color<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Gender
+Gender<br><span style="font-weight: normal;">lgl</span>
 </th>
 <th style="text-align:right;">
-life_span
+life_span<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1012,28 +1026,28 @@ Therefore use the <code>read_tsv()</code> function with a
 <thead>
 <tr>
 <th style="text-align:right;">
-id
+id<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-average_length(inches))
+average_length(inches))<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-average_weight(inches))
+average_weight(inches))<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-habitat
+habitat<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-ph_of_water
+ph_of_water<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-color
+color<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Gender
+Gender<br><span style="font-weight: normal;">lgl</span>
 </th>
 <th style="text-align:right;">
-life_span
+life_span<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1209,34 +1223,34 @@ and import the csv data in R.</p>
 <thead>
 <tr>
 <th style="text-align:right;">
-HeartDiseaseorAttack
+HeartDiseaseorAttack<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-HighBP
+HighBP<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-HighChol
+HighChol<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CholCheck
+CholCheck<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BMI
+BMI<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Smoker
+Smoker<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Stroke
+Stroke<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Diabetes
+Diabetes<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-PhysActivity
+PhysActivity<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-Fruits
+Fruits<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -1448,22 +1462,22 @@ and import the csv data in R.</p>
 <thead>
 <tr>
 <th style="text-align:right;">
-…1
+…1<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-KEGG_code
+KEGG_code<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-CompoundName
+CompoundName<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-ATC_label_class
+ATC_label_class<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-ATC_full_code
+ATC_full_code<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-BigGroup_ATC_class
+BigGroup_ATC_class<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -1603,19 +1617,19 @@ and import the csv data in R.</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-Class
+Class<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Type
+Type<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Group
+Group<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Food
+Food<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-Allergy
+Allergy<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -1739,49 +1753,49 @@ correctly.</p>
 <thead>
 <tr>
 <th style="text-align:right;">
-PATIENT NO
+PATIENT NO<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-PE
+PE<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-GENDER
+GENDER<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-AGE
+AGE<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ALBUMIN
+ALBUMIN<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ALP
+ALP<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-ALT
+ALT<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AMYLASE
+AMYLASE<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-aPTT
+aPTT<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-AST
+AST<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BASO#
+BASO#<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BE(B)
+BE(B)<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-BO2
+BO2<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CA++
+CA++<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:right;">
-CK
+CK<br><span style="font-weight: normal;">dbl</span>
 </th>
 </tr>
 </thead>
@@ -2144,19 +2158,19 @@ NA
 <thead>
 <tr>
 <th style="text-align:left;">
-protein_name
+protein_name<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-location
+location<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-weight
+weight<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-date_submission
+date_submission<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-ref_source
+ref_source<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
@@ -2266,19 +2280,19 @@ sure to include the column headers.</p>
 <thead>
 <tr>
 <th style="text-align:left;">
-protein_name
+protein_name<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-location
+location<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:right;">
-weight
+weight<br><span style="font-weight: normal;">dbl</span>
 </th>
 <th style="text-align:left;">
-date_submission
+date_submission<br><span style="font-weight: normal;">chr</span>
 </th>
 <th style="text-align:left;">
-ref_source
+ref_source<br><span style="font-weight: normal;">chr</span>
 </th>
 </tr>
 </thead>
