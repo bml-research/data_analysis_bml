@@ -434,7 +434,7 @@ Puromycin_wide
 </details>
 
 <details>
-<summary><strong>`pivot_longer()`</strong> – Convert columns into key-value pairs. This is useful when you want to gather multiple columns into a single column.</summary>
+<summary><strong>pivot_longer()</strong> – Convert columns into key-value pairs. This is useful when you want to gather multiple columns into a single column.</summary>
 
 ```{r}
 Puromycin_long <- Puromycin_wide %>% pivot_longer(cols = c("1", "2"),
@@ -453,7 +453,7 @@ Puromycin_long
 💡 *This section lists some utility operations in the tidyverse.*
 
 <details>
-<summary><strong>`glimpse()`</strong>The function `glimpse()` is great for quick inspection of your data. Helps you verify column types and spot missing or unexpected values.</summary>
+<summary><strong>glimpse()</strong>The function `glimpse()` is great for quick inspection of your data. Helps you verify column types and spot missing or unexpected values.</summary>
 
 ```{r}
 glimpse(Puromycin)
@@ -461,7 +461,7 @@ glimpse(Puromycin)
 </details>
 
 <details>
-<summary><strong>`pull()`</strong>The function `pull()` is a used to extract a single column from a data frame or tibble as a vector.</summary>
+<summary><strong>pull()</strong>The function `pull()` is a used to extract a single column from a data frame or tibble as a vector.</summary>
 
 ```{r}
 Puromycin %>% pull(rate)
@@ -470,7 +470,7 @@ Puromycin %>% pull(rate)
 </details>
 
 <details>
-<summary><strong>`count()`</strong>The function `count()` is a used s used to tally the number of occurrences of values in one or more columns.</summary>
+<summary><strong>count()</strong>The function `count()` is a used s used to tally the number of occurrences of values in one or more columns.</summary>
 
 ```{r}
 Puromycin %>% count(state)
