@@ -5,12 +5,19 @@
 
 # Data Analysis and Visualization
 
+
 ## Data Sets
 
 ---
 
 ![Pic](./impression/kaggle.png)
 *<sub>Source: own work</sub>*
+
+
+## Data set websites
+- [Kaggle](https://www.kaggle.com/)
+- [Zenodo](https://zenodo.org/)
+
 
 ## Data sets
 
