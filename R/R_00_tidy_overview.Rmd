@@ -332,7 +332,7 @@ Allows row selection within each group, keeping group-wise logic intact.
 
 ---
 
-## 🧮 Joins & Bindings (Collapsible) {#joins}
+## 🔗 Joins & Bindings (Collapsible) {#joins}
 
 [⬆️ Back to Summary](#tidyverse-overview)
 
@@ -407,7 +407,7 @@ Thus:
 
 ---
 
-## 🧮 Reshaping Data (Collapsible) {#reshaping}
+## 🔄 Reshaping Data (Collapsible) {#reshaping}
 
 [⬆️ Back to Summary](#tidyverse-overview)
 
