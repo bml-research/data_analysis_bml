@@ -113,7 +113,7 @@ First create a copy with an `NA` value:
 
 ```{r}
 Puro_with_NA <- as.tibble(Puromycin) # create a copy
-Puro_with_NA[1, 2] <- NA # create NA
+Puro_with_NA[1, 2] <- NA # replace row 1, column 2 with NA
 Puro_with_NA
 ```
 

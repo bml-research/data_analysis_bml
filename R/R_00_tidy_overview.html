@@ -261,7 +261,7 @@ tidyverse.</em></p>
 </summary>
 <p>First create a copy with an <code>NA</code> value:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>Puro_with_NA <span class="ot">&lt;-</span> <span class="fu">as.tibble</span>(Puromycin) <span class="co"># create a copy</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>Puro_with_NA[<span class="dv">1</span>, <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span> <span class="co"># create NA</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>Puro_with_NA[<span class="dv">1</span>, <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span> <span class="co"># replace row 1, column 2 with NA</span></span>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>Puro_with_NA</span></code></pre></div>
 <pre><code>## # A tibble: 23 × 3
 ##     conc  rate state  
@@ -393,10 +393,10 @@ Removes duplicate rows based on one or more columns.
 </summary>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># Randomly sample 3 rows</span></span>
 <span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div>
-<pre><code>##   conc rate   state
-## 1 0.56  191 treated
-## 2 0.11  123 treated
-## 3 1.10  207 treated</code></pre>
+<pre><code>##   conc rate     state
+## 1 0.02   51 untreated
+## 2 0.11  115 untreated
+## 3 0.06   86 untreated</code></pre>
 Randomly selects rows; can sample fractionally with <code>prop</code>.
 </details>
 <details>
