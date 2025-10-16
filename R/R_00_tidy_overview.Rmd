@@ -45,21 +45,21 @@ head(Puromycin)
 ## Summary Table (Collapsible)
 
 <details>
-<summary><strong>🧩 Row Operations</strong> — `filter()`, `slice()`, `arrange()`</summary>
+<summary><strong>🧩 Row Operations</strong> — `filter()`, `slice()`, `arrange()`, `distinct()`, `slice_sample()`, `slice_min()`, `slice_max`</summary>
 
 Select, subset, or reorder rows.  
 ➡️ [See Row Actions ↓](#row-operations)
 </details>
 
 <details>
-<summary><strong>📊 Column Operations</strong> — `select()`, `rename()`, `mutate()`</summary>
+<summary><strong>📊 Column Operations</strong> — `select()`, `rename()`, `mutate()`, `transmute()`, `relocate()`, `across()`</summary>
 
 Choose, rename, or transform columns.  
 ➡️ [See Column Actions ↓](#column-operations)
 </details>
 
 <details>
-<summary><strong>🧮 Grouping & Aggregation</strong> — `group_by()`, `summarize()`</summary>
+<summary><strong>🧮 Grouping & Aggregation</strong> — `group_by()`, `ungroup()`, `summarize()`, `mutate()`, `filter()`</summary>
 
 Split data into groups and compute summaries.  
 ➡️ [See Group Actions ↓](#grouping)
@@ -100,7 +100,7 @@ Inspect or extract data quickly.
 
 ---
 
-## 🧩 Actions on Rows {#row-operations}
+## 🧩 Actions on Rows (Collapsible) {#row-operations}
 
 [⬆️ Back to Summary](#tidyverse-overview)
 
@@ -174,7 +174,7 @@ Select rows with minimum or maximum values of a variable.
 
 ---
 
-## 📊 Actions on Columns {#column-operations}
+## 📊 Actions on Columns (Collapsible) {#column-operations}
 
 [⬆️ Back to Summary](#tidyverse-overview)
 
@@ -248,7 +248,7 @@ Applies a function across selected columns, often used inside `mutate()` or `sum
 
 ---
 
-## 🧮 Actions on Groups {#grouping}
+## 🧮 Actions on Groups (Collapsible) {#grouping}
 
 [⬆️ Back to Summary](#tidyverse-overview)
 

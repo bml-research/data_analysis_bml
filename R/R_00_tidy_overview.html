@@ -187,7 +187,9 @@ model in enzyme reactions.</p>
 <details>
 <summary>
 <strong>🧩 Row Operations</strong> — <code>filter()</code>,
-<code>slice()</code>, <code>arrange()</code>
+<code>slice()</code>, <code>arrange()</code>, <code>distinct()</code>,
+<code>slice_sample()</code>, <code>slice_min()</code>,
+<code>slice_max</code>
 </summary>
 Select, subset, or reorder rows.<br />
 ➡️ <a href="#row-operations">See Row Actions ↓</a>
@@ -195,7 +197,8 @@ Select, subset, or reorder rows.<br />
 <details>
 <summary>
 <strong>📊 Column Operations</strong> — <code>select()</code>,
-<code>rename()</code>, <code>mutate()</code>
+<code>rename()</code>, <code>mutate()</code>, <code>transmute()</code>,
+<code>relocate()</code>, <code>across()</code>
 </summary>
 Choose, rename, or transform columns.<br />
 ➡️ <a href="#column-operations">See Column Actions ↓</a>
@@ -203,7 +206,8 @@ Choose, rename, or transform columns.<br />
 <details>
 <summary>
 <strong>🧮 Grouping &amp; Aggregation</strong> —
-<code>group_by()</code>, <code>summarize()</code>
+<code>group_by()</code>, <code>ungroup()</code>,
+<code>summarize()</code>, <code>mutate()</code>, <code>filter()</code>
 </summary>
 Split data into groups and compute summaries.<br />
 ➡️ <a href="#grouping">See Group Actions ↓</a>
@@ -247,7 +251,7 @@ Inspect or extract data quickly.<br />
 <h1>Function-Specific Actions with Examples</h1>
 <hr />
 <div id="row-operations" class="section level2">
-<h2>🧩 Actions on Rows</h2>
+<h2>🧩 Actions on Rows (Collapsible)</h2>
 <p><a href="#tidyverse-overview">⬆️ Back to Summary</a></p>
 <p>💡 <em>This section lists core row operations in the
 tidyverse.</em></p>
@@ -350,8 +354,8 @@ Removes duplicate rows based on one or more columns.
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># Randomly sample 3 rows</span></span>
 <span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>##   conc rate     state
-## 1 0.02   67 untreated
-## 2 0.56  158 untreated
+## 1 0.22  124 untreated
+## 2 1.10  200   treated
 ## 3 0.02   76   treated</code></pre>
 Randomly selects rows; can sample fractionally with <code>prop</code>.
 </details>
@@ -370,7 +374,7 @@ Select rows with minimum or maximum values of a variable.
 <hr />
 </div>
 <div id="column-operations" class="section level2">
-<h2>📊 Actions on Columns</h2>
+<h2>📊 Actions on Columns (Collapsible)</h2>
 <p><a href="#tidyverse-overview">⬆️ Back to Summary</a></p>
 <p>💡 <em>This section lists core column operations in the
 tidyverse.</em></p>
@@ -572,7 +576,7 @@ Applies a function across selected columns, often used inside
 <hr />
 </div>
 <div id="grouping" class="section level2">
-<h2>🧮 Actions on Groups</h2>
+<h2>🧮 Actions on Groups (Collapsible)</h2>
 <p><a href="#tidyverse-overview">⬆️ Back to Summary</a></p>
 <p>💡 <em>This section lists core grouping operations in the
 tidyverse.</em></p>
