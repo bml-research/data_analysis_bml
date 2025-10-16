@@ -45,7 +45,7 @@ head(Puromycin)
 ## Summary Table (Collapsible)
 
 <details>
-<summary><strong>🧩 Row Operations</strong> — `filter()`, `slice()`, `arrange()`, `distinct()`, `slice_sample()`, `slice_min()`, `slice_max`</summary>
+<summary><strong>🧩 Row Operations</strong> — `drop_na()`, `filter()`, `slice()`, `arrange()`, `distinct()`, `slice_sample()`, `slice_min()`, `slice_max`</summary>
 
 Select, subset, or reorder rows.  
 ➡️ [See Row Actions ↓](#row-operations)
@@ -107,6 +107,27 @@ Inspect or extract data quickly.
 💡 *This section lists core row operations in the tidyverse.*
 
 <details>
+<summary><strong>drop_na()</strong> – Drop rows containing `NA` values</summary>
+
+First create a copy with an `NA` value: 
+
+```{r}
+Puro_with_NA <- as.tibble(Puromycin) # create a copy
+Puro_with_NA[1, 2] <- NA # create NA
+Puro_with_NA
+```
+
+And drop the row with the NA:  
+
+```{r}
+# Drop row with NA
+Puro_with_NA %>% drop_na() 
+```
+
+
+</details>
+
+<details>
 <summary><strong>filter()</strong> – Subset rows based on conditions</summary>
 
 ```{r}
@@ -132,7 +153,7 @@ Select rows by numeric positions or helpers like `slice_head()` or `slice_tail()
 <summary><strong>arrange()</strong> – Reorder rows by variable(s)</summary>
 
 ```{r}
-# Sort by mpg descending
+# Sort by rate descending
 Puromycin %>% arrange(desc(rate))
 ```
 

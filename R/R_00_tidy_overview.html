@@ -186,10 +186,10 @@ model in enzyme reactions.</p>
 <h2>Summary Table (Collapsible)</h2>
 <details>
 <summary>
-<strong>🧩 Row Operations</strong> — <code>filter()</code>,
-<code>slice()</code>, <code>arrange()</code>, <code>distinct()</code>,
-<code>slice_sample()</code>, <code>slice_min()</code>,
-<code>slice_max</code>
+<strong>🧩 Row Operations</strong> — <code>drop_na()</code>,
+<code>filter()</code>, <code>slice()</code>, <code>arrange()</code>,
+<code>distinct()</code>, <code>slice_sample()</code>,
+<code>slice_min()</code>, <code>slice_max</code>
 </summary>
 Select, subset, or reorder rows.<br />
 ➡️ <a href="#row-operations">See Row Actions ↓</a>
@@ -257,10 +257,50 @@ Inspect or extract data quickly.<br />
 tidyverse.</em></p>
 <details>
 <summary>
+<strong>drop_na()</strong> – Drop rows containing <code>NA</code> values
+</summary>
+<p>First create a copy with an <code>NA</code> value:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>Puro_with_NA <span class="ot">&lt;-</span> <span class="fu">as.tibble</span>(Puromycin) <span class="co"># create a copy</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>Puro_with_NA[<span class="dv">1</span>, <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span> <span class="co"># create NA</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>Puro_with_NA</span></code></pre></div>
+<pre><code>## # A tibble: 23 × 3
+##     conc  rate state  
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;  
+##  1  0.02    NA treated
+##  2  0.02    47 treated
+##  3  0.06    97 treated
+##  4  0.06   107 treated
+##  5  0.11   123 treated
+##  6  0.11   139 treated
+##  7  0.22   159 treated
+##  8  0.22   152 treated
+##  9  0.56   191 treated
+## 10  0.56   201 treated
+## # ℹ 13 more rows</code></pre>
+<p>And drop the row with the NA:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Drop row with NA</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>Puro_with_NA <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>() </span></code></pre></div>
+<pre><code>## # A tibble: 22 × 3
+##     conc  rate state  
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;  
+##  1  0.02    47 treated
+##  2  0.06    97 treated
+##  3  0.06   107 treated
+##  4  0.11   123 treated
+##  5  0.11   139 treated
+##  6  0.22   159 treated
+##  7  0.22   152 treated
+##  8  0.56   191 treated
+##  9  0.56   201 treated
+## 10  1.1    207 treated
+## # ℹ 12 more rows</code></pre>
+</details>
+<details>
+<summary>
 <strong>filter()</strong> – Subset rows based on conditions
 </summary>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Keep only rows where rate &gt; 200</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">filter</span>(rate <span class="sc">&gt;</span> <span class="dv">200</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># Keep only rows where rate &gt; 200</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">filter</span>(rate <span class="sc">&gt;</span> <span class="dv">200</span>)</span></code></pre></div>
 <pre><code>##   conc rate   state
 ## 1 0.56  201 treated
 ## 2 1.10  207 treated</code></pre>
@@ -271,8 +311,8 @@ with <code>&amp;</code> (and) or <code>|</code> (or).
 <summary>
 <strong>slice()</strong> – Select rows by position
 </summary>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Keep the first 5 rows</span></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># Keep the first 5 rows</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code></pre></div>
 <pre><code>##   conc rate   state
 ## 1 0.02   76 treated
 ## 2 0.02   47 treated
@@ -286,8 +326,8 @@ Select rows by numeric positions or helpers like
 <summary>
 <strong>arrange()</strong> – Reorder rows by variable(s)
 </summary>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># Sort by mpg descending</span></span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(rate))</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># Sort by rate descending</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(rate))</span></code></pre></div>
 <pre><code>##    conc rate     state
 ## 1  1.10  207   treated
 ## 2  0.56  201   treated
@@ -319,8 +359,8 @@ descending order.
 <summary>
 <strong>distinct()</strong> – Keep unique rows
 </summary>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># Keep unique values of rate</span></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(rate)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># Keep unique values of rate</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(rate)</span></code></pre></div>
 <pre><code>##    rate
 ## 1    76
 ## 2    47
@@ -351,20 +391,20 @@ Removes duplicate rows based on one or more columns.
 <summary>
 <strong>slice_sample()</strong> – Random sample of rows
 </summary>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># Randomly sample 3 rows</span></span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div>
-<pre><code>##   conc rate     state
-## 1 0.22  124 untreated
-## 2 1.10  200   treated
-## 3 0.02   76   treated</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># Randomly sample 3 rows</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##   conc rate   state
+## 1 0.56  191 treated
+## 2 0.11  123 treated
+## 3 1.10  207 treated</code></pre>
 Randomly selects rows; can sample fractionally with <code>prop</code>.
 </details>
 <details>
 <summary>
 <strong>slice_min()/slice_max()</strong> – Top or bottom rows by value
 </summary>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># 3 rows with highest rate</span></span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">slice_max</span>(rate, <span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># 3 rows with highest rate</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">slice_max</span>(rate, <span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>##   conc rate   state
 ## 1 1.10  207 treated
 ## 2 0.56  201 treated
@@ -382,8 +422,8 @@ tidyverse.</em></p>
 <summary>
 <strong>select()</strong> – Choose specific columns
 </summary>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># Select columns conc and rate</span></span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">select</span>(conc, rate)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co"># Select columns conc and rate</span></span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">select</span>(conc, rate)</span></code></pre></div>
 <pre><code>##    conc rate
 ## 1  0.02   76
 ## 2  0.02   47
@@ -416,8 +456,8 @@ Keeps only the specified columns. Can use helper functions like
 <summary>
 <strong>rename()</strong> – Rename columns
 </summary>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># Rename conc to conc_ppm</span></span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">conc_ppm =</span> conc)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="co"># Rename conc to conc_ppm</span></span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">conc_ppm =</span> conc)</span></code></pre></div>
 <pre><code>##    conc_ppm rate     state
 ## 1      0.02   76   treated
 ## 2      0.02   47   treated
@@ -448,8 +488,8 @@ Changes column names without altering the data.
 <summary>
 <strong>mutate()</strong> – Add or modify columns
 </summary>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co"># Add a new column rate_per_conc</span></span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">rate_per_conc =</span> rate <span class="sc">/</span> conc)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="co"># Add a new column rate_per_conc</span></span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">rate_per_conc =</span> rate <span class="sc">/</span> conc)</span></code></pre></div>
 <pre><code>##    conc rate     state rate_per_conc
 ## 1  0.02   76   treated     3800.0000
 ## 2  0.02   47   treated     2350.0000
@@ -480,8 +520,8 @@ Creates new columns or modifies existing ones using expressions.
 <summary>
 <strong>transmute()</strong> – Create new columns and drop others
 </summary>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="co"># Keep only rate_per_conc column</span></span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">transmute</span>(<span class="at">rate_per_conc =</span> rate <span class="sc">/</span> conc)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="co"># Keep only rate_per_conc column</span></span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">transmute</span>(<span class="at">rate_per_conc =</span> rate <span class="sc">/</span> conc)</span></code></pre></div>
 <pre><code>##    rate_per_conc
 ## 1      3800.0000
 ## 2      2350.0000
@@ -512,8 +552,8 @@ Generates new columns and drops all others in the output.
 <summary>
 <strong>relocate()</strong> – Move columns to new positions
 </summary>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="co"># Move state column to the first position</span></span>
-<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">relocate</span>(state, <span class="at">.before =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="co"># Move state column to the first position</span></span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">relocate</span>(state, <span class="at">.before =</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>##        state conc rate
 ## 1    treated 0.02   76
 ## 2    treated 0.02   47
@@ -544,8 +584,8 @@ Reorders columns without changing data.
 <summary>
 <strong>across()</strong> – Apply functions to multiple columns
 </summary>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="co"># Convert all numeric columns to log scale</span></span>
-<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), log))</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="co"># Convert all numeric columns to log scale</span></span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), log))</span></code></pre></div>
 <pre><code>##           conc     rate     state
 ## 1  -3.91202301 4.330733   treated
 ## 2  -3.91202301 3.850148   treated
@@ -584,8 +624,8 @@ tidyverse.</em></p>
 <summary>
 <strong>group_by()</strong> – Group data by one or more variables
 </summary>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="co"># Group by conc</span></span>
-<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(conc)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="co"># Group by conc</span></span>
+<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(conc)</span></code></pre></div>
 <pre><code>## # A tibble: 23 × 3
 ## # Groups:   conc [6]
 ##     conc  rate state  
@@ -607,8 +647,8 @@ Creates groups in the data for subsequent summarization or manipulation.
 <summary>
 <strong>ungroup()</strong> – Remove grouping
 </summary>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="co"># Remove grouping</span></span>
-<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(conc) <span class="sc">%&gt;%</span> <span class="fu">ungroup</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="co"># Remove grouping</span></span>
+<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(conc) <span class="sc">%&gt;%</span> <span class="fu">ungroup</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 23 × 3
 ##     conc  rate state  
 ##    &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;  
@@ -629,8 +669,8 @@ Removes existing groups, returning data to normal ungrouped structure.
 <summary>
 <strong>summarize()</strong> – Compute summary statistics by group
 </summary>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="co"># Average rate by conc</span></span>
-<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(conc) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">avg_rate =</span> <span class="fu">mean</span>(rate))</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="co"># Average rate by conc</span></span>
+<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(conc) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">avg_rate =</span> <span class="fu">mean</span>(rate))</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 2
 ##    conc avg_rate
 ##   &lt;dbl&gt;    &lt;dbl&gt;
@@ -648,8 +688,8 @@ combined with <code>group_by()</code>.
 <strong>mutate() with groups</strong> – Add or modify columns within
 groups
 </summary>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="co"># Compute rank of rate within each conc group</span></span>
-<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(conc) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">rank_rate =</span> <span class="fu">rank</span>(rate))</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="co"># Compute rank of rate within each conc group</span></span>
+<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(conc) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">rank_rate =</span> <span class="fu">rank</span>(rate))</span></code></pre></div>
 <pre><code>## # A tibble: 23 × 4
 ## # Groups:   conc [6]
 ##     conc  rate state   rank_rate
@@ -671,8 +711,8 @@ Performs column transformations separately within each group.
 <summary>
 <strong>filter() with groups</strong> – Subset rows within groups
 </summary>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="co"># Keep top 1 rate rows within each conc group</span></span>
-<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(conc) <span class="sc">%&gt;%</span> <span class="fu">slice_max</span>(rate, <span class="at">n =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="co"># Keep top 1 rate rows within each conc group</span></span>
+<span id="cb40-2"><a href="#cb40-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(conc) <span class="sc">%&gt;%</span> <span class="fu">slice_max</span>(rate, <span class="at">n =</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 3
 ## # Groups:   conc [6]
 ##    conc  rate state  
