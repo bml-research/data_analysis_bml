@@ -15,8 +15,8 @@
 
 
 ## Data set websites
-- [Kaggle](https://www.kaggle.com/)
-- [Zenodo](https://zenodo.org/)
+- [Kaggle](https://www.kaggle.com/){:target="_blank"}
+- [Zenodo](https://zenodo.org/){:target="_blank"}
 
 
 ## Data sets
