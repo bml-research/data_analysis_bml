@@ -394,8 +394,8 @@ Removes duplicate rows based on one or more columns.
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># Randomly sample 3 rows</span></span>
 <span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>##   conc rate     state
-## 1 0.56  144 untreated
-## 2 0.22  152   treated
+## 1 1.10  200   treated
+## 2 0.22  131 untreated
 ## 3 0.56  158 untreated</code></pre>
 Randomly selects rows; can sample fractionally with <code>prop</code>.
 </details>
@@ -864,6 +864,91 @@ rows (bind_rows) or by columns (bind_cols).
 rows).<br />
 - <code>bind_cols()</code> is for combining datasets horizontally (more
 columns).</p>
+</details>
+<hr />
+</div>
+<div id="reshaping" class="section level2">
+<h2>🧮 Reshaping Data (Collapsible)</h2>
+<p><a href="#tidyverse-overview">⬆️ Back to Summary</a></p>
+<p>💡 <em>This section lists restructure operations of data between long
+and wide formats. in the tidyverse.</em></p>
+<details>
+<summary>
+<strong>pivot_wider()</strong> – Spread key-value pairs across multiple
+columns. This is useful when you want to separate values into distinct
+columns.
+</summary>
+<p>First create an extra column with replicates:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" tabindex="-1"></a>Puromycin_reps <span class="ot">&lt;-</span> Puromycin <span class="sc">%&gt;%</span></span>
+<span id="cb56-2"><a href="#cb56-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">replicate =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">length.out =</span> <span class="fu">n</span>()))</span>
+<span id="cb56-3"><a href="#cb56-3" tabindex="-1"></a>Puromycin_reps</span></code></pre></div>
+<pre><code>##    conc rate     state replicate
+## 1  0.02   76   treated         1
+## 2  0.02   47   treated         2
+## 3  0.06   97   treated         1
+## 4  0.06  107   treated         2
+## 5  0.11  123   treated         1
+## 6  0.11  139   treated         2
+## 7  0.22  159   treated         1
+## 8  0.22  152   treated         2
+## 9  0.56  191   treated         1
+## 10 0.56  201   treated         2
+## 11 1.10  207   treated         1
+## 12 1.10  200   treated         2
+## 13 0.02   67 untreated         1
+## 14 0.02   51 untreated         2
+## 15 0.06   84 untreated         1
+## 16 0.06   86 untreated         2
+## 17 0.11   98 untreated         1
+## 18 0.11  115 untreated         2
+## 19 0.22  131 untreated         1
+## 20 0.22  124 untreated         2
+## 21 0.56  144 untreated         1
+## 22 0.56  158 untreated         2
+## 23 1.10  160 untreated         1</code></pre>
+<p>Now make the data wide:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" tabindex="-1"></a>Puromycin_wide <span class="ot">&lt;-</span> Puromycin_reps <span class="sc">%&gt;%</span> <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> replicate, <span class="at">values_from =</span> rate)</span>
+<span id="cb58-2"><a href="#cb58-2" tabindex="-1"></a>Puromycin_wide</span></code></pre></div>
+<pre><code>## # A tibble: 12 × 4
+##     conc state       `1`   `2`
+##    &lt;dbl&gt; &lt;fct&gt;     &lt;dbl&gt; &lt;dbl&gt;
+##  1  0.02 treated      76    47
+##  2  0.06 treated      97   107
+##  3  0.11 treated     123   139
+##  4  0.22 treated     159   152
+##  5  0.56 treated     191   201
+##  6  1.1  treated     207   200
+##  7  0.02 untreated    67    51
+##  8  0.06 untreated    84    86
+##  9  0.11 untreated    98   115
+## 10  0.22 untreated   131   124
+## 11  0.56 untreated   144   158
+## 12  1.1  untreated   160    NA</code></pre>
+</details>
+<details>
+<summary>
+<strong>pivot_longer()</strong> – Convert columns into key-value pairs.
+This is useful when you want to gather multiple columns into a single
+column.
+</summary>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" tabindex="-1"></a>Puromycin_long <span class="ot">&lt;-</span> Puromycin_wide <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>),</span>
+<span id="cb60-2"><a href="#cb60-2" tabindex="-1"></a>             <span class="at">names_to =</span> <span class="st">&quot;replicate&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;rate&quot;</span></span>
+<span id="cb60-3"><a href="#cb60-3" tabindex="-1"></a>)</span>
+<span id="cb60-4"><a href="#cb60-4" tabindex="-1"></a>Puromycin_long</span></code></pre></div>
+<pre><code>## # A tibble: 24 × 4
+##     conc state   replicate  rate
+##    &lt;dbl&gt; &lt;fct&gt;   &lt;chr&gt;     &lt;dbl&gt;
+##  1  0.02 treated 1            76
+##  2  0.02 treated 2            47
+##  3  0.06 treated 1            97
+##  4  0.06 treated 2           107
+##  5  0.11 treated 1           123
+##  6  0.11 treated 2           139
+##  7  0.22 treated 1           159
+##  8  0.22 treated 2           152
+##  9  0.56 treated 1           191
+## 10  0.56 treated 2           201
+## # ℹ 14 more rows</code></pre>
 </details>
 <hr />
 </div>

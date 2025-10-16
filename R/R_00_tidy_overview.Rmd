@@ -407,6 +407,48 @@ Thus:
 
 ---
 
+## 🧮 Reshaping Data (Collapsible) {#reshaping}
+
+[⬆️ Back to Summary](#tidyverse-overview)
+
+💡 *This section lists restructure operations of data between long and wide formats. in the tidyverse.*
+
+<details>
+<summary><strong>pivot_wider()</strong> – Spread key-value pairs across multiple columns. This is useful when you want to separate values into distinct columns.</summary>
+
+First create an extra column with replicates:  
+
+```{r}
+Puromycin_reps <- Puromycin %>%
+  mutate(replicate = rep(1:2, length.out = n()))
+Puromycin_reps
+```
+
+Now make the data wide:  
+
+```{r}
+Puromycin_wide <- Puromycin_reps %>% pivot_wider(names_from = replicate, values_from = rate)
+Puromycin_wide
+```
+
+</details>
+
+<details>
+<summary><strong>pivot_longer()</strong> – Convert columns into key-value pairs. This is useful when you want to gather multiple columns into a single column.</summary>
+
+```{r}
+Puromycin_long <- Puromycin_wide %>% pivot_longer(cols = c("1", "2"),
+             names_to = "replicate", values_to = "rate"
+)
+Puromycin_long
+```
+
+
+</details>
+
+
+---
+
 ## Backup (under construction)
 
 ---
