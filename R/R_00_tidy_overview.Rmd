@@ -194,9 +194,9 @@ Keeps only the specified columns. Can use helper functions like `starts_with()`,
 <details>
 <summary><strong>rename()</strong> – Rename columns</summary>
 
-```r
-# Rename mpg to miles_per_gallon
-mtcars %>% rename(miles_per_gallon = mpg)
+```{r}
+# Rename conc to conc_ppm
+Puromycin %>% rename(conc_ppm = conc)
 ```
 
 Changes column names without altering the data.  
@@ -216,9 +216,9 @@ Creates new columns or modifies existing ones using expressions.
 <details>
 <summary><strong>transmute()</strong> – Create new columns and drop others</summary>
 
-```r
-# Keep only hp_per_wt column
-mtcars %>% transmute(hp_per_wt = hp / wt)
+```{r}
+# Keep only rate_per_conc column
+Puromycin %>% transmute(rate_per_conc = rate / conc)
 ```
 
 Generates new columns and drops all others in the output.  
