@@ -205,9 +205,9 @@ Changes column names without altering the data.
 <details>
 <summary><strong>mutate()</strong> – Add or modify columns</summary>
 
-```r
-# Add a new column hp_per_wt
-mtcars %>% mutate(hp_per_wt = hp / wt)
+```{r}
+# Add a new column rate_per_conc
+Puromycin %>% mutate(rate_per_conc = rate / conc)
 ```
 
 Creates new columns or modifies existing ones using expressions.  
@@ -227,9 +227,9 @@ Generates new columns and drops all others in the output.
 <details>
 <summary><strong>relocate()</strong> – Move columns to new positions</summary>
 
-```r
-# Move hp column to the first position
-mtcars %>% relocate(hp, .before = 1)
+```{r}
+# Move state column to the first position
+Puromycin %>% relocate(state, .before = 1)
 ```
 
 Reorders columns without changing data.  
@@ -238,9 +238,9 @@ Reorders columns without changing data.
 <details>
 <summary><strong>across()</strong> – Apply functions to multiple columns</summary>
 
-```r
+```{r}
 # Convert all numeric columns to log scale
-mtcars %>% mutate(across(where(is.numeric), log))
+Puromycin %>% mutate(across(where(is.numeric), log))
 ```
 
 Applies a function across selected columns, often used inside `mutate()` or `summarize()`.  
