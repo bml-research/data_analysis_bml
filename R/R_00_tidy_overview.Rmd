@@ -332,6 +332,81 @@ Allows row selection within each group, keeping group-wise logic intact.
 
 ---
 
+## 🧮 Joins & Bindings (Collapsible) {#joins}
+
+[⬆️ Back to Summary](#tidyverse-overview)
+
+💡 *This section lists core joining operations in the tidyverse.*
+
+<details>
+<summary><strong>left_join()</strong> – A join combines rows from two data frames based on a common key.</summary>
+
+```{r}
+
+# Create a copy of puromycin
+puromycin <- as_tibble(Puromycin)
+head(puromycin)
+```
+
+```{r}
+# Create a second dataset with additional info
+treatment_info <- tibble(
+  state = c("treated", "untreated"),
+  description = c("Received Puromycin", "Control group")
+)
+head(treatment_info)
+```
+
+
+```{r}
+# Left join: add treatment descriptions
+left_join(puromycin, treatment_info, by = "state")
+```
+
+Thus:  
+
+- `Left_join(puromycin, treatment_info, by = "state")` merges the description column into the puromycin dataset by matching the state column.  
+- Every row in puromycin keeps its original data. The description column is added based on the matching state.  
+
+</details>
+
+
+<details>
+<summary><strong>bind_cols()</strong> – Binding combines data frames either by rows (bind_rows) or by columns (bind_cols).</summary>
+
+```{r}
+# Split Puromycin into two groups
+treated <- puromycin %>% filter(state == "treated")
+untreated <- puromycin %>% filter(state == "untreated")
+
+treated # Show treated, 12 rows
+```
+
+```{r}
+# Row binding: recombine after filtering
+bind_rows(treated, untreated) # now 23 rows
+```
+
+
+
+```{r}
+# Column binding: add an extra column
+extra_info <- tibble(source = rep("Lab A", nrow(puromycin)))
+extra_info
+```
+
+```{r}
+bind_cols(puromycin, extra_info) # Columns bound
+```
+
+Thus:  
+- `bind_rows()` is for stacking datasets vertically (more rows).  
+- `bind_cols()` is for combining datasets horizontally (more columns).  
+
+</details>
+
+---
+
 ## Backup (under construction)
 
 ---

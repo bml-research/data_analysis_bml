@@ -394,9 +394,9 @@ Removes duplicate rows based on one or more columns.
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># Randomly sample 3 rows</span></span>
 <span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>##   conc rate     state
-## 1 0.02   51 untreated
-## 2 0.11  115 untreated
-## 3 0.06   86 untreated</code></pre>
+## 1 0.56  144 untreated
+## 2 0.22  152   treated
+## 3 0.56  158 untreated</code></pre>
 Randomly selects rows; can sample fractionally with <code>prop</code>.
 </details>
 <details>
@@ -724,6 +724,146 @@ Performs column transformations separately within each group.
 ## 5  0.56   201 treated
 ## 6  1.1    207 treated</code></pre>
 Allows row selection within each group, keeping group-wise logic intact.
+</details>
+<hr />
+</div>
+<div id="joins" class="section level2">
+<h2>🧮 Joins &amp; Bindings (Collapsible)</h2>
+<p><a href="#tidyverse-overview">⬆️ Back to Summary</a></p>
+<p>💡 <em>This section lists core joining operations in the
+tidyverse.</em></p>
+<details>
+<summary>
+<strong>left_join()</strong> – A join combines rows from two data frames
+based on a common key.
+</summary>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a><span class="co"># Create a copy of puromycin</span></span>
+<span id="cb42-2"><a href="#cb42-2" tabindex="-1"></a>puromycin <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(Puromycin)</span>
+<span id="cb42-3"><a href="#cb42-3" tabindex="-1"></a><span class="fu">head</span>(puromycin)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 3
+##    conc  rate state  
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;  
+## 1  0.02    76 treated
+## 2  0.02    47 treated
+## 3  0.06    97 treated
+## 4  0.06   107 treated
+## 5  0.11   123 treated
+## 6  0.11   139 treated</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a><span class="co"># Create a second dataset with additional info</span></span>
+<span id="cb44-2"><a href="#cb44-2" tabindex="-1"></a>treatment_info <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb44-3"><a href="#cb44-3" tabindex="-1"></a>  <span class="at">state =</span> <span class="fu">c</span>(<span class="st">&quot;treated&quot;</span>, <span class="st">&quot;untreated&quot;</span>),</span>
+<span id="cb44-4"><a href="#cb44-4" tabindex="-1"></a>  <span class="at">description =</span> <span class="fu">c</span>(<span class="st">&quot;Received Puromycin&quot;</span>, <span class="st">&quot;Control group&quot;</span>)</span>
+<span id="cb44-5"><a href="#cb44-5" tabindex="-1"></a>)</span>
+<span id="cb44-6"><a href="#cb44-6" tabindex="-1"></a><span class="fu">head</span>(treatment_info)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   state     description       
+##   &lt;chr&gt;     &lt;chr&gt;             
+## 1 treated   Received Puromycin
+## 2 untreated Control group</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a><span class="co"># Left join: add treatment descriptions</span></span>
+<span id="cb46-2"><a href="#cb46-2" tabindex="-1"></a><span class="fu">left_join</span>(puromycin, treatment_info, <span class="at">by =</span> <span class="st">&quot;state&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 23 × 4
+##     conc  rate state   description       
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;             
+##  1  0.02    76 treated Received Puromycin
+##  2  0.02    47 treated Received Puromycin
+##  3  0.06    97 treated Received Puromycin
+##  4  0.06   107 treated Received Puromycin
+##  5  0.11   123 treated Received Puromycin
+##  6  0.11   139 treated Received Puromycin
+##  7  0.22   159 treated Received Puromycin
+##  8  0.22   152 treated Received Puromycin
+##  9  0.56   191 treated Received Puromycin
+## 10  0.56   201 treated Received Puromycin
+## # ℹ 13 more rows</code></pre>
+<p>Thus:</p>
+<ul>
+<li><code>Left_join(puromycin, treatment_info, by = &quot;state&quot;)</code>
+merges the description column into the puromycin dataset by matching the
+state column.<br />
+</li>
+<li>Every row in puromycin keeps its original data. The description
+column is added based on the matching state.</li>
+</ul>
+</details>
+<details>
+<summary>
+<strong>bind_cols()</strong> – Binding combines data frames either by
+rows (bind_rows) or by columns (bind_cols).
+</summary>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" tabindex="-1"></a><span class="co"># Split Puromycin into two groups</span></span>
+<span id="cb48-2"><a href="#cb48-2" tabindex="-1"></a>treated <span class="ot">&lt;-</span> puromycin <span class="sc">%&gt;%</span> <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">&quot;treated&quot;</span>)</span>
+<span id="cb48-3"><a href="#cb48-3" tabindex="-1"></a>untreated <span class="ot">&lt;-</span> puromycin <span class="sc">%&gt;%</span> <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">&quot;untreated&quot;</span>)</span>
+<span id="cb48-4"><a href="#cb48-4" tabindex="-1"></a></span>
+<span id="cb48-5"><a href="#cb48-5" tabindex="-1"></a>treated <span class="co"># Show treated, 12 rows</span></span></code></pre></div>
+<pre><code>## # A tibble: 12 × 3
+##     conc  rate state  
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;  
+##  1  0.02    76 treated
+##  2  0.02    47 treated
+##  3  0.06    97 treated
+##  4  0.06   107 treated
+##  5  0.11   123 treated
+##  6  0.11   139 treated
+##  7  0.22   159 treated
+##  8  0.22   152 treated
+##  9  0.56   191 treated
+## 10  0.56   201 treated
+## 11  1.1    207 treated
+## 12  1.1    200 treated</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" tabindex="-1"></a><span class="co"># Row binding: recombine after filtering</span></span>
+<span id="cb50-2"><a href="#cb50-2" tabindex="-1"></a><span class="fu">bind_rows</span>(treated, untreated) <span class="co"># now 23 rows</span></span></code></pre></div>
+<pre><code>## # A tibble: 23 × 3
+##     conc  rate state  
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;  
+##  1  0.02    76 treated
+##  2  0.02    47 treated
+##  3  0.06    97 treated
+##  4  0.06   107 treated
+##  5  0.11   123 treated
+##  6  0.11   139 treated
+##  7  0.22   159 treated
+##  8  0.22   152 treated
+##  9  0.56   191 treated
+## 10  0.56   201 treated
+## # ℹ 13 more rows</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" tabindex="-1"></a><span class="co"># Column binding: add an extra column</span></span>
+<span id="cb52-2"><a href="#cb52-2" tabindex="-1"></a>extra_info <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">source =</span> <span class="fu">rep</span>(<span class="st">&quot;Lab A&quot;</span>, <span class="fu">nrow</span>(puromycin)))</span>
+<span id="cb52-3"><a href="#cb52-3" tabindex="-1"></a>extra_info</span></code></pre></div>
+<pre><code>## # A tibble: 23 × 1
+##    source
+##    &lt;chr&gt; 
+##  1 Lab A 
+##  2 Lab A 
+##  3 Lab A 
+##  4 Lab A 
+##  5 Lab A 
+##  6 Lab A 
+##  7 Lab A 
+##  8 Lab A 
+##  9 Lab A 
+## 10 Lab A 
+## # ℹ 13 more rows</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" tabindex="-1"></a><span class="fu">bind_cols</span>(puromycin, extra_info) <span class="co"># Columns bound</span></span></code></pre></div>
+<pre><code>## # A tibble: 23 × 4
+##     conc  rate state   source
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;   &lt;chr&gt; 
+##  1  0.02    76 treated Lab A 
+##  2  0.02    47 treated Lab A 
+##  3  0.06    97 treated Lab A 
+##  4  0.06   107 treated Lab A 
+##  5  0.11   123 treated Lab A 
+##  6  0.11   139 treated Lab A 
+##  7  0.22   159 treated Lab A 
+##  8  0.22   152 treated Lab A 
+##  9  0.56   191 treated Lab A 
+## 10  0.56   201 treated Lab A 
+## # ℹ 13 more rows</code></pre>
+<p>Thus:<br />
+- <code>bind_rows()</code> is for stacking datasets vertically (more
+rows).<br />
+- <code>bind_cols()</code> is for combining datasets horizontally (more
+columns).</p>
 </details>
 <hr />
 </div>
