@@ -33,6 +33,13 @@ library(tidyverse)
 💡 *This page provides a structured overview of core tidyverse functions.  
 Click a category to expand and jump to detailed examples.*
 
+The examples shown are performed on the Puromycin dataset. The Puromycin dataset is a classic example dataset built into the base R installation (within the datasets package). It originates from a biochemical experiment and is widely used for demonstrating and testing nonlinear regression models, particularly the Michaelis-Menten kinetics model in enzyme reactions.
+
+```{r}
+head(Puromycin)
+```
+
+
 ---
 
 ## Summary Table (Collapsible)
@@ -103,8 +110,8 @@ Inspect or extract data quickly.
 <summary><strong>filter()</strong> – Subset rows based on conditions</summary>
 
 ```{r}
-# Keep only rows where mpg > 20
-mtcars %>% filter(mpg > 20)
+# Keep only rows where rate > 200
+Puromycin %>% filter(rate > 200)
 ```
 
 Selects rows that meet logical conditions. Supports multiple conditions with `&` (and) or `|` (or).  
@@ -115,7 +122,7 @@ Selects rows that meet logical conditions. Supports multiple conditions with `&`
 
 ```{r}
 # Keep the first 5 rows
-mtcars %>% slice(1:5)
+Puromycin %>% slice(1:5)
 ```
 
 Select rows by numeric positions or helpers like `slice_head()` or `slice_tail()`.  
@@ -126,7 +133,7 @@ Select rows by numeric positions or helpers like `slice_head()` or `slice_tail()
 
 ```{r}
 # Sort by mpg descending
-mtcars %>% arrange(desc(mpg))
+Puromycin %>% arrange(desc(rate))
 ```
 
 Orders rows by one or more columns. Use `desc()` for descending order.  
@@ -136,8 +143,8 @@ Orders rows by one or more columns. Use `desc()` for descending order.
 <summary><strong>distinct()</strong> – Keep unique rows</summary>
 
 ```{r}
-# Keep unique values of cyl
-mtcars %>% distinct(cyl)
+# Keep unique values of rate
+Puromycin %>% distinct(rate)
 ```
 
 Removes duplicate rows based on one or more columns.  
@@ -148,7 +155,7 @@ Removes duplicate rows based on one or more columns.
 
 ```{r}
 # Randomly sample 3 rows
-mtcars %>% slice_sample(n = 3)
+Puromycin %>% slice_sample(n = 3)
 ```
 
 Randomly selects rows; can sample fractionally with `prop`.  
@@ -158,8 +165,8 @@ Randomly selects rows; can sample fractionally with `prop`.
 <summary><strong>slice_min()/slice_max()</strong> – Top or bottom rows by value</summary>
 
 ```{r}
-# 3 rows with lowest mpg
-mtcars %>% slice_min(mpg, n = 3)
+# 3 rows with highest rate
+Puromycin %>% slice_max(rate, n = 3)
 ```
 
 Select rows with minimum or maximum values of a variable.  
@@ -176,9 +183,9 @@ Select rows with minimum or maximum values of a variable.
 <details>
 <summary><strong>select()</strong> – Choose specific columns</summary>
 
-```r
-# Select columns mpg and cyl
-mtcars %>% select(mpg, cyl)
+```{r}
+# Select columns conc and rate
+Puromycin %>% select(conc, rate)
 ```
 
 Keeps only the specified columns. Can use helper functions like `starts_with()`, `ends_with()`, or `contains()`.  
@@ -250,9 +257,9 @@ Applies a function across selected columns, often used inside `mutate()` or `sum
 <details>
 <summary><strong>group_by()</strong> – Group data by one or more variables</summary>
 
-```r
-# Group by cyl
-mtcars %>% group_by(cyl)
+```{r}
+# Group by conc
+Puromycin %>% group_by(conc)
 ```
 
 Creates groups in the data for subsequent summarization or manipulation.  
@@ -261,9 +268,9 @@ Creates groups in the data for subsequent summarization or manipulation.
 <details>
 <summary><strong>ungroup()</strong> – Remove grouping</summary>
 
-```r
+```{r}
 # Remove grouping
-mtcars %>% group_by(cyl) %>% ungroup()
+Puromycin %>% group_by(conc) %>% ungroup()
 ```
 
 Removes existing groups, returning data to normal ungrouped structure.  
@@ -272,9 +279,9 @@ Removes existing groups, returning data to normal ungrouped structure.
 <details>
 <summary><strong>summarize()</strong> – Compute summary statistics by group</summary>
 
-```r
-# Average mpg by cyl
-mtcars %>% group_by(cyl) %>% summarize(avg_mpg = mean(mpg))
+```{r}
+# Average rate by conc
+Puromycin %>% group_by(conc) %>% summarize(avg_rate = mean(rate))
 ```
 
 Aggregates data within each group to produce summary statistics. Often combined with `group_by()`.  
@@ -283,9 +290,9 @@ Aggregates data within each group to produce summary statistics. Often combined 
 <details>
 <summary><strong>mutate() with groups</strong> – Add or modify columns within groups</summary>
 
-```r
-# Compute rank of mpg within each cyl group
-mtcars %>% group_by(cyl) %>% mutate(rank_mpg = rank(mpg))
+```{r}
+# Compute rank of rate within each conc group
+Puromycin %>% group_by(conc) %>% mutate(rank_rate = rank(rate))
 ```
 
 Performs column transformations separately within each group.  
@@ -294,9 +301,9 @@ Performs column transformations separately within each group.
 <details>
 <summary><strong>filter() with groups</strong> – Subset rows within groups</summary>
 
-```r
-# Keep top 2 mpg rows within each cyl group
-mtcars %>% group_by(cyl) %>% slice_max(mpg, n = 2)
+```{r}
+# Keep top 1 rate rows within each conc group
+Puromycin %>% group_by(conc) %>% slice_max(rate, n = 1)
 ```
 
 Allows row selection within each group, keeping group-wise logic intact.  
