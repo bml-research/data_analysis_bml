@@ -411,7 +411,7 @@ Thus:
 
 [⬆️ Back to Summary](#tidyverse-overview)
 
-💡 *This section lists restructure operations of data between long and wide formats. in the tidyverse.*
+💡 *This section lists restructure operations of data between long and wide formats in the tidyverse.*
 
 <details>
 <summary><strong>pivot_wider()</strong> – Spread key-value pairs across multiple columns. This is useful when you want to separate values into distinct columns.</summary>
@@ -434,7 +434,7 @@ Puromycin_wide
 </details>
 
 <details>
-<summary><strong>pivot_longer()</strong> – Convert columns into key-value pairs. This is useful when you want to gather multiple columns into a single column.</summary>
+<summary><strong>`pivot_longer()`</strong> – Convert columns into key-value pairs. This is useful when you want to gather multiple columns into a single column.</summary>
 
 ```{r}
 Puromycin_long <- Puromycin_wide %>% pivot_longer(cols = c("1", "2"),
@@ -446,7 +446,38 @@ Puromycin_long
 
 </details>
 
+## 🧰 Utilities (Collapsible) {#utilities}
 
+[⬆️ Back to Summary](#tidyverse-overview)
+
+💡 *This section lists some utility operations in the tidyverse.*
+
+<details>
+<summary><strong>`glimpse()`</strong>The function `glimpse()` is great for quick inspection of your data. Helps you verify column types and spot missing or unexpected values.</summary>
+
+```{r}
+glimpse(Puromycin)
+```
+</details>
+
+<details>
+<summary><strong>`pull()`</strong>The function `pull()` is a used to extract a single column from a data frame or tibble as a vector.</summary>
+
+```{r}
+Puromycin %>% pull(rate)
+```
+
+</details>
+
+<details>
+<summary><strong>`count()`</strong>The function `count()` is a used s used to tally the number of occurrences of values in one or more columns.</summary>
+
+```{r}
+Puromycin %>% count(state)
+```
+
+
+</details>
 
 ---
 
