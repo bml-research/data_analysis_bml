@@ -24,7 +24,7 @@ The following links contain additional exercises for each topic in the course. T
 - [Data Import](./R_04_data_import_add_exercises.html)
 - [Data Cleaning](./R_07_data_cleaning_add_exercises.html)
 - [Data Analysis](./R_10_data_analysis_add_exercises.html)
-- Data Visualization (not available yet)
+- [Data Visualization](./R_12_data_visualization_add_exercises.html)
 
 ## Solutions
 
@@ -32,7 +32,7 @@ The following links contain additional exercises for each topic in the course. T
 - [Data Import](./R_04_data_import_add_solutions.html)
 - [Data Cleaning](./R_07_data_cleaning_add_solutions.html)
 - [Data Analysis](./R_10_data_analysis_add_solutions.html)
-- Data Visualization (not available yet)
+- [Data Visualization](./R_12_data_visualization_add_solutions.html)
 
 ---
 

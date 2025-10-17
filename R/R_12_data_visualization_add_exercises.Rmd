@@ -1,0 +1,295 @@
+---
+title: 'Lesson 11-13: Data analysis'
+author: "Mark Sibbald, Jurre Hageman"
+date: "2025-10-17"
+output: 
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+![](../hanze/hanze.png)
+
+------------------------------------------------------------------------
+
+[Go back to the main page](../index.html)\
+[Go back to the R overview page](../R/R_01_index.html)
+
+------------------------------------------------------------------------
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+\
+This file can be downloaded [here](./R_12_data_visualization_add_exercises.Rmd).\
+\
+
+## Lesson 11-13: Data analysis
+
+Once the data is read/loaded and cleaned up nicely, it is time start analyzing and presenting the data. In these two lessons, we will look at the visualization part. We will use different plots to show the analysis and what it takes to make the data sets usable for each different plot.
+
+First, let's load a data set that we can work with which has been cleaned up already. Of course we start with the make up of the tibbles we create during this part of the lessons, like we did before in previous lessons using the `tidyverse` and `kableExtra` libraries.
+
+```{r}
+library(tidyverse)
+library(kableExtra)
+library(knitr)
+library(pillar)
+formatted_table <- function(df) {
+  col_types <- sapply(df, pillar::type_sum)
+  new_col_names <- paste0(names(df), "<br>", "<span style='font-weight: normal;'>", col_types, "</span>")
+  kbl(df, col.names = new_col_names, escape = F, format = "html") %>%
+    kable_styling(bootstrap_options = c("striped", "hoover", "responsive"))
+}
+```
+
+Download the file [dinoDatasetCSV.csv](./files_13_data_visualization_exercises/add_exercises/dinoDatasetCSV.csv) and check in a text editor what is the delimiter in the file. Read the file into R.
+
+```{r}
+# Read the data on dinosaurs.
+
+# Replace any missing data with NA values. 
+# Hint: check which columns are of character type, but contains numbers.
+
+```
+
+\
+
+## Summarize each
+
+Let's create a summary of the dinosaurs that lived in the Cretaceous period. We are only interested in the scientific name, length, weight and height of the animals.
+
+```{r}
+# Select the dinosaurs from the Cretaceous period and sort them on scientific name and drop the rows that have NA values.
+
+# Select only the columns containing the period, scientific name, length, weight and height.
+
+# Change the colnames.
+
+```
+
+We will use this data to make different plots.
+
+\
+
+## Bar chart
+
+Create a bar chart with ggplot of the weight of the dinosaurs of the Cretaceous period. Create a title (main and axis titles) and give the bars a `steelblue` color. Make sure that the labels on the x-axis are placed at a 45 degree angle.
+
+```{r}
+# Create a bar chart with ggplot of the weight.
+
+```
+
+From the graph is clear that the **Udelartitan**, **Volgatitan** and **Zhuchengtitan** were the heaviest dinosaurs in the Cretaceous period (it is also clear from the name 'titan').\
+\
+
+## Grouped Bar chart
+
+Let's compare the length to the height of the dinosaurs in one bar chart. First, you will have to make the data tidy with `pivot_longer()`. Then you can create the grouped bar chart.
+
+```{r}
+# Make the data tidy. Check if the data is indeed tidy (length and height should be indicated in a column called dimension).
+
+# Plot the grouped bar chart.
+
+```
+
+\
+
+## Percent bar chart
+
+You can create a percent bar chart to see what percentage is body length compared to body height.
+
+```{r}
+# Create a percentage bar chart.
+
+```
+
+\
+
+## Swithing orders in a group
+
+If you would like to present the data in a different order, you need to change the column with the groups to the data type `factor`. You can put the length before the height in this way.
+
+```{r}
+# First, change the column of 'Dimension' to a factor type of data.
+
+# Second, plot the same data as before. Do this for the grouped bar chart and percentage bar chart.
+
+```
+
+\
+
+## Pie Chart
+
+For a pie chart we will use a selection of the dinosaurs from the Cretaceous period, otherwise the pie would be divided in too many pieces, representing all the dinosaurs from this period.
+
+We will take the 7 longest dinosaurs and see ho the distribution of the weights is among these 'long' dinosaurs.
+
+```{r}
+# Select the seven longest dinosaurs. Check your bar chart with the length and height of each Cretaceous dinosaur. Save these seven to a vector.
+
+# Filter the data set using this vector.
+
+# Create the pie chart based on the weight of these dinosaurs.
+
+```
+
+It seems that the 'titans' are the largest and heaviest dinosaurs (except the Elaltitan).\
+\
+
+## Boxplot
+
+We can use the same data for the boxplot. Let's look at the height of the dinosaurs in different periods of time.
+```{r}
+# Exclude (use `filter()`on tibble1) the dinosaurs that are heavier than 10000 kg and save the data in tibble2.
+
+# Create a boxplot for the height of the dinosaurs for each period in time.
+
+```
+It seems that the tallest dinosaurs were mainly in the Middle Jurassic period.
+\
+
+## Grouped boxplot
+
+Of course it is also possible to create grouped boxplots. Let's use the height and weight again and plot them against the period in time.
+
+```{r}
+# First make a tidy tibble from tibble2.
+
+# Now create the boxplot.
+
+```
+\
+And if you like to change the order of the height and length, you will have to make the column for `Dimension` a factor type of data.
+
+```{r}
+# Make the column for 'Dimension' a factor type.
+
+# Create the boxplot.
+
+```
+\
+
+## Violin Chart
+
+Create with the same data a violin chart. Although these plots show more information about the data, it is more difficult to interpret the plots.
+
+```{r}
+# Create a violin chart from the Height (m) for the different time periods.
+
+```
+
+\
+
+## Line plots
+
+For the following plots we will use the [Climate disease dataset](./files_13_data_visualization_exercises/add_exercises/Gclimate_disease_dataset.csv).
+```{r}
+# Read the data from the file and save it in df1.
+
+# Filter on the countries of the Netherlands, Sweden, Portugal and Hungary and the year 2023.
+
+# Turn the first column to dates.
+
+```
+
+Now we can create a line plot.
+
+```{r}
+# Create a line plot of the average precipitation against the date for the four selected continents with tidy data from df2.
+
+```
+
+This is not very clear since the data of each country is not visible. Let's use some color to distinguish the data for the different countries.
+
+```{r}
+# Use different types of lines to distinguish the data from the different countries.
+
+```
+\
+This looks a bit better, but for this plot it is better to use colors to distinguish the data from the different countries. 
+
+```{r}
+# Create the same line plot as before, but use colors to distinguish the data for the different countries.
+
+```
+\
+And add a trendline.
+\
+```{r}
+# Add a trendline to the plot.
+
+```
+
+## Radar chart
+
+For the radar chart we will use the [Global Ecological Footprint data of 2023](./files_13_data_visualization_exercises/add_exercises/Global_Ecological_Footprint_2023.csv). To create radar charts you need to install the `remotes` package and load the `ggradar` library.
+
+```{r}
+# REMOVE THE HASH TAGS IN THE NEXT TWO LINES IF YOU HAVE NOT INSTALLED THE REMOTES PACKAGE YET.
+#install.packages("remotes")
+#remotes::install_github("ricardo-bion/ggradar")
+library(ggradar)
+```
+
+Read the data from the Global Ecological Footprint data file.
+
+```{r}
+# Read the data and store it in a data frame.
+
+# Check which four European countries have the highest population.
+
+# Select the columns for the country and the footprints (use the `ends>With()` function) for the four selected European countries.
+
+```
+
+Now create the radar chart.
+
+```{r}
+# Create a radar chart from the data with the footprints for the 4 European countries.
+
+```
+\
+
+## Bubble chart
+Bubble charts are useful when you have an extra dimension that you would like to show in the plot.
+
+```{r}
+# Create a bubble chart for the total the 'number of countries required' vs 'biocapacity' and as third dimension the 'population'.
+
+```
+
+\
+
+## Learning outcomes
+
+This lesson you have learned to:\
+- *visualize data using ggplot for:*\
+  - *creating a basic bar chart,*\
+  - *creating a grouped bar chart,*\
+  - *creating a percentage bar chart,*\
+  - *creating a box plot,*\
+  - *changing order in a grouped bar chart or box plot.*\
+  - *creating a violin chart,*\
+  - *creating a radar chart,*\
+  - *creating a bubble chart.*\
+\
+\
+
+<center>--- The end ---</center>
+
+\
+\
+
+------------------------------------------------------------------------
+
+[Go back to the main page](../index.html)\
+[Go back to the R overview page](../R/R_01_index.html)\
+<a href="#top">⬆️ Back to Top</a>
+
+------------------------------------------------------------------------
+
+> This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited. Creative Commons License: CC BY-SA 4.0.
