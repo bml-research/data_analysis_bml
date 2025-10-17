@@ -271,7 +271,7 @@ length_period
 
 ## Line plots
 
-For the following plots we will use the [Climate disease dataset](./files_13_data_visualization_exercises/add_exercises/Gclimate_disease_dataset.csv).
+For the following plots we will use the [Climate disease dataset](./files_13_data_visualization_exercises/add_exercises/climate_disease_dataset.csv).
 ```{r}
 # Read the data from the file and save it in df1.
 df1 <- read.csv2("./files_13_data_visualization_exercises/add_exercises/climate_disease_dataset.csv")
