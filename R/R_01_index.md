@@ -17,6 +17,10 @@
 
 ---
 
+## Quick R Tidyverse Overview
+
+- [Tidyverse Overview](./R_00_tidy_overview.html)
+
 ## Topics:
 
 - [Basics](./R_02_basics.html)
@@ -44,9 +48,6 @@
 - [Data Visualization](./R_14_data_visualization_solutions.html)
 
 
-## R Tidyverse overview
-
-- [Tidyverse Overview](./R_00_tidy_overview.html)
 
 ---
 
