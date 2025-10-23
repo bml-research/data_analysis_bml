@@ -448,6 +448,8 @@ Puromycin_long
 
 </details>
 
+---
+
 ## 📈 Visualization {#visualization}
 
 [⬆️ Back to Summary](#tidyverse-overview)
@@ -563,6 +565,7 @@ You can also download a pdf cheatsheet [here](https://github.com/rstudio/cheatsh
 
 </details>
 
+---
 
 ## 🧰 Utilities {#utilities}
 

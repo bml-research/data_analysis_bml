@@ -395,9 +395,9 @@ Removes duplicate rows based on one or more columns.
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># Randomly sample 3 rows</span></span>
 <span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>##   conc rate     state
-## 1 1.10  160 untreated
-## 2 0.11   98 untreated
-## 3 0.56  158 untreated</code></pre>
+## 1 0.06   97   treated
+## 2 0.02   76   treated
+## 3 0.02   51 untreated</code></pre>
 Randomly selects rows; can sample fractionally with <code>prop</code>.
 </details>
 <details>
@@ -952,6 +952,7 @@ column.
 ## 10  0.56 treated 2           201
 ## # ℹ 14 more rows</code></pre>
 </details>
+<hr />
 </div>
 <div id="visualization" class="section level2">
 <h2>📈 Visualization</h2>
@@ -1057,6 +1058,7 @@ lines, font size)</p>
 For a complete overview of GGPLOT see <a href="https://ggplot2.tidyverse.org/index.html">this</a> link.</p>
 <p>You can also download a pdf cheatsheet <a href="https://github.com/rstudio/cheatsheets/blob/main/data-visualization.pdf">here</a>.</p>
 </details>
+<hr />
 </div>
 <div id="utilities" class="section level2">
 <h2>🧰 Utilities</h2>
