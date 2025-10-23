@@ -448,6 +448,122 @@ Puromycin_long
 
 </details>
 
+## 📈 Visualization {#visualization}
+
+[⬆️ Back to Summary](#tidyverse-overview)
+
+💡 *This section shows how to plot in ggplot in the tidyverse. Click on the triangles to expand.*
+
+<details>
+<summary><strong>glimpse()</strong>The function `ggplot()` is used to create visualizations of your data.</summary>
+
+It works with the following layers:
+
+1. Initialization Layer 
+2. Geometry Layer 
+3. Statistical Layer 
+4. Scale Layer 
+5. Label Layer 
+6. Theme Layer 
+
+To show different layers in ggplot2 using the Puromycin dataset, we build the plot layer by layer, starting with the data and aesthetic mappings, then adding a geometric layer, and finally adding features like labels, themes, or statistical transformations.  
+
+Here is a step-by-step example using R code for a scatter plot with a smooth line, illustrating the key layers:  
+
+- Initialization Layer 
+
+Sets up the data and the initial aesthetic mappings (x, y, color/group)
+
+```{r}
+ggplot(Puromycin, aes(x = conc, y = rate, color = state))
+```
+
+As you can see, no data are plotted yet. An XY-grid is created and the axis are set.  
+
+- Geometry Layer 
+
+Adds the visual representation of the data (points for a scatter plot)  
+
+```{r}
+ggplot(Puromycin, aes(x = conc, y = rate, color = state)) +
+  geom_point(size = 3)
+```
+
+As you can see, the data is plotted now. Note that the `+` sign is used to add an extra layer. Instead of geom_point, other functions can be used for other plot types.  
+
+- Statistical Layer 
+
+Adds a statistical summary (e.g., a smooth line fit to the data).
+For simplicity, we just use a linear model.
+
+```{r}
+ggplot(Puromycin, aes(x = conc, y = rate, color = state)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm", se = FALSE, linewidth = 1)
+```
+
+
+
+Note that for plotting enzyme activity, we normally use the Michaelis-Menten model. This requires more complexity and is omitted in this example. In this case, we used a linear model without standard error ranges for demonstration purposes.  
+
+- Scale Layer 
+
+Controls the mapping from the data values to the visual properties (e.g., color)  
+
+```{r}
+ggplot(Puromycin, aes(x = conc, y = rate, color = state)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm", se = FALSE, linewidth = 1) +
+  scale_color_manual(name = "Enzyme State", values = c("untreated" = "darkgreen", "treated" = "purple"))
+```
+
+
+- Label Layer 
+
+
+Adds non-data annotations like titles, axis labels, and caption
+
+```{r}
+ggplot(Puromycin, aes(x = conc, y = rate, color = state)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm", se = FALSE, linewidth = 1) +
+  scale_color_manual(name = "Enzyme State", values = c("untreated" = "darkgreen", "treated" = "purple")) +
+  labs(
+  title = "Reaction Rate vs. Substrate Concentration in Puromycin",
+  subtitle = "Effect of enzyme state (treated/untreated)",
+  x = "Concentration (ppm)",
+  y = "Reaction Rate (counts/min)",
+  caption = "Data from Puromycin dataset")
+```
+
+- Theme Layer
+  
+
+Controls the non-data graphical elements (e.g., background, grid lines, font size)  
+
+
+```{r}
+ggplot(Puromycin, aes(x = conc, y = rate, color = state)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm", se = FALSE, linewidth = 1) +
+  scale_color_manual(name = "Enzyme State", values = c("untreated" = "darkgreen", "treated" = "purple")) +
+  labs(
+  title = "Reaction Rate vs. Substrate Concentration in Puromycin",
+  subtitle = "Effect of enzyme state (treated/untreated)",
+  x = "Concentration (ppm)",
+  y = "Reaction Rate (counts/min)",
+  caption = "Data from Puromycin dataset") +
+  theme_minimal(base_size = 14)
+```
+
+This is just a demonstration of the use of the various layers.  
+For a complete overview of GGPLOT see [this](https://ggplot2.tidyverse.org/index.html) link.
+
+You can also download a pdf cheatsheet [here](https://github.com/rstudio/cheatsheets/blob/main/data-visualization.pdf).
+
+</details>
+
+
 ## 🧰 Utilities {#utilities}
 
 [⬆️ Back to Summary](#tidyverse-overview)
@@ -463,7 +579,7 @@ glimpse(Puromycin)
 </details>
 
 <details>
-<summary><strong>pull()</strong>The function `pull()` is a used to extract a single column from a data frame or tibble as a vector.</summary>
+<summary><strong>pull()</strong>The function `pull()` is used to extract a single column from a data frame or tibble as a vector.</summary>
 
 ```{r}
 Puromycin %>% pull(rate)
@@ -472,7 +588,7 @@ Puromycin %>% pull(rate)
 </details>
 
 <details>
-<summary><strong>count()</strong>The function `count()` is a used s used to tally the number of occurrences of values in one or more columns.</summary>
+<summary><strong>count()</strong>The function `count()` is used to tally the number of occurrences of values in one or more columns.</summary>
 
 ```{r}
 Puromycin %>% count(state)
