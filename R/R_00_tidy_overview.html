@@ -395,9 +395,9 @@ Removes duplicate rows based on one or more columns.
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># Randomly sample 3 rows</span></span>
 <span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>##   conc rate     state
-## 1 0.06   97   treated
-## 2 0.02   76   treated
-## 3 0.02   51 untreated</code></pre>
+## 1 0.22  159   treated
+## 2 0.11  115 untreated
+## 3 0.11   98 untreated</code></pre>
 Randomly selects rows; can sample fractionally with <code>prop</code>.
 </details>
 <details>
@@ -961,8 +961,8 @@ column.
 Click on the triangles to expand.</em></p>
 <details>
 <summary>
-<strong>glimpse()</strong>The function <code>ggplot()</code> is used to
-create visualizations of your data.
+<strong>ggplot()</strong> - The function <code>ggplot()</code> is used
+to create visualizations of your data.
 </summary>
 <p>It works with the following layers:</p>
 <ol style="list-style-type: decimal">
@@ -1067,9 +1067,9 @@ For a complete overview of GGPLOT see <a href="https://ggplot2.tidyverse.org/ind
 Click on the triangles to expand.</em></p>
 <details>
 <summary>
-<strong>glimpse()</strong>The function <code>glimpse()</code> is great
-for quick inspection of your data. Helps you verify column types and
-spot missing or unexpected values.
+<strong>glimpse()</strong> - The function <code>glimpse()</code> is
+great for quick inspection of your data. Helps you verify column types
+and spot missing or unexpected values.
 </summary>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" tabindex="-1"></a><span class="fu">glimpse</span>(Puromycin)</span></code></pre></div>
 <pre><code>## Rows: 23
@@ -1080,7 +1080,7 @@ spot missing or unexpected values.
 </details>
 <details>
 <summary>
-<strong>pull()</strong>The function <code>pull()</code> is used to
+<strong>pull()</strong> - The function <code>pull()</code> is used to
 extract a single column from a data frame or tibble as a vector.
 </summary>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">pull</span>(rate)</span></code></pre></div>
@@ -1089,7 +1089,7 @@ extract a single column from a data frame or tibble as a vector.
 </details>
 <details>
 <summary>
-<strong>count()</strong>The function <code>count()</code> is used to
+<strong>count()</strong> - The function <code>count()</code> is used to
 tally the number of occurrences of values in one or more columns.
 </summary>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> <span class="fu">count</span>(state)</span></code></pre></div>

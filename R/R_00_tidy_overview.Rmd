@@ -457,7 +457,7 @@ Puromycin_long
 💡 *This section shows how to plot in ggplot in the tidyverse. Click on the triangles to expand.*
 
 <details>
-<summary><strong>glimpse()</strong>The function `ggplot()` is used to create visualizations of your data.</summary>
+<summary><strong>ggplot()</strong> - The function `ggplot()` is used to create visualizations of your data.</summary>
 
 It works with the following layers:
 
@@ -574,7 +574,7 @@ You can also download a pdf cheatsheet [here](https://github.com/rstudio/cheatsh
 💡 *This section lists some utility operations in the tidyverse. Click on the triangles to expand.*
 
 <details>
-<summary><strong>glimpse()</strong>The function `glimpse()` is great for quick inspection of your data. Helps you verify column types and spot missing or unexpected values.</summary>
+<summary><strong>glimpse()</strong> - The function `glimpse()` is great for quick inspection of your data. Helps you verify column types and spot missing or unexpected values.</summary>
 
 ```{r}
 glimpse(Puromycin)
@@ -582,7 +582,7 @@ glimpse(Puromycin)
 </details>
 
 <details>
-<summary><strong>pull()</strong>The function `pull()` is used to extract a single column from a data frame or tibble as a vector.</summary>
+<summary><strong>pull()</strong> - The function `pull()` is used to extract a single column from a data frame or tibble as a vector.</summary>
 
 ```{r}
 Puromycin %>% pull(rate)
@@ -591,7 +591,7 @@ Puromycin %>% pull(rate)
 </details>
 
 <details>
-<summary><strong>count()</strong>The function `count()` is used to tally the number of occurrences of values in one or more columns.</summary>
+<summary><strong>count()</strong> - The function `count()` is used to tally the number of occurrences of values in one or more columns.</summary>
 
 ```{r}
 Puromycin %>% count(state)
