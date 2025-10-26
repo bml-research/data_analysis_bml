@@ -44,22 +44,23 @@ Base R plotting and ggplot2 are two popular plotting systems in R, but they have
 
 **Syntax:**  
 *Base R plotting:*  
-The base R plotting system uses a procedural approach where plots are built step-by-step using functions like `plot()`, `lines()`, `points()`, etc. The syntax involves specifying the data and then adding elements to the plot using different functions.
-ggplot2: ggplot2 follows a declarative approach inspired by the grammar of graphics. It uses the `ggplot()` function to initialize a plot object and then adds layers of graphical elements using the + operator. The syntax is more concise and uses a grammar that includes mappings, aesthetics, and geometries.  
+The base R plotting system uses a procedural approach where plots are built step-by-step using functions like `plot()`, `lines()`, `points()`, etc. The syntax involves specifying the data and then adding elements to the plot using different functions.  
+*ggplot2*.  
+ggplot2 follows a declarative approach inspired by the grammar of graphics. It uses the `ggplot()` function to initialize a plot object and then adds layers of graphical elements using the + operator. The syntax is more concise and uses a grammar that includes mappings, aesthetics, and geometries.  
 
 **Functionality**:  
 *Base R plotting*:  
-Base R offers a wide range of plotting functions with basic functionality to create various types of plots. It provides flexibility to customize plots by directly modifying plot parameters, such as axes, labels, colors, etc. However, it requires more manual adjustments to achieve complex or customized plots.
+Base R offers a wide range of plotting functions with basic functionality to create various types of plots. It provides flexibility to customize plots by directly modifying plot parameters, such as axes, labels, colors, etc. However, it requires more manual adjustments to achieve complex or customized plots.  
 *ggplot2*:  
 ggplot2 is a plotting system that offers a rich set of high-level plotting functions. It provides a layered approach, allowing users to easily add and modify plot elements. ggplot2 has a consistent API, making it easier to create complex plots with less code. It also includes built-in support for facets, themes, and statistical transformations.
 
 **Philosophy**:  
 *Base R plotting*:  
-The base R plotting system has been part of R since its early versions and follows a traditional approach. It focuses on providing a set of core plotting functions and allows users to have fine-grained control over plot details. It can be useful for users who prefer a more low-level and flexible plotting system.
+The base R plotting system has been part of R since its early versions and follows a traditional approach. It focuses on providing a set of core plotting functions and allows users to have fine-grained control over plot details. It can be useful for users who prefer a more low-level and flexible plotting system.  
 *ggplot2*:  
 ggplot2, developed by Hadley Wickham, introduces a different philosophy where the emphasis is on the grammar of graphics. It aims to provide a coherent and consistent framework for creating plots by combining independent graphical components. ggplot2 promotes the idea of "layering" to create complex plots and encourages a more structured and reproducible workflow.
-Overall, ggplot2 provides a more elegant and expressive way to create publication-quality plots, particularly for exploratory data analysis and data visualization tasks. It simplifies the process of creating complex plots and offers more options for customization compared to the base R plotting system.
-
+Overall, ggplot2 provides a more elegant and expressive way to create publication-quality plots, particularly for exploratory data analysis and data visualization tasks. It simplifies the process of creating complex plots and offers more options for customization compared to the base R plotting system.  
+\
 
 ## The Grammar of ggplot2
 
@@ -86,8 +87,8 @@ These are the core components of the ggplot2 grammar. By combining and modifying
 >Note that there are some differences in naming chart types between Excel and R.
 >Excel's Column charts are called bar charts in R (there are vertical and horizontal bar charts in R).
 >Excel's Clustered column charts are called grouped bar charts in R.
->I will use the naming conventions in compliance of the corresponding software.
-
+>I will use the naming conventions in compliance of the corresponding software.  
+\
 
 ## Loading Tidyverse
 
@@ -116,7 +117,7 @@ formatted_table <- function(df) {
     kable_styling(bootstrap_options = c("striped", "hover", "responsive"))
 }
 ```
-
+\
 
 ## Loading a dataset
 
@@ -134,8 +135,8 @@ df <- df %>% mutate(`Adult weight (g)` = as.numeric(`Adult weight (g)`)) %>%
 formatted_table(head(df))
 ```
 
-As you can see above, the data is loaded well. The `read.csv2()` function was used to read the csv file with ";" as the separator of the data. The `check.names = ` argument was used to keep the original header names.    Also note that the columns are of the correct data type (e.g. chr for the Kingdom column and num for the Female maturity (days) column).
-
+As you can see above, the data is loaded well. The `read.csv2()` function was used to read the csv file with ";" as the separator of the data. The `check.names = ` argument was used to keep the original header names.    Also note that the columns are of the correct data type (e.g. chr for the Kingdom column and num for the Female maturity (days) column).  
+\
 
 ## Summarize each
 
@@ -164,7 +165,8 @@ summ_data <- summ_data %>%
 formatted_table(summ_data)
 ```
 
-Only the Felidae family is selected and sorted on the common name.
+Only the Felidae family is selected and sorted on the common name.  
+\
 
 ## Bar Chart base R
 
@@ -183,8 +185,8 @@ barplot(summ_data$`Birth weight (g)`,
 
 As you can see, it worked but the plot is not very aesthetically pleasing.
 Also, the bar labels are to small to properly read but if they are scaled to a bigger size, they will fall of the plot area and will be truncated.
-Now let's compare this with the same type of plot using the same data but now the plot will be created in ggplot2:
-
+Now let's compare this with the same type of plot using the same data but now the plot will be created in ggplot2.  
+\
 
 ## Bar Chart in ggplot2
 
@@ -197,8 +199,8 @@ p
 ```
 
 Plotting with ggplot2 is much more flexible and the plots created are very aesthetically pleasing (although this may be subjective).
-From the graph it is clear that the `Tiger` and `Lion` have the highest birth weight.
-
+From the graph it is clear that the `Tiger` and `Lion` have the highest birth weight.  
+\
 
 ## Grouped bar chart 
 
@@ -227,9 +229,8 @@ p
 Note that ggplot2 now splits the `Birth weight` data based on `Adult weight`.
 By using the `fill=` argument in the function call both data sets will get their own bar and bar color.
 A legend is automatically generated (and highly warranted).
-The `position = "dodge"` argument creates two bars next to each other.
-
-
+The `position = "dodge"` argument creates two bars next to each other.  
+\
 
 ## Stacked bar chart 
 
@@ -243,6 +244,7 @@ p <- ggplot(data = tidy_summ_data, aes(x = `Common name`, y = `Weight (g)`, fill
   theme(axis.text.x = element_text(angle = 45, hjust=1))
 p
 ```
+\
 
 ## Percent stacked barchart
 
@@ -258,8 +260,8 @@ p
 ```
 
 Now, the fraction of each subgroup is represented, allowing to study the change of their proportion in the whole.
-Note that the y-label is modified accordingly.
-
+Note that the y-label is modified accordingly.  
+\
 
 ## Switch order of groups
 
@@ -303,8 +305,7 @@ p <- ggplot(data = tidy_summ_data, aes(x = `Common name`, y = `Weight (g)`, fill
   theme(axis.text.x = element_text(angle = 45, hjust=1))
 p
 ```
-
-
+\
 
 ## Pie Chart
 
@@ -333,7 +334,8 @@ p
 Again, it is clear that the adult lion's weight contributes the most to the total weight of all cat species.
 Adding labels with % in the Pie is a bit of a hassle and beyond the scope of this course (as we want to use ggplot2 as much as possible out-of-the-box).
 Nevertheless, you can find multiple blog posts related to this topic on the internet.
-The same holds for pie of pie charts. This chart type is not supported out of the box in ggplot2 though it can be accomplished with (quite a lot) of effort.
+The same holds for pie of pie charts. This chart type is not supported out of the box in ggplot2 though it can be accomplished with (quite a lot) of effort.  
+\
 
 ## Radar Charts
 
@@ -352,7 +354,7 @@ You can find an example in the data cleaning section.
 
 ```{r}
 trans_matrix <- t(rest_data)
-formatted_table((trans_matrix))
+trans_matrix
 ```
 
 Convert it to a tibble:
@@ -412,14 +414,14 @@ library(ggradar)
 And now we can create a radar chart:
 
 ```{r}
-p <- ggradar(rest_data,  legend.text.size = 8, values.radar = c("0", "500", "1000"), axis.label.size = 3, grid.label.size = 3, legend.position = "right") +
+p <- ggradar(rest_data,  legend.text.size = 8, values.radar = c("0", "0.5", "1.0"), axis.label.size = 3, grid.label.size = 3, legend.position = "right") +
   labs(title = "Different protein quantifications methods compared") +
   theme(plot.title = element_text(size = 14, ))
 p
 ```
 
-That was actually quite a lot of work...
-
+That was actually quite a lot of work...  
+\
 
 ## Boxplots
 
@@ -453,8 +455,8 @@ p <- ggplot(artiod_df, aes(x = `Family`, y = `Maximum longevity (yrs)`)) +
 p
 ```
   
-It seems that the hippo has the longest life span among the Artiodactyla.
-
+It seems that the hippo has the longest life span among the Artiodactyla.  
+\
 
 ## Grouped box plots
 
@@ -493,6 +495,7 @@ p <- ggplot(tidy_artiod, aes(x = `Family`, y = `Weight (g)`, fill = `Weight type
   theme(axis.text.x = element_text(angle = 45, hjust=1))
 p
 ```
+\
 
 ## Violin Charts
 
@@ -511,8 +514,7 @@ p <- ggplot(artiod_df, aes(x = `Family`, y = `Maximum longevity (yrs)`)) +
   theme(axis.text.x = element_text(angle = 45, hjust=1))
 p
 ```
-
-
+\
 
 ## Line plots
 
@@ -567,7 +569,7 @@ p <- ggplot(data= tidy_mouse_weight, aes(x = Date, y = `Weight (g)`, group = `Mo
   labs(title="Weights of different genotypes of mice")
 p
 ```
-
+\
 
 ## XY-scatter plots
 
@@ -599,7 +601,7 @@ p <- ggplot(chickwts_diet1, aes(x = Time, y = weight)) +
   geom_smooth(method="lm")
 p
 ```
-
+\
 
 ## Bubble chart
 
@@ -644,7 +646,7 @@ The Chart includes the following:
 X-axis: Analysis time (minutes).  
 Y-axis: Protein concentration (mg/mL).  
 Bubble size: Represents the number of assays per day in the laboratory.  
-
+\
 
 ## Other plot types and libraries
 
