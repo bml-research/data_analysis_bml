@@ -147,15 +147,7 @@ feline_df <- df[df$Family == "Felidae",]
 summ_data <- feline_df %>%
   arrange(`Common name`) %>%
   select(Family, `Common name`, `Birth weight (g)`, `Adult weight (g)`)
-
-
-# Unfortunatly, this results in a data frame with only characters. The next lines are used to convert the last two columns to numbers
-
-summ_data <- summ_data  %>% 
-  mutate(`Birth weight (g)` = as.numeric(`Birth weight (g)`)) %>% 
-  mutate(`Adult weight (g)` = as.numeric(`Adult weight (g)`))
 formatted_table(summ_data)
-
 ```
 To drop the `NA` values we will use the `drop_na` function:
 

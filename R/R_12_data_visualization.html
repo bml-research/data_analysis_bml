@@ -1187,14 +1187,7 @@ section and removing rows that contain <code>NA</code> values:</p>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>summ_data <span class="ot">&lt;-</span> feline_df <span class="sc">%&gt;%</span></span>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="st">`</span><span class="at">Common name</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>  <span class="fu">select</span>(Family, <span class="st">`</span><span class="at">Common name</span><span class="st">`</span>, <span class="st">`</span><span class="at">Birth weight (g)</span><span class="st">`</span>, <span class="st">`</span><span class="at">Adult weight (g)</span><span class="st">`</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co"># Unfortunatly, this results in a data frame with only characters. The next lines are used to convert the last two columns to numbers</span></span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>summ_data <span class="ot">&lt;-</span> summ_data  <span class="sc">%&gt;%</span> </span>
-<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Birth weight (g)</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">Birth weight (g)</span><span class="st">`</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Adult weight (g)</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">Adult weight (g)</span><span class="st">`</span>))</span>
-<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="fu">formatted_table</span>(summ_data)</span></code></pre></div>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="fu">formatted_table</span>(summ_data)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
