@@ -1,5 +1,5 @@
 ---
-title: 'Lesson 11-13: Data analysis'
+title: 'Lesson 11-13: Data visualization'
 author: "Mark Sibbald, Jurre Hageman"
 date: "2025-10-17"
 output: 
@@ -25,7 +25,7 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 This file can be downloaded [here](./R_12_data_visualization_add_exercises.Rmd).\
 \
 
-## Lesson 11-13: Data analysis
+## Lesson 11-13: Data visualization
 
 Once the data is read/loaded and cleaned up nicely, it is time start analyzing and presenting the data. In these two lessons, we will look at the visualization part. We will use different plots to show the analysis and what it takes to make the data sets usable for each different plot.
 
