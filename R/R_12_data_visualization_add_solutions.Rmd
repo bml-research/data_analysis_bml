@@ -66,9 +66,9 @@ formatted_table(head(tibble1))
 Let's create a summary of the dinosaurs that lived in the Cretaceous period. We are only interested in the scientific name, length, weight and height of the animals.
 
 ```{r}
-# Select the dinosaurs from the Cretaceous period and sort them on scientific name and drop the rows that have NA values.
+# Select the dinosaurs from the Middle Cretaceous period and sort them on scientific name and drop the rows that have NA values.
 cretaceous <- tibble1 %>%
-  filter(period == "Cretaceous") %>%
+  filter(period == "Middle Cretaceous") %>%
   drop_na()
  
 # Select only the columns containing the period, scientific name, length, weight and height.
@@ -176,18 +176,25 @@ We will take the 7 longest dinosaurs and see ho the distribution of the weights 
 
 ```{r}
 # Select the seven longest dinosaurs. Check your bar chart with the length and height of each Cretaceous dinosaur. Save these seven to a vector.
-long_dino <- c("Dongyangosaurus", "Elaltitan", "Epachthosaurus", "Udelartitan",
+long_dino <- c("Dongyangosaurus", "Elaltitan", "Titanomachya", "Epachthosaurus", "Udelartitan",
                "Volgatitan", "Zhuchengtitan")
 # Filter the data set using this vector.
-df_long_dino <- sel_data %>%
+df_long_dino1 <- sel_data %>%
   filter(`Scientific name`%in%long_dino)
-formatted_table(df_long_dino)
+formatted_table(df_long_dino1)
+
+# OR:
+df_long_dino2 <- sel_data %>%
+  slice_max(order_by = `Length (m)`, n = 7)
+formatted_table(df_long_dino2)
+
 # Create the pie chart based on the weight of these dinosaurs.
-dino_pie <- ggplot(df_long_dino, aes(x = "", y = `Weight (kg)`, 
+dino_pie <- ggplot(df_long_dino2, aes(x = "", y = `Weight (kg)`, 
                                     fill = `Scientific name`)) +
   geom_bar(stat="identity", width=1) +
   coord_polar("y", start=0) +
   labs(title="Weight for the largest Cretaceous dinosaur species") +
+  geom_text(aes(label = `Length (m)`), position = position_stack(vjust = 0.5)) + # add values to the pieces of the pie.
   theme_void() # remove background, grid, numeric labels
 dino_pie
 ```
@@ -199,14 +206,18 @@ It seems that the 'titans' are the largest and heaviest dinosaurs (except the El
 
 We can use the same data for the boxplot. Let's look at the height of the dinosaurs in different periods of time.
 ```{r}
-# Exclude (use `filter()`on tibble1) the dinosaurs that are heavier than 10000 kg and save the data in tibble2.
+# Exclude (use `filter()`on tibble1) the dinosaurs that are heavier than 10000 kg
+# Drop any NA values.
+# Select the columns period, scientific name, length, weight and height,
+# Save the data in tibble2.
 tibble2 <- tibble1 %>%
   filter(weight_kg <= 10000) %>%
   drop_na() %>%
-  arrange(scientific_name) %>%
   select(period, scientific_name, length_m, weight_kg, height_m)
 colnames(tibble2) <- c("Period", "Scientific name", "Length (m)", 
                        "Weight (kg)", "Height (m)")
+# Make the data in the column period factor type data: Triassic < Jurassic < Cretaceous,
+tibble2$Period <- factor(tibble2$Period, levels = c("Early Triassic", "Middle Triassic", "Late Triassic", "Early Jurassic", "Middle Jurassic", "Late Jurassic", "Early Cretaceous", "Middle Cretaceous", "Late Cretaceous"))
 formatted_table(head(tibble2))
 
 # Create a boxplot for the height of the dinosaurs for each period in time.
@@ -217,7 +228,7 @@ height_period <- ggplot(tibble2, aes(x = `Period`, y = `Height (m)`)) +
   theme(axis.text.x = element_text(angle = 45, hjust=1))
 height_period
 ```
-It seems that the tallest dinosaurs were mainly in the Middle Jurassic period.
+It seems that the dinosaurs were growing large towards the Jurassic period and maintained that size during the Cretaceous period.
 \
 
 ## Grouped boxplot
@@ -320,7 +331,7 @@ And add a trendline.
 ```{r}
 # Add a trendline to the plot.
 line_plot4 <- ggplot(df2, aes(x = date, y = precipitation_mm)) +
-  geom_point(aes(color = country)) +
+  geom_line(aes(color = country)) +
   labs(title="Average precipitation (in mm) per month") +
   geom_smooth(method="lm")
 line_plot4
@@ -349,7 +360,7 @@ big4 <- footprint %>%
   slice_max(order_by = `Population (millions)`, n = 4)
 formatted_table(head(big4))
 
-# Select the columns for the country and the footprints (use the `ends>With()` function) for the four selected European countries.
+# Select the columns for the country and the footprints (use the `ends_with()` function) for the four selected European countries.
 eu_footprint <- big4 %>%
   arrange(Country) %>%
   select(Country, ends_with("Footprint"))
