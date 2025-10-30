@@ -166,7 +166,7 @@ code span.ot { color: #007020; }
 <a href="../R/R_01_index.html">Go back to the R overview page</a></p>
 <hr />
 <p><br />
-This file can be downloaded <a href="./R_12_data_visualization_add_exercises.Rmd">here</a>.<br />
+This file can be downloaded <a href="./R_12_data_visualization_add_solutions.Rmd">here</a>.<br />
 <br />
 </p>
 <div id="lesson-11-13-data-visualization" class="section level2">
@@ -206,7 +206,7 @@ file into R.</p>
 <p>Let’s create a summary of the dinosaurs that lived in the Cretaceous
 period. We are only interested in the scientific name, length, weight
 and height of the animals.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># Select the dinosaurs from the Cretaceous period and sort them on scientific name and drop the rows that have NA values.</span></span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># Select the dinosaurs from the Middle Cretaceous period and sort them on scientific name and drop the rows that have NA values.</span></span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="co"># Select only the columns containing the period, scientific name, length, weight and height.</span></span>
 <span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a></span>
@@ -257,7 +257,9 @@ to change the column with the groups to the data type
 way.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># First, change the column of &#39;Dimension&#39; to a factor type of data.</span></span>
 <span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co"># Second, plot the same data as before. Do this for the grouped bar chart and percentage bar chart.</span></span></code></pre></div>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co"># Second, plot the grouped bar chart.</span></span></code></pre></div>
+<p>And use the same data to create a percentage bar chart.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># Create the percentage bar chart.</span></span></code></pre></div>
 <p><br />
 </p>
 </div>
@@ -268,25 +270,37 @@ Cretaceous period, otherwise the pie would be divided in too many
 pieces, representing all the dinosaurs from this period.</p>
 <p>We will take the 7 longest dinosaurs and see ho the distribution of
 the weights is among these ‘long’ dinosaurs.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># Select the seven longest dinosaurs. Check your bar chart with the length and height of each Cretaceous dinosaur. Save these seven to a vector.</span></span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co"># Filter the data set using this vector.</span></span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co"># Create the pie chart based on the weight of these dinosaurs.</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># Select the seven longest dinosaurs. Check your bar chart with the length and height of each Cretaceous dinosaur. Save these seven to a vector.</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co"># Filter the data set using this vector.</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="co"># OR select by using `slice_max()` and change the `Scientific name` to factor type of data (creates order in the pie chart):</span></span></code></pre></div>
+<p>Now create the pie chart.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># Create the pie chart based on the weight of these dinosaurs.</span></span></code></pre></div>
 <p>It seems that the ‘titans’ are the largest and heaviest dinosaurs
 (except the Elaltitan).<br />
-<br />
+If you really want to make it a fancy pie chart, you can try using the
+<code>ggrepel</code> library.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># First, the position of the labels outside the pie chart have to be determined</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="co"># Now plot the pie chart and insert the labels with `geom_label_repel()`.</span></span></code></pre></div>
+<p><br />
 </p>
 </div>
 <div id="boxplot" class="section level2">
 <h2>Boxplot</h2>
 <p>We can use the same data for the boxplot. Let’s look at the height of
 the dinosaurs in different periods of time.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># Exclude (use `filter()`on tibble1) the dinosaurs that are heavier than 10000 kg and save the data in tibble2.</span></span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co"># Create a boxplot for the height of the dinosaurs for each period in time.</span></span></code></pre></div>
-<p>It seems that the tallest dinosaurs were mainly in the Middle
-Jurassic period.<br />
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># Exclude (use `filter()`on tibble1) the dinosaurs that are heavier than 10000 kg</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="co"># Drop any NA values.</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="co"># Select the columns period, scientific name, length, weight and height,</span></span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="co"># Make the data in the column period factor type data: Triassic &lt; Jurassic &lt; Cretaceous,</span></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="co"># Save the data in tibble2.</span></span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="co"># Create a boxplot for the height of the dinosaurs for each period in time.</span></span></code></pre></div>
+<p>It seems that the dinosaurs were growing large towards the Jurassic
+period and maintained that size during the Cretaceous period.<br />
 </p>
 </div>
 <div id="grouped-boxplot" class="section level2">
@@ -294,16 +308,16 @@ Jurassic period.<br />
 <p>Of course it is also possible to create grouped boxplots. Let’s use
 the height and weight again and plot them against the period in
 time.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># First make a tidy tibble from tibble2.</span></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="co"># Now create the boxplot.</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># First make a tidy tibble from tibble2.</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="co"># Now create the boxplot.</span></span></code></pre></div>
 <p><br />
 And if you like to change the order of the height and length, you will
 have to make the column for <code>Dimension</code> a factor type of
 data.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># Make the column for &#39;Dimension&#39; a factor type.</span></span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="co"># Create the boxplot.</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># Make the column for &#39;Dimension&#39; a factor type.</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co"># Create the boxplot.</span></span></code></pre></div>
 <p><br />
 </p>
 </div>
@@ -312,7 +326,7 @@ data.</p>
 <p>Create with the same data a violin chart. Although these plots show
 more information about the data, it is more difficult to interpret the
 plots.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># Create a violin chart from the Height (m) for the different time periods.</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># Create a violin chart from the Height (m) for the different time periods.</span></span></code></pre></div>
 <p><br />
 </p>
 </div>
@@ -320,25 +334,25 @@ plots.</p>
 <h2>Line plots</h2>
 <p>For the following plots we will use the <a href="./files_13_data_visualization_exercises/add_exercises/climate_disease_dataset.csv">Climate
 disease dataset</a>.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># Read the data from the file and save it in df1.</span></span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="co"># Filter on the countries of the Netherlands, Sweden, Portugal and Hungary and the year 2023.</span></span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="co"># Turn the first column to dates.</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># Read the data from the file and save it in df1.</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="co"># Filter on the countries of the Netherlands, Sweden, Portugal and Hungary and the year 2023.</span></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="co"># Turn the first column to dates.</span></span></code></pre></div>
 <p>Now we can create a line plot.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co"># Create a line plot of the average precipitation against the date for the four selected continents with tidy data from df2.</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># Create a line plot of the average precipitation against the date for the four selected continents with tidy data from df2.</span></span></code></pre></div>
 <p>This is not very clear since the data of each country is not visible.
 Let’s use some color to distinguish the data for the different
 countries.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># Use different types of lines to distinguish the data from the different countries.</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># Use different types of lines to distinguish the data from the different countries.</span></span></code></pre></div>
 <p><br />
 This looks a bit better, but for this plot it is better to use colors to
 distinguish the data from the different countries.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># Create the same line plot as before, but use colors to distinguish the data for the different countries.</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># Create the same line plot as before, but use colors to distinguish the data for the different countries.</span></span></code></pre></div>
 <p><br />
 And add a trendline.<br />
 </p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># Add a trendline to the plot.</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co"># Add a trendline to the plot.</span></span></code></pre></div>
 </div>
 <div id="radar-chart" class="section level2">
 <h2>Radar chart</h2>
@@ -346,18 +360,17 @@ And add a trendline.<br />
 Ecological Footprint data of 2023</a>. To create radar charts you need
 to install the <code>remotes</code> package and load the
 <code>ggradar</code> library.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># REMOVE THE HASH TAGS IN THE NEXT TWO LINES IF YOU HAVE NOT INSTALLED THE REMOTES PACKAGE YET.</span></span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="co">#install.packages(&quot;remotes&quot;)</span></span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="co">#remotes::install_github(&quot;ricardo-bion/ggradar&quot;)</span></span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="fu">library</span>(ggradar)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="co"># REMOVE THE HASH TAGS IN THE NEXT TWO LINES IF YOU HAVE NOT INSTALLED THE REMOTES PACKAGE YET.</span></span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="co">#install.packages(&quot;remotes&quot;)</span></span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a><span class="co">#remotes::install_github(&quot;ricardo-bion/ggradar&quot;)</span></span>
+<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a><span class="fu">library</span>(ggradar)</span></code></pre></div>
 <p>Read the data from the Global Ecological Footprint data file.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># Read the data and store it in a data frame.</span></span>
-<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="co"># Check which four European countries have the highest population.</span></span>
-<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a></span>
-<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a><span class="co"># Select the columns for the country and the footprints (use the `ends&gt;With()` function) for the four selected European countries.</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="co"># Read the data and store it in a data frame.</span></span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="co"># Check which four European countries have the highest population.</span></span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a><span class="co"># Select the columns for the country and the footprints (use the `ends_with()` function) for the four selected European countries.</span></span></code></pre></div>
 <p>Now create the radar chart.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="co"># Create a radar chart from the data with the footprints for the 4 European countries.</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="co"># Create a radar chart from the data with the footprints for the 4 European countries.</span></span></code></pre></div>
 <p><br />
 </p>
 </div>
@@ -365,7 +378,11 @@ to install the <code>remotes</code> package and load the
 <h2>Bubble chart</h2>
 <p>Bubble charts are useful when you have an extra dimension that you
 would like to show in the plot.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="co"># Create a bubble chart for the total the &#39;number of countries required&#39; vs &#39;biocapacity&#39; and as third dimension the &#39;population&#39;.</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="co"># Use the original data frame</span></span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="co"># Check which four European countries have the highest population.</span></span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a><span class="co"># Select the columns for the country and the footprints (use the `ends_with()` function) for the four selected European countries.</span></span>
+<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" tabindex="-1"></a><span class="co"># Create a bubble chart for the total the &#39;number of countries required&#39; vs &#39;biocapacity&#39; and as third dimension the &#39;population&#39;.</span></span></code></pre></div>
 <p><br />
 </p>
 </div>
