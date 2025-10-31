@@ -218,21 +218,21 @@ If you really want to make it a fancy pie chart, you can try using the `ggrepel`
 ```{r}
 # First, the position of the labels outside the pie chart have to be determined
 library(ggrepel)
-fancy_pie <- df_long_dino2 %>%
+fancy_pie1 <- df_long_dino2 %>%
   # position the labels outside the pie chart correctly
   mutate(csum = rev(cumsum(rev(`Length (m)`))),
          pos = `Length (m)`/2 + lead(csum, 1),
          pos = if_else(is.na(pos), `Length (m)`/2, pos))
 
 # Now plot the pie chart and insert the labels with `geom_label_repel()`.
-dino_pie2 <- ggplot(fancy_pie, 
+dino_pie2 <- ggplot(fancy_pie1, 
                     aes(x = "", y = `Length (m)`, 
                         fill = fct_inorder(`Scientific name`))) +
   geom_bar(stat="identity", width = 1) +
   coord_polar("y", start=0, direction = -1) +
   scale_fill_brewer(palette = "Set3") + # color set for the pie chart
   # Create labels outside the pie chart
-  geom_label_repel(data = fancy_pie, 
+  geom_label_repel(data = fancy_pie1, 
                    aes(y = pos, label = `Length (m)`), 
                    size = 3.5, nudge_x = 0.75, show.legend = FALSE) +
 
@@ -241,6 +241,29 @@ dino_pie2 <- ggplot(fancy_pie,
   theme_void() # remove background, grid, numeric labels
 dino_pie2
 
+```
+\
+Or with percentages:
+```{r}
+# First add a column with the calculated percentages (of the total length).
+fancy_pie2 <- fancy_pie1 %>%
+  mutate(percentage = round(`Length (m)` / sum(`Length (m)`) * 100), 0)
+# Then plot the same pie chart, but with the percentages instead of the length.
+dino_pie3 <- ggplot(fancy_pie2, 
+                    aes(x = "", y = `Length (m)`, 
+                        fill = fct_inorder(`Scientific name`))) +
+  geom_bar(stat="identity", width = 1) +
+  coord_polar("y", start = 0, direction = -1) +
+  scale_fill_brewer(palette = "Set3") + # color set for the pie chart
+  # Create labels outside the pie chart
+  geom_label_repel(data = fancy_pie2, 
+                   aes(y = pos, label = paste0(percentage, "%")), 
+                   size = 3.5, nudge_x = 0.75, show.legend = FALSE) +
+
+  labs(title="Length for the largest Cretaceous dinosaur species") +
+  guides(fill = guide_legend(title = "Dinosaur")) + 
+  theme_void() # remove background, grid, numeric labels
+dino_pie3
 ```
 
 \
