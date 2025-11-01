@@ -138,23 +138,23 @@ formatted_table(head(df))
 As you can see above, the data is loaded well. The `read.csv2()` function was used to read the csv file with ";" as the separator of the data. The `check.names = ` argument was used to keep the original header names.    Also note that the columns are of the correct data type (e.g. chr for the Kingdom column and num for the Female maturity (days) column).  
 \
 
-## Summarize each
+## Prep the data frame
 
-First we create a dataset similar as the pivot table from the excel section and removing rows that contain `NA` values:
+First we prep the dataset and remove rows that contain `NA` values:
 
 ```{r}
-feline_df <- df[df$Family == "Felidae",]
-summ_data <- feline_df %>%
+summ_data <- df %>%
+  filter(Family == "Felidae") %>%
   arrange(`Common name`) %>%
   select(Family, `Common name`, `Birth weight (g)`, `Adult weight (g)`)
-formatted_table(summ_data)
+formatted_table(head(summ_data))
 ```
 To drop the `NA` values we will use the `drop_na` function:
 
 ```{r}
 summ_data <- summ_data %>%
   drop_na()
-formatted_table(summ_data)
+formatted_table(head(summ_data))
 ```
 
 Only the Felidae family is selected and sorted on the common name.  
@@ -183,7 +183,8 @@ Now let's compare this with the same type of plot using the same data but now th
 ## Bar Chart in ggplot2
 
 ```{r}
-p <- ggplot(data = summ_data, aes(x = `Common name`, y = `Birth weight (g)`)) +
+p <- summ_data %>%
+  ggplot(aes(x = `Common name`, y = `Birth weight (g)`)) +
   geom_bar(stat="identity", fill="steelblue") +
   labs(title="Birth weight for different cat species") +
   theme(axis.text.x = element_text(angle = 45, hjust=1))
@@ -210,7 +211,8 @@ As you can see, the data is in tidy format now with only a single column with th
 Now we can easily create a grouped bar chart:
 
 ```{r}
-p <- ggplot(data = tidy_summ_data, aes(x = `Common name`, y = `Weight (g)`, fill = `Weight type`)) +
+p <- tidy_summ_data %>%
+  ggplot(aes(x = `Common name`, y = `Weight (g)`, fill = `Weight type`)) +
   geom_bar(stat = "identity", position="dodge") +
   scale_y_log10() +
   labs(title="Birth and adult weight for different cat species", y = "Weight (g)") +
@@ -229,7 +231,8 @@ The `position = "dodge"` argument creates two bars next to each other.
 Creating a stacked bar chart is easy. Just change the `position` argument.to "stack" (or omit it altogether as it is the default parameter, but there is nothing wrong in being explicit):
 
 ```{r}
-p <- ggplot(data = tidy_summ_data, aes(x = `Common name`, y = `Weight (g)`, fill = `Weight type`)) +
+p <- tidy_summ_data %>%
+  ggplot(aes(x = `Common name`, y = `Weight (g)`, fill = `Weight type`)) +
   geom_bar(stat = "identity", position="stack") +
   scale_y_log10() +
   labs(title="Birth and adult weight for different cat species") +
@@ -243,7 +246,8 @@ p
 A percent (actually a fraction) stacked barchart can be created by changing the `position` argument to "fill";
 
 ```{r}
-p <- ggplot(data = tidy_summ_data, aes(x = `Common name`, y = `Weight (g)`, fill = `Weight type`)) +
+p <- tidy_summ_data %>%
+  ggplot(aes(x = `Common name`, y = `Weight (g)`, fill = `Weight type`)) +
   geom_bar(stat = "identity", position="fill") +
   scale_y_log10() +
   labs(title="Birth and adult weight for different cat species") +
@@ -261,15 +265,16 @@ If you want to change the order of groups you will need to change the column `We
 And we can change the order of levels accordingly:
 
 ```{r}
-tidy_summ_data$`Weight type` <- factor(tidy_summ_data$`Weight type`, levels = c("Birth weight (g)", "Adult weight (g)"))
-levels(tidy_summ_data$`Weight type`)
-tidy_summ_data
+tidy_summ_data <- tidy_summ_data %>%
+  mutate(`Weight type` = factor(`Weight type`, levels = c("Birth weight (g)", "Adult weight (g)")))
+formatted_table(head(tidy_summ_data))
 ```
 
 As you can see, the order of the levels is swapped.
 
 ```{r}
-p <- ggplot(data = tidy_summ_data, aes(x = `Common name`, y = `Weight (g)`, fill = `Weight type`)) +
+p <- tidy_summ_data %>%
+  ggplot(aes(x = `Common name`, y = `Weight (g)`, fill = `Weight type`)) +
   geom_bar(stat = "identity", position="dodge") +
   scale_y_log10() +
   labs(title="Birth and adult weight for different cat species") +
@@ -280,7 +285,8 @@ p
 The same holds for the stacked barchart:
 
 ```{r}
-p <- ggplot(data = tidy_summ_data, aes(x = `Common name`, y = `Weight (g)`, fill = `Weight type`)) +
+p <- tidy_summ_data %>%
+  ggplot(aes(x = `Common name`, y = `Weight (g)`, fill = `Weight type`)) +
   geom_bar(stat = "identity", position="stack") +
   scale_y_log10() +
   labs(title="Birth and adult weight for different cat species") +
@@ -290,7 +296,8 @@ p
 
 And the 100% stacked barchart:
 ```{r}
-p <- ggplot(data = tidy_summ_data, aes(x = `Common name`, y = `Weight (g)`, fill = `Weight type`)) +
+p <- tidy_summ_data %>% 
+  ggplot(aes(x = `Common name`, y = `Weight (g)`, fill = `Weight type`)) +
   geom_bar(stat = "identity", position="fill") +
   scale_y_log10() +
   labs(title="Birth and adult weight for different cat species") +
@@ -309,13 +316,15 @@ First, we select all the big cats in a vector.
 
 ```{r}
 big_cats <- c("Lion", "Tiger", "Jaguar", "Cougar", "Leopard", "Cheetah", "Snow leopard")
-df_big_cats <- df %>% filter(`Common name`%in% big_cats)
+df_big_cats <- df %>% 
+  filter(`Common name` %in% big_cats)
 formatted_table(df_big_cats)
 ```
 And then we can create the Pie chart:
 
 ```{r}
-p <- ggplot(df_big_cats, aes(x = "", y = `Adult weight (g)`, fill = `Common name`)) +
+p <- df_big_cats %>%
+  ggplot(aes(x = "", y = `Adult weight (g)`, fill = `Common name`)) +
   geom_bar(stat="identity", width=1) +
   coord_polar("y", start=0) +
   labs(title="Adult weight for different cat species") +
@@ -348,6 +357,9 @@ You can find an example in the data cleaning section.
 trans_matrix <- t(rest_data)
 trans_matrix
 ```
+
+> It is possible to use the `pivot_longer()` and `pivot_wider()` functions to transpose a tibble but we find it easier to understand in base R.  
+> Hence we use base R for this.  
 
 Convert it to a tibble:
 
@@ -392,6 +404,7 @@ And now we can build the radar plot.
 We first need to install a ggplot2 extension:
 
 Run the following code to install the module:
+
 ```
 install.packages("remotes")
 remotes::install_github("ricardo-bion/ggradar")
@@ -406,7 +419,8 @@ library(ggradar)
 And now we can create a radar chart:
 
 ```{r}
-p <- ggradar(rest_data,  legend.text.size = 8, values.radar = c("0", "0.5", "1.0"), axis.label.size = 3, grid.label.size = 3, legend.position = "right") +
+p <- rest_data %>%
+  ggradar(legend.text.size = 8, values.radar = c("0", "0.5", "1.0"), axis.label.size = 3, grid.label.size = 3, legend.position = "right") +
   labs(title = "Different protein quantifications methods compared") +
   theme(plot.title = element_text(size = 14, ))
 p
@@ -424,14 +438,20 @@ We will take the same data set as earlier and select only the order Artiodactyla
 ```{r}
 file_path <- "./files_12_data_visualization/file01_anage_data.csv"
 df <- read.csv2(file_path, check.names = F)
-artiod_df <- df[df$Order == "Artiodactyla",] %>%
-  arrange(`Common name`) %>%
-  select(Order, Family, `Common name`, `Maximum longevity (yrs)`, `Adult weight (g)`, `Birth weight (g)`)
+formatted_table(head(df))
+```
 
-artiod_df <- artiod_df %>% mutate(`Maximum longevity (yrs)` = as.numeric(`Maximum longevity (yrs)`)) %>%
+And now prep the tibble:
+
+```{r}
+artiod_df <- df %>%
+  filter(Order == "Artiodactyla") %>%
+  arrange(`Common name`) %>%
+  select(Order, Family, `Common name`, `Maximum longevity (yrs)`, `Adult weight (g)`, `Birth weight (g)`) %>%
+  mutate(`Maximum longevity (yrs)` = as.numeric(`Maximum longevity (yrs)`)) %>%
   mutate(`Adult weight (g)` = as.numeric(`Adult weight (g)`)) %>%
-  mutate(`Birth weight (g)` = as.numeric(`Birth weight (g)`))
-artiod_df <- na.omit(artiod_df) # to remove rows with NA values
+  mutate(`Birth weight (g)` = as.numeric(`Birth weight (g)`)) %>%
+  drop_na()
 formatted_table(head(artiod_df))
 ```
 
@@ -440,7 +460,7 @@ And create a box plot to show the maximum life span for the different orders wit
 
 
 ```{r}
-p <- ggplot(artiod_df, aes(x = `Family`, y = `Maximum longevity (yrs)`)) + 
+p <- artiod_df %>% ggplot(aes(x = `Family`, y = `Maximum longevity (yrs)`)) + 
   geom_boxplot() +
   labs(title="Boxplot showing maximum life span for different orders in mammals") +
   theme(axis.text.x = element_text(angle = 45, hjust=1))
@@ -464,7 +484,8 @@ formatted_table(head(tidy_artiod))
 And now create the grouped box plot:
 
 ```{r}
-p <- ggplot(tidy_artiod, aes(x = `Family`, y = `Weight (g)`, fill = `Weight type`)) + 
+p <- tidy_artiod %>%
+  ggplot(aes(x = `Family`, y = `Weight (g)`, fill = `Weight type`)) + 
   geom_boxplot() +
   scale_y_log10() +
   labs(title="Box plot showing the birth and adult weights for different orders in Artiodactyla") +
@@ -475,12 +496,14 @@ p
 Again, if you want to swap the order of the groups you can change the character columns to factors:
 
 ```{r}
-tidy_artiod$`Weight type` <- factor(tidy_artiod$`Weight type`, levels = c("Birth weight (g)", "Adult weight (g)"))
-levels(tidy_artiod$`Weight type`)
+tidy_artiod <- tidy_artiod %>%
+  mutate(`Weight type` = factor(`Weight type`, levels = c("Birth weight (g)", "Adult weight (g)")))
+formatted_table(head(tidy_artiod))      
 ```
 
 ```{r}
-p <- ggplot(tidy_artiod, aes(x = `Family`, y = `Weight (g)`, fill = `Weight type`)) + 
+p <- tidy_artiod %>%
+  ggplot(aes(x = `Family`, y = `Weight (g)`, fill = `Weight type`)) + 
   geom_boxplot() +
   scale_y_log10() +
   labs(title="Box plot showing the birth and adult weights for different orders in Artiodactyla") +
@@ -499,8 +522,10 @@ Let's show the above example as a violin plot (the Antilocapridae family is excl
 
 
 ```{r}
-artiod_df <- artiod_df[artiod_df$Family != "Antilocapridae", ]
-p <- ggplot(artiod_df, aes(x = `Family`, y = `Maximum longevity (yrs)`)) + 
+artiod_df <- artiod_df %>%
+  filter(Family != "Antilocapridae")
+p <- artiod_df %>%
+  ggplot(aes(x = `Family`, y = `Maximum longevity (yrs)`)) + 
   geom_violin() +
   labs(title="Maximum life span of Artiodactyla") +
   theme(axis.text.x = element_text(angle = 45, hjust=1))
@@ -536,7 +561,8 @@ formatted_table(head(tidy_mouse_weight))
 So now we can create a line plot:
 
 ```{r}
-p <- ggplot(data = tidy_mouse_weight, aes(x = Date, y = `Weight (g)`, group = `Mouse strain`)) +
+p <- tidy_mouse_weight %>%
+  ggplot(aes(x = Date, y = `Weight (g)`, group = `Mouse strain`)) +
   geom_line() +
   labs(title="Weights of different genotypes of mice")
 p
@@ -547,7 +573,8 @@ As you can see, all lines in the group do have the same type and color.
 We can either discriminate by type/shape:
 
 ```{r}
-p <- ggplot(data= tidy_mouse_weight, aes(x = Date, y = `Weight (g)`, group = `Mouse strain`)) +
+p <- tidy_mouse_weight %>%
+  ggplot(aes(x = Date, y = `Weight (g)`, group = `Mouse strain`)) +
   geom_line(aes(linetype = `Mouse strain`)) +
   labs(title="Weights of different genotypes of mice")
 p
@@ -556,7 +583,8 @@ p
 Or by color:
 
 ```{r}
-p <- ggplot(data= tidy_mouse_weight, aes(x = Date, y = `Weight (g)`, group = `Mouse strain`)) +
+p <- tidy_mouse_weight %>% 
+  ggplot(aes(x = Date, y = `Weight (g)`, group = `Mouse strain`)) +
   geom_line(aes(color = `Mouse strain`)) +
   labs(title="Weights of different genotypes of mice")
 p
@@ -572,13 +600,15 @@ XY-scatter plots are often used to demonstrate a correlation. As for the Excel s
 First we take only the data from Diet 1:
 
 ```{r}
-chickwts_diet1 <- ChickWeight %>% filter(Diet == 1)
+chickwts_diet1 <- ChickWeight %>% 
+  filter(Diet == 1)
 formatted_table(head(chickwts_diet1))
 ```
 
 
 ```{r}
-p <- ggplot(chickwts_diet1, aes(x = Time, y = weight)) +
+p <- chickwts_diet1 %>%
+  ggplot(aes(x = Time, y = weight)) +
   geom_point() +
   labs(title="Chicken weight")
 p
@@ -587,7 +617,8 @@ p
 And then we can add a linear regression model:
 
 ```{r}
-p <- ggplot(chickwts_diet1, aes(x = Time, y = weight)) +
+p <- chickwts_diet1 %>%
+  ggplot(aes(x = Time, y = weight)) +
   geom_point() +
   labs(title="Chicken weigth") +
   geom_smooth(method="lm")
@@ -627,7 +658,8 @@ formatted_table(head(bubble_data))
 And now we can create a bubble chart:  
 
 ```{r}
-p <- ggplot(bubble_data, aes(x = `Analysis time (min)`, y = `Protein concentration (mg/ml)`)) + 
+p <- bubble_data %>%
+  ggplot(aes(x = `Analysis time (min)`, y = `Protein concentration (mg/ml)`)) + 
   geom_point(aes(color = Method, size = `Number of Analyses per day`), alpha = 0.5) +
   scale_size_area(max_size = 10)
 p
