@@ -72,7 +72,8 @@ Both data frames have the same dimensions, so there are no NA values.
 Can calculations be performed with the stock prices?
 
 ```{r}
-mean(df1$High)
+df1 %>%
+  summarise(mean_high = mean(High))
 ```
 
 The first column is also of the date type.
@@ -86,7 +87,7 @@ To create an XY-Scatter plot, the data must first be made tidy.
 
 ```{r}
 df2 <- df1 %>%
-  gather(`High`, `Low`, key = "Type", value = "Price") 
+  pivot_longer(c("High", "Low"), names_to = "Type", values_to = "Price") 
 head(df2)
 ```
 
@@ -94,7 +95,8 @@ head(df2)
 An XY-scatter plot of the stock prices was then created:
 
 ```{r}
-p <- ggplot(data= df2, aes(x = Date, y = Price, group = `Type`)) +
+p <- df2 %>%
+  ggplot(aes(x = Date, y = Price, group = `Type`)) +
   geom_line(aes(color = `Type`)) +
   labs(title="Zoamto Stock Price")
 p
@@ -120,21 +122,25 @@ Make Tidy and Sort:
 
 ```{r}
 df4 <- df3 %>%
-  gather(`low`, `high`, key = "low or high", value = "Stock Price") 
+  pivot_longer(c("low", "high"), names_to = "low or high", values_to = "Stock Price") 
 df4
 ```
 
 We Can change the first two columns to factors that support levels. In that way, we can control the order in the bar graph:
 
 ```{r}
-df4$Measurement <- factor(df4$Measurement, levels = c("Minimum", "Median", "Maximum"), order = T)
+df4 <- df4 %>%
+  mutate(Measurement = factor(Measurement,
+                              levels = c("Minimum", "Median", "Maximum"),
+                              ordered = TRUE))
 df4
 ```
 
 The same for low or high:
 
 ```{r}
-df4$`low or high` <- factor(df4$`low or high`, levels = c("low", "high"))
+df4 <- df4 %>%
+  mutate(`low or high` = factor(`low or high`, levels = c("low", "high")))
 df4
 ```
 
@@ -142,10 +148,11 @@ df4
 Now, create a grouped bar plot from this data:
 
 ```{r}
-p <- ggplot(data = df4, aes(x = Measurement, y = `Stock Price`, fill = `low or high`)) +
+p <- df4 %>%
+  ggplot(aes(x = Measurement, y = `Stock Price`, fill = `low or high`)) +
   geom_bar(stat = "identity", position="dodge") +
   labs(title="Minimum, Median and maximum Stockprice") +
-  theme(axis.text.x = element_text(angle = 45, hjust=1))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 p
 ```
 

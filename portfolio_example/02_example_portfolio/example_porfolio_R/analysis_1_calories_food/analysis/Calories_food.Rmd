@@ -69,7 +69,8 @@ head(df1$Calories)
 Identify the item:
 
 ```{r}
-df1[df1$Calories == "8-44", ]
+df1 %>%
+  filter(Calories == "8-44")
 ```
 
 
@@ -77,7 +78,8 @@ So here too, elements with a range (8-44).
 Check if there are also blanks present (which have been loaded as NAs):
 
 ```{r}
-sum(is.na(df1$Calories))
+df1 %>%
+  summarise(missing_calories = sum(is.na(Calories)))
 ```
 
 One `NA` value was found to be loaded. This was blank and is read as `NA` by default by `read_csv`.
@@ -85,7 +87,8 @@ One `NA` value was found to be loaded. This was blank and is read as `NA` by def
 Identify the item:
 
 ```{r}
-df1[is.na(df1$Calories), ] 
+df1 %>%
+  filter(is.na(Calories))
 ```
 
 Consistent with the Excel analysis: `Frozen Peas`.
@@ -95,14 +98,16 @@ Consistent with the Excel analysis: `Frozen Peas`.
 Removing the relevant rows:
 
 ```{r}
-df2 <- df1 %>% filter(!Calories == "8-44")
+df2 <- df1 %>% 
+  filter(!Calories == "8-44")
 ```
 
 
 Check if the row is indeed removed:
 
 ```{r}
-df2[df2$Calories == "8-44", ]
+df2 %>%
+  filter(Calories == "8-44")
 ```
 
 Correct! The row is removed.
@@ -110,13 +115,15 @@ Correct! The row is removed.
 Now, remove the missing value:
 
 ```{r}
-df3 <- df2 %>% filter(!Food == "Frozen peas")
+df3 <- df2 %>% 
+  filter(!Food == "Frozen peas")
 ```
 
 Check if the row is indeed removed:
 
 ```{r}
-df3[df3$Food == "Frozen peas", ]
+df3 %>%
+  filter(Food == "Frozen peas")
 ```
 
 Correct! The row is removed.
@@ -124,7 +131,8 @@ Correct! The row is removed.
 Now, set the column to the correct data type:
 
 ```{r}
-df4 <- df3 %>% mutate(Calories = as.numeric(gsub(",", "", Calories))) #gsub will remove the comma's.
+df4 <- df3 %>% 
+  mutate(Calories = as.numeric(gsub(",", "", Calories))) #gsub will remove the comma's.
 head(df4)
 ```
 
@@ -139,7 +147,6 @@ df5 <- df4 %>%
   group_by(Category) %>%
   select(4) %>%
   summarize_each(funs(mean)) 
-  
 df5
 ```
 
@@ -156,7 +163,7 @@ df5
 Now, create a bar plot from this data:
 
 ```{r}
-p <- ggplot(data = df5, aes(x = Category, y = Calories)) +
+p <- df5 %>% ggplot(aes(x = Category, y = Calories)) +
   geom_bar(stat="identity", fill="steelblue") +
   labs(title="Average of calories from different categories") +
   theme(axis.text.x = element_text(angle = 90, hjust=1, vjust=0.5))
@@ -168,7 +175,8 @@ In this chart, you can see that seeds and nuts have, on average, the highest cal
 To gain more insight into the data's distribution, I also created a Boxplot:
 
 ```{r}
-p <- ggplot(data=df4, aes(x = `Category`, y = `Calories`)) + 
+p <- df4 %>%
+  ggplot(aes(x = `Category`, y = `Calories`)) + 
   geom_boxplot() +
   labs(title="Calories for different food categories") +
   theme(axis.text.x = element_text(angle = 90, hjust=1, vjust=0.5))
@@ -182,14 +190,16 @@ Here too, it's evident that seeds and nuts rank highest (showing the highest med
 To identify the food items with the highest calorie count within the category that has the highest average, I first filtered for the `Seeds and Nuts` category.
 
 ```{r}
-df6 <- df4 %>% filter(Category == "Seeds and Nuts")
+df6 <- df4 %>% 
+  filter(Category == "Seeds and Nuts")
 head(df6)
 ```
 
 Subsequently, the bar plot was created:
 
 ```{r}
-p <- ggplot(data = df6, aes(x = Food, y = Calories)) +
+p <- df6 %>%
+  ggplot(aes(x = Food, y = Calories)) +
   geom_bar(stat="identity", fill="steelblue") +
   labs(title="Average of calories from different Food and Nuts items") +
   theme(axis.text.x = element_text(angle = 90, hjust=1, vjust=0.5))
@@ -202,7 +212,8 @@ I then also created a pie chart for this analysis:
 
 
 ```{r}
-p <- ggplot(data=df6, aes(x = "", y = Calories, fill = Food)) +
+p <- df6 %>%
+  ggplot(aes(x = "", y = Calories, fill = Food)) +
   geom_bar(stat="identity", width=1) +
   coord_polar("y", start=0) +
   labs(title="Average of calories from different Food and Nuts items") +
@@ -220,13 +231,15 @@ Therefore, an analysis was also performed on the absolute highest and lowest val
 The Row with the Highest Value:
 
 ```{r}
-df4[df4$Calories == max(df4$Calories),]
+df4 %>%
+  filter(Calories == max(Calories))
 ```
 
 The Row with the Lowest Value:
 
 ```{r}
-df4[df4$Calories == min(df4$Calories),]
+df4 %>%
+  filter(Calories == min(Calories))
 ```
 
 
@@ -235,14 +248,17 @@ df4[df4$Calories == min(df4$Calories),]
 To select food items with a high caloric value, I used the median. The median is more robust than the mean and less susceptible to individual outliers. I first calculated the median of the calorie count:
 
 ```{r}
-med_val <- median(df4$Calories)
+med_val <- df4 %>%
+  summarise(med_val = median(Calories, na.rm = TRUE)) %>%
+  pull(med_val)
 med_val
 ```
 
 The number of rows that are higher than the median:
 
 ```{r}
-sum(df4$Calories > med_val)
+df4 %>%
+  summarise(count_above_median = sum(Calories > med_val))
 ```
 
 Next, I sorted for rows with calories higher than the median, and then sorted those by calories from highest to lowest:
