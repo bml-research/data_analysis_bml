@@ -190,7 +190,7 @@ Example in Rmd:
 
 ### Use of LLM (large language models/generative AI)
 
-Some use of generative AI is permitted but do not rely to heavily on it. It is allowed for debugging little mistakes in your code and correcting and rephrasing small paragraphs. What is not allowed is to use LLM to do entire analysis and create Rmd files from prompts. The resulting code often has a typical "signature" and if instructors suspect that entire blocks of codes or large parts of the text is AI generated, a CGI (involving two instructors) may follow (see below).
+Some use of generative AI is permitted but do not rely to heavily on it. It is allowed for debugging little mistakes in your code and correcting and rephrasing small paragraphs. What is not allowed is to use LLM to do entire analysis and create Rmd files from prompts. The resulting code often has a typical "signature" and if instructors suspect that entire blocks of codes or large parts of the text is AI generated, an interview (involving two instructors) may follow (see below).
 
 ### Stronger Narratives and Interpretations
 
@@ -272,9 +272,9 @@ Once you're confident that all components are complete and polished, zip your fo
 
 Your instructor will first evaluate if all the requirements are met based on your portfolio and the checklist. If this is the case, your instructor will evaluate your portfolio using the rubric shown below. Make sure you're familiar with this form beforehand to understand the grading criteria. Finally, you'll receive your graded rubric via Brightspace. If your instructor suspects the work submitted relies too heavily on AI assistance (beyond code corrections, paragraph edits and rephrasing), it could lead to an investigation via CGI (Communication, Discussion, insight interview). Two instructors will be involved in the CGI.
 
-### CGI
+### Interview regarding the suspected misuse of an LLM
 
-As described above, if your instructor suspects that your work too heavily relies on the use of AI, you will have a brief 15-minute CGI (Communication, Discussion, Insight) session with your instructor and a second instructor. If it turns out that you are not able to explain the process of your analysis and code, the portfolio will not be evaluated any further.
+As described above, if your instructor suspects that your work relies too heavily on the use of generative AI, you will have a brief 15-minute interview session with your instructor and a second instructor. If it turns out that you are not able to explain the process of your analysis and code, the portfolio will not be evaluated any further.
 
 
 ### Rubric (grading scheme)
