@@ -256,9 +256,8 @@ border: 0;
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -269,7 +268,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -416,17 +415,68 @@ screen in R Markdown documents.</p>
 <span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a>    <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;responsive&quot;</span>))</span>
 <span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a>}</span></code></pre></div>
 <p>Whether you use Excel or R, data cleaning will often be required for
-the data. So here are some examples of data cleaning:</p>
+the data. So on this page there are some examples of data cleaning. But
+first we will explain a very useful Tidyverse operator, the
+<code>%&gt;%</code> symbol.</p>
+</div>
+<div id="the-symbol" class="section level2">
+<h2>The %&gt;% symbol</h2>
+<div id="what-is" class="section level3">
+<h3>🔹 What <code>%&gt;%</code> Is</h3>
+<p><code>%&gt;%</code> is called the <strong>pipe
+operator</strong>.<br />
+It comes from the <strong>magrittr</strong> package (which is part of
+the <strong>tidyverse</strong>) and is used to <strong>chain functions
+together</strong> in a clear, readable way.</p>
+</div>
+<div id="the-core-idea" class="section level3">
+<h3>🔹 The Core Idea</h3>
+<p>The pipe takes the <strong>output of one expression</strong> and
+passes it as the <strong>first argument</strong> of the next
+function.</p>
+<p>So instead of writing nested functions like this:</p>
+<pre><code>filter(select(mutate(df, x2 = x * 2), x2, y), y &gt; 10)</code></pre>
+<p>You can write:</p>
+<pre><code>df %&gt;%
+  mutate(x2 = x * 2) %&gt;%
+  select(x2, y) %&gt;%
+  filter(y &gt; 10)</code></pre>
+<p>Same result — much more readable.</p>
+<p>🔹 How It Works Conceptually</p>
+<pre><code>a %&gt;% f(b)</code></pre>
+<p>Is equivalent to:</p>
+<pre><code>f(a, b)</code></pre>
+<p>That is:</p>
+<p>take a,</p>
+<p>pass it as the first argument to f(),</p>
+<p>along with any other arguments (b).</p>
+<p>🔹 Example</p>
+<p>Let’s say you have a data frame df:</p>
+<pre><code>df &lt;- tibble(
+  name = c(&quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot;),
+  score = c(90, 75, 85)
+)</code></pre>
+<p>Using pipes:</p>
+<pre><code>df %&gt;%
+  filter(score &gt; 80) %&gt;%
+  arrange(desc(score)) %&gt;%
+  mutate(passed = TRUE)</code></pre>
+<blockquote>
+<p>This reads like a sentence:<br />
+Take df, then filter rows where score &gt; 80, then arrange descending
+by score, then add a new column passed = TRUE.</p>
+</blockquote>
+</div>
 </div>
 <div id="remove-rows-with-missing-values" class="section level2">
 <h2>Remove rows with missing values</h2>
 <p>Let’s start with creating a tibble with missing data:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>gene <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AAAS&quot;</span>, <span class="st">&quot;ABAT&quot;</span>, <span class="st">&quot;ABCC2&quot;</span>, <span class="st">&quot;ABL1&quot;</span>, <span class="st">&quot;FMR1&quot;</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>chromosome <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="st">&quot;X&quot;</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>mol_weight_kD <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">52.2</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="fl">122.9</span>, <span class="fl">71.1</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(gene, chromosome, mol_weight_kD)</span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>gene <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AAAS&quot;</span>, <span class="st">&quot;ABAT&quot;</span>, <span class="st">&quot;ABCC2&quot;</span>, <span class="st">&quot;ABL1&quot;</span>, <span class="st">&quot;FMR1&quot;</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>chromosome <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="st">&quot;X&quot;</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>mol_weight_kD <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">52.2</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="fl">122.9</span>, <span class="fl">71.1</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(gene, chromosome, mol_weight_kD)</span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="fu">formatted_table</span>(<span class="fu">head</span>(my_tibble))</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -501,8 +551,8 @@ X
 </table>
 <p>As you can see, there are two rows with missing values (NA values).
 Here is how to drop these missing (NA) values:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> <span class="fu">drop_na</span>(my_tibble)</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> <span class="fu">drop_na</span>(my_tibble)</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -553,12 +603,13 @@ X
 </tr>
 </tbody>
 </table>
-<p>Later on we will perform multiple manipulations on data frames. To
-prevent overwriting the same variable each time, we will use a different
-syntax. Tidyverse came up with a shorthand to prevent overwriting the
-same variable each time (this is called forward chaining):</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>()</span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
+<p>Later on we will perform multiple manipulations on data frames.<br />
+To prevent overwriting the same variable each time, we will use the pipe
+operator <code>%&gt;%</code>.<br />
+This is called forward chaining:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -614,12 +665,12 @@ X
 <div id="renaming-columns" class="section level2">
 <h2>Renaming columns</h2>
 <p>You can rename a column like shown below:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>gene <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AAAS&quot;</span>, <span class="st">&quot;ABAT&quot;</span>, <span class="st">&quot;ABCC2&quot;</span>, <span class="st">&quot;ABL1&quot;</span>, <span class="st">&quot;FMR1&quot;</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="st">&quot;X&quot;</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>mol_weight_kD <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">52.2</span>, <span class="fl">56.4</span>, <span class="fl">174.2</span>, <span class="fl">122.9</span>, <span class="fl">71.1</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(gene, x, mol_weight_kD)</span>
-<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>gene <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AAAS&quot;</span>, <span class="st">&quot;ABAT&quot;</span>, <span class="st">&quot;ABCC2&quot;</span>, <span class="st">&quot;ABL1&quot;</span>, <span class="st">&quot;FMR1&quot;</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="st">&quot;X&quot;</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>mol_weight_kD <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">52.2</span>, <span class="fl">56.4</span>, <span class="fl">174.2</span>, <span class="fl">122.9</span>, <span class="fl">71.1</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(gene, x, mol_weight_kD)</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -694,8 +745,9 @@ X
 </table>
 <p>As you can see, the column x is a poor column name. Here is how to
 rename column x to type:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">chromosome =</span> x)</span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">chromosome =</span> x)</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -775,12 +827,12 @@ X
 <h2>Reordering columns</h2>
 <p>Below is tibble with a column order that is probably not
 preferred:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>gene <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AAAS&quot;</span>, <span class="st">&quot;ABAT&quot;</span>, <span class="st">&quot;ABCC2&quot;</span>, <span class="st">&quot;ABL1&quot;</span>, <span class="st">&quot;FMR1&quot;</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>chromosome <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="st">&quot;X&quot;</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>mol_weight_kD <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">52.2</span>, <span class="fl">56.4</span>, <span class="fl">174.2</span>, <span class="fl">122.9</span>, <span class="fl">71.1</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(gene, mol_weight_kD, chromosome)</span>
-<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>gene <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AAAS&quot;</span>, <span class="st">&quot;ABAT&quot;</span>, <span class="st">&quot;ABCC2&quot;</span>, <span class="st">&quot;ABL1&quot;</span>, <span class="st">&quot;FMR1&quot;</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>chromosome <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="st">&quot;X&quot;</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>mol_weight_kD <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">52.2</span>, <span class="fl">56.4</span>, <span class="fl">174.2</span>, <span class="fl">122.9</span>, <span class="fl">71.1</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(gene, mol_weight_kD, chromosome)</span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -855,8 +907,9 @@ X
 </table>
 <p>As you can see, mol_weight_kD becomes before chromosome. You might
 want to reorder columns. This is how to do that:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> <span class="fu">select</span>(gene, chromosome, mol_weight_kD)</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>  <span class="fu">select</span>(gene, chromosome, mol_weight_kD)</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -934,12 +987,12 @@ X
 <h2>Changing a columns data type</h2>
 <p>Be aware that R uses coercion when data types in a vector is not
 consistent:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>gene <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AAAS&quot;</span>, <span class="st">&quot;ABAT&quot;</span>, <span class="st">&quot;ABCC2&quot;</span>, <span class="st">&quot;ABL1&quot;</span>, <span class="st">&quot;FMR1&quot;</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>chromosome <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="st">&quot;X&quot;</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>mol_weight_kD <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">52.2</span>, <span class="fl">56.4</span>, <span class="st">&quot;174.2&quot;</span>, <span class="fl">122.9</span>, <span class="fl">71.1</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(gene, chromosome, mol_weight_kD)</span>
-<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>gene <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AAAS&quot;</span>, <span class="st">&quot;ABAT&quot;</span>, <span class="st">&quot;ABCC2&quot;</span>, <span class="st">&quot;ABL1&quot;</span>, <span class="st">&quot;FMR1&quot;</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>chromosome <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="st">&quot;X&quot;</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>mol_weight_kD <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">52.2</span>, <span class="fl">56.4</span>, <span class="st">&quot;174.2&quot;</span>, <span class="fl">122.9</span>, <span class="fl">71.1</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(gene, chromosome, mol_weight_kD)</span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1019,8 +1072,9 @@ outlined on the left of the column (numbers are outlined on the right of
 the column). Compare with the previous table to see the difference. You
 can change the type of data in the column using the <code>mutate</code>
 function:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">mol_weight_kD =</span> <span class="fu">as.numeric</span>(mol_weight_kD))</span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mol_weight_kD =</span> <span class="fu">as.numeric</span>(mol_weight_kD))</span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1095,8 +1149,9 @@ X
 </table>
 <p>NOTE: you cannot apply the same strategy to the column chromosome
 (you cannot convert ‘X’ to a number):</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">chromosome =</span> <span class="fu">as.numeric</span>(chromosome))</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">chromosome =</span> <span class="fu">as.numeric</span>(chromosome))</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1180,9 +1235,9 @@ types of data are removed from the column (‘X’ has been replaced by
 <p>Download the example <a href="./files_06_data_cleaning/file01_genes.csv">here</a>.</p>
 <p>Obviously, you can not make up data. The best thing to do is to
 “mark” missing data with <code>NA</code>.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>my_path <span class="ot">=</span> <span class="st">&#39;./files_06_data_cleaning/file01_genes.csv&#39;</span></span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(my_path)</span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_df)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>my_path <span class="ot">=</span> <span class="st">&#39;./files_06_data_cleaning/file01_genes.csv&#39;</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(my_path)</span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_df)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1260,9 +1315,9 @@ is missing. Instead, a forward slash is included indicating that the
 data is missing. Note that the column is coerced to character (numbers
 in the column are outlined on the left side of the column). Let’s
 correct that:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>my_path <span class="ot">=</span> <span class="st">&#39;./files_06_data_cleaning/file01_genes.csv&#39;</span></span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(my_path, <span class="at">na =</span> <span class="st">&quot;/&quot;</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_df)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>my_path <span class="ot">=</span> <span class="st">&#39;./files_06_data_cleaning/file01_genes.csv&#39;</span></span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(my_path, <span class="at">na =</span> <span class="st">&quot;/&quot;</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_df)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1339,9 +1394,9 @@ X
 <code>NA</code>.</p>
 <p>If multiple types of “empty” data are present in your data set:</p>
 <p>Download example <a href="/files_06_data_cleaning/file02_genes.csv">here</a>.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>my_path <span class="ot">=</span> <span class="st">&#39;./files_06_data_cleaning/file02_genes.csv&#39;</span></span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(my_path)</span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_df)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>my_path <span class="ot">=</span> <span class="st">&#39;./files_06_data_cleaning/file02_genes.csv&#39;</span></span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(my_path)</span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_df)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1416,9 +1471,9 @@ X
 </table>
 <p>You can use a vector in the <code>NA =</code> argument in the
 <code>read_csv2</code> function:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>my_path <span class="ot">=</span> <span class="st">&#39;./files_06_data_cleaning/file02_genes.csv&#39;</span></span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(my_path, <span class="at">na =</span> <span class="fu">c</span>(<span class="st">&quot;/&quot;</span>, <span class="st">&quot;no data&quot;</span>))</span>
-<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_df)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>my_path <span class="ot">=</span> <span class="st">&#39;./files_06_data_cleaning/file02_genes.csv&#39;</span></span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(my_path, <span class="at">na =</span> <span class="fu">c</span>(<span class="st">&quot;/&quot;</span>, <span class="st">&quot;no data&quot;</span>))</span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_df)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1503,10 +1558,10 @@ missing data.</em></div>
 <p><br></p>
 <p>Now if we load the data the following will happen:</p>
 <p>Download example <a href="./files_06_data_cleaning/file03_genes.xlsx">here</a>.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>my_path <span class="ot">=</span> <span class="st">&#39;./files_06_data_cleaning/file03_genes.xlsx&#39;</span></span>
-<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(my_path)</span>
-<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a><span class="fu">formatted_table</span>(my_df)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>my_path <span class="ot">=</span> <span class="st">&#39;./files_06_data_cleaning/file03_genes.xlsx&#39;</span></span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(my_path)</span>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a><span class="fu">formatted_table</span>(my_df)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1580,9 +1635,9 @@ X
 </tbody>
 </table>
 <p>Like for csv files, we can specify the missing values:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>my_path <span class="ot">=</span> <span class="st">&#39;./files_06_data_cleaning/file03_genes.xlsx&#39;</span></span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(my_path, <span class="at">na=</span>  <span class="fu">c</span>(<span class="st">&quot;/&quot;</span>, <span class="st">&quot;no data&quot;</span>))</span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_df)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>my_path <span class="ot">=</span> <span class="st">&#39;./files_06_data_cleaning/file03_genes.xlsx&#39;</span></span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(my_path, <span class="at">na=</span>  <span class="fu">c</span>(<span class="st">&quot;/&quot;</span>, <span class="st">&quot;no data&quot;</span>))</span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_df)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1664,9 +1719,9 @@ empty cells.</em></div>
 <p><br></p>
 <p>If we load the data:</p>
 <p>Download example <a href="./files_06_data_cleaning/file04_genes.xlsx">here</a>.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>my_path <span class="ot">=</span> <span class="st">&#39;./files_06_data_cleaning/file04_genes.xlsx&#39;</span></span>
-<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(my_path)</span>
-<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_df)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>my_path <span class="ot">=</span> <span class="st">&#39;./files_06_data_cleaning/file04_genes.xlsx&#39;</span></span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>my_df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(my_path)</span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_df)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1745,12 +1800,12 @@ automatically.</p>
 <div id="replace-data" class="section level2">
 <h2>Replace data</h2>
 <p>Imagine we have a clear erroneous data item:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>gene <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AAAS&quot;</span>, <span class="st">&quot;ABAT&quot;</span>, <span class="st">&quot;ABCC2&quot;</span>, <span class="st">&quot;ABL1&quot;</span>, <span class="st">&quot;FMR1&quot;</span>)</span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>chromosome <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">14</span>, <span class="dv">16</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="st">&quot;X&quot;</span>)</span>
-<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a>mol_weight_kD <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">52.2</span>, <span class="fl">56.4</span>, <span class="fl">174.2</span>, <span class="fl">0.023</span>, <span class="fl">71.1</span>)</span>
-<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(gene, chromosome, mol_weight_kD)</span>
-<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>gene <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AAAS&quot;</span>, <span class="st">&quot;ABAT&quot;</span>, <span class="st">&quot;ABCC2&quot;</span>, <span class="st">&quot;ABL1&quot;</span>, <span class="st">&quot;FMR1&quot;</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>chromosome <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">14</span>, <span class="dv">16</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="st">&quot;X&quot;</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a>mol_weight_kD <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">52.2</span>, <span class="fl">56.4</span>, <span class="fl">174.2</span>, <span class="fl">0.023</span>, <span class="fl">71.1</span>)</span>
+<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(gene, chromosome, mol_weight_kD)</span>
+<span id="cb26-6"><a href="#cb26-6" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1826,8 +1881,8 @@ X
 <p>The molecular weigth of the <em>ABL1</em> gene should be replaced
 with 122.9.</p>
 <p>Replacing this specific data point can be done as follows:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>my_tibble[<span class="dv">4</span>,<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fl">122.9</span> <span class="co">#NOTE:my_tibble[row, column]</span></span>
-<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>my_tibble[<span class="dv">4</span>,<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fl">122.9</span> <span class="co">#NOTE:my_tibble[row, column]</span></span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1903,8 +1958,9 @@ X
 <div id="adding-a-row-in-a-tibble" class="section level3">
 <h3>Adding a row in a tibble</h3>
 <p>You can insert an entire row like below:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> <span class="fu">add_row</span>(<span class="at">gene =</span> <span class="st">&quot;PNOC&quot;</span>, <span class="at">chromosome =</span> <span class="st">&quot;8&quot;</span>, <span class="at">mol_weight_kD =</span> <span class="fl">20.3</span>)</span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>  <span class="fu">add_row</span>(<span class="at">gene =</span> <span class="st">&quot;PNOC&quot;</span>, <span class="at">chromosome =</span> <span class="st">&quot;8&quot;</span>, <span class="at">mol_weight_kD =</span> <span class="fl">20.3</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1998,8 +2054,9 @@ data in this column are characters (because of the ‘X’ value of the
 adding a row. Imagine that you want to delete the row containing the
 <em>PNOC</em> gene and insert a row for the <em>KTN1</em> gene. You can
 replace an entire row by first deleting a row:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span>gene <span class="sc">==</span> <span class="st">&quot;PNOC&quot;</span>)</span>
-<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>gene <span class="sc">==</span> <span class="st">&quot;PNOC&quot;</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2075,8 +2132,9 @@ X
 <p>In the above example, we used the <code>filter</code> function to
 filter for all but PNOC in the column gene</p>
 <p>Now we can add the row for the <em>KTN1</em> gene:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> <span class="fu">add_row</span>(<span class="at">gene  =</span> <span class="st">&quot;MDM2&quot;</span>, <span class="at">chromosome =</span> <span class="st">&quot;14&quot;</span>, <span class="at">mol_weight_kD =</span> <span class="fl">56.0</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>  <span class="fu">add_row</span>(<span class="at">gene  =</span> <span class="st">&quot;MDM2&quot;</span>, <span class="at">chromosome =</span> <span class="st">&quot;14&quot;</span>, <span class="at">mol_weight_kD =</span> <span class="fl">56.0</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2167,8 +2225,9 @@ MDM2
 chromosome containing the value 14 should be replaced by the value 12.
 If we want to make these changes in the column chromosome, we can do
 that as follows:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">chromosome =</span> <span class="fu">str_replace</span>(chromosome, <span class="st">&quot;14&quot;</span>, <span class="st">&quot;12&quot;</span>))</span>
-<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> </span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">chromosome =</span> <span class="fu">str_replace</span>(chromosome, <span class="st">&quot;14&quot;</span>, <span class="st">&quot;12&quot;</span>))</span>
+<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2258,12 +2317,12 @@ MDM2
 <p>If you end up with a situation that you want to change all
 occurrences of a certain value in a tibble you can solve that as
 follows:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>gene <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;no data&quot;</span>, <span class="st">&quot;ABAT&quot;</span>, <span class="st">&quot;no data&quot;</span>, <span class="st">&quot;ABL1&quot;</span>, <span class="st">&quot;FMR1&quot;</span>)</span>
-<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>chromosome <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;no data&quot;</span>, <span class="dv">16</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="st">&quot;X&quot;</span>)</span>
-<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a>mol_weight_kD <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">52.2</span>, <span class="st">&quot;no data&quot;</span>, <span class="fl">174.2</span>, <span class="fl">0.023</span>, <span class="st">&quot;no data&quot;</span>)</span>
-<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="#cb26-5" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(gene, chromosome, mol_weight_kD)</span>
-<span id="cb26-6"><a href="#cb26-6" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a>gene <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;no data&quot;</span>, <span class="st">&quot;ABAT&quot;</span>, <span class="st">&quot;no data&quot;</span>, <span class="st">&quot;ABL1&quot;</span>, <span class="st">&quot;FMR1&quot;</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>chromosome <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;no data&quot;</span>, <span class="dv">16</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="st">&quot;X&quot;</span>)</span>
+<span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a>mol_weight_kD <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">52.2</span>, <span class="st">&quot;no data&quot;</span>, <span class="fl">174.2</span>, <span class="fl">0.023</span>, <span class="st">&quot;no data&quot;</span>)</span>
+<span id="cb32-4"><a href="#cb32-4" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="#cb32-5" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(gene, chromosome, mol_weight_kD)</span>
+<span id="cb32-6"><a href="#cb32-6" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2338,8 +2397,9 @@ no data
 </table>
 <p>Now we change all occurrences for <code>no data</code> with
 <code>NA</code> using the <code>replace</code> function:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> <span class="fu">replace</span>(. <span class="sc">==</span> <span class="st">&quot;no data&quot;</span>, <span class="cn">NA</span>)</span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> </span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>  <span class="fu">replace</span>(. <span class="sc">==</span> <span class="st">&quot;no data&quot;</span>, <span class="cn">NA</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2421,13 +2481,13 @@ placeholder for every item in the tibble.</p>
 section</a>, Tidyverse works best with tidy data. An explanation about
 Tidy data can be found <a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html">here</a>.</p>
 <p>Now let’s take the following example:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>gene <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AAAS&quot;</span>, <span class="st">&quot;ABAT&quot;</span>, <span class="st">&quot;ABCC2&quot;</span>, <span class="st">&quot;ABL1&quot;</span>, <span class="st">&quot;FMR1&quot;</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>Chromosome <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="st">&quot;X&quot;</span>)</span>
-<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a>mol_weight_pre_protein_kD <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">52.2</span>, <span class="fl">56.4</span>, <span class="fl">174.2</span>, <span class="fl">122.9</span>, <span class="fl">71.1</span>)</span>
-<span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a>mol_weight_mature_protein_kD <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">52.2</span>, <span class="fl">56.4</span>, <span class="fl">124.2</span>, <span class="fl">122.9</span>, <span class="fl">51.6</span>)</span>
-<span id="cb28-5"><a href="#cb28-5" tabindex="-1"></a></span>
-<span id="cb28-6"><a href="#cb28-6" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(gene, Chromosome, mol_weight_pre_protein_kD, mol_weight_mature_protein_kD)</span>
-<span id="cb28-7"><a href="#cb28-7" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a>gene <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AAAS&quot;</span>, <span class="st">&quot;ABAT&quot;</span>, <span class="st">&quot;ABCC2&quot;</span>, <span class="st">&quot;ABL1&quot;</span>, <span class="st">&quot;FMR1&quot;</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a>Chromosome <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="st">&quot;X&quot;</span>)</span>
+<span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a>mol_weight_pre_protein_kD <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">52.2</span>, <span class="fl">56.4</span>, <span class="fl">174.2</span>, <span class="fl">122.9</span>, <span class="fl">71.1</span>)</span>
+<span id="cb34-4"><a href="#cb34-4" tabindex="-1"></a>mol_weight_mature_protein_kD <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">52.2</span>, <span class="fl">56.4</span>, <span class="fl">124.2</span>, <span class="fl">122.9</span>, <span class="fl">51.6</span>)</span>
+<span id="cb34-5"><a href="#cb34-5" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="#cb34-6" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(gene, Chromosome, mol_weight_pre_protein_kD, mol_weight_mature_protein_kD)</span>
+<span id="cb34-7"><a href="#cb34-7" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2519,9 +2579,9 @@ X
 </tbody>
 </table>
 <p>We can make the data frame tidy as follows:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>my_tibble_tidy <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> </span>
-<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(mol_weight_pre_protein_kD,mol_weight_mature_protein_kD), <span class="at">names_to =</span> <span class="st">&quot;Mol_Weight_Protein_Type&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Mol_Weight&quot;</span>)</span>
-<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble_tidy)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>my_tibble_tidy <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> </span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(mol_weight_pre_protein_kD,mol_weight_mature_protein_kD), <span class="at">names_to =</span> <span class="st">&quot;Mol_Weight_Protein_Type&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Mol_Weight&quot;</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble_tidy)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2683,9 +2743,9 @@ mol_weight_mature_protein_kD
 </tbody>
 </table>
 <p>And we can convert the data frame to the wider format as follows:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a>my_tibble_wider <span class="ot">&lt;-</span> my_tibble_tidy <span class="sc">%&gt;%</span> </span>
-<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">&quot;Mol_Weight_Protein_Type&quot;</span>, <span class="at">values_from =</span> <span class="st">&quot;Mol_Weight&quot;</span>)</span>
-<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble_wider)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a>my_tibble_wider <span class="ot">&lt;-</span> my_tibble_tidy <span class="sc">%&gt;%</span> </span>
+<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">&quot;Mol_Weight_Protein_Type&quot;</span>, <span class="at">values_from =</span> <span class="st">&quot;Mol_Weight&quot;</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble_wider)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2786,14 +2846,14 @@ link</a>.</p>
 <div id="transpose-data" class="section level3">
 <h3>Transpose data</h3>
 <p>You can also transpose data. Imagine we have the following data:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>record_1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AAAS&quot;</span>, <span class="st">&quot;12&quot;</span>, <span class="st">&quot;52.2&quot;</span>)</span>
-<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>record_2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ABAT&quot;</span>, <span class="st">&quot;16&quot;</span>, <span class="st">&quot;56.4&quot;</span>)</span>
-<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a>record_3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ABCC2&quot;</span>, <span class="st">&quot;10&quot;</span>, <span class="st">&quot;174.2&quot;</span>)</span>
-<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a>record_4 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ABL1&quot;</span>, <span class="st">&quot;9&quot;</span>, <span class="st">&quot;122.9&quot;</span>)</span>
-<span id="cb31-5"><a href="#cb31-5" tabindex="-1"></a>record_5 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;FMR1&quot;</span>, <span class="st">&quot;X&quot;</span>, <span class="st">&quot;71.1&quot;</span>)</span>
-<span id="cb31-6"><a href="#cb31-6" tabindex="-1"></a></span>
-<span id="cb31-7"><a href="#cb31-7" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(record_1, record_2, record_3, record_4, record_5)</span>
-<span id="cb31-8"><a href="#cb31-8" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a>record_1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AAAS&quot;</span>, <span class="st">&quot;12&quot;</span>, <span class="st">&quot;52.2&quot;</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a>record_2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ABAT&quot;</span>, <span class="st">&quot;16&quot;</span>, <span class="st">&quot;56.4&quot;</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a>record_3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ABCC2&quot;</span>, <span class="st">&quot;10&quot;</span>, <span class="st">&quot;174.2&quot;</span>)</span>
+<span id="cb37-4"><a href="#cb37-4" tabindex="-1"></a>record_4 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ABL1&quot;</span>, <span class="st">&quot;9&quot;</span>, <span class="st">&quot;122.9&quot;</span>)</span>
+<span id="cb37-5"><a href="#cb37-5" tabindex="-1"></a>record_5 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;FMR1&quot;</span>, <span class="st">&quot;X&quot;</span>, <span class="st">&quot;71.1&quot;</span>)</span>
+<span id="cb37-6"><a href="#cb37-6" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(record_1, record_2, record_3, record_4, record_5)</span>
+<span id="cb37-8"><a href="#cb37-8" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2872,10 +2932,16 @@ X
 should be in rows. The features (variables) should be in columns. You
 can easily detect this error as the columns do often not represent a
 single data type (in this case, numbers and text are mixed).</p>
+<blockquote>
+<p>You can use <code>pivot_wider()</code> and
+<code>pivot_longer()</code> to transpose data in the style of tidyverse
+but we find it more difficult to understand. Hence, we will use base R
+for this.</p>
+</blockquote>
 <p>First we create a transposed matrix using the <code>t</code>
 function:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a>trans_matrix <span class="ot">&lt;-</span> <span class="fu">t</span>(my_tibble)</span>
-<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a><span class="fu">formatted_table</span>(trans_matrix)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a>trans_matrix <span class="ot">&lt;-</span> <span class="fu">t</span>(my_tibble)</span>
+<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a><span class="fu">formatted_table</span>(trans_matrix)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2967,8 +3033,8 @@ X
 </tbody>
 </table>
 <p>Convert it to a tibble:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a>my_tibble_transposed <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="fu">data.frame</span>(trans_matrix))</span>
-<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble_transposed)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a>my_tibble_transposed <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="fu">data.frame</span>(trans_matrix))</span>
+<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble_transposed)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -3042,8 +3108,8 @@ X
 </tbody>
 </table>
 <p>And then add the column names:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="fu">colnames</span>(my_tibble_transposed) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Gene&quot;</span>, <span class="st">&quot;Chromosome&quot;</span>, <span class="st">&quot;Mol_weight_KD&quot;</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble_transposed)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="fu">colnames</span>(my_tibble_transposed) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Gene&quot;</span>, <span class="st">&quot;Chromosome&quot;</span>, <span class="st">&quot;Mol_weight_KD&quot;</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble_transposed)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -3117,8 +3183,9 @@ X
 </tbody>
 </table>
 <p>And change the <code>Mol_weight_KD</code> data type:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>my_tibble_transposed <span class="ot">&lt;-</span> my_tibble_transposed <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Mol_weight_KD =</span> <span class="fu">as.numeric</span>(Mol_weight_KD))</span>
-<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble_transposed)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a>my_tibble_transposed <span class="ot">&lt;-</span> my_tibble_transposed <span class="sc">%&gt;%</span> </span>
+<span id="cb41-2"><a href="#cb41-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Mol_weight_KD =</span> <span class="fu">as.numeric</span>(Mol_weight_KD))</span>
+<span id="cb41-3"><a href="#cb41-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble_transposed)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -3196,12 +3263,12 @@ X
 <h3>Separate a column into two columns</h3>
 <p>Sometimes you will find that people put units in the cells from a
 column:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a>gene <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AAAS&quot;</span>, <span class="st">&quot;ABAT&quot;</span>, <span class="st">&quot;ABCC2&quot;</span>, <span class="st">&quot;ABL1&quot;</span>, <span class="st">&quot;FMR1&quot;</span>)</span>
-<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a>chromosome <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="st">&quot;X&quot;</span>)</span>
-<span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a>mol_weight_kD <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;52.2 kd&quot;</span>, <span class="st">&quot;56.4 kd&quot;</span>, <span class="st">&quot;174.2 kd&quot;</span>, <span class="st">&quot;122.9 kd&quot;</span>, <span class="st">&quot;71.1 kd&quot;</span>)</span>
-<span id="cb36-4"><a href="#cb36-4" tabindex="-1"></a></span>
-<span id="cb36-5"><a href="#cb36-5" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(gene, chromosome, mol_weight_kD)</span>
-<span id="cb36-6"><a href="#cb36-6" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a>gene <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AAAS&quot;</span>, <span class="st">&quot;ABAT&quot;</span>, <span class="st">&quot;ABCC2&quot;</span>, <span class="st">&quot;ABL1&quot;</span>, <span class="st">&quot;FMR1&quot;</span>)</span>
+<span id="cb42-2"><a href="#cb42-2" tabindex="-1"></a>chromosome <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="st">&quot;X&quot;</span>)</span>
+<span id="cb42-3"><a href="#cb42-3" tabindex="-1"></a>mol_weight_kD <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;52.2 kd&quot;</span>, <span class="st">&quot;56.4 kd&quot;</span>, <span class="st">&quot;174.2 kd&quot;</span>, <span class="st">&quot;122.9 kd&quot;</span>, <span class="st">&quot;71.1 kd&quot;</span>)</span>
+<span id="cb42-4"><a href="#cb42-4" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(gene, chromosome, mol_weight_kD)</span>
+<span id="cb42-6"><a href="#cb42-6" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -3276,9 +3343,9 @@ X
 </table>
 <p>Of course, the column will be of character type. We can solve this
 using the <code>separate_wider_delim</code> function:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> </span>
-<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(mol_weight_kD, <span class="at">delim =</span> <span class="st">&quot; &quot;</span>, <span class="at">names =</span> <span class="fu">c</span>(<span class="st">&quot;mol_weight_kD&quot;</span>, <span class="st">&quot;waste&quot;</span>)) </span>
-<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> </span>
+<span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(mol_weight_kD, <span class="at">delim =</span> <span class="st">&quot; &quot;</span>, <span class="at">names =</span> <span class="fu">c</span>(<span class="st">&quot;mol_weight_kD&quot;</span>, <span class="st">&quot;waste&quot;</span>)) </span>
+<span id="cb43-3"><a href="#cb43-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -3370,8 +3437,9 @@ kd
 </tbody>
 </table>
 <p>And we can throw away the column named waste:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>waste)</span>
-<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span> </span>
+<span id="cb44-2"><a href="#cb44-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>waste)</span>
+<span id="cb44-3"><a href="#cb44-3" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -3445,12 +3513,12 @@ X
 </tbody>
 </table>
 <p>And trim any remaining white space:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span></span>
-<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb39-3"><a href="#cb39-3" tabindex="-1"></a>    <span class="at">mol_weight_kD =</span> <span class="fu">str_trim</span>(mol_weight_kD), <span class="co"># will trim any whitespace</span></span>
-<span id="cb39-4"><a href="#cb39-4" tabindex="-1"></a>    <span class="at">mol_weight_kD =</span> <span class="fu">as.numeric</span>(mol_weight_kD)</span>
-<span id="cb39-5"><a href="#cb39-5" tabindex="-1"></a>  )</span>
-<span id="cb39-6"><a href="#cb39-6" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> my_tibble <span class="sc">%&gt;%</span></span>
+<span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb45-3"><a href="#cb45-3" tabindex="-1"></a>    <span class="at">mol_weight_kD =</span> <span class="fu">str_trim</span>(mol_weight_kD), <span class="co"># will trim any whitespace</span></span>
+<span id="cb45-4"><a href="#cb45-4" tabindex="-1"></a>    <span class="at">mol_weight_kD =</span> <span class="fu">as.numeric</span>(mol_weight_kD)</span>
+<span id="cb45-5"><a href="#cb45-5" tabindex="-1"></a>  )</span>
+<span id="cb45-6"><a href="#cb45-6" tabindex="-1"></a><span class="fu">formatted_table</span>(my_tibble)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>

@@ -64,7 +64,80 @@ formatted_table <- function(df) {
 ```
 
 Whether you use Excel or R, data cleaning will often be required for the data.
-So here are some examples of data cleaning:
+So on this page there are some examples of data cleaning.
+But first we will explain a very useful Tidyverse operator, the `%>%` symbol.  
+
+## The %>% symbol
+
+
+### 🔹 What `%>%` Is
+`%>%` is called the **pipe operator**.  
+It comes from the **magrittr** package (which is part of the **tidyverse**) and is used to **chain functions together** in a clear, readable way.
+
+### 🔹 The Core Idea
+The pipe takes the **output of one expression** and passes it as the **first argument** of the next function.
+
+So instead of writing nested functions like this:
+
+```
+filter(select(mutate(df, x2 = x * 2), x2, y), y > 10)
+```
+
+You can write:  
+
+```
+df %>%
+  mutate(x2 = x * 2) %>%
+  select(x2, y) %>%
+  filter(y > 10)
+```
+
+Same result — much more readable.  
+
+🔹 How It Works Conceptually  
+
+```
+a %>% f(b)
+```
+
+Is equivalent to:  
+
+
+```
+f(a, b)
+```
+
+That is:  
+
+take a,  
+
+pass it as the first argument to f(),  
+
+along with any other arguments (b).  
+
+🔹 Example
+
+Let’s say you have a data frame df:  
+
+```
+df <- tibble(
+  name = c("Alice", "Bob", "Charlie"),
+  score = c(90, 75, 85)
+)
+```
+
+Using pipes:  
+
+```
+df %>%
+  filter(score > 80) %>%
+  arrange(desc(score)) %>%
+  mutate(passed = TRUE)
+```
+
+>This reads like a sentence:  
+>Take df, then filter rows where score > 80, then arrange descending by score, then add a new column passed = TRUE.
+
 
 ## Remove rows with missing values
 
@@ -76,7 +149,7 @@ chromosome <- c(12, 16, 10, 9, "X")
 mol_weight_kD <- c(52.2, NA, NA, 122.9, 71.1)
 
 my_tibble <- tibble(gene, chromosome, mol_weight_kD)
-formatted_table(my_tibble)
+formatted_table(head(my_tibble))
 ```
 
 As you can see, there are two rows with missing values (NA values).
@@ -87,13 +160,14 @@ my_tibble <- drop_na(my_tibble)
 formatted_table(my_tibble)
 ```
 
-Later on we will perform multiple manipulations on data frames.
-To prevent overwriting the same variable each time, we will use a different syntax.
-Tidyverse came up with a shorthand to prevent overwriting the same variable each time (this is called forward chaining):
+Later on we will perform multiple manipulations on data frames.  
+To prevent overwriting the same variable each time, we will use the pipe operator `%>%`.  
+This is called forward chaining:  
 
 
 ```{r}
-my_tibble <- my_tibble %>% drop_na()
+my_tibble <- my_tibble %>% 
+  drop_na()
 formatted_table(my_tibble)
 ```
 
@@ -116,7 +190,8 @@ As you can see, the column x is a poor column name.
 Here is how to rename column x to type:
 
 ```{r}
-my_tibble <- my_tibble %>% rename(chromosome = x)
+my_tibble <- my_tibble %>% 
+  rename(chromosome = x)
 formatted_table(my_tibble)
 ```
 As you can see, the name of the second column (x) has been replaced (it is now called chromosome).
@@ -139,7 +214,8 @@ As you can see, mol_weight_kD becomes before chromosome.
 You might want to reorder columns. This is how to do that:
 
 ```{r}
-my_tibble <- my_tibble %>% select(gene, chromosome, mol_weight_kD)
+my_tibble <- my_tibble %>% 
+  select(gene, chromosome, mol_weight_kD)
 formatted_table(my_tibble)
 ```
 
@@ -160,14 +236,16 @@ As a result of a single string value the whole column mol_weight_kD is coerced t
 You can change the type of data in the column using the `mutate` function:
 
 ```{r}
-my_tibble <- my_tibble %>% mutate(mol_weight_kD = as.numeric(mol_weight_kD))
+my_tibble <- my_tibble %>% 
+  mutate(mol_weight_kD = as.numeric(mol_weight_kD))
 formatted_table(my_tibble)
 ```
 
 NOTE: you cannot apply the same strategy to the column chromosome (you cannot convert 'X' to a number):
 
 ```{r}
-my_tibble <- my_tibble %>% mutate(chromosome = as.numeric(chromosome))
+my_tibble <- my_tibble %>% 
+  mutate(chromosome = as.numeric(chromosome))
 formatted_table(my_tibble)
 ```
 The numbers in column chromosome have been converted to the data type `double`. However, as a result the field(s) with non-numeric types of data are removed from the column ('X' has been replaced by `NA`).
@@ -291,7 +369,8 @@ formatted_table(my_tibble)
 You can insert an entire row like below:
 
 ```{r}
-my_tibble <- my_tibble %>% add_row(gene = "PNOC", chromosome = "8", mol_weight_kD = 20.3)
+my_tibble <- my_tibble %>% 
+  add_row(gene = "PNOC", chromosome = "8", mol_weight_kD = 20.3)
 formatted_table(my_tibble)
 ```
 
@@ -306,7 +385,8 @@ You can replace an entire row by first deleting a row:
 
 
 ```{r}
-my_tibble <- my_tibble %>% filter(!gene == "PNOC")
+my_tibble <- my_tibble %>% 
+  filter(!gene == "PNOC")
 formatted_table(my_tibble)
 ```
 
@@ -315,7 +395,8 @@ In the above example, we used the `filter` function to filter for all but PNOC i
 Now we can add the row for the *KTN1* gene:
 
 ```{r}
-my_tibble <- my_tibble %>% add_row(gene  = "MDM2", chromosome = "14", mol_weight_kD = 56.0)
+my_tibble <- my_tibble %>% 
+  add_row(gene  = "MDM2", chromosome = "14", mol_weight_kD = 56.0)
 formatted_table(my_tibble)
 ```
 
@@ -324,7 +405,8 @@ formatted_table(my_tibble)
 There seems to be a mistake in the data. All fields in the column chromosome containing the value 14 should be replaced by the value 12. If we want to make these changes in the column chromosome, we can do that as follows:
 
 ```{r}
-my_tibble <- my_tibble %>% mutate(chromosome = str_replace(chromosome, "14", "12"))
+my_tibble <- my_tibble %>% 
+  mutate(chromosome = str_replace(chromosome, "14", "12"))
 formatted_table(my_tibble)
 ```
 
@@ -345,7 +427,8 @@ formatted_table(my_tibble)
 Now we change all occurrences for `no data` with `NA` using the `replace` function:
 
 ```{r}
-my_tibble <- my_tibble %>% replace(. == "no data", NA)
+my_tibble <- my_tibble %>% 
+  replace(. == "no data", NA)
 formatted_table(my_tibble)
 ```
 
@@ -410,6 +493,9 @@ formatted_table(my_tibble)
 In the example above records (observations) are in columns but they should be in rows. The features (variables) should be in columns.
 You can easily detect this error as the columns do often not represent a single data type (in this case, numbers and text are mixed).
 
+>You can use `pivot_wider()` and `pivot_longer()` to transpose data in the style of tidyverse but we find it more difficult to understand.
+>Hence, we will use base R for this.
+
 First we create a transposed matrix using the `t` function:
 
 ```{r}
@@ -434,7 +520,8 @@ formatted_table(my_tibble_transposed)
 And change the `Mol_weight_KD` data type:
 
 ```{r}
-my_tibble_transposed <- my_tibble_transposed %>% mutate(Mol_weight_KD = as.numeric(Mol_weight_KD))
+my_tibble_transposed <- my_tibble_transposed %>% 
+  mutate(Mol_weight_KD = as.numeric(Mol_weight_KD))
 formatted_table(my_tibble_transposed)
 ```
 
@@ -462,7 +549,8 @@ formatted_table(my_tibble)
 And we can throw away the column named waste:  
 
 ```{r}
-my_tibble <- my_tibble %>% select(-waste)
+my_tibble <- my_tibble %>% 
+  select(-waste)
 formatted_table(my_tibble)
 ```
 
