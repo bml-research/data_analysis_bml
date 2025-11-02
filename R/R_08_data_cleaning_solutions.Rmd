@@ -63,7 +63,8 @@ library(readxl)
 file_path <- "./files_07_data_cleaning_exercises/exercise01/Heart_Disease_Prediction.xlsx"
 df <- read_excel(file_path)
 colname <- "index$Age$Sex$Chest pain type$BP$Cholesterol$FBS over 120$EKG results$Max HR$Exercise angina$ST depression$Slope of ST$Number of vessels fluro$Thallium$Heart Disease"
-df <- df %>% separate_wider_delim(colname, delim = "$", names = c("index", "Age", "Sex", "Chest pain type" ,"BP", "Cholesterol", "FBS over 120", "EKG results", "Max HR", "Exercise angina", "ST depression", "Slope of ST", "Number of vessels fluro", "Thallium", "Heart Disease"))
+df <- df %>% 
+  separate_wider_delim(colname, delim = "$", names = c("index", "Age", "Sex", "Chest pain type" ,"BP", "Cholesterol", "FBS over 120", "EKG results", "Max HR", "Exercise angina", "ST depression", "Slope of ST", "Number of vessels fluro", "Thallium", "Heart Disease"))
 formatted_table(head(df, c(6, 13)))
 ```
 
@@ -100,18 +101,33 @@ Let's first find duplicate elements in the first column. The Index should be a u
 df$index[duplicated(df$index)]
 ```
 
+Or in tidyverse style:
+
+```{r}
+df %>%
+  filter(duplicated(index)) %>%
+  pull(index)
+```
+
+
 Yes, there seems to be duplicates of the rows with index numbers 8 (2 extra duplicates) and 10 (5 extra duplicates).  
 NOTE: R shows the extra duplicates here (in total there are 3 rows with index 8 and 6 rows with index 10; see below).
 
 Do the rows with index numbers 8 and 10 contain the same data?
 
 ```{r}
-formatted_table(df[df$index == 8, ])
+df %>%
+  filter(index == 8) %>%
+  formatted_table()
 ```
 
 ```{r}
-formatted_table(df[df$index == 10, ])
+df %>%
+  filter(index == 10) %>%
+  formatted_table()
 ```
+
+
 
 Yes, the rows with index numbers 8 and 10 contain the same data in the rows.
 Before we delete the duplicates, let us count the number of rows:
@@ -128,6 +144,16 @@ my_data_cleaned <- df[!duplicated(df$index), ]
 formatted_table(head(my_data_cleaned, c(6,13)))
 ```
 
+Or tidyverse style:
+
+```{r}
+my_data_cleaned <- df %>%
+  # 1. Remove rows with duplicated 'index' values
+  distinct(index, .keep_all = TRUE) %>%
+  # 3. Select the first 13 columns
+  select(1:13)
+formatted_table(head(my_data_cleaned))
+```
 
 
 ```{r}
@@ -177,7 +203,8 @@ paste("non-empty elements:", sum(!is.na(df)))
 ```{r}
 file_path <- "./files_07_data_cleaning_exercises/exercise05/CHEMBL1989_mod.csv"
 df <- read_csv2(file_path)
-df <- df %>% replace(. == "-", NA)
+df <- df %>% 
+  replace(. == "-", NA)
 formatted_table(head(df, c(6, 5)))
 ```
 

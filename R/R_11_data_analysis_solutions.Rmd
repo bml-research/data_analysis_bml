@@ -100,8 +100,11 @@ Index, filter and sort your data frame to answer the following questions:
 6. Which mouse of the Ts65Dn genotype, and saline treatment group has the highest Tau expression (use multi-sorting)?  
 
 Mouse with the highest expression of the protein `Tau_N`:  
+
 ```{r}
-formatted_table(filter(df, `Tau_N` == max(df$Tau_N)))
+df %>%
+  filter(`Tau_N` == max(df$Tau_N)) %>%
+  formatted_table()
 ```
 
 
@@ -123,15 +126,32 @@ Then we can search in the data frame for the row that matches the logical.
 df[df$Tau_N == max(df$Tau_N), ]
 ```
 
+Or tidyverse style:
+
+```{r}
+df %>%
+  slice_max(Tau_N) %>%
+  formatted_table()
+```
+
+
 Mouse with the lowest expression of the pAKT protein. There are NA values in this column, so will have to use the `na.rm =` argument in the calculation:
 
 ```{r}
-min(df$pAKT_N) # check there are NA values in this column
-
 formatted_table(filter(df, `pAKT_N` == min(df$pAKT_N, na.rm = TRUE))) # this will remove all NA values and then show the mouse with minimal value for pAKT
 ```
 
-Amount of empty cells (`NA`) in the BAD column:  
+Or tidyverse style:
+
+```{r}
+df %>%
+  slice_min(pAKT_N) %>%
+  formatted_table()
+```
+
+
+Amount of empty cells (`NA`) in the BAD column: 
+
 ```{r}
 summary(df$BAD_N)
 ```
@@ -145,14 +165,19 @@ sum(is.na(df$BAD_N))
 
 
 Mouse of the Ts65Dn genotype group with the highest Tau expression:  
+
 ```{r}
-formatted_table(head(arrange(df, desc(Genotype), desc(Tau_N))))
+df %>% 
+  arrange(desc(Genotype), desc(Tau_N)) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
 ```
 
 Or to filter for the row:
 
 ```{r}
-my_answer <- df %>% filter(Genotype == "Ts65Dn") %>%
+my_answer <- df %>% 
+  filter(Genotype == "Ts65Dn") %>%
   filter(Tau_N == max(Tau_N, na.rm = T))
 formatted_table(my_answer)
 ```
@@ -161,12 +186,16 @@ formatted_table(my_answer)
 Mouse of the Ts65Dn genotype, and saline treatment group with the highest Tau expression (use multi-sorting):  
 
 ```{r}
-formatted_table(head(arrange(df, desc(Genotype), desc(Treatment), desc(Tau_N))))
+df %>% 
+  arrange(desc(Genotype), desc(Treatment), desc(Tau_N)) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
 ```
 Or to filter for the row:  
 
 ```{r}
-my_answer <- df %>% filter(Genotype == "Ts65Dn") %>%
+my_answer <- df %>% 
+  filter(Genotype == "Ts65Dn") %>%
   filter(Treatment == "Saline") %>%
   filter(Tau_N == max(Tau_N, na.rm = T))
 formatted_table(my_answer)
@@ -199,7 +228,21 @@ only_nums <- select_if(df, is.numeric) # select only columns with numeric values
 colSums(only_nums > 0.5, na.rm = TRUE)
 ```
 
+Or in tidyverse style:
+
+```{r}
+df %>%
+  summarise(
+    across(
+      .cols = where(is.numeric),
+      .fns = ~ sum(. > 0.5, na.rm = TRUE)
+    )
+  )
+```
+
+
 Also here, you can use the `sum` function to count how many times the value for pELK is higher than 0.75 anf for pERK is lower than 0.25.
+
 ```{r}
 sum(df$pELK_N > 0.75 & df$pERK_N > 0.25, na.rm = T)
 ```
@@ -217,7 +260,9 @@ sum(df$pELK_N > 0.75 & df$pERK_N > 0.25, na.rm = T)
 Select rows with a relative expression value higher than 2.3 for the pCASP9 protein:  
 
 ```{r}
-formatted_table(filter(df, pCASP9_N > 2.3))
+df %>%
+  filter(pCASP9_N > 2.3) %>%
+  formatted_table()
 ```
 It seems that in this selection of mice most are treated with Saline.
 
@@ -234,13 +279,19 @@ There are no duplicates!
 Select the following columns: MouseID, APP_N, NR1_N, pCREB_N, S6_N, and Genotype. 
 
 ```{r}
-formatted_table(head(select(df, MouseID, APP_N, NR1_N, pCREB_N, S6_N, Genotype)))
+df %>% 
+  select(MouseID, APP_N, NR1_N, pCREB_N, S6_N, Genotype) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
 ```
 
 Select everything but the columns with relative expression measurements.  
 
 ```{r}
-formatted_table(head(select(df, -ends_with("_N"))))
+df %>%
+  select(-ends_with("_N")) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
 ```
 
 
@@ -266,21 +317,22 @@ summary(df[proteins]) # check the selected columns for NA values
 The summary gives the mean and median for these proteins. However, this is the mean and median for all measurements (not for the groups (Saline en Memantine treated) that we are interested in)
 It seems that only the column of the RRP1 protein does not contain `NA` values. This means that we have to use the `na.rm =` argument to calculate the standard deviation for the other three proteins:
 ```{r}
-formatted_table(df %>%
-                  group_by(Genotype) %>%
-                  summarize("St.Dev PKCA" = round(sd(PKCA_N, na.rm = T), 3),
-                            "Mean PKCA" = round(mean(PKCA_N, na.rm = T), 3),
-                            "Median PKCA" = round(median(PKCA_N, na.rm = T), 3),
-                            "SD.Dev RRP1" = round(sd(RRP1_N), 3),
-                            "Mean RRP1" = round(mean(RRP1_N, na.rm = T), 3),
-                            "Median RRP1" = round(median(RRP1_N, na.rm = T), 3),
-                            "SD.Dev BRAF" = round(sd(BRAF_N, na.rm = T), 3),
-                            "Mean BRAF" = round(mean(BRAF_N, na.rm = T), 3),
-                            "Median BRAF" = round(median(BRAF_N, na.rm = T), 3),
-                            "SD.Dev JNK" = round(sd(JNK_N, na.rm = T), 3),
-                            "Mean JNK" = round(mean(JNK_N, na.rm = T), 3),
-                            "Median JNK" = round(median(JNK_N, na.rm = T), 3)
-                            ))
+df %>%
+    group_by(Genotype) %>%
+    summarize("St.Dev PKCA" = round(sd(PKCA_N, na.rm = T), 3),
+              "Mean PKCA" = round(mean(PKCA_N, na.rm = T), 3),
+              "Median PKCA" = round(median(PKCA_N, na.rm = T), 3),
+              "SD.Dev RRP1" = round(sd(RRP1_N), 3),
+              "Mean RRP1" = round(mean(RRP1_N, na.rm = T), 3),
+              "Median RRP1" = round(median(RRP1_N, na.rm = T), 3),
+              "SD.Dev BRAF" = round(sd(BRAF_N, na.rm = T), 3),
+              "Mean BRAF" = round(mean(BRAF_N, na.rm = T), 3),
+              "Median BRAF" = round(median(BRAF_N, na.rm = T), 3),
+              "SD.Dev JNK" = round(sd(JNK_N, na.rm = T), 3),
+              "Mean JNK" = round(mean(JNK_N, na.rm = T), 3),
+              "Median JNK" = round(median(JNK_N, na.rm = T), 3)
+              ) %>%
+  formatted_table()
 ```
 
 ---

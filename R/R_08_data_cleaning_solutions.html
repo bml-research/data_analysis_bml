@@ -256,9 +256,8 @@ border: 0;
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -269,7 +268,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -424,8 +423,9 @@ problem.</p>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>file_path <span class="ot">&lt;-</span> <span class="st">&quot;./files_07_data_cleaning_exercises/exercise01/Heart_Disease_Prediction.xlsx&quot;</span></span>
 <span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(file_path)</span>
 <span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>colname <span class="ot">&lt;-</span> <span class="st">&quot;index$Age$Sex$Chest pain type$BP$Cholesterol$FBS over 120$EKG results$Max HR$Exercise angina$ST depression$Slope of ST$Number of vessels fluro$Thallium$Heart Disease&quot;</span></span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">separate_wider_delim</span>(colname, <span class="at">delim =</span> <span class="st">&quot;$&quot;</span>, <span class="at">names =</span> <span class="fu">c</span>(<span class="st">&quot;index&quot;</span>, <span class="st">&quot;Age&quot;</span>, <span class="st">&quot;Sex&quot;</span>, <span class="st">&quot;Chest pain type&quot;</span> ,<span class="st">&quot;BP&quot;</span>, <span class="st">&quot;Cholesterol&quot;</span>, <span class="st">&quot;FBS over 120&quot;</span>, <span class="st">&quot;EKG results&quot;</span>, <span class="st">&quot;Max HR&quot;</span>, <span class="st">&quot;Exercise angina&quot;</span>, <span class="st">&quot;ST depression&quot;</span>, <span class="st">&quot;Slope of ST&quot;</span>, <span class="st">&quot;Number of vessels fluro&quot;</span>, <span class="st">&quot;Thallium&quot;</span>, <span class="st">&quot;Heart Disease&quot;</span>))</span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="fu">formatted_table</span>(<span class="fu">head</span>(df, <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">13</span>)))</span></code></pre></div>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>  <span class="fu">separate_wider_delim</span>(colname, <span class="at">delim =</span> <span class="st">&quot;$&quot;</span>, <span class="at">names =</span> <span class="fu">c</span>(<span class="st">&quot;index&quot;</span>, <span class="st">&quot;Age&quot;</span>, <span class="st">&quot;Sex&quot;</span>, <span class="st">&quot;Chest pain type&quot;</span> ,<span class="st">&quot;BP&quot;</span>, <span class="st">&quot;Cholesterol&quot;</span>, <span class="st">&quot;FBS over 120&quot;</span>, <span class="st">&quot;EKG results&quot;</span>, <span class="st">&quot;Max HR&quot;</span>, <span class="st">&quot;Exercise angina&quot;</span>, <span class="st">&quot;ST depression&quot;</span>, <span class="st">&quot;Slope of ST&quot;</span>, <span class="st">&quot;Number of vessels fluro&quot;</span>, <span class="st">&quot;Thallium&quot;</span>, <span class="st">&quot;Heart Disease&quot;</span>))</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="fu">formatted_table</span>(<span class="fu">head</span>(df, <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">13</span>)))</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1230,12 +1230,19 @@ should be a unique number, so duplicates should be easily found in this
 column:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>df<span class="sc">$</span>index[<span class="fu">duplicated</span>(df<span class="sc">$</span>index)]</span></code></pre></div>
 <pre><code>## [1] 10  8 10  8 10 10 10</code></pre>
+<p>Or in tidyverse style:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">duplicated</span>(index)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  <span class="fu">pull</span>(index)</span></code></pre></div>
+<pre><code>## [1] 10  8 10  8 10 10 10</code></pre>
 <p>Yes, there seems to be duplicates of the rows with index numbers 8 (2
 extra duplicates) and 10 (5 extra duplicates).<br />
 NOTE: R shows the extra duplicates here (in total there are 3 rows with
 index 8 and 6 rows with index 10; see below).</p>
 <p>Do the rows with index numbers 8 and 10 contain the same data?</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">formatted_table</span>(df[df<span class="sc">$</span>index <span class="sc">==</span> <span class="dv">8</span>, ])</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  <span class="fu">filter</span>(index <span class="sc">==</span> <span class="dv">8</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1430,7 +1437,9 @@ Presence
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">formatted_table</span>(df[df<span class="sc">$</span>index <span class="sc">==</span> <span class="dv">10</span>, ])</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  <span class="fu">filter</span>(index <span class="sc">==</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1769,11 +1778,11 @@ Absence
 <p>Yes, the rows with index numbers 8 and 10 contain the same data in
 the rows. Before we delete the duplicates, let us count the number of
 rows:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
 <pre><code>## [1] 277</code></pre>
 <p>Now we can delete the duplicated rows:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>my_data_cleaned <span class="ot">&lt;-</span> df[<span class="sc">!</span><span class="fu">duplicated</span>(df<span class="sc">$</span>index), ]</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="fu">formatted_table</span>(<span class="fu">head</span>(my_data_cleaned, <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">13</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>my_data_cleaned <span class="ot">&lt;-</span> df[<span class="sc">!</span><span class="fu">duplicated</span>(df<span class="sc">$</span>index), ]</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fu">formatted_table</span>(<span class="fu">head</span>(my_data_cleaned, <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">13</span>)))</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2067,12 +2076,312 @@ Number of vessels fluro<br><span style="font-weight: normal;">dbl</span>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">nrow</span>(my_data_cleaned)</span></code></pre></div>
+<p>Or tidyverse style:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>my_data_cleaned <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>  <span class="co"># 1. Remove rows with duplicated &#39;index&#39; values</span></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>  <span class="fu">distinct</span>(index, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>  <span class="co"># 3. Select the first 13 columns</span></span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">13</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="fu">formatted_table</span>(<span class="fu">head</span>(my_data_cleaned))</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+index<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+Age<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+Sex<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+Chest pain type<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+BP<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+Cholesterol<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+FBS over 120<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+EKG results<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+Max HR<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+Exercise angina<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+ST depression<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+Slope of ST<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+Number of vessels fluro<br><span style="font-weight: normal;">dbl</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:right;">
+322
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+109
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2.4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+115
+</td>
+<td style="text-align:right;">
+564
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.6
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+57
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+124
+</td>
+<td style="text-align:right;">
+261
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+141
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+128
+</td>
+<td style="text-align:right;">
+263
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+105
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+74
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+269
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+121
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+177
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+140
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.4
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">nrow</span>(my_data_cleaned)</span></code></pre></div>
 <pre><code>## [1] 270</code></pre>
 <p>Note that there are 270 rows in the above tibble. Seven rows less
 compared to the tibble we started with (277).</p>
 <p>Check if we still have duplicated rows:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>my_data_cleaned<span class="sc">$</span>index[<span class="fu">duplicated</span>(my_data_cleaned<span class="sc">$</span>index)]</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>my_data_cleaned<span class="sc">$</span>index[<span class="fu">duplicated</span>(my_data_cleaned<span class="sc">$</span>index)]</span></code></pre></div>
 <pre><code>## numeric(0)</code></pre>
 <p>This yielded an empty vector meaning the tibble does not contain
 duplicated rows anymore.</p>
@@ -2082,9 +2391,9 @@ duplicated rows anymore.</p>
 <p><a href="./files_07_data_cleaning_exercises/exercise04/CHEMBL1989.csv">This</a>
 data set contains empty data. Make the empty elements more explicit in R
 by converting them to <code>NA</code>.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>file_path <span class="ot">&lt;-</span> <span class="st">&quot;./files_07_data_cleaning_exercises/exercise04/CHEMBL1989.csv&quot;</span></span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(file_path)</span>
-<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a><span class="fu">formatted_table</span>(<span class="fu">head</span>(df, <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">5</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>file_path <span class="ot">&lt;-</span> <span class="st">&quot;./files_07_data_cleaning_exercises/exercise04/CHEMBL1989.csv&quot;</span></span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(file_path)</span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="fu">formatted_table</span>(<span class="fu">head</span>(df, <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">5</span>)))</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2218,11 +2527,11 @@ replaces empty fields with <code>NA</code>.</p>
 <li>with missing data</li>
 <li>without missing data</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;total elements:&quot;</span>, <span class="fu">nrow</span>(df), <span class="st">&quot;x&quot;</span>, <span class="fu">ncol</span>(df), <span class="st">&quot;=&quot;</span>, <span class="fu">nrow</span>(df) <span class="sc">*</span> <span class="fu">ncol</span>(df))</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;total elements:&quot;</span>, <span class="fu">nrow</span>(df), <span class="st">&quot;x&quot;</span>, <span class="fu">ncol</span>(df), <span class="st">&quot;=&quot;</span>, <span class="fu">nrow</span>(df) <span class="sc">*</span> <span class="fu">ncol</span>(df))</span></code></pre></div>
 <pre><code>## [1] &quot;total elements: 55 x 9 = 495&quot;</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;empty elements:&quot;</span>, <span class="fu">sum</span>(<span class="fu">is.na</span>(df)))</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;empty elements:&quot;</span>, <span class="fu">sum</span>(<span class="fu">is.na</span>(df)))</span></code></pre></div>
 <pre><code>## [1] &quot;empty elements: 62&quot;</code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;non-empty elements:&quot;</span>, <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(df)))</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;non-empty elements:&quot;</span>, <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(df)))</span></code></pre></div>
 <pre><code>## [1] &quot;non-empty elements: 433&quot;</code></pre>
 </div>
 <div id="exercise-5" class="section level3">
@@ -2233,10 +2542,11 @@ the cells empty, the author used a character to indicate a missing
 value. Open the file in a text editor to find what character has been
 used for missing data and replace this character with
 <code>NA</code>.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>file_path <span class="ot">&lt;-</span> <span class="st">&quot;./files_07_data_cleaning_exercises/exercise05/CHEMBL1989_mod.csv&quot;</span></span>
-<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(file_path)</span>
-<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">replace</span>(. <span class="sc">==</span> <span class="st">&quot;-&quot;</span>, <span class="cn">NA</span>)</span>
-<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a><span class="fu">formatted_table</span>(<span class="fu">head</span>(df, <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">5</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>file_path <span class="ot">&lt;-</span> <span class="st">&quot;./files_07_data_cleaning_exercises/exercise05/CHEMBL1989_mod.csv&quot;</span></span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(file_path)</span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a>  <span class="fu">replace</span>(. <span class="sc">==</span> <span class="st">&quot;-&quot;</span>, <span class="cn">NA</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a><span class="fu">formatted_table</span>(<span class="fu">head</span>(df, <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">5</span>)))</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
