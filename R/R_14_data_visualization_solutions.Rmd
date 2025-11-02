@@ -234,7 +234,7 @@ This time, you will have to use the tidy data.
 ```{r}
 # make data tidy
 tidy_df_ex4 <- df_ex1 %>%
-  gather(`Expression Value - stimulus`, `Expression Value + stimulus`, key = "Expression type", value = "Expression Value")
+  pivot_longer(c(`Expression Value - stimulus`, `Expression Value + stimulus`), names_to = "Expression type", values_to = "Expression Value")
 
 p <- ggplot(tidy_df_ex4, aes(x = `Category`, y = `Expression Value`, fill = `Expression type`)) + 
   geom_boxplot() +
