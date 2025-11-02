@@ -160,33 +160,43 @@ Some examples:
 Slice the first row:
 
 ```{r}
-formatted_table(slice(df, 1))
+df %>%
+  slice(1) %>%
+  formatted_table()
 ```
 
 Or the second to fifth row:  
 
 ```{r}
-formatted_table(slice(df, 2:5))
+df %>%
+  slice(2:5) %>%
+  formatted_table()
 ```
 
 
 You can use `slice_head` to get the upper `n` rows:   
 
 ```{r}
-formatted_table(slice_head(df, n=5))
+df %>%
+  slice_head(n=5) %>%
+  formatted_table()
 ```
 
 Or `slice_tail` to get the last `n` rows:  
 
 ```{r}
-formatted_table(slice_tail(df, n=5))
+df %>%
+  slice_tail(n=5) %>%
+  formatted_table()
 ```
 
 
 Using `slice_max` you can get the row with a max value (for example the max Alcohol level):  
 
 ```{r}
-formatted_table(slice_max(df, order_by = AlcoholLevel, n=1))
+df %>%
+  slice_max(order_by = AlcoholLevel, n=1) %>%
+  formatted_table()
 ```
 
 
@@ -204,37 +214,55 @@ There is also a `slice_min` function.
 One of the most frequent tasks that you will be doing on data frames is filtering rows.
 Here is how that works in R:  
 
+>Note that `slice_head()` is used to reduce the output to 6 rows.  
+>Try it yourself without the ``slice_head()` to compare the output.  
+
 Filter rows on all patients of age 65:
 
 ```{r}
-formatted_table(head(filter(df, Age == 65)))
+df %>%
+  filter(Age == 65) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
 ```
 
 Measured oxygen level in blood considered as normal (>95):
 
 ```{r}
-formatted_table(head(filter(df, BloodOxygenLevel > 95)))
+df %>%
+  filter(BloodOxygenLevel > 95) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
 ```
 
 To add a second condition, the `&` operator is used:  
 Current smoker (condition 1) AND normal blood oxygen levels (condition 2):
 
 ```{r}
-formatted_table(head(filter(df, Smoking_Status == "Current Smoker" & BloodOxygenLevel > 95)))
+df %>%
+  filter(Smoking_Status == "Current Smoker" & BloodOxygenLevel > 95) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
 ```
 
 The `!` operator can be used to exclude (negate) a specific condition:  
 NOT a current smoker AND normal blood oxygen levels:
 
 ```{r}
-formatted_table(head(filter(df, !Smoking_Status == "Current Smoker" & BloodOxygenLevel > 95)))
+df %>% 
+  filter(!Smoking_Status == "Current Smoker" & BloodOxygenLevel > 95) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
 ```
 
 The `|` operator can be used to meet either one of the conditions:
 Normal blood oxygen levels OR very low blood oxygen levels:
 
 ```{r}
-formatted_table(head(filter(df, BloodOxygenLevel < 92 | BloodOxygenLevel > 95)))
+df %>%
+  filter(BloodOxygenLevel < 92 | BloodOxygenLevel > 95) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
 ```
 
 
@@ -245,20 +273,29 @@ You can use `arrange()` instead of `filter()` if you want to sort your rows in a
 Arrange on blood oxygen levels **ascending** (from low to high values):
 
 ```{r}
-formatted_table(head(arrange(df, BloodOxygenLevel)))
+df %>%
+  arrange(BloodOxygenLevel) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
 ```
 
 
 If you want to sort in **descending** order (from high to low values):
 
 ```{r}
-formatted_table(head(arrange(df, desc(BloodOxygenLevel))))
+df %>%
+  arrange(desc(BloodOxygenLevel)) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
 ```
 
 And to select the row with the highest value:
 
 ```{r}
-formatted_table(arrange(df, desc(BloodOxygenLevel))[1, ])
+df %>%
+  arrange(desc(BloodOxygenLevel)) %>%
+  slice_head(n = 1) %>%
+  formatted_table()
 ```
 
 You can also do some multi-level sorting:
@@ -266,13 +303,19 @@ You can also do some multi-level sorting:
 Here is an example of sorting on age first and then sorting on blood oxygen levels: 
 
 ```{r}
-formatted_table(head(arrange(df, Age, BloodOxygenLevel)))
+df %>%
+  arrange(Age, BloodOxygenLevel) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
 ```
 
 Here is an example of sorting on age first and then sorting on **descending** blood oxygen levels (from high to low): 
 
 ```{r}
-formatted_table(head(arrange(df, Age, desc(BloodOxygenLevel))))
+df %>%
+  arrange(Age, desc(BloodOxygenLevel)) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
 ```
 
 
@@ -285,19 +328,28 @@ You have learned that variables in data sets should be arranged in columns. Ofte
 With the `select()` function, you can select the variables that you are interested in:
 
 ```{r}
-formatted_table(head(select(df, Age, Smoking_Status, BloodOxygenLevel, HeartRate)))
+df %>%
+  select(Age, Smoking_Status, BloodOxygenLevel, HeartRate) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
 ```
 
 Or select all columns except the blood oxygen levels:
 
 ```{r}
-formatted_table(head(select(df, -BloodOxygenLevel)))
+df %>%
+  select(-BloodOxygenLevel) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
 ```
 
 Or select besides the age, all column names that end with "Level":
 
 ```{r}
-formatted_table(head(select(df, Age, ends_with("Level"))))
+df %>%
+  select(Age, ends_with("Level")) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
 ```
 
 Yes, there is also a function `starts_With()` to select columns that start with certain characters.  
@@ -320,14 +372,18 @@ summary(df$BloodOxygenLevel)
 But the Tidyverse library also contains a `summarize()` function:
 
 ```{r}
-formatted_table(summarize(df, BloodOxygenLevel = mean(BloodOxygenLevel)))
+df %>% 
+  summarize(BloodOxygenLevel = mean(BloodOxygenLevel)) %>%
+  formatted_table()
 ```
 
 You can combine this with the `group_by()` function for powerful analysis:
 
 ```{r}
-by_smoking_status <- group_by(df, Smoking_Status)
-formatted_table(summarize(by_smoking_status, Average_BloodOxygenLevel = mean(BloodOxygenLevel)))
+df %>%
+  group_by(Smoking_Status) %>%
+  summarize(Average_BloodOxygenLevel = mean(BloodOxygenLevel)) %>%
+  formatted_table()
 ```
 
 Recall that this looks very much like the pivot table function in Excel (see figure 28 at [data analysis Excel](https://bml-research.github.io/data_analysis/excel/excel_08_data_analysis.html)).
@@ -335,8 +391,10 @@ Recall that this looks very much like the pivot table function in Excel (see fig
 To create a similar output as the pivot tables in Excel:
 
 ```{r}
-by_smoking_status <- group_by(df, Smoking_Status)
-formatted_table(summarize(by_smoking_status, average_BOL = mean(BloodOxygenLevel), average_BT = mean(BodyTemperature)))
+df %>%
+  group_by(Smoking_Status) %>%
+  summarize(average_BOL = mean(BloodOxygenLevel), average_BT = mean(BodyTemperature)) %>%
+  formatted_table()
 ```
 
 
@@ -345,8 +403,10 @@ Now compare this output with figure 28 at [data analysis Excel](https://bml-rese
 Likewise, you can extend this by providing the standard deviation:
 
 ```{r}
-by_smoking_status <- group_by(df, Smoking_Status)
-formatted_table(summarize(by_smoking_status, average_BOL = mean(BloodOxygenLevel), sd_BOL = sd(BloodOxygenLevel), average_BT = mean(BodyTemperature), sd_BT = sd(BodyTemperature)))
+df %>% 
+  group_by(Smoking_Status) %>%
+  summarize(average_BOL = mean(BloodOxygenLevel), sd_BOL = sd(BloodOxygenLevel), average_BT = mean(BodyTemperature), sd_BT = sd(BodyTemperature)) %>%
+  formatted_table()
 ```
   
   
@@ -366,8 +426,13 @@ round(2.5) #defaults to 0 digits
 So if you like your values to be rounded in the example above, just wrap it in the `round()` function:
 
 ```{r}
-by_smoking_status <- group_by(df, Smoking_Status)
-formatted_table(summarize(by_smoking_status, average_BOL = round(mean(BloodOxygenLevel), digits = 1), sd_BOL = round(sd(BloodOxygenLevel), digits = 2), average_BT = round(mean(BodyTemperature), digits = 1), sd_BT = round(sd(BodyTemperature), digits = 2)))
+df %>% 
+  group_by(Smoking_Status) %>%
+  summarize(average_BOL = round(mean(BloodOxygenLevel), digits = 1), 
+            sd_BOL = round(sd(BloodOxygenLevel), digits = 2), 
+            average_BT = round(mean(BodyTemperature), digits = 1), 
+            sd_BT = round(sd(BodyTemperature), digits = 2)) %>%
+  formatted_table()
 ```
   
   
@@ -393,8 +458,10 @@ paste("standard error of the mean:", round(sd(df$BloodOxygenLevel)/sqrt(length(d
 Using Tidyverse, you can also apply some of the above statistics more conveniently using the `summarize_each()` function:
 
 ```{r}
-by_smoking_status <- group_by(df, Smoking_Status)
-formatted_table(summarize_each(by_smoking_status, funs(mean, sd, se=sd(.)/sqrt(n()))))
+df %>% 
+  group_by(Smoking_Status) %>%
+  summarize_each(funs(mean, sd, se=sd(.)/sqrt(n()))) %>%
+  formatted_table()
 ```
 
 Note: that the `se=sd(.)/sqrt(n())` code is a custom made function to calculate the standard error of the mean.
@@ -402,32 +469,37 @@ Note: that the `se=sd(.)/sqrt(n())` code is a custom made function to calculate 
 Columns with characters cannot be used to do these kind of calculations. If you check the complete formatted table you will find that these are empty (`NA`). For example the column for Prescription; it is not possible to calculate the mean value for character type of data (in this case: name of the medicine). So it is best to omit them:
 
 ```{r}
-by_smoking_status <- group_by(df, Smoking_Status)
-formatted_table(summarize_each(by_smoking_status, funs(mean, sd, se=sd(.)/sqrt(n()))) %>%
-                       select(-Prescription_mean))
+df %>%
+  group_by(Smoking_Status) %>%
+  summarize_each(funs(mean, sd, se=sd(.)/sqrt(n()))) %>%
+  select(-Prescription_mean) %>%
+  formatted_table()
 ```
 
-We could simplify the second expression by using pipes.You can use `%>%` to emphasize a sequence of actions.
+
+In this case, we can also remove all character type columns at once (and then do the calculations) as follows.
+The code is a bit complex and therefore we added explanations to each line:  
 
 ```{r}
-formatted_table(df %>%
-                  group_by(Smoking_Status) %>%
-                  summarize_each(funs(mean, sd, se=sd(.)/sqrt(n()))) %>%
-                  select(-Prescription_mean))
-```
-
-Piping greatly reduces the complexity of your actions and prevents the creation of temporary variables.
-You can read it as:
-First take the data frame `df` then,
-group the data frame by the items in the column `Smoking_Status` and then,
-summarize each `Smoking_Status` item for `mean`, `sd` and `se` and then,
-select all columns except `Prescription`.
-
-In this case, we can also remove all character type columns at once (and then do the calculations) with the `select_if()` function.
-
-```{r}
-by_smoking_status <- select_if(group_by(df, Smoking_Status), is.numeric)
-formatted_table(summarize_each(by_smoking_status, funs(mean, sd, se=sd(.)/sqrt(n()))))
+df %>%
+  # 1. Group the data FIRST by the categorical variable
+  group_by(Smoking_Status) %>%
+  # 2. Summarize the data, applying functions ACROSS all numeric columns
+  summarise(
+    # Use across() to select columns and apply multiple functions
+    # .cols = where(is.numeric) selects all numeric columns
+    # .fns = list(...) applies the functions
+    across(
+      .cols = where(is.numeric),
+      .fns = list(
+        mean = mean,
+        sd = sd,
+        se = ~ sd(.) / sqrt(n()) # The tilde (~) creates an anonymous function for SE
+      )
+    )
+  ) %>%
+  # 3. Apply the custom/formatting function
+  formatted_table()
 ```
 This way, the only character type column that is preserved is the `Smoking_Status` column.
 Note: there are still fields with `NA` in this overview. These are caused by missing values in the original dataset. If you try to calculate the mean value of a set of numbers, including `NA`, the result will be `NA`:
@@ -456,26 +528,28 @@ paste("sum with `NA` values:", sum(c(5.7, 3.5, 2.7, NA, 7.9), na.rm = TRUE))
 The `summarize_each()` function is deprecated (will work, but not actively maintained anymore) in favor of the new `across()` function that works within `summarize()` and `mutate()`.  
 
 ```{r}
-formatted_table(df %>%
+df %>%
   group_by(Smoking_Status) %>%
-  summarize(across(everything(), list(mean = mean, sd = sd))))
+  summarize(across(everything(), list(mean = mean, sd = sd))) %>%
+  formatted_table()
 ```
 
 Or use the scoped variant of summarize, `summarize_all()`:  
 
 ```{r}
-df_summary <- df %>%
+df %>%
   group_by(Smoking_Status) %>%
-  summarize_all(list(mean = mean, sd = sd))
-
-formatted_table(df_summary)
+  summarize_all(list(mean = mean, sd = sd)) %>%
+  formatted_table()
 ```
 
 If you want to remove the columns that yield `NA’s`:  
 
 ```{r}
-df_summary <- df_summary %>% select_if(~sum(!is.na(.)) > 0)
-formatted_table(df_summary)
+df %>% 
+  select_if(~sum(!is.na(.)) > 0) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
 ```
 
 
