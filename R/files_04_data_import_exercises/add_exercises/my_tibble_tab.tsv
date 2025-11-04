@@ -1,0 +1,7 @@
+protein	AAs	signal_peptide	cleavage_site
+AmyE	123	Yes	31
+AtpE	342	No	NA
+BdbD	612	No	NA
+SipS	441	No	NA
+SunA	47	Yes	22
+YdgA	510	No	NA

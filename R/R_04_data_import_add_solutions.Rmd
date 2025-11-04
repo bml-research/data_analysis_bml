@@ -36,9 +36,13 @@ You will only have to pass the data frame as an argument in the function `format
 # RUN THIS CODE 
 library(tidyverse)
 library(kableExtra)
+library(knitr)
+library(pillar)
 formatted_table <- function(df) {
-  kbl(df) %>%
-  kable_styling(bootstrap_options = c("striped", "hoover", "responsive"))
+  col_types <- sapply(df, pillar::type_sum)
+  new_col_names <- paste0(names(df), "<br>", "<span style='font-weight: normal;'>", col_types, "</span>")
+  kbl(df, col.names = new_col_names, escape = F, format = "html") %>%
+    kable_styling(bootstrap_options = c("striped", "hoover", "responsive"))
 }
 ```
 
@@ -82,7 +86,7 @@ Next, we will try to read the files into RStudio and see what we need to import 
 ```{r}
 # Read the csv file with comma-separated data. Save the data frame in df1.
 # Check the properties with `str()`.
-df1 <- read_csv("./honey.csv")
+df1 <- read_csv("./files_04_data_import_exercises/add_exercises/honey.csv")
 formatted_table(head(df1))
 str(df1)
 ```
@@ -93,7 +97,7 @@ Try to open the 'prot_pred.csv' file with `read_csv()`.
 
 ```{r}
 # Read the csv file with semi-colon-separated data with `read_csv()`. Save the data frame in df2.
-df2 <- read_csv("./prot_pred.csv")
+df2 <- read_csv("./files_04_data_import_exercises/add_exercises/prot_pred.csv")
 formatted_table(head(df2))
 df2
 ```
@@ -103,7 +107,7 @@ The function to read 'semi-colon'-separated data is the `read_csv2()` function.
 
 ```{r}
 # Read the prot_sep.csv file with the correct function. Overwrite the data frame in df2.
-df2 <- read_csv2("./prot_pred.csv")
+df2 <- read_csv2("./files_04_data_import_exercises/add_exercises/prot_pred.csv")
 formatted_table(head(df2))
 ```
 
@@ -111,7 +115,7 @@ The function to read 'tab'-separated data is the `read_tsv()` function.
 
 ```{r}
 # Read the amylase.tsv file with the correct function. Save the data frame in df3.
-df3 <- read_tsv("./amylase.tsv")
+df3 <- read_tsv("./files_04_data_import_exercises/add_exercises/amylase.tsv")
 formatted_table(head(df3))
 ```
 
@@ -122,7 +126,7 @@ The function needs an extra argument to tell the function that the comma is the 
 
 ```{r}
 # Set the decimal separator to a comma using the `locale = ` argument. Save the data frame in df4.
-df4 <- read_tsv("./amylase.tsv", locale = locale(decimal_mark = ","))
+df4 <- read_tsv("./files_04_data_import_exercises/add_exercises/amylase.tsv", locale = locale(decimal_mark = ","))
 formatted_table(head(df4))
 ```
 
@@ -213,10 +217,10 @@ Check with a text editor if the data is separated with the delimiter that you ex
 # - tab-separated file
 # - where $ is the delimiter
 # from the first tibble that has been created (my_tibble). Make sure they have unique file names.
-write_csv(my_tibble, "./my_tibble_comma.csv")
-write_csv2(my_tibble, "./my_tibble_semi_colon.csv")
-write_tsv(my_tibble, "./my_tibble_tab.tsv")
-write_delim(my_tibble, "./my_tibble_delim.csv", delim = "$")
+write_csv(my_tibble, "./files_04_data_import_exercises/add_exercises/my_tibble_comma.csv")
+write_csv2(my_tibble, "./files_04_data_import_exercises/add_exercises/my_tibble_semi_colon.csv")
+write_tsv(my_tibble, "./files_04_data_import_exercises/add_exercises/my_tibble_tab.tsv")
+write_delim(my_tibble, "./files_04_data_import_exercises/add_exercises/my_tibble_delim.csv", delim = "$")
 ```
 \
 
@@ -238,7 +242,7 @@ Try to read the data in the Excel file [amylase.xlsx](./files_04_data_import_exe
 
 ```{r}
 # Read the Excel file. Save the data frame in df10.
-df10 <- read_excel("./amylase.xlsx")
+df10 <- read_excel("./files_04_data_import_exercises/add_exercises/amylase.xlsx")
 formatted_table(head(df10))
 ```
 
@@ -246,7 +250,7 @@ Try to write the data frame `my_tibble` to an Excel file using the `write.xlsx()
 
 ```{r}
 # Write `my_tibble` to an Excel file.
-write.xlsx(my_tibble, "./my_tibble.xlsx")
+write.xlsx(my_tibble, "./files_04_data_import_exercises/add_exercises/my_tibble.xlsx")
 ```
 
 \

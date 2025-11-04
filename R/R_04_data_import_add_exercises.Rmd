@@ -36,9 +36,13 @@ You will only have to pass the data frame as an argument in the function `format
 # RUN THIS CODE 
 library(tidyverse)
 library(kableExtra)
+library(knitr)
+library(pillar)
 formatted_table <- function(df) {
-  kbl(df) %>%
-  kable_styling(bootstrap_options = c("striped", "hoover", "responsive"))
+  col_types <- sapply(df, pillar::type_sum)
+  new_col_names <- paste0(names(df), "<br>", "<span style='font-weight: normal;'>", col_types, "</span>")
+  kbl(df, col.names = new_col_names, escape = F, format = "html") %>%
+    kable_styling(bootstrap_options = c("striped", "hoover", "responsive"))
 }
 ```
 

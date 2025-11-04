@@ -236,9 +236,13 @@ library(kableExtra)
 We use the tibble as a more informative data frame during this course. Make a tibble of `df1` and make it more presentable it with `KableExtra`. The function `kable_styling()` will let you make up your tibble the way you like.
 
 ```{r}
+library(knitr)
+library(pillar)
 formatted_table <- function(df) {
-  kbl(df) %>%
-  kable_styling(bootstrap_options = c("striped", "hoover", "responsive"))
+  col_types <- sapply(df, pillar::type_sum)
+  new_col_names <- paste0(names(df), "<br>", "<span style='font-weight: normal;'>", col_types, "</span>")
+  kbl(df, col.names = new_col_names, escape = F, format = "html") %>%
+    kable_styling(bootstrap_options = c("striped", "hoover", "responsive"))
 }
 
 # Create a tibble from df1 and store it in tib1.

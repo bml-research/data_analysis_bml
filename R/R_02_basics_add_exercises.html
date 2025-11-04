@@ -379,15 +379,19 @@ course. Make a tibble of <code>df1</code> and make it more presentable
 it with <code>KableExtra</code>. The function
 <code>kable_styling()</code> will let you make up your tibble the way
 you like.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>formatted_table <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>  <span class="fu">kbl</span>(df) <span class="sc">%&gt;%</span></span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hoover&quot;</span>, <span class="st">&quot;responsive&quot;</span>))</span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a>}</span>
-<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a><span class="co"># Create a tibble from df1 and store it in tib1.</span></span>
-<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a></span>
-<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="co"># Format the table with the function `formatted_table()` that has been defined above.</span></span>
-<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a><span class="co"># The only argument for this function will be the tibble.</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="fu">library</span>(pillar)</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>formatted_table <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a>  col_types <span class="ot">&lt;-</span> <span class="fu">sapply</span>(df, pillar<span class="sc">::</span>type_sum)</span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a>  new_col_names <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">names</span>(df), <span class="st">&quot;&lt;br&gt;&quot;</span>, <span class="st">&quot;&lt;span style=&#39;font-weight: normal;&#39;&gt;&quot;</span>, col_types, <span class="st">&quot;&lt;/span&gt;&quot;</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a>  <span class="fu">kbl</span>(df, <span class="at">col.names =</span> new_col_names, <span class="at">escape =</span> F, <span class="at">format =</span> <span class="st">&quot;html&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a>    <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hoover&quot;</span>, <span class="st">&quot;responsive&quot;</span>))</span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a>}</span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="co"># Create a tibble from df1 and store it in tib1.</span></span>
+<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a><span class="co"># Format the table with the function `formatted_table()` that has been defined above.</span></span>
+<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a><span class="co"># The only argument for this function will be the tibble.</span></span></code></pre></div>
 <p>You can give the column headers the name you want to give with the
 <code>names()</code> function. The argument needed is a vector with the
 names of the columns. Selecting elements, rows and columns can be done
