@@ -39,7 +39,7 @@
 
 - [Here you will find a short schedule and outline for teachers and students](./outline_teachers/outline_teachers.md)
 
-
+ 
 
 ---
 
