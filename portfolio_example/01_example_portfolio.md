@@ -103,7 +103,7 @@ example_porfolio_R/
 
 > Tip: Have a look at the example portfolio zip files to understand the directory hierarchy.   
 
-You Can use as many datasets as required to meet all the requirements for the checklist (see below). Number your analysis like the example above. If you need to modify your dataset (for example to deliberately duplicate a row to demonstrate data cleaning), make sure that you rename it `filename_modified.csv`. This clearly indicates that you made modifications to the source file. These modifications should be explained and justified in the corresponding analysis text.
+You can use as many datasets as required to meet all the requirements for the checklist (see below). Number your analysis like the example above. If you need to modify your dataset (for example to deliberately duplicate a row to demonstrate data cleaning), make sure that you rename it `filename_modified.csv`. This clearly indicates that you made modifications to the source file. These modifications should be explained and justified in the corresponding analysis text.
 
 
 ### The Checklist
