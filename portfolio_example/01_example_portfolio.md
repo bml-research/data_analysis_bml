@@ -187,7 +187,7 @@ Example in Rmd:
 
 ![cheklist](./04_pics/fig04.png)
 
->Perform the same analysis in Excel and R. Small deviations are allowed (like the use of violin plots or other plots in R that are missing in excel or visa versa) but the general ouline of your analysis should be similar. In this way, you can also compare the outcome between Excel graphs and graphs ceated in R. The example portfolio can also clarify this.
+>Perform the same analysis in Excel and R. Small deviations are allowed (like the use of violin plots or other plots in R that are missing in Excel or visa versa) but the general ouline of your analysis should be similar. In this way, you can also compare the outcome between Excel graphs and graphs ceated in R. The example portfolio can also clarify this.
 
 
 ### Use of LLM (large language models/generative AI)
