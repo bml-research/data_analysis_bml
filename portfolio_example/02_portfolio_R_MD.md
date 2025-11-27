@@ -29,22 +29,49 @@ And for loading data from an Excel file:
 
 Follow these steps to complete your portfolio effectively:
 
-- Take a lab notebook from a previous theme/module that contains a (linear) calibration curve (or calibration line). Note: it must be your own lab notebook!.
-- Ensure that you share this lab notebook with your instructor (collaborate).
-- Export you lab notebook as pdf file.
-- Include your pdf file in your portfolio.
-- Transfer the data from the lab notebook into an Excel file (xlsx file).
-- Load this data into R as a data frame using the readxl function.
-- Calculate the minimum, median, and maximum of your data points. Do this for both X and Y.
+- Take a lab notebook from a previous theme/module that contains a (linear) calibration curve (or calibration line). Note: it must be your own lab notebook!  
+- Ensure that you share this lab notebook with your instructor (collaborate).  
+- Export you lab notebook as pdf file.  
+- Include your pdf file in your portfolio.  
+- Transfer the data from the lab notebook into an Excel file (xlsx file).  
+- Load this data into R as a data frame using the readxl function.  
+- Calculate the minimum, median, and maximum of your data points. Do this for both X and Y.  
 - Plot your calibration curve using base R.
-- Add a linear model to your plot.
-- Ensure your plot has a good title and proper axis labels including quantities and units.
-- Put everything in a neat RMarkdown document. 
-- Create a proper YAML front matter at the top of an R Markdown (.Rmd) file. See below for an example.
-- Knit your RMarkdown file to HTML.
-- Create a zip file of your R portfolio including the Excel file with the data, the pdf file of your lab notebook, the RMarkdown file of your analysis and the knitted HTML document.
-- Upload this zip file to Brightspace.
+- Add a linear model to your plot.  
+- Ensure your plot has a good title and proper axis labels including quantities and units.  
+- Put everything in a neat RMarkdown document.  
+- Create a proper YAML front matter at the top of an R Markdown (.Rmd) file. See below for an example.  
+- Knit your RMarkdown file to HTML.  
+- Create a zip file of your R portfolio including the Excel file with the data, the pdf file of your lab notebook, the RMarkdown file of your analysis and the knitted HTML document.  
+- Upload this zip file to Brightspace.  
 
+Example YAML:
+
+```
+---
+title: "Calories Food"
+author: "Jane Doe"
+date: "2025-04-10"
+output: 
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+```
+
+>Note that the YAML front matter code block should start and end with 3 dashes.  
+
+>The `prettydoc` package is required. You can install it using:  
+
+```
+install.packages("prettydoc")
+```
+
+And you can load it using:  
+
+```
+library(prettydoc)
+```
 
 Good luck! 🍀
 

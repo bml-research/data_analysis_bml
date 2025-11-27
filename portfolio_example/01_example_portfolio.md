@@ -233,7 +233,7 @@ output:
 ---
 ```
 
->Note that the YAML front matter code block should start and end with 3 backticks.
+>Note that the YAML front matter code block should start and end with 3 dashes.
 
 #### What each line means
 
