@@ -14,9 +14,11 @@
 As the R part is only 1 EC for Medical Diagnostics students, the R part is considerably shorter. It consists only of the Base R part and an Excel import of lab data. Tidyverse will be omitted.
 
 Thus it consists of the following parts:
-- [R Basics](../R/R_02_basics.html)
-- [R Basics Exercises](../R/R_02_basics_add_exercises.html)
-- [R Basics Solutions](../R/R_02_basics_add_solutions.html)
+- [R Basics](../R/R_02_basics.html)  
+- [R Basics Exercises](../R/R_02_basics_exercises.html)  
+- [R Basics Solutions](../R/R_02_basics_solutions.html)  
+- [R Basics Extra Exercises](../R/R_02_basics_add_exercises.html)  
+- [R Basics Extra Solutions](../R/R_02_basics_add_solutions.html)  
 
 And for loading data from an Excel file:
 - [R data import](../R/R_03_data_import.html)
