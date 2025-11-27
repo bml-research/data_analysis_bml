@@ -25,6 +25,7 @@
 ## Link to example portfolio
 
 - [Here you can find instructions for the final assignment with an example portfolio](./portfolio_example/01_example_portfolio.md)
+- [Here you can find instructions for the R part for Medical Diagnostics students](./portfolio_example/02_portfolio_R_MD.md)
 
 ## Installation of MS Excel, R en RStudio 
 
