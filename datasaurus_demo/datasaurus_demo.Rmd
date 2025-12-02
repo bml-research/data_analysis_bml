@@ -49,6 +49,7 @@ datasaurus_dozen %>%
       corr_x_y  = cor(x, y)
     )
 ```
+
 ## Away
 
 ```{r}
@@ -83,7 +84,7 @@ datasaurus_dozen %>%
 ```
 
 
-## alles met facet wrap
+## All 13 plots plotted with facet wrap
 
 ```{r fig.width=15, fig.height=15}
 ggplot(datasaurus_dozen, aes(x = x, y = y, colour = dataset)) +
