@@ -22,6 +22,10 @@
 - [Data sets](./data_sets/data_sets.md)
 
 
+## Demo DataSaurus Dozen Dataset
+
+- [Demo DataSaurus Dozen Dataset](./datasaurus_demo/datasaurus_demo.html)
+
 ## Link to example portfolio
 
 - [Here you can find instructions for the final assignment with an example portfolio](./portfolio_example/01_example_portfolio.md)
