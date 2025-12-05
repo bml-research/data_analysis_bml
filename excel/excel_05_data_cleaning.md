@@ -185,7 +185,7 @@ Note that the `FILTER` function is an array function and returns it's results ac
 
 There are multiple ways to do this. Two are explained here:
 
-1. Using Go To Special on a Specific Column  
+#### Using Go To Special on a Specific Column  
 This method is quick, but it's important to select only the column you want to check for blanks to prevent Excel from trying to select blank cells in your other data columns.
 
 - Select the Key Column: Click the column letter (e.g., click C if you want to check Column C) to select the entire column that must not contain blank values.
@@ -197,7 +197,7 @@ This method is quick, but it's important to select only the column you want to c
 
 Result: Any row containing a selected blank cell in your key column will be deleted, regardless of whether other cells in that row contained data.
 
-2. Using Filter on a Specific Column  
+#### Using Filter on a Specific Column  
 This is often the safest and most visual method, as you can review the rows to be deleted before you execute the action.
 
 - Apply Filter: Select your entire dataset (including the header row), go to the Data tab, and click Filter (or use the shortcut Ctrl + Shift + L).
@@ -212,10 +212,11 @@ This is often the safest and most visual method, as you can review the rows to b
 - Right-click on any selected row number and choose Delete Row.
 - Clear Filter: Go back to the Data tab and click the Clear button to display all your remaining data.
 
-3. Delete Blank Rows Using Power Query  
+#### Delete Blank Rows Using Power Query  
 The primary advantage of Power Query is that it is dynamic: if you add new data to your source table, you simply click "Refresh" on the output table, and the blank rows are instantly removed.  
 
 Step 1: Load Data into Power Query Editor  
+
 - Select any cell in your data table.
 - Go to the Data tab on the Excel ribbon.
 - In the Get & Transform Data group, click From Table/Range.
@@ -223,6 +224,7 @@ Step 1: Load Data into Power Query Editor
 - This opens the Power Query Editor window.
 
 Step 2: Filter the Specific Column for Blanks  
+
 In the Power Query Editor, navigate to the header of the specific column (e.g., "Customer ID") that you want to check for blank values.  
 
 - Click the down arrow on that column header.
