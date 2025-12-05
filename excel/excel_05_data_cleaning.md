@@ -181,6 +181,55 @@ Therefore, it is better to use the `FILTER` function to filter for rows with an 
 
 Note that the `FILTER` function is an array function and returns it's results across multiple cells.
 
+### Bulk delete rows with missing values
+
+There are multiple ways to do this. Two are explained here:
+
+1. Using Go To Special on a Specific Column  
+This method is quick, but it's important to select only the column you want to check for blanks to prevent Excel from trying to select blank cells in your other data columns.
+
+- Select the Key Column: Click the column letter (e.g., click C if you want to check Column C) to select the entire column that must not contain blank values.
+- Open Go To Special: Press Ctrl + G (or F5), then click the Special... button.
+- Select Blanks: Choose the Blanks radio button and click OK.
+- Excel selects all empty cells only in the column you selected (e.g., all blank cells in Column C).
+- Delete Entire Rows: Press Ctrl + - (minus sign) to open the Delete dialog box.
+- Choose Entire Row: Select Entire row and click OK.
+
+Result: Any row containing a selected blank cell in your key column will be deleted, regardless of whether other cells in that row contained data.
+
+2. Using Filter on a Specific Column  
+This is often the safest and most visual method, as you can review the rows to be deleted before you execute the action.
+
+- Apply Filter: Select your entire dataset (including the header row), go to the Data tab, and click Filter (or use the shortcut Ctrl + Shift + L).
+- Filter for Blanks in Key Column: Click the filter arrow in the header of the specific column you want to check for missing values.
+- Deselect All and Select Blanks:
+- Uncheck the (Select All) box.
+- Scroll to the very bottom and check the (Blanks) option.
+- Click OK.
+- Only rows with a blank value in that specific column will now be visible.
+- Select and Delete Visible Rows:
+- Select all the visible rows of data (excluding the header row).
+- Right-click on any selected row number and choose Delete Row.
+- Clear Filter: Go back to the Data tab and click the Clear button to display all your remaining data.
+
+3. Delete Blank Rows Using Power Query  
+The primary advantage of Power Query is that it is dynamic: if you add new data to your source table, you simply click "Refresh" on the output table, and the blank rows are instantly removed.  
+
+Step 1: Load Data into Power Query Editor  
+- Select any cell in your data table.
+- Go to the Data tab on the Excel ribbon.
+- In the Get & Transform Data group, click From Table/Range.
+- If prompted, confirm the range and ensure "My table has headers" is checked, then click OK.
+- This opens the Power Query Editor window.
+
+Step 2: Filter the Specific Column for Blanks  
+In the Power Query Editor, navigate to the header of the specific column (e.g., "Customer ID") that you want to check for blank values.  
+
+- Click the down arrow on that column header.
+- In the text filter menu, uncheck the box for (null) (or (Blanks)).
+
+See also [this video](https://www.youtube.com/watch?v=3mkfF1pNw0U)
+
 ### Working with #N/A
 
 In any case, it is best to convert cells with "empty" values (whether it is truly blank, contains a dash or any other character to mark empty) to #N/A. #N/A is the error value of Excel that means "no value is available." To avoid accidentally including empty cells in your calculations, enter #N/A in the cells where you are missing information. (A formula that references a cell that contains #N/A will return the #N/A error value). Read more about #N/A [here](https://support.microsoft.com/en-gb/office/na-function-5469c2d1-a90c-4fb5-9bbc-64bd9bb6b47c#:~:text=Returns%20the%20error%20value%20%23N,empty%20cells%20in%20your%20calculations.).
