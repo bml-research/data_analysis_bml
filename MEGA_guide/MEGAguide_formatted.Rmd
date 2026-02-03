@@ -1,0 +1,137 @@
+---
+title: "MEGAguide"
+author: "Loes Oldhoff & Jurre Hageman"
+date: "2026-02-03"
+output: 
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+
+# 🧬 MEGAguide
+MEGA (Molecular Evolutionary Genetics Analysis) is a versatile tool for analyzing DNA and protein data. This guide focuses on the essential workflow for constructing and interpreting phylogenetic trees using protein sequences.
+
+## 💿 How to Install MEGA
+To install the software, visit the [official MEGA software website](https://www.megasoftware.net/). The site will typically auto-detect your operating system, but you should verify that the correct version is selected (e.g., Windows 10/11 or macOS Apple Silicon/Intel). Click the Download button and follow the on-screen prompts to download the installer. Once the download is complete, run the .exe or .dmg file and follow the installation wizard to complete the setup. After installation, you can launch the program from your desktop or applications folder, and it will look identical to the version described in this guide.  
+
+Linux users are typically offered a Debian (.deb) package for Ubuntu/Debian-based systems or an RPM package for RedHat/Fedora-based systems.  
+1. Download the appropriate package for your distribution.  
+2. Open your terminal and navigate to your downloads folder.  
+3. Install the package using your package manager (e.g., sudo apt install ./mega_xxx.deb for Ubuntu/Debian or dnf install ./mega_xxx.rpm for Fedora).  
+4. Once installed, you can launch MEGA by typing mega in the terminal or finding it in your Applications menu.  
+
+## 🚀 Getting Started  
+Launch MEGA from your OS.  
+
+Upon first launch, the main dashboard provides access to various modules via round icons at the top. Clicking them will show an additional drop-down menu with more options.  
+
+![MEGA home screen](./pics/01.png)
+</br>
+
+### 📏 Step 1: Sequence Alignment
+Before constructing a tree, your sequences must be aligned to identify homologous positions.  
+
+Initialize Alignment: Click the Align button and select Edit/Build Alignment.  
+
+Retrieve Data: Select Retrieve a sequence from a file and load your multifasta of orthologs.  
+
+![MEGA retreive Sequences from a file](./pics/02.png)
+
+>💡 Tip: MEGA can save your progress in various filetypes. It is recommended to create a separate folder to avoid clutter.  
+
+The sequences are shown but they are not yet aligned!  
+
+![Multifasta file loaded but not yet aligned](./pics/03.png)
+
+
+Run ClustalW: Navigate to the Alignment menu and select Align by ClustalW. This is a standard, all-round algorithm for initial alignments.  
+
+
+![Multifasta file aligned with the ClustalW algoritm](./pics/04.png)
+ 
+>Notice how gaps appear in divergent sequences like the Sea hare and Zebrafish to maintain alignment integrity. Save your "Alignment session" as a .mas file to save your progress.  
+
+</br>
+
+### 🌳 Step 2: Constructing the Phylogeny
+Once aligned, minimize the Alignment Explorer. A small icon on the home screen represents your active alignment session.  
+
+![Home screen](./pics/05.png)
+
+Select Method: Click the Phylogeny button and choose Construct/Test Neighbor-Joining Tree.  
+
+Input Data: Select the .mas file you just saved.  
+
+Enable Statistical Testing:  
+
+Change Phylogeny Test from "None" to Bootstrap method.  
+
+Set the No. of Bootstrap Replications to 100.  
+
+![Bootsrapping settings](./pics/06.png)
+</br>
+
+### 📊 Step 3: Interpreting Bootstrap Values
+
+![Original tree](./pics/07.png)
+
+The resulting tree displays numbers at the branches. These Bootstrap values represent the percentage of replicate trees in which that specific clade appeared.  
+
+Robust Support: A value of 99-100% indicates the clade is very stable across runs.  
+
+Uncertain Support: In this run, the clade containing the pig, chimpanzee, and human demonstrates significantly lower statistical support, suggesting a less certain phylogenetic relationship.  
+
+In MEGA, the Bootstrap Consensus Tree is a specifically filtered version of your results that prioritizes statistical reliability over evolutionary distance. While the "Original Tree" shows you the exact branching lengths calculated from your data, the Consensus Tree simplifies the view to show only the relationships that were consistently recovered.  
+
+| Feature | Original Tree | Bootstrap Consensus Tree |
+| :--- | :--- | :--- |
+| **Branch Lengths** | Represent evolutionary distance (substitutions per site). | Usually ignored or simplified to show branching only. |
+| **Uncertain Clades** | Shows every branch, even if the bootstrap support is 10%. | Collapses branches that fall below your specified cutoff. |
+| **Primary Use** | Reporting the calculated evolutionary history of the taxa. | Assessing the statistical robustness of the proposed clades. |
+
+![Bootstrap consensus tree](./pics/08.png)
+</br>
+
+### ⚓ Step 4: Rooting the Tree
+Neighbor-Joining trees are unrooted by default, which can lead to non-sensical clades. We must root the tree on an outgroup.  
+
+Select the Outgroup: We use the Sea hare, as it is the only invertebrate and the obvious choice for the outgroup.  
+
+Apply Root: Use the Root on Branch tool (found under the Subtree tab or toolbar) and click the branch leading to the Sea hare.  
+
+![Rooted consensus tree](./pics/09.png)
+
+We can also root the original tree:  
+
+![Rooted original tree](./pics/10.png)
+</br>
+
+### ✂️ Step 5: Customizing the Display
+To increase clarity, you can adjust the display thresholds.  
+
+🛠 Adjusting the Bootstrap Cutoff  
+By default, the bootstrap consensus tree collapses clades with values <50%. To increase rigor:  
+
+Click the button with the tree and red branches.  
+
+Change the value from 50% to 70%.  
+
+![Adjusting the bootstrap cutoff](./pics/11.png)
+
+Clades failing this threshold will collapse into multifurcating nodes, leaving only high-certainty clades visible.  
+
+![Adjusted bootstrap cutoff](./pics/12.png)
+</br>
+
+## 🔄 Changing Tree Styles
+In the top menu, you can change the display style, such as the Circle (Radiation) style. This is often used to emphasize the differentiation of species from a common ancestor rather than a linear timeline of evolution.  
+
+![Circle style phylogenetic tree](./pics/13.png)
+</br>
+
+## 🏁 Conclusion
+MEGA allows for iterative exploration. Take some time to explore the miscellaneous options in the top menu, and remember to save your session frequently.  
+
+The end...
+
+---
