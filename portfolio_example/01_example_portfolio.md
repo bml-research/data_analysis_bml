@@ -315,6 +315,7 @@ So your end grade will be:
 
 $$\text{End grade} = 0.4 \cdot \text{Excel grade} + 0.6 \cdot \text{R grade}$$
 
+>Please keep in mind that Osiris calculates the final grade. The instructors enter separate grades for Excel and R. Since these are two submodules, both components must be a passing grade. This is a general rule for how Osiris calculates final grades at Hanze.
 
 Good luck! 🍀
 
