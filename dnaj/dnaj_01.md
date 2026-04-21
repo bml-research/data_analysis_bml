@@ -3,7 +3,7 @@
 
 [Go back to the main page](../index.md)
 
-# DNAJ
+# DNAJC project
 
 ---
 
