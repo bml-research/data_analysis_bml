@@ -13,12 +13,12 @@ Huntington’s disease is a fatal neurodegenerative disorder caused by a genetic
 
 ## What have we done?
 
-We have studied specific molecular chaperones that effectively combat the misfolding and toxicity associated with polyglutamine diseases like Huntington's. We have engineered a series of tetracycline-inducible expression plasmids using the pcDNA5 FRT/TO vector system. By cloning various chaperone coding sequences in frame with a V5 tag, we have created fusion proteins to track expression and localization of these chaperones. Our cloning process utilized cDNA derived from a diverse pool of human cell lines and purchased full-length clones to ensure broad representation. We have cloned nearly all members of the HSP70, HSP110, DNAJA and DNAJB family (but not the DNAJC family). The library that we have created is accessible via [AddGene](https://www.addgene.org/search/catalog/plasmids/?q=kampinga+Hageman+et+al+Cell+Stress+Chaperones.+2009+Jan&page_number=4).  
+We have studied specific molecular chaperones that effectively combat the misfolding and toxicity associated with polyglutamine diseases like Huntington's. We have [engineered a series of tetracycline-inducible expression plasmids using the pcDNA5 FRT/TO vector system](https://www.sciencedirect.com/science/article/pii/S1355814523018850?via%3Dihub). By cloning various chaperone coding sequences in frame with a V5 tag, we have created fusion proteins to track expression and localization of these chaperones. Our cloning process utilized cDNA derived from a diverse pool of human cell lines and purchased full-length clones to ensure broad representation. We have cloned nearly all members of the HSP70, HSP110, DNAJA and DNAJB family (but not the DNAJC family). The library that we have created is accessible via [AddGene](https://www.addgene.org/search/catalog/plasmids/?q=kampinga+Hageman+et+al+Cell+Stress+Chaperones.+2009+Jan&page_number=4).  
 
 ![Pic](https://ars.els-cdn.com/content/image/1-s2.0-S1355814523018850-Fig2_HTML_lrg.jpg)
 *<sub>The pcDNA5 FRT/TO vector system. [Source](https://www.sciencedirect.com/science/article/pii/S1355814523018850?via%3Dihub)</sub>*
 
-After sequence verification and Western blot validation, the functional screening revealed that members of the DNAJB subclass (specifically DNAJB6b and DNAJB8) are exceptionally potent at suppressing protein aggregation and cellular toxicity. These findings highlight these specific DNAJ proteins as critical components of the cellular protein quality control network.  
+After sequence verification and Western blot validation, the functional screening [revealed that members of the DNAJB subclass (specifically DNAJB6b and DNAJB8)](https://www.sciencedirect.com/science/article/pii/S1097276510000262?via%3Dihub) are exceptionally potent at suppressing protein aggregation and cellular toxicity. These findings highlight these specific DNAJ proteins as critical components of the cellular protein quality control network.  
 
 ![Pic](https://ars.els-cdn.com/content/image/1-s2.0-S1097276510000262-gr1_lrg.jpg)
 *<sub>The result of the previous screen showing that DNAJB6b and DNAJB8 are the most effective suppressors of huntingtin aggregation. [Source](https://www.sciencedirect.com/science/article/pii/S1097276510000262?via%3Dihub)</sub>*
@@ -35,7 +35,7 @@ DNAJB6 exists as a functional monomer or dimer that utilizes its J-domain to rec
 
 We have cloned the HSP70, HSP110, DNAJA and DNAJB family. This was done more than 20 years ago. Generating the expression library was particularly cumbersome because it required cloning each chaperone gene from a diverse pool of cDNA's, a labor-intensive process of amplification and sequence verification for every individual candidate. Nowadays, the process is simplified because one can buy sequence verified cDNA sequences already clones in cloning vectors.  
 
-We would like to expand our study by cloning and screening the DNAJC family. While some members like DNAJC5 and DNAJC13 are well-documented, the majority of the DNAJC subclass remains understudied and "less popular" in neurodegeneration research. The focus on a few genes has left a significant gap, as there is no systematic, head-to-head screen to rank the relative potency of these overlooked family members. Consequently, it remains unknown if these less-studied DNAJC proteins possess unique or superior abilities to suppress mutant Huntingtin toxicity.
+We would like to expand our study by cloning and screening the DNAJC family. While some members like DNAJC5 and DNAJC13 are well-documented, the majority of the DNAJC subclass remains understudied in neurodegeneration research. The focus on a few genes has left a significant gap, as there is no systematic, head-to-head screen to rank the relative potency of these overlooked family members. Consequently, it remains unknown if these less-studied DNAJC proteins possess unique or superior abilities to suppress mutant Huntingtin toxicity.
 
 We have already cloned a substantial amount of the library in the pcDNA5 FRT/TO vector system. See the table below. We would like to expand this study to buy and clone the remaining DNAJC members.
 
@@ -88,6 +88,10 @@ Running a head-to-head screen across the full ~30-member DNAJC family requires h
 - Labor: Dedicated time for a PhD-level researcher and/or technician to optimize and execute the screen (3–6 months) is budgeted at $35,000.
 
 Thus, the total costs are expected to be around $50,000.
+
+## Sharing research materials
+
+To facilitate open science and support global research efforts, the newly generated vectors will be submitted to [Addgene](https://www.addgene.org/) to share these materials with the scientific community. By providing access to this complete DNAJC library, we aim to accelerate discoveries and collaborative studies into protein quality control and neurodegenerative diseases.
 
 ---
 
