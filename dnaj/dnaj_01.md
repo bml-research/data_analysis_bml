@@ -21,14 +21,14 @@ We have studied specific molecular chaperones that effectively combat the misfol
 After sequence verification and Western blot validation, the functional screening revealed that members of the DNAJB subclass (specifically DNAJB6b and DNAJB8) are exceptionally potent at suppressing protein aggregation and cellular toxicity. These findings highlight these specific DNAJ proteins as critical components of the cellular protein quality control network.  
 
 ![Pic](https://ars.els-cdn.com/content/image/1-s2.0-S1097276510000262-gr1_lrg.jpg)
-*<sub>The result of the previous screen. [Source](https://www.sciencedirect.com/science/article/pii/S1097276510000262?via%3Dihub)</sub>*
+*<sub>The result of the previous screen showing that DNAJB6b and DNAJB8 are the most effective suppressors of huntingtin aggregation. [Source](https://www.sciencedirect.com/science/article/pii/S1097276510000262?via%3Dihub)</sub>*
 
-Identifying DNAJB6 as a suppressor was an important breakthrough because it provides mechanistic evidence of a chaperone that directly targets primary nucleation, the very first step of protein clumping. DNAJB6 uses a specific serine/threonine-rich motif to bind and neutralize mutant Huntingtin "seeds" before they can multiply. DNAJB6’s ability to prevent the earliest stages of misfolding makes it a prime therapeutic target, as inducing its expression pharmaceutically could provide a natural cellular defense to reduce the progression of Huntington’s disease.  
+Identifying DNAJB6 as a suppressor was an important breakthrough because it's subsequent research provided mechanistic evidence of a chaperone that directly targets primary nucleation, the very first step of protein aggregation. DNAJB6 uses a specific serine/threonine-rich motif to bind and neutralize mutant Huntingtin "seeds" before they can multiply. DNAJB6’s ability to prevent the earliest stages of misfolding makes it a prime therapeutic target, as inducing its expression pharmaceutically could provide a natural cellular defense to reduce the progression of Huntington’s disease.  
 
 DNAJB6 exists as a functional monomer or dimer that utilizes its J-domain to recruit HSP70 and a specific C-terminal motif to bind amyloid-prone clients. To increase its efficiency, it assembles into high-molecular-weight oligomeric "shells" that provide a high density of binding sites to trap disordered peptides. Once bound to a substrate, it forms a stable complex that effectively stalls the nucleation process, preventing the formation and spread of toxic protein aggregates.
 
 ![Pic](./pics/01.png)
-*<sub>AlphaFold predicted structure of DNAJB6. Source: [AplphaFold server.](https://alphafoldserver.com/fold/6513fd66c075b29d)</sub>*
+*<sub>AlphaFold predicted structure of DNAJB6. Source: [AlphaFold server.](https://alphafoldserver.com/fold/6513fd66c075b29d)</sub>*
 
 However, at the time, the DNAJC family (comprising 30 members) was to large and cumbersome to clone and screen.  
 
@@ -40,40 +40,40 @@ We would like to expand our study by cloning and screening the DNAJC family. Whi
 
 We have already cloned a substantial amount of the library in the pcDNA5 FRT/TO vector system. See the table below. We would like to expand this study to buy and clone the remaining DNAJC members.
 
-| DNAJ    | Alternative Name | Cloned |
-|---------|------------------|--------|
-| DNAJC1  | MTJ1, ERDJ1      | Yes    |
-| DNAJC2  | MPP11, ZRF1      | No     |
-| DNAJC3  | P58IPK           | Yes    |
-| DNAJC4  | HSP40            | Yes    |
-| DNAJC5  | —                | No     |
-| DNAJC5b | CSP-alpha        | Yes    |
-| DNAJC5g | —                | Yes    |
-| DNAJC6  | Auxilin-1        | Yes    |
-| DNAJC7  | TPR2             | Yes    |
-| DNAJC8  | —                | No     |
-| DNAJC9  | —                | Yes    |
-| DNAJC10 | ERDJ5            | No     |
-| DNAJC11 | —                | Yes    |
-| DNAJC12 | JDP1             | Yes    |
-| DNAJC13 | RME-8            | No     |
-| DNAJC14 | DRIP78           | Yes    |
-| DNAJC15 | MCJ              | Yes    |
-| DNAJC16 | —                | Yes    |
-| DNAJC17 | —                | No     |
-| DNAJC18 | —                | Yes    |
-| DNAJC19 | TIM14            | Yes    |
-| DNAJC20 | HSCB             | No     |
-| DNAJC21 | —                | No     |
-| DNAJC22 | —                | No     |
-| DNAJC23 | SEC63            | No     |
-| DNAJC24 | —                | Yes    |
-| DNAJC25 | —                | Yes    |
-| DNAJC26 | GAK              | No     |
-| DNAJC27 | RBJ              | Yes    |
-| DNAJC28 | —                | No     |
-| DNAJC29 | SACS             | No     |
-| DNAJC30 | —                | No     |
+| DNAJ    | Alternative Name  | Cloned |
+|---------|------------------ |--------|
+| DNAJC1  | MTJ1, ERDJ1       | Yes    |
+| DNAJC2  | MPP11, ZRF1       | No     |
+| DNAJC3  | P58IPK            | Yes    |
+| DNAJC4  | HSP40             | Yes    |
+| DNAJC5  | CSP,CLN4, CLN4B   | No     |
+| DNAJC5b | CSP-alpha         | Yes    |
+| DNAJC5g | CSP-gamma         | Yes    |
+| DNAJC6  | Auxilin-1         | Yes    |
+| DNAJC7  | TPR2              | Yes    |
+| DNAJC8  | HSPC331, SPF31    | No     |
+| DNAJC9  | HDJC9, JDD1, SB73 | Yes    |
+| DNAJC10 | ERDJ5             | No     |
+| DNAJC11 | dJ126A5.1         | Yes    |
+| DNAJC12 | JDP1              | Yes    |
+| DNAJC13 | RME-8             | No     |
+| DNAJC14 | DRIP78            | Yes    |
+| DNAJC15 | MCJ               | Yes    |
+| DNAJC16 | ERdj8             | Yes    |
+| DNAJC17 | —                 | No     |
+| DNAJC18 | —                 | Yes    |
+| DNAJC19 | TIM14             | Yes    |
+| DNAJC20 | HSCB              | No     |
+| DNAJC21 | BMFS3, DNAJA5, GS3| No     |
+| DNAJC22 | wus               | No     |
+| DNAJC23 | SEC63, ERdj2      | No     |
+| DNAJC24 | DPH4, JJJ3, ZCSL3 | Yes    |
+| DNAJC25 | bA16L21.2.1       | Yes    |
+| DNAJC26 | GAK               | No     |
+| DNAJC27 | RBJ               | Yes    |
+| DNAJC28 | C21orf55, C21orf78| No     |
+| DNAJC29 | SACS, ARSACS      | No     |
+| DNAJC30 | LHONAR, MC1DN38   | No     |
 
 ## Need for funding
 
