@@ -16,12 +16,12 @@ Huntington’s disease is a fatal neurodegenerative disorder caused by a genetic
 We have studied specific molecular chaperones that effectively combat the misfolding and toxicity associated with polyglutamine diseases like Huntington's. We have engineered a series of tetracycline-inducible expression plasmids using the pcDNA5 FRT/TO vector system. By cloning various chaperone coding sequences in frame with a V5 tag, we have created fusion proteins to track expression and localization of these chaperones. Our cloning process utilized cDNA derived from a diverse pool of human cell lines and purchased full-length clones to ensure broad representation. We have cloned nearly all members of the HSP70, HSP110, DNAJA and DNAJB family (but not the DNAJC family). The library that we have created is accessible via [AddGene](https://www.addgene.org/search/catalog/plasmids/?q=kampinga+Hageman+et+al+Cell+Stress+Chaperones.+2009+Jan&page_number=4).  
 
 ![Pic](https://ars.els-cdn.com/content/image/1-s2.0-S1355814523018850-Fig2_HTML_lrg.jpg)
-*<sub>The pcDNA5 FRT/TO vector system. Source: https://pubmed.ncbi.nlm.nih.gov/18686016/</sub>*
+*<sub>The pcDNA5 FRT/TO vector system. [Source](https://www.sciencedirect.com/science/article/pii/S1355814523018850?via%3Dihub)</sub>*
 
 After sequence verification and Western blot validation, the functional screening revealed that members of the DNAJB subclass (specifically DNAJB6b and DNAJB8) are exceptionally potent at suppressing protein aggregation and cellular toxicity. These findings highlight these specific DNAJ proteins as critical components of the cellular protein quality control network.  
 
 ![Pic](https://ars.els-cdn.com/content/image/1-s2.0-S1097276510000262-gr1_lrg.jpg)
-*<sub>The result of the previous screen. Source: https://pubmed.ncbi.nlm.nih.gov/20159555/</sub>*
+*<sub>The result of the previous screen. [Source](https://www.sciencedirect.com/science/article/pii/S1097276510000262?via%3Dihub)</sub>*
 
 Identifying DNAJB6 as a suppressor was an important breakthrough because it provides mechanistic evidence of a chaperone that directly targets primary nucleation, the very first step of protein clumping. DNAJB6 uses a specific serine/threonine-rich motif to bind and neutralize mutant Huntingtin "seeds" before they can multiply. DNAJB6’s ability to prevent the earliest stages of misfolding makes it a prime therapeutic target, as inducing its expression pharmaceutically could provide a natural cellular defense to reduce the progression of Huntington’s disease.  
 
