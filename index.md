@@ -74,6 +74,10 @@ This module will conclude with an assignment that you will complete independentl
 
 This module is part of the [CureQ project](https://cureq.nl/). CureQ is a consortium of partners that focuses on polyQ diseases with the aim to enable polyQ targeting therapies to better predict onset and progression of disease of the different patient groups (early-onset, adult-onset and carriers of intermediate repeats). The [Hanze University](https://www.hanze.nl/en/research/centres/research-centre-biobased-economy/projects/cureq) is involved in two work packages of the CureQ project. During this course, we will often use datasets that are linked to various polyQ disorders. 
 
+## DNAJ research
+
+We are active in [DNAJ research](./dnaj/dnaj_01.md) where we aims to clone and systematically screen the understudied DNAJC family to identify potent genetic suppressors of mutant Huntingtin toxicity. 
+
 ## Learning Outcomes
 
 - You can explain the fundamental concepts of data, including data types, data structures, and the importance of data quality, and you can apply these concepts in the context of both Excel and R.  
