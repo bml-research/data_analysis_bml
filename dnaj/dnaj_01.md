@@ -30,7 +30,6 @@ DNAJB6 exists as a functional monomer or dimer that utilizes its J-domain to rec
 ![Pic](./pics/01.png)
 *<sub>AlphaFold predicted structure of DNAJB6. Source: [AlphaFold server.](https://alphafoldserver.com/fold/6513fd66c075b29d)</sub>*
 
-However, at the time, the DNAJC family (comprising 30 members) was to large and cumbersome to clone and screen.  
 
 ## What we want to do: cloning and screening the DNAJC family
 
