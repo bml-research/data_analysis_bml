@@ -9,7 +9,7 @@
 
 ## Introduction
 
-Huntington’s disease is a fatal neurodegenerative disorder caused by a genetic mutation that produces an expanded polyglutamine tract in the Huntingtin protein. This mutation causes proteins to misfold and form toxic aggregates that destroy neurons in the brain. To manage this, cells utilize molecular chaperones, which act as a quality control system to ensure proper protein folding. These chaperones are essential for preventing the buildup of misfolded proteins and maintaining cellular health. Among these, DNAJ proteins, or Hsp40s, serve as vital co-chaperones that direct the activity of the Hsp70 folding machinery. They are identified by a conserved J-domain that allows them to bind specifically to client proteins.  
+[Huntington’s disease](https://www.huntington.nl/) is a fatal neurodegenerative disorder caused by a genetic mutation that produces an expanded polyglutamine tract in the Huntingtin protein. This mutation causes proteins to misfold and form toxic aggregates that destroy neurons in the brain. To manage this, cells utilize molecular chaperones, which act as a quality control system to ensure proper protein folding. These chaperones are essential for preventing the buildup of misfolded proteins and maintaining cellular health. Among these, DNAJ proteins, or Hsp40s, serve as vital co-chaperones that direct the activity of the Hsp70 folding machinery. They are identified by a conserved J-domain that allows them to bind specifically to client proteins.  
 
 ## What have we done?
 
