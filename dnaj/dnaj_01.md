@@ -23,7 +23,7 @@ After sequence verification and Western blot validation, the functional screenin
 ![Pic](https://ars.els-cdn.com/content/image/1-s2.0-S1097276510000262-gr1_lrg.jpg)
 *<sub>The result of the previous screen showing that DNAJB6b and DNAJB8 are the most effective suppressors of huntingtin aggregation. [Source](https://www.sciencedirect.com/science/article/pii/S1097276510000262?via%3Dihub)</sub>*
 
-Identifying DNAJB6 as a suppressor was an important breakthrough because it's subsequent research provided mechanistic evidence of a chaperone that directly targets primary nucleation, the very first step of protein aggregation. DNAJB6 uses a specific serine/threonine-rich motif to bind and neutralize mutant Huntingtin "seeds" before they can multiply. DNAJB6’s ability to prevent the earliest stages of misfolding makes it a prime therapeutic target, as inducing its expression pharmaceutically could provide a natural cellular defense to reduce the progression of Huntington’s disease.  
+Identifying DNAJB6 as a suppressor was an important breakthrough because its subsequent research provided mechanistic evidence of a chaperone that directly targets primary nucleation, the very first step of protein aggregation. DNAJB6 uses a specific serine/threonine-rich motif to bind and neutralize mutant Huntingtin "seeds" before they can multiply. DNAJB6’s ability to prevent the earliest stages of misfolding makes it a prime therapeutic target, as inducing its expression pharmaceutically could provide a natural cellular defense to reduce the progression of Huntington’s disease.  
 
 DNAJB6 exists as a functional monomer or dimer that utilizes its J-domain to recruit HSP70 and a specific C-terminal motif to bind amyloid-prone clients. To increase its efficiency, it assembles into high-molecular-weight oligomeric "shells" that provide a high density of binding sites to trap disordered peptides. Once bound to a substrate, it forms a stable complex that effectively stalls the nucleation process, preventing the formation and spread of toxic protein aggregates.
 
@@ -33,9 +33,9 @@ DNAJB6 exists as a functional monomer or dimer that utilizes its J-domain to rec
 
 ## What we want to do: cloning and screening the DNAJC family
 
-We have cloned the HSP70, HSP110, DNAJA and DNAJB family. This was done more than 20 years ago. Generating the expression library was particularly cumbersome because it required cloning each chaperone gene from a diverse pool of cDNA's, a labor-intensive process of amplification and sequence verification for every individual candidate. Nowadays, the process is simplified because one can buy sequence verified cDNA sequences already clones in cloning vectors.  
+We have cloned the HSP70, HSP110, DNAJA and DNAJB family. This was done performed between 2004 and 2007. Generating the expression library was particularly cumbersome because it required cloning each chaperone gene from a diverse pool of cDNA's, a labor-intensive process of amplification and sequence verification for every individual candidate. Nowadays, the process is simplified because one can buy sequence verified cDNA sequences already cloned in cloning vectors.  
 
-We would like to expand our study by cloning and screening the DNAJC family. While some members like DNAJC5 and DNAJC13 are well-documented, the majority of the DNAJC subclass remains understudied in neurodegeneration research. The focus on a few genes has left a significant gap, as there is no systematic, head-to-head screen to rank the relative potency of these overlooked family members. Consequently, it remains unknown if these less-studied DNAJC proteins possess unique or superior abilities to suppress mutant Huntingtin toxicity.
+We would like to expand our study by cloning and screening the DNAJC family. While some members like DNAJC5 and DNAJC13 are well-documented, the majority of the DNAJC subclass remains understudied in neurodegeneration research. The focus on a few genes has left a significant gap, as there is no systematic, comprehensive screen to rank the relative potency of these overlooked family members. Consequently, it remains unknown if these less-studied DNAJC proteins possess unique or superior abilities to suppress mutant Huntingtin toxicity.
 
 We have already cloned a substantial amount of the library in the pcDNA5 FRT/TO vector system. See the table below. We would like to expand this study to buy and clone the remaining DNAJC members.
 
@@ -45,9 +45,9 @@ We have already cloned a substantial amount of the library in the pcDNA5 FRT/TO 
 | DNAJC2  | MPP11, ZRF1       | No     |
 | DNAJC3  | P58IPK            | Yes    |
 | DNAJC4  | HSP40             | Yes    |
-| DNAJC5  | CSP,CLN4, CLN4B   | No     |
-| DNAJC5b | CSP-alpha         | Yes    |
-| DNAJC5g | CSP-gamma         | Yes    |
+| DNAJC5* | CSP,CLN4, CLN4B   | No     |
+| DNAJC5b*| CSP-alpha         | Yes    |
+| DNAJC5g*| CSP-gamma         | Yes    |
 | DNAJC6  | Auxilin-1         | Yes    |
 | DNAJC7  | TPR2              | Yes    |
 | DNAJC8  | HSPC331, SPF31    | No     |
@@ -74,16 +74,17 @@ We have already cloned a substantial amount of the library in the pcDNA5 FRT/TO 
 | DNAJC29 | SACS, ARSACS      | No     |
 | DNAJC30 | LHONAR, MC1DN38   | No     |
 
+*DNAJC5, DNAJC5B and DNAJC5G do have different genomic locations and are paralogs instead of different splice variants of the same gene.
+
 ## Need for funding
 
-Additional funding is required to clone the remaining DNAJC candidates and complete the systematic expression library for this subclass. Securing these resources will enable a comprehensive, head-to-head screen to identify the most effective therapeutic targets within the DNAJC family for Huntington’s disease. 
+Additional funding is required to clone the remaining DNAJC candidates and complete the systematic expression library for this subclass. Securing these resources will enable a comprehensive, comprehensive screen to identify the most effective therapeutic targets within the DNAJC family for Huntington’s disease. 
 
 The expected costs are divided in two stages:
 
-- Molecular Construction (Cloning & Synthesis). To complete the library, we would need to order the remaining ~14 DNAJC genes cloned from cDNA, subclone them in the pcDNA5 FRT/TO vector system and sequence the whole DNAJC library. This would cost approximately €5000 (materials).
+- Molecular Construction (Cloning & Synthesis). To complete the library, we would need to order the remaining ~15 DNAJC genes cloned from cDNA, subclone them in the pcDNA5 FRT/TO vector system and sequence the whole DNAJC library. This would cost approximately €5000 (materials).
 
-- Systematic Screening (Cell-Based Assays)
-Running a head-to-head screen across the full ~30-member DNAJC family requires high-throughput infrastructure. Reagents & Consumables: Specialized plates, transfection reagents, and slot-blot as well as imaging/quantification for Huntington’s aggregation. This would cost approximately €10000 (materials).
+- Systematic Screening (Cell-Based Assays). Running a comprehensive screen across the full ~30-member DNAJC family requires high-throughput infrastructure. Reagents & Consumables: Specialized plates, transfection reagents, and slot-blot as well as imaging/quantification for Huntington’s aggregation. This would cost approximately €10000 (materials).
 
 - Labor: Dedicated time for a PhD-level researcher and/or technician to optimize and execute the screen (3–6 months) is budgeted at €35,000.
 
