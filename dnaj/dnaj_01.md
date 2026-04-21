@@ -44,7 +44,7 @@ We have already cloned a substantial amount of the library in the pcDNA5 FRT/TO 
 | DNAJC1  | MTJ1, ERDJ1       | Yes    |
 | DNAJC2  | MPP11, ZRF1       | No     |
 | DNAJC3  | P58IPK            | Yes    |
-| DNAJC4  | HSP40             | Yes    |
+| DNAJC4  | HSP40             | No     |
 | DNAJC5* | CSP,CLN4, CLN4B   | No     |
 | DNAJC5b*| CSP-alpha         | Yes    |
 | DNAJC5g*| CSP-gamma         | Yes    |
@@ -93,6 +93,7 @@ Thus, the total costs are expected to be around €50,000.
 ## Sharing research materials
 
 To facilitate open science and support global research efforts, the newly generated vectors will be submitted to [Addgene](https://www.addgene.org/) to share these materials with the scientific community. By providing access to this complete DNAJC library, we aim to accelerate discoveries and collaborative studies into protein quality control and neurodegenerative diseases.
+
 
 ---
 
