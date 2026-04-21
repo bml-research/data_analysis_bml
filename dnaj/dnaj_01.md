@@ -33,7 +33,7 @@ DNAJB6 exists as a functional monomer or dimer that utilizes its J-domain to rec
 
 ## What we want to do: cloning and screening the DNAJC family
 
-We have cloned the HSP70, HSP110, DNAJA and DNAJB family. This was done performed between 2004 and 2007. Generating the expression library was particularly cumbersome because it required cloning each chaperone gene from a diverse pool of cDNA's, a labor-intensive process of amplification and sequence verification for every individual candidate. Nowadays, the process is simplified because one can buy sequence verified cDNA sequences already cloned in cloning vectors.  
+We have cloned the HSP70, HSP110, DNAJA and DNAJB family. This was done between 2004 and 2007. Generating the expression library was particularly cumbersome because it required cloning each chaperone gene from a diverse pool of cDNA's, a labor-intensive process of amplification and sequence verification for every individual candidate. Nowadays, the process is simplified because one can buy sequence verified cDNA sequences already cloned in cloning vectors.  
 
 We would like to expand our study by cloning and screening the DNAJC family. While some members like DNAJC5 and DNAJC13 are well-documented, the majority of the DNAJC subclass remains understudied in neurodegeneration research. The focus on a few genes has left a significant gap, as there is no systematic, comprehensive screen to rank the relative potency of these overlooked family members. Consequently, it remains unknown if these less-studied DNAJC proteins possess unique or superior abilities to suppress mutant Huntingtin toxicity.
 
