@@ -82,9 +82,9 @@ Additional funding is required to clone the remaining DNAJC candidates and compl
 
 The expected costs are divided in two stages:
 
-- Molecular Construction (Cloning & Synthesis). To complete the library, we would need to order the remaining ~15 DNAJC genes cloned from cDNA, subclone them in the pcDNA5 FRT/TO vector system and sequence the whole DNAJC library. This would cost approximately €5000 (materials).
+- Molecular Construction (Cloning & Synthesis). To complete the library, we would need to order the remaining ~15 DNAJC genes cloned from cDNA, subclone them in the pcDNA5 FRT/TO vector system and sequence the whole DNAJC library. This would cost approximately €5,000 (materials).
 
-- Systematic Screening (Cell-Based Assays). Running a comprehensive screen across the full ~30-member DNAJC family requires high-throughput infrastructure. Reagents & Consumables: Specialized plates, transfection reagents, and slot-blot as well as imaging/quantification for Huntington’s aggregation. This would cost approximately €10000 (materials).
+- Systematic Screening (Cell-Based Assays). Running a comprehensive screen across the full ~30-member DNAJC family requires high-throughput infrastructure. Reagents & Consumables: Specialized plates, transfection reagents, and slot-blot as well as imaging/quantification for Huntington’s aggregation. This would cost approximately €10,000 (materials).
 
 - Labor: Dedicated time for a PhD-level researcher and/or technician to optimize and execute the screen (3–6 months) is budgeted at €35,000.
 
@@ -96,7 +96,9 @@ To facilitate open science and support global research efforts, the newly genera
 
 ---
 
-You can find information about my cv [here](https://jurrehageman.github.io/cv/)
+You can find information about my cv [here](https://jurrehageman.github.io/cv/).
+
+We will collaborate with the UMCG research group [Protein Quality Control in Health and Disease](https://umcgresearch.org/w/protein-quality-control-in-health-and-disease).
 
 ---
 
