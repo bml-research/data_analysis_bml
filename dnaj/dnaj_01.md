@@ -25,10 +25,10 @@ After sequence verification and Western blot validation, the functional screenin
 
 Identifying DNAJB6 as a suppressor was an important breakthrough as it enabled subsequent research that provided mechanistic evidence of a chaperone that directly targets primary nucleation, the very first step of protein aggregation. DNAJB6 uses a specific serine/threonine-rich motif to bind and neutralize mutant Huntingtin "seeds" before they can form larger amyloid fibrils. DNAJB6’s ability to prevent the earliest stages of misfolding makes it a prime therapeutic target, as inducing its expression pharmaceutically could provide a natural cellular defense mechanism to reduce the progression of Huntington’s disease.  
 
-DNAJB6 exists as a functional monomer or dimer that utilizes its J-domain to recruit HSP70 and a specific C-terminal motif to bind amyloid-prone clients. To increase its efficiency, it assembles into high-molecular-weight oligomeric "shells" that provide a high density of binding sites to trap disordered peptides. Once bound to a substrate, it forms a stable complex that effectively stalls the nucleation process, preventing the formation and spread of toxic protein aggregates.
+DNAJB6 exists as a functional monomer (figure 3) or dimer that utilizes its J-domain to recruit HSP70 and a specific C-terminal motif to bind amyloid-prone clients. To increase its efficiency, it assembles into high-molecular-weight oligomeric "shells" that provide a high density of binding sites to trap disordered peptides. Once bound to a substrate, it forms a stable complex that effectively stalls the nucleation process, preventing the formation and spread of toxic protein aggregates.
 
 ![Pic](./pics/01.png)
-*<sub>AlphaFold predicted structure of DNAJB6. Source: [AlphaFold server.](https://alphafoldserver.com/fold/6513fd66c075b29d)</sub>*
+*<sub>Figure 3. AlphaFold predicted structure of DNAJB6. Source: [AlphaFold server.](https://alphafoldserver.com/fold/6513fd66c075b29d)</sub>*
 
 
 ## What we want to do: Finalize cloning and screening of the entire DNAJC subfamily
