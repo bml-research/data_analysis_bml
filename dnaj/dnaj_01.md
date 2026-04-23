@@ -73,7 +73,7 @@ We would like to complete our study of the chaperone family by cloning and scree
 | DNAJC29 | SACS, ARSACS      | No     |
 | DNAJC30 | LHONAR, MC1DN38   | No     |
 
-*DNAJC5, DNAJC5B and DNAJC5G do have different genomic locations and are paralogs instead of different splice variants of the same gene.
+*<sub>*DNAJC5, DNAJC5B and DNAJC5G do have different genomic locations and are paralogs instead of different splice variants of the same gene.</sub>*
 
 ## Need for funding and budgeting
 
