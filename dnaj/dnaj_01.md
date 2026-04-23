@@ -27,15 +27,13 @@ Identifying DNAJB6 as a suppressor was an important breakthrough as it enabled s
 
 DNAJB6 exists as a functional monomer (figure 3) or dimer that utilizes its J-domain to recruit HSP70 and a specific C-terminal motif to bind amyloid-prone clients. To increase its efficiency, it assembles into high-molecular-weight oligomeric "shells" that provide a high density of binding sites to trap disordered peptides. Once bound to a substrate, it forms a stable complex that effectively stalls the nucleation process, preventing the formation and spread of toxic protein aggregates.
 
-![Pic](./pics/01.png)
+![Pic](./pics/03.png)
 *<sub>Figure 3. AlphaFold predicted structure of DNAJB6. Source: [AlphaFold server.](https://alphafoldserver.com/fold/6513fd66c075b29d)</sub>*
 
 
 ## What we want to do: Finalize cloning and screening of the entire DNAJC subfamily
 
-We have cloned the HSP70, HSP110, DNAJA and DNAJB family. This was done between 2004 and 2007. Generating the expression library was particularly cumbersome because it required cloning each chaperone gene from a diverse pool of cDNA's, a labor-intensive process of amplification and sequence verification for every individual candidate. Nowadays, the process is simplified because one can buy sequence verified cDNA sequences already cloned in cloning vectors.  
-
-We have already cloned a substantial amount of the library in the pcDNA5 FRT/TO vector system. See the table 1 below. We would like to complete our study of the chaperone family by cloning and screening the so far missing DNAJC family members. While some members like DNAJC5 and DNAJC13 are well-documented, the majority of the DNAJC subclass is understudied in neurodegeneration research. Up till now, no systematic, comprehensive screening to rank the relative potency of the DNAJC family was performed. Consequently, it remains unknown if these less-studied DNAJC proteins possess unique or superior abilities to suppress mutant Huntingtin toxicity.
+We would like to complete our study of the chaperone family by cloning and screening the so far missing DNAJC family members. While some members like DNAJC5 and DNAJC13 are well-documented, the majority of the DNAJC subclass is understudied in neurodegeneration research. Up till now, no systematic, comprehensive screening to rank the relative potency of the DNAJC family was performed. Consequently, it remains unknown if these less-studied DNAJC proteins possess unique or superior abilities to suppress mutant Huntingtin toxicity.
 
 
 *<sub>Table 1. Overview of cloned DNAJC members in the pcDNA5 FRT/TO vector system.</sub>*
@@ -83,11 +81,14 @@ To enable a comprehensive screen with the aim of identifying the most effective 
 
 The expected total costs of around €50,000 are divided in the following expenses:
 
-- Completion of DNAJC construct library. Cloning & Synthesisof the remaining ~15 DNAJC genes in the expression plasmid. Genes will be ordered and/orcloned from cDNA and  subcloned to the pcDNA5 FRT/TO vector system. Subsequently theDNAJC library will be sequence verified. The costs are estimated at €5,000 (materials).
+- Completion of DNAJC construct library. Cloning & Synthesis of the remaining ~15 DNAJC genes in the expression plasmid. Genes will be ordered and/or cloned from cDNA and  subcloned to the pcDNA5 FRT/TO vector system. Subsequently the DNAJC library will be sequence verified. The costs are estimated at €5,000 (materials).
 
-- •	Systematic Screening of construct library. Running a comprehensive screen across the full ~30-member DNAJC family using a high-throughput cell-based infrastructure comprising reagents & consumables (specialized plates, transfection reagents, and slot-blot) as well as an imaging/quantification setup for measuring Huntington’s aggregation. This would cost approximately €10,000 (materials).
+- Systematic Screening of construct library. Running a comprehensive screen across the full ~30-member DNAJC family using a high-throughput cell-based infrastructure comprising reagents & consumables (specialized plates, transfection reagents, and slot-blot) as well as an imaging/quantification setup for measuring Huntingtin aggregation. This would cost approximately €10,000 (materials).
 
 - Labor: Dedicated time for a PhD-level researcher and/or technician to optimize and execute the screen (6 months) is budgeted at €35,000.
+
+![Pic](./pics/04.png)
+*<sub>Figure 4. Gantt Chart of the project.</sub>*
 
 ## Sharing research materials
 
@@ -96,9 +97,12 @@ To facilitate open science and support global research efforts, the newly genera
 
 ---
 
-You can find information about my cv [here](https://jurrehageman.github.io/cv/).
+This is an initiative of [Biomolecules & Health](https://www.hanze.nl/en/research/centres/research-centre-biobased-economy/professorships/biomolecules-and-health).
 
-We will collaborate with the UMCG research group [Protein Quality Control in Health and Disease](https://umcgresearch.org/w/protein-quality-control-in-health-and-disease).
+In collaboration with the UMCG research group [Protein Quality Control in Health and Disease](https://umcgresearch.org/w/protein-quality-control-in-health-and-disease).
+
+- [Jurre Hageman](https://jurrehageman.github.io/cv/).
+- [Fin Milder](https://www.hanze.nl/en/about-hanze/organization/employees/professors/fin-milder)
 
 ---
 
