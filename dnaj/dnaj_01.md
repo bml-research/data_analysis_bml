@@ -92,7 +92,7 @@ The expected total costs of around €50,000 are divided in the following expens
 
 ## Sharing research materials
 
-To facilitate open science and support global research efforts, the newly generated vectors will be submitted to [Addgene](https://www.addgene.org/) to share these materials with the scientific community. By providing access to this complete DNAJC library, we aim to accelerate discoveries and collaborative studies into protein quality control and neurodegenerative diseases.
+To facilitate open science and support global research efforts, the newly generated vectors will be submitted to the non-profit plasmid repository [Addgene](https://www.addgene.org/) to share these materials with the scientific community. By providing access to this complete DNAJC library, we aim to accelerate discoveries and collaborative studies into protein quality control and neurodegenerative diseases.
 
 
 ---
