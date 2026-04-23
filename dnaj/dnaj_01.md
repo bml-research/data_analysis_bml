@@ -85,7 +85,7 @@ The expected total costs of around €50,000 are divided in the following expens
 
 - Systematic Screening of construct library. Running a comprehensive screen across the full ~30-member DNAJC family using a high-throughput cell-based infrastructure comprising reagents & consumables (specialized plates, transfection reagents, and slot-blot) as well as an imaging/quantification setup for measuring Huntingtin aggregation. This would cost approximately €10,000 (materials).
 
-- Labor: Dedicated time for a PhD-level researcher and/or technician to optimize and execute the screen (6 months) is budgeted at €35,000.
+- Labor: Dedicated time for a PhD-level researcher and/or technician to optimize and execute the screen (6 months) is budgeted at €35,000. See figure 4 for a timeline of the project.  
 
 ![Pic](./pics/04.png)
 *<sub>Figure 4. Gantt Chart of the project.</sub>*
