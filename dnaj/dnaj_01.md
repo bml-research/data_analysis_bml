@@ -97,11 +97,10 @@ To facilitate open science and support global research efforts, the newly genera
 
 ---
 
-This is an initiative of [Biomolecules & Health](https://www.hanze.nl/en/research/centres/research-centre-biobased-economy/professorships/biomolecules-and-health).
+This is an initiative of [Biomolecules & Health](https://www.hanze.nl/en/research/centres/research-centre-biobased-economy/professorships/biomolecules-and-health) in collaboration with the UMCG research group [Protein Quality Control in Health and Disease](https://umcgresearch.org/w/protein-quality-control-in-health-and-disease).
 
-In collaboration with the UMCG research group [Protein Quality Control in Health and Disease](https://umcgresearch.org/w/protein-quality-control-in-health-and-disease).
-
-- [Jurre Hageman](https://jurrehageman.github.io/cv/).
+Information about:
+- [Jurre Hageman](https://jurrehageman.github.io/cv/)
 - [Fin Milder](https://www.hanze.nl/en/about-hanze/organization/employees/professors/fin-milder)
 
 ---
