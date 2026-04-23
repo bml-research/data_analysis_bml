@@ -77,7 +77,7 @@ We would like to complete our study of the chaperone family by cloning and scree
 
 ## Need for funding and budgeting
 
-To enable a comprehensive screen with the aim of identifying the most effective therapeutic targets within the DNAJC family for Huntington’s disease, funding is required. Over the past years we have already cloned a substantial amount of the library of DNAJC proteins in the pcDNA5 FRT/TO vector system. See the table below. Financial resources will be utilized to clone the remaining DNAJC candidates and complete the expression library.  
+To enable a comprehensive screen with the aim of identifying the most effective therapeutic targets within the DNAJC family for Huntington’s disease, funding is required. Over the past years we have already cloned a substantial amount of the library of DNAJC proteins in the pcDNA5 FRT/TO vector system (table 1). Financial resources will be utilized to clone the remaining DNAJC candidates and complete the expression library.  
 
 The expected total costs of around €50,000 are divided in the following expenses:
 
