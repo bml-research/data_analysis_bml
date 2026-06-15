@@ -9,7 +9,7 @@
 
 ## Introduction
 
-[Huntington’s disease](https://www.huntington.nl/) is a fatal neurodegenerative disorder caused by a genetic mutation that produces an expanded polyglutamine tract in the Huntingtin protein. This mutation causes proteins to misfold and form toxic aggregates that destroy neurons in the brain. To manage this, cells utilize molecular chaperones, which act as a quality control system to ensure proper protein folding. These chaperones are essential for preventing the buildup of misfolded proteins and maintaining cellular health. Among these, DNAJ proteins, or Hsp40s, serve as vital co-chaperones that direct the activity of the Hsp70 folding machinery. They are identified by a conserved J-domain that allows them to bind specifically to client proteins.  
+[Huntington’s disease](https://www.huntington.nl/) is a fatal neurodegenerative disorder caused by a genetic mutation that produces an expanded polyglutamine tract in the Huntingtin protein. This mutation causes proteins to misfold and form toxic aggregates that destroy neurons in the brain. To manage this, cells utilize molecular chaperones, which act as a quality control system to ensure proper protein folding. These chaperones are essential for preventing the buildup of misfolded proteins and maintaining cellular health. Among these, DNAJ proteins, or Hsp40s, serve as vital co-chaperones that direct the activity of the Hsp70 folding machinery. They are identified by a conserved J-domain that allows them to bind specifically to client proteins. We have identified DNAJB6 and DNAJB8 as strong suppressors of poly-glutamine aggregation. However, The DNAJC family (consisting of ~30 members) have not been screened yet.  
 
 ## What have we done?
 
@@ -23,9 +23,8 @@ After sequence verification and Western blot validation, the functional screenin
 ![Pic](https://ars.els-cdn.com/content/image/1-s2.0-S1097276510000262-gr1_lrg.jpg)
 *<sub>Figure 2. The result of the previous screen showing that DNAJB6b and DNAJB8 are the most effective suppressors of huntingtin aggregation. Source: [Hageman et al.](https://www.sciencedirect.com/science/article/pii/S1097276510000262?via%3Dihub)</sub>*
 
-Identifying DNAJB6 as a suppressor was an important breakthrough as it enabled subsequent research that provided mechanistic evidence of a chaperone that directly targets primary nucleation, the very first step of protein aggregation. DNAJB6 uses a specific serine/threonine-rich motif to bind and neutralize mutant Huntingtin "seeds" before they can form larger amyloid fibrils. DNAJB6’s ability to prevent the earliest stages of misfolding makes it a prime therapeutic target, as inducing its expression pharmaceutically could provide a natural cellular defense mechanism to reduce the progression of Huntington’s disease.  
+Identifying DNAJB6 as a suppressor was an important breakthrough as it enabled subsequent research that provided mechanistic evidence of a chaperone that directly targets primary nucleation, the very first step of protein aggregation. DNAJB6 (figure 3) uses a specific serine/threonine-rich motif to bind and neutralize mutant Huntingtin "seeds" before they can form larger amyloid fibrils. DNAJB6’s ability to prevent the earliest stages of misfolding makes it a prime therapeutic target, as inducing its expression pharmaceutically could provide a natural cellular defense mechanism to reduce the progression of Huntington’s disease.  
 
-DNAJB6 exists as a functional monomer (figure 3) or dimer that utilizes its J-domain to recruit HSP70 and a specific C-terminal motif to bind amyloid-prone clients. To increase its efficiency, it assembles into high-molecular-weight oligomeric "shells" that provide a high density of binding sites to trap disordered peptides. Once bound to a substrate, it forms a stable complex that effectively stalls the nucleation process, preventing the formation and spread of toxic protein aggregates.
 
 ![Pic](./pics/03.png)
 *<sub>Figure 3. AlphaFold predicted structure of DNAJB6. Source: [AlphaFold server.](https://alphafoldserver.com/fold/6513fd66c075b29d)</sub>*
@@ -34,6 +33,12 @@ DNAJB6 exists as a functional monomer (figure 3) or dimer that utilizes its J-do
 ## What we want to do: Finalize cloning and screening of the entire DNAJC subfamily
 
 We would like to complete our study of the chaperone family by cloning and screening the DNAJC family members. While some members like DNAJC5 and DNAJC13 are well-documented, the majority of the DNAJC subclass is understudied in neurodegeneration research. Up till now, no systematic, comprehensive screening to rank the relative potency of the DNAJC family was performed. Consequently, it remains unknown if these less-studied DNAJC proteins possess unique or superior abilities to suppress mutant Huntingtin toxicity.
+
+The project consists of the following steps:  
+
+- Cloning all ~30 members. Some are already cloned (see table 1).  
+- Slot blot screen with Q119-YFP to investigate anti-aggregation potential.  
+- Collaboration with the UMCG UMIC center the screen for suppression of aggregation based on Q119-YFP fluorescence and aggregate formation. This will be based on IncuCyte system or Zeiss CD7.  
 
 
 *<sub>Table 1. Overview of cloned DNAJC members in the pcDNA5 FRT/TO vector system.</sub>*
@@ -85,7 +90,7 @@ The expected total costs of around €50,000 are divided in the following expens
 
 - Systematic Screening of construct library. Running a comprehensive screen across the full ~30-member DNAJC family using a high-throughput cell-based infrastructure comprising reagents & consumables (specialized plates, transfection reagents, and slot-blot) as well as an imaging/quantification setup for measuring Huntingtin aggregation. This would cost approximately €10,000 (materials).
 
-- Labor: Dedicated time for a PhD-level researcher and/or technician to optimize and execute the screen (6 months) is budgeted at €35,000. See figure 4 for a timeline of the project.  
+- Labor: Dedicated time for a technician to optimize and execute the screen (6 months) is budgeted at €35,000. See figure 4 for a timeline of the project.  
 
 ![Pic](./pics/04.png)
 *<sub>Figure 4. Gantt Chart of the project.</sub>*
