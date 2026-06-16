@@ -164,6 +164,32 @@ Only the Felidae family is selected and sorted on the common name.
 
 Like the example in Excel, first a column chart will be created with the same data. The example below will show you the code to make a column chart in base R:
 
+
+But before we will create a barplot on the larger dataset, we will start with a smaller dataset:
+
+
+```{r}
+barplot_data <- tibble(
+  day = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday"),
+  samples_processed = c(120, 145, 130, 155, 110))
+formatted_table(head(barplot_data))
+```
+
+
+
+And to create a base R plot of this dataset:
+
+
+```{r}
+
+barplot(barplot_data$samples_processed,
+        names = barplot_data$day,
+        col = "steelblue",
+        main = "Lab samples processed in the week")
+```
+
+Now the same with the larger dataset:
+
 ```{r}
 barplot(summ_data$`Birth weight (g)`, 
         ylab = "Birth weight (g)", 
@@ -182,12 +208,25 @@ Now let's compare this with the same type of plot using the same data but now th
 
 ## Bar Chart in ggplot2
 
+
+First we will create the barplot_data in ggplot:
+
+```{r}
+p <- barplot_data %>%
+  ggplot(aes(x = day, y = samples_processed)) +
+  geom_bar(stat="identity", fill="steelblue") +
+  labs(title="Lab samples processed in the week") #+
+p
+```
+
+And now the barplot of the larger dataset:
+
 ```{r}
 p <- summ_data %>%
   ggplot(aes(x = `Common name`, y = `Birth weight (g)`)) +
   geom_bar(stat="identity", fill="steelblue") +
   labs(title="Birth weight for different cat species") +
-  theme(axis.text.x = element_text(angle = 45, hjust=1))
+  theme(axis.text.x = element_text(angle = 45, hjust=1)) #rotate the x-axis labels 45 degrees
 p
 ```
 
@@ -196,6 +235,27 @@ From the graph it is clear that the `Tiger` and `Lion` have the highest birth we
 \
 
 ## Grouped bar chart 
+
+We will start with a simple example for a grouped bar chart.  
+Consider the following data:
+
+```{r}
+grouped_bar_data <- tibble(
+cell_line = c("HEK293", "HEK293", "HeLa", "HeLa", "MCF7", "MCF7"),
+protein = c("Protein X", "Protein Y", "Protein X", "Protein Y", "Protein X", "Protein Y"),
+concentration = c(12.4, 8.2, 15.1, 14.3, 6.8, 19.5))
+formatted_table(head(grouped_bar_data))
+```
+
+And now we create a simple barplot:
+
+```{r}
+p <- grouped_bar_data %>%
+  ggplot(aes(x = cell_line, y = concentration, fill = protein)) +
+  geom_bar(stat = "identity", position="dodge") +
+  labs(title="Concentration plotted per cell line for different proteins")
+p
+```
 
 Now let us look at the weight of newborns compared to the weight of the adults in one bar graph. Remember from the example in Excel that the logarithmic scale was used for the y-axis.
 
@@ -228,7 +288,20 @@ The `position = "dodge"` argument creates two bars next to each other.
 
 ## Stacked bar chart 
 
-Creating a stacked bar chart is easy. Just change the `position` argument.to "stack" (or omit it altogether as it is the default parameter, but there is nothing wrong in being explicit):
+Creating a stacked bar chart is easy. Just change the `position` argument to "stack" (or omit it altogether as it is the default parameter, but there is nothing wrong in being explicit):
+
+For the simple example:
+
+```{r}
+p <- grouped_bar_data %>%
+  ggplot(aes(x = cell_line, y = concentration, fill = protein)) +
+  geom_bar(stat = "identity", position="stack") +
+  labs(title="Concentration plotted per cell line for different proteins")
+p
+```
+
+And the more elaborate dataset:
+
 
 ```{r}
 p <- tidy_summ_data %>%
@@ -243,7 +316,18 @@ p
 
 ## Percent stacked barchart
 
-A percent (actually a fraction) stacked barchart can be created by changing the `position` argument to "fill";
+A percent (actually a fraction) stacked barchart can be created by changing the `position` argument to "fill":
+
+```{r}
+p <- grouped_bar_data %>%
+  ggplot(aes(x = cell_line, y = concentration, fill = protein)) +
+  geom_bar(stat = "identity", position="fill") +
+  labs(title="Fraction of concentration plotted per cell line for different proteins")
+p
+```
+
+And for the more elaborate dataset:
+
 
 ```{r}
 p <- tidy_summ_data %>%
@@ -260,6 +344,7 @@ Note that the y-label is modified accordingly.
 \
 
 ## Switch order of groups
+
 
 If you want to change the order of groups you will need to change the column `Weight (g)` from character to a factor as factors do support levels:
 And we can change the order of levels accordingly:
@@ -310,6 +395,28 @@ p
 
 Pie charts are suitable for displaying data that can be broken down into categories or parts that add up to a whole. They are often used to show proportions or percentages of a whole.
 
+First a simple example:
+
+```{r}
+pie_chart_data <- tibble(
+  cell_type = c("Neutrophils", "Lymphocytes", "Monocytes", "Eosinophils", "Basophils"),
+  percentage = c(60, 25, 8, 5, 2)
+)
+formatted_table(head(pie_chart_data))
+```
+
+And the corresponding Pie chart:
+
+```{r}
+p <- pie_chart_data %>%
+  ggplot(aes(x = "", y = percentage, fill = cell_type)) +
+  geom_bar(stat="identity", width=1) +
+  coord_polar("y", start=0) +
+  labs(title="Percentage of leucocytes") +
+  theme_void() # remove background, grid, numeric labels
+p
+```
+
 Like Excel, Pie charts are supported in the R package ggplot2. In the example below, a selection of the cats was used to create the pie chart (otherwise there would be too many parts of the pie representing the different feline species):
 
 First, we select all the big cats in a vector.
@@ -320,6 +427,7 @@ df_big_cats <- df %>%
   filter(`Common name` %in% big_cats)
 formatted_table(df_big_cats)
 ```
+
 And then we can create the Pie chart:
 
 ```{r}
@@ -433,6 +541,26 @@ That was actually quite a lot of work...
 
 Fortunately, creating box plots in ggplots2 is easier.
 
+
+First let's use a simple example:
+
+```{r}
+boxplot_data <- tibble(
+condition = c(rep("Control", 5), rep("Treatment A", 5), rep("Treatment B", 5)),
+expression_level = c(4.2, 4.5, 3.8, 4.1, 5.0, 7.1, 6.8, 7.5, 8.2, 6.9, 2.1, 2.5, 1.8, 3.0, 2.2)
+)
+formatted_table(boxplot_data)
+```
+
+And now a simple boxplot example:
+
+```{r}
+p <- boxplot_data %>% ggplot(aes(x = condition, y = expression_level)) + 
+  geom_boxplot() +
+  labs(title="Expression level per treatment condition") 
+p
+```
+
 We will take the same data set as earlier and select only the order Artiodactyla (pig, sheep, giraffe, deer, etc.):
 
 ```{r}
@@ -471,6 +599,28 @@ It seems that the hippo has the longest life span among the Artiodactyla.
 \
 
 ## Grouped box plots
+
+For a simple example of grouped box plot we can adjust the previous mini dataset:
+
+```{r}
+grouped_boxplot_data <- tibble(
+  condition = c(rep("Control", 6), rep("Treatment X", 6), rep("Treatment Y", 6)),
+  gene = rep(c("Gene A", "Gene A", "Gene A", "Gene B", "Gene B", "Gene B"), 3),
+  expression_level = c(4.2, 4.5, 3.8, 2.1, 2.5, 1.9, 7.1, 6.8, 7.5, 5.4, 5.1, 5.9, 2.1, 2.5, 1.8, 8.2, 8.9, 8.5)
+)
+formatted_table(grouped_boxplot_data)
+```
+
+And create the boxplot:
+
+
+```{r}
+p <- grouped_boxplot_data %>% ggplot(aes(x = condition, y = expression_level, fill = gene)) + 
+  geom_boxplot() +
+  labs(title="Expression level per treatment condition") 
+p
+```
+
 
 If we want to compare for example again the birth weight and the adult weight between orders within Artiodactyla, we need grouped box plots.
 First we need to make the data tidy again:
