@@ -13,6 +13,7 @@ Files used on this page:
 
 # Excel: Data Cleaning
 
+---
 
 **Index**  
 
@@ -32,6 +33,7 @@ Files used on this page:
   - [Working with #N/A](#working-with-na)
 
 
+---
 
 ## Introduction
 

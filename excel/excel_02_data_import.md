@@ -15,6 +15,8 @@ Files used on this page:
 
 # Excel: Data Import
 
+---
+
 **Index**  
 
 - [Excel: Data Import](#excel-data-import)
@@ -28,6 +30,7 @@ Files used on this page:
   - [Import csv files using the Text Import Wizard.](#import-csv-files-using-the-text-import-wizard)
   - [Import csv files directly using open with from the file explorer in your OS.](#import-csv-files-directly-using-open-with-from-the-file-explorer-in-your-os)
 
+---
 
 ## Introduction
 
