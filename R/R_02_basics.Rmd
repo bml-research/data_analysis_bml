@@ -25,6 +25,7 @@ This file can be downloaded [here](./R_02_basics.Rmd)
 
 # R: Basics of R
 
+**Table of contents**
 - [R: Basics of R](#r-basics-of-r)
   - [Basics of R](#basics-of-r)
   - [RStudio](#rstudio)
