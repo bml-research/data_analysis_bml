@@ -28,7 +28,7 @@ This file can be downloaded [here](./R_02_basics.Rmd)
 - [R: Basics of R](#r-basics-of-r)
   - [Basics of R](#basics-of-r)
   - [RStudio](#rstudio)
-    - [Some very basics of R](#some-very-basics-of-r)
+  - [Some very basics of R](#some-very-basics-of-r)
   - [Installing libraries](#installing-libraries)
   - [Loading packages:](#loading-packages)
   - [Make a tibble](#make-a-tibble)
@@ -68,7 +68,7 @@ RMarkdown is very convenient because you can mix the markdown markup language wi
 There is very comprehensive documentation about R Markdown. See [this webpage](https://rmarkdown.rstudio.com/).
   
 
-### Some very basics of R
+## Some very basics of R
 
 Although we will try to avoid base R as much as possible, you will need a bit of basics.
 
