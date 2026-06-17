@@ -9,6 +9,18 @@
 
 # Data
 
+
+--- 
+
+## Exercises and Solutions:
+
+
+- [Exercises](./data_02_exercises.md)
+- [Solutions](./data_03_solutions.md)
+
+
+---
+
 **Index**  
 
 
@@ -28,18 +40,7 @@
 ![Pic](./impression/impression.png)
 *<sub>Source: https://commons.wikimedia.org/wiki/File:US_Food_Consumption_Over_Time.svg</sub>*
 
-
---- 
-
-## Exercises and Solutions:
-
-
-- [Exercises](./data_02_exercises.md)
-- [Solutions](./data_03_solutions.md)
-
-
 ---
-
 
 ## Introduction
 
