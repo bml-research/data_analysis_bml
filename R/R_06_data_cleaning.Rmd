@@ -35,6 +35,29 @@ Files used on this page:
 
 # R: Data Cleaning
 
+**Index**
+
+- [R: Data Cleaning](#r-data-cleaning)
+  - [Data cleaning methods](#data-cleaning-methods)
+  - [The %\>% symbol](#the--symbol)
+    - [🔹 What `%>%` Is](#-what--is)
+    - [🔹 The Core Idea](#-the-core-idea)
+  - [Remove rows with missing values](#remove-rows-with-missing-values)
+  - [Renaming columns](#renaming-columns)
+  - [Reordering columns](#reordering-columns)
+  - [Changing a columns data type](#changing-a-columns-data-type)
+  - [Deal with missing data from csv files](#deal-with-missing-data-from-csv-files)
+  - [Deal with missing data from Excel files](#deal-with-missing-data-from-excel-files)
+  - [Replace data](#replace-data)
+    - [Adding a row in a tibble](#adding-a-row-in-a-tibble)
+    - [Replacing a whole row:](#replacing-a-whole-row)
+    - [Replacing data in a whole column:](#replacing-data-in-a-whole-column)
+    - [Replacing data in entire data frame:](#replacing-data-in-entire-data-frame)
+    - [Making data tidy](#making-data-tidy)
+    - [Transpose data](#transpose-data)
+    - [Separate a column into two columns](#separate-a-column-into-two-columns)
+
+
 ## Data cleaning methods
 
 Let's start with loading the tidyverse library:

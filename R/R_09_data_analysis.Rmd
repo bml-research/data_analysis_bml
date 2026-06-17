@@ -30,6 +30,27 @@ Files used on this page:
 
 # R: Data Analysis
 
+**Index**  
+
+- [R: Data Analysis](#r-data-analysis)
+  - [Data analysis methods](#data-analysis-methods)
+  - [Loading a dataset](#loading-a-dataset)
+  - [Select rows by index](#select-rows-by-index)
+  - [Select column by index](#select-column-by-index)
+  - [Select column by name](#select-column-by-name)
+  - [Select item by index](#select-item-by-index)
+  - [Analysis with Tidyverse functions](#analysis-with-tidyverse-functions)
+  - [Slicing with slice](#slicing-with-slice)
+  - [Filter rows](#filter-rows)
+  - [Arranging rows](#arranging-rows)
+  - [Select columns with select](#select-columns-with-select)
+  - [Summary data](#summary-data)
+  - [Round values](#round-values)
+  - [Statistics](#statistics)
+  - [Summarize each](#summarize-each)
+    - [Summarize and across](#summarize-and-across)
+
+
 ## Data analysis methods
 
 Let's start with loading the `Tidyverse` library:

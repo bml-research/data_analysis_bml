@@ -57,6 +57,30 @@ formatted_table <- function(df) {
 
 # R: Data Import
 
+**Index**  
+- [R: Data Import](#r-data-import)
+  - [Introduction](#introduction)
+  - [File paths](#file-paths)
+    - [Absolute vs. Relative Paths](#absolute-vs-relative-paths)
+      - [Absolute Path](#absolute-path)
+      - [Relative Path](#relative-path)
+      - [Portability and Transfer](#portability-and-transfer)
+    - [Operating System Differences](#operating-system-differences)
+  - [Example: `my_data.csv`](#example-my_datacsv)
+    - [File paths in R for different Operating Systems](#file-paths-in-r-for-different-operating-systems)
+  - [The Core Problem: Path Separators](#the-core-problem-path-separators)
+  - [The R Solution: Use Forward Slashes](#the-r-solution-use-forward-slashes)
+  - [The Recommended Function: `file.path()`](#the-recommended-function-filepath)
+  - [Summary for paths](#summary-for-paths)
+  - [Working directory](#working-directory)
+  - [getwd() and setwd()](#getwd-and-setwd)
+  - [Recommended Behavior and Best Practices](#recommended-behavior-and-best-practices)
+  - [The readr package](#the-readr-package)
+  - [Writing csv files](#writing-csv-files)
+  - [Reading Excel files](#reading-excel-files)
+  - [Write to Excel](#write-to-excel)
+
+
 ## Introduction
 
 We have dealt with data import in Excel before.

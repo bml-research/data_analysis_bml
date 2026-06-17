@@ -256,8 +256,9 @@ border: 0;
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -268,7 +269,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -388,6 +389,32 @@ code span.ot { color: #007020; }
 - <a href="./files_09_data_analysis/file01_dementia_patients_health_data.csv">file01_dementia_patients_health_data.csv</a></p>
 <div id="r-data-analysis" class="section level1">
 <h1>R: Data Analysis</h1>
+<p><strong>Index</strong></p>
+<ul>
+<li><a href="#r-data-analysis">R: Data Analysis</a>
+<ul>
+<li><a href="#data-analysis-methods">Data analysis methods</a></li>
+<li><a href="#loading-a-dataset">Loading a dataset</a></li>
+<li><a href="#select-rows-by-index">Select rows by index</a></li>
+<li><a href="#select-column-by-index">Select column by index</a></li>
+<li><a href="#select-column-by-name">Select column by name</a></li>
+<li><a href="#select-item-by-index">Select item by index</a></li>
+<li><a href="#analysis-with-tidyverse-functions">Analysis with Tidyverse
+functions</a></li>
+<li><a href="#slicing-with-slice">Slicing with slice</a></li>
+<li><a href="#filter-rows">Filter rows</a></li>
+<li><a href="#arranging-rows">Arranging rows</a></li>
+<li><a href="#select-columns-with-select">Select columns with
+select</a></li>
+<li><a href="#summary-data">Summary data</a></li>
+<li><a href="#round-values">Round values</a></li>
+<li><a href="#statistics">Statistics</a></li>
+<li><a href="#summarize-each">Summarize each</a>
+<ul>
+<li><a href="#summarize-and-across">Summarize and across</a></li>
+</ul></li>
+</ul></li>
+</ul>
 <div id="data-analysis-methods" class="section level2">
 <h2>Data analysis methods</h2>
 <p>Let’s start with loading the <code>Tidyverse</code> library:</p>
@@ -1222,7 +1249,7 @@ applications:</p>
 <col width="25%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th align="left">Package</th>
 <th align="left">Function</th>
 <th align="left">Primary Purpose</th>
@@ -1230,14 +1257,14 @@ applications:</p>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="left"><strong><code>dplyr</code></strong></td>
 <td align="left"><code>filter()</code></td>
 <td align="left">Subset rows</td>
 <td align="left">Selects a subset of rows based on column values that
 meet specified logical conditions.</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left"><strong><code>dplyr</code></strong></td>
 <td align="left"><code>slice()</code></td>
 <td align="left">Subset rows by position</td>
@@ -1246,70 +1273,70 @@ frame. Also includes helpers like <code>slice_head()</code>,
 <code>slice_tail()</code>, <code>slice_min()</code>,
 <code>slice_max()</code>, and <code>slice_sample()</code>.</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left"><strong><code>dplyr</code></strong></td>
 <td align="left"><code>select()</code></td>
 <td align="left">Subset columns</td>
 <td align="left">Selects, drops, or reorders columns by their
 names.</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left"><strong><code>dplyr</code></strong></td>
 <td align="left"><code>mutate()</code></td>
 <td align="left">Add/Modify columns</td>
 <td align="left">Adds new columns or modifies existing ones based on a
 formula.</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left"><strong><code>dplyr</code></strong></td>
 <td align="left"><code>arrange()</code></td>
 <td align="left">Reorder rows</td>
 <td align="left">Sorts rows by the values of specified column(s) in
 ascending or descending order.</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left"><strong><code>dplyr</code></strong></td>
 <td align="left"><code>group_by()</code></td>
 <td align="left">Group data</td>
 <td align="left">Creates grouped data that subsequent functions (like
 <code>summarize()</code>) operate on for each group.</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left"><strong><code>dplyr</code></strong></td>
 <td align="left"><code>summarize()</code></td>
 <td align="left">Summarize data</td>
 <td align="left">Reduces multiple values down to a single summary
 statistic (e.g., mean, count, standard deviation).</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left"><strong><code>dplyr</code></strong></td>
 <td align="left"><code>inner_join()</code></td>
 <td align="left">Combine data</td>
 <td align="left">Joins two data frames by matching keys, keeping only
 rows that have matches in <em>both</em> tables.</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left"><strong><code>tidyr</code></strong></td>
 <td align="left"><code>pivot_longer()</code></td>
 <td align="left">Reshape data</td>
 <td align="left">Lengthens data, increasing the number of rows and
 decreasing the number of columns.</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left"><strong><code>tidyr</code></strong></td>
 <td align="left"><code>pivot_wider()</code></td>
 <td align="left">Reshape data</td>
 <td align="left">Widens data, decreasing the number of rows and
 increasing the number of columns.</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left"><strong><code>ggplot2</code></strong></td>
 <td align="left"><code>ggplot()</code></td>
 <td align="left">Create visualizations</td>
 <td align="left">Initializes a ggplot object, defining the data and
 aesthetic mappings.</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left"><strong>Base R</strong></td>
 <td align="left"><code>%&gt;%</code> (pipe)</td>
 <td align="left">Chaining operations</td>

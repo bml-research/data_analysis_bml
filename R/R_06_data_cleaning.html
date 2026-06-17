@@ -256,8 +256,9 @@ border: 0;
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -268,7 +269,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -391,6 +392,42 @@ code span.ot { color: #007020; }
 - <a href="./files_06_data_cleaning/file04_genes.xlsx">file04_genes.xlsx</a></p>
 <div id="r-data-cleaning" class="section level1">
 <h1>R: Data Cleaning</h1>
+<p><strong>Index</strong></p>
+<ul>
+<li><a href="#r-data-cleaning">R: Data Cleaning</a>
+<ul>
+<li><a href="#data-cleaning-methods">Data cleaning methods</a></li>
+<li><a href="#the--symbol">The %&gt;% symbol</a>
+<ul>
+<li><a href="#id_-what--is">🔹 What <code>%&gt;%</code> Is</a></li>
+<li><a href="#id_-the-core-idea">🔹 The Core Idea</a></li>
+</ul></li>
+<li><a href="#remove-rows-with-missing-values">Remove rows with missing
+values</a></li>
+<li><a href="#renaming-columns">Renaming columns</a></li>
+<li><a href="#reordering-columns">Reordering columns</a></li>
+<li><a href="#changing-a-columns-data-type">Changing a columns data
+type</a></li>
+<li><a href="#deal-with-missing-data-from-csv-files">Deal with missing
+data from csv files</a></li>
+<li><a href="#deal-with-missing-data-from-excel-files">Deal with missing
+data from Excel files</a></li>
+<li><a href="#replace-data">Replace data</a>
+<ul>
+<li><a href="#adding-a-row-in-a-tibble">Adding a row in a
+tibble</a></li>
+<li><a href="#replacing-a-whole-row">Replacing a whole row:</a></li>
+<li><a href="#replacing-data-in-a-whole-column">Replacing data in a
+whole column:</a></li>
+<li><a href="#replacing-data-in-entire-data-frame">Replacing data in
+entire data frame:</a></li>
+<li><a href="#making-data-tidy">Making data tidy</a></li>
+<li><a href="#transpose-data">Transpose data</a></li>
+<li><a href="#separate-a-column-into-two-columns">Separate a column into
+two columns</a></li>
+</ul></li>
+</ul></li>
+</ul>
 <div id="data-cleaning-methods" class="section level2">
 <h2>Data cleaning methods</h2>
 <p>Let’s start with loading the tidyverse library:</p>
