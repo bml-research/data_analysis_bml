@@ -37,8 +37,12 @@ Files used on this page:
     - [Bubble chart](#bubble-chart)
   - [Pivot charts](#pivot-charts)
 
+---
+
 ![impression](./pics_11_data_visualization/fig01.png)
 *<sub>Figure 1: Data visualization of bacteria grown in the presence of anthocyanins isolated from red grapes.</sub>*
+
+---
 
 ## Introduction
 

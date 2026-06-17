@@ -38,9 +38,12 @@ Files used at this page:
     - [Add the Measure to the Pivot Table:](#add-the-measure-to-the-pivot-table)
   - [Mimic Pivot tables](#mimic-pivot-tables)
 
+---
+
 ![impression](./pics_08_data_analysis/fig1.png)
 *<sub>Figure 1: Data loaded and ready to be analyzed. Source: https://www.kaggle.com/datasets/zusmani/mygenome</sub>*
 
+---
 
 ## Introduction
 
