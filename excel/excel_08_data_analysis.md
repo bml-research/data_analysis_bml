@@ -13,10 +13,6 @@ Files used at this page:
 
 # Excel: Data Analysis
 
-
-![impression](./pics_08_data_analysis/fig1.png)
-*<sub>Figure 1: Data loaded and ready to be analyzed. Source: https://www.kaggle.com/datasets/zusmani/mygenome</sub>*
-
 **Index**  
 
 - [Excel: Data Analysis](#excel-data-analysis)
@@ -41,6 +37,9 @@ Files used at this page:
     - [Create a New Measure:](#create-a-new-measure)
     - [Add the Measure to the Pivot Table:](#add-the-measure-to-the-pivot-table)
   - [Mimic Pivot tables](#mimic-pivot-tables)
+
+![impression](./pics_08_data_analysis/fig1.png)
+*<sub>Figure 1: Data loaded and ready to be analyzed. Source: https://www.kaggle.com/datasets/zusmani/mygenome</sub>*
 
 
 ## Introduction
