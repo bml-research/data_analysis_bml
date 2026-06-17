@@ -32,6 +32,10 @@ Files used on this page:
 
 # R: Data Visualization
 
+**Index**  
+
+
+
 ## Data visualization methods
 
 Here we will focus on data visualization.
