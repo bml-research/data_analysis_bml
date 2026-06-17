@@ -34,6 +34,28 @@ Files used on this page:
 
 **Index**  
 
+- [R: Data Visualization](#r-data-visualization)
+  - [Data visualization methods](#data-visualization-methods)
+  - [Base R plotting verses ggplot2](#base-r-plotting-verses-ggplot2)
+  - [The Grammar of ggplot2](#the-grammar-of-ggplot2)
+  - [Loading Tidyverse](#loading-tidyverse)
+  - [Loading a dataset](#loading-a-dataset)
+  - [Prep the data frame](#prep-the-data-frame)
+  - [Bar Chart base R](#bar-chart-base-r)
+  - [Bar Chart in ggplot2](#bar-chart-in-ggplot2)
+  - [Grouped bar chart](#grouped-bar-chart)
+  - [Stacked bar chart](#stacked-bar-chart)
+  - [Percent stacked barchart](#percent-stacked-barchart)
+  - [Switch order of groups](#switch-order-of-groups)
+  - [Pie Chart](#pie-chart)
+  - [Radar Charts](#radar-charts)
+  - [Boxplots](#boxplots)
+  - [Grouped box plots](#grouped-box-plots)
+  - [Violin Charts](#violin-charts)
+  - [Line plots](#line-plots)
+  - [XY-scatter plots](#xy-scatter-plots)
+  - [Bubble chart](#bubble-chart)
+  - [Other plot types and libraries](#other-plot-types-and-libraries)
 
 
 ## Data visualization methods
