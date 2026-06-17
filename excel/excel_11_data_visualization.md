@@ -22,6 +22,22 @@ Files used on this page:
 ![impression](./pics_11_data_visualization/fig01.png)
 *<sub>Figure 1: Data visualization of bacteria grown in the presence of anthocyanins isolated from red grapes.</sub>*
 
+**Index**  
+
+- [Excel: Data Visualization](#excel-data-visualization)
+  - [Introduction](#introduction)
+  - [Data visualization charts in Excel](#data-visualization-charts-in-excel)
+  - [What makes a good chart?](#what-makes-a-good-chart)
+  - [Some chart examples](#some-chart-examples)
+    - [Column charts](#column-charts)
+    - [Pie Chart](#pie-chart)
+    - [Pie of Pie](#pie-of-pie)
+    - [Radar charts](#radar-charts)
+    - [Box plots](#box-plots)
+    - [Line and XY-scatter plots](#line-and-xy-scatter-plots)
+    - [Bubble chart](#bubble-chart)
+  - [Pivot charts](#pivot-charts)
+
 
 ## Introduction
 
@@ -147,7 +163,7 @@ We could calculate this but Excel provides a plot type that takes this work out 
 
 Like the relative stacked column chart, the pie chart is another chart type that is suitable for such a representation.
 
-## Pie Chart
+### Pie Chart
 
 Pie charts are suitable for displaying data that can be broken down into categories or parts that add up to a whole. They are often used to show proportions or percentages of a whole.
 
@@ -172,7 +188,7 @@ Or with the data labels as percentages shown connected to the pie slices (choose
 *<sub>Figure 10: Pie chart representing the relative weight of big cats in grams. Data labels as percentages are connected to the pie slices.</sub>*
 
 
-## Pie of Pie
+### Pie of Pie
 
 Pie of Pie charts can become handy if the individual slices become small and the Pie chart becomes cluttered. 
 
@@ -185,7 +201,7 @@ As you can see, the second Pie is created from the smallest Pie slices from the 
 
 You can format the secondary Pie by right-clicking it > Format Data Series and then use the drop down to select the appropriate Split Series.
 
-## Radar charts
+### Radar charts
 
 A radar chart, also known as a spider chart or a star chart, is a graphical representation of data in which values are plotted along a set of axes that radiate from a central point. Each axis represents a different variable, and the data points are connected to form a polygon shape, which can be filled in with color to represent the area covered by the data.
 
@@ -204,7 +220,7 @@ The resulting radar chart is shown below:
 
 >Note that we can conclude that the Kjedahl method shows considerable higher amounts. Although the protein concentration in sample 3 is lower compared to the other two samples, the same pattern can be seen. The  Kjeldahl method seems to overestimate the protein concentration.
 
-## Box plots
+### Box plots
 
 A box plot, also known as a box and whisker plot, is a graphical representation of a dataset that shows the distribution of the data through its quartiles, outliers and extremes. It is called a box plot because it uses a box to represent the second and third quartiles (the inter-quartile range or IQR), and lines to represent the first and fourth quartiles (the lowest and highest data points within the IQR), as well as the outliers, if any.
 
@@ -261,7 +277,7 @@ We can also create box plots with more data series. In the example below, days t
 
 >You might have noticed that for some orders, no clear Tukey box shape is seen (minimum, lower percentile, median, higher percentile and maximum). This is because some orders only contain one or two data points (animal species). You can omit these by filtering of course. Or (even better) try to obtain a more complete data set. 
 
-## Line and XY-scatter plots
+### Line and XY-scatter plots
 
 Line charts are useful when you want to visualize trends or changes in data over time or another continuous variable. They are particularly good for showing how a particular variable changes over time or in response to another variable. For example, a line chart can be used to show how the weight of mice has changed over time. 
 
@@ -327,7 +343,7 @@ A linear regression model was added as trendline and the equation is shown on th
 
 
 
-## Bubble chart
+### Bubble chart
 
 If you have data that is most suitable to present in a XY-grid but you have an extra dimension, bubble charts might be a good chart type.
 

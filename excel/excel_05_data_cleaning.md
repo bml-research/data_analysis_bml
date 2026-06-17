@@ -14,6 +14,25 @@ Files used on this page:
 # Excel: Data Cleaning
 
 
+**Index**  
+
+- [Excel: Data Cleaning](#excel-data-cleaning)
+  - [Introduction](#introduction)
+  - [Text to column feature](#text-to-column-feature)
+  - [Remove duplicates](#remove-duplicates)
+  - [Trimming text](#trimming-text)
+  - [Find and replace](#find-and-replace)
+  - [Splitting and concatenating strings](#splitting-and-concatenating-strings)
+  - [Dealing with missing data](#dealing-with-missing-data)
+    - [Finding missing data](#finding-missing-data)
+    - [Bulk delete rows with missing values](#bulk-delete-rows-with-missing-values)
+      - [Using Go To Special on a Specific Column](#using-go-to-special-on-a-specific-column)
+      - [Using Filter on a Specific Column](#using-filter-on-a-specific-column)
+      - [Delete Blank Rows Using Power Query](#delete-blank-rows-using-power-query)
+  - [Working with #N/A](#working-with-na)
+
+
+
 ## Introduction
 
 In data science, data is typically organized in a structured format, such as a table or a spreadsheet. This allows for easy manipulation and analysis of the data.
@@ -232,7 +251,7 @@ In the Power Query Editor, navigate to the header of the specific column (e.g., 
 
 See also [this video](https://www.youtube.com/watch?v=3mkfF1pNw0U)
 
-### Working with #N/A
+## Working with #N/A
 
 In any case, it is best to convert cells with "empty" values (whether it is truly blank, contains a dash or any other character to mark empty) to #N/A. #N/A is the error value of Excel that means "no value is available." To avoid accidentally including empty cells in your calculations, enter #N/A in the cells where you are missing information. (A formula that references a cell that contains #N/A will return the #N/A error value). Read more about #N/A [here](https://support.microsoft.com/en-gb/office/na-function-5469c2d1-a90c-4fb5-9bbc-64bd9bb6b47c#:~:text=Returns%20the%20error%20value%20%23N,empty%20cells%20in%20your%20calculations.).
 

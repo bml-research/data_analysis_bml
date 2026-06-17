@@ -15,6 +15,19 @@ Files used on this page:
 
 # Excel: Data Import
 
+**Index**  
+
+- [Excel: Data Import](#excel-data-import)
+  - [Introduction](#introduction)
+  - [Check your data file](#check-your-data-file)
+  - [Check the decimal separator](#check-the-decimal-separator)
+  - [Import CSV files in Excel](#import-csv-files-in-excel)
+  - [Import csv files using Power Query](#import-csv-files-using-power-query)
+  - [Import TSV and other text file in Excel with Power Query](#import-tsv-and-other-text-file-in-excel-with-power-query)
+  - [Power Query and decimal separators](#power-query-and-decimal-separators)
+  - [Import csv files using the Text Import Wizard.](#import-csv-files-using-the-text-import-wizard)
+  - [Import csv files directly using open with from the file explorer in your OS.](#import-csv-files-directly-using-open-with-from-the-file-explorer-in-your-os)
+
 
 ## Introduction
 
@@ -109,7 +122,7 @@ Here are some screenshots of the import process:
 As you can see from above, the data is loaded in a Table with filters to sort rows. 
 
 
-### Import TSV and other text file in Excel with Power Query
+## Import TSV and other text file in Excel with Power Query
 
 As mentioned above, sometimes text files use another column separator such as a tab or a pipe `|` symbol.
 These are fairly easy to load in Excel as well:
@@ -144,7 +157,7 @@ However, after clicking "From txt/csv" and selecting the csv file, you can speci
 |![Data loaded](./pics_02_data_import/10.png)
 *<sub>Figure 10: a difficult file loaded in Excel</sub>*
 
-### Power Query and decimal separators
+## Power Query and decimal separators
 
 As mentioned above, alway check if the decimal separator is set correctly.
 As an example we will have a look at [this dataset](https://www.kaggle.com/datasets/stealthtechnologies/predict-lifespan-of-a-comet-goldfish) about predictor variables in order to predict lifespan in Goldfish.

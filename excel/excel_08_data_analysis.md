@@ -12,10 +12,35 @@ Files used at this page:
 - [file01_dementia_patients_health_data.csv](./files_08_data_analysis/file01_dementia_patients_health_data.csv)  
 
 # Excel: Data Analysis
- 
+
 
 ![impression](./pics_08_data_analysis/fig1.png)
 *<sub>Figure 1: Data loaded and ready to be analyzed. Source: https://www.kaggle.com/datasets/zusmani/mygenome</sub>*
+
+**Index**  
+
+- [Excel: Data Analysis](#excel-data-analysis)
+  - [Introduction](#introduction)
+  - [How to organize your worksheet](#how-to-organize-your-worksheet)
+  - [The anatomy of a function](#the-anatomy-of-a-function)
+  - [Named ranges](#named-ranges)
+  - [Array formulas](#array-formulas)
+  - [Nesting functions](#nesting-functions)
+  - [Examples of useful functions](#examples-of-useful-functions)
+    - [IF](#if)
+    - [COUNTIF](#countif)
+    - [XLOOKUP](#xlookup)
+  - [List of functions](#list-of-functions)
+  - [Statistics](#statistics)
+  - [Sorting of data and filtering of data](#sorting-of-data-and-filtering-of-data)
+  - [Conditional formatting](#conditional-formatting)
+  - [Pivot tables](#pivot-tables)
+  - [Power Pivot](#power-pivot)
+    - [Add Data to the Data Model:](#add-data-to-the-data-model)
+    - [Enable Power Pivot (if not already enabled):](#enable-power-pivot-if-not-already-enabled)
+    - [Create a New Measure:](#create-a-new-measure)
+    - [Add the Measure to the Pivot Table:](#add-the-measure-to-the-pivot-table)
+  - [Mimic Pivot tables](#mimic-pivot-tables)
 
 
 ## Introduction
