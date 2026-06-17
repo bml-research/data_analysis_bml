@@ -621,7 +621,7 @@ p <- grouped_boxplot_data %>% ggplot(aes(x = condition, y = expression_level, fi
 p
 ```
 
-
+And now for the more realistic example:  
 If we want to compare for example again the birth weight and the adult weight between orders within Artiodactyla, we need grouped box plots.
 First we need to make the data tidy again:
 
@@ -668,7 +668,28 @@ A plot type that is often used from ggplot2 but not present in Excel is the viol
 Violin plots are quite similar to box plots, except that they also show the kernel probability density of the data at different values. 
 So they are a bit more informative (but also a bit harder to understand) compared to box plots.
 Like box plots, violin plots do also include a marker for the median of the data and a box indicating the interquartile range.
-Let's show the above example as a violin plot (the Antilocapridae family is excluded, because it contains only one data point):
+
+
+We start with a simple violin plot using our previous example:  
+
+```{r}
+p <- boxplot_data %>% ggplot(aes(x = condition, y = expression_level)) + 
+   geom_violin() +
+  labs(title="Expression level per treatment condition") 
+p
+```
+
+Or using the grouped boxplot data example:
+
+
+```{r}
+p <- grouped_boxplot_data %>% ggplot(aes(x = condition, y = expression_level, fill = gene)) + 
+  geom_violin() +
+  labs(title="Expression level per treatment condition") 
+p
+```
+
+Let's show the animal longevity data as a violin plot (the Antilocapridae family is excluded, because it contains only one data point):
 
 
 ```{r}
@@ -686,7 +707,62 @@ p
 ## Line plots
 
 
-As an example, we take the same (fictive data) about the OB/OB and DB/DB mice (compared to the wild type) and the gain of weight in these mice during a period of time as was used in the Excel section.
+A line plot is a graph that displays information as a series of data points connected by line segments to show trends or changes over time or a continuous sequence.  
+
+Consider the following dataset:
+
+```{r}
+lab_data_single <- tibble(
+  time_hours = c(0, 2, 4, 6, 8, 10),
+  OD600      = c(0.05, 0.12, 0.35, 0.78, 1.24, 1.35)
+)
+formatted_table(head(lab_data_single))
+```
+
+And the corresponding line graph:  
+
+```{r}
+p <- lab_data_single %>% 
+  ggplot(aes(x = time_hours, y = OD600)) +
+  geom_line(linewidth = 1, color = "steelblue") +
+  geom_point(size = 2, color = "steelblue") +
+  labs(
+    title = "Bacterial Growth Curve (Control)",
+    x = "Time (hours)",
+    y = "Optical Density (OD600)"
+  ) 
+p
+```
+
+And now an example of multiple series:  
+
+```{r}
+lab_data_double <- tibble(
+  time_hours = rep(c(0, 2, 4, 6, 8, 10), times = 2),
+  condition  = rep(c("Control", "Treatment"), each = 6),
+  OD600      = c(0.05, 0.12, 0.35, 0.78, 1.24, 1.35,  # Control groep
+                 0.05, 0.09, 0.21, 0.45, 0.68, 0.72)   # Treatment groep
+)
+formatted_table(head(lab_data_double))
+```
+
+And the corresponding graph:  
+
+```{r}
+p <- lab_data_double %>%
+  ggplot(aes(x = time_hours, y = OD600, color = condition)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 2) +
+  labs(
+    title = "Bacterial Growth Curve",
+    x = "Time (hours)",
+    y = "Optical Density (OD600)",
+    color = "Condition"
+  )
+p
+```
+
+As an example of a larger dataset, we take fictive data) about the OB/OB and DB/DB mice (compared to the wild type) and the gain of weight in these mice during a period of time as was used in the Excel section.
 The data is as follows and can be downloaded [here](./files_12_data_visualization/file_03_mouse_weight_data.xlsx):  
 
 
@@ -746,7 +822,50 @@ p
 As mentioned in the Excel section, XY-scatter plots differ from line plots.
 In XY-scatter plots, the data on the x-axis are separated according to their value instead as being used as labels.
 
-XY-scatter plots are often used to demonstrate a correlation. As for the Excel section, we will use the ChickWeight data set from R to create a scatter plot using ggplot2.
+XY-scatter plots are often used to demonstrate a correlation. 
+
+Let's first start with a small example for an XY-scatter plot:  
+
+```{r}
+scatter_data <- tibble(
+  protein_conc_ug_ml = c(1, 2, 5, 10, 15, 20, 25, 30),
+  fluorescence       = c(120, 245, 580, 1150, 1720, 2310, 2950, 3480)
+)
+formatted_table(head(scatter_data))
+```
+
+And an XY scatter plot:  
+
+
+```{r}
+p <- scatter_data %>% 
+  ggplot(aes(x = protein_conc_ug_ml, y = fluorescence)) +
+  geom_point(size = 3, color = "darkgreen") +
+  labs(
+    title = "Protein Quantification Standard Curve",
+    x = "Protein Concentration (µg/mL)",
+    y = "Fluorescence Intensity (A.U.)"
+  )
+p
+```
+
+And we can add a linear trendline "layer" as follows:  
+
+```{r}
+p <- scatter_data %>% 
+  ggplot(aes(x = protein_conc_ug_ml, y = fluorescence)) +
+  geom_point(size = 3, color = "darkgreen") +
+  geom_smooth(method = "lm", se = FALSE, color = "red", linetype = "dashed") +
+  labs(
+    title = "Protein Quantification Standard Curve",
+    x = "Protein Concentration (µg/mL)",
+    y = "Fluorescence Intensity (A.U.)"
+  )
+p
+```
+
+And now a larger example:  
+As for the Excel section, we will use the ChickWeight data set from R to create a scatter plot using ggplot2.
 First we take only the data from Diet 1:
 
 ```{r}
@@ -774,6 +893,8 @@ p <- chickwts_diet1 %>%
   geom_smooth(method="lm")
 p
 ```
+Note that the standard error is included as we did not use the `se = FALSE` argument.  
+
 \
 
 ## Bubble chart
