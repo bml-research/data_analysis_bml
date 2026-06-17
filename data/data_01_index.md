@@ -9,10 +9,24 @@
 
 # Data
 
+**Index**  
+
+- [Data](#data)
+  - [Exercises and Solutions:](#exercises-and-solutions)
+  - [Introduction](#introduction)
+    - [Categorical data and numerical data](#categorical-data-and-numerical-data)
+    - [Data scales](#data-scales)
+    - [Calculations and visualization methods on different data types](#calculations-and-visualization-methods-on-different-data-types)
+    - [Data tables](#data-tables)
+    - [Untidy data versus tidy data:](#untidy-data-versus-tidy-data)
+    - [Data types](#data-types)
+      - [Microsoft Excel](#microsoft-excel)
+      - [R](#r)
+
+
 ![Pic](./impression/impression.png)
 *<sub>Source: https://commons.wikimedia.org/wiki/File:US_Food_Consumption_Over_Time.svg</sub>*
 
-## Index page
 
 --- 
 
