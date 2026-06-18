@@ -167,8 +167,18 @@ below uses functions that ship with R by default.</p>
 <h1>📘 Base R Overview</h1>
 <p>💡 <em>This page provides a structured overview of core base R
 functions, covering the same operations as the <a href="./R_00_tidy_overview.html">Tidyverse Overview</a> page, but
-without relying on any external packages.<br />
-Click a category to expand and jump to detailed examples.</em></p>
+without relying on any external packages. While this overview includes
+references and examples using base R for completeness and historical
+context, for modern data science workflows, the use of the Tidyverse
+suite of packages (such as dplyr, tidyr, and ggplot2) is strongly
+recommended and advised. While base R is powerful, its syntax can
+occasionally be inconsistent—such as automatically dropping dimensions
+when subsetting single columns. The Tidyverse avoids these pitfalls by
+maintaining predictable data structures (like tibbles) and utilizing a
+clean, pipe-oriented (%&gt;% or |&gt;) syntax. This approach
+significantly enhances code readability, makes your scripts easier to
+maintain, and ensures a more consistent programming experience. Click a
+category to expand and jump to detailed examples.</em></p>
 <p>The examples shown are performed on the Puromycin dataset. The
 Puromycin dataset is a classic example dataset built into the base R
 installation (within the datasets package). It originates from a
@@ -415,10 +425,10 @@ Removes duplicate rows based on one or more columns.
 </summary>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># Randomly sample 3 rows</span></span>
 <span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>Puromycin[<span class="fu">sample</span>(<span class="fu">nrow</span>(Puromycin), <span class="dv">3</span>), ]</span></code></pre></div>
-<pre><code>##    conc rate     state
-## 5  0.11  123   treated
-## 23 1.10  160 untreated
-## 2  0.02   47   treated</code></pre>
+<pre><code>##   conc rate   state
+## 1 0.02   76 treated
+## 9 0.56  191 treated
+## 3 0.06   97 treated</code></pre>
 Randomly selects rows; sample a fraction by basing <code>size</code> on
 <code>round(nrow(Puromycin) * prop)</code>.
 </details>

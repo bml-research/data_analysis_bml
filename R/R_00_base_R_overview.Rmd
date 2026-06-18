@@ -27,7 +27,7 @@ Unlike the tidyverse, base R needs no extra packages — everything below uses f
 
 # 📘 Base R Overview {#base-r-overview}
 
-💡 *This page provides a structured overview of core base R functions, covering the same operations as the [Tidyverse Overview](./R_00_tidy_overview.html) page, but without relying on any external packages.  
+💡 *This page provides a structured overview of core base R functions, covering the same operations as the [Tidyverse Overview](./R_00_tidy_overview.html) page, but without relying on any external packages. While this overview includes references and examples using base R for completeness and historical context, for modern data science workflows, the use of the Tidyverse suite of packages (such as dplyr, tidyr, and ggplot2) is strongly recommended and advised. While base R is powerful, its syntax can occasionally be inconsistent—such as automatically dropping dimensions when subsetting single columns. The Tidyverse avoids these pitfalls by maintaining predictable data structures (like tibbles) and utilizing a clean, pipe-oriented (%>% or |>) syntax. This approach significantly enhances code readability, makes your scripts easier to maintain, and ensures a more consistent programming experience.
 Click a category to expand and jump to detailed examples.*
 
 The examples shown are performed on the Puromycin dataset. The Puromycin dataset is a classic example dataset built into the base R installation (within the datasets package). It originates from a biochemical experiment and is widely used for demonstrating and testing nonlinear regression models, particularly the Michaelis-Menten kinetics model in enzyme reactions.
