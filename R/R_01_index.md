@@ -17,6 +17,10 @@
 
 ---
 
+## Quick Base R Overview
+
+- [Base R Overview](./R_00_tidy_overview.html)
+
 ## Quick R Tidyverse Overview
 
 - [Tidyverse Overview](./R_00_tidy_overview.html)
