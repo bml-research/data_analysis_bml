@@ -460,12 +460,99 @@ documentation</a></p>
 </div>
 <div id="loading-a-dataset" class="section level2">
 <h2>Loading a dataset</h2>
-<p>As an example data set, we will be using the same data set as used in
-the Excel section: namely, the
+<p>As an example of a small data set we will use the build-in Puromycin
+data set.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>Puromycin <span class="ot">&lt;-</span> <span class="fu">tibble</span>(Puromycin)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">formatted_table</span>(<span class="fu">head</span>(Puromycin))</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+conc<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:left;">
+state<br><span style="font-weight: normal;">fct</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+123
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+139
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+</tbody>
+</table>
+<p>As an example of a larger data set, we will be using the same data
+set as used in the Excel section: namely, the
 <code>Dementia Patient Health,Prescriptions ML Dataset</code>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>file_path <span class="ot">&lt;-</span> <span class="st">&quot;./files_09_data_analysis/file01_dementia_patients_health_data.csv&quot;</span></span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(file_path)</span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">formatted_table</span>(<span class="fu">head</span>(df))</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>file_path <span class="ot">&lt;-</span> <span class="st">&quot;./files_09_data_analysis/file01_dementia_patients_health_data.csv&quot;</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(file_path)</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="fu">formatted_table</span>(<span class="fu">head</span>(df))</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -999,7 +1086,37 @@ columns are of the correct data type (e.g. <em>numeric</em> for the
 <div id="select-rows-by-index" class="section level2">
 <h2>Select rows by index</h2>
 <p>You can select rows by index using the following notation:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">formatted_table</span>(df[<span class="dv">2</span>, ]) <span class="co">#select second row</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">formatted_table</span>(Puromycin[<span class="dv">2</span>, ]) <span class="co">#select second row</span></span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+conc<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:left;">
+state<br><span style="font-weight: normal;">fct</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+</tbody>
+</table>
+<p>Or for the larger data frame:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">formatted_table</span>(df[<span class="dv">2</span>, ]) <span class="co">#select second row</span></span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1160,7 +1277,49 @@ of a column, all columns are selected.</p>
 <div id="select-column-by-index" class="section level2">
 <h2>Select column by index</h2>
 <p>You can also select a column based on an index:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">formatted_table</span>(<span class="fu">head</span>(df[, <span class="dv">8</span>])) <span class="co">#select eighth column</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">formatted_table</span>(<span class="fu">head</span>(Puromycin[, <span class="dv">2</span>])) <span class="co">#select second column</span></span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+76
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+47
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+97
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+107
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+123
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+139
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">formatted_table</span>(<span class="fu">head</span>(df[, <span class="dv">8</span>])) <span class="co">#select eighth column</span></span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1207,7 +1366,11 @@ Rivastigmine
 <div id="select-column-by-name" class="section level2">
 <h2>Select column by name</h2>
 <p>You can also select a column by name:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">head</span>(df<span class="sc">$</span>Prescription) <span class="co">#select column Prescription</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">head</span>(Puromycin<span class="sc">$</span>state) <span class="co">#select the state</span></span></code></pre></div>
+<pre><code>## [1] treated treated treated treated treated treated
+## Levels: treated untreated</code></pre>
+<p>Or the larger example:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">head</span>(df<span class="sc">$</span>Prescription) <span class="co">#select column Prescription</span></span></code></pre></div>
 <pre><code>## [1] NA             &quot;Galantamine&quot;  NA             &quot;Donepezil&quot;    &quot;Memantine&quot;   
 ## [6] &quot;Rivastigmine&quot;</code></pre>
 <p>Note that this action returns a vector instead of a data frame.</p>
@@ -1215,7 +1378,26 @@ Rivastigmine
 <div id="select-item-by-index" class="section level2">
 <h2>Select item by index</h2>
 <p>You can also select a specific item by index:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">formatted_table</span>(df[<span class="dv">2</span>, <span class="dv">8</span>]) <span class="co">#select second row and eighth column</span></span></code></pre></div>
+<p>For the Puromycin data set:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">formatted_table</span>(Puromycin[<span class="dv">2</span>, <span class="dv">3</span>]) <span class="co">#select second row and third column</span></span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+state<br><span style="font-weight: normal;">fct</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+</tbody>
+</table>
+<p>And the larger data set:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">formatted_table</span>(df[<span class="dv">2</span>, <span class="dv">8</span>]) <span class="co">#select second row and eighth column</span></span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1353,9 +1535,42 @@ first argument of the next function.</td>
 slice your tibbles.<br />
 Some examples:</p>
 <p>Slice the first row:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<p>Puromycin data set:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+conc<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:left;">
+state<br><span style="font-weight: normal;">fct</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+</tbody>
+</table>
+<p>Larger data set:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1511,9 +1726,75 @@ Diabetes
 </tbody>
 </table>
 <p>Or the second to fifth row:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<p>Puromycin:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+conc<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:left;">
+state<br><span style="font-weight: normal;">fct</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+123
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+</tbody>
+</table>
+<p>Larget data set:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1892,9 +2173,86 @@ Diabetes
 </table>
 <p>You can use <code>slice_head</code> to get the upper <code>n</code>
 rows:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n=</span><span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<p>Puromycin:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n=</span><span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+conc<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:left;">
+state<br><span style="font-weight: normal;">fct</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+123
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+</tbody>
+</table>
+<p>Larger data set:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n=</span><span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2346,9 +2704,86 @@ Diabetes
 </tbody>
 </table>
 <p>Or <code>slice_tail</code> to get the last <code>n</code> rows:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>  <span class="fu">slice_tail</span>(<span class="at">n=</span><span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<p>Puromycin:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a>  <span class="fu">slice_tail</span>(<span class="at">n=</span><span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+conc<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:left;">
+state<br><span style="font-weight: normal;">fct</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.22
+</td>
+<td style="text-align:right;">
+131
+</td>
+<td style="text-align:left;">
+untreated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.22
+</td>
+<td style="text-align:right;">
+124
+</td>
+<td style="text-align:left;">
+untreated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.56
+</td>
+<td style="text-align:right;">
+144
+</td>
+<td style="text-align:left;">
+untreated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.56
+</td>
+<td style="text-align:right;">
+158
+</td>
+<td style="text-align:left;">
+untreated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1.10
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:left;">
+untreated
+</td>
+</tr>
+</tbody>
+</table>
+<p>Larger data set:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>  <span class="fu">slice_tail</span>(<span class="at">n=</span><span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2800,10 +3235,43 @@ Heart Disease
 </tbody>
 </table>
 <p>Using <code>slice_max</code> you can get the row with a max value
-(for example the max Alcohol level):</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> AlcoholLevel, <span class="at">n=</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+(for example the max rate) from the puromycin data set:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> rate, <span class="at">n=</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+conc<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:left;">
+state<br><span style="font-weight: normal;">fct</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1.1
+</td>
+<td style="text-align:right;">
+207
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+</tbody>
+</table>
+<p>Using <code>slice_max</code> you can get the row with a max value
+(for example the max Alcohol level) from the larger data set:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> AlcoholLevel, <span class="at">n=</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2960,7 +3428,7 @@ Heart Disease
 </table>
 <p>Note that this is the same as the following in base R (but easier to
 read):</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">formatted_table</span>(df[df<span class="sc">$</span>AlcoholLevel <span class="sc">==</span> <span class="fu">max</span>(df<span class="sc">$</span>AlcoholLevel), ])</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="fu">formatted_table</span>(df[df<span class="sc">$</span>AlcoholLevel <span class="sc">==</span> <span class="fu">max</span>(df<span class="sc">$</span>AlcoholLevel), ])</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -3127,11 +3595,76 @@ rows.<br />
 Try it yourself without the `<code>slice_head()</code> to compare the
 output.</p>
 </blockquote>
-<p>Filter rows on all patients of age 65:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>  <span class="fu">filter</span>(Age <span class="sc">==</span> <span class="dv">65</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<p>Filter rows on conc 0.11 in Puromycin data set:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>  <span class="fu">filter</span>(conc <span class="sc">==</span> <span class="fl">0.11</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+conc<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:left;">
+state<br><span style="font-weight: normal;">fct</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+123
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+139
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:left;">
+untreated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+115
+</td>
+<td style="text-align:left;">
+untreated
+</td>
+</tr>
+</tbody>
+</table>
+<p>Filter rows on all patients of age 65 on the larger data set:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>  <span class="fu">filter</span>(Age <span class="sc">==</span> <span class="dv">65</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -3656,11 +4189,99 @@ Diabetes
 </tr>
 </tbody>
 </table>
+<p>Concentration higher than 0.11 in Puromycin:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span></span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>  <span class="fu">filter</span>(conc <span class="sc">&gt;</span> <span class="fl">0.11</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+conc<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:left;">
+state<br><span style="font-weight: normal;">fct</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.22
+</td>
+<td style="text-align:right;">
+159
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.22
+</td>
+<td style="text-align:right;">
+152
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.56
+</td>
+<td style="text-align:right;">
+191
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.56
+</td>
+<td style="text-align:right;">
+201
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1.10
+</td>
+<td style="text-align:right;">
+207
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1.10
+</td>
+<td style="text-align:right;">
+200
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+</tbody>
+</table>
 <p>Measured oxygen level in blood considered as normal (&gt;95):</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>  <span class="fu">filter</span>(BloodOxygenLevel <span class="sc">&gt;</span> <span class="dv">95</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>  <span class="fu">filter</span>(BloodOxygenLevel <span class="sc">&gt;</span> <span class="dv">95</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -4186,13 +4807,91 @@ Diabetes
 </tbody>
 </table>
 <p>To add a second condition, the <code>&amp;</code> operator is
-used:<br />
-Current smoker (condition 1) AND normal blood oxygen levels (condition
-2):</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>  <span class="fu">filter</span>(Smoking_Status <span class="sc">==</span> <span class="st">&quot;Current Smoker&quot;</span> <span class="sc">&amp;</span> BloodOxygenLevel <span class="sc">&gt;</span> <span class="dv">95</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+used:</p>
+<p>State is untreated and higher concentrations than 0.11 in Puromycin
+data set:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span></span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>  <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">&quot;untreated&quot;</span> <span class="sc">&amp;</span> conc <span class="sc">&gt;</span> <span class="fl">0.11</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb30-4"><a href="#cb30-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+conc<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:left;">
+state<br><span style="font-weight: normal;">fct</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.22
+</td>
+<td style="text-align:right;">
+131
+</td>
+<td style="text-align:left;">
+untreated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.22
+</td>
+<td style="text-align:right;">
+124
+</td>
+<td style="text-align:left;">
+untreated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.56
+</td>
+<td style="text-align:right;">
+144
+</td>
+<td style="text-align:left;">
+untreated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.56
+</td>
+<td style="text-align:right;">
+158
+</td>
+<td style="text-align:left;">
+untreated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1.10
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:left;">
+untreated
+</td>
+</tr>
+</tbody>
+</table>
+<p>Current smoker (condition 1) AND normal blood oxygen levels
+(condition 2) in larger data set:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>  <span class="fu">filter</span>(Smoking_Status <span class="sc">==</span> <span class="st">&quot;Current Smoker&quot;</span> <span class="sc">&amp;</span> BloodOxygenLevel <span class="sc">&gt;</span> <span class="dv">95</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -4718,12 +5417,101 @@ Hypertension
 </tbody>
 </table>
 <p>The <code>!</code> operator can be used to exclude (negate) a
-specific condition:<br />
-NOT a current smoker AND normal blood oxygen levels:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>Smoking_Status <span class="sc">==</span> <span class="st">&quot;Current Smoker&quot;</span> <span class="sc">&amp;</span> BloodOxygenLevel <span class="sc">&gt;</span> <span class="dv">95</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+specific condition:</p>
+<p>NOT a untreated sample AND conc higer than 0.11 in Puromycin data
+set:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> </span>
+<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>state <span class="sc">==</span> <span class="st">&quot;untreated&quot;</span> <span class="sc">&amp;</span> conc <span class="sc">&gt;</span> <span class="fl">0.11</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb32-4"><a href="#cb32-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+conc<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:left;">
+state<br><span style="font-weight: normal;">fct</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.22
+</td>
+<td style="text-align:right;">
+159
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.22
+</td>
+<td style="text-align:right;">
+152
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.56
+</td>
+<td style="text-align:right;">
+191
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.56
+</td>
+<td style="text-align:right;">
+201
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1.10
+</td>
+<td style="text-align:right;">
+207
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1.10
+</td>
+<td style="text-align:right;">
+200
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+</tbody>
+</table>
+<p>NOT a current smoker AND normal blood oxygen levels:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>Smoking_Status <span class="sc">==</span> <span class="st">&quot;Current Smoker&quot;</span> <span class="sc">&amp;</span> BloodOxygenLevel <span class="sc">&gt;</span> <span class="dv">95</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb33-3"><a href="#cb33-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb33-4"><a href="#cb33-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -5249,12 +6037,101 @@ Diabetes
 </tbody>
 </table>
 <p>The <code>|</code> operator can be used to meet either one of the
-conditions: Normal blood oxygen levels OR very low blood oxygen
-levels:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>  <span class="fu">filter</span>(BloodOxygenLevel <span class="sc">&lt;</span> <span class="dv">92</span> <span class="sc">|</span> BloodOxygenLevel <span class="sc">&gt;</span> <span class="dv">95</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+conditions:</p>
+<p>Conc lower than 0.11 OR higher than 0.56 in Puromycin data set:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span></span>
+<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a>  <span class="fu">filter</span>(conc <span class="sc">&lt;</span> <span class="fl">0.11</span> <span class="sc">|</span> conc <span class="sc">&gt;</span> <span class="fl">0.56</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb34-4"><a href="#cb34-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+conc<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:left;">
+state<br><span style="font-weight: normal;">fct</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1.10
+</td>
+<td style="text-align:right;">
+207
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1.10
+</td>
+<td style="text-align:right;">
+200
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+</tbody>
+</table>
+<p>Normal blood oxygen levels OR very low blood oxygen levels in the
+larger data set:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a>  <span class="fu">filter</span>(BloodOxygenLevel <span class="sc">&lt;</span> <span class="dv">92</span> <span class="sc">|</span> BloodOxygenLevel <span class="sc">&gt;</span> <span class="dv">95</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb35-4"><a href="#cb35-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -5785,12 +6662,101 @@ Heart Disease
 <p>You can use <code>arrange()</code> instead of <code>filter()</code>
 if you want to sort your rows in a data frame instead of filtering
 it:</p>
+<p>Arrange on rate <strong>ascending</strong> (from low to high values)
+in Puromycin data set:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span></span>
+<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a>  <span class="fu">arrange</span>(rate) <span class="sc">%&gt;%</span></span>
+<span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb36-4"><a href="#cb36-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+conc<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:left;">
+state<br><span style="font-weight: normal;">fct</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:left;">
+untreated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:left;">
+untreated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:left;">
+untreated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+86
+</td>
+<td style="text-align:left;">
+untreated
+</td>
+</tr>
+</tbody>
+</table>
 <p>Arrange on blood oxygen levels <strong>ascending</strong> (from low
-to high values):</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>  <span class="fu">arrange</span>(BloodOxygenLevel) <span class="sc">%&gt;%</span></span>
-<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+to high values) in larger data set:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a>  <span class="fu">arrange</span>(BloodOxygenLevel) <span class="sc">%&gt;%</span></span>
+<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb37-4"><a href="#cb37-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -6317,10 +7283,99 @@ None
 </table>
 <p>If you want to sort in <strong>descending</strong> order (from high
 to low values):</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(BloodOxygenLevel)) <span class="sc">%&gt;%</span></span>
-<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<p>Puromycin:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span></span>
+<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(rate)) <span class="sc">%&gt;%</span></span>
+<span id="cb38-3"><a href="#cb38-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb38-4"><a href="#cb38-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+conc<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:left;">
+state<br><span style="font-weight: normal;">fct</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1.10
+</td>
+<td style="text-align:right;">
+207
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.56
+</td>
+<td style="text-align:right;">
+201
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1.10
+</td>
+<td style="text-align:right;">
+200
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.56
+</td>
+<td style="text-align:right;">
+191
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1.10
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:left;">
+untreated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.22
+</td>
+<td style="text-align:right;">
+159
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+</tbody>
+</table>
+<p>Larget data set:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(BloodOxygenLevel)) <span class="sc">%&gt;%</span></span>
+<span id="cb39-3"><a href="#cb39-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb39-4"><a href="#cb39-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -6846,10 +7901,44 @@ Hypertension
 </tbody>
 </table>
 <p>And to select the row with the highest value:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(BloodOxygenLevel)) <span class="sc">%&gt;%</span></span>
-<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<p>Puromycin:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span></span>
+<span id="cb40-2"><a href="#cb40-2" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(rate)) <span class="sc">%&gt;%</span></span>
+<span id="cb40-3"><a href="#cb40-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb40-4"><a href="#cb40-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+conc<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:left;">
+state<br><span style="font-weight: normal;">fct</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1.1
+</td>
+<td style="text-align:right;">
+207
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+</tbody>
+</table>
+<p>Larger data set:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb41-2"><a href="#cb41-2" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(BloodOxygenLevel)) <span class="sc">%&gt;%</span></span>
+<span id="cb41-3"><a href="#cb41-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb41-4"><a href="#cb41-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -7005,12 +8094,101 @@ Hypertension
 </tbody>
 </table>
 <p>You can also do some multi-level sorting:</p>
+<p>Here is an example of sorting on state first (alphabetically from a
+to z) and then sorting on rate in the Puromycin data set:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span></span>
+<span id="cb42-2"><a href="#cb42-2" tabindex="-1"></a>  <span class="fu">arrange</span>(state, rate) <span class="sc">%&gt;%</span></span>
+<span id="cb42-3"><a href="#cb42-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb42-4"><a href="#cb42-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+conc<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:left;">
+state<br><span style="font-weight: normal;">fct</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+123
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+139
+</td>
+<td style="text-align:left;">
+treated
+</td>
+</tr>
+</tbody>
+</table>
 <p>Here is an example of sorting on age first and then sorting on blood
-oxygen levels:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>  <span class="fu">arrange</span>(Age, BloodOxygenLevel) <span class="sc">%&gt;%</span></span>
-<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+oxygen levels in the larger data set:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a>  <span class="fu">arrange</span>(Age, BloodOxygenLevel) <span class="sc">%&gt;%</span></span>
+<span id="cb43-3"><a href="#cb43-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb43-4"><a href="#cb43-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -7535,12 +8713,103 @@ Diabetes
 </tr>
 </tbody>
 </table>
+<p>Here is an example of sorting on state first
+(<strong>descending</strong> alphabetically from z to a) and then
+sorting on <strong>descending</strong> rate in the Puromycin data
+set:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span></span>
+<span id="cb44-2"><a href="#cb44-2" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(state), <span class="fu">desc</span>(rate)) <span class="sc">%&gt;%</span></span>
+<span id="cb44-3"><a href="#cb44-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb44-4"><a href="#cb44-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+conc<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:left;">
+state<br><span style="font-weight: normal;">fct</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1.10
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:left;">
+untreated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.56
+</td>
+<td style="text-align:right;">
+158
+</td>
+<td style="text-align:left;">
+untreated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.56
+</td>
+<td style="text-align:right;">
+144
+</td>
+<td style="text-align:left;">
+untreated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.22
+</td>
+<td style="text-align:right;">
+131
+</td>
+<td style="text-align:left;">
+untreated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.22
+</td>
+<td style="text-align:right;">
+124
+</td>
+<td style="text-align:left;">
+untreated
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+115
+</td>
+<td style="text-align:left;">
+untreated
+</td>
+</tr>
+</tbody>
+</table>
 <p>Here is an example of sorting on age first and then sorting on
 <strong>descending</strong> blood oxygen levels (from high to low):</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>  <span class="fu">arrange</span>(Age, <span class="fu">desc</span>(BloodOxygenLevel)) <span class="sc">%&gt;%</span></span>
-<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a>  <span class="fu">arrange</span>(Age, <span class="fu">desc</span>(BloodOxygenLevel)) <span class="sc">%&gt;%</span></span>
+<span id="cb45-3"><a href="#cb45-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb45-4"><a href="#cb45-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -8076,10 +9345,79 @@ columns. Often data sets contain a lot of variables (columns). Most
 likely, you are not interested in all of them. With the
 <code>select()</code> function, you can select the variables that you
 are interested in:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>  <span class="fu">select</span>(Age, Smoking_Status, BloodOxygenLevel, HeartRate) <span class="sc">%&gt;%</span></span>
-<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<p>For Puromycin select conc and rate:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span></span>
+<span id="cb46-2"><a href="#cb46-2" tabindex="-1"></a>  <span class="fu">select</span>(conc, rate) <span class="sc">%&gt;%</span></span>
+<span id="cb46-3"><a href="#cb46-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb46-4"><a href="#cb46-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+conc<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+76
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+47
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+97
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+107
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+123
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+139
+</td>
+</tr>
+</tbody>
+</table>
+<p>And for the larger data set columns Age, Smoking_Status,
+BloodOxygenLevel, HeartRate:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb47-2"><a href="#cb47-2" tabindex="-1"></a>  <span class="fu">select</span>(Age, Smoking_Status, BloodOxygenLevel, HeartRate) <span class="sc">%&gt;%</span></span>
+<span id="cb47-3"><a href="#cb47-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb47-4"><a href="#cb47-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -8184,11 +9522,79 @@ Former Smoker
 </tr>
 </tbody>
 </table>
-<p>Or select all columns except the blood oxygen levels:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>BloodOxygenLevel) <span class="sc">%&gt;%</span></span>
-<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<p>Or select all columns except the state in the Puromycin data set:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span></span>
+<span id="cb48-2"><a href="#cb48-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>state) <span class="sc">%&gt;%</span></span>
+<span id="cb48-3"><a href="#cb48-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb48-4"><a href="#cb48-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+conc<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+76
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+47
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+97
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+107
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+123
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+139
+</td>
+</tr>
+</tbody>
+</table>
+<p>Or select all columns except the blood oxygen levels in the larger
+data set:</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb49-2"><a href="#cb49-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>BloodOxygenLevel) <span class="sc">%&gt;%</span></span>
+<span id="cb49-3"><a href="#cb49-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb49-4"><a href="#cb49-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -8692,12 +10098,80 @@ Diabetes
 </tr>
 </tbody>
 </table>
-<p>Or select besides the age, all column names that end with
-“Level”:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>  <span class="fu">select</span>(Age, <span class="fu">ends_with</span>(<span class="st">&quot;Level&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<p>Or select all column names that are numbers in the Puromycin data
+set:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span></span>
+<span id="cb50-2"><a href="#cb50-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.double)) <span class="sc">%&gt;%</span></span>
+<span id="cb50-3"><a href="#cb50-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb50-4"><a href="#cb50-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+conc<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+76
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+47
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+97
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+107
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+123
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+139
+</td>
+</tr>
+</tbody>
+</table>
+<p>Or select besides the age, all column names that end with “Level” in
+the larger data set:</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb51-2"><a href="#cb51-2" tabindex="-1"></a>  <span class="fu">select</span>(Age, <span class="fu">ends_with</span>(<span class="st">&quot;Level&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb51-3"><a href="#cb51-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb51-4"><a href="#cb51-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -8809,7 +10283,17 @@ columns that start with certain characters.</p>
 <h2>Summary data</h2>
 <p>You can use the base R <code>summary()</code> function to get summary
 information on a data frame:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="fu">summary</span>(df)</span></code></pre></div>
+<p>For Puromycin:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" tabindex="-1"></a><span class="fu">summary</span>(Puromycin)</span></code></pre></div>
+<pre><code>##       conc             rate             state   
+##  Min.   :0.0200   Min.   : 47.0   treated  :12  
+##  1st Qu.:0.0600   1st Qu.: 91.5   untreated:11  
+##  Median :0.1100   Median :124.0                 
+##  Mean   :0.3122   Mean   :126.8                 
+##  3rd Qu.:0.5600   3rd Qu.:158.5                 
+##  Max.   :1.1000   Max.   :207.0</code></pre>
+<p>Or the larger data set:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" tabindex="-1"></a><span class="fu">summary</span>(df)</span></code></pre></div>
 <pre><code>##     Diabetic      AlcoholLevel         HeartRate      BloodOxygenLevel
 ##  Min.   :0.000   Min.   :0.0004138   Min.   : 60.00   Min.   : 90.01  
 ##  1st Qu.:0.000   1st Qu.:0.0455049   1st Qu.: 68.00   1st Qu.: 92.88  
@@ -8867,15 +10351,41 @@ information on a data frame:</p>
 ##  Max.   :1.000  
 ## </code></pre>
 <p>As this output can be quit overwhelming you may select for the data
-that you are interested in (for example blood oxygen levels):</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="fu">summary</span>(df<span class="sc">$</span>BloodOxygenLevel)</span></code></pre></div>
+that you are interested in:</p>
+<p>For example the rate in the Puromycin data set:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" tabindex="-1"></a><span class="fu">summary</span>(Puromycin<span class="sc">$</span>rate)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    47.0    91.5   124.0   126.8   158.5   207.0</code></pre>
+<p>For example blood oxygen levels for the larger data set:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" tabindex="-1"></a><span class="fu">summary</span>(df<span class="sc">$</span>BloodOxygenLevel)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   90.01   92.88   95.39   95.23   97.79  100.00</code></pre>
 <p>But the Tidyverse library also contains a <code>summarize()</code>
 function:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">BloodOxygenLevel =</span> <span class="fu">mean</span>(BloodOxygenLevel)) <span class="sc">%&gt;%</span></span>
-<span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<p>Puromycin:</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> </span>
+<span id="cb60-2"><a href="#cb60-2" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_rate =</span> <span class="fu">mean</span>(rate)) <span class="sc">%&gt;%</span></span>
+<span id="cb60-3"><a href="#cb60-3" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+mean_rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+126.8261
+</td>
+</tr>
+</tbody>
+</table>
+<p>Larger data set:</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb61-2"><a href="#cb61-2" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">BloodOxygenLevel =</span> <span class="fu">mean</span>(BloodOxygenLevel)) <span class="sc">%&gt;%</span></span>
+<span id="cb61-3"><a href="#cb61-3" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -8894,10 +10404,46 @@ BloodOxygenLevel<br><span style="font-weight: normal;">dbl</span>
 </table>
 <p>You can combine this with the <code>group_by()</code> function for
 powerful analysis:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Smoking_Status) <span class="sc">%&gt;%</span></span>
-<span id="cb33-3"><a href="#cb33-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Average_BloodOxygenLevel =</span> <span class="fu">mean</span>(BloodOxygenLevel)) <span class="sc">%&gt;%</span></span>
-<span id="cb33-4"><a href="#cb33-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<p>Puromycin:</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> </span>
+<span id="cb62-2"><a href="#cb62-2" tabindex="-1"></a>  <span class="fu">group_by</span>(state) <span class="sc">%&gt;%</span></span>
+<span id="cb62-3"><a href="#cb62-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_rate =</span> <span class="fu">mean</span>(rate)) <span class="sc">%&gt;%</span></span>
+<span id="cb62-4"><a href="#cb62-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+state<br><span style="font-weight: normal;">fct</span>
+</th>
+<th style="text-align:right;">
+mean_rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+treated
+</td>
+<td style="text-align:right;">
+141.5833
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+untreated
+</td>
+<td style="text-align:right;">
+110.7273
+</td>
+</tr>
+</tbody>
+</table>
+<p>Larger data set:</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb63-2"><a href="#cb63-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Smoking_Status) <span class="sc">%&gt;%</span></span>
+<span id="cb63-3"><a href="#cb63-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Average_BloodOxygenLevel =</span> <span class="fu">mean</span>(BloodOxygenLevel)) <span class="sc">%&gt;%</span></span>
+<span id="cb63-4"><a href="#cb63-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -8940,10 +10486,55 @@ Never Smoked
 Excel (see figure 28 at <a href="https://bml-research.github.io/data_analysis/excel/excel_08_data_analysis.html">data
 analysis Excel</a>).</p>
 <p>To create a similar output as the pivot tables in Excel:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Smoking_Status) <span class="sc">%&gt;%</span></span>
-<span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">average_BOL =</span> <span class="fu">mean</span>(BloodOxygenLevel), <span class="at">average_BT =</span> <span class="fu">mean</span>(BodyTemperature)) <span class="sc">%&gt;%</span></span>
-<span id="cb34-4"><a href="#cb34-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<p>Puromycin:</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span></span>
+<span id="cb64-2"><a href="#cb64-2" tabindex="-1"></a>  <span class="fu">group_by</span>(state) <span class="sc">%&gt;%</span></span>
+<span id="cb64-3"><a href="#cb64-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">average_conc =</span> <span class="fu">mean</span>(conc), <span class="at">average_rate =</span> <span class="fu">mean</span>(rate)) <span class="sc">%&gt;%</span></span>
+<span id="cb64-4"><a href="#cb64-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+state<br><span style="font-weight: normal;">fct</span>
+</th>
+<th style="text-align:right;">
+average_conc<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+average_rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+treated
+</td>
+<td style="text-align:right;">
+0.3450000
+</td>
+<td style="text-align:right;">
+141.5833
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+untreated
+</td>
+<td style="text-align:right;">
+0.2763636
+</td>
+<td style="text-align:right;">
+110.7273
+</td>
+</tr>
+</tbody>
+</table>
+<p>Larger data set:</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb65-2"><a href="#cb65-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Smoking_Status) <span class="sc">%&gt;%</span></span>
+<span id="cb65-3"><a href="#cb65-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">average_BOL =</span> <span class="fu">mean</span>(BloodOxygenLevel), <span class="at">average_BT =</span> <span class="fu">mean</span>(BodyTemperature)) <span class="sc">%&gt;%</span></span>
+<span id="cb65-4"><a href="#cb65-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -8998,10 +10589,73 @@ Never Smoked
 analysis Excel</a>.</p>
 <p>Likewise, you can extend this by providing the standard
 deviation:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Smoking_Status) <span class="sc">%&gt;%</span></span>
-<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">average_BOL =</span> <span class="fu">mean</span>(BloodOxygenLevel), <span class="at">sd_BOL =</span> <span class="fu">sd</span>(BloodOxygenLevel), <span class="at">average_BT =</span> <span class="fu">mean</span>(BodyTemperature), <span class="at">sd_BT =</span> <span class="fu">sd</span>(BodyTemperature)) <span class="sc">%&gt;%</span></span>
-<span id="cb35-4"><a href="#cb35-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<p>Puromycin:</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span></span>
+<span id="cb66-2"><a href="#cb66-2" tabindex="-1"></a>  <span class="fu">group_by</span>(state) <span class="sc">%&gt;%</span></span>
+<span id="cb66-3"><a href="#cb66-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">average_conc =</span> <span class="fu">mean</span>(conc), <span class="at">sd_conc =</span> <span class="fu">sd</span>(conc), <span class="at">average_rate =</span> <span class="fu">mean</span>(rate), <span class="at">sd_rate =</span> <span class="fu">sd</span>(rate)) <span class="sc">%&gt;%</span></span>
+<span id="cb66-4"><a href="#cb66-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+state<br><span style="font-weight: normal;">fct</span>
+</th>
+<th style="text-align:right;">
+average_conc<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+sd_conc<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+average_rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+sd_rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+treated
+</td>
+<td style="text-align:right;">
+0.3450000
+</td>
+<td style="text-align:right;">
+0.3986226
+</td>
+<td style="text-align:right;">
+141.5833
+</td>
+<td style="text-align:right;">
+52.96561
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+untreated
+</td>
+<td style="text-align:right;">
+0.2763636
+</td>
+<td style="text-align:right;">
+0.3355674
+</td>
+<td style="text-align:right;">
+110.7273
+</td>
+<td style="text-align:right;">
+36.52695
+</td>
+</tr>
+</tbody>
+</table>
+<p>Larger data set:</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb67-2"><a href="#cb67-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Smoking_Status) <span class="sc">%&gt;%</span></span>
+<span id="cb67-3"><a href="#cb67-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">average_BOL =</span> <span class="fu">mean</span>(BloodOxygenLevel), <span class="at">sd_BOL =</span> <span class="fu">sd</span>(BloodOxygenLevel), <span class="at">average_BT =</span> <span class="fu">mean</span>(BodyTemperature), <span class="at">sd_BT =</span> <span class="fu">sd</span>(BodyTemperature)) <span class="sc">%&gt;%</span></span>
+<span id="cb67-4"><a href="#cb67-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -9081,13 +10735,13 @@ Never Smoked
 <h2>Round values</h2>
 <p>In R you can round decimals using the <code>round()</code>
 function:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">2.40</span>, <span class="at">digits =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">2.40</span>, <span class="at">digits =</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] 2.4</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">2.45</span>, <span class="at">digits =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">2.45</span>, <span class="at">digits =</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] 2.5</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">2.45</span>) <span class="co">#defaults to 0 digits</span></span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">2.45</span>) <span class="co">#defaults to 0 digits</span></span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">2.5</span>) <span class="co">#defaults to 0 digits</span></span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">2.5</span>) <span class="co">#defaults to 0 digits</span></span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 <blockquote>
 <p>Note that for rounding off a 5, the IEC 60559 standard (see also
@@ -9096,13 +10750,79 @@ round(0.5) is 0 and round(-1.5) is -2.</p>
 </blockquote>
 <p>So if you like your values to be rounded in the example above, just
 wrap it in the <code>round()</code> function:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb44-2"><a href="#cb44-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Smoking_Status) <span class="sc">%&gt;%</span></span>
-<span id="cb44-3"><a href="#cb44-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">average_BOL =</span> <span class="fu">round</span>(<span class="fu">mean</span>(BloodOxygenLevel), <span class="at">digits =</span> <span class="dv">1</span>), </span>
-<span id="cb44-4"><a href="#cb44-4" tabindex="-1"></a>            <span class="at">sd_BOL =</span> <span class="fu">round</span>(<span class="fu">sd</span>(BloodOxygenLevel), <span class="at">digits =</span> <span class="dv">2</span>), </span>
-<span id="cb44-5"><a href="#cb44-5" tabindex="-1"></a>            <span class="at">average_BT =</span> <span class="fu">round</span>(<span class="fu">mean</span>(BodyTemperature), <span class="at">digits =</span> <span class="dv">1</span>), </span>
-<span id="cb44-6"><a href="#cb44-6" tabindex="-1"></a>            <span class="at">sd_BT =</span> <span class="fu">round</span>(<span class="fu">sd</span>(BodyTemperature), <span class="at">digits =</span> <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb44-7"><a href="#cb44-7" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<p>Puromycin:</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span></span>
+<span id="cb76-2"><a href="#cb76-2" tabindex="-1"></a>  <span class="fu">group_by</span>(state) <span class="sc">%&gt;%</span></span>
+<span id="cb76-3"><a href="#cb76-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">average_conc =</span> <span class="fu">round</span>(<span class="fu">mean</span>(conc), <span class="at">digits =</span> <span class="dv">1</span>), </span>
+<span id="cb76-4"><a href="#cb76-4" tabindex="-1"></a>            <span class="at">sd_conc =</span> <span class="fu">round</span>(<span class="fu">sd</span>(conc), <span class="at">digits =</span> <span class="dv">1</span>),</span>
+<span id="cb76-5"><a href="#cb76-5" tabindex="-1"></a>            <span class="at">average_rate =</span> <span class="fu">round</span>(<span class="fu">mean</span>(rate), <span class="at">digits =</span> <span class="dv">1</span>), </span>
+<span id="cb76-6"><a href="#cb76-6" tabindex="-1"></a>            <span class="at">sd_rate =</span> <span class="fu">round</span>(<span class="fu">sd</span>(rate), <span class="at">digits =</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb76-7"><a href="#cb76-7" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+state<br><span style="font-weight: normal;">fct</span>
+</th>
+<th style="text-align:right;">
+average_conc<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+sd_conc<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+average_rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+sd_rate<br><span style="font-weight: normal;">dbl</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+treated
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+0.4
+</td>
+<td style="text-align:right;">
+141.6
+</td>
+<td style="text-align:right;">
+53.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+untreated
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+110.7
+</td>
+<td style="text-align:right;">
+36.5
+</td>
+</tr>
+</tbody>
+</table>
+<p>Larger data set:</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb77-2"><a href="#cb77-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Smoking_Status) <span class="sc">%&gt;%</span></span>
+<span id="cb77-3"><a href="#cb77-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">average_BOL =</span> <span class="fu">round</span>(<span class="fu">mean</span>(BloodOxygenLevel), <span class="at">digits =</span> <span class="dv">1</span>), </span>
+<span id="cb77-4"><a href="#cb77-4" tabindex="-1"></a>            <span class="at">sd_BOL =</span> <span class="fu">round</span>(<span class="fu">sd</span>(BloodOxygenLevel), <span class="at">digits =</span> <span class="dv">2</span>), </span>
+<span id="cb77-5"><a href="#cb77-5" tabindex="-1"></a>            <span class="at">average_BT =</span> <span class="fu">round</span>(<span class="fu">mean</span>(BodyTemperature), <span class="at">digits =</span> <span class="dv">1</span>), </span>
+<span id="cb77-6"><a href="#cb77-6" tabindex="-1"></a>            <span class="at">sd_BT =</span> <span class="fu">round</span>(<span class="fu">sd</span>(BodyTemperature), <span class="at">digits =</span> <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb77-7"><a href="#cb77-7" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -9185,30 +10905,111 @@ statistics in R. As this is not a statistics course, the use of
 statistics is beyond the scope of this course.</p>
 <p>Some very basic functions that might be useful (all applied on the
 BloodOxygenLevel column):</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;mean:&quot;</span>, <span class="fu">round</span>(<span class="fu">mean</span>(df<span class="sc">$</span>BloodOxygenLevel), <span class="at">digits =</span> <span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;mean:&quot;</span>, <span class="fu">round</span>(<span class="fu">mean</span>(df<span class="sc">$</span>BloodOxygenLevel), <span class="at">digits =</span> <span class="dv">3</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;mean: 95.226&quot;</code></pre>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;min:&quot;</span>, <span class="fu">round</span>(<span class="fu">min</span>(df<span class="sc">$</span>BloodOxygenLevel), <span class="at">digits =</span> <span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;min:&quot;</span>, <span class="fu">round</span>(<span class="fu">min</span>(df<span class="sc">$</span>BloodOxygenLevel), <span class="at">digits =</span> <span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;min: 90.01&quot;</code></pre>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;max:&quot;</span>, <span class="fu">round</span>(<span class="fu">max</span>(df<span class="sc">$</span>BloodOxygenLevel), <span class="at">digits =</span> <span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;max:&quot;</span>, <span class="fu">round</span>(<span class="fu">max</span>(df<span class="sc">$</span>BloodOxygenLevel), <span class="at">digits =</span> <span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;max: 100&quot;</code></pre>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;median:&quot;</span>, <span class="fu">round</span>(<span class="fu">median</span>(df<span class="sc">$</span>BloodOxygenLevel), <span class="at">digits =</span> <span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;median:&quot;</span>, <span class="fu">round</span>(<span class="fu">median</span>(df<span class="sc">$</span>BloodOxygenLevel), <span class="at">digits =</span> <span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;median: 95.39&quot;</code></pre>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">quantile</span>(df<span class="sc">$</span>BloodOxygenLevel, <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)), <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">quantile</span>(df<span class="sc">$</span>BloodOxygenLevel, <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)), <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##   25%   50%   75% 
 ## 92.88 95.39 97.79</code></pre>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;standard deviation:&quot;</span>, <span class="fu">round</span>(<span class="fu">sd</span>(df<span class="sc">$</span>BloodOxygenLevel), <span class="at">digits =</span> <span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;standard deviation:&quot;</span>, <span class="fu">round</span>(<span class="fu">sd</span>(df<span class="sc">$</span>BloodOxygenLevel), <span class="at">digits =</span> <span class="dv">3</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;standard deviation: 2.929&quot;</code></pre>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;standard error of the mean:&quot;</span>, <span class="fu">round</span>(<span class="fu">sd</span>(df<span class="sc">$</span>BloodOxygenLevel)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(df<span class="sc">$</span>BloodOxygenLevel)), <span class="at">digits =</span> <span class="dv">3</span>)) <span class="co">#can also be calculated using the plotrix package</span></span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;standard error of the mean:&quot;</span>, <span class="fu">round</span>(<span class="fu">sd</span>(df<span class="sc">$</span>BloodOxygenLevel)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(df<span class="sc">$</span>BloodOxygenLevel)), <span class="at">digits =</span> <span class="dv">3</span>)) <span class="co">#can also be calculated using the plotrix package</span></span></code></pre></div>
 <pre><code>## [1] &quot;standard error of the mean: 0.093&quot;</code></pre>
 </div>
 <div id="summarize-each" class="section level2">
 <h2>Summarize each</h2>
 <p>Using Tidyverse, you can also apply some of the above statistics more
 conveniently using the <code>summarize_each()</code> function:</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb59-2"><a href="#cb59-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Smoking_Status) <span class="sc">%&gt;%</span></span>
-<span id="cb59-3"><a href="#cb59-3" tabindex="-1"></a>  <span class="fu">summarize_each</span>(<span class="fu">funs</span>(mean, sd, <span class="at">se=</span><span class="fu">sd</span>(.)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">n</span>()))) <span class="sc">%&gt;%</span></span>
-<span id="cb59-4"><a href="#cb59-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<p>Puromycin:</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span> </span>
+<span id="cb92-2"><a href="#cb92-2" tabindex="-1"></a>  <span class="fu">group_by</span>(state) <span class="sc">%&gt;%</span></span>
+<span id="cb92-3"><a href="#cb92-3" tabindex="-1"></a>  <span class="fu">summarize_each</span>(<span class="fu">funs</span>(mean, sd, <span class="at">se=</span><span class="fu">sd</span>(.)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">n</span>()))) <span class="sc">%&gt;%</span></span>
+<span id="cb92-4"><a href="#cb92-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+state<br><span style="font-weight: normal;">fct</span>
+</th>
+<th style="text-align:right;">
+conc_mean<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate_mean<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+conc_sd<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate_sd<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+conc_se<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate_se<br><span style="font-weight: normal;">dbl</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+treated
+</td>
+<td style="text-align:right;">
+0.3450000
+</td>
+<td style="text-align:right;">
+141.5833
+</td>
+<td style="text-align:right;">
+0.3986226
+</td>
+<td style="text-align:right;">
+52.96561
+</td>
+<td style="text-align:right;">
+0.1150724
+</td>
+<td style="text-align:right;">
+15.28986
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+untreated
+</td>
+<td style="text-align:right;">
+0.2763636
+</td>
+<td style="text-align:right;">
+110.7273
+</td>
+<td style="text-align:right;">
+0.3355674
+</td>
+<td style="text-align:right;">
+36.52695
+</td>
+<td style="text-align:right;">
+0.1011774
+</td>
+<td style="text-align:right;">
+11.01329
+</td>
+</tr>
+</tbody>
+</table>
+<p>Larger data set:</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb93-2"><a href="#cb93-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Smoking_Status) <span class="sc">%&gt;%</span></span>
+<span id="cb93-3"><a href="#cb93-3" tabindex="-1"></a>  <span class="fu">summarize_each</span>(<span class="fu">funs</span>(mean, sd, <span class="at">se=</span><span class="fu">sd</span>(.)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">n</span>()))) <span class="sc">%&gt;%</span></span>
+<span id="cb93-4"><a href="#cb93-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -10071,11 +11872,11 @@ that these are empty (<code>NA</code>). For example the column for
 Prescription; it is not possible to calculate the mean value for
 character type of data (in this case: name of the medicine). So it is
 best to omit them:</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb60-2"><a href="#cb60-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Smoking_Status) <span class="sc">%&gt;%</span></span>
-<span id="cb60-3"><a href="#cb60-3" tabindex="-1"></a>  <span class="fu">summarize_each</span>(<span class="fu">funs</span>(mean, sd, <span class="at">se=</span><span class="fu">sd</span>(.)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">n</span>()))) <span class="sc">%&gt;%</span></span>
-<span id="cb60-4"><a href="#cb60-4" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Prescription_mean) <span class="sc">%&gt;%</span></span>
-<span id="cb60-5"><a href="#cb60-5" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb94-2"><a href="#cb94-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Smoking_Status) <span class="sc">%&gt;%</span></span>
+<span id="cb94-3"><a href="#cb94-3" tabindex="-1"></a>  <span class="fu">summarize_each</span>(<span class="fu">funs</span>(mean, sd, <span class="at">se=</span><span class="fu">sd</span>(.)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">n</span>()))) <span class="sc">%&gt;%</span></span>
+<span id="cb94-4"><a href="#cb94-4" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Prescription_mean) <span class="sc">%&gt;%</span></span>
+<span id="cb94-5"><a href="#cb94-5" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -10921,25 +12722,25 @@ NA
 <p>In this case, we can also remove all character type columns at once
 (and then do the calculations) as follows. The code is a bit complex and
 therefore we added explanations to each line:</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb61-2"><a href="#cb61-2" tabindex="-1"></a>  <span class="co"># 1. Group the data FIRST by the categorical variable</span></span>
-<span id="cb61-3"><a href="#cb61-3" tabindex="-1"></a>  <span class="fu">group_by</span>(Smoking_Status) <span class="sc">%&gt;%</span></span>
-<span id="cb61-4"><a href="#cb61-4" tabindex="-1"></a>  <span class="co"># 2. Summarize the data, applying functions ACROSS all numeric columns</span></span>
-<span id="cb61-5"><a href="#cb61-5" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb61-6"><a href="#cb61-6" tabindex="-1"></a>    <span class="co"># Use across() to select columns and apply multiple functions</span></span>
-<span id="cb61-7"><a href="#cb61-7" tabindex="-1"></a>    <span class="co"># .cols = where(is.numeric) selects all numeric columns</span></span>
-<span id="cb61-8"><a href="#cb61-8" tabindex="-1"></a>    <span class="co"># .fns = list(...) applies the functions</span></span>
-<span id="cb61-9"><a href="#cb61-9" tabindex="-1"></a>    <span class="fu">across</span>(</span>
-<span id="cb61-10"><a href="#cb61-10" tabindex="-1"></a>      <span class="at">.cols =</span> <span class="fu">where</span>(is.numeric),</span>
-<span id="cb61-11"><a href="#cb61-11" tabindex="-1"></a>      <span class="at">.fns =</span> <span class="fu">list</span>(</span>
-<span id="cb61-12"><a href="#cb61-12" tabindex="-1"></a>        <span class="at">mean =</span> mean,</span>
-<span id="cb61-13"><a href="#cb61-13" tabindex="-1"></a>        <span class="at">sd =</span> sd,</span>
-<span id="cb61-14"><a href="#cb61-14" tabindex="-1"></a>        <span class="at">se =</span> <span class="sc">~</span> <span class="fu">sd</span>(.) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">n</span>()) <span class="co"># The tilde (~) creates an anonymous function for SE</span></span>
-<span id="cb61-15"><a href="#cb61-15" tabindex="-1"></a>      )</span>
-<span id="cb61-16"><a href="#cb61-16" tabindex="-1"></a>    )</span>
-<span id="cb61-17"><a href="#cb61-17" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb61-18"><a href="#cb61-18" tabindex="-1"></a>  <span class="co"># 3. Apply the custom/formatting function</span></span>
-<span id="cb61-19"><a href="#cb61-19" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb95-2"><a href="#cb95-2" tabindex="-1"></a>  <span class="co"># 1. Group the data FIRST by the categorical variable</span></span>
+<span id="cb95-3"><a href="#cb95-3" tabindex="-1"></a>  <span class="fu">group_by</span>(Smoking_Status) <span class="sc">%&gt;%</span></span>
+<span id="cb95-4"><a href="#cb95-4" tabindex="-1"></a>  <span class="co"># 2. Summarize the data, applying functions ACROSS all numeric columns</span></span>
+<span id="cb95-5"><a href="#cb95-5" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb95-6"><a href="#cb95-6" tabindex="-1"></a>    <span class="co"># Use across() to select columns and apply multiple functions</span></span>
+<span id="cb95-7"><a href="#cb95-7" tabindex="-1"></a>    <span class="co"># .cols = where(is.numeric) selects all numeric columns</span></span>
+<span id="cb95-8"><a href="#cb95-8" tabindex="-1"></a>    <span class="co"># .fns = list(...) applies the functions</span></span>
+<span id="cb95-9"><a href="#cb95-9" tabindex="-1"></a>    <span class="fu">across</span>(</span>
+<span id="cb95-10"><a href="#cb95-10" tabindex="-1"></a>      <span class="at">.cols =</span> <span class="fu">where</span>(is.numeric),</span>
+<span id="cb95-11"><a href="#cb95-11" tabindex="-1"></a>      <span class="at">.fns =</span> <span class="fu">list</span>(</span>
+<span id="cb95-12"><a href="#cb95-12" tabindex="-1"></a>        <span class="at">mean =</span> mean,</span>
+<span id="cb95-13"><a href="#cb95-13" tabindex="-1"></a>        <span class="at">sd =</span> sd,</span>
+<span id="cb95-14"><a href="#cb95-14" tabindex="-1"></a>        <span class="at">se =</span> <span class="sc">~</span> <span class="fu">sd</span>(.) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">n</span>()) <span class="co"># The tilde (~) creates an anonymous function for SE</span></span>
+<span id="cb95-15"><a href="#cb95-15" tabindex="-1"></a>      )</span>
+<span id="cb95-16"><a href="#cb95-16" tabindex="-1"></a>    )</span>
+<span id="cb95-17"><a href="#cb95-17" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb95-18"><a href="#cb95-18" tabindex="-1"></a>  <span class="co"># 3. Apply the custom/formatting function</span></span>
+<span id="cb95-19"><a href="#cb95-19" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -11368,34 +13169,34 @@ NA
 the original dataset. If you try to calculate the mean value of a set of
 numbers, including <code>NA</code>, the result will be
 <code>NA</code>:</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;mean with no `NA` values:&quot;</span>, <span class="fu">mean</span>(<span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="fl">4.6</span>, <span class="fl">7.9</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;mean with no `NA` values:&quot;</span>, <span class="fu">mean</span>(<span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="fl">4.6</span>, <span class="fl">7.9</span>)))</span></code></pre></div>
 <pre><code>## [1] &quot;mean with no `NA` values: 4.88&quot;</code></pre>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;mean with `NA` values:&quot;</span>, <span class="fu">mean</span>(<span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="cn">NA</span>, <span class="fl">7.9</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;mean with `NA` values:&quot;</span>, <span class="fu">mean</span>(<span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="cn">NA</span>, <span class="fl">7.9</span>)))</span></code></pre></div>
 <pre><code>## [1] &quot;mean with `NA` values: NA&quot;</code></pre>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;standard deviation with no `NA` values:&quot;</span>, <span class="fu">sd</span>(<span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="fl">4.6</span>, <span class="fl">7.9</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;standard deviation with no `NA` values:&quot;</span>, <span class="fu">sd</span>(<span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="fl">4.6</span>, <span class="fl">7.9</span>)))</span></code></pre></div>
 <pre><code>## [1] &quot;standard deviation with no `NA` values: 2.03273215156351&quot;</code></pre>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;standard deviation with `NA` values:&quot;</span>, <span class="fu">sd</span>(<span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="cn">NA</span>, <span class="fl">7.9</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;standard deviation with `NA` values:&quot;</span>, <span class="fu">sd</span>(<span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="cn">NA</span>, <span class="fl">7.9</span>)))</span></code></pre></div>
 <pre><code>## [1] &quot;standard deviation with `NA` values: NA&quot;</code></pre>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;sum with no `NA` values:&quot;</span>, <span class="fu">sum</span>(<span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="fl">4.6</span>, <span class="fl">7.9</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;sum with no `NA` values:&quot;</span>, <span class="fu">sum</span>(<span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="fl">4.6</span>, <span class="fl">7.9</span>)))</span></code></pre></div>
 <pre><code>## [1] &quot;sum with no `NA` values: 24.4&quot;</code></pre>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;sum with `NA` values:&quot;</span>, <span class="fu">sum</span>(<span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="cn">NA</span>, <span class="fl">7.9</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;sum with `NA` values:&quot;</span>, <span class="fu">sum</span>(<span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="cn">NA</span>, <span class="fl">7.9</span>)))</span></code></pre></div>
 <pre><code>## [1] &quot;sum with `NA` values: NA&quot;</code></pre>
 <p>We can get around this problem using the <code>na.rm =</code>
 argument in the functions used. The default setting is
 <code>na.rm = FALSE</code>. If we set this argument to
 <code>TRUE</code>, all <code>NA</code> values will be removed before the
 mean/sd/sum is calculated.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;mean with no `NA` values:&quot;</span>, <span class="fu">mean</span>(<span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="fl">4.6</span>, <span class="fl">7.9</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;mean with no `NA` values:&quot;</span>, <span class="fu">mean</span>(<span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="fl">4.6</span>, <span class="fl">7.9</span>)))</span></code></pre></div>
 <pre><code>## [1] &quot;mean with no `NA` values: 4.88&quot;</code></pre>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;mean with `NA` values:&quot;</span>, <span class="fu">mean</span>(<span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="cn">NA</span>, <span class="fl">7.9</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;mean with `NA` values:&quot;</span>, <span class="fu">mean</span>(<span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="cn">NA</span>, <span class="fl">7.9</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;mean with `NA` values: 4.95&quot;</code></pre>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;standard deviation with no `NA` values:&quot;</span>, <span class="fu">sd</span>(<span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="fl">4.6</span>, <span class="fl">7.9</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;standard deviation with no `NA` values:&quot;</span>, <span class="fu">sd</span>(<span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="fl">4.6</span>, <span class="fl">7.9</span>)))</span></code></pre></div>
 <pre><code>## [1] &quot;standard deviation with no `NA` values: 2.03273215156351&quot;</code></pre>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;standard deviation with `NA` values:&quot;</span>, <span class="fu">sd</span>(<span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="cn">NA</span>, <span class="fl">7.9</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;standard deviation with `NA` values:&quot;</span>, <span class="fu">sd</span>(<span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="cn">NA</span>, <span class="fl">7.9</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;standard deviation with `NA` values: 2.34022790912908&quot;</code></pre>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;sum with no `NA` values:&quot;</span>, <span class="fu">sum</span>(<span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="fl">4.6</span>, <span class="fl">7.9</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;sum with no `NA` values:&quot;</span>, <span class="fu">sum</span>(<span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="fl">4.6</span>, <span class="fl">7.9</span>)))</span></code></pre></div>
 <pre><code>## [1] &quot;sum with no `NA` values: 24.4&quot;</code></pre>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;sum with `NA` values:&quot;</span>, <span class="fu">sum</span>(<span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="cn">NA</span>, <span class="fl">7.9</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;sum with `NA` values:&quot;</span>, <span class="fu">sum</span>(<span class="fu">c</span>(<span class="fl">5.7</span>, <span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="cn">NA</span>, <span class="fl">7.9</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;sum with `NA` values: 19.8&quot;</code></pre>
 <div id="summarize-and-across" class="section level3">
 <h3>Summarize and across</h3>
@@ -11403,10 +13204,73 @@ mean/sd/sum is calculated.</p>
 but not actively maintained anymore) in favor of the new
 <code>across()</code> function that works within
 <code>summarize()</code> and <code>mutate()</code>.</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb86-2"><a href="#cb86-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Smoking_Status) <span class="sc">%&gt;%</span></span>
-<span id="cb86-3"><a href="#cb86-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="fu">list</span>(<span class="at">mean =</span> mean, <span class="at">sd =</span> sd))) <span class="sc">%&gt;%</span></span>
-<span id="cb86-4"><a href="#cb86-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<p>Puromycin:</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span></span>
+<span id="cb120-2"><a href="#cb120-2" tabindex="-1"></a>  <span class="fu">group_by</span>(state) <span class="sc">%&gt;%</span></span>
+<span id="cb120-3"><a href="#cb120-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="fu">list</span>(<span class="at">mean =</span> mean, <span class="at">sd =</span> sd))) <span class="sc">%&gt;%</span></span>
+<span id="cb120-4"><a href="#cb120-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+state<br><span style="font-weight: normal;">fct</span>
+</th>
+<th style="text-align:right;">
+conc_mean<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+conc_sd<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate_mean<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate_sd<br><span style="font-weight: normal;">dbl</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+treated
+</td>
+<td style="text-align:right;">
+0.3450000
+</td>
+<td style="text-align:right;">
+0.3986226
+</td>
+<td style="text-align:right;">
+141.5833
+</td>
+<td style="text-align:right;">
+52.96561
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+untreated
+</td>
+<td style="text-align:right;">
+0.2763636
+</td>
+<td style="text-align:right;">
+0.3355674
+</td>
+<td style="text-align:right;">
+110.7273
+</td>
+<td style="text-align:right;">
+36.52695
+</td>
+</tr>
+</tbody>
+</table>
+<p>Larger data set:</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb121-2"><a href="#cb121-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Smoking_Status) <span class="sc">%&gt;%</span></span>
+<span id="cb121-3"><a href="#cb121-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="fu">list</span>(<span class="at">mean =</span> mean, <span class="at">sd =</span> sd))) <span class="sc">%&gt;%</span></span>
+<span id="cb121-4"><a href="#cb121-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -11987,10 +13851,73 @@ NA
 </table>
 <p>Or use the scoped variant of summarize,
 <code>summarize_all()</code>:</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb87-2"><a href="#cb87-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Smoking_Status) <span class="sc">%&gt;%</span></span>
-<span id="cb87-3"><a href="#cb87-3" tabindex="-1"></a>  <span class="fu">summarize_all</span>(<span class="fu">list</span>(<span class="at">mean =</span> mean, <span class="at">sd =</span> sd)) <span class="sc">%&gt;%</span></span>
-<span id="cb87-4"><a href="#cb87-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<p>Puromycin:</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" tabindex="-1"></a>Puromycin <span class="sc">%&gt;%</span></span>
+<span id="cb122-2"><a href="#cb122-2" tabindex="-1"></a>  <span class="fu">group_by</span>(state) <span class="sc">%&gt;%</span></span>
+<span id="cb122-3"><a href="#cb122-3" tabindex="-1"></a>  <span class="fu">summarize_all</span>(<span class="fu">list</span>(<span class="at">mean =</span> mean, <span class="at">sd =</span> sd)) <span class="sc">%&gt;%</span></span>
+<span id="cb122-4"><a href="#cb122-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+state<br><span style="font-weight: normal;">fct</span>
+</th>
+<th style="text-align:right;">
+conc_mean<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate_mean<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+conc_sd<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+rate_sd<br><span style="font-weight: normal;">dbl</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+treated
+</td>
+<td style="text-align:right;">
+0.3450000
+</td>
+<td style="text-align:right;">
+141.5833
+</td>
+<td style="text-align:right;">
+0.3986226
+</td>
+<td style="text-align:right;">
+52.96561
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+untreated
+</td>
+<td style="text-align:right;">
+0.2763636
+</td>
+<td style="text-align:right;">
+110.7273
+</td>
+<td style="text-align:right;">
+0.3355674
+</td>
+<td style="text-align:right;">
+36.52695
+</td>
+</tr>
+</tbody>
+</table>
+<p>Larger data set:</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb123-2"><a href="#cb123-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Smoking_Status) <span class="sc">%&gt;%</span></span>
+<span id="cb123-3"><a href="#cb123-3" tabindex="-1"></a>  <span class="fu">summarize_all</span>(<span class="fu">list</span>(<span class="at">mean =</span> mean, <span class="at">sd =</span> sd)) <span class="sc">%&gt;%</span></span>
+<span id="cb123-4"><a href="#cb123-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -12570,10 +14497,10 @@ NA
 </tbody>
 </table>
 <p>If you want to remove the columns that yield <code>NA’s</code>:</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb88-2"><a href="#cb88-2" tabindex="-1"></a>  <span class="fu">select_if</span>(<span class="sc">~</span><span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(.)) <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb88-3"><a href="#cb88-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb88-4"><a href="#cb88-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb124-2"><a href="#cb124-2" tabindex="-1"></a>  <span class="fu">select_if</span>(<span class="sc">~</span><span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(.)) <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb124-3"><a href="#cb124-3" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb124-4"><a href="#cb124-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>

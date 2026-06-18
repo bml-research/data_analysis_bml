@@ -94,7 +94,15 @@ At last, we will do some basic calculations. Note that plotting data will be the
   
 ## Loading a dataset
 
-As an example data set, we will be using the same data set as used in the Excel section:
+As an example of a small data set we will use the build-in Puromycin data set.  
+
+```{r}
+Puromycin <- tibble(Puromycin)
+formatted_table(head(Puromycin))
+```
+
+
+As an example of a larger data set, we will be using the same data set as used in the Excel section:
 namely, the `Dementia Patient Health,Prescriptions ML Dataset`.
 
 ```{r}
@@ -111,6 +119,14 @@ As you can see above, the data is loaded well. Also note that the columns are of
 You can select rows by index using the following notation:
 
 ```{r}
+formatted_table(Puromycin[2, ]) #select second row
+```
+
+
+
+Or for the larger data frame:
+
+```{r}
 formatted_table(df[2, ]) #select second row
 ```
 
@@ -120,6 +136,11 @@ Note the comma between the brackets. Since there is no specification of a column
 
 
 You can also select a column based on an index:
+
+```{r}
+formatted_table(head(Puromycin[, 2])) #select second column
+```
+
 
 ```{r}
 formatted_table(head(df[, 8])) #select eighth column
@@ -132,6 +153,12 @@ The `head()` function was used to truncate the output.
 You can also select a column by name:
 
 ```{r}
+head(Puromycin$state) #select the state
+```
+
+Or the larger example:
+
+```{r}
 head(df$Prescription) #select column Prescription
 ```
 
@@ -141,6 +168,15 @@ Note that this action returns a vector instead of a data frame.
 ## Select item by index
 
 You can also select a specific item by index:
+
+For the Puromycin data set:
+
+```{r}
+formatted_table(Puromycin[2, 3]) #select second row and third column
+```
+
+
+And the larger data set:
 
 ```{r}
 formatted_table(df[2, 8]) #select second row and eighth column
@@ -180,6 +216,16 @@ Some examples:
 
 Slice the first row:
 
+Puromycin data set:
+
+```{r}
+Puromycin %>%
+  slice(1) %>%
+  formatted_table()
+```
+
+Larger data set:
+
 ```{r}
 df %>%
   slice(1) %>%
@@ -187,6 +233,17 @@ df %>%
 ```
 
 Or the second to fifth row:  
+
+
+Puromycin:
+
+```{r}
+Puromycin %>%
+  slice(2:5) %>%
+  formatted_table()
+```
+
+Larget data set:
 
 ```{r}
 df %>%
@@ -197,6 +254,17 @@ df %>%
 
 You can use `slice_head` to get the upper `n` rows:   
 
+Puromycin:
+
+```{r}
+Puromycin %>%
+  slice_head(n=5) %>%
+  formatted_table()
+```
+
+
+Larger data set:
+
 ```{r}
 df %>%
   slice_head(n=5) %>%
@@ -205,14 +273,33 @@ df %>%
 
 Or `slice_tail` to get the last `n` rows:  
 
+Puromycin:  
+
+```{r}
+Puromycin %>%
+  slice_tail(n=5) %>%
+  formatted_table()
+```
+
+
+Larger data set:
+
 ```{r}
 df %>%
   slice_tail(n=5) %>%
   formatted_table()
 ```
 
+Using `slice_max` you can get the row with a max value (for example the max rate) from the puromycin data set:  
 
-Using `slice_max` you can get the row with a max value (for example the max Alcohol level):  
+```{r}
+Puromycin %>%
+  slice_max(order_by = rate, n=1) %>%
+  formatted_table()
+```
+
+
+Using `slice_max` you can get the row with a max value (for example the max Alcohol level) from the larger data set:  
 
 ```{r}
 df %>%
@@ -238,11 +325,33 @@ Here is how that works in R:
 >Note that `slice_head()` is used to reduce the output to 6 rows.  
 >Try it yourself without the ``slice_head()` to compare the output.  
 
-Filter rows on all patients of age 65:
+
+Filter rows on conc 0.11 in Puromycin data set:
+
+```{r}
+Puromycin %>%
+  filter(conc == 0.11) %>%
+  formatted_table()
+```
+
+
+
+Filter rows on all patients of age 65 on the larger data set:
 
 ```{r}
 df %>%
   filter(Age == 65) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
+```
+
+
+Concentration higher than 0.11 in Puromycin:
+
+
+```{r}
+Puromycin %>%
+  filter(conc > 0.11) %>%
   slice_head(n = 6) %>%
   formatted_table()
 ```
@@ -257,7 +366,17 @@ df %>%
 ```
 
 To add a second condition, the `&` operator is used:  
-Current smoker (condition 1) AND normal blood oxygen levels (condition 2):
+
+State is untreated and higher concentrations than 0.11 in Puromycin data set:
+
+```{r}
+Puromycin %>%
+  filter(state == "untreated" & conc > 0.11) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
+```
+
+Current smoker (condition 1) AND normal blood oxygen levels (condition 2) in larger data set:
 
 ```{r}
 df %>%
@@ -267,6 +386,16 @@ df %>%
 ```
 
 The `!` operator can be used to exclude (negate) a specific condition:  
+
+NOT a untreated sample AND conc higer than 0.11 in Puromycin data set:
+
+```{r}
+Puromycin %>% 
+  filter(!state == "untreated" & conc > 0.11) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
+```
+
 NOT a current smoker AND normal blood oxygen levels:
 
 ```{r}
@@ -277,7 +406,18 @@ df %>%
 ```
 
 The `|` operator can be used to meet either one of the conditions:
-Normal blood oxygen levels OR very low blood oxygen levels:
+
+Conc lower than 0.11 OR higher than 0.56 in Puromycin data set:
+
+```{r}
+
+Puromycin %>%
+  filter(conc < 0.11 | conc > 0.56) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
+```
+
+Normal blood oxygen levels OR very low blood oxygen levels in the larger data set:
 
 ```{r}
 df %>%
@@ -291,7 +431,17 @@ df %>%
 
 You can use `arrange()` instead of `filter()` if you want to sort your rows in a data frame instead of filtering it:
 
-Arrange on blood oxygen levels **ascending** (from low to high values):
+Arrange on rate **ascending** (from low to high values) in Puromycin data set:
+
+```{r}
+Puromycin %>%
+  arrange(rate) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
+```
+
+
+Arrange on blood oxygen levels **ascending** (from low to high values) in larger data set:
 
 ```{r}
 df %>%
@@ -303,6 +453,18 @@ df %>%
 
 If you want to sort in **descending** order (from high to low values):
 
+
+Puromycin:
+
+```{r}
+Puromycin %>%
+  arrange(desc(rate)) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
+```
+
+Larget data set:
+
 ```{r}
 df %>%
   arrange(desc(BloodOxygenLevel)) %>%
@@ -311,6 +473,17 @@ df %>%
 ```
 
 And to select the row with the highest value:
+
+Puromycin:
+
+```{r}
+Puromycin %>%
+  arrange(desc(rate)) %>%
+  slice_head(n = 1) %>%
+  formatted_table()
+```
+
+Larger data set:
 
 ```{r}
 df %>%
@@ -321,7 +494,16 @@ df %>%
 
 You can also do some multi-level sorting:
 
-Here is an example of sorting on age first and then sorting on blood oxygen levels: 
+Here is an example of sorting on state first (alphabetically from a to z) and then sorting on rate in the Puromycin data set: 
+
+```{r}
+Puromycin %>%
+  arrange(state, rate) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
+```
+
+Here is an example of sorting on age first and then sorting on blood oxygen levels in the larger data set: 
 
 ```{r}
 df %>%
@@ -329,6 +511,16 @@ df %>%
   slice_head(n = 6) %>%
   formatted_table()
 ```
+
+Here is an example of sorting on state first (**descending** alphabetically from z to a) and then sorting on **descending** rate in the Puromycin data set:
+
+```{r}
+Puromycin %>%
+  arrange(desc(state), desc(rate)) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
+```
+
 
 Here is an example of sorting on age first and then sorting on **descending** blood oxygen levels (from high to low): 
 
@@ -348,6 +540,18 @@ df %>%
 You have learned that variables in data sets should be arranged in columns. Often data sets contain a lot of variables (columns). Most likely, you are not interested in all of them.
 With the `select()` function, you can select the variables that you are interested in:
 
+For Puromycin select conc and rate:
+
+```{r}
+Puromycin %>%
+  select(conc, rate) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
+```
+
+
+And for the larger data set columns Age, Smoking_Status, BloodOxygenLevel, HeartRate:
+
 ```{r}
 df %>%
   select(Age, Smoking_Status, BloodOxygenLevel, HeartRate) %>%
@@ -355,7 +559,16 @@ df %>%
   formatted_table()
 ```
 
-Or select all columns except the blood oxygen levels:
+Or select all columns except the state in the Puromycin data set:
+
+```{r}
+Puromycin %>%
+  select(-state) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
+```
+
+Or select all columns except the blood oxygen levels in the larger data set:
 
 ```{r}
 df %>%
@@ -364,7 +577,16 @@ df %>%
   formatted_table()
 ```
 
-Or select besides the age, all column names that end with "Level":
+Or select all column names that are numbers in the Puromycin data set:
+
+```{r}
+Puromycin %>%
+  select(where(is.double)) %>%
+  slice_head(n = 6) %>%
+  formatted_table()
+```
+
+Or select besides the age, all column names that end with "Level" in the larger data set:
 
 ```{r}
 df %>%
@@ -380,17 +602,45 @@ Yes, there is also a function `starts_With()` to select columns that start with 
 
 You can use the base R `summary()` function to get summary information on a data frame:
 
+For Puromycin:
+
+```{r}
+summary(Puromycin)
+```
+
+Or the larger data set:
+
 ```{r}
 summary(df)
 ```
 
-As this output can be quit overwhelming you may select for the data that you are interested in (for example blood oxygen levels):
+As this output can be quit overwhelming you may select for the data that you are interested in:
+
+
+For example the rate in the Puromycin data set:
+
+```{r}
+summary(Puromycin$rate)
+```
+
+For example blood oxygen levels for the larger data set:
 
 ```{r}
 summary(df$BloodOxygenLevel)
 ```
 
 But the Tidyverse library also contains a `summarize()` function:
+
+Puromycin:
+
+```{r}
+Puromycin %>% 
+  summarize(mean_rate = mean(rate)) %>%
+  formatted_table()
+```
+
+
+Larger data set:
 
 ```{r}
 df %>% 
@@ -399,6 +649,17 @@ df %>%
 ```
 
 You can combine this with the `group_by()` function for powerful analysis:
+
+Puromycin:
+
+```{r}
+Puromycin %>% 
+  group_by(state) %>%
+  summarize(mean_rate = mean(rate)) %>%
+  formatted_table()
+```
+
+Larger data set:
 
 ```{r}
 df %>%
@@ -411,6 +672,17 @@ Recall that this looks very much like the pivot table function in Excel (see fig
 
 To create a similar output as the pivot tables in Excel:
 
+Puromycin:
+
+```{r}
+Puromycin %>%
+  group_by(state) %>%
+  summarize(average_conc = mean(conc), average_rate = mean(rate)) %>%
+  formatted_table()
+```
+
+Larger data set:
+
 ```{r}
 df %>%
   group_by(Smoking_Status) %>%
@@ -422,6 +694,19 @@ df %>%
 Now compare this output with figure 28 at [data analysis Excel](https://bml-research.github.io/data_analysis/excel/excel_08_data_analysis.html).
 
 Likewise, you can extend this by providing the standard deviation:
+
+
+Puromycin:
+
+
+```{r}
+Puromycin %>%
+  group_by(state) %>%
+  summarize(average_conc = mean(conc), sd_conc = sd(conc), average_rate = mean(rate), sd_rate = sd(rate)) %>%
+  formatted_table()
+```
+
+Larger data set:
 
 ```{r}
 df %>% 
@@ -445,6 +730,20 @@ round(2.5) #defaults to 0 digits
 >Note that for rounding off a 5, the IEC 60559 standard (see also ‘IEEE 754’) is expected to be used, ‘go to the even digit’. Therefore round(0.5) is 0 and round(-1.5) is -2.
 
 So if you like your values to be rounded in the example above, just wrap it in the `round()` function:
+
+Puromycin:
+
+```{r}
+Puromycin %>%
+  group_by(state) %>%
+  summarize(average_conc = round(mean(conc), digits = 1), 
+            sd_conc = round(sd(conc), digits = 1),
+            average_rate = round(mean(rate), digits = 1), 
+            sd_rate = round(sd(rate), digits = 1)) %>%
+  formatted_table()
+```
+
+Larger data set:
 
 ```{r}
 df %>% 
@@ -477,6 +776,17 @@ paste("standard error of the mean:", round(sd(df$BloodOxygenLevel)/sqrt(length(d
 ## Summarize each
 
 Using Tidyverse, you can also apply some of the above statistics more conveniently using the `summarize_each()` function:
+
+Puromycin:
+
+```{r}
+Puromycin %>% 
+  group_by(state) %>%
+  summarize_each(funs(mean, sd, se=sd(.)/sqrt(n()))) %>%
+  formatted_table()
+```
+
+Larger data set:
 
 ```{r}
 df %>% 
@@ -548,6 +858,17 @@ paste("sum with `NA` values:", sum(c(5.7, 3.5, 2.7, NA, 7.9), na.rm = TRUE))
 
 The `summarize_each()` function is deprecated (will work, but not actively maintained anymore) in favor of the new `across()` function that works within `summarize()` and `mutate()`.  
 
+Puromycin:
+
+```{r}
+Puromycin %>%
+  group_by(state) %>%
+  summarize(across(everything(), list(mean = mean, sd = sd))) %>%
+  formatted_table()
+```
+
+Larger data set:
+
 ```{r}
 df %>%
   group_by(Smoking_Status) %>%
@@ -556,6 +877,17 @@ df %>%
 ```
 
 Or use the scoped variant of summarize, `summarize_all()`:  
+
+Puromycin:
+
+```{r}
+Puromycin %>%
+  group_by(state) %>%
+  summarize_all(list(mean = mean, sd = sd)) %>%
+  formatted_table()
+```
+
+Larger data set:
 
 ```{r}
 df %>%
