@@ -17,12 +17,9 @@
 
 ---
 
-## Quick Base R Overview
+## Quick Overview Pages
 
 - [Base R Overview](./R_00_tidy_overview.html)
-
-## Quick R Tidyverse Overview
-
 - [Tidyverse Overview](./R_00_tidy_overview.html)
 
 ## Topics:
