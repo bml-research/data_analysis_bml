@@ -1669,52 +1669,375 @@ the text file)!</li>
 the answer.</li>
 </ol>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>ex2 <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>  <span class="fu">filter</span>(T <span class="sc">==</span> <span class="fu">min</span>(T))</span></code></pre></div>
-<pre><code>## # A tibble: 1 × 25
-##     STN YYYYMMDD    HH    DD    FH    FF FX        T T10N     TD SQ    Q    
-##   &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt; &lt;dbl&gt; &lt;lgl&gt; &lt;dbl&gt; &lt;lgl&gt; &lt;lgl&gt;
-## 1   280 19560216     4     0     5     0 NA     -229 NA     -243 NA    NA   
-## # ℹ 13 more variables: DR &lt;dbl&gt;, RH &lt;dbl&gt;, P &lt;dbl&gt;, VV &lt;dbl&gt;, N &lt;dbl&gt;, U &lt;dbl&gt;,
-## #   WW &lt;dbl&gt;, IX &lt;lgl&gt;, M &lt;dbl&gt;, R &lt;dbl&gt;, S &lt;dbl&gt;, O &lt;dbl&gt;, Y &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>ex2 <span class="sc">%&gt;%</span></span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>  <span class="fu">filter</span>(T <span class="sc">==</span> <span class="fu">max</span>(T))</span></code></pre></div>
-<pre><code>## # A tibble: 1 × 25
-##     STN YYYYMMDD    HH    DD    FH    FF FX        T T10N     TD SQ    Q    
-##   &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt; &lt;dbl&gt; &lt;lgl&gt; &lt;dbl&gt; &lt;lgl&gt; &lt;lgl&gt;
-## 1   280 19590709    16   290    21    15 NA      331 NA      169 NA    NA   
-## # ℹ 13 more variables: DR &lt;dbl&gt;, RH &lt;dbl&gt;, P &lt;dbl&gt;, VV &lt;dbl&gt;, N &lt;dbl&gt;, U &lt;dbl&gt;,
-## #   WW &lt;dbl&gt;, IX &lt;lgl&gt;, M &lt;dbl&gt;, R &lt;dbl&gt;, S &lt;dbl&gt;, O &lt;dbl&gt;, Y &lt;dbl&gt;</code></pre>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>  <span class="fu">filter</span>(T <span class="sc">==</span> <span class="fu">min</span>(T)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+STN<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+YYYYMMDD<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+HH<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+DD<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+FH<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+FF<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:left;">
+FX<br><span style="font-weight: normal;">lgl</span>
+</th>
+<th style="text-align:right;">
+T<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:left;">
+T10N<br><span style="font-weight: normal;">lgl</span>
+</th>
+<th style="text-align:right;">
+TD<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:left;">
+SQ<br><span style="font-weight: normal;">lgl</span>
+</th>
+<th style="text-align:left;">
+Q<br><span style="font-weight: normal;">lgl</span>
+</th>
+<th style="text-align:right;">
+DR<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+RH<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+P<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+VV<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+N<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+U<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+WW<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:left;">
+IX<br><span style="font-weight: normal;">lgl</span>
+</th>
+<th style="text-align:right;">
+M<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+R<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+S<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+O<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+Y<br><span style="font-weight: normal;">dbl</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+280
+</td>
+<td style="text-align:right;">
+19560216
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+-229
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+-243
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+10147
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>ex2 <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>  <span class="fu">filter</span>(T <span class="sc">==</span> <span class="fu">max</span>(T)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+STN<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+YYYYMMDD<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+HH<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+DD<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+FH<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+FF<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:left;">
+FX<br><span style="font-weight: normal;">lgl</span>
+</th>
+<th style="text-align:right;">
+T<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:left;">
+T10N<br><span style="font-weight: normal;">lgl</span>
+</th>
+<th style="text-align:right;">
+TD<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:left;">
+SQ<br><span style="font-weight: normal;">lgl</span>
+</th>
+<th style="text-align:left;">
+Q<br><span style="font-weight: normal;">lgl</span>
+</th>
+<th style="text-align:right;">
+DR<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+RH<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+P<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+VV<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+N<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+U<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+WW<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:left;">
+IX<br><span style="font-weight: normal;">lgl</span>
+</th>
+<th style="text-align:right;">
+M<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+R<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+S<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+O<br><span style="font-weight: normal;">dbl</span>
+</th>
+<th style="text-align:right;">
+Y<br><span style="font-weight: normal;">dbl</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+280
+</td>
+<td style="text-align:right;">
+19590709
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+290
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+331
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+169
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+10138
+</td>
+<td style="text-align:right;">
+58
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
 <ol start="4" style="list-style-type: lower-alpha">
 <li>A tropical temperature is defined as a temperature of 30 °C or
 higher. How many tropical temperatures are in the dataset (at 1.5 m
 height)?</li>
 </ol>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>ex2 <span class="sc">%&gt;%</span></span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>  <span class="fu">filter</span>(T <span class="sc">&gt;</span> <span class="dv">300</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>ex2 <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>  <span class="fu">filter</span>(T <span class="sc">&gt;</span> <span class="dv">300</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div>
 <pre><code>## [1] 23</code></pre>
 <ol start="5" style="list-style-type: lower-alpha">
 <li>There could be multiple tropical temperatures on the same day. How
 many tropical days are within the data set (at 1.5 m height)? Hint: use
 group_by and summarize for this.</li>
 </ol>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>ex2 <span class="sc">%&gt;%</span></span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>  <span class="fu">group_by</span>(YYYYMMDD) <span class="sc">%&gt;%</span></span>
-<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">daily_max =</span> <span class="fu">max</span>(T)) <span class="sc">%&gt;%</span></span>
-<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a>  <span class="fu">filter</span>(daily_max <span class="sc">&gt;=</span> <span class="dv">300</span>) <span class="sc">%&gt;%</span>  </span>
-<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>ex2 <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>  <span class="fu">group_by</span>(YYYYMMDD) <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">daily_max =</span> <span class="fu">max</span>(T)) <span class="sc">%&gt;%</span></span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a>  <span class="fu">filter</span>(daily_max <span class="sc">&gt;=</span> <span class="dv">300</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div>
 <pre><code>## [1] 7</code></pre>
 <ol start="6" style="list-style-type: lower-alpha">
 <li>What was the average temperature in 1951? Use formulas to achieve
 this.</li>
 </ol>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>ex2 <span class="sc">%&gt;%</span></span>
-<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>  <span class="fu">filter</span>(YYYYMMDD <span class="sc">&gt;=</span> <span class="dv">19510101</span> <span class="sc">&amp;</span> YYYYMMDD <span class="sc">&lt;=</span> <span class="dv">19511231</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">lowest_temp_celsius =</span> <span class="fu">mean</span>(T) <span class="sc">/</span> <span class="dv">10</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 1 × 1
-##   lowest_temp_celsius
-##                 &lt;dbl&gt;
-## 1                8.97</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>ex2 <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>  <span class="fu">filter</span>(YYYYMMDD <span class="sc">&gt;=</span> <span class="dv">19510101</span> <span class="sc">&amp;</span> YYYYMMDD <span class="sc">&lt;=</span> <span class="dv">19511231</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">lowest_temp_celsius =</span> <span class="fu">mean</span>(T) <span class="sc">/</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a>  <span class="fu">formatted_table</span>()</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+lowest_temp_celsius<br><span style="font-weight: normal;">dbl</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+8.974132
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="exercise-3" class="section level2">
 <h2>Exercise 3</h2>
@@ -1727,8 +2050,8 @@ people_vaccinated, people_fully_vaccinated, daily_vaccinations, etc.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Load the data In RStudio.</li>
 </ol>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>ex3 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;./data/exercise03/vaccinations.csv&quot;</span>)</span>
-<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a><span class="fu">formatted_table</span>(<span class="fu">head</span>(ex3))</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>ex3 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;./data/exercise03/vaccinations.csv&quot;</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="fu">formatted_table</span>(<span class="fu">head</span>(ex3))</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2091,16 +2414,16 @@ people_fully_vaccinated_per_hundred (in other words, the percentage)
 over time for the Netherlands. Filter the data accordingly. Provide a
 logical title together with axis titles and units.</li>
 </ol>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> ex3 <span class="sc">%&gt;%</span> </span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>  <span class="fu">filter</span>(location <span class="sc">==</span> <span class="st">&quot;Netherlands&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> people_vaccinated_per_hundred)) <span class="sc">+</span></span>
-<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span></span>
-<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Cummulative percentage of vaccinated people in The Netherlands&quot;</span>,</span>
-<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;year&quot;</span>,</span>
-<span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;percentage&quot;</span></span>
-<span id="cb27-9"><a href="#cb27-9" tabindex="-1"></a>  )</span>
-<span id="cb27-10"><a href="#cb27-10" tabindex="-1"></a>p</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> ex3 <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>  <span class="fu">filter</span>(location <span class="sc">==</span> <span class="st">&quot;Netherlands&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> people_vaccinated_per_hundred)) <span class="sc">+</span></span>
+<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span></span>
+<span id="cb24-5"><a href="#cb24-5" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb24-6"><a href="#cb24-6" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Cummulative percentage of vaccinated people in The Netherlands&quot;</span>,</span>
+<span id="cb24-7"><a href="#cb24-7" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;year&quot;</span>,</span>
+<span id="cb24-8"><a href="#cb24-8" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;percentage&quot;</span></span>
+<span id="cb24-9"><a href="#cb24-9" tabindex="-1"></a>  )</span>
+<span id="cb24-10"><a href="#cb24-10" tabindex="-1"></a>p</span></code></pre></div>
 <p><img role="img" src="data:image/png;base64,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" /><!-- --></p>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Provide a table with the max people_fully_vaccinated_per_hundred per
@@ -2109,10 +2432,10 @@ various reasons (e.g. boosters counted as full vaccination, some small
 countries (like Gibraltar or San Marino) vaccinated people who are not
 residents etc.).</li>
 </ol>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>summ_max_per_country <span class="ot">&lt;-</span> ex3 <span class="sc">%&gt;%</span></span>
-<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>  <span class="fu">group_by</span>(location) <span class="sc">%&gt;%</span></span>
-<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">vacc_max =</span> <span class="fu">max</span>(people_fully_vaccinated_per_hundred, <span class="at">na.rm =</span> <span class="st">&quot;NA&quot;</span>))</span>
-<span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a><span class="fu">formatted_table</span>(<span class="fu">head</span>(summ_max_per_country))</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>summ_max_per_country <span class="ot">&lt;-</span> ex3 <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>  <span class="fu">group_by</span>(location) <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">vacc_max =</span> <span class="fu">max</span>(people_fully_vaccinated_per_hundred, <span class="at">na.rm =</span> <span class="st">&quot;NA&quot;</span>))</span>
+<span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a><span class="fu">formatted_table</span>(<span class="fu">head</span>(summ_max_per_country))</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>

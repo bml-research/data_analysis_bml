@@ -170,12 +170,14 @@ c.	At what dates were these temperatures observed? Use formulas to get the answe
 
 ```{r}
 ex2 %>%
-  filter(T == min(T))
+  filter(T == min(T)) %>%
+  formatted_table()
 ```
 
 ```{r}
 ex2 %>%
-  filter(T == max(T))
+  filter(T == max(T)) %>%
+  formatted_table()
 ```
 
 d.	A tropical temperature is defined as a temperature of 30 °C or higher. How many tropical temperatures are in the dataset (at 1.5 m height)?  
@@ -202,7 +204,8 @@ f.	What was the average temperature in 1951? Use formulas to achieve this.
 ```{r}
 ex2 %>%
   filter(YYYYMMDD >= 19510101 & YYYYMMDD <= 19511231) %>%
-  summarise(lowest_temp_celsius = mean(T) / 10)
+  summarise(lowest_temp_celsius = mean(T) / 10) %>%
+  formatted_table()
 ```
 
 ## Exercise 3
