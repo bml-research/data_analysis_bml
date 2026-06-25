@@ -71,7 +71,7 @@ b.	Filter data to exclude blanks for the column Gender. Also create a new column
 ex1_cleaned <- ex1 %>%
   filter(!is.na(Gender)) %>%
   mutate(Gender_Name = if_else(Gender == TRUE, "Male", "Female"))
-formatted_table(ex1_cleaned)
+formatted_table(head(ex1_cleaned))
 ```
 
 c.	Create a Pie chart to show the proportion of the different genders. You may need to use R formulas to prepare the data. Provide a logical title.  
@@ -216,7 +216,7 @@ a.	Load the data In RStudio.
 
 ```{r}
 ex3 <- read_csv("./data/exercise03/vaccinations.csv")
-ex3
+formatted_table(head(ex3))
 ```
 
 
@@ -243,7 +243,7 @@ c.	Provide a table with the max people_fully_vaccinated_per_hundred per country.
 summ_max_per_country <- ex3 %>%
   group_by(location) %>%
   summarise(vacc_max = max(people_fully_vaccinated_per_hundred, na.rm = "NA"))
-formatted_table(summ_max_per_country)
+formatted_table(head(summ_max_per_country))
 ```
 
 The end...
