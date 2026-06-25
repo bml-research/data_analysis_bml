@@ -1,0 +1,261 @@
+---
+title: "Example Assignment R Solutions"
+author: ""
+date: ""
+output: 
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+
+![](../../../hanze/hanze.png)
+
+---
+
+[Go back to the main page](../../../index.html)  
+
+---
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
+
+
+# Example Assignment R Solutions
+
+
+```{r}
+library(knitr)
+library(kableExtra)
+library(pillar)
+
+formatted_table <- function(df) {
+  col_types <- sapply(df, pillar::type_sum)
+  new_col_names <- paste0(names(df), "<br>", "<span style='font-weight: normal;'>", col_types, "</span>")
+  kbl(df, 
+      col.names = new_col_names, 
+      escape = FALSE, # This is crucial to allow the <br> tag to work
+      format = "html" # Ensure HTML format, although often auto-detected
+      ) %>%
+    kable_styling(bootstrap_options = c("striped", "hover", "responsive"))
+}
+```
+
+
+```{r}
+library(tidyverse)
+```
+
+## Exercise 01
+
+The Comet Goldfish Lifespan Prediction Dataset provides a structured collection of variables used to estimate the longevity of *Carassius auratus*. 
+
+
+The fictive dataset includes several measurements:
+- Environmental Factors: Habitat type (e.g., lakes, ponds), water pH, and tank specifications.
+- Biological Metrics: Average length and weight, gender, and specimen color variations.
+- Target Variable: Lifespan (years).
+Answer the following questions:  
+ 
+
+a.	Download the data at [Predict lifespan of a comet goldfish](https://www.kaggle.com/datasets/stealthtechnologies/predict-lifespan-of-a-comet-goldfish). Load the csv in RStudio. 
+
+```{r}
+ex1 <- read_csv("./data/exercise01/archive/fish_data.csv")
+formatted_table(head(ex1))
+```
+
+b.	Filter data to exclude blanks for the column Gender. Also create a new column based on the following: True should be mapped to Male, False to Female.  
+
+```{r}
+ex1_cleaned <- ex1 %>%
+  filter(!is.na(Gender)) %>%
+  mutate(Gender_Name = if_else(Gender == TRUE, "Male", "Female"))
+formatted_table(ex1_cleaned)
+```
+
+c.	Create a Pie chart to show the proportion of the different genders. You may need to use R formulas to prepare the data. Provide a logical title.  
+
+```{r}
+gender_counts <- ex1_cleaned %>%
+count(Gender_Name)
+formatted_table(gender_counts)
+```
+
+```{r}
+p <- gender_counts %>%
+  ggplot(aes(x = "", y = n, fill = Gender_Name)) +
+  geom_bar(stat="identity", width=1) +
+  coord_polar("y", start=0) +
+  labs(title="Percentage of males and females") +
+  theme_void() # remove background, grid, numeric labels
+p
+```
+
+d.	Create a box plot to compare the life span between the habitats. Provide a logical title together with axis titles and units.  
+
+```{r}
+p <- ex1_cleaned %>% ggplot(aes(x = `habitat`, y = `life_span`)) + 
+  geom_boxplot() +
+  labs(title="Boxplot showing life span for different habitats",
+       x = "Habitat Type",
+       y = "Lifespan (Years)") +
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+p
+```
+
+
+e.	Create a barplot that shows the average lifespan for each habitat. Provide a logical title together with axis titles and units.  
+Hint: you need `group_by` and `summarise` for this.
+
+```{r}
+summ_data <- ex1_cleaned %>%
+  group_by(habitat) %>%
+  summarize(across(everything(), list(mean = mean)))
+formatted_table(summ_data)
+            
+```
+
+```{r}
+p <- summ_data %>%
+  ggplot(aes(x = `habitat`, y = `life_span_mean`)) +
+  geom_bar(stat = "identity", position="stack") +
+  labs(title="Average life span for each habitat",
+       x = "Habitat Type",
+       y = "Lifespan (Years)")  +
+  theme(axis.text.x = element_text(angle = 45, hjust=1))
+p
+```
+
+f.	Investigate a possible correlation between the pH of the water and the life span. Use a suitable chart type to visualize this. Provide a logical title together with axis titles and units. Is there a correlation?  
+
+```{r}
+p <- ex1_cleaned %>% 
+  ggplot(aes(x = ph_of_water, y = life_span)) +
+  geom_point(size = 3, color = "darkgreen") +
+  labs(
+    title = "Life Span as a function of pH",
+    x = "pH of the water",
+    y = "Life Span (years)"
+  )
+p
+```
+
+## Exercise 2
+
+This time we will analyse some weather data from the KNMI. Browse to [KNMI - Uurgegevens van het weer in Nederland](https://www.knmi.nl/nederland-nu/klimatologie/uurgegevens). Download a dataset from 1951-1960 for the weather station at Eelde.  
+
+a.	Load the data using RStudio. Note: you need to use some tweaks to load the data. 
+
+```{r}
+header<- c("STN", "YYYYMMDD", "HH", "DD", "FH", "FF", "FX", "T", "T10N", "TD", "SQ", "Q", "DR", "RH", "P", "VV", "N", "U", "WW", "IX", "M", "R", "S", "O", "Y")
+ex2 <- read_csv("./data/exercise02/uurgeg_280_1951-1960/uurgeg_280_1951-1960.txt", skip=33, col_names = header)
+formatted_table(head(ex2))
+```
+
+
+
+
+b.	Find the lowest temperature and highest temperature (at 1.5 m height) using formulas in degrees Celsius (note: read the column info in the text file)!  
+
+```{r}
+min(ex2$T)/10
+```
+```{r}
+max(ex2$T)/10
+```
+
+
+c.	At what dates were these temperatures observed? Use formulas to get the answer.  
+
+```{r}
+ex2 %>%
+  filter(T == min(T))
+```
+
+```{r}
+ex2 %>%
+  filter(T == max(T))
+```
+
+d.	A tropical temperature is defined as a temperature of 30 °C or higher. How many tropical temperatures are in the dataset (at 1.5 m height)?  
+
+```{r}
+ex2 %>%
+  filter(T > 300) %>%
+  nrow()
+```
+
+e.	There could be multiple tropical temperatures on the same day. How many tropical days are within the data set (at 1.5 m height)? Hint: use group_by and summarize for this.    
+
+```{r}
+ex2 %>%
+  group_by(YYYYMMDD) %>%
+  summarise(daily_max = max(T)) %>%
+  filter(daily_max >= 300) %>%  
+  nrow()
+```
+
+
+f.	What was the average temperature in 1951? Use formulas to achieve this.  
+
+```{r}
+ex2 %>%
+  filter(YYYYMMDD >= 19510101 & YYYYMMDD <= 19511231) %>%
+  summarise(lowest_temp_celsius = mean(T) / 10)
+```
+
+## Exercise 3
+
+
+Use the dataset from [Our World in Data](https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations)  
+Download vaccinations.csv.  
+This dataset contains daily vaccination figures per country worldwide, with columns such as date, location, total_vaccinations, people_vaccinated, people_fully_vaccinated, daily_vaccinations, etc.  
+
+a.	Load the data In RStudio.  
+
+```{r}
+ex3 <- read_csv("./data/exercise03/vaccinations.csv")
+ex3
+```
+
+
+b.	Create a chart showing the progression of people_fully_vaccinated_per_hundred (in other words, the percentage) over time for the Netherlands. Filter the data accordingly. Provide a logical title together with axis titles and units.  
+
+```{r}
+p <- ex3 %>% 
+  filter(location == "Netherlands") %>%
+  ggplot(aes(x = date, y = people_vaccinated_per_hundred)) +
+  geom_point(size = 3, color = "darkgreen") +
+  labs(
+    title = "Cummulative percentage of vaccinated people in The Netherlands",
+    x = "year",
+    y = "percentage"
+  )
+p
+```
+
+
+
+c.	Provide a table with the max people_fully_vaccinated_per_hundred per country. Note that the numbers above 100 are in the dataset because of various reasons (e.g. boosters counted as full vaccination, some small countries (like Gibraltar or San Marino) vaccinated people who are not residents etc.).  
+
+```{r}
+summ_max_per_country <- ex3 %>%
+  group_by(location) %>%
+  summarise(vacc_max = max(people_fully_vaccinated_per_hundred, na.rm = "NA"))
+formatted_table(summ_max_per_country)
+```
+
+The end...
+
+
+---
+
+<a href="#top">⬆️ Back to Top</a>  
+
+---
+
+
+>This web page is distributed under the terms of the Creative Commons Attribution License which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.
+>Creative Commons License: CC BY-SA 4.0.
+

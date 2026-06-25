@@ -36,7 +36,9 @@
 ## Link to example assignment:
 
 - [Here you can find instructions for the final Excel assignment](./example_end_assignment/excel/exercise_description.md)
-- [Here you can find instructions for the final R assignment](./example_end_assignment/R/exercise_description.html)
+- [Here you can find the answers for the final Excel assignment](./example_end_assignment/excel/solutions.zip)
+- [Here you can find instructions for the final R assignment](./example_end_assignment/R/example_assignment.html)
+- [Here you can find the answers for the final R assignment](./example_end_assignment/R/solutions/example_assignment_solutions.html)
 
 
 ## Installation of MS Excel, R en RStudio 

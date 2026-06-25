@@ -57,7 +57,7 @@ b.	Create a new tab and find the lowest temperature and highest temperature (at 
 c.	At what dates were these temperatures observed? Use formulas to get the answer.
 d.	A tropical temperature is defined as a temperature of 30 °C or higher. How many tropical temperatures are in the dataset (at 1.5 m height)?  
 e.	There could be multiple tropical temperatures on the same day. How many tropical days are within the dataset (at 1.5 m height)?  
-f.	What was the lowest temperature in 1951? Use formulas to achieve this.  
+f.	What was the average temperature in 1951? Use formulas to achieve this.  
 
 ## Exercise 3
 Use the dataset from [Our World in Data](https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations Download vaccinations.csv).  
