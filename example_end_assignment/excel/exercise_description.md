@@ -1,5 +1,5 @@
 {% include head.html %}
-![Hanze](../hanze/hanze.png)
+![Hanze](../../hanze/hanze.png)
 
 ---
 
@@ -79,9 +79,7 @@ For each of the exercises, write a mini report using the following structure:
 - Results: show your plots together with a short result description.  
 - Conclusion: a brief conclusion (one or two sentences).  
 
-## Solutions
 
-The solution can be found [here](./solutions.zip)
 
 The end...
 
