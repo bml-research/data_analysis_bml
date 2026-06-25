@@ -460,20 +460,11 @@ Puromycin_long
 <details>
 <summary><strong>plot()</strong> - The function `plot()` is used to create visualizations of your data.</summary>
 
-It works with the following layers:
+Base R has no explicit "layer" system like ggplot2 — instead, a plot is built by calling `plot()` once to set up the canvas, then adding to it with functions like `points()`, `abline()`, `legend()`, and `mtext()`, or by passing more arguments to `plot()` directly. In the example below,the Puromycin dataset is used. Each step below redraws the full plot with one more piece added.
 
-1. Initialization Layer 
-2. Geometry Layer 
-3. Statistical Layer 
-4. Scale Layer 
-5. Label Layer 
-6. Theme Layer 
+Here is a step-by-step example using R code for a scatter plot with a fitted line:  
 
-Base R has no explicit "layer" system like ggplot2 — instead, a plot is built by calling `plot()` once to set up the canvas, then adding to it with functions like `points()`, `abline()`, `legend()`, and `mtext()`, or by passing more arguments to `plot()` directly. To show the same conceptual layers using the Puromycin dataset, each step below redraws the full plot with one more piece added.
-
-Here is a step-by-step example using R code for a scatter plot with a fitted line, illustrating the key layers:  
-
-- Initialization Layer 
+- Initialization  
 
 Sets up the plotting region and axes, with no data drawn yet.
 
@@ -483,7 +474,7 @@ plot(Puromycin$conc, Puromycin$rate, type = "n", xlab = "", ylab = "")
 
 As you can see, no data are plotted yet. An XY-grid is created and the axes are set.  
 
-- Geometry Layer 
+- Geometry  
 
 Adds the visual representation of the data (points for a scatter plot), using a color per state.
 
@@ -498,7 +489,7 @@ plot(Puromycin$conc, Puromycin$rate,
 
 As you can see, the data is plotted now. Instead of `pch = 19`, other values can be used for other point shapes, and `lines()` or `barplot()` can be used for other plot types.  
 
-- Statistical Layer 
+- Statistics  
 
 Adds a statistical summary (e.g., a line fit to the data, one per group).
 For simplicity, we just use a linear model.
@@ -520,7 +511,7 @@ for (s in names(col_map)) {
 
 Note that for plotting enzyme activity, we normally use the Michaelis-Menten model. This requires more complexity and is omitted in this example. In this case, we used a linear model fit per group with `abline()`, for demonstration purposes.  
 
-- Scale Layer 
+- Scale  
 
 Controls the mapping from the data values to the visual properties (e.g., color), made explicit here with a custom color vector and `legend()`.  
 
@@ -542,7 +533,7 @@ legend("bottomright", legend = names(col_map), col = col_map, pch = 19, title = 
 ```
 
 
-- Label Layer 
+- Labels  
 
 
 Adds non-data annotations like titles, axis labels, and a caption, using `main`/`xlab`/`ylab` and `mtext()`.
@@ -568,7 +559,7 @@ legend("bottomright", legend = names(col_map), col = col_map, pch = 19, title = 
 mtext("Data from Puromycin dataset", side = 1, line = 4, adj = 1, cex = 0.7)
 ```
 
-- Theme Layer
+- Theme 
   
 
 Controls the non-data graphical elements (e.g., background, grid lines, font size), set globally with `par()` and `grid()`.  
