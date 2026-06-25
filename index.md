@@ -31,6 +31,14 @@
 - [Here you can find instructions for the final assignment with an example portfolio](./portfolio_example/01_example_portfolio.md)
 - [Here you can find instructions for the R part for Medical Diagnostics students](./portfolio_example/02_portfolio_R_MD.md)
 
+>Note: due to the advances of GenAI, the examination using a portfolio is not in use anymore. The portfolio is shown for extra exercises. 
+
+## Link to example assignment:
+
+- [Here you can find instructions for the final Excel assignment](./example_end_assignment/excel/exercise_description.md)
+- [Here you can find instructions for the final R assignment](./example_end_assignment/R/exercise_description.html)
+
+
 ## Installation of MS Excel, R en RStudio 
 
 - [Here you can find information to install Excel, R en RStudio](./install/data_01_install.md)
