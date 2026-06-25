@@ -3,7 +3,7 @@
 
 ---
 
-[Go back to the main page](../index.md)
+[Go back to the main page](../../index.md)
 
 ---
 
