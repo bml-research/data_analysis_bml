@@ -60,7 +60,7 @@ e.	There could be multiple tropical temperatures on the same day. How many tropi
 f.	What was the average temperature in 1951? Use formulas to achieve this.  
 
 ## Exercise 3
-Use the dataset from [Our World in Data](https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations Download vaccinations.csv).  
+Use the dataset from [Our World in Data](https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations/vaccinations.csv).  
 This dataset contains daily vaccination figures per country worldwide, with columns such as date, location, total_vaccinations, people_vaccinated, people_fully_vaccinated, daily_vaccinations, etc.  
 a.	Load the data using Power Query in Excel.  
 b.	Create a chart showing the progression of people_fully_vaccinated_per_hundred (in other words, the percentage) over time for the Netherlands. Filter the data accordingly. Provide a logical title together with axis titles and units.  
