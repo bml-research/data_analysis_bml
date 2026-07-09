@@ -58,7 +58,7 @@ f.	What was the average temperature in 1951 (thus between January 1th and Decemb
 ## Exercise 3
 Use the dataset from [Our World in Data](https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations/vaccinations.csv).  
 This dataset contains daily vaccination figures per country worldwide, with columns such as date, location, total_vaccinations, people_vaccinated, people_fully_vaccinated, daily_vaccinations, etc.  
-Direct link to [the file](https://github.com/owid/covid-19-data/raw/refs/heads/master/public/data/vaccinations/vaccinations.csv).  
+You can click the `Download raw file` button on the right or click [here](https://github.com/owid/covid-19-data/raw/refs/heads/master/public/data/vaccinations/vaccinations.csv) for a direct link to the file.  
 a.	Load the data using Power Query in Excel.  
 b.	Create a chart showing the progression of people_fully_vaccinated_per_hundred (in other words, the percentage) over time for the Netherlands. Hint: first filter the data accordingly. Provide a logical title together with axis titles and units.  
 c.	Use conditional formatting to color the the cells in the column people_fully_vaccinated_per_hundred with a color scale. The minimum value should be red, the maximum value green and the midpoint should be yellow at number 30.  
