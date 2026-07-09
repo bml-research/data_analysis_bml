@@ -10,10 +10,6 @@
 
 # Example Exercise Excel
 
-## Notes for instructors
-Exercise 1: focus on Power Query loading and multiple plot types. Pie chart, Box plot, Pivot Column, XY-scatter.  
-Exercise 2: More advanced Power Query (transform data required for cleaning). Focus on functions: MIN, MAX, XLOOKUP, FILTER, UNIQUE, COUNT, COUNTIF, AVERAGEIFS.  
-Exercise 3: Power Query loading easy here. Focus on filtering large dataset for plotting, conditional formatting and Pivot Table.  
 
 
 ## General Instructions
@@ -43,41 +39,30 @@ The fictive dataset includes several measurements:
 - Target Variable: Lifespan (years).
 Answer the following questions:  
 a.	Download the data at [Predict lifespan of a comet goldfish](https://www.kaggle.com/datasets/stealthtechnologies/predict-lifespan-of-a-comet-goldfish). Use PowerQuery in Excel to load the csv in Excel.  
-b.	Filter data to exclude blanks for the column Gender. Also create a new column based on the following: True should be mapped to Male, False to Female.  
-c.	Create a Pie chart to show the proportion of the different genders. You may need to use Excel formulas to prepare the data. Provide a logical title.  
+b.	Filter data to exclude blanks for the column Gender. Also create a new column based on the following: True should be mapped to Male, False to Female. TRUE and FALSE should be used as booleans (so no quotes).  
+c.	Create a Pie chart to show the proportion of the different genders. You may need to use Excel formulas to prepare the data. Provide a logical title. Create a copy of your Pie chart and paste as picture in the same worksheet. Charts is dynamic in Excel and this way, the chart will not change when you remove the filters.  
 Now remove the filters.  
 d.	Create a box plot to compare the life span between the habitats. Provide a logical title together with axis titles and units.  
 e.	Create a pivotchart that shows the average lifespan for each habitat. Provide a logical title together with axis titles and units.  
 f.	Investigate a possible correlation between the pH of the water and the life span. Use a suitable chart type to visualize this. Provide a logical title together with axis titles and units. Start the axis with pH value 5. Is there a correlation?  
 
 ## Exercise 2
-This time we will analyse some weather data from the KNMI. Browse to [KNMI - Uurgegevens van het weer in Nederland](https://www.knmi.nl/nederland-nu/klimatologie/uurgegevens). Download a dataset from 1951-1960 for the weather station at Eelde.
-a.	Load the data using Power Query. Note: you need to use “transform” to tweak the loading of the data. Keep the original text file as it contains  important information about the columns!
+This time we will analyze some weather data from the KNMI. Browse to [KNMI - Uurgegevens van het weer in Nederland](https://www.knmi.nl/nederland-nu/klimatologie/uurgegevens). Download a dataset from 1951-1960 for the weather station at Eelde. Hint: use ctrl + f in your browser and search for Eelde.  
+a.	Load the data using Power Query. The first 31 rows of the text-file contain information about the columns. Use “transform” in PowerQuery to remove these rows and use the resulting first row as headers. Also remove the empty row between the headers and the data. Keep the original text file as it contains  important information about the columns!  
 b.	Create a new tab and find the lowest temperature and highest temperature (at 1.5 m height) using formulas in degrees Celsius (note: read the column info in the text file)!  
-c.	At what dates were these temperatures observed? Use formulas to get the answer.
-d.	A tropical temperature is defined as a temperature of 30 °C or higher. How many tropical temperatures are in the dataset (at 1.5 m height)?  
+c.	At what dates were these temperatures observed? Use formulas to get the answer. Hint: use the `FILTER` function in order to accomplish this.  
+d.	A tropical temperature is defined as a temperature of 30 °C or higher. How many tropical temperatures are in the dataset (at 1.5 m height)? Hint: you can use the function `UNIQUE` to accomplish this.  
 e.	There could be multiple tropical temperatures on the same day. How many tropical days are within the dataset (at 1.5 m height)?  
-f.	What was the average temperature in 1951? Use formulas to achieve this.  
+f.	What was the average temperature in 1951 (thus between January 1th and December 31)? Use formulas to achieve this.  
 
 ## Exercise 3
 Use the dataset from [Our World in Data](https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations/vaccinations.csv).  
 This dataset contains daily vaccination figures per country worldwide, with columns such as date, location, total_vaccinations, people_vaccinated, people_fully_vaccinated, daily_vaccinations, etc.  
+Direct link to [the file](https://github.com/owid/covid-19-data/raw/refs/heads/master/public/data/vaccinations/vaccinations.csv).  
 a.	Load the data using Power Query in Excel.  
-b.	Create a chart showing the progression of people_fully_vaccinated_per_hundred (in other words, the percentage) over time for the Netherlands. Filter the data accordingly. Provide a logical title together with axis titles and units.  
-c.	Use conditional formatting to colour the cells with a colour scale. The minimum value should be red, the maximum value green and the midpoint should be yellow at number 30.  
-d.	Provide a pivot chart with the max people_fully_vaccinated_per_hundred per hundred per country. Note that the numbers above 100 are in the dataset because of various reasons (e.g. boosters counted as full vaccination, some small countries (like Gibraltar or San Marino) vaccinated people who are not residents etc.).  
-
-## The finishing touch
-
-For each of the exercises, write a mini report using the following structure:
-
-- Introduction: short introduction about the subject in a couple of sentences  
-- Dataset: link to the original dataset  
-- Aim: the aim of your analysis  
-- Data import: how did you import the data (screenshot)
-- Cleaning: did you clean the dataset? If so, how?  
-- Results: show your plots together with a short result description.  
-- Conclusion: a brief conclusion (one or two sentences).  
+b.	Create a chart showing the progression of people_fully_vaccinated_per_hundred (in other words, the percentage) over time for the Netherlands. Hint: first filter the data accordingly. Provide a logical title together with axis titles and units.  
+c.	Use conditional formatting to color the the cells in the column people_fully_vaccinated_per_hundred with a color scale. The minimum value should be red, the maximum value green and the midpoint should be yellow at number 30.  
+d.	Provide a pivot table with the max people_fully_vaccinated_per_hundred per hundred per country. Note that the numbers above 100 are in the dataset because of various reasons (e.g. boosters counted as full vaccination, some small countries (like Gibraltar or San Marino) vaccinated people who are not residents etc.).  
 
 
 
