@@ -30,6 +30,7 @@
     - [Categorical data and numerical data](#categorical-data-and-numerical-data)
     - [Data scales](#data-scales)
     - [Calculations and visualization methods on different data types](#calculations-and-visualization-methods-on-different-data-types)
+    - [Visualizing Different Data Types](#visualizing-different-data-types)
     - [Data tables](#data-tables)
     - [Untidy data versus tidy data:](#untidy-data-versus-tidy-data)
     - [Data types](#data-types)
@@ -37,9 +38,6 @@
       - [R](#r)
 
 
-
-![Pic](./impression/impression.png)
-*<sub>Source: https://commons.wikimedia.org/wiki/File:US_Food_Consumption_Over_Time.svg</sub>*
 
 ---
 
@@ -60,26 +58,24 @@ Ordinal data, on the other hand, is data that can be placed into categories and 
 - discrete
 - continuous
 
-Discrete data can only take on specific, distinct values, such as whole numbers. Continuous data, on the other hand, can take on any value within a certain range.
+Discrete data can only take on specific, distinct values, such as whole numbers. Example of discrete data are cell counts or the number of colonies growing on an agar plate. Continuous data, on the other hand, can take on any value within a certain range. Examples include measurements such as length, temperature and concentration.  
 
 ![Pic](./fig/fig1.svg)
 *<sub>Figure 1. Data types. Source: own work</sub>*
 
 ### Data scales
 
-In statistics, data can be measured on different scales, which refers to the level of measurement of the data. The most commonly used scales of measurement are nominal, ordinal, interval, and ratio.
+In statistics, data can be measured on different scales, which refers to the level of measurement of the data. The most used scales of measurement are nominal, ordinal, interval, and ratio.  
 
-Nominal scale: This is the lowest level of measurement and is used for categorical data that can be divided into distinct groups or categories, with no inherent order or ranking. Examples include eye color, gender, or nationality.
+Nominal scale: This is the lowest level of measurement. It is used for categorical data that can be divided into distinct groups or categories, with no inherent order or ranking. Examples include eye color, gender, or nationality.  
 
-Ordinal scale: This level of measurement is used for categorical data that can be ranked or ordered. Examples include surveys, where respondents are asked to rate their agreement with a statement on a scale from strongly disagree to strongly agree, or biological taxonomic ranks such as kingdom, phylum, class, order, family, genus and species.
+Ordinal scale: This level of measurement is used for categorical data that can be ranked or ordered. Examples include surveys, where respondents are asked to rate their agreement with a statement on a scale from strongly disagree to strongly agree, or biological taxonomic ranks such as kingdom, phylum, class, order, family, genus and species.  
 
 Interval scale: This level of measurement is used for numerical data that can be ordered and has a meaningful zero point, but no true ratio comparisons between values. Examples include temperatures measured in Celsius or Fahrenheit. Time as a measurement of a point in a day (e.g., 2 PM or 14:00) is also considered an interval scale. This is because you can quantify the difference between two points in time, but there is no true or meaningful zero point.  
 
 Ratio scale: This is the highest level of measurement, and it is used for numerical data that can be ordered and has a meaningful zero point, and true ratio comparisons between values. Examples include weight measured in kilograms, height measured in centimeters, or income measured in dollars.
 
-It is important to note that ratio data allows for meaningful statement about the value of x is twice the value of y and interval data allows for meaningful statement about the distance of x and y but it doesn't allow statement like x is twice the value of y.
 
->Thus, for temperature it is appropriate to say that 20 degrees Kelvin is twice the temperature of 10 degrees Kelvin but you can not do this for temperature expressed in degrees Celsius as there is no absolute zero point.
 
 ![Pic](./fig/fig2.svg)
 *<sub>Figure 2. Scales of measurement in statistics. Source: own work</sub>*
@@ -87,7 +83,34 @@ It is important to note that ratio data allows for meaningful statement about th
 
 ### Calculations and visualization methods on different data types
 
-It is not possible to perform all types of calculations, comparisons and visualizations on all data types. As explained above, you can not perform ratio comparisons on interval data. Obviously, you can not (directly) create bar graphs or histograms on nominal or ordinal data. However, you can calculate frequencies and a proportion (by dividing the frequency by the total number of events) on nominal and ordinal data. Proper visualizations of nominal and ordinal data are Pie Charts and Bar Charts. Because nominal data is categorical data that can take on a limited number of values that don't have an inherent order or numerical meaning, some types of visualizations that are used to represent quantitative data, such as continuous data, are not suitable for representing nominal data. 
+It is not possible to perform all types of calculations, comparisons and visualizations on all data types.  
+For example, ratio data allow for meaningful statements such as “the value of x is twice the value of y”, whereas and interval data allow meaningful statement about the distance of x and y but do not support statements like “x is twice the value of y”. 
+To illustrate: for temperature it is appropriate to say that 20 degrees Kelvin is twice the temperature of 10 degrees Kelvin but you can not do this for temperature expressed in degrees Celsius as there is no absolute zero point.
+
+### Visualizing Different Data Types 
+
+In biological and biomedical research, data plotting is used to explore and communicate complex data. A plot is a graphical representation that helps visualize possible relationships between two or more variables, making it easier to observe patterns, trends, or correlations in the data. There are many types of plots, each presenting data in a different way. The type of plot you choose depends on the type of data and the relationship you want to show. For accurate interpretation and communication of the results, it is important to choose an appropriate plot type.
+Often, a plot has an x-axis and a y-axis. The y-value is the dependent variable, meaning that it changes when the x-value changes. The x-value is the independent variable that may “cause” changes in y.
+
+![Pic](./fig/fig3.png)
+*<sub>Figure 3. The anatomy of a 2D-plot</sub>*
+
+Plots that use an x-axis and a y-axis are called Cartesian plots. Common examples include bar graphs, histograms, scatter plots, and box plots. In contrast, there are also non-Cartesian charts, such as pie charts and radar charts, which represent data using visual features such as area, angle, or position rather than an x-axis and y-axis.  
+
+In the section above, we distinguished two main categories of data: categorical and numerical. The appropriate choice of plot type depends on the data type and, for Cartesian plots, on the specific combination of data types assigned to the x-axis and y-axis.  
+
+In a Cartesian plot, both the x-axis and the y-axis can represent either type of data, resulting in four possible combinations, each associated with specific plot types (illustrated in figure ###1). In practice, however, certain combinations are more commonly used, such as numerical versus numerical data in scatter plots and categorical versus numerical data in bar charts.
+Non-Cartesian plots are particularly suited for representing categorical data, especially when showing proportions or relative contributions of categories, as in pie charts, or when comparing multiple variables across categories using a radial layout, as in radar charts (illustrated in figure ###).
+The representation of data in different chart types will be further explored in the section Data Analysis Using Excel.  
+
+![Pic](./fig/fig4.png)
+*<sub>Figure 4. Examples of Cartesian plots.</sub>*
+
+
+
+<!--
+
+Obviously, you can not (directly) create bar graphs or histograms on nominal or ordinal data. However, you can calculate frequencies and a proportion (by dividing the frequency by the total number of events) on nominal and ordinal data. Proper visualizations of nominal and ordinal data are Pie Charts and Bar Charts. Because nominal data is categorical data that can take on a limited number of values that don't have an inherent order or numerical meaning, some types of visualizations that are used to represent quantitative data, such as continuous data, are not suitable for representing nominal data.  
 
 Some examples of visualization types that are not suitable on certain data types are listed below:
 
@@ -131,6 +154,8 @@ Even continuous data has some types of visualization that is not suitable or rec
 
 
 >So to summarize: Always make sure that the visualization type is appropriate for your data type.
+
+-->
 
 ### Data tables
 
