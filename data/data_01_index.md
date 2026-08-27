@@ -190,8 +190,8 @@ Columns:
 >When you encounter this, the data need to be transposed. Data analysis software contains functions to assist with this.
 
 
-![Pic](./fig/fig3.svg)
-*<sub>Figure 3. Variables, Observations and Values. Source: own work</sub>*
+![Pic](./fig/fig5.svg)
+*<sub>Figure 5. Variables, Observations and Values. Source: own work</sub>*
 
 
 ### Untidy data versus tidy data:
