@@ -107,56 +107,6 @@ The representation of data in different chart types will be further explored in 
 *<sub>Figure 4. Examples of Cartesian plots.</sub>*
 
 
-
-<!--
-
-Obviously, you can not (directly) create bar graphs or histograms on nominal or ordinal data. However, you can calculate frequencies and a proportion (by dividing the frequency by the total number of events) on nominal and ordinal data. Proper visualizations of nominal and ordinal data are Pie Charts and Bar Charts. Because nominal data is categorical data that can take on a limited number of values that don't have an inherent order or numerical meaning, some types of visualizations that are used to represent quantitative data, such as continuous data, are not suitable for representing nominal data.  
-
-Some examples of visualization types that are not suitable on certain data types are listed below:
-
-**Nominal data:**
-
-Line graph: This type of visualization is used to display the changes in a continuous variable over time, and doesn't work well with nominal data.
-
-- Scatter plot: A scatter plot represents the relationship between two continuous variables by plotting individual data points. It doesn't work well with nominal data because it doesn't have any quantitative meaning.
-
-- Boxplot: boxplots are used to show the distribution of a continuous variable. It doesn't make sense to use it with categorical variables.
-
-- Histogram: Histograms are used to represent the distribution of continuous variables, so it is not suitable for categorical data.
-
-**Ordinal data**
-
-While ordinal data is more structured than nominal data, some types of visualizations are not suitable for ordinal data. These include:
-
-- Scatter plot: Scatter plots are used to show the relationship between two continuous variables by plotting individual data points. Since ordinal data is not continuous, it doesn't make sense to use a scatter plot to represent it.
-
-- Heatmap: Heatmap is a way to visualize matrix data as color intensity on a grid. It works well with continuous and numerical data, but ordinal data doesn't have quantitative values and therefore doesn't work well with this type of visualization
-
-- Pie Chart: a Pie chart is useful to show the proportion of each category within the total dataset. However, it may not be the best way to show the ordinal relationship between categories, especially if the number of categories is large.
-
-**Discrete data**
-
-Some examples of visualization that are not suitable for discrete data are:
-
-- Line graph: Line graphs are commonly used to display the changes in a continuous variable over time. While a line graph can be used to represent discrete data by plotting individual points, it doesn't make sense to draw a line between the points since it could imply continuity. 
-
-- Histogram: Histograms are used to represent the distribution of continuous variables, so it is not suitable for discrete data. 
-
-These are some examples of visualizations that are not suitable for discrete data, but there are many other visualizations that can be used to represent discrete data. Examples of visualizations that are well suited for discrete data include bar charts, dot plots, pie charts, and stacked bar charts. These visualizations can help to effectively display the frequency or count of specific values in a dataset.
-
-**Continuous data**
-
-Even continuous data has some types of visualization that is not suitable or recommended. Some examples include:
-
-- Stacked bar chart: This visualization is typically used to show the distribution of different categories within each category. Because continuous data is not necessarily divided into distinct categories, a stacked bar chart doesn't make sense to use.  
-
-- Dot plot: A dot plot is a simple visualization that plots individual points on a graph. This visualization works well with discrete data, but with continuous data it would plot a large number of points, which can make the graph difficult to read and interpret.  
-
-
->So to summarize: Always make sure that the visualization type is appropriate for your data type.
-
--->
-
 ### Data tables
 
 Scientist often organize data in a table such as:
