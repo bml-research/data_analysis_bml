@@ -27,6 +27,11 @@ Files used on this page:
   - [Introduction](#introduction)
   - [Data visualization charts in Excel](#data-visualization-charts-in-excel)
   - [What makes a good chart?](#what-makes-a-good-chart)
+  - [Choosing the appropriate chart for your data](#choosing-the-appropriate-chart-for-your-data)
+    - [Nominal data:](#nominal-data)
+    - [Ordinal data](#ordinal-data)
+    - [Discrete data](#discrete-data)
+    - [Continuous data](#continuous-data)
   - [Some chart examples](#some-chart-examples)
     - [Column charts](#column-charts)
     - [Pie Chart](#pie-chart)
@@ -46,35 +51,89 @@ Files used on this page:
 
 ## Introduction
 
-Though not as powerful as R or Python, Excel is a user friendly tool for data analysis and visualization. Regardless of the field you are working in, Excel can help you make sense of your data and present your findings in a clear and compelling way. By using Excel's built-in charting features, you can easily create a variety of charts and graphs that visualize key trends and patterns in your data or correlations between different variables. With Excel, you can create professional-looking charts and graphs that are easy to understand and can help you communicate your insights to others. Excel offers a wide range of tools and capabilities that can help you make sense of your food-related data and present it in a way that is meaningful and informative.
+Though not as powerful as R or Python, Excel is a user friendly tool for data analysis and visualization. Regardless of the field you are working in, Excel can help you make sense of your data and present your findings in a clear and compelling way. By using Excel's built-in charting features, you can easily create a variety of charts and graphs that visualize key trends and patterns in your data or correlations between different variables. With Excel, you can create professional-looking charts and graphs that are easy to understand and can help you communicate your insights to others. Excel offers a wide range of tools and capabilities that can help you make sense of your data and present it in a way that is meaningful and informative.
 
 
 ## Data visualization charts in Excel
 
 Excel offers a wide variety of chart types, which can be customized to suit your data and presentation needs. Some of the most commonly used chart types in Excel include:
-- **Column charts**: Used to compare values across different categories or to show changes over time.
-- **Line charts**: Used to show trends over time or to compare trends between multiple data sets.
-- **Pie charts**: Used to show how different categories contribute to a whole.
-- **Bar charts**: Similar to column charts, but with horizontal bars instead of vertical columns.
-- **Scatter charts**: Used to show the relationship between two variables.
-- **Area charts**: Similar to line charts, but with the area between the line and the x-axis filled in.
-- **Radar charts**: Used to compare multiple data sets across different categories.
-- **Surface charts**: Used to show trends in three-dimensional data.
-- **Bubble charts**: Similar to scatter charts, but with bubbles of different sizes to represent the data points.
+- **Column charts:** Used to compare values across different categories or to show changes over time. 
+- **Bar charts:** Similar to column charts, but with horizontal bars instead of vertical columns. 
+- **Line charts:** Used to show trends over time or to compare trends between multiple data sets. 
+- **Area charts:** Similar to line charts, but with the area between the line and the x-axis filled in. 
+- **Scatter charts:** Used to show the relationship between two variables. 
+- **Bubble charts:** Similar to scatter charts, but with bubbles of different sizes to represent the data points. 
+- **Pie charts:** Used to show how different categories contribute to a whole. 
+- **Radar charts:** Used to compare multiple data sets across different categories. 
+- **Surface charts:** Used to show trends in three-dimensional data. 
 
-These are just a few of the chart types available in Excel. With its robust set of charting features, Excel offers a wide range of options for visualizing your data and communicating your insights to others.
+>These are just a few of the chart types available in Excel. With its robust set of charting features, Excel offers a wide range of options for visualizing your data and communicating your insights to others.
 
 
 ## What makes a good chart?
 
 A good chart is one that effectively communicates your data in a clear and concise manner. Here are some key characteristics of a good chart:
 - **Accuracy**: The data in the chart should be accurate and clearly labeled. Any sources of error or uncertainty should be clearly indicated.
-- **Clarity**: The chart should be easy to read and understand. The axes and labels should be clearly labeled (with units), and any legends or annotations should be concise and to the point.
-- **Simplicity**: The chart should be simple and straightforward, avoiding unnecessary clutter or complexity (such as colored bars when they are not informative). The message of the chart should be clear and easily - understandable at a glance.
+- **Clarity**: The chart should be easy to read and understand. The axes and labels should be clearly labeled (with quantities and units), and any legends or annotations should be concise and to the point.
+- **Simplicity**: The chart should be simple and straightforward, avoiding unnecessary clutter or complexity (such as 3D or colored bars when they are not informative). The message of the chart should be clear and easily - understandable at a glance.
 - **Relevance**: The chart should be relevant to the audience and the purpose of the presentation. It should highlight the key insights or trends in the data, and should be designed with the audience's needs and interests in mind.
 - **Aesthetics**: The chart should be visually appealing and professional-looking, with clear, readable fonts and colors that complement the data being presented.
 
 By focusing on these key characteristics, you can create charts that effectively communicate your data and insights, and help you to make better-informed decisions based on your data.
+
+## Choosing the appropriate chart for your data 
+
+In the Introduction Data lesson, we identified four different types of data: nominal, ordinal, interval, and ratio. The type of graph you can use to display the depends on the data type.  
+
+### Nominal data: 
+
+Nominal data (categories with no inherent order, such as eye color, nationality, or bacterial species) is categorical data that can take on a limited number of values that don’t have an inherent order or numerical meaning. Therefore, some types of visualizations that are used to represent quantitative data are not suitable for representing nominal data.  
+
+If you calculate frequencies and proportions (by dividing the frequency by the total number of events) on nominal data, you can display nominal data using:  
+
+- **Column charts:** 
+  - Categories on the x-axis, frequencies or percentages on the y-axis. 
+  - Example: Number of students with different eye colors. 
+- **Pie charts:** 
+  - Show the relative proportion of each category. 
+  - Example: Distribution of blood types in a population. 
+
+Visualization types that are not suitable for nominal data include: 
+
+- Line graphs: This type of visualization is used to display the changes in a continuous variable over time and doesn’t work well with nominal data. 
+- Scatter plots: A scatter plot represents the relationship between two continuous variables by plotting individual data points. It doesn’t work well with nominal data because it doesn’t have any quantitative meaning. 
+- Boxplots: boxplots are used to show the distribution of a continuous variable. It doesn’t make sense to use it with categorical variables. 
+- Histograms: Histograms are used to represent the distribution of continuous variables, so it is not suitable for categorical data. 
+
+### Ordinal data 
+
+Ordinal data (categories with natural order, such as poor, fair, good, excellent) can be effectively visualized using column charts, with the categories arranged in their natural order. While ordinal data are more structured than nominal data because the categories have a natural order, not all visualization types are suitable. Plots that cannot be used for ordinal data include: 
+
+- **Scatter plots:** Scatter plots are used to show the relationship between two continuous variables by plotting individual data points. Since ordinal data is not continuous, it doesn’t make sense to use a scatter plot to represent it. 
+- **Heatmaps:** Heatmap is a way to visualize matrix data as color intensity on a grid. It works well with continuous and numerical data, but ordinal data doesn’t have quantitative values and therefore doesn’t work well with this type of visualization 
+- **Pie Charts:** pie charts can show the proportion of each category, but do not emphasize the ordering of the categories. As a result, information about the order of the categories is lost when ordinal data are displayed in a pie chart. 
+
+### Discrete data 
+
+Discrete numerical data (e.g., the number of children, colonies, or mutations) can be effectively visualised using (stacked) column charts and dot plots. These visualizations can help to effectively display the frequency or count of specific values in a dataset. 
+
+Examples of visualization that are not suitable for discrete numerical data include: 
+
+- **Line graphs:** Line graphs are commonly used to display the changes in a continuous variable over time. While a line graph can be used to represent discrete data by plotting individual points, it doesn’t make sense to draw a line between the points since it could imply continuity. 
+
+- **Histograms:** Histograms are used to represent the distribution of continuous variables, so it is not suitable for discrete data. 
+
+### Continuous data 
+
+Even for continuous data (data that can, in principle, take any value within a range), some types of visualization are not suitable or recommended. Some examples include: 
+
+- **Stacked column chart:** This visualization is typically used to show the distribution of different categories within each category. Because continuous data is not necessarily divided into distinct categories, a stacked column chart doesn’t make sense to use. 
+
+- **Dot plot:** A dot plot is a simple visualization that plots individual points on a graph. This visualization works well with discrete data, but with continuous data it would plot a large number of points, which can make the graph difficult to read and interpret. 
+
+>To summarize: Always make sure that the visualization type is appropriate for your data type. 
+
+<!-->Tot Hier<-->
 
 ## Some chart examples
 
