@@ -133,7 +133,7 @@ Even for continuous data (data that can, in principle, take any value within a r
 
 >To summarize: Always make sure that the visualization type is appropriate for your data type. 
 
-<!-->Tot Hier<-->
+<!--Tot Hier-->
 
 ## Some chart examples
 
