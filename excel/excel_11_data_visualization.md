@@ -35,7 +35,7 @@ Files used on this page:
   - [ExamplesExamples of data visualization charts in Excel](#examplesexamples-of-data-visualization-charts-in-excel)
     - [Column charts](#column-charts)
     - [Stacked column charts](#stacked-column-charts)
-    - [Pie Chart](#pie-chart)
+    - [Pie Charts](#pie-charts)
     - [Pie of Pie](#pie-of-pie)
     - [Radar charts](#radar-charts)
     - [Box plots](#box-plots)
@@ -235,43 +235,37 @@ To practice using bar charts in Excel, complete Exercises 1–4 on the [exercise
 <!--Tot hier-->
 
 
-### Pie Chart
+### Pie Charts
 
-Pie charts are suitable for displaying data that can be broken down into categories or parts that add up to a whole. They are often used to show proportions or percentages of a whole.
-
-Pie charts are effective for conveying information quickly and intuitively, as the size of each slice corresponds to its percentage of the whole. They are also useful for highlighting the relative sizes of each category or part, making it easy to compare them at a glance.
-
+Another way to compare the proportions of components is a pie chart. Pie charts are suitable for displaying data that can be divided into distinct categories which add up to a whole. They are commonly used to show the relative proportions or percentages of each category within the total dataset..
+Pie charts are effective for conveying information quickly and intuitively, as the size of each slice corresponds to its proportion of the whole. 
 However, pie charts may not be the best choice for all types of data. For example, they can become difficult to read when there are too many categories or when the differences between the sizes of the slices are small. In these cases, a bar chart or other visualization (Pie of Pie) may be more appropriate.
+As an example, we use our previous (fictional) dataset to create a pie chart of the average daily diet of tigers in a zoo: 
 
-We take our previous example as an example to create a pie chart.
-The problem is that there are too many categories. Therefore, we will narrow down the number of rows by focussing on big cats. According to [Wikipedia](https://en.wikipedia.org/wiki/Big_cat) The term "big cat" is typically used to refer to any of the five living members of the genus Panthera, namely the tiger, lion, jaguar, leopard, and snow leopard, as well as the non-pantherine cheetah and cougar. 
-
-Big cats' food intake is relative to their body mass. Thus, the knowledge of big cats' food intake relative to their body mass is a fundamental principle used by zoos and wildlife sanctuaries to plan and manage their animals' diets. However, in reality, it's a bit more complex than just a simple percentage. but for the sake of the exercise, we will plot the relative body mass of the big cats to make an estimation of their relative food intake. This can be visualized in a Pie chart.
-
-So we select these species first and then create the Pie Chart:
 
 ![Pie chart](./pics_11_data_visualization/fig09.png)
-*<sub>Figure 9: Pie chart representing the relative weight of big cats in grams</sub>*
+*<sub>Figure 9: Pie chart representing the relative contribution of different food components to the daily diet of lions in zoo</sub>*
 
 Or with the data labels as percentages shown connected to the pie slices (choose: chart design > chart elements > Data labels > Outside End):
 
 
 ![Pie chart](./pics_11_data_visualization/fig10.png)
-*<sub>Figure 10: Pie chart representing the relative weight of big cats in grams. Data labels as percentages are connected to the pie slices.</sub>*
+*<sub>Figure 10: Pie chart representing the relative contribution of different foord components to the daily diet of lions in zoo. . Data labels as percentages are connected to the pie slices.</sub>*
 
 
 ### Pie of Pie
 
-Pie of Pie charts can become handy if the individual slices become small and the Pie chart becomes cluttered. 
-
-Here is an example of a Pie of Pie chart with all the Feline species:
+Pie of Pie charts can become handy if the individual slices become small and the Pie chart becomes cluttered. For example, in this modified version of the previous dataset, the supplements are listed individually rather than being grouped into a single category. In a standard pie chart, the supplements may be difficult to distinguish because they represent only a small proportion of the total (Fig. 11A):
 
 ![Pie of Pie chart](./pics_11_data_visualization/fig11.png)
-*<sub>Figure 11: Pie of Pie chart representing the relative weight of cats in %. Data labels and percentages are connected to the pie slices.</sub>*
+*<sub>Figure 11: A) Pie chart representing the relative contribution of different foord components to the daily diet of lions in zoo. . Data labels as percentages are connected to the pie slices. B)  Pie of Pie chart representing the relative contribution of different foord components to the daily diet of lions in zoo. . Data labels as percentages are connected to the pie slices.</sub>*
 
-As you can see, the second Pie is created from the smallest Pie slices from the first Pie chart. This creates less clutter when the individual slices become to small. 
+As you can see, the second Pie is created from the smallest Pie slices from the first Pie chart. This creates less clutter when the individual slices become too small. 
 
-You can format the secondary Pie by right-clicking it > Format Data Series and then use the drop down to select the appropriate Split Series.
+You can format the secondary Pie by right-clicking it > Format Data. Here, you can choose the basis on which slices are assigned to the secondary pie chart and specify how many categories are displayed in it. Alternatively, you can manually move a category to the primary or secondary pie chart by double clicking the corresponding slice in the chart and selecting the appropriate plot option in the menu. 
+
+>To practice using pie charts in Excel, complete Exercises 5 on the [exercise page](./excel_12_data_visualization_exercises.md).
+
 
 ### Radar charts
 
@@ -291,6 +285,8 @@ The resulting radar chart is shown below:
 
 
 >Note that we can conclude that the Kjedahl method shows considerable higher amounts. Although the protein concentration in sample 3 is lower compared to the other two samples, the same pattern can be seen. The  Kjeldahl method seems to overestimate the protein concentration.
+
+>To practice using radar charts in Excel, complete exercise 8 on the [exercise page](./excel_12_data_visualization_exercises.md).
 
 ### Box plots
 
@@ -349,17 +345,18 @@ We can also create box plots with more data series. In the example below, days t
 
 >You might have noticed that for some orders, no clear Tukey box shape is seen (minimum, lower percentile, median, higher percentile and maximum). This is because some orders only contain one or two data points (animal species). You can omit these by filtering of course. Or (even better) try to obtain a more complete data set. 
 
+>To practice using box plots in Excel, complete exercises 6 and 7 on the [exercise page](excel_12_data_visualization_exercises.md).
+
 ### Line and XY-scatter plots
 
-Line charts are useful when you want to visualize trends or changes in data over time or another continuous variable. They are particularly good for showing how a particular variable changes over time or in response to another variable. For example, a line chart can be used to show how the weight of mice has changed over time. 
+Line charts are useful when you want to visualize trends or changes in data over a continuous variable, such as time, when measurements are taken at regular intervals. For example, a line chart can be used to show how the weight of mice has changed over time. 
+On the other hand, XY scatter plots are useful for visualizing the relationship between two variables or for displaying observations collected at irregular time intervals. They are particularly effective for showing the degree of correlation between two variables or identifying outliers in the data. For example, a scatter plot can be used to show the relationship between a person’s height and weight.  
 
-On the other hand, XY scatter plots are useful when you want to visualize the relationship between two variables. They are particularly useful for showing the degree of correlation between two variables or identifying outliers in the data. For example, a scatter plot can be used to show the relationship between a person's height and weight. 
-
-In summary, line charts are best used when you want to show trends or changes over time, while XY scatter plots are best used when you want to visualize the relationship between two variables.
+In summary, line charts are typically used to show trends or changes over time especially for data collected at regular intervals. XY scatter plots are typically used to visualize the relationship between two variables or to display or to display time-series data when observations are collected at irregular intervals.  
 
 In the example below, we will investigate the gain of weight between 3 different strains of mice. We will compare the weight during 1 year of wild-type, ob/ob mice and db/db mice. Both ob/ob and db/db mice are disturbed in leptin signaling. Leptin is a hormone produced by fat cells that helps regulate appetite and energy expenditure. The ob/ob or obese mouse is a mouse strain that has a mutation in the gene responsible for the production of leptin. It produces a truncated variant of the leptin protein. The db/db mice have mutations in the leptin receptor. Both strains eat excessively and are used as an animal model of type II diabetes.
-
 The data used for this example are fictive and generated by a script.
+
 
 ![ob/ob mice](./pics_11_data_visualization/ob_ob_mice.jpg)
 *<sub>Figure 19: The ob/ob or obese mouse is a mouse strain that eats excessively due to mutations in the gene responsible for the production of leptin. It is used as an animal model of type II diabetes. Source: https://en.wikipedia.org/wiki/Ob/ob_mouse#/media/File:Fatmouse.jpg.</sub>*
@@ -413,7 +410,7 @@ A linear regression model was added as trendline and the equation is shown on th
 ![Chicken Weight](./pics_11_data_visualization/fig25.png)
 *<sub>Figure 25: Chicken weight data set plotted as XY-scatter. Dataset was filtered for Diet 1</sub>*
 
-
+>To practice using XY-scatter plots in Excel, complete exercise 10 on the [exercise page](excel_12_data_visualization_exercises.md).
 
 ### Bubble chart
 
@@ -455,6 +452,9 @@ The chart was tweaked as follows:
 
 
 An extra dimension could be included by using colors. For example you could add categorical data (ordinal data in this case) such as sensitivity to chemical interferences like sugars and detergents, which Lowry and Bradford are very susceptible to (in red), but the other methods are less so (in green).
+
+>To practice using bubble charts in Excel, complete exercise 9 on the [exercise page](excel_12_data_visualization_exercises.md).
+
 
 
 ## Pivot charts
@@ -513,6 +513,8 @@ You can also plot the median heart rate using Power Pivot. Follow the steps from
 
 ![Pivot chart](./pics_11_data_visualization/fig36.png)
 *<sub>Figure 36: Power Pivot chart. Median of Heart rate from different Physical activity categories. Chart title and axis labels added.</sub>*
+
+>To practice using pivot charts in Excel, complete exercise 11 on the [exercise page](excel_12_data_visualization_exercises.md).
 
 ---
 
