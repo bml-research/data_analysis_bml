@@ -32,8 +32,9 @@ Files used on this page:
     - [Ordinal data](#ordinal-data)
     - [Discrete data](#discrete-data)
     - [Continuous data](#continuous-data)
-  - [Some chart examples](#some-chart-examples)
+  - [ExamplesExamples of data visualization charts in Excel](#examplesexamples-of-data-visualization-charts-in-excel)
     - [Column charts](#column-charts)
+    - [Stacked column charts](#stacked-column-charts)
     - [Pie Chart](#pie-chart)
     - [Pie of Pie](#pie-of-pie)
     - [Radar charts](#radar-charts)
@@ -133,9 +134,8 @@ Even for continuous data (data that can, in principle, take any value within a r
 
 >To summarize: Always make sure that the visualization type is appropriate for your data type. 
 
-<!--Tot Hier-->
 
-## Some chart examples
+## ExamplesExamples of data visualization charts in Excel
 
 ### Column charts
 
@@ -145,11 +145,11 @@ Column charts are suitable for comparing values across different categories or f
 
 Column charts are particularly useful for:
 - Comparing data: Column charts make it easy to compare data across different categories or groups, and to identify trends or patterns in the data.
-- Showing changes over time: Column charts can be used to show changes in data over time, such as changes in sales or revenue from one year to the next.
+- Showing changes over time: Column charts can be used to show changes in data over time, such as changes in the population of a species one year to the next.
 - Highlighting differences: Column charts can be used to highlight differences between groups or categories, making it easy to see which values are larger or smaller than others.
 - Displaying large amounts of data: Column charts can be used to display large amounts of data in a clear and concise manner, making it easy to interpret and analyze the data.
 
-Overall, Column charts are a versatile and effective way to visualize categorical data and to communicate important insights and trends to others.
+Overall, Column charts are a versatile and effective way to visualize categorical (nominal or ordinal) data and to communicate important insights and trends to others.
 
 So let's take the [following dataset](https://genomics.senescence.info/species/index.html) as an example:
 The AnAge Database of Animal Ageing and Longevity.
@@ -185,7 +185,7 @@ If you need more help (each individual step explained), have a look [here](https
 
 Note that the Bobcat has the highest maximum life span.
 
-In a similar way, we can also create a bar chart for the adult body weight:  
+In a similar way, we can also create a column chart for the adult body weight:  
 
 ![Column chart](./pics_11_data_visualization/fig04.png)
 *<sub>Figure 4: Column chart representing the adult weight for different cat species.</sub>*
@@ -196,7 +196,7 @@ Now if you would like to compare this to the weight at birth, you could create a
 
 However, not every entry contains a Birth weight so we first deselect the blank rows using filters.
 
-Next, we can create the clustered bar chart:
+Next, we can create the clustered column chart:
 
 ![Column chart](./pics_11_data_visualization/fig05.png)
 *<sub>Figure 5: Clustered column chart representing the animal weight at birth and the adult weight for different cat species.</sub>*
@@ -210,22 +210,30 @@ The problem with this chart is that the birth weights are barely visible. To imp
 
 >Note: if the order of birth weight and adult weight are swapped in your case, you can change the order by right clicking your chart, click `Select Data...` and use the arrows to change the order of the data series.
 
-You could use a stacked column chart to have it all in one overview:
+### Stacked column charts
+
+Another type of column chart is a stacked column chart. In this chart, the values within each category are placed on top of each other. A stacked column chart should only be used when the individual values combine to form a meaningful total.  
+For example, it is not meaningful to plot birth weight and adult weight for different cat species in a stacked column chart. To demonstrate a meaningful use of a stacked column chart we will use another (fictional) dataset on the average feeding data for [big cats](https://en.wikipedia.org/wiki/Big_cat) in a zoo. In this chart, each column represents a species, and the segments within each column show the contribution of different food components (such as meat, bone, and supplements) to the total daily diet.
 
 
 ![Stacked column chart](./pics_11_data_visualization/fig07.png)
-*<sub>Figure 7: Stacked column chart representing the animal weight at birth and the adult weight for different cat species. logarithmic scale.</sub>*
+*<sub>Figure 7: : Stacked column chart representing the zoo feeding data for big cats. The chart is based on a fictional dataset.</sub>*
 
 
-But how do these birth weights relate relatively to the adult weights?
-We could calculate this but Excel provides a plot type that takes this work out of your hands:
+When the emphasis is on comparing the proportions of these components rather than their absolute amounts, a relative stacked column chart can be used, where each column is scaled to the same height to highlight the percentage contribution of each component (Figure 8).  
 
 ![Relative Stacked column chart](./pics_11_data_visualization/fig08.png)
-*<sub>Figure 8: Relative stacked column chart representing the relative animal weight at birth and the adult weight for different cat species. logarithmic scale.</sub>*
+*<sub>Figure 8: Relative stacked column chart representing the zoo feeding data for big cats. The chart is based on a fictional dataset.</sub>*
 
 >You will see that the axis labels are initially positioned at the top of the chart. You can change this by right clicking a y-axis label, then click `Format Axis...` > `Labels` and select `Low` from the dropdown under `Label Position`.
 
-Like the relative stacked column chart, the pie chart is another chart type that is suitable for such a representation.
+>Tip: In Excel, you can easily change a chart to a different type by right-clicking the chart and selecting the Change Chart Type option. Note that you may need to adjust the axis titles after changing the chart type.  
+
+
+To practice using bar charts in Excel, complete Exercises 1–4 on the [exercise page](./excel_12_data_visualization_exercises.md).
+
+<!--Tot hier-->
+
 
 ### Pie Chart
 
