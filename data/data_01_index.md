@@ -72,7 +72,7 @@ Nominal scale: This is the lowest level of measurement. It is used for categoric
 
 Ordinal scale: This level of measurement is used for categorical data that can be ranked or ordered. Examples include surveys, where respondents are asked to rate their agreement with a statement on a scale from strongly disagree to strongly agree, or biological taxonomic ranks such as kingdom, phylum, class, order, family, genus and species.  
 
-Interval scale: This level of measurement is used for numerical data that can be ordered and has a meaningful zero point, but no true ratio comparisons between values. Examples include temperatures measured in Celsius or Fahrenheit. Time as a measurement of a point in a day (e.g., 2 PM or 14:00) is also considered an interval scale. This is because you can quantify the difference between two points in time, but there is no true or meaningful zero point.  
+Interval scale: This level of measurement is used for numerical data that can be ordered and has an arbitrary zero point (no absolute zero), meaning it allows for equal distances between values but no true ratio comparisons. Examples include temperatures measured in Celsius or Fahrenheit. Time as a measurement of a point in a day (e.g., 2 PM or 14:00) is also considered an interval scale. This is because you can quantify the difference between two points in time, but there is no true or meaningful zero point.  
 
 Ratio scale: This is the highest level of measurement, and it is used for numerical data that can be ordered and has a meaningful zero point, and true ratio comparisons between values. Examples include weight measured in kilograms, height measured in centimeters, or income measured in dollars.
 
