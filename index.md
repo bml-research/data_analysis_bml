@@ -26,15 +26,6 @@
 
 - [Demo DataSaurus Dozen Dataset](./datasaurus_demo/datasaurus_demo.html)
 
-<!-->
-## Link to example portfolio
-
-- [Here you can find instructions for the final assignment with an example portfolio](./portfolio_example/01_example_portfolio.md)
-- [Here you can find instructions for the R part for Medical Diagnostics students](./portfolio_example/02_portfolio_R_MD.md)
-
->Note: due to the advances of GenAI, the examination using a portfolio is not in use anymore. The portfolio is shown for extra exercises. 
-
--->
 
 ## Link to example assignment:
 
