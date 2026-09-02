@@ -33,6 +33,7 @@
     - [Visualizing Different Data Types](#visualizing-different-data-types)
     - [Data tables](#data-tables)
     - [Untidy data versus tidy data:](#untidy-data-versus-tidy-data)
+    - [Wide versus long format](#wide-versus-long-format)
     - [Data types](#data-types)
       - [Microsoft Excel](#microsoft-excel)
       - [R](#r)
@@ -45,7 +46,7 @@
 
 ### Categorical data and numerical data
 
-In statistics and data analysis, there are several ways to categorize different types of data. Two main categories of data are categorical and numerical.
+In statistics and data analysis, there are several ways to categorize different types of data (figure 1). Two main categories of data are categorical and numerical.
 
 **Categorical data**, also known as qualitative data, is data that can be divided into categories. There are two main types of categorical data: 
 - nominal
@@ -65,7 +66,7 @@ Discrete data can only take on specific, distinct values, such as whole numbers.
 
 ### Data scales
 
-In statistics, data can be measured on different scales, which refers to the level of measurement of the data. The most used scales of measurement are nominal, ordinal, interval, and ratio.  
+In statistics, data can be measured on different scales, which refers to the level of measurement of the data (figure 2). The most used scales of measurement are nominal, ordinal, interval, and ratio.  
 
 Nominal scale: This is the lowest level of measurement. It is used for categorical data that can be divided into distinct groups or categories, with no inherent order or ranking. Examples include eye color, gender, or nationality.  
 
@@ -99,8 +100,8 @@ Plots that use an x-axis and a y-axis are called Cartesian plots. Common example
 
 In the section above, we distinguished two main categories of data: categorical and numerical. The appropriate choice of plot type depends on the data type and, for Cartesian plots, on the specific combination of data types assigned to the x-axis and y-axis.  
 
-In a Cartesian plot, both the x-axis and the y-axis can represent either type of data, resulting in four possible combinations, each associated with specific plot types (illustrated in figure ###1). In practice, however, certain combinations are more commonly used, such as numerical versus numerical data in scatter plots and categorical versus numerical data in bar charts.
-Non-Cartesian plots are particularly suited for representing categorical data, especially when showing proportions or relative contributions of categories, as in pie charts, or when comparing multiple variables across categories using a radial layout, as in radar charts (illustrated in figure ###).
+In a Cartesian plot, both the x-axis and the y-axis can represent either type of data, resulting in four possible combinations, each associated with specific plot types (illustrated in figure 4). In practice, however, certain combinations are more commonly used, such as numerical versus numerical data in scatter plots and categorical versus numerical data in bar charts.
+Non-Cartesian plots are particularly suited for representing categorical data, especially when showing proportions or relative contributions of categories, as in pie charts, or when comparing multiple variables across categories using a radial layout, as in radar charts (illustrated in figure 4).
 The representation of data in different chart types will be further explored in the section Data Analysis Using Excel.  
 
 ![Pic](./fig/fig4.png)
@@ -125,7 +126,7 @@ Columns:
 
 `Columns` are also called `variables` or `features`. For example, the second column contains the Gene ID, a unique identifier for each Gene. The third column represents the chromosome number and the fourth column the length of the protein in amino acids.
 
-`Values` are found on the cross-section of columns and rows in csv files or other tabulated text file formats. In Excel, each cell contains a value. Values may represent text strings, whole numbers (integers), decimal values (floats) or booleans (true, false). Other values do exist as well but are beyond the scope of this course.
+`Values` are found on the cross-section of columns and rows in csv files or other tabulated text file formats (figure 5). In Excel, each cell contains a value. Values may represent text strings, whole numbers (integers), decimal values (floats) or booleans (true, false). Other values do exist as well but are beyond the scope of this course.
 
 
 >Do not put records in columns and variables in rows like this:
@@ -189,6 +190,10 @@ Another example of untidy data:
 |DNAJB1            |3337             |Protein length (# aa)|340                           |
 |DNAJB2            |3300             |Chromosome #         |2                             |
 |DNAJB2            |3300             |Protein length (# aa)|277                           |
+|DNAJB3            |414061           |Chromosome #         |2                             |
+|DNAJB3            |414061           |Protein length (# aa)|NA (pseudogene)               |
+|DNAJB4            |11080            |Chromosome #         |1                             |
+|DNAJB4            |11080            |Protein length (# aa)|337                           |
 
 As you can see in this example, not each variable has its own column and as a result, not each observation has its own row.
 
@@ -204,6 +209,41 @@ The data above in tidy format:
 
 >In summary: always make sure that your data are well organized. This will consume time and effort but it will be worth the time and effort as the data analysis later on will be much more straightforward.
 
+
+### Wide versus long format
+
+Data tables can be in wide versus long format.
+
+Wide:  
+
+| City | Temp_Day1 | Temp_Day2 | Temp_Day3 |
+|---|---|---|---|
+| Amsterdam | 18 | 21 | 19 |
+| Groningen | 16 | 19 | 17 |
+
+
+Long:  
+
+| City | Day | Temperature |
+|---|---|---|
+| Amsterdam | Day1 | 18 |
+| Amsterdam | Day2 | 21 |
+| Amsterdam | Day3 | 19 |
+| Groningen | Day1 | 16 |
+| Groningen | Day2 | 19 |
+| Groningen | Day3 | 17 |
+
+>Note that only the long format is tidy
+
+- Each variable must have its own column.
+- Each observation must have its own row.
+- Each value must have its own cell.
+
+In the wide format, the column headers (Temp_Day1, Temp_Day2, Temp_Day3) actually contain values of a variable (Day) rather than distinct variables themselves. Because the variable "Day" is spread across the column names, it violates rule 1.  
+
+In the long format, every column corresponds to a distinct variable (City, Day, Temperature), and every single row represents a single observation (a temperature reading for a specific city on a specific day).  
+
+>The Tidyverse package in R has powerful functions to reshape tables in wide format to tables in long format.  
 
 ### Data types
 
