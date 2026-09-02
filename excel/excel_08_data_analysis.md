@@ -288,6 +288,7 @@ This course will familiarize you with using Excel functions. This [link](https:/
 | FLOOR          | Rounds a number down, toward zero                                                                                                                                               |
 | **IF**             | Specifies a logical test to perform                                                                                                                                             |
 | IFNA           | Returns the value you specify if the expression resolves to #N/A, otherwise returns the result of the expression                                                                |
+| **IFS**             | Logical: Checks whether one or more conditions are met and returns a value that corresponds to the first TRUE condition.                                 |
 | INDEX          | Uses an index to choose a value from a reference or array                                                                                                                       |
 | **ISBLANK**        | Returns TRUE if the value is blank                                                                                                                                              |
 | ISNA           | Returns TRUE if the value is the #N/A error value                                                                                                                               |
