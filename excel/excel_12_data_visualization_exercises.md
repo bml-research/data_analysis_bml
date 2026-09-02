@@ -35,8 +35,21 @@ Create a clustered column chart representing the expression values without stimu
 
 ### Exercise 3
 
-Use the same data as from exercise 2 to create a stacked column chart. Filter the data that contain the MAP Kinase gene family.
-Create a stacked column chart representing the `Expression Values with and without stimulus`. Make sure to add proper axis titles, a title and a legend. The gene names should be sorted.
+Use the same data as from exercise 2 to create a stacked column chart in which each column represents a gene family from the motor proteins (i.e. dynein, kinesin and myosin) and the segments within each column show the number of genes whose expression is increased or decreased[JK2.1] in the presence of the stimulus. 
+Before you can create this chart, you need to analyse the data:
+- Create a new column, with an appropriate name, in which you use the IF-function to indicate for each gene family whether the expression is increased or decreased. 
+- In a new sheet, use the COUNTIFS-function to count for each motor protein gene family the number of genes whose expression is increased or decreased in the presence of the stimulus. 
+For example (the values in this table are not correct)
+
+|Protein|Increased|Decreased|
+|:------|--------:|--------:|
+|Dynein |6        |7        |
+|Kinesin|11       |3        |
+|Myosin |4        |12       |
+
+Use the data in this table to create the stacked column chart. Make sure to add proper axis titles, a title and a legend. The gene names should be sorted alphabetically.  
+For help with the COUNTIFS function, see: [COUNTIFS function](https://support.microsoft.com/en-us/excel/functions/countifs-function) on the Microsoft Support page.  
+
 
 ### Exercise 4
 
