@@ -159,6 +159,8 @@ When you separate the analysis from the data, selecting ranges will be quite cum
 
 Instead of typing or clicking a lot you can assign variable names to selections and store them in memory. See [this link](https://support.microsoft.com/en-us/office/create-a-named-range-from-selected-cells-in-an-excel-worksheet-fd8905ed-1130-4cca-9bb0-ad02b7e594fd). Once you assigned a variable name for a range, you can simply type the (short) variable name instead of clicking a lot (or typing a lot). On the `Formulas` tab, you can click the `Name Manager` to get an overview of all the assigned selections and also rename them.
 
+You can find more information about named ranges and the name manager on the [Microsoft Excel webpage](https://support.microsoft.com/en-us/excel/use-the-name-manager-in-excel).
+
 >When you import csv files using Power Query, Excel will automatically assign a selection name for the whole table. You can rename this selection under `Formulas > Name Manager`.
 
 ## Array formulas
@@ -263,74 +265,75 @@ These are just some examples. Use the online resources or the recommended Excel 
 
 ## List of functions
 
-This course will familiarize you with using Excel functions. While this [link](https://support.microsoft.com/en-us/office/excel-functions-alphabetical-b3944572-255d-4efb-bb96-c6d90033e188) provides a comprehensive list of all Excel functions, the functions listed below are mandatory for this course and you must master them. Learning these core functions will make it easier to understand and use others. Practice these essential functions with small datasets to build your skills. Since, this is not a statistics oriented course, many statistical functions are omitted (e.g. T.TEST).
+This course will familiarize you with using Excel functions. This [link](https://support.microsoft.com/en-us/office/excel-functions-alphabetical-b3944572-255d-4efb-bb96-c6d90033e188) provides a comprehensive list of all Excel functions (for some functions also short movie tutorials). The functions listed below in bold are mandatory for this course and you must master them. Learning these core functions will make it easier to understand and use others. Practice these essential functions with small datasets to build your skills. Since, this is not a statistics oriented course, many statistical functions are omitted (e.g. T.TEST).
 
 | **Function**   | **Explanation**                                                                                                                                                                 |
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ABS            | Returns the absolute value of a number                                                                                                                                          |
-| AND            | Returns TRUE if all of its arguments are TRUE                                                                                                                                   |
-| AVERAGE        | Returns the average of its arguments                                                                                                                                            |
-| AVERAGEIF      | Returns the average (arithmetic mean) of all the cells in a range that meet a given criteria                                                                                    |
-| AVERAGEIFS     | Returns the average (arithmetic mean) of all cells that meet multiple criteria.                                                                                                 |
+| **AND**            | Returns TRUE if all of its arguments are TRUE                                                                                                                                   |
+| **AVERAGE**        | Returns the average of its arguments                                                                                                                                            |
+| **AVERAGEIF**      | Returns the average (arithmetic mean) of all the cells in a range that meet a given criteria                                                                                    |
+| **AVERAGEIFS**     | Returns the average (arithmetic mean) of all cells that meet multiple criteria.                                                                                                 |
 | CELL           | Returns information about the formatting, location, or contents of a cell                                                                                                       |
 | CLEAN          | Removes all nonprintable characters from text                                                                                                                                   |
-| CONCATENATE    | Joins several text items into one text item                                                                                                                                     |
-| COUNT          | Counts how many numbers are in the list of arguments                                                                                                                            |
-| COUNTA         | Counts how many values are in the list of arguments                                                                                                                             |
-| COUNTBLANK     | Counts the number of blank cells within a range                                                                                                                                 |
-| COUNTIF        | Counts the number of cells within a range that meet the given criteria                                                                                                          |
-| COUNTIFS       | Counts the number of cells within a range that meet multiple criteria                                                                                                           |
+| **CONCATENATE**    | Joins several text items into one text item                                                                                                                                     |
+| **COUNT**          | Counts how many numbers are in the list of arguments                                                                                                                            |
+| **COUNTA**         | Counts how many values are in the list of arguments                                                                                                                             |
+| **COUNTBLANK**     | Counts the number of blank cells within a range                                                                                                                                 |
+| **COUNTIF**        | Counts the number of cells within a range that meet the given criteria                                                                                                          |
+| **COUNTIFS**       | Counts the number of cells within a range that meet multiple criteria                                                                                                           |
 | DATEDIF        | Calculates the number of days, months, or years between two dates. This function is useful in formulas where you need to calculate an age.                                      |
-| FIND           | Finds one text value within another (case-sensitive)                                                                                                                            |
+|**FILTER**          | Lookup and reference: Filters a range of data based on criteria you define   |
+| **FIND**           | Finds one text value within another (case-sensitive)                                                                                                                            |
 | FLOOR          | Rounds a number down, toward zero                                                                                                                                               |
-| IF             | Specifies a logical test to perform                                                                                                                                             |
+| **IF**             | Specifies a logical test to perform                                                                                                                                             |
 | IFNA           | Returns the value you specify if the expression resolves to #N/A, otherwise returns the result of the expression                                                                |
 | INDEX          | Uses an index to choose a value from a reference or array                                                                                                                       |
-| ISBLANK        | Returns TRUE if the value is blank                                                                                                                                              |
+| **ISBLANK**        | Returns TRUE if the value is blank                                                                                                                                              |
 | ISNA           | Returns TRUE if the value is the #N/A error value                                                                                                                               |
 | ISNUMBER       | Returns TRUE if the value is a number                                                                                                                                           |
-| LEFT           | Returns the leftmost characters from a text value                                                                                                                               |
+| **LEFT**           | Returns the leftmost characters from a text value                                                                                                                               |
 | LEN            | Returns the number of characters in a text string                                                                                                                               |
-| LN             | Returns the natural logarithm of a number                                                                                                                                       |
-| LOG            | Returns the logarithm of a number to a specified base                                                                                                                           |
-| LOG10          | Returns the base-10 logarithm of a number                                                                                                                                       |
+| **LN**             | Returns the natural logarithm of a number                                                                                                                                       |
+| **LOG**            | Returns the logarithm of a number to a specified base                                                                                                                           |
+| **LOG10**          | Returns the base-10 logarithm of a number                                                                                                                                       |
 | LOWER          | Converts text to lowercase                                                                                                                                                      |
 | MATCH          | Looks up values in a reference or array                                                                                                                                         |
-| MAX            | Returns the maximum value in a list of arguments                                                                                                                                |
-| MAXIFS         | Returns the maximum value among cells specified by a given set of conditions or criteria                                                                                        |
-| MEDIAN         | Returns the median of the given numbers                                                                                                                                         |
-| MIN            | Returns the minimum value in a list of arguments                                                                                                                                |
-| MINIFS         | Returns the minimum value among cells specified by a given set of conditions or criteria.                                                                                       |
+| **MAX**            | Returns the maximum value in a list of arguments                                                                                                                                |
+| **MAXIFS**         | Returns the maximum value among cells specified by a given set of conditions or criteria                                                                                        |
+| **MEDIAN**         | Returns the median of the given numbers                                                                                                                                         |
+| **MIN**            | Returns the minimum value in a list of arguments                                                                                                                                |
+| **MINIFS**         | Returns the minimum value among cells specified by a given set of conditions or criteria.                                                                                       |
 | NA             | Returns the error value #N/A                                                                                                                                                    |
-| OR             | Returns TRUE if any argument is TRUE                                                                                                                                            |
+| **OR**             | Returns TRUE if any argument is TRUE                                                                                                                                            |
 | PERCENTILE.EXC | Returns the k-th percentile of values in a range, where k is in the range 0..1, exclusive                                                                                       |
 | PERCENTILE.INC | Returns the k-th percentile of values in a range                                                                                                                                |
-| POWER          | Returns the result of a number raised to a power                                                                                                                                |
+| **POWER**          | Returns the result of a number raised to a power                                                                                                                                |
 | RANDBETWEEN    | Returns a random number between the numbers you specify                                                                                                                         |
 | RANK           | Returns the rank of a number in a list of numbers                                                                                                                               |
-| RIGHT          | Returns the rightmost characters from a text value                                                                                                                              |
+| **RIGHT**          | Returns the rightmost characters from a text value                                                                                                                              |
 | ROUND          | Rounds a number to a specified number of digits                                                                                                                                 |
 | ROUNDDOWN      | Rounds a number down, toward zero                                                                                                                                               |
 | ROUNDUP        | Rounds a number up, away from zero                                                                                                                                              |
 | ROW            | Returns the row number of a reference                                                                                                                                           |
 | ROWS           | Returns the number of rows in a reference                                                                                                                                       |
-| SORT           | Sorts the contents of a range or array                                                                                                                                          |
-| SQRT           | Returns a positive square root                                                                                                                                                  |
-| STDEV.P        | Calculates standard deviation based on the entire population                                                                                                                    |
-| STDEV.S        | Estimates standard deviation based on a sample                                                                                                                                  |
-| SUM            | Adds its arguments                                                                                                                                                              |
-| SUMIF          | Adds the cells specified by a given criteria                                                                                                                                    |
-| SUMIFS         | Adds the cells in a range that meet multiple criteria                                                                                                                           |
+| **SORT**           | Sorts the contents of a range or array                                                                                                                                          |
+| **SQRT**           | Returns a positive square root                                                                                                                                                  |
+| **STDEV.P**        | Calculates standard deviation based on the entire population                                                                                                                    |
+| **STDEV.S**        | Estimates standard deviation based on a sample                                                                                                                                  |
+| **SUM**            | Adds its arguments                                                                                                                                                              |
+| **SUMIF**          | Adds the cells specified by a given criteria                                                                                                                                    |
+| **SUMIFS**         | Adds the cells in a range that meet multiple criteria                                                                                                                           |
 | TEXT           | Formats a number and converts it to text                                                                                                                                        |
 | TEXTJOIN       | Combines the text from multiple ranges and/or strings                                                                                                                           |
 | TEXTSPLIT      | Splits text strings by using column and row delimiters                                                                                                                          |
-| TRANSPOSE      | Returns the transpose of an array                                                                                                                                               |
-| TRIM           | Removes spaces from text                                                                                                                                                        |
-| TRUE           | Returns the logical value TRUE                                                                                                                                                  |
-| UNIQUE         | Returns a list of unique values in a list or range                                                                                                                              |
+| **TRANSPOSE**      | Returns the transpose of an array                                                                                                                                               |
+| **TRIM**           | Removes spaces from text                                                                                                                                                        |
+| **TRUE**           | Returns the logical value TRUE                                                                                                                                                  |
+| **UNIQUE**         | Returns a list of unique values in a list or range                                                                                                                              |
 | UPPER          | Converts text to uppercase                                                                                                                                                      |
 | VALUE          | Converts a text argument to a number                                                                                                                                            |
-| XLOOKUP        | Searches a range or an array, and returns an item corresponding to the first match it finds. If a match doesn't exist, then XLOOKUP can return the closest (approximate) match. |
+| **XLOOKUP**        | Searches a range or an array, and returns an item corresponding to the first match it finds. If a match doesn't exist, then XLOOKUP can return the closest (approximate) match. |
 
 
 ## Statistics
