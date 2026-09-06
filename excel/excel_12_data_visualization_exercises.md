@@ -47,20 +47,27 @@ For example (the values in this table are not correct)
 |Kinesin|11       |3        |
 |Myosin |4        |12       |
 
+If a gene is not increased or decreased, it should not be counted (we are not interested in unaltered genes). Note that in this case, only a true zero counts as unchanged. In reality, to isolate meaningfully altered genes, researchers filter out background noise using a volcano-plot approach that requires genes to meet both a statistical threshold (adjusted $p$-value) and a biological effect-size threshold ($\log_2$ fold change) before downstream analysis.  
+
 Use the data in this table to create the stacked column chart. Make sure to add proper axis titles, a title and a legend. The gene names should be sorted alphabetically.  
 For help with the COUNTIFS function, see: [COUNTIFS function](https://support.microsoft.com/en-us/excel/functions/countifs-function) on the Microsoft Support page.  
 
 
 ### Exercise 4
 
-Use the same data as from exercise 3 to create a relative stacked column chart. Filter the data that contain the `MAP Kinase gene family`. Create a relative stacked column chart representing the Expression Values with and without stimulus. Make sure to add proper axis titles, a title and a legend. The gene names should be sorted.  
+Use the same data as from exercise 3 to create a relative stacked column chart in which each column represents a gene family from the motor proteins (i.e. dynein, kinesin and myosin) and the segments within each column percentage of genes whose expression is increased or decreased[JK3.1] in the presence of the stimulus. 
+Make sure to add proper axis titles, a title and a legend. The gene names should be sorted.  
+  
 
 ### Exercise 5
 
-Use the same data as from exercise 3 to create a pie chart.  
-Create a pie chart representing the total `Expression Value without stimulus` per Category. Make sure to add proper axis titles, a title and a legend.  
+In the dataset, each protein belongs to a gene family and each gene family is classified under a particular category. Create a pie chart representing the contribution of the different gene families within the category “Immuno system proteins”. 
+Before you can create this chart, you need to analyse the data:
+- In a new sheet, use the FILTER function to create a table that only contains the proteins that belong to the “Immuno system proteins”.
+- Use the `UNIQUE` function to list the gene families belonging to this category.
+- Use the `COUNTIF` function to count the number of genes within each gene family
+- Create the pie chart
 
-Which category shows the smallest fraction of expression value - stimulus?  
 
 ### Exercise 6
 
