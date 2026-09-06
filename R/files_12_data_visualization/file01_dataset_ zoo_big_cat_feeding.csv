@@ -1,0 +1,5 @@
+Species,Meat_kg_per_day_per_animal,Bone_kg_per_day_per_animal,Supplements_kg_per_day_per_animal
+Lion,6.5,1.07,0.21
+Tiger,7.1,1.1,0.29
+Leopard,4.23,0.77,0.2
+Cheetah,3.23,0.47,0.1

@@ -24,7 +24,8 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 This Rmd file can be found [here](./R_12_data_visualization.Rmd).  
 
 Files used on this page:  
-- [file01_anage_data.csv](./files_12_data_visualization/file01_anage_data.csv)  
+- [file01_anage_data.csv](./files_12_data_visualization/file01_anage_data.csv) 
+- [file01_anage_data.csv](./files_12_data_visualization/file01_dataset_ zoo_big_cat_feeding.csv)
 - [file02_radar_data.csv](./files_12_data_visualization/file02_radar_data.csv)  
 - [file_03_mouse_weight_data.xlsx](./files_12_data_visualization/file_03_mouse_weight_data.xlsx)  
 - [file04_bubble_chart.xlsx](./files_12_data_visualization/file04_bubble_chart.xlsx)  
@@ -326,15 +327,40 @@ p <- grouped_bar_data %>%
 p
 ```
 
-And the more elaborate dataset:
-
+A stacked column chart should only be used when the individual values combine to form a meaningful total.
+For example, it is not meaningful to plot birth weight and adult weight for different cat species in a stacked column chart. To demonstrate a meaningful use of a stacked column chart we will use another (fictional) dataset on the average feeding data for big cats in a zoo. In this chart, each column represents a species, and the segments within each column show the contribution of different food components (such as meat, bone, and supplements) to the total daily diet.  
 
 ```{r}
-p <- tidy_summ_data %>%
-  ggplot(aes(x = `Common name`, y = `Weight (g)`, fill = `Weight type`)) +
+cat_diet <- read_csv("./files_12_data_visualization/file01_dataset_ zoo_big_cat_feeding.csv")
+formatted_table(cat_diet)
+```
+
+Before we create the graph, we need to re-arrange the data in tidy format:
+
+```{r}
+cat_diet_tidy <- cat_diet %>%
+  select(
+    Species,
+    Meat = Meat_kg_per_day_per_animal,
+    Bone = Bone_kg_per_day_per_animal,
+    Supplements = Supplements_kg_per_day_per_animal) %>%
+  pivot_longer(
+    cols = c(Meat, Bone, Supplements),
+    names_to = "Component",
+    values_to = "Value"
+  ) 
+
+formatted_table(cat_diet_tidy)
+  
+```
+
+And now we can create the stacked barplot:  
+
+```{r}
+p <- cat_diet_tidy %>%
+  ggplot(aes(x = `Species`, y = `Value`, fill = `Component`)) +
   geom_bar(stat = "identity", position="stack") +
-  scale_y_log10() +
-  labs(title="Birth and adult weight for different cat species") +
+  labs(title="Average contribution of food components to daily diet of big cats") +
   theme(axis.text.x = element_text(angle = 45, hjust=1))
 p
 ```
@@ -356,11 +382,10 @@ And for the more elaborate dataset:
 
 
 ```{r}
-p <- tidy_summ_data %>%
-  ggplot(aes(x = `Common name`, y = `Weight (g)`, fill = `Weight type`)) +
+p <- cat_diet_tidy %>%
+  ggplot(aes(x = `Species`, y = `Value`, fill = `Component`)) +
   geom_bar(stat = "identity", position="fill") +
-  scale_y_log10() +
-  labs(title="Birth and adult weight for different cat species") +
+  labs(title="Average contribution of food components to daily diet of big cats") +
   theme(axis.text.x = element_text(angle = 45, hjust=1))
 p
 ```
@@ -372,7 +397,7 @@ Note that the y-label is modified accordingly.
 ## Switch order of groups
 
 
-If you want to change the order of groups you will need to change the column `Weight (g)` from character to a factor as factors do support levels:
+If you want to change the order of groups you will need to change the column from character to a factor as factors do support levels:
 And we can change the order of levels accordingly:
 
 ```{r}
@@ -393,25 +418,30 @@ p <- tidy_summ_data %>%
 p
 ```
 
-The same holds for the stacked barchart:
+The same can be done for the stacked barchart:
 
 ```{r}
-p <- tidy_summ_data %>%
-  ggplot(aes(x = `Common name`, y = `Weight (g)`, fill = `Weight type`)) +
+cat_diet_tidy_ordered <- cat_diet_tidy %>%
+  mutate(Component = factor(Component, levels = c("Supplements", "Bone", "Meat")))
+formatted_table(head(cat_diet_tidy_ordered))
+```
+
+
+```{r}
+p <- cat_diet_tidy_ordered %>%
+  ggplot(aes(x = `Species`, y = `Value`, fill = `Component`)) +
   geom_bar(stat = "identity", position="stack") +
-  scale_y_log10() +
-  labs(title="Birth and adult weight for different cat species") +
+  labs(title="Average contribution of food components to daily diet of big cats") +
   theme(axis.text.x = element_text(angle = 45, hjust=1))
 p
 ```
 
 And the 100% stacked barchart:
 ```{r}
-p <- tidy_summ_data %>% 
-  ggplot(aes(x = `Common name`, y = `Weight (g)`, fill = `Weight type`)) +
+p <- cat_diet_tidy_ordered %>%
+  ggplot(aes(x = `Species`, y = `Value`, fill = `Component`)) +
   geom_bar(stat = "identity", position="fill") +
-  scale_y_log10() +
-  labs(title="Birth and adult weight for different cat species") +
+  labs(title="Average contribution of food components to daily diet of big cats") +
   theme(axis.text.x = element_text(angle = 45, hjust=1))
 p
 ```
@@ -443,33 +473,19 @@ p <- pie_chart_data %>%
 p
 ```
 
-Like Excel, Pie charts are supported in the R package ggplot2. In the example below, a selection of the cats was used to create the pie chart (otherwise there would be too many parts of the pie representing the different feline species):
-
-First, we select all the big cats in a vector.
+Like Excel, Pie charts are supported in the R package ggplot2. As an example, we use our previous (fictional) dataset to create a pie chart of the average daily diet of tigers in a zoo:  
 
 ```{r}
-big_cats <- c("Lion", "Tiger", "Jaguar", "Cougar", "Leopard", "Cheetah", "Snow leopard")
-df_big_cats <- df %>% 
-  filter(`Common name` %in% big_cats)
-formatted_table(df_big_cats)
-```
-
-And then we can create the Pie chart:
-
-```{r}
-p <- df_big_cats %>%
-  ggplot(aes(x = "", y = `Adult weight (g)`, fill = `Common name`)) +
+p <- cat_diet_tidy_ordered %>%
+  ggplot(aes(x = "", y = `Value`, fill = `Component`)) +
   geom_bar(stat="identity", width=1) +
   coord_polar("y", start=0) +
-  labs(title="Adult weight for different cat species") +
+  labs(title="Average contribution of food components to the daily diet of tigers") +
   theme_void() # remove background, grid, numeric labels
 p
 ```
 
-Again, it is clear that the adult lion's weight contributes the most to the total weight of all cat species.
-Adding labels with % in the Pie is a bit of a hassle and beyond the scope of this course (as we want to use ggplot2 as much as possible out-of-the-box).
-Nevertheless, you can find multiple blog posts related to this topic on the internet.
-The same holds for pie of pie charts. This chart type is not supported out of the box in ggplot2 though it can be accomplished with (quite a lot) of effort.  
+
 \
 
 ## Radar Charts
