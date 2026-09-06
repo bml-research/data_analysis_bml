@@ -212,7 +212,8 @@ And to create a base R plot of this dataset:
 barplot(barplot_data$samples_processed,
         names = barplot_data$day,
         col = "steelblue",
-        main = "Lab samples processed in the week")
+        main = "Lab samples processed in the week",
+        ylab = "number of samples processed")
 ```
 
 Now the same with the larger dataset:
@@ -242,7 +243,7 @@ First we will create the barplot_data in ggplot:
 p <- barplot_data %>%
   ggplot(aes(x = day, y = samples_processed)) +
   geom_bar(stat="identity", fill="steelblue") +
-  labs(title="Lab samples processed in the week") #+
+  labs(title="Lab samples processed in the week", y = "Number of samples processed") 
 p
 ```
 
