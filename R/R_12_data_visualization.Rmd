@@ -24,8 +24,8 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 This Rmd file can be found [here](./R_12_data_visualization.Rmd).  
 
 Files used on this page:  
-- [file01_anage_data.csv](./files_12_data_visualization/file01_anage_data.csv) 
-- [file01_anage_data.csv](./files_12_data_visualization/file01_dataset_ zoo_big_cat_feeding.csv)
+- [file01_anage_data.csv](./files_12_data_visualization/file01_anage_data.csv)  
+- [file01_anage_data.csv](./files_12_data_visualization/file01_dataset_ zoo_big_cat_feeding.csv)  
 - [file02_radar_data.csv](./files_12_data_visualization/file02_radar_data.csv)  
 - [file_03_mouse_weight_data.xlsx](./files_12_data_visualization/file_03_mouse_weight_data.xlsx)  
 - [file04_bubble_chart.xlsx](./files_12_data_visualization/file04_bubble_chart.xlsx)  
@@ -423,7 +423,7 @@ The same can be done for the stacked barchart:
 ```{r}
 cat_diet_tidy_ordered <- cat_diet_tidy %>%
   mutate(Component = factor(Component, levels = c("Supplements", "Bone", "Meat")))
-formatted_table(head(cat_diet_tidy_ordered))
+formatted_table(cat_diet_tidy_ordered)
 ```
 
 

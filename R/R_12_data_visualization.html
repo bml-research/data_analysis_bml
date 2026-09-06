@@ -386,8 +386,8 @@ code span.ot { color: #007020; }
 <hr />
 <p>This Rmd file can be found <a href="./R_12_data_visualization.Rmd">here</a>.</p>
 <p>Files used on this page:<br />
-- <a href="./files_12_data_visualization/file01_anage_data.csv">file01_anage_data.csv</a>
-- <a href="./files_12_data_visualization/file01_dataset_%20zoo_big_cat_feeding.csv">file01_anage_data.csv</a>
+- <a href="./files_12_data_visualization/file01_anage_data.csv">file01_anage_data.csv</a><br />
+- <a href="./files_12_data_visualization/file01_dataset_%20zoo_big_cat_feeding.csv">file01_anage_data.csv</a><br />
 - <a href="./files_12_data_visualization/file02_radar_data.csv">file02_radar_data.csv</a><br />
 - <a href="./files_12_data_visualization/file_03_mouse_weight_data.xlsx">file_03_mouse_weight_data.xlsx</a><br />
 - <a href="./files_12_data_visualization/file04_bubble_chart.xlsx">file04_bubble_chart.xlsx</a></p>
@@ -2204,7 +2204,7 @@ Adult weight (g)
 <p>The same can be done for the stacked barchart:</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>cat_diet_tidy_ordered <span class="ot">&lt;-</span> cat_diet_tidy <span class="sc">%&gt;%</span></span>
 <span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Component =</span> <span class="fu">factor</span>(Component, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Supplements&quot;</span>, <span class="st">&quot;Bone&quot;</span>, <span class="st">&quot;Meat&quot;</span>)))</span>
-<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a><span class="fu">formatted_table</span>(<span class="fu">head</span>(cat_diet_tidy_ordered))</span></code></pre></div>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a><span class="fu">formatted_table</span>(cat_diet_tidy_ordered)</span></code></pre></div>
 <table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2284,6 +2284,72 @@ Supplements
 </td>
 <td style="text-align:right;">
 0.29
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Leopard
+</td>
+<td style="text-align:left;">
+Meat
+</td>
+<td style="text-align:right;">
+4.23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Leopard
+</td>
+<td style="text-align:left;">
+Bone
+</td>
+<td style="text-align:right;">
+0.77
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Leopard
+</td>
+<td style="text-align:left;">
+Supplements
+</td>
+<td style="text-align:right;">
+0.20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cheetah
+</td>
+<td style="text-align:left;">
+Meat
+</td>
+<td style="text-align:right;">
+3.23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cheetah
+</td>
+<td style="text-align:left;">
+Bone
+</td>
+<td style="text-align:right;">
+0.47
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cheetah
+</td>
+<td style="text-align:left;">
+Supplements
+</td>
+<td style="text-align:right;">
+0.10
 </td>
 </tr>
 </tbody>

@@ -72,22 +72,26 @@ formatted_table(head(df_ex1))
 ```
 
 ```{r}
-# extract relevant data: Expression value > 0.5
-nuc_rec_fam <- df_ex1[df_ex1$`Gene Family` == "MAP Kinase" & df_ex1$`Expression Value - stimulus` > 0.5, ]
+df_ex1_filtered <- df_ex1 %>%
+  filter(
+    `Gene Family` == "MAP Kinase",
+    `Expression Value - stimulus` > 0.5
+  ) %>%
+  arrange(`Expression Value - stimulus`)
 
-# sort on column `Expression Value - stimulus`
-nuc_new <- arrange(nuc_rec_fam, `Expression Value - stimulus`)
-
-# plot graph
-barplot(nuc_new$`Expression Value - stimulus`, 
-        ylab = "Relative Expression Value", 
-        ylim = c(0, 1), 
-        names = nuc_new$`Gene name`, 
-        las = 2,
-        cex.names = 0.5,
-        col = "steelblue",
-        main = "MAP kinase Expression values - stimulus > 0.5")  
+formatted_table(head(df_ex1_filtered)) 
 ```
+
+Create the plot:
+
+```{r}
+p <- ggplot(data = df_ex1_filtered, aes(x = `Gene name`, y = `Expression Value - stimulus`)) +
+  geom_bar(stat = "identity") +
+  labs(title="MAP kinase Expression values without stimulus") +
+  theme(axis.text.x = element_text(angle = 45, hjust=1, size=6))
+p
+```
+
 
 TARS2, TTC37 and ARHGEF9 have the highest expression value *without* a stimulus.
 
@@ -101,23 +105,23 @@ Create a **clustered column chart** representing the expression values without s
 First we create a data frame with the rows of MAP kinases:
 
 ```{r}
-df_ex3 <- df_ex1[str_detect(df_ex1$`Gene Family`, "MAP Kinase"), ]
-formatted_table(df_ex3)
+df_ex2 <- df_ex1[str_detect(df_ex1$`Gene Family`, "MAP Kinase"), ]
+formatted_table(head(df_ex2))
 ```
 
 
 Make the data frame tidy:
 
 ```{r}
-tidy_df_ex3 <- df_ex3 %>%
+tidy_df_ex2 <- df_ex2 %>%
   pivot_longer(c(`Expression Value - stimulus`, `Expression Value + stimulus`), names_to = "Expression type", values_to = "Expression Value")
-formatted_table(head(tidy_df_ex3))
+formatted_table(head(tidy_df_ex2))
 ```
 
 
 
 ```{r}
-p <- ggplot(data = tidy_df_ex3, aes(x = `Gene name`, y = `Expression Value`, fill = `Expression type`)) +
+p <- ggplot(data = tidy_df_ex2, aes(x = `Gene name`, y = `Expression Value`, fill = `Expression type`)) +
   geom_bar(stat = "identity", position="dodge") +
   labs(title="MAP kinase Expression values without and with stimulus") +
   theme(axis.text.x = element_text(angle = 45, hjust=1, size=6))
@@ -127,13 +131,52 @@ p
 
 ### Exercise 3
 
-Use the same data as from exercise 2 to create a **stacked column chart**. Filter the data that contain the `MAP Kinase gene family`.  
-Create a **stacked column chart** representing the Expression Values with and without stimulus. Make sure to add proper axis titles, a title and a legend.
+Use the same data as from exercise 2 to create a stacked column chart in which each column represents a gene family from the motor proteins (i.e. dynein, kinesin and myosin) and the segments within each column show the number of genes whose expression is increased or decrease in the presence of the stimulus. 
+Before you can create this chart, you need to analyse the data:
+- Create a new column, with an appropriate name, in which you use the IF-function to indicate for each gene family whether the expression is increased or decreased. 
+- In a new sheet, use the COUNTIFS-function to count for each motor protein gene family the number of genes whose expression is increased or decreased in the presence of the stimulus. 
+For example (the values in this table are not correct)
+
+|Protein|Increased|Decreased|
+|:------|--------:|--------:|
+|Dynein |6        |7        |
+|Kinesin|11       |3        |
+|Myosin |4        |12       |
+
+If a gene is not increased or decreased, it should not be counted (we are not interested in unaltered genes). Note that in this case, only a true zero counts as unchanged. In reality, to isolate meaningfully altered genes, researchers filter out background noise using a volcano-plot approach that requires genes to meet both a statistical threshold (adjusted $p$-value) and a biological effect-size threshold ($\log_2$ fold change) before downstream analysis.  
+
+
+First add the extra column and determine if the expression level is up or down:
 
 ```{r}
-p <- ggplot(data = tidy_df_ex3, aes(x = `Gene name`, y = `Expression Value`, fill = `Expression type`)) +
+df_ex1 <- df_ex1 %>%
+  mutate(
+    up_down = if_else(
+      `Expression Value + stimulus` > `Expression Value - stimulus`,
+      "UP",
+      "DOWN"
+    )
+  )
+formatted_table(head(df_ex1))
+```
+
+And now we count the number of genes whose expression is increased or decreased in the presence of the stimulus for each motor protein gene family member.  
+
+```{r}
+df_ex4 <- df_ex1 %>%
+  filter(Category == "Motor proteins") %>%
+  count(`Gene Family`, up_down)
+formatted_table(df_ex4)
+```
+
+Note that the data is already in Tidy format.  
+And we can now create the stacked column chart:  
+
+
+```{r}
+p <- ggplot(data = df_ex4, aes(x = `Gene Family`, y = n, fill = up_down)) +
   geom_bar(stat = "identity", position="stack") +
-  labs(title="MAP kinase Expression values without and with stimulus") +
+  labs(title="Gene expression of motor proteins in the presence of a stimulus") +
   theme(axis.text.x = element_text(angle = 45, hjust=1, size=6))
 p
 ```
@@ -142,13 +185,13 @@ p
 
 ### Exercise 4
 
-Use the same data as from exercise 3 to create a **relative stacked column chart**. Filter the data that contain the `MAP Kinase gene family`.  
-Create a **relative stacked column chart** representing the Expression Values with and without stimulus. Make sure to add proper axis titles, a title and a legend.
+Use the same data as from exercise 3 to create a relative stacked column chart in which each column represents a gene family from the motor proteins (i.e. dynein, kinesin and myosin) and the segments within each column percentage of genes whose expression is increased or decreased in the presence of the stimulus. 
+Make sure to add proper axis titles, a title and a legend. The gene names should be sorted.  
 
 ```{r}
-p <- ggplot(data = tidy_df_ex3, aes(x = `Gene name`, y = `Expression Value`, fill = `Expression type`)) +
+p <- ggplot(data = df_ex4, aes(x = `Gene Family`, y = n, fill = up_down)) +
   geom_bar(stat = "identity", position="fill") +
-  labs(title="MAP kinase Expression values without and with stimulus") +
+  labs(title="Gene expression of motor proteins in the presence of a stimulus", x = "Gene Family", y = "Proportion") +
   theme(axis.text.x = element_text(angle = 45, hjust=1, size=6))
 p
 ```
@@ -156,48 +199,36 @@ p
 
 ### Exercise 5
 
-Use the same data as from exercise 3 to create a **pie chart**.   
-Create a **pie chart** representing the total Expression Value without stimulus per Category. Make sure to add proper axis titles, a title and a legend.
+In the dataset, each protein belongs to a gene family, and each gene family is classified under a particular category. Create a pie chart representing the contribution of the different gene families within the category "Immuno system proteins".
 
-Which category shows the smallest fraction of Expression Value *without* stimulus?
+- Before creating the chart, analyze the data in R:
+
+- Filter the data: Subset the dataset to keep only the entries belonging to the "Immune system proteins" category.
+
+- Summarize the counts: Determine the unique gene families in this subset and count the number of genes in each family.
+
+Generate the chart: Map the aggregated counts to a polar bar chart in ggplot2 to display the pie chart.
+
 
 
 ```{r}
-# make the data tidy for a pie chart
-tidy_df_ex5 <- df_ex1 %>%
-  pivot_longer(c(`Expression Value - stimulus`, `Expression Value + stimulus`), names_to = "Expression type", values_to = "Expression Value") %>%
-  filter(`Expression type` == "Expression Value - stimulus")
-tidy_df_ex5
+df_ex5 <- df_ex1 %>%
+  filter(`Category` == "Immune system proteins") %>%
+  count(`Gene Family`)
+formatted_table(df_ex5)
 ```
 
-Now calculate the total expression value per Category
+And now we can create the Pie chart: 
 
 ```{r}
-data_pie <- tidy_df_ex5 %>%
-  group_by(Category) %>%
-  summarize(sum_expression = sum(`Expression Value`))
-formatted_table(data_pie)
-```
-
-Now calculate the percentage and add to new column:
-
-```{r}
-data_pie$percentage <- data_pie$`sum_expression` / sum(data_pie$`sum_expression`) * 100
-formatted_table(head(data_pie))
-```
-
-
-```{r}
-p <- ggplot(data_pie, aes(x = "", y = `sum_expression`, fill = `Category`)) +
+p <- df_ex5 %>%
+  ggplot(aes(x = "", y = n, fill = `Gene Family`)) +
   geom_bar(stat="identity", width=1) +
   coord_polar("y", start=0) +
-  labs(title="MAP kinase Expression values without stimulus") +
-  theme_void() + # remove background, grid, numeric labels
-  geom_text(aes(label = paste0(round(percentage, 0), "%")), position = position_stack(vjust = 0.5), size = 3)
+  labs(title="Immuno system protein gene families") +
+  theme_void() # remove background, grid, numeric labels
 p
 ```
-
-The `motor proteins` are the smallest fraction of expression value *without* stimulus.
 
 
 ### Exercise 6
@@ -233,10 +264,10 @@ This time, you will have to use the tidy data.
 
 ```{r}
 # make data tidy
-tidy_df_ex4 <- df_ex1 %>%
+tidy_df_ex7 <- df_ex1 %>%
   pivot_longer(c(`Expression Value - stimulus`, `Expression Value + stimulus`), names_to = "Expression type", values_to = "Expression Value")
 
-p <- ggplot(tidy_df_ex4, aes(x = `Category`, y = `Expression Value`, fill = `Expression type`)) + 
+p <- ggplot(tidy_df_ex7, aes(x = `Category`, y = `Expression Value`, fill = `Expression type`)) + 
   geom_boxplot() +
   labs(title="Expression values without and with stimulus per Category") +
   theme(axis.text.x = element_text(angle = 45, hjust=1)) +

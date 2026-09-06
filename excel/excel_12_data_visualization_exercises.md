@@ -35,7 +35,7 @@ Create a clustered column chart representing the expression values without stimu
 
 ### Exercise 3
 
-Use the same data as from exercise 2 to create a stacked column chart in which each column represents a gene family from the motor proteins (i.e. dynein, kinesin and myosin) and the segments within each column show the number of genes whose expression is increased or decreased[JK2.1] in the presence of the stimulus. 
+Use the same data as from exercise 2 to create a stacked column chart in which each column represents a gene family from the motor proteins (i.e. dynein, kinesin and myosin) and the segments within each column show the number of genes whose expression is increased or decreased in the presence of the stimulus. 
 Before you can create this chart, you need to analyse the data:
 - Create a new column, with an appropriate name, in which you use the IF-function to indicate for each gene family whether the expression is increased or decreased. 
 - In a new sheet, use the COUNTIFS-function to count for each motor protein gene family the number of genes whose expression is increased or decreased in the presence of the stimulus. 
@@ -55,14 +55,14 @@ For help with the COUNTIFS function, see: [COUNTIFS function](https://support.mi
 
 ### Exercise 4
 
-Use the same data as from exercise 3 to create a relative stacked column chart in which each column represents a gene family from the motor proteins (i.e. dynein, kinesin and myosin) and the segments within each column percentage of genes whose expression is increased or decreased[JK3.1] in the presence of the stimulus. 
+Use the same data as from exercise 3 to create a relative stacked column chart in which each column represents a gene family from the motor proteins (i.e. dynein, kinesin and myosin) and the segments within each column percentage of genes whose expression is increased or decreased in the presence of the stimulus. 
 Make sure to add proper axis titles, a title and a legend. The gene names should be sorted.  
   
 
 ### Exercise 5
 
-In the dataset, each protein belongs to a gene family and each gene family is classified under a particular category. Create a pie chart representing the contribution of the different gene families within the category “Immuno system proteins”. 
-Before you can create this chart, you need to analyse the data:
+In the dataset, each protein belongs to a gene family and each gene family is classified under a particular category. Create a pie chart representing the contribution of the different gene families within the category “Immune system proteins”. 
+Before you can create this chart, you need to analyze the data:
 - In a new sheet, use the FILTER function to create a table that only contains the proteins that belong to the “Immuno system proteins”.
 - Use the `UNIQUE` function to list the gene families belonging to this category.
 - Use the `COUNTIF` function to count the number of genes within each gene family

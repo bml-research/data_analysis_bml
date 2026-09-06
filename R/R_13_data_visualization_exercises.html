@@ -198,33 +198,78 @@ stimulus. Make sure to add proper axis titles, a title and a legend.</p>
 </div>
 <div id="exercise-3" class="section level3">
 <h3>Exercise 3</h3>
-<p>Use the same data as from exercise 2 to create a <strong>stacked
-column chart</strong>. Filter the data that contain the
-<code>MAP Kinase gene family</code>.<br />
-Create a <strong>stacked column chart</strong> representing the
-Expression Values with and without stimulus. Make sure to add proper
-axis titles, a title and a legend.</p>
+<p>Use the same data as from exercise 2 to create a stacked column chart
+in which each column represents a gene family from the motor proteins
+(i.e. dynein, kinesin and myosin) and the segments within each column
+show the number of genes whose expression is increased or decrease in
+the presence of the stimulus. Before you can create this chart, you need
+to analyse the data: - Create a new column, with an appropriate name, in
+which you use the IF-function to indicate for each gene family whether
+the expression is increased or decreased. - In a new sheet, use the
+COUNTIFS-function to count for each motor protein gene family the number
+of genes whose expression is increased or decreased in the presence of
+the stimulus. For example (the values in this table are not correct)</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Protein</th>
+<th align="right">Increased</th>
+<th align="right">Decreased</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Dynein</td>
+<td align="right">6</td>
+<td align="right">7</td>
+</tr>
+<tr class="even">
+<td align="left">Kinesin</td>
+<td align="right">11</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="left">Myosin</td>
+<td align="right">4</td>
+<td align="right">12</td>
+</tr>
+</tbody>
+</table>
+<p>If a gene is not increased or decreased, it should not be counted (we
+are not interested in unaltered genes). Note that in this case, only a
+true zero counts as unchanged. In reality, to isolate meaningfully
+altered genes, researchers filter out background noise using a
+volcano-plot approach that requires genes to meet both a statistical
+threshold (adjusted <span class="math inline">\(p\)</span>-value) and a
+biological effect-size threshold (<span class="math inline">\(\log_2\)</span> fold change) before downstream
+analysis.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co">#Your code here</span></span></code></pre></div>
 </div>
 <div id="exercise-4" class="section level3">
 <h3>Exercise 4</h3>
-<p>Use the same data as from exercise 3 to create a <strong>relative
-stacked column chart</strong>. Filter the data that contain the
-<code>MAP Kinase gene family</code>.<br />
-Create a <strong>relative stacked column chart</strong> representing the
-Expression Values with and without stimulus. Make sure to add proper
-axis titles, a title and a legend.</p>
+<p>Use the same data as from exercise 3 to create a relative stacked
+column chart in which each column represents a gene family from the
+motor proteins (i.e. dynein, kinesin and myosin) and the segments within
+each column percentage of genes whose expression is increased or
+decreased in the presence of the stimulus. Make sure to add proper axis
+titles, a title and a legend. The gene names should be sorted.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co">#Your code here</span></span></code></pre></div>
 </div>
 <div id="exercise-5" class="section level3">
 <h3>Exercise 5</h3>
-<p>Use the same data as from exercise 3 to create a <strong>pie
-chart</strong>.<br />
-Create a <strong>pie chart</strong> representing the total Expression
-Value without stimulus per Category. Make sure to add proper axis
-titles, a title and a legend.</p>
-<p>Which category shows the smallest fraction of Expression Value
-<em>without</em> stimulus?</p>
+<p>In the dataset, each protein belongs to a gene family, and each gene
+family is classified under a particular category. Create a pie chart
+representing the contribution of the different gene families within the
+category “Immuno system proteins”.</p>
+<p>Before creating the chart, analyze the data in R:</p>
+<ul>
+<li><p>Filter the data: Subset the dataset to keep only the entries
+belonging to the “Immune system proteins” category.</p></li>
+<li><p>Summarize the counts: Determine the unique gene families in this
+subset and count the number of genes in each family.</p></li>
+<li><p>Generate the chart: Map the aggregated counts to a polar bar
+chart in ggplot2 to display the pie chart.</p></li>
+</ul>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co">#Your code here</span></span></code></pre></div>
 </div>
 <div id="exercise-6" class="section level3">
