@@ -34,6 +34,7 @@
     - [Data tables](#data-tables)
     - [Untidy data versus tidy data:](#untidy-data-versus-tidy-data)
     - [Wide versus long format](#wide-versus-long-format)
+    - [Violations of the Tidy rules](#violations-of-the-tidy-rules)
     - [Data types](#data-types)
       - [Microsoft Excel](#microsoft-excel)
       - [R](#r)
@@ -244,6 +245,76 @@ In the wide format, the column headers (Temp_Day1, Temp_Day2, Temp_Day3) actuall
 In the long format, every column corresponds to a distinct variable (City, Day, Temperature), and every single row represents a single observation (a temperature reading for a specific city on a specific day).  
 
 >The Tidyverse package in R has powerful functions to reshape tables in wide format to tables in long format.  
+
+
+### Violations of the Tidy rules
+
+Thus, the three core rules of tidy data ensure that every dataset follows a predictable layout: variables form columns, observations form rows, and individual values occupy single cells.  
+
+Violation examples for each rule demonstrate how messiness manifests alongside their tidied forms:
+
+**Rule 1: Each feature/variable should have its own column**  
+
+A common violation in biological studies occurs when treatment conditions, time points, or sample types are spread across column headers instead of being stored in a single variable column.  
+
+Violation (Time points stored as column headers):  
+
+| Sample_ID | Genotype | 0h_Expression | 24h_Expression | 48h_Expression |
+| --- | --- | --- | --- | --- |
+| WT_01 | Wildtype | 1.02 | 4.55 | 8.12 |
+| MUT_01 | Mutant | 0.98 | 1.10 | 1.05 |
+
+Tidy Format (Timepoint is a variable column):  
+
+| Sample_ID | Genotype | Timepoint_Hours | Expression_Level |
+| --- | --- | --- | --- |
+| WT_01 | Wildtype | 0 | 1.02 |
+| WT_01 | Wildtype | 24 | 4.55 |
+| WT_01 | Wildtype | 48 | 8.12 |
+| MUT_01 | Mutant | 0 | 0.98 |
+| MUT_01 | Mutant | 24 | 1.10 |
+| MUT_01 | Mutant | 48 | 1.05 |
+
+**Rule 2: Each observation must have its own row**  
+
+A violation occurs when multiple distinct experimental readings (such as different assay measurements or physiological parameters) are packed into a single row for a given subject.  
+
+Violation (Multiple assays combined into a single row per individual):  
+
+| Animal_ID | Treatment | PCR_Ct_Value | Flow_Cytometry_CD8_Pct | Western_Protein_Ug |
+| --- | --- | --- | --- | --- |
+| Mouse_A | Vaccine | 18.2 | 45.3 | 2.8 |
+| Mouse_B | Control | 32.1 | 12.1 | 0.4 |
+
+Tidy Format (Each biological measurement is its own observational row):  
+
+| Animal_ID | Treatment | Assay_Type | Value | Units |
+| --- | --- | --- | --- | --- |
+| Mouse_A | Vaccine | PCR_Ct | 18.2 | Ct |
+| Mouse_A | Vaccine | Flow_CD8 | 45.3 | Percent |
+| Mouse_A | Vaccine | Western_Protein | 2.8 | ug/mL |
+| Mouse_B | Control | PCR_Ct | 32.1 | Ct |
+| Mouse_B | Control | Flow_CD8 | 12.1 | Percent |
+| Mouse_B | Control | Western_Protein | 0.4 | ug/mL |
+
+**Rule 3: Each value must be in its own cell**  
+
+A violation occurs when biological metadata, sequence information, or compound coordinates are merged into a single cell, requiring text splitting to analyze.  
+
+Violation (Taxonomy/Location and measurement details merged into single cells):  
+
+| Isolate_Code | Genus_Species | Location_Lat_Lon | Sanger_Mutation |
+| --- | --- | --- | --- |
+| ISO_101 | Escherichia coli | 53.219,6.566 | p.Lys121Glu (A361G) |
+| ISO_102 | Staphylococcus aureus | 52.367,4.904 | p.Thr315Ile (C944T) |
+
+Tidy Format (Every biological variable isolated in its own cell):  
+
+| Isolate_Code | Genus | Species | Latitude | Longitude | Protein_Change | Nucleotide_Change |
+| --- | --- | --- | --- | --- | --- | --- |
+| ISO_101 | Escherichia | coli | 53.219 | 6.566 | K121E | A361G |
+| ISO_102 | Staphylococcus | aureus | 52.367 | 4.904 | T315I | C944T |
+
 
 ### Data types
 
