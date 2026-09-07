@@ -32,6 +32,7 @@ Files used at this page:
   - [Statistics](#statistics)
   - [Sorting of data and filtering of data](#sorting-of-data-and-filtering-of-data)
   - [Conditional formatting](#conditional-formatting)
+  - [Comditional formatting: color scales](#comditional-formatting-color-scales)
   - [Pivot tables](#pivot-tables)
   - [Power Pivot](#power-pivot)
     - [Add Data to the Data Model:](#add-data-to-the-data-model)
@@ -405,6 +406,15 @@ And the result:
 *<sub>Figure 26: Conditional formatting applied.</sub>*
 
 
+## Comditional formatting: color scales
+
+A color scale is a conditional formatting tool that applies different colors to cells based on their values. It helps quickly visualize patterns and trends in a dataset, making it easier to compare data. In Excel you can choose a 2-color scale, which uses minimum and maximum values, or a 3-color scale, which uses minimum, midpoint, and maximum values. You can add a color scale by selecting the data and then choosing Conditional Formatting > Color Scales. You can either select one of the preset color scales or create a custom color scale by choosing More Rules.  
+In the example below a 3-color scale is used for the column HeartRate, with the lowest value shown in red, the middle value in yellow and the highest value in green.  
+
+![pivot table](./pics_08_data_analysis/fig27.png)
+*<sub>Figure 27: Conditional formatting using color scales.</sub>*
+
+
 ## Pivot tables
 
 Pivot tables come in handy to analyze data quickly and in an organized manner.
@@ -412,13 +422,13 @@ Let's pretend that we are interested in comparing the average heart rate and the
 
 We can select the table. Than choose `Insert > Pivot table`:
 
-![pivot table](./pics_08_data_analysis/fig27.png)
-*<sub>Figure 27: Pivot table.</sub>*
+![pivot table](./pics_08_data_analysis/fig28.png)
+*<sub>Figure 28: Pivot table.</sub>*
 
 And than select the category `Physical_Activity` as well as the columns `Diabetic` and `HeartRate`. We also add `AVERAGE` to `SUM`.
 
-![pivot table](./pics_08_data_analysis/fig28.png)
-*<sub>Figure 28: Pivot table showing the average heart rate and diabetic status for different Physical Activity categories.</sub>*
+![pivot table](./pics_08_data_analysis/fig29.png)
+*<sub>Figure 29: Pivot table showing the average heart rate and diabetic status for different Physical Activity categories.</sub>*
 
 As you can see, there is no clear correlation between a sedentary life style, mild activity and moderate activity and the number of diabetics in this dataset (though there is convincing evidence in the literature, so physical exercise is highly recommended).    
 
@@ -441,8 +451,8 @@ In the Manage dropdown, select COM Add-ins and click Go.
 Check the box next to Power Pivot for Excel and click OK.  
 A new Power Pivot tab will appear in the Excel ribbon.  
 
-![pivot table](./pics_08_data_analysis/fig29.png)
-*<sub>Figure 29: Power Pivot tab added to the ribbon.</sub>*
+![pivot table](./pics_08_data_analysis/fig30.png)
+*<sub>Figure 30: Power Pivot tab added to the ribbon.</sub>*
 
 ### Create a New Measure:
 
@@ -453,16 +463,16 @@ Give the measure a descriptive name (e.g., "Median Heart Rate").
 In the Formula box, type =MEDIAN([YourColumnName]), replacing [YourColumnName] with the actual name of the column you want to find the median for (in this case `HeartRate`). 
 Click OK. 
 
-![pivot table](./pics_08_data_analysis/fig30.png)
-*<sub>Figure 30: New measure created.</sub>*
+![pivot table](./pics_08_data_analysis/fig31.png)
+*<sub>Figure 31: New measure created.</sub>*
 
 ### Add the Measure to the Pivot Table:  
 
 Your new measure will appear in the PivotTable Fields list.  
 Drag the new median measure to the Values area of your pivot table.  
 
-![pivot table](./pics_08_data_analysis/fig31.png)
-*<sub>Figure 31: The resulting Power Pivot table.</sub>*
+![pivot table](./pics_08_data_analysis/fig32.png)
+*<sub>Figure 32: The resulting Power Pivot table.</sub>*
 
 ## Mimic Pivot tables
 
@@ -470,27 +480,27 @@ Note that you can also mimic a pivot like structure using regular functions in E
 For example, you could get more or less the same results als follows:  
 First extract the unique values of the `Physical_Activity` column:  
 
-![pivot table mimic](./pics_08_data_analysis/fig32.png)
-*<sub>Figure 32: Unique output of the Physical_activity column.</sub>*
+![pivot table mimic](./pics_08_data_analysis/fig33.png)
+*<sub>Figure 33: Unique output of the Physical_activity column.</sub>*
 
 >Note that you can not create a table from the output of an array function that outputs in multiple cells. This will create the `#SPILL!` error. This is because a table will be blocking the output range. and if this happens, Excel will return a #SPILL! error indicating that there is a blockage.
 
 Next we can use `SUMIF` to calculate the values:  
 
 
-![pivot table mimic](./pics_08_data_analysis/fig33.png)
-*<sub>Figure 33: Using SUMIF function to calculate the sum with diabetes for each Physical Activity category.</sub>* 
+![pivot table mimic](./pics_08_data_analysis/fig34.png)
+*<sub>Figure 34: Using SUMIF function to calculate the sum with diabetes for each Physical Activity category.</sub>* 
 
 
 And next we can calculate the median with a "custom" `MEDIANIF` function using nesting of the `MEDIAN` and `IF` functions:  
 
-![pivot table mimic](./pics_08_data_analysis/fig34.png)
-*<sub>Figure 34: Using a nested MEDIAN and IF function to calculate the median values.</sub>* 
+![pivot table mimic](./pics_08_data_analysis/fig35.png)
+*<sub>Figure 35: Using a nested MEDIAN and IF function to calculate the median values.</sub>* 
 
 Now all that is left is calculating the grand total:  
 
-![pivot table mimic](./pics_08_data_analysis/fig35.png)
-*<sub>Figure 35: Creating a pivot table-like structure using regular functions in Excel.</sub>* 
+![pivot table mimic](./pics_08_data_analysis/fig36.png)
+*<sub>Figure 36: Creating a pivot table-like structure using regular functions in Excel.</sub>* 
 
 >Note again that formatting as a table is not possible as it would yield a `#SPILL!` error.  
 
