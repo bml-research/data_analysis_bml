@@ -32,7 +32,7 @@ Files used at this page:
   - [Statistics](#statistics)
   - [Sorting of data and filtering of data](#sorting-of-data-and-filtering-of-data)
   - [Conditional formatting](#conditional-formatting)
-  - [Comditional formatting: color scales](#comditional-formatting-color-scales)
+  - [Conditional formatting: color scales](#conditional-formatting-color-scales)
   - [Pivot tables](#pivot-tables)
   - [Power Pivot](#power-pivot)
     - [Add Data to the Data Model:](#add-data-to-the-data-model)
@@ -406,7 +406,7 @@ And the result:
 *<sub>Figure 26: Conditional formatting applied.</sub>*
 
 
-## Comditional formatting: color scales
+## Conditional formatting: color scales
 
 A color scale is a conditional formatting tool that applies different colors to cells based on their values. It helps quickly visualize patterns and trends in a dataset, making it easier to compare data. In Excel you can choose a 2-color scale, which uses minimum and maximum values, or a 3-color scale, which uses minimum, midpoint, and maximum values. You can add a color scale by selecting the data and then choosing `Conditional Formatting > Color Scales`. You can either select one of the preset color scales or create a custom color scale by choosing `More Rules`.  
 In the example below a 3-color scale is used for the column HeartRate, with the lowest value shown in red, the middle value in yellow and the highest value in green.  
