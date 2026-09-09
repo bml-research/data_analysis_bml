@@ -60,7 +60,7 @@ Check for the following:
 - What column delimiter is used?
 - Are there top rows to be removed?
 - What decimal separator is used?  
-- Are there missing data? Replace to NA.
+- Are there missing data? Replace to empty cells.
 - Are column names present? If not, add them during loading in PowerQuery. You can take the column names from another file in the series.
 
 Load the files using PowerQuery and do not modify the csv files from within a text editor!

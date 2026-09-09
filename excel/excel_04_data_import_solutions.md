@@ -98,6 +98,70 @@ You can manually enter Column names.
 You can click `Use First Rows as Headers` to use the first row as a header.   
 Decimal separator can be changed by changing the regional settings under `File` > `Options and Settings` > `Query Options` > `Regional Settings`.  
 
+The solutions for the first 5 files can be found below:  
+
+File 01:  
+- Import csv using regional settings English (USA)
+- Click Data -> From Text/CSV -> select your file
+- Click transform data
+- Remove rows -> remove top rows -> 1
+- Click: Use first rows as headers
+- Select all data (Ctrl + a)
+- Replace Values -> Value to find: `no data` -> replace with (leave empty)
+- Right click `fold induction column` -> change type -> decimal number
+- Right click `protein length` -> change type -> whole number
+- Close and load -> close and load
+
+File 02:  
+- Import csv using regional settings English (USA)
+- Click Data -> From Text/CSV -> select your file
+- Click transform data
+- Remove rows -> remove top rows -> 5
+- Type the headers manually in the corresponding headers (transcript ID, fold induction, protein ID, protein length, family, location)
+- Select all data (Ctrl + a)
+- Replace Values -> Value to find: `?` -> replace with (leave empty)
+- Right click `fold induction column` -> change type -> decimal number
+- Right click `protein length` -> change type -> whole number
+- Close and load -> close and load
+
+File 03:  
+- Import csv using regional settings English (USA)
+- Click Data -> From Text/CSV -> select your file
+- Click transform data
+- Remove rows -> remove top rows -> 1
+- Click: Use first rows as headers
+- Select all data (Ctrl + a)
+- Replace Values -> Value to find: `-1` -> replace with (leave empty)
+- Note that this only replaced the `-1` values in the columns that contain numbers. Repeat this step for the text columns
+- Right click `fold induction column` -> change type -> decimal number
+- Right click `protein length` -> change type -> whole number
+- Close and load -> close and load
+
+File04:  
+- Import csv using regional settings English (USA)
+- Click Data -> From Text/CSV -> select your file
+- Click transform data
+- Remove rows -> remove top rows -> 5
+- Type the headers manually in the corresponding headers (transcript ID, fold induction, protein ID, protein length, family, location)
+- Select all data (Ctrl + a)
+- Replace Values -> Value to find: `-` -> replace with (leave empty)
+- Right click `fold induction column` -> change type -> decimal number
+- Right click `protein length` -> change type -> whole number
+- Close and load -> close and load
+
+File05:  
+- Import csv using regional settings Dutch (Netherlands). Note: the decimal is a comma.
+- Click Data -> From Text/CSV -> select your file
+- Click transform data
+- Remove rows -> remove top rows -> 5
+- Click: Use first rows as headers
+- Select all data (Ctrl + a)
+- Replace Values -> Value to find: `no data` -> replace with (leave empty)
+- Right click `fold induction column` -> change type -> decimal number
+- Right click `protein length` -> change type -> whole number
+- Close and load -> close and load
+
+The solution can be found [here](./files_04_import_solutions/exercise07/exercise07_answers.xlsx).
 
 ---
 
