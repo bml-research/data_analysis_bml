@@ -20,9 +20,10 @@
 |Column           |Data type       |Scale            |
 |:----------------|:---------------|:----------------|
 |Drug Name        |Nominal         |Nominal          |
-|NDC              |Continuous      |Ratio            |
+|NDC              |Nominal*        |Nominal          |
 |Price            |Continuous      |Ratio            |
 
+* NDC is just a code. Like a phone number, there is no order or real value in the number.  
 
 ### Exercise 2
 
