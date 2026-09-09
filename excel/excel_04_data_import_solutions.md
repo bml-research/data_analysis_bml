@@ -28,6 +28,8 @@ Find the solution in the link below.
 
 [Heart Disease Health Indicators Dataset](./files_04_import_solutions/exercise02/heart_disease_health_indicators.xlsx)
 
+>Although the CSV file includes decimal values, they are all whole numbers ending in zero (e.g., 0.0, 1.0, 2.0). Upon import, Excel automatically drops these trailing zeros and formats the values as integers.  
+
 ### Exercise 3
 
 Find the solution in the link below.
