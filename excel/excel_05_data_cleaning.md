@@ -118,7 +118,10 @@ Removing them is easy using find and replace:
 ![find replace](./pics_05_data_cleaning/fig12.png)
 *<sub>Figure 12: Remove HTML tags in cells.</sub>*
 
-The `*` is a wildcard that represents any text. Note that you do not need to explicitly specify an empty string in the `replace with` field. Excel will take care of this.
+> The `?` and `*` characters act as wildcards: `?` represents any single character, while `*` represents any sequence of characters. You do not need to enter anything in the **Replace with** field if you want to delete the matched characters—Excel leaves the replacement empty by default.
+> 
+> To search for a literal `?`, `*`, or `~` in your sheet, escape the character by preceding it with a tilde (`~`). For example, use `~?` to find a question mark, `~*` to find an asterisk, or `~~` to find a tilde.  
+
 
 ![find replace](./pics_05_data_cleaning/fig13.png)
 *<sub>Figure 13: HTML tags removed.</sub>*
