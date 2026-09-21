@@ -173,21 +173,23 @@ Let's have a look at an example:
 ![array](./pics_08_data_analysis/fig9.png)
 *<sub>Figure 9: Small dataset to perform a calculation.</sub>*
 
-What we would like to calculate is the total weight from all the fish in all of the fish tanks. Of course we can first calculate the total weight per tank and calculate the sum, but by using array formulas, we can do it all at once:
+What we would like to calculate is the total weight from all the fish in all of the fish tanks. Of course we can first calculate the total weight per tank and then calculate the sum:
+
+![array](./pics_08_data_analysis/fig10.png)
+*<sub>Figure 10: The result of the sum formula.</sub>*
+
+ But by using array formulas, we can do it all at once:
 
 ```
 =SUM(C2:C5*D2:D5)
 ```
 
-![array](./pics_08_data_analysis/fig10.png)
-*<sub>Figure 10: The result of the array formula.</sub>*
+![array](./pics_08_data_analysis/fig11.png)
+*<sub>Figure 11: Curly braces are a visual indication for an array formula.</sub>*
+
 
 As you can see, the answer is directly calculated. If you are not interested in the total weight of the fish within the individual fish tanks but just the total weight of all the fish (in all the tanks) this will save you adding an extra column. You can put the calculation directly on an analysis tab.
 
-There is just one detail left out. Although the formula works, it is advised to press the keyboard shortcut CTRL + SHIFT + ENTER to complete the array formula. As a result, Microsoft Excel surrounds the formula with curly braces (`{}`), which is an indication of an array formula, so that people know that we are dealing with an array formula.
-
-![array](./pics_08_data_analysis/fig11.png)
-*<sub>Figure 11: Curly braces are a visual indication for an array formula.</sub>*
 
 >Thus: An array formula is a formula that gets applied to more than one cell. But although an array formula always gets applied to more than one cell, array functions can return the result in a single cell (as the example above) or in multiple cells (see below).
 
@@ -207,6 +209,7 @@ Or the example that we have seen before:
 ![array](./pics_08_data_analysis/fig13.png)
 *<sub>Figure 13: Another array function with a multiple cell output.</sub>*
 
+>Be careful with dynamic array formulas. If a dynamic array formula cannot output its results because existing data or merged cells are blocking its path, a spill error will occur.
 
 ## Nesting functions
 
