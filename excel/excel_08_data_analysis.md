@@ -166,7 +166,7 @@ You can find more information about named ranges and the name manager on the [Mi
 
 ## Array formulas
 
-Excel now has the capability of array formulas. A single array formula can perform multiple calculations at once.
+Excel has the capability of array formulas. A single array formula can perform multiple calculations at once.
 
 Let's have a look at an example:
 
@@ -190,8 +190,10 @@ What we would like to calculate is the total weight from all the fish in all of 
 
 As you can see, the answer is directly calculated. If you are not interested in the total weight of the fish within the individual fish tanks but just the total weight of all the fish (in all the tanks) this will save you adding an extra column. You can put the calculation directly on an analysis tab.
 
+The example above is an array formula because it performs an element-by-element multiplication of the two ranges (C2:C5 and D2:D5) before summing the results together.  
 
->Thus: An array formula is a formula that gets applied to more than one cell. But although an array formula always gets applied to more than one cell, array functions can return the result in a single cell (as the example above) or in multiple cells (see below).
+
+>Thus: A dynamic array formula is a formula entered into a single cell that can automatically return its results across multiple adjacent cells (spill) or calculate multiple cells to return a single aggregated result in one cell.
 
 ```
 =ROW(1:10)
