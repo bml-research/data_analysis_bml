@@ -275,6 +275,8 @@ Radar charts are often used to compare multiple variables or data sets, particul
 
 Let's view some (imaginary) protein quantification data for 5 different protein quantification methods (Lowry, Bradford, BCA, UV/VIS and Kjeldahl). These data show the concentration of protein in mg/L. We have these data from three different protein samples.
 
+You can download the data [here](./files_11_data_visualization/file02_radar_chart.csv)
+
 ![Data for a radar chart](./pics_11_data_visualization/fig12.png)
 *<sub>Figure 12: Data suitable for a radar chart. Protein quantification data for different methods and different samples compared.</sub>*
 
