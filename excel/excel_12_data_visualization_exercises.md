@@ -95,7 +95,7 @@ Which two chickens on which diet generated the highest weight gains?
 
 ### Exercise 9
 
-Have look at the data [here](./files_12_data_visualization_exercises/exercise09/data.csv)
+Have look at the data [here](./files_12_data_visualization_exercises/exercise09/exercise09_data.csv)
 It contains data about Potassium and Sodium concentrations (in mmol/L) as well as bodyweight (in kg) for various persons.  
 
 Create a bubble chart with the Na concentration as a function of the K concentration.  
