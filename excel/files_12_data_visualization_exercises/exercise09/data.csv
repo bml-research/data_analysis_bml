@@ -1,26 +1,13 @@
-Item Potassium_conc Sodium_conc K:Na Calories 
-Almonds 705 1 705.0 575 
-Spinach 558 79 7.1 23 
-Parsley 554 56 9.9 36 
-Cilantro 521 46 11.3 23 
-Avocado 485 7 69.3 160 
-Crimini 448 6 74.7 27 
-Portobello 448 6 74.7 26 
-Kale 447 43 10.4 50 
-Walnuts 441 2 220.5 654 
-oyster 420 18 23.3 43 
-Halibut 420 54 7.8 110 
-Tuna 407 37 11.0 103 
-Banana 358 1 358.0 89 
-Mustard_greens 354 25 14.2 26 
-Butternut_squash 352 4 88.0 45 
-Sweet_potato 337 55 6.1 86 
-Carrots 320 69 4.6 41 
-Broccoli 316 33 9.6 34 
-Mackerel 314 90 3.5 205 
-Beef 289 68 4.3 192 
-Pork 287 56 5.1 263 
-Lamb 222 59 3.8 282 
-Chicken 189 170 1.1 215 
-Collard_greens 169 20 8.5 30 
-Eggs 134 140 1.0 143 
+Person,Potassium conc (mmol/L),Sodium conc (mmol/L),Body Weight (kg)
+Alice,3.8,140,65
+Bob,4.2,138,80
+Charlie,3.5,145,55
+David,4.5,135,90
+Eve,3.9,142,70
+Frank,4.1,139,85
+Grace,3.7,143,60
+Henry,4.3,137,95
+Ivy,3.6,146,50
+Jack,4.4,136,100
+Kelly,4.0,141,75
+Liam,3.4,147,105
