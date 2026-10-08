@@ -181,7 +181,7 @@ The `seq()` and the `rep()` functions can also be useful to create vectors. The 
 ```{r}
 # Take the odd numbers from 1-20 and store them in a new variable, var12
 
-# Take the even numbers from var12 and store them in a new variable, var13
+# Take the even numbers from 1-20 and store them in a new variable, var13
 
 # Create a vector with four times the letter "a" and store them in the variable var14.
 
@@ -270,7 +270,7 @@ You can give the column headers the name you want to give with the `names()` fun
 Let's add a new column with newly acquired data to this data frame. There are different ways to do this, but the most basic method is the following:
 
 ```{r}
-# Add a third column that contains the values 11-15 and has the header Variable3.
+# Add a third column that contains the values 41-60 and has the header Variable3.
 
 ```
 
@@ -281,7 +281,7 @@ Note that you cannot add a new column this way if the elements in the new vector
 
 # Multiply all the elements of df1 by 6.
 
-# Create a second data frame df2 that consists of three columns and 5 rows. Take random numbers for each element. Now add df1 to df2.
+# Create a second data frame df2 that consists of three columns and 20 rows. Take random numbers for each element. Now add df1 to df2.
 
 ```
 

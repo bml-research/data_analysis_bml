@@ -245,12 +245,12 @@ var18
 
 \
 
-## Dataframes & Tidyverse
+## Data frames & Tidyverse
 
 Data frames can be constructed from vectors of equal length. The vectors are the columns and the elements the variables in the data frame, while the rows are the observations of the data frame. When you have vectors that you want to collect in a data frame, you can use the `data.frame()` function.
 
 ```{r}
-# Create two vectors with the numbers 1:20 in vec1 and the numbers 21:40 in vec2. Combine these vectors to a data frome, df1.
+# Create two vectors with the numbers 1:20 in vec1 and the numbers 21:40 in vec2. Combine these vectors to a data frame, df1.
 vec1 <- c(1:10)
 vec2 <- c(11:20)
 df1 <- data.frame(vec1, vec2)
@@ -309,7 +309,7 @@ tib1$Variable3 <- c(21:30)
 tib1
 ```
 
-Note that you cannot add a new column this way if the elements in the new vector does not have the same length as the amount of rows in the data frame. You can even do some calculations if the data frame consists of numbers only.
+Note that you cannot add a new column this way if the amount of elements in the new vector do not have the same length as the amount of rows in the data frame. You can even do some calculations if the data frame consists of numbers only.
 
 ```{r}
 # Add 1 to every element of df1.

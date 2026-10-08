@@ -158,10 +158,10 @@ Download the files [prot_pred_md1.csv](./files_07_data_cleaning_exercises/add_ex
 
 ```
 
-You see that there is a (forward) slash where data is missing. You can also see that the character type of the second column is not numeric anymore (the numbers are outlined to the left; compare to the column with the cleavage site). Calculations on the numbers in this column are therefore not possible.
+You see that there is a (forward) slash where data is missing. You can also see that the character type of the fourth column is not numeric anymore (the numbers are outlined to the left; compare to the column with the protein length). Calculations on the numbers in this column are therefore not possible.
 
 ```{r}
-# Calculate the mean of the protein length (AAs).
+# Calculate the mean of the cleavage site.
 
 ```
 

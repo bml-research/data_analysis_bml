@@ -304,7 +304,7 @@ You may have noticed that the data frame returned is actually a tibble.
 The `head` function shows only the first 6 rows (by default) in order not to overwhelm the user with data.
 
 
-Likewise, we can also directly load data from the web. Since the file above is stored on e web server, we can also load it using the URL:
+Likewise, we can also directly load data from the web. Since the file above is stored on a web server, we can also load it using the URL:
 
 ```{r}
 URL <- "https://raw.githubusercontent.com/bml-research/data_analysis_bml/main/R/files_03_data_import/file01_human_genes.csv"
@@ -371,7 +371,7 @@ We can find more information about the `read_csv2` function using the following 
 ```
 
 The information will be found within the help pane.
-Reading the information on read_csv2 learns us that the default setting for headers is TRUE and that R will read (by default) the first row as a header. We can omit this problem by setting the col_names parameter to FALSE:
+Reading the information on read_csv2 learns us that the default setting for headers is TRUE and that R will read (by default) the first row as a header. We can omit this problem by setting the `col_names` parameter to FALSE:
 
 ```{r}
 file_path <- "./files_03_data_import/file03_genes.csv"

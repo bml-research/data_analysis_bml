@@ -32,7 +32,7 @@ This file can be downloaded [here](./R_02_basics_exercises.Rmd)
 #<YOUR CODE HERE>
 ```
 
-2. Calculate the length of the vector.
+2. Determine the length of the vector.
 
 ```{r}
 #<YOUR CODE HERE>
