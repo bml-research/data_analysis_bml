@@ -16,7 +16,7 @@
 *<sub>Source: own work</sub>*
 
 ---
-
+ 
 The following links contain additional exercises for each topic in the course. The exercises follow (more or less) the same structure as the other exercises, but use different data sets.
 
 ## Excercises
