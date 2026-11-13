@@ -4,12 +4,12 @@
 ---
 
 [Go back to the main page](../index.md)
-
+[Go back to the R overview page](../R/R_01_index.html)
 ---
 
 
 # R
-test
+
 ## Additional exercises Data analysis and visualization
 
 ![Pic](./impression/r_add.png)
@@ -34,14 +34,18 @@ The following links contain additional exercises for each topic in the course. T
 - [Data Analysis](./R_10_data_analysis_add_solutions.html)
 - [Data Visualization](./R_12_data_visualization_add_solutions.html)
 
----
-
-
-
+## Datasets to practice with
+- [Datasets](./R_15_additonal_datasets_exercises.html)
 
 ---
 
-[Go back to the main page](../index.md)  
+
+
+
+---
+
+[Go back to the main page](../index.md)
+[Go back to the R overview page](../R/R_01_index.html)  
 <a href="#top">⬆️ Back to Top</a>  
 
 ---
